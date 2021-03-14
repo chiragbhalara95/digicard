@@ -14,6 +14,7 @@ class HomeController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+
     }
   
     /**
@@ -23,6 +24,9 @@ class HomeController extends Controller
      */
     public function index()
     {
+        if(!empty(auth()->user()) && auth()->user()->is_admin === 1){
+            return redirect('/admin/home')->with('error',"You don't have admin access.");
+        }
         return view('home');
     }
   

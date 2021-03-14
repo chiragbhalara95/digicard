@@ -17,5 +17,10 @@ class Authenticate extends Middleware
         if (! $request->expectsJson()) {
             return route('login');
         }
+
+        if(!empty(auth()->user()) && auth()->user()->is_admin === 1){
+            return redirect('/admin/home')->with('error',"You don't have admin access.");
+        }
+
     }
 }
