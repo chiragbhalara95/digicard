@@ -83,6 +83,7 @@ Digital Card is the standard for digital business cards that works on Smartphone
       </div>
     </section><!-- End About Section -->
 
+
     <!-- ======= Services Section ======= -->
     <section id="services" class="section-bg">
       <div class="container" data-aos="fade-up">
@@ -90,34 +91,83 @@ Digital Card is the standard for digital business cards that works on Smartphone
         <header class="section-header">
           <h3>Our Products</h3>
           <p>We Belive In Success, Your Success Is Our Success</p>
+            <div class="row">
+                <div class="col-md-5"></div>
+                <div class="col-md-3">
+                    <select>
+                        <option selected>My Business Card</option>
+                        <option>My Personal Card</option>
+                    </select>
+                </div>
+            </div>
+
         </header>
 
+<br/>
 <div id="products" class="row view-group">
 
         <div class="row justify-content-center">
 
-          <div class="col-md-6 col-lg-5" data-aos="zoom-in" data-aos-delay="100">
+
+        <div class="row">
+
+          <div class="col-lg-4 col-md-6">
             <div class="box">
-                <div class="img-event">
-                    <img class="group list-group-image img-fluid" src="#" alt="">
-                </div>
-              <h4 class="title"><a href="">My Business Visiting Card</a></h4>
-              <p class="description"></p>
+              <h3>Free</h3>
+              <h4><sup>$</sup>0<span> / month</span></h4>
+              <ul>
+                <li>Aida dere</li>
+                <li>Nec feugiat nisl</li>
+                <li>Nulla at volutpat dola</li>
+                <li class="na">Pharetra massa</li>
+                <li class="na">Massa ultricies mi</li>
+              </ul>
+              <div class="btn-wrap">
+                <a href="#" class="btn-buy">Buy Now</a>
+              </div>
             </div>
           </div>
-          <div class="col-md-6 col-lg-5" data-aos="zoom-in" data-aos-delay="200">
-            <div class="box">
-                <div class="img-event">
-                    <img class="group list-group-image img-fluid" src="#" alt="">
-                </div>
-              <h4 class="title"><a href="">My Personal Visiting Card</a></h4>
-              <p class="description"></p>
+
+          <div class="col-lg-4 col-md-6 mt-4 mt-md-0">
+            <div class="box featured">
+              <h3>Business</h3>
+              <h4><sup>$</sup>19<span> / month</span></h4>
+              <ul>
+                <li>Aida dere</li>
+                <li>Nec feugiat nisl</li>
+                <li>Nulla at volutpat dola</li>
+                <li>Pharetra massa</li>
+                <li class="na">Massa ultricies mi</li>
+              </ul>
+              <div class="btn-wrap">
+                <a href="#" class="btn-buy">Buy Now</a>
+              </div>
             </div>
           </div>
+
+          <div class="col-lg-4 col-md-6 mt-4 mt-lg-0">
+            <div class="box">
+              <h3>Developer</h3>
+              <h4><sup>$</sup>29<span> / month</span></h4>
+              <ul>
+                <li>Aida dere</li>
+                <li>Nec feugiat nisl</li>
+                <li>Nulla at volutpat dola</li>
+                <li>Pharetra massa</li>
+                <li>Massa ultricies mi</li>
+              </ul>
+              <div class="btn-wrap">
+                <a href="#" class="btn-buy">Buy Now</a>
+              </div>
+            </div>
+          </div>
+
+        </div>
 
 
       </div>
     </section><!-- End Services Section -->
+
 
     <!-- ======= Why Us Section ======= -->
     <section id="why-us">
@@ -178,7 +228,7 @@ Digital Card is the standard for digital business cards that works on Smartphone
               <i class="fa fa-object-group"></i>
               <div class="card-body">
                 <h5 class="card-title">Easy to Share</h5>
-                <p class="card-text">You can customize and change your Digital Business Card design with us. We provide amazing templates which will suit your branding needs. </p>
+                <p class="card-text">Share your cards by using your favorite messaging apps.Send your card as a vCard and xdgc. </p>
                 <a href="#" class="readmore">Read more </a>
               </div>
             </div>
