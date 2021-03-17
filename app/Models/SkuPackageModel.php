@@ -37,4 +37,5 @@ class SkuPackageModel extends Model
 
     protected $casts = [];
 
+
 }

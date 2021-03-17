@@ -11,8 +11,9 @@
 
       <div class="intro-info" data-aos="zoom-in" data-aos-delay="100">
         <h2>We offer</h2>
-        <h5 class="text-white">Digital Business Card</h5>
-        <h5 class="text-white">Digital Personal Card</h5>
+        @foreach($productData AS $productDetail)
+        <h5 class="text-white">{{$productDetail['product_name']}}</h5>
+        @endforeach
         <div>
           <a href="#about" class="btn-get-started scrollto">Get Started</a>
           <a href="#services" class="btn-services scrollto">Our Services</a>
@@ -95,8 +96,10 @@ Digital Card is the standard for digital business cards that works on Smartphone
                 <div class="col-md-5"></div>
                 <div class="col-md-3">
                     <select>
-                        <option selected>My Business Card</option>
-                        <option>My Personal Card</option>
+                        @foreach($productData AS $key => $productDetail)
+                        <option @if($key == 0) selected @endif value="{{$productDetail['product_id']}}">{{$productDetail['product_name']}}</option>
+                        @endforeach
+
                     </select>
                 </div>
             </div>
