@@ -95,7 +95,7 @@ Digital Card is the standard for digital business cards that works on Smartphone
             <div class="row">
                 <div class="col-md-5"></div>
                 <div class="col-md-3">
-                    <select>
+                    <select id="product-select-list" class="selectpicker">
                         @foreach($productData AS $key => $productDetail)
                         <option @if($key == 0) selected @endif value="{{$productDetail['product_id']}}">{{$productDetail['product_name']}}</option>
                         @endforeach
@@ -105,70 +105,32 @@ Digital Card is the standard for digital business cards that works on Smartphone
             </div>
 
         </header>
+<hr>
+    @if(!empty($skuCustomPackage))
+        @foreach($skuCustomPackage AS $productId => $skuCustomDetail)
+<div class="row col-md-12 sku-package-row" id="sku-package-row-{{$productId}}" style="display: none;">
+                @foreach($skuCustomDetail AS $detail)
 
-<br/>
-<div id="products" class="row view-group">
+          <div class="col-lg-3 col-md-6 box">
+                        <div class="card-header">
+                            <h4 class="text-center my-0 font-weight-normal">{{$detail['package_type_name']}}</h4>
+              <h6 class="text-danger text-center"><sup>Rs</sup>{{$detail['price']}}</h6>
+                <select id="custom-duration" class="selectpicker">
+                    @foreach($detail['duration'] AS $key => $duration)
+                            <option value="{{$key}}">{{$duration}}</option>
+                    @endforeach
+                </select>
+                                <p>{!!$detail['description']!!}</p>
 
-        <div class="row justify-content-center">
-
-
-        <div class="row">
-
-          <div class="col-lg-4 col-md-6">
-            <div class="box">
-              <h3>Free</h3>
-              <h4><sup>$</sup>0<span> / month</span></h4>
-              <ul>
-                <li>Aida dere</li>
-                <li>Nec feugiat nisl</li>
-                <li>Nulla at volutpat dola</li>
-                <li class="na">Pharetra massa</li>
-                <li class="na">Massa ultricies mi</li>
-              </ul>
-              <div class="btn-wrap">
-                <a href="#" class="btn-buy">Buy Now</a>
-              </div>
             </div>
+        <button type="button" class="btn btn-lg btn-block btn-primary">Buy Now</button>
           </div>
 
-          <div class="col-lg-4 col-md-6 mt-4 mt-md-0">
-            <div class="box featured">
-              <h3>Business</h3>
-              <h4><sup>$</sup>19<span> / month</span></h4>
-              <ul>
-                <li>Aida dere</li>
-                <li>Nec feugiat nisl</li>
-                <li>Nulla at volutpat dola</li>
-                <li>Pharetra massa</li>
-                <li class="na">Massa ultricies mi</li>
-              </ul>
-              <div class="btn-wrap">
-                <a href="#" class="btn-buy">Buy Now</a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 mt-4 mt-lg-0">
-            <div class="box">
-              <h3>Developer</h3>
-              <h4><sup>$</sup>29<span> / month</span></h4>
-              <ul>
-                <li>Aida dere</li>
-                <li>Nec feugiat nisl</li>
-                <li>Nulla at volutpat dola</li>
-                <li>Pharetra massa</li>
-                <li>Massa ultricies mi</li>
-              </ul>
-              <div class="btn-wrap">
-                <a href="#" class="btn-buy">Buy Now</a>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-
-      </div>
+@endforeach
+</div>
+@endforeach
+@endif
+</div>
     </section><!-- End Services Section -->
 
 
