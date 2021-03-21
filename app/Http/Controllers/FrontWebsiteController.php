@@ -45,7 +45,7 @@ class FrontWebsiteController extends Controller
                    $uniqueDetail = $detail[0];
                     $durationArr = [];
                     foreach ($detail as $value) {
-                        $durationArr[$value['package_duration_id']] = $value['duration'].' '.$value['durationType'];
+                        $durationArr[$value['package_duration_id']] = $value['duration'].' '.$value['durationType'].' (Rs '.$value['price'].')';
                     }
                    $detail[0]['duration'] = $durationArr;
                    $formatePackage[$productId][] = $detail[0];
