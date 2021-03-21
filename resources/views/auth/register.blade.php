@@ -29,7 +29,7 @@
                             <label for="contact_no" class="col-md-4 col-form-label text-md-right">Contact Number</label>
 
                         <div class="col-md-3">
-                            <select class="selectpicker" required name="country_code">
+                            <select class="selectpicker" required name="country_code" data-live-search="true">
                                 <option value="">Select Country Code</option>
                                 @if (!empty($countryData))
                                     @foreach($countryData AS $countryDetail)
