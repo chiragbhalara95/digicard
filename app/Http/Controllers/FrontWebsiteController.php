@@ -41,7 +41,6 @@ class FrontWebsiteController extends Controller
         $userData        = CustomHelper::getUserDataByIp();
         $userCountryCode = !empty($userData->geoplugin_countryCode) ? $userData->geoplugin_countryCode :'IN';
         $userCurrency    = ($userCountryCode !== 'IN') ? 'USD' : 'INR';
-        $userCurrency    ='USD';
 
         $formatePackage = [];
         if(!empty($skuCustomPackage)) {
@@ -53,7 +52,7 @@ class FrontWebsiteController extends Controller
                         if ($userCurrency == 'USD') {
                                 $durationArr[$value['package_duration_id']] = $value['duration'].' '.$value['durationType'].' ($'.number_format($value['price_usd'], 2).')';
                         } else {
-                                $durationArr[$value['package_duration_id']] = $value['duration'].' '.$value['durationType'].' (Rs'.number_format($value['price'], 2).')';
+                                $durationArr[$value['package_duration_id']] = $value['duration'].' '.$value['durationType'].' (₹'.number_format($value['price'], 2).')';
                         }
                     }
                    $detail[0]['duration'] = $durationArr;

@@ -75,8 +75,9 @@ class RegisterController extends Controller
     {
         $countryData = file_get_contents('public/country-tel-code.json');
         $countryData = json_decode($countryData, true);
+        $selectedCode = '+91';
 
-        return view('auth.register', compact('countryData'));
+        return view('auth.register', compact('countryData','selectedCode'));
     }
 
 }

@@ -28,18 +28,22 @@
                         <div class="form-group row">
                             <label for="contact_no" class="col-md-4 col-form-label text-md-right">Contact Number</label>
 
-                        <div class="col-md-2">
-                            <select class="form-control">
-                                <option value="">Select Value</option>
+                        <div class="col-md-3">
+                            <select class="selectpicker" required>
+                                <option value="">Select Country Code</option>
                                 @if (!empty($countryData))
                                     @foreach($countryData AS $countryDetail)
-                                    <option value="{{$countryDetail['dial_code']}}">{{$countryDetail['name']}} ({{$countryDetail['dial_code']}})</option>
+                                    <option value="{{$countryDetail['dial_code']}}" 
+                                        placeholder = "{{$countryDetail['name']}}"
+                                        @if($countryDetail['dial_code'] === $selectedCode) selected @endif>
+                                        {{$countryDetail['name']}} ({{$countryDetail['dial_code']}})
+                                    </option>
                                     @endforeach
                                 @endif
                             </select>
                         </div>
-                        <div class="col-md-4">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                        <div class="col-md-3">
+                                <input id="name" type="number" class="form-control removeInputArrow @error('name') is-invalid @enderror" name="phone" value="{{ old('phone') }}" required autocomplete="phone" autofocus>
 
                                 @error('name')
                                     <span class="invalid-feedback" role="alert">

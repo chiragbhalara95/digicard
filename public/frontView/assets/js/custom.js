@@ -1,4 +1,6 @@
+
  $(function () {
+     $('.selectpicker').selectpicker();
      $('.selectpicker').selectpicker('setStyle', 'col-md-8 btn-sm btn-primary');
  });
 

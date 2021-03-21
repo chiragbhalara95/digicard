@@ -28,6 +28,9 @@
          * Author: BootstrapMade.com
          * License: https://bootstrapmade.com/license/
          ======================================================== -->
+
+      <link href="{{ asset('public/frontView/assets/css/custom.css') }}?v={{date('YmdHis')}}" rel="stylesheet">
+
    </head>
    <body>
       <!-- ======= Header ======= -->
