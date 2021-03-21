@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
 Route::get('/email/verify', function () {
     return view('auth.verify-email');
@@ -30,7 +30,7 @@ Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $requ
 Route::namespace('App\Http\Controllers')->group(function() {
     // front desk
     Route::get('/', [App\Http\Controllers\FrontWebsiteController::class, 'index'])->name('home');
-    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('verified');
 
     // Admin route
     Route::get('admin', [App\Http\Controllers\HomeController::class, 'adminHome'])->name('admin.home')->middleware('is_admin');
