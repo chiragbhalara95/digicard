@@ -67,7 +67,7 @@
 <!-- End About Section -->
 <!-- ======= Services Section ======= -->
 <section id="services" class="section-bg">
-   <div class="container" data-aos="fade-up">
+   <div class="" data-aos="fade-up">
       <header class="section-header">
          <h3>Our Products</h3>
          <p>We Belive In Success, Your Success Is Our Success</p>
@@ -87,10 +87,10 @@
       @foreach($skuCustomPackage AS $productId => $skuCustomDetail)
       <div class="row col-md-12 sku-package-row" id="sku-package-row-{{$productId}}" style="display: none;">
          @foreach($skuCustomDetail AS $detail)
-         <div class="col-lg-3 col-md-6 box">
+         <div class="col-lg-3 col-md-3 box">
             <div class="card-header">
                <h4 class="text-center my-0 font-weight-normal">{{$detail['package_type_name']}}</h4>
-               <select class="selectpicker custom-duration">
+               <select class="selectpicker custom-duration text-center">
                   <option value="">Select Duration</option>
                   @foreach($detail['duration'] AS $key => $duration)
                   <option value="{{$key}}" data-price="{{$detail['price']}}">{{$duration}}</option>

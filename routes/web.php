@@ -13,12 +13,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [App\Http\Controllers\FrontWebsiteController::class, 'index'])->name('home');
 
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('admin', [App\Http\Controllers\HomeController::class, 'adminHome'])->name('admin.home')->middleware('is_admin');
-Route::get('admin/home', [App\Http\Controllers\HomeController::class, 'adminHome'])->name('admin.home')->middleware('is_admin');
+Route::namespace('App\Http\Controllers')->group(function() {
+    // front desk
+    Route::get('/', [App\Http\Controllers\FrontWebsiteController::class, 'index'])->name('home');
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+    // Admin route
+    Route::get('admin', [App\Http\Controllers\HomeController::class, 'adminHome'])->name('admin.home')->middleware('is_admin');
+    Route::get('admin/home', [App\Http\Controllers\HomeController::class, 'adminHome'])->name('admin.home')->middleware('is_admin');
+});

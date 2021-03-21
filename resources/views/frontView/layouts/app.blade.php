@@ -44,6 +44,7 @@
                   <li><a href="#about">About Us</a></li>
                   <li><a href="#services">Our Products</a></li>
                   <li><a href="#contact">Contact Us</a></li>
+                  <li><a href="{{url('/login')}}">Login</a></li>
                </ul>
             </nav>
             <!-- .main-nav -->
@@ -128,11 +129,5 @@
       <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.14.0-beta/dist/js/bootstrap-select.min.js"></script>
       <!-- (Optional) Latest compiled and minified JavaScript translation files -->
       <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.14.0-beta/dist/js/i18n/defaults-*.min.js"></script>
-      <script type="text/javascript">
-         $(function () {
-             $('.selectpicker').selectpicker('setStyle', 'col-md-8 btn-sm btn-primary');
-         });
-         
-      </script>
    </body>
 </html>

@@ -5,12 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\ProductModel;
 use App\Models\SkuPackageModel;
+use App\Helpers\CustomHelper;
 
 class FrontWebsiteController extends Controller
 {
     public function index()
     {
-
         $productData = ProductModel::select('product_id', 'product_name')->get()->toArray();
         $packageData = SkuPackageModel::select([
             'price',
@@ -38,6 +38,11 @@ class FrontWebsiteController extends Controller
             }
         }
 
+        $userData        = CustomHelper::getUserDataByIp();
+        $userCountryCode = !empty($userData->geoplugin_countryCode) ? $userData->geoplugin_countryCode :'IN';
+        $userCurrency    = ($userCountryCode !== 'IN') ? 'USD' : 'INR';
+        $userCurrency    ='USD';
+
         $formatePackage = [];
         if(!empty($skuCustomPackage)) {
             foreach ($skuCustomPackage as $productId => $skuCustomPackageDetail) {
@@ -45,7 +50,11 @@ class FrontWebsiteController extends Controller
                    $uniqueDetail = $detail[0];
                     $durationArr = [];
                     foreach ($detail as $value) {
-                        $durationArr[$value['package_duration_id']] = $value['duration'].' '.$value['durationType'].' (Rs '.$value['price'].')';
+                        if ($userCurrency == 'USD') {
+                                $durationArr[$value['package_duration_id']] = $value['duration'].' '.$value['durationType'].' ($'.number_format($value['price_usd'], 2).')';
+                        } else {
+                                $durationArr[$value['package_duration_id']] = $value['duration'].' '.$value['durationType'].' (Rs'.number_format($value['price'], 2).')';
+                        }
                     }
                    $detail[0]['duration'] = $durationArr;
                    $formatePackage[$productId][] = $detail[0];
@@ -55,7 +64,8 @@ class FrontWebsiteController extends Controller
 
         $skuCustomPackage = $formatePackage;
 
-        return view('frontView/home', compact('productData', 'skuCustomPackage'));
+
+        return view('frontView/home', compact('productData', 'skuCustomPackage','userCurrency'));
     }
 
 }

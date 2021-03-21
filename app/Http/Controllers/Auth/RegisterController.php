@@ -70,4 +70,13 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
         ]);
     }
+
+    public function showRegistrationForm()
+    {
+        $countryData = file_get_contents('public/country-tel-code.json');
+        $countryData = json_decode($countryData, true);
+
+        return view('auth.register', compact('countryData'));
+    }
+
 }
