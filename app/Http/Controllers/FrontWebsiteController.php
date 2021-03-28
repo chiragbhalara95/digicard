@@ -64,7 +64,11 @@ class FrontWebsiteController extends Controller
 
         $skuCustomPackage = $formatePackage;
 
-        return view('frontView/home', compact('productData', 'skuCustomPackage','userCurrency'));
+        $countryData = file_get_contents('public/country-tel-code.json');
+        $countryData = json_decode($countryData, true);
+        $selectedCode = '+91';
+
+        return view('frontView/home', compact('productData', 'skuCustomPackage','userCurrency', 'countryData', 'selectedCode'));
     }
 
 }

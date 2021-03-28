@@ -215,7 +215,8 @@
                </div>
             </div>
             <div class="form">
-               <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+               <form action="{{route('saveContact')}}" method="post" role="form" class="php-email-form">
+                   {{csrf_field()}}
                   <div class="form-row">
                      <div class="form-group col-lg-6">
                         <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
@@ -227,7 +228,31 @@
                      </div>
                   </div>
                   <div class="form-group">
-                     <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
+                     <div class="row">
+                        <div class="col-md-4">
+                            <select class="selectpicker" required name="country_code" data-live-search="true" data-rule="minlen:1" data-msg="Please select country code">
+                                <option class="text-center" value="">Select Country Code</option>
+                                @if (!empty($countryData))
+                                    @foreach($countryData AS $countryDetail)
+                                    <option class="text-center" value="{{$countryDetail['dial_code']}}" 
+                                        @if($countryDetail['dial_code'] === $selectedCode) selected @endif>
+                                        {{$countryDetail['name']}} ({{$countryDetail['dial_code']}})
+                                    </option>
+                                    @endforeach
+                                @endif
+                            </select>
+                            <div class="validate"></div>
+                        </div>
+                        
+                        <div class="col-md-8">
+                           <input type="number" class="form-control" name="phone_number" id="subject" placeholder="Phone Number" data-rule="minlen:10" data-msg="Please enter at least 10 digit of phone number" />
+                           <div class="validate"></div>
+                        </div>
+                     </div>
+
+                  </div>
+                  <div class="form-group">
+                     <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 4 chars of subject" />
                      <div class="validate"></div>
                   </div>
                   <div class="form-group">

@@ -31,6 +31,7 @@ Route::namespace('App\Http\Controllers')->group(function() {
     // front desk
     Route::get('/', [App\Http\Controllers\FrontWebsiteController::class, 'index'])->name('home');
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('verified');
+    Route::post('contact-us', [App\Http\Controllers\ContactController::class, 'saveContact'])->name('saveContact');
 
     // Admin route
     Route::get('admin', [App\Http\Controllers\HomeController::class, 'adminHome'])->name('admin.home')->middleware('is_admin');
