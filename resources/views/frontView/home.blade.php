@@ -98,7 +98,7 @@
                </select>
                <p>{!!$detail['description']!!}</p>
             </div>
-            <a type="button" class="btn btn-lg btn-block btn-primary" href="{{url('/register')}}">Create Your Card</a>
+            <a type="button" class="btn btn-lg btn-block btn-primary create_custom_card" href="{{url('/register')}}">Create Your Card</a>
          </div>
          @endforeach
       </div>

@@ -24,7 +24,8 @@ class FrontWebsiteController extends Controller
             'durationType',
             'product.product_id',
             'package_type.package_type_id',
-            'package_duration.package_duration_id'
+            'package_duration.package_duration_id',
+            'sku_package.sku_package_id'
         ])
         ->join('product', 'product.product_id', '=', 'sku_package.product_id')
         ->join('package_type', 'package_type.package_type_id', '=', 'sku_package.package_type_id')
@@ -50,9 +51,9 @@ class FrontWebsiteController extends Controller
                     $durationArr = [];
                     foreach ($detail as $value) {
                         if ($userCurrency == 'USD') {
-                                $durationArr[$value['package_duration_id']] = $value['duration'].' '.$value['durationType'].' ($'.number_format($value['price_usd'], 2).')';
+                                $durationArr[$value['sku_package_id']] = $value['duration'].' '.$value['durationType'].' ($'.number_format($value['price_usd'], 2).')';
                         } else {
-                                $durationArr[$value['package_duration_id']] = $value['duration'].' '.$value['durationType'].' (₹'.number_format($value['price'], 2).')';
+                                $durationArr[$value['sku_package_id']] = $value['duration'].' '.$value['durationType'].' (₹'.number_format($value['price'], 2).')';
                         }
                     }
                    $detail[0]['duration'] = $durationArr;
@@ -62,7 +63,6 @@ class FrontWebsiteController extends Controller
         }
 
         $skuCustomPackage = $formatePackage;
-
 
         return view('frontView/home', compact('productData', 'skuCustomPackage','userCurrency'));
     }

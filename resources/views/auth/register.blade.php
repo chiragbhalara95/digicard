@@ -12,6 +12,15 @@
                         @csrf
 
                         <div class="form-group row">
+                            <label for="name" class="col-md-4 col-form-label text-md-right">Select Product</label>
+                            <select id="product-select-list" data-live-search="true" class="selectpicker">
+                                    @foreach($productData AS $key => $productDetail)
+                                    <option @if($key == 0) selected @endif value="{{$productDetail['product_id']}}">{{$productDetail['product_name']}}</option>
+                                    @endforeach
+                            </select>
+                        </div>
+
+                        <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
 
                             <div class="col-md-6">

@@ -8,6 +8,8 @@ use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use App\Models\SkuPackageModel;
+use App\Models\ProductModel;
 
 class RegisterController extends Controller
 {
@@ -79,8 +81,9 @@ class RegisterController extends Controller
         $countryData = file_get_contents('public/country-tel-code.json');
         $countryData = json_decode($countryData, true);
         $selectedCode = '+91';
+        $productData = ProductModel::select('product_id', 'product_name')->get()->toArray();
 
-        return view('auth.register', compact('countryData','selectedCode'));
+        return view('auth.register', compact('countryData','selectedCode', 'productData'));
     }
 
 }

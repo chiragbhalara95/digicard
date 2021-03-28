@@ -20,4 +20,14 @@ $(function () {
       console.log(price)
     });
 
+    $(".create_custom_card").click(function(event) {
+        event.preventDefault();
+        var customPackageId = $(this).parent().closest('.box').find('.custom-duration option:selected').val();
+        var url = $(this).attr('href');
+        if (customPackageId > 0) {
+            url += '?packageId='+customPackageId
+        }
+        location.href = url;
+    });
+
 });
