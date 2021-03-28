@@ -94,6 +94,7 @@
                         <a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a>
                      </div>
                   </div>
+                  <!--
                   <div class="col-lg-3 col-md-6 footer-newsletter">
                      <h4>Our Newsletter</h4>
                      <p></p>
@@ -101,6 +102,7 @@
                         <input type="email" name="email"><input type="submit" value="Subscribe">
                      </form>
                   </div>
+               -->
                </div>
             </div>
          </div>

@@ -29,6 +29,19 @@ class ContactController extends Controller
 
         $contact->save();
 
+        \Mail::send('email.contact_email',
+             array(
+                 'name' => $request->get('name'),
+                 'email' => $request->get('email'),
+                 'subject' => $request->get('subject'),
+                 'phone_number' => $request->get('phone_number'),
+                 'user_message' => $request->get('message'),
+             ), function($message) use ($request)
+               {
+                  $message->from($request->email);
+                  $message->to('chiragbhalara95@gmail.com');
+               });
+
         return "Thank you for contact us!";
     }
 
