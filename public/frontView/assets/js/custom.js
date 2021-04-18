@@ -1,7 +1,7 @@
 
  $(function () {
      $('.selectpicker').selectpicker();
-     $('.selectpicker').selectpicker('setStyle', 'col-md-8 btn-sm btn-primary');
+     $('.selectpicker').selectpicker('setStyle', 'btn-sm btn-primary');
  });
 
 $(function () {

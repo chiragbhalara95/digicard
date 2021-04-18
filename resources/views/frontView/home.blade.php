@@ -76,7 +76,7 @@
             <div class="col-md-3">
                <select id="product-select-list" data-live-search="true" class="selectpicker">
                @foreach($productData AS $key => $productDetail)
-               <option @if($key == 0) selected @endif value="{{$productDetail['product_id']}}">{{$productDetail['product_name']}}</option>
+               <option class="text-center" @if($key == 0) selected @endif value="{{$productDetail['product_id']}}">{{$productDetail['product_name']}}</option>
                @endforeach
                </select>
             </div>
@@ -91,9 +91,9 @@
             <div class="card-header">
                <h4 class="text-center my-0 font-weight-normal">{{$detail['package_type_name']}}</h4>
                <select class="selectpicker custom-duration text-center" data-live-search="true">
-                  <option value="">Select Duration</option>
+                  <option class="text-center" value="">Select Duration</option>
                   @foreach($detail['duration'] AS $key => $duration)
-                  <option value="{{$key}}" data-price="{{$detail['price']}}">{{$duration}}</option>
+                  <option class="text-center" value="{{$key}}" data-price="{{$detail['price']}}">{{$duration}}</option>
                   @endforeach
                </select>
                <p>{!!$detail['description']!!}</p>

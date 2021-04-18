@@ -21,7 +21,7 @@
       <link href="{{ asset('public/frontView/assets/vendor/aos/aos.css') }}" rel="stylesheet">
       <!-- Template Main CSS File -->
       <link href="{{ asset('public/frontView/assets/css/style.css') }}?v={{date('YmdHis')}}" rel="stylesheet">
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.14.0-beta/dist/css/bootstrap-select.min.css">
+      <link rel="stylesheet" href="{{ asset('public/frontView/assets/css/bootstrap-select.min.css') }}?v={{date('YmdHis')}}">
       <!-- =======================================================
          * Template Name: NewBiz - v2.1.0
          * Template URL: https://bootstrapmade.com/newbiz-bootstrap-business-template/
@@ -116,6 +116,7 @@
       </footer>
       <!-- End Footer -->
       <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+
       <!-- Vendor JS Files -->
       <script src="{{ asset('public/frontView/assets/vendor/jquery/jquery.min.js') }}"></script>
       <script src="{{ asset('public/frontView/assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
@@ -131,8 +132,7 @@
       <script src="{{ asset('public/frontView/assets/js/main.js') }}"></script>
       <script src="{{ asset('public/frontView/assets/js/custom.js') }}?v={{date('YmdHis')}}"></script>
       <!-- Latest compiled and minified JavaScript -->
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.14.0-beta/dist/js/bootstrap-select.min.js"></script>
-      <!-- (Optional) Latest compiled and minified JavaScript translation files -->
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.14.0-beta/dist/js/i18n/defaults-*.min.js"></script>
+      <script src="{{ asset('public/frontView/assets/js/bootstrap-select.min.js') }}?v={{date('YmdHis')}}"></script>
+
    </body>
 </html>

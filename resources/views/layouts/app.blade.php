@@ -20,9 +20,7 @@
     <link href="{{ asset('public//css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('public/frontView/assets/css/custom.css') }}?v={{date('YmdHis')}}" rel="stylesheet">
 
-<link defer rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
-<script defer src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
+      <link rel="stylesheet" href="{{ asset('public/frontView/assets/css/bootstrap-select.min.css') }}?v={{date('YmdHis')}}">
 
     <script src="{{ asset('public/frontView/assets/js/custom.js') }}?v={{date('YmdHis')}}" defer></script>
 </head>
