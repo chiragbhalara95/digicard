@@ -30,5 +30,9 @@ class ProductModel extends Model
 
     protected $casts = [];
 
+    public function user()
+    {
+        return $this->belongsTo('App\Models\User', 'product_id', 'product_id');
+    }
 
 }

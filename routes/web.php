@@ -31,9 +31,12 @@ Route::namespace('App\Http\Controllers')->group(function() {
     // front desk
     Route::get('/', [App\Http\Controllers\FrontWebsiteController::class, 'index'])->name('home');
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('verified');
+    Route::get('/about', [App\Http\Controllers\AboutUsController::class, 'aboutView'])->name('edit-about-view')->middleware('verified');
     Route::post('contact-us', [App\Http\Controllers\ContactController::class, 'saveContact'])->name('saveContact');
+    Route::get('/social-link', [App\Http\Controllers\SocialLinkController::class, 'socialLinkListView'])->name('social-list-view')->middleware('verified');
 
     // Admin route
     Route::get('admin', [App\Http\Controllers\HomeController::class, 'adminHome'])->name('admin.home')->middleware('is_admin');
     Route::get('admin/home', [App\Http\Controllers\HomeController::class, 'adminHome'])->name('admin.home')->middleware('is_admin');
+
 });

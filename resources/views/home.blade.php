@@ -7,6 +7,7 @@
             <div class="card">
                 <div class="card-header">Dashboard</div>
                 <div class="card-body">
+                    {{auth()->user()->product()->product_name}}
                     You are normal user.
                 </div>
             </div>

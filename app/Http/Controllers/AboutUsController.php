@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class HomeController extends Controller
+class AboutUsController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -27,8 +27,8 @@ class HomeController extends Controller
         if(!empty(auth()->user()) && auth()->user()->is_admin === 1){
             return redirect('/admin/home')->with('error',"You don't have admin access.");
         }
-        echo "<pre>";print_r(\APp\Models\User::find(12)->product()->first()->product_name);exit;
-        return view('home');
+
+        return view('user/edit-about');
     }
   
     /**
@@ -36,9 +36,10 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function adminHome()
+    public function aboutView()
     {
-        return view('adminHome');
+
+        return view('user/edit-about');
     }
 
 }
