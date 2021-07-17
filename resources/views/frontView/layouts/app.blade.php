@@ -47,7 +47,15 @@
                   <li><a href="#about">About Us</a></li>
                   <li><a href="#services">Our Products</a></li>
                   <li><a href="#contact">Contact Us</a></li>
+                  @if(Auth::check())
+                  <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('frm-logout').submit();">
+                  Logout</a></li>
+                  <form id="frm-logout" action="{{ route('logout') }}" method="POST" style="display: none;">
+                     {{ csrf_field() }}
+                  </form>
+                  @else
                   <li><a href="{{url('/login')}}">Login</a></li>
+                  @endif
                </ul>
             </nav>
             <!-- .main-nav -->
