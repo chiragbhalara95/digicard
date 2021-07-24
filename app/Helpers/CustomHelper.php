@@ -1,5 +1,6 @@
 <?php
 namespace App\Helpers;
+
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Cache;
@@ -52,6 +53,19 @@ class CustomHelper {
     public static function getStorageVal($name)
     {
         return Cache::get($name, '');
+    }
+
+    public static function getUserTemplateName()
+    {
+        $templateName = '';
+        $productName = auth()->user()->product()->first()->product_name;
+        switch ($productName) {
+            case 'Save The Card':
+                $templateName = 'save-card';
+                break;
+        }
+
+        return $templateName;
     }
 
 }

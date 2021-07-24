@@ -21,7 +21,7 @@
       <link href="{{ asset('public/frontView/assets/vendor/aos/aos.css') }}" rel="stylesheet">
       <!-- Template Main CSS File -->
       <link href="{{ asset('public/frontView/assets/css/style.css') }}?v={{date('YmdHis')}}" rel="stylesheet">
-      <link rel="stylesheet" href="{{ asset('public/frontView/assets/css/bootstrap-select.min.css') }}?v={{date('YmdHis')}}">
+
       <!-- =======================================================
          * Template Name: NewBiz - v2.1.0
          * Template URL: https://bootstrapmade.com/newbiz-bootstrap-business-template/
@@ -139,8 +139,6 @@
       <!-- Template Main JS File -->
       <script src="{{ asset('public/frontView/assets/js/main.js') }}"></script>
       <script src="{{ asset('public/frontView/assets/js/custom.js') }}?v={{date('YmdHis')}}"></script>
-      <!-- Latest compiled and minified JavaScript -->
-      <script src="{{ asset('public/frontView/assets/js/bootstrap-select.min.js') }}?v={{date('YmdHis')}}"></script>
 
    </body>
 </html>

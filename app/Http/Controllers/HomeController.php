@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class HomeController extends Controller
+class HomeController extends BasicController
 {
     /**
      * Create a new controller instance.
@@ -14,7 +14,7 @@ class HomeController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-
+        parent::__construct();
     }
   
     /**
@@ -27,8 +27,16 @@ class HomeController extends Controller
         if(!empty(auth()->user()) && auth()->user()->is_admin === 1){
             return redirect('/admin/home')->with('error',"You don't have admin access.");
         }
-        echo "<pre>";print_r(\APp\Models\User::find(12)->product()->first()->product_name);exit;
-        return view('home');
+
+        $postReq = [
+            'template_name' => \App\Helpers\CustomHelper::getUserTemplateName(),
+            'keyword' => '',
+            'page_title' => '',
+            'page_description' => '',
+        ];
+
+        //echo "<pre>";print_r(\APp\Models\User::find(12)->product()->first()->product_name);exit;
+        return view('home', $postReq);
     }
   
     /**

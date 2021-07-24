@@ -20,7 +20,6 @@
     <link href="{{ asset('public//css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('public/frontView/assets/css/custom.css') }}?v={{date('YmdHis')}}" rel="stylesheet">
 
-      <link rel="stylesheet" href="{{ asset('public/frontView/assets/css/bootstrap-select.min.css') }}?v={{date('YmdHis')}}">
 
     <script src="{{ asset('public/frontView/assets/js/custom.js') }}?v={{date('YmdHis')}}" defer></script>
 </head>

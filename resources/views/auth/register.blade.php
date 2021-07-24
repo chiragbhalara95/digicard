@@ -13,7 +13,7 @@
 
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">Select Product</label>
-                            <select id="product-select-list" data-live-search="true" class="selectpicker" name="product_id">
+                            <select class="form-control select2 col-md-6" id="product-select-list" data-live-search="true" name="product_id">
                                     @foreach($productData AS $key => $productDetail)
                                     <option @if($key == 0) selected @endif value="{{$productDetail['product_id']}}">{{$productDetail['product_name']}}</option>
                                     @endforeach
@@ -38,7 +38,7 @@
                             <label for="contact_no" class="col-md-4 col-form-label text-md-right">Contact Number</label>
 
                         <div class="col-md-3">
-                            <select class="selectpicker" required name="country_code" data-live-search="true">
+                            <select class="form-control select2" required name="country_code" data-live-search="true">
                                 <option value="" class="text-center">Select Country Code</option>
                                 @if (!empty($countryData))
                                     @foreach($countryData AS $countryDetail)

@@ -35,11 +35,16 @@ Route::namespace('App\Http\Controllers')->group(function() {
 
 });
 
-Route::middleware(['auth', 'verified'])->namespace('App\Http\Controllers')->group(function() {
+Route::middleware(['auth', 'verified', 'check_payment_status'])->namespace('App\Http\Controllers')->group(function() {
     // front desk
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::get('/about', [App\Http\Controllers\AboutUsController::class, 'aboutView'])->name('edit-about-view');
     Route::get('/social-link', [App\Http\Controllers\SocialLinkController::class, 'socialLinkListView'])->name('social-list-view');
+});
+
+Route::middleware(['auth', 'verified'])->namespace('App\Http\Controllers')->group(function() {
+    // front desk
+    Route::get('payment', [App\Http\Controllers\PaymentController::class, 'index']);
     Route::get('razorpay-payment', [App\Http\Controllers\RazorpayPaymentController::class, 'index']);
     Route::post('razorpay-payment', [App\Http\Controllers\RazorpayPaymentController::class, 'store'])->name('razorpay.payment.store');
 });
