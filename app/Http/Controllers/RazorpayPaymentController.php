@@ -1,13 +1,12 @@
 <?php
-  
 namespace App\Http\Controllers;
-  
 use Illuminate\Http\Request;
 use Razorpay\Api\Api;
 use Session;
 use Exception;
-  
-class RazorpayPaymentController extends Controller
+use App\Models\User;
+
+class RazorpayPaymentController extends BasicController
 {
     /**
      * Write code on Method
@@ -18,7 +17,7 @@ class RazorpayPaymentController extends Controller
     {        
         return view('user.razorpayView');
     }
-  
+
     /**
      * Write code on Method
      *
@@ -29,22 +28,20 @@ class RazorpayPaymentController extends Controller
         $input = $request->all();
 
         $api = new Api(env('RAZORPAY_KEY'), env('RAZORPAY_SECRET'));
-  
         $payment = $api->payment->fetch($input['razorpay_payment_id']);
-  
         if(count($input)  && !empty($input['razorpay_payment_id'])) {
             try {
                 $response = $api->payment->fetch($input['razorpay_payment_id'])->capture(array('amount'=>$payment['amount']));
-                echo "<pre>";print_r($response);exit; 
-  
+                User::initUserPayment(auth()->user()->id);
+
+                return $this->responseSuccess([], "Your payment has been successful.");
             } catch (Exception $e) {
-                return  $e->getMessage();
                 Session::put('error',$e->getMessage());
-                return redirect()->back();
+                return $this->responseError($e->getMessage());
             }
         }
-          
+
         Session::put('success', 'Payment successful');
-        return redirect()->back();
+        return $this->responseError($e->getMessage());
     }
 }

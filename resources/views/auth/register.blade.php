@@ -1,5 +1,13 @@
 @extends('layouts.app')
 
+@section('custom_style')
+    <style type="text/css">
+        select option:disabled  {
+            display: none;
+        }
+    </style>
+@endsection
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -19,6 +27,21 @@
                                     @endforeach
                             </select>
                         </div>
+
+
+                        <div class="form-group row">
+                            <label for="name" class="col-md-4 col-form-label text-md-right">Select Product</label>
+                            <select class="form-control select2 col-md-6" id="product-sku-list" data-live-search="true" name="sku_package_id">
+                              @if(!empty($skuCustomPackage))
+                                  @foreach($skuCustomPackage AS $productId => $skuCustomDetail)
+                                    @foreach($skuCustomDetail as $detail)
+                                      <option data-product-id="{{$detail['product_id']}}" value="{{$detail['sku_package_id']}}" disabled="disabled">{{$detail['duration']}} {{$detail['durationType']}}</option>
+                                    @endforeach
+                                  @endforeach
+                              @endif
+                            </select>
+                        </div>
+
 
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
@@ -111,4 +134,30 @@
         </div>
     </div>
 </div>
+@endsection
+
+
+@section('custom_script')
+<script>
+    $(document).ready(function() {
+        var productId = $('#product-select-list').val();
+        displaySkuOpt(productId)
+    });
+    $("#product-select-list").change(function() {
+        var productId = $('#product-select-list').val();
+        displaySkuOpt(productId)
+    })
+
+    function displaySkuOpt(reqProductId)
+    {
+        $('#product-sku-list > option').each(function() {
+            var productId = $(this).data('product-id');
+            if (reqProductId == productId) {
+                $(this).prop('disabled', false);
+            } else {
+                $(this).prop('disabled', true);
+            }
+        });
+    }
+</script>
 @endsection

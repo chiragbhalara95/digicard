@@ -186,6 +186,8 @@
 <script src="{{ asset('public/admin/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 <!-- AdminLTE App -->
 <script src="{{ asset('public/admin/dist/js/adminlte.min.js') }}"></script>
+<script src="{{ asset('public/frontView/assets/js/jquery.validate.min.js') }}"></script>
+
 @yield('custom_script')
 
 </body>

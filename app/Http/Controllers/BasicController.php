@@ -12,4 +12,20 @@ class BasicController extends Controller
     {
     }
 
+    public function responseError($msg='Error',$params = [], $responseKey = 'data') {
+        return response()->json([
+            'code' => -1,
+            'msg' => $msg,
+            $responseKey => $params
+        ]);
+    }
+
+    public function responseSuccess($params = [], $msg="Success",$responseKey = 'data') {
+        return response()->json([
+            'code' => 0,
+            'msg'  => $msg,
+            $responseKey => $params
+        ]);
+    }
+
 }

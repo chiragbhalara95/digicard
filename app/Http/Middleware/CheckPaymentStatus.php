@@ -30,6 +30,10 @@ class CheckPaymentStatus
             return redirect('payment')->with('error',"Please configure your account.");
         }
 
+        if (empty($userObj->package_start_date) || empty($userObj->package_end_date) || $userObj->package_end_date < date("Y-m-d")) {
+            return redirect('/payment')->with('error',"Please do payment.");
+        }
+
         return $next($request);
     }
 }

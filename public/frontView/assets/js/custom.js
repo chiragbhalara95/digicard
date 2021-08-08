@@ -1,4 +1,3 @@
-
 $(function () {
     $("#sku-package-row-"+$("#product-select-list").val()).show();
     $(".custom-duration option:last").attr("selected", "selected").trigger('change');

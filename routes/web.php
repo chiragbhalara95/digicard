@@ -42,7 +42,7 @@ Route::middleware(['auth', 'verified', 'check_payment_status'])->namespace('App\
     Route::get('/social-link', [App\Http\Controllers\SocialLinkController::class, 'socialLinkListView'])->name('social-list-view');
 });
 
-Route::middleware(['auth', 'verified'])->namespace('App\Http\Controllers')->group(function() {
+Route::middleware(['auth', 'verified', 'check_payment_required'])->namespace('App\Http\Controllers')->group(function() {
     // front desk
     Route::get('payment', [App\Http\Controllers\PaymentController::class, 'index']);
     Route::get('razorpay-payment', [App\Http\Controllers\RazorpayPaymentController::class, 'index']);

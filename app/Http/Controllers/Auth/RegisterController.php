@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
@@ -10,6 +9,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use App\Models\SkuPackageModel;
 use App\Models\ProductModel;
+use App\Helpers\CustomHelper;
 
 class RegisterController extends Controller
 {
@@ -68,6 +68,7 @@ class RegisterController extends Controller
     {
         return User::create([
             'product_id'   => $data['product_id'],
+            'sku_package_id'  => $data['sku_package_id'],
             'name'         => $data['name'],
             'email'        => $data['email'],
             'country_code' => $data['country_code'],
@@ -83,8 +84,27 @@ class RegisterController extends Controller
         $countryData = json_decode($countryData, true);
         $selectedCode = '+91';
         $productData = ProductModel::select('product_id', 'product_name')->get()->toArray();
+        $packageData = SkuPackageModel::select([
+            'price',
+            'special_price',
+            'price_usd',
+            'special_price_usd',
+            'duration',
+            'durationType',
+            'package_duration.package_duration_id',
+            'sku_package.sku_package_id',
+            'product_id'
+        ])
+        ->join('package_duration', 'package_duration.package_duration_id', '=', 'sku_package.package_duration_id')
+        ->get();
 
-        return view('auth.register', compact('countryData','selectedCode', 'productData'));
+        if (!empty($packageData)) {
+            foreach ($packageData as $key => $packageDeatil) {
+                $skuCustomPackage[$packageDeatil->product_id][] = $packageDeatil->toArray();
+            }
+        }
+
+        return view('auth.register', compact('countryData','selectedCode', 'productData', 'skuCustomPackage'));
     }
 
 }

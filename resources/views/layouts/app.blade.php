@@ -22,6 +22,8 @@
 
 
     <script src="{{ asset('public/frontView/assets/js/custom.js') }}?v={{date('YmdHis')}}" defer></script>
+      @yield('custom_style')
+
 </head>
 <body>
     <div id="app">
@@ -83,5 +85,11 @@
             @yield('content')
         </main>
     </div>
+
+<!-- jQuery -->
+<script src="{{ asset('public/admin/plugins/jquery/jquery.min.js') }}"></script>
+
+@yield('custom_script')
+
 </body>
 </html>
