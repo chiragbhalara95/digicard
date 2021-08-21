@@ -22,7 +22,7 @@
 
 
     <script src="{{ asset('public/frontView/assets/js/custom.js') }}?v={{date('YmdHis')}}" defer></script>
-      @yield('custom_style')
+    @yield('custom_style')
 
 </head>
 <body>

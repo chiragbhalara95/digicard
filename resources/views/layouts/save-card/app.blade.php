@@ -156,7 +156,7 @@
       <span class="brand-text font-weight-light">Digicard</span>
     </a>
 
-    @include('layouts.user-bussiness.sidebar')
+    @include('layouts.save-card.sidebar')
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">

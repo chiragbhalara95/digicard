@@ -40,6 +40,9 @@ Route::middleware(['auth', 'verified', 'check_payment_status'])->namespace('App\
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::get('/about', [App\Http\Controllers\AboutUsController::class, 'aboutView'])->name('edit-about-view');
     Route::get('/social-link', [App\Http\Controllers\SocialLinkController::class, 'socialLinkListView'])->name('social-list-view');
+    Route::get('user/occasion', [App\Http\Controllers\OccasionController::class, 'occasionView'])->name('edit-occasion-view');
+    Route::post('user/occasion', [App\Http\Controllers\OccasionController::class, 'saveOccasion'])->name('save-occasion');
+
 });
 
 Route::middleware(['auth', 'verified', 'check_payment_required'])->namespace('App\Http\Controllers')->group(function() {
