@@ -71,13 +71,12 @@
                         @elseif($marriageDetail['type'] == 'date')
                         <div class="form-group">
                             <label for="exampleInputEmail1">{{$marriageDetail['label']}}</label>
-                            <div class="input-group date" id="reservationdate" data-target-input="nearest">
-                                <input type="text" name="{{$marriageDetail['name']}}" class="form-control datetimepicker-input" data-target="#reservationdate" value="{{isset($marriageDetail['value']) ? $marriageDetail['value'] : date('d/m/Y')}}"  required/>
-                                <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
-                                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-                                </div>
+                            <div class="input-group">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="far fa-clock"></i></span>
+                              </div>
+                              <input type="text" class="form-control float-right" id="reservationdate" name="{{$marriageDetail['name']}}" value="{{isset($marriageDetail['value']) ? $marriageDetail['value'] : date('d/m/Y')}}" >
                             </div>
-                        </div>
 
                         @elseif($marriageDetail['type'] == 'textArea')
                         <div class="form-group">
@@ -148,20 +147,25 @@
 
 
 @section('custom_script')
+<link rel="stylesheet" href="{{ asset('public/admin/plugins/daterangepicker/daterangepicker.css')}}">
 <script src="{{ asset('public/admin/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 <script src="{{ asset('public/admin/plugins/moment/moment.min.js') }}"></script>
-<!--
-<script src="{{ asset('public/admin/plugins/inputmask/min/jquery.inputmask.bundle.min.js') }}"></script>
 <script src="{{ asset('public/admin/plugins/daterangepicker/daterangepicker.js') }}"></script>
-<script src="{{ asset('public/admin/plugins/inputmask/min/jquery.inputmask.bundle.min.js') }}"></script>
--->
+
 <script src="{{ asset('public/admin/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js') }}"></script>
 <script src="{{ asset('public/admin/plugins/toastr/toastr.min.js') }}"></script>
 
 
 <script type="text/javascript">
-$('#reservationdate').datetimepicker({
-    format: 'DD/MM/YYYY'
+$('#reservationdate').daterangepicker({
+      singleDatePicker: true,
+      timePicker: false,
+      timePickerIncrement: 5,
+      minDate:new Date(),
+      locale: {
+        format: 'DD/MM/YYYY'
+      }
+
 });
 
 $(document).ready(function () {

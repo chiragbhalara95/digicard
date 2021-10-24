@@ -53,7 +53,7 @@
                                 <div class="col-sm-10 mt-3">
                                     <label class="control-label" for="theme_name{{$data->id}}"><b>{{$data->name}}</b></label>
                                 </div>
-                            </div>d
+                            </div>
                             <hr>
                         </div>
                         @endforeach

@@ -8,6 +8,7 @@ use App\Models\SkuPackageModel;
 use App\Helpers\CustomHelper;
 use App\Models\User;
 use App\Models\OccasionModel;
+use App\Models\OccasionEventsModel;
 
 class FrontWebsiteController extends Controller
 {
@@ -76,7 +77,7 @@ class FrontWebsiteController extends Controller
     public function userVisitCard($slug)
     {
         $userObj = User::find($slug);
-        if ($userObj->theme == \App\Helpers\Constants::$PRODUCT_THEME['save_card']) {
+        if ($userObj->product_id == \App\Helpers\Constants::$PRODUCT_THEME['save_card']) {
         $occasionData = OccasionModel::where('userId', $userObj->id)->first();
         if (!empty($occasionData)) {
             $marriageData = $occasionData->response;
@@ -85,7 +86,10 @@ class FrontWebsiteController extends Controller
             $marriageData = Constants::$MARRIAGE_FORM;
         }
 
-            return view('visitingCard/saveTheCard/theme-a', compact('marriageData', 'userObj', 'occasionData'));
+        $occasionEventData = OccasionEventsModel::select('*')->orderBy('event_time', 'ASC')->get();
+        $themeData         = \DB::table('table_theme')->where('id', $userObj->theme)->first();
+
+            return view('visitingCard/saveTheCard/'.$themeData->blade_file, compact('marriageData', 'userObj', 'occasionData', 'occasionEventData'));
         }
 
     }
