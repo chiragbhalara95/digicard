@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\ProductModel;
 use App\Models\SkuPackageModel;
 use App\Helpers\CustomHelper;
+use App\Models\User;
+use App\Models\OccasionModel;
 
 class FrontWebsiteController extends Controller
 {
@@ -69,6 +71,23 @@ class FrontWebsiteController extends Controller
         $selectedCode = '+91';
 
         return view('frontView/home', compact('productData', 'skuCustomPackage','userCurrency', 'countryData', 'selectedCode'));
+    }
+
+    public function userVisitCard($slug)
+    {
+        $userObj = User::find($slug);
+        if ($userObj->theme == \App\Helpers\Constants::$PRODUCT_THEME['save_card']) {
+        $occasionData = OccasionModel::where('userId', $userObj->id)->first();
+        if (!empty($occasionData)) {
+            $marriageData = $occasionData->response;
+            $marriageData['event_date']['value'] = str_replace("/", "-", $marriageData['event_date']['value']);
+        } else {
+            $marriageData = Constants::$MARRIAGE_FORM;
+        }
+
+            return view('visitingCard/saveTheCard/theme-a', compact('marriageData', 'userObj', 'occasionData'));
+        }
+
     }
 
 }

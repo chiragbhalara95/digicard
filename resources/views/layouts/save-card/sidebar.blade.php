@@ -24,19 +24,19 @@
           </li>
 
           <li class="nav-item">
-            <a href="{{route('edit-about-view')}}" class="nav-link">
+            <a href="{{route('edit-occasion-view')}}" class="nav-link">
               <i class="nav-icon fas fa-info"></i>
               <p>
-                About Us
+                Occasions
               </p>
             </a>
           </li>
 
           <li class="nav-item">
-            <a href="{{route('social-list-view')}}" class="nav-link">
-              <i class="nav-icon fas fa-share-alt"></i>
+            <a href="{{route('card-theme-selection')}}" class="nav-link">
+              <i class="nav-icon fas fa-design"></i>
               <p>
-                Social Link
+                Theme Selection
               </p>
             </a>
           </li>

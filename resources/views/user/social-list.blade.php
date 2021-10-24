@@ -1,4 +1,4 @@
-@extends('layouts.user-bussiness.app')
+@extends('layouts.layout')
 
 @section('custom_style')
   <link rel="stylesheet" href="{{ asset('public/admin/plugins/summernote/summernote-bs4.css') }}">
