@@ -32,7 +32,7 @@ Route::namespace('App\Http\Controllers')->group(function() {
     // front desk
     Route::get('/', [App\Http\Controllers\FrontWebsiteController::class, 'index'])->name('home');
     Route::post('contact-us', [App\Http\Controllers\ContactController::class, 'saveContact'])->name('saveContact');
-
+    Route::get('/vc/{slug}', [App\Http\Controllers\FrontWebsiteController::class, 'userVisitCard'])->name('userVisitCard');
 });
 
 Route::middleware(['auth', 'verified', 'check_payment_status'])->namespace('App\Http\Controllers')->group(function() {
@@ -40,8 +40,11 @@ Route::middleware(['auth', 'verified', 'check_payment_status'])->namespace('App\
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::get('/about', [App\Http\Controllers\AboutUsController::class, 'aboutView'])->name('edit-about-view');
     Route::get('/social-link', [App\Http\Controllers\SocialLinkController::class, 'socialLinkListView'])->name('social-list-view');
-    Route::get('user/occasion', [App\Http\Controllers\OccasionController::class, 'occasionView'])->name('edit-occasion-view');
-    Route::post('user/occasion', [App\Http\Controllers\OccasionController::class, 'saveOccasion'])->name('save-occasion');
+    Route::get('user/occasion', [App\Http\Controllers\SaveTheCard\OccasionController::class, 'occasionView'])->name('edit-occasion-view');
+    Route::post('user/occasion', [App\Http\Controllers\SaveTheCard\OccasionController::class, 'saveOccasion'])->name('save-occasion');
+    Route::get('/card-theme-selection', [App\Http\Controllers\SaveTheCard\ThemeController::class, 'cardThemeSelectView'])->name('card-theme-selection');
+    Route::post('user/saveTheme', [App\Http\Controllers\SaveTheCard\ThemeController::class, 'saveUserTheme'])->name('save-user-theme');
+
 
 });
 

@@ -33,10 +33,10 @@
           </li>
 
           <li class="nav-item">
-            <a href="{{route('social-list-view')}}" class="nav-link">
-              <i class="nav-icon fas fa-share-alt"></i>
+            <a href="{{route('card-theme-selection')}}" class="nav-link">
+              <i class="nav-icon fas fa-design"></i>
               <p>
-                Social Link
+                Theme Selection
               </p>
             </a>
           </li>
