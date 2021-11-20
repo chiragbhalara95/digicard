@@ -31,6 +31,8 @@
 
       <link href="{{ asset('public/frontView/assets/css/custom.css') }}?v={{date('YmdHis')}}" rel="stylesheet">
 
+    @yield('custom_style')
+
    </head>
    <body>
       <!-- ======= Header ======= -->
@@ -139,6 +141,7 @@
       <!-- Template Main JS File -->
       <script src="{{ asset('public/frontView/assets/js/main.js') }}"></script>
       <script src="{{ asset('public/frontView/assets/js/custom.js') }}?v={{date('YmdHis')}}"></script>
+      @yield('custom_script')
 
    </body>
 </html>

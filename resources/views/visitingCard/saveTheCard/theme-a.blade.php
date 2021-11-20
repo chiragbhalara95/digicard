@@ -254,14 +254,16 @@
                 </div>
             </div>
 
+            @if (!empty($occasionEventData))
             <div class="inner_w3l_agile_grids spa-agile">
 
-                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 spa-grid " style="display:inline-block;">
+                @foreach($occasionEventData as $occasionEventDetail)
+                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 spa-grid " style="display:inline-block;">
                         <div class="OccasionContainer">
-                            <h4 class="OccasionTitle" style="">Sangeet</h4>
+                            <h4 class="OccasionTitle" style="">{{$occasionEventDetail->name}}</h4>
                             <p class="Occasiondatetime">
-                                <i class="fa fa-calendar" aria-hidden="true" style="font-size:inherit!important;"></i> 22/06/2019 <br />
-                                <i class="fa fa-clock-o" aria-hidden="true" style="font-size:inherit!important;"></i> 12:59 PM
+                                <i class="fa fa-calendar" aria-hidden="true" style="font-size:inherit!important;"></i> {{date("d/m/Y", strtotime($occasionEventDetail->event_time))}} <br />
+                                <i class="fa fa-clock-o" aria-hidden="true" style="font-size:inherit!important;"></i> {{date("h:s A", strtotime($occasionEventDetail->event_time))}}
                             </p>
 
                             <p class="OccasionContent">
@@ -270,63 +272,12 @@
                             </p>
 
                         </div>
-                    </div>
+                </div>
+                @endforeach
 
-                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 spa-grid" style="display:inline-block;">
-
-                        <div class="OccasionContainer">
-
-
-                            <h4 class="OccasionTitle">Mandap</h4>
-                            <p class="Occasiondatetime">
-                                <i class="fa fa-calendar" aria-hidden="true" style="font-size:inherit!important;"></i> 23/06/2019 <br />
-                                <i class="fa fa-clock-o" aria-hidden="true" style="font-size:inherit!important;"></i> 12:50 PM
-                            </p>
-
-                            <p class="OccasionContent">
-                                <span style="font-weight:bold;">{{$marriageData['boy_name']['value']}}</span><br />
-                                    <a href="http://google.co.in" target="_blank"><i class="fa fa-map-marker" aria-hidden="true" style="font-size:inherit!important;"></i> {{isset($marriageData['venue']['value']) ? $marriageData['venue']['value'] : ''}}</a>
-                            </p>
-                        </div>
-
-                    </div>
-
-                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 spa-grid lost" style="display:inline-block;">
-
-                        <div class="OccasionContainer">
-                            <h4 class="OccasionTitle">Wedding</h4>
-                            <p class="Occasiondatetime">
-                                <i class="fa fa-calendar" aria-hidden="true" style="font-size:inherit!important;"></i> 24/06/2019 <br />
-                                <i class="fa fa-clock-o" aria-hidden="true" style="font-size:inherit!important;"></i> 12:50 PM
-                            </p>
-
-                            <p class="OccasionContent">
-                                <span style="font-weight:bold;">{{$marriageData['boy_name']['value']}}</span><br />
-
-                                    <a href="http://google.co.in" target="_blank"><i class="fa fa-map-marker" aria-hidden="true" style="font-size:inherit!important;"></i> {{isset($marriageData['venue']['value']) ? $marriageData['venue']['value'] : ''}}</a>
-                            </p>
-                        </div>
-
-                    </div>
-
-                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 spa-grid lost" style="display:inline-block;">
-
-                        <div class="OccasionContainer">
-                            <h4 class="OccasionTitle">Reception</h4>
-                            <p class="Occasiondatetime">
-                                <i class="fa fa-calendar" aria-hidden="true" style="font-size:inherit!important;"></i> 25/06/2019 <br />
-                                <i class="fa fa-clock-o" aria-hidden="true" style="font-size:inherit!important;"></i> 12:50 PM
-                            </p>
-
-                            <p class="OccasionContent">
-                                <span style="font-weight:bold;">{{$marriageData['boy_name']['value']}}</span><br />
-                                    <a href="http://google.co.in" target="_blank"><i class="fa fa-map-marker" aria-hidden="true" style="font-size:inherit!important;"></i> {{isset($marriageData['venue']['value']) ? $marriageData['venue']['value'] : ''}}</a>
-                            </p>
-
-                        </div>
-                    </div>
                 <div class="clearfix"> </div>
             </div>
+            @endif
 
 
         </div>
@@ -586,7 +537,7 @@
                 helpers:
                 {
                     title: { type: 'inside' },
-                    overlay: { closeClick: false }
+                    overlay: { closeClick: true }
                 },
                 beforeShow: function () {
                     // add content
@@ -605,15 +556,6 @@
 
         <script type="text/javascript">
         $(document).ready(function () {
-
-            $(".fancybox-media").fancybox({
-                helpers: {
-                    overlay: {
-                        locked: false
-                    }
-                }
-            });
-
 
             $("#footericonmobilesavedate").click(function () {
                 AddCalendar();
@@ -642,15 +584,6 @@
 
         <script type="text/javascript">
         $(document).ready(function () {
-
-            $(".fancybox-media").fancybox({
-                helpers: {
-                    overlay: {
-                        locked: false
-                    }
-                }
-            });
-
 
             $("#footericonmobilesavedate").click(function () {
                 AddCalendar();
@@ -689,6 +622,8 @@
         <link rel="stylesheet" href="{{asset('public/visitingCard/a/owl/owl.carousel.min.css')}}">
         <link rel="stylesheet" href="{{asset('public/visitingCard/a/owl/owl.theme.default.min.css')}}">
 
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js" integrity="sha512-IsNh5E3eYy3tr/JiX2Yx4vsCujtkhwl7SLqgnwLNgf04Hrt9BT9SXlLlZlWx+OK4ndzAoALhsMNcCmkggjZB1w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <script>
 
             $(function () {
@@ -716,7 +651,7 @@
         <script>
         if ($('#countdown').length) {
             // Set the date we're counting down to
-            var countDownDate = new Date({{date("Y", strtotime($marriageData["event_date"]["value"]))}}, {{date("M", strtotime($marriageData["event_date"]["value"]))}}, {{date("d/m/Y", strtotime($marriageData["event_date"]["value"]))}}, 0,0,0,0);
+            var countDownDate = new Date({{date("Y", strtotime($marriageData["event_date"]["value"]))}}, {{date("m", strtotime($marriageData["event_date"]["value"]))}}, {{date("d", strtotime($marriageData["event_date"]["value"]))}}, 0,0,0,0);
 
             // Update the count down every 1 second
             var x = setInterval(function () {

@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Validator;
 use App\Models\SkuPackageModel;
 use App\Models\ProductModel;
 use App\Helpers\CustomHelper;
+use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
@@ -78,8 +79,9 @@ class RegisterController extends Controller
         ]);
     }
 
-    public function showRegistrationForm()
+    public function showRegistrationForm(Request $request)
     {
+        $packageId   = isset($request->packageId) ? $request->packageId : null;
         $countryData = file_get_contents('public/country-tel-code.json');
         $countryData = json_decode($countryData, true);
         $selectedCode = '+91';
@@ -104,7 +106,7 @@ class RegisterController extends Controller
             }
         }
 
-        return view('auth.register', compact('countryData','selectedCode', 'productData', 'skuCustomPackage'));
+        return view('auth.register', compact('countryData','selectedCode', 'productData', 'skuCustomPackage', 'packageId'));
     }
 
 }

@@ -44,7 +44,11 @@ Route::middleware(['auth', 'verified', 'check_payment_status'])->namespace('App\
     Route::post('user/occasion', [App\Http\Controllers\SaveTheCard\OccasionController::class, 'saveOccasion'])->name('save-occasion');
     Route::get('/card-theme-selection', [App\Http\Controllers\SaveTheCard\ThemeController::class, 'cardThemeSelectView'])->name('card-theme-selection');
     Route::post('user/saveTheme', [App\Http\Controllers\SaveTheCard\ThemeController::class, 'saveUserTheme'])->name('save-user-theme');
-
+    Route::get('/user/occasion/events', [App\Http\Controllers\SaveTheCard\EventController::class, 'index'])->name('user-occasion-event');
+    Route::get('/user/occasion/event/add', [App\Http\Controllers\SaveTheCard\EventController::class, 'addEvent'])->name('add-user-occasion-event');
+    Route::get('/user/occasion/event/edit/{id}', [App\Http\Controllers\SaveTheCard\EventController::class, 'editEvent'])->name('edit-user-occasion-event');
+    Route::post('/user/occasion/event/save', [App\Http\Controllers\SaveTheCard\EventController::class, 'saveEvent'])->name('save-user-occasion-event');
+    Route::get('/user/occasion/event/delete/{id}', [App\Http\Controllers\SaveTheCard\EventController::class, 'deleteEvent'])->name('delete-user-occasion-event');
 
 });
 

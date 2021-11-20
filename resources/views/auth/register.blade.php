@@ -21,7 +21,7 @@
 
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">Select Product</label>
-                            <select class="form-control select2 col-md-6" id="product-select-list" data-live-search="true" name="product_id">
+                            <select class="form-control selectpicker col-md-6" id="product-select-list" data-live-search="true" name="product_id">
                                     @foreach($productData AS $key => $productDetail)
                                     <option @if($key == 0) selected @endif value="{{$productDetail['product_id']}}">{{$productDetail['product_name']}}</option>
                                     @endforeach
@@ -31,11 +31,11 @@
 
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">Select Product</label>
-                            <select class="form-control select2 col-md-6" id="product-sku-list" data-live-search="true" name="sku_package_id">
+                            <select class="form-control selectpicker col-md-6" id="product-sku-list" data-live-search="true" name="sku_package_id">
                               @if(!empty($skuCustomPackage))
                                   @foreach($skuCustomPackage AS $productId => $skuCustomDetail)
                                     @foreach($skuCustomDetail as $detail)
-                                      <option data-product-id="{{$detail['product_id']}}" value="{{$detail['sku_package_id']}}" disabled="disabled">{{$detail['duration']}} {{$detail['durationType']}}</option>
+                                      <option data-product-id="{{$detail['product_id']}}" value="{{$detail['sku_package_id']}}" disabled="disabled" @if($packageId == $detail['sku_package_id']) selected @endif>{{$detail['duration']}} {{$detail['durationType']}} (₹{{$detail['price']}})</option>
                                     @endforeach
                                   @endforeach
                               @endif
@@ -61,7 +61,7 @@
                             <label for="contact_no" class="col-md-4 col-form-label text-md-right">Contact Number</label>
 
                         <div class="col-md-3">
-                            <select class="form-control select2" required name="country_code" data-live-search="true">
+                            <select class="form-control selectpicker" required name="country_code" data-live-search="true">
                                 <option value="" class="text-center">Select Country Code</option>
                                 @if (!empty($countryData))
                                     @foreach($countryData AS $countryDetail)
@@ -142,6 +142,7 @@
     $(document).ready(function() {
         var productId = $('#product-select-list').val();
         displaySkuOpt(productId)
+
     });
     $("#product-select-list").change(function() {
         var productId = $('#product-select-list').val();
@@ -160,4 +161,5 @@
         });
     }
 </script>
+
 @endsection

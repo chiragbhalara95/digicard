@@ -16,7 +16,7 @@
 
           <li class="nav-item">
             <a href="{{route('home')}}" class="nav-link">
-              <i class="nav-icon fas fa-dashboard"></i>
+              <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
               </p>
@@ -33,13 +33,34 @@
           </li>
 
           <li class="nav-item">
+            <a href="{{route('user-occasion-event')}}" class="nav-link">
+              <i class="nav-icon fa fa-calendar"></i>
+              <p>
+                Occasions Event
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item">
             <a href="{{route('card-theme-selection')}}" class="nav-link">
-              <i class="nav-icon fas fa-design"></i>
+              <i class="nav-icon fa fa-paint-brush"></i>
               <p>
                 Theme Selection
               </p>
             </a>
           </li>
+
+          @if(Auth::check())
+          <li class="nav-item">
+            <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('frm-logout').submit();">
+              <i class="nav-icon fa fa-sign-out"></i>
+              <p>Logout</p>
+          </a>
+        </li>
+        <form id="frm-logout" action="{{ route('logout') }}" method="POST" style="display: none;">
+           {{ csrf_field() }}
+        </form>
+        @endif
 
         </ul>
       </nav>

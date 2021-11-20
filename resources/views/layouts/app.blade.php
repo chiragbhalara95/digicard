@@ -53,9 +53,11 @@
                             @endif
                             
                             @if (Route::has('register') && Request::is('login'))
+                                {{--
                                 <li class="nav-item">
                                     <a class="btn btn-sm btn-primary" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>
+                                --}}
                             @endif
                         @else
                             <li class="nav-item dropdown">

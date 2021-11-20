@@ -89,6 +89,8 @@ class OccasionController extends BasicController
               $destinationPath = public_path('upload/save-the-date/cover_image/');
               $request->file('cover_image')->move($destinationPath, $imgname);
               $data['cover_image'] = $imgname;
+          } else {
+                isset($params['cover_image_old']) && $data['cover_image'] = $params['cover_image_old'];
           }
 
         if($request->hasFile('welcome_image'))
@@ -99,6 +101,8 @@ class OccasionController extends BasicController
               $destinationPath = public_path('upload/save-the-date/welcome_image/');
               $request->file('welcome_image')->move($destinationPath, $imgname);
               $data['welcome_image'] = $imgname;
+          } else {
+                isset($params['welcome_image_old']) && $data['welcome_image'] = $params['welcome_image_old'];
           }
 
         OccasionModel::updateorcreate(

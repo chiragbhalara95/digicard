@@ -10,8 +10,6 @@ $(function () {
     $(".custom-duration").change(function(event) {
       var durationStr = $(this).find(':selected').text();
       var price = durationStr.substring(durationStr.lastIndexOf("(") + 1, durationStr.lastIndexOf(")"));
-
-      console.log(price)
     });
 
     $(".create_custom_card").click(function(event) {
