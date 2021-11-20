@@ -1,4 +1,7 @@
 @extends('frontView.layouts.app')
+@section('custom_style')
+@endsection
+
 @section('content')
 <!-- ======= Intro Section ======= -->
 <section id="intro" class="clearfix">
@@ -74,7 +77,7 @@
          <div class="row">
             <div class="col-md-5"></div>
             <div class="col-md-3">
-               <select id="product-select-list" data-live-search="true" class="form-control select2">
+               <select id="product-select-list" data-live-search="true" class="form-control selectpicker">
                @foreach($productData AS $key => $productDetail)
                <option class="text-center" @if($key == 0) selected @endif value="{{$productDetail['product_id']}}">{{$productDetail['product_name']}}</option>
                @endforeach
@@ -90,10 +93,10 @@
          <div class="col-lg-3 col-md-3 box">
             <div class="card-header">
                <h4 class="text-center my-0 font-weight-normal">{{$detail['package_type_name']}}</h4>
-               <select class="form-control select2 custom-duration text-center" data-live-search="true">
-                  <option class="text-center" value="">Select Duration</option>
+               <select class="form-control selectpicker custom-duration" data-live-search="true">
+                  <option value="" class="text-center">Select Duration</option>
                   @foreach($detail['duration'] AS $key => $duration)
-                  <option class="text-center" value="{{$key}}" data-price="{{$detail['price']}}">{{$duration}}</option>
+                  <option value="{{$key}}" class="text-center" data-price="{{$detail['special_price']}}">{{$duration}}</option>
                   @endforeach
                </select>
                <p>{!!$detail['description']!!}</p>
@@ -272,4 +275,11 @@
    </div>
 </section>
 <!-- End Contact Section -->
+@endsection
+
+@section('custom_script')
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.18/css/bootstrap-select.min.css" integrity="sha512-ARJR74swou2y0Q2V9k0GbzQ/5vJ2RBSoCWokg4zkfM29Fb3vZEQyv0iWBMW/yvKgyHSR/7D64pFMmU8nYmbRkg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.18/js/bootstrap-select.min.js" integrity="
+sha512-yDlE7vpGDP7o2eftkCiPZ+yuUyEcaBwoJoIhdXv71KZWugFqEphIS3PU60lEkFaz8RxaVsMpSvQxMBaKVwA5xg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
 @endsection

@@ -4,18 +4,11 @@
 @endsection
 
 @section('content')
-
-<main class="app-content">
-    <div class="app-title">
-        <div>
-            <h1><i class="fa fa-paint-brush"></i> Themes </h1>
-        </div>
-        <ul class="app-breadcrumb breadcrumb">
-            <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
-            <li class="breadcrumb-item"><a href="#">Themes Setting </a></li>
-        </ul>
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title"><i class="fa fa-paint-brush"></i> Themes</h3>
     </div>
-
+    <div class="card-body">
     <div class="row bg-white py-3">
         <div class="col-md-12">
             @if (count($errors) > 0)
@@ -65,5 +58,7 @@
             </div>
         </div>
     </div>
-</main>
+
+    </div>
+
 @endsection

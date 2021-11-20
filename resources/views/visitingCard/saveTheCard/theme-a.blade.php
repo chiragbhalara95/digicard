@@ -537,7 +537,7 @@
                 helpers:
                 {
                     title: { type: 'inside' },
-                    overlay: { closeClick: false }
+                    overlay: { closeClick: true }
                 },
                 beforeShow: function () {
                     // add content
@@ -556,15 +556,6 @@
 
         <script type="text/javascript">
         $(document).ready(function () {
-
-            $(".fancybox-media").fancybox({
-                helpers: {
-                    overlay: {
-                        locked: false
-                    }
-                }
-            });
-
 
             $("#footericonmobilesavedate").click(function () {
                 AddCalendar();
@@ -593,15 +584,6 @@
 
         <script type="text/javascript">
         $(document).ready(function () {
-
-            $(".fancybox-media").fancybox({
-                helpers: {
-                    overlay: {
-                        locked: false
-                    }
-                }
-            });
-
 
             $("#footericonmobilesavedate").click(function () {
                 AddCalendar();
