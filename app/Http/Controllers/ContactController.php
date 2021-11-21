@@ -38,8 +38,23 @@ class ContactController extends Controller
                  'user_message' => $request->get('message'),
              ), function($message) use ($request)
                {
-                  $message->from($request->email);
-                  $message->to('chiragbhalara95@gmail.com');
+                  $message->from(env('MAIL_USERNAME'));
+                  $message->to('contact@digitalcards.tech');
+                  $message->subject('Contact Us');
+               });
+
+        \Mail::send('email.contact_response',
+             array(
+                 'name' => $request->get('name'),
+                 'email' => $request->get('email'),
+                 'subject' => $request->get('subject'),
+                 'phone_number' => $request->get('phone_number'),
+                 'user_message' => $request->get('message'),
+             ), function($message) use ($request)
+               {
+                  $message->from(env('MAIL_USERNAME'));
+                  $message->to($request->get('email'));
+                  $message->subject('Re:Contact Us');
                });
 
         return "Thank you for contact us!";
