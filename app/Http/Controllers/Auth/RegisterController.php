@@ -11,6 +11,8 @@ use App\Models\SkuPackageModel;
 use App\Models\ProductModel;
 use App\Helpers\CustomHelper;
 use Illuminate\Http\Request;
+use Str;
+use App\Models\UserVerify;
 
 class RegisterController extends Controller
 {
@@ -67,7 +69,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $user =  User::create([
             'product_id'   => $data['product_id'],
             'sku_package_id'  => $data['sku_package_id'],
             'name'         => $data['name'],
@@ -77,6 +79,36 @@ class RegisterController extends Controller
             'password'     => Hash::make($data['password']),
             'is_admin'     => 0,
         ]);
+
+        // email data
+        $email_data = array(
+            'name' => $data['name'],
+            'email' => $data['email'],
+        );
+
+        // send email with the template
+        \Mail::send('email.welcome_email', $email_data, function ($message) use ($email_data) {
+            $message->to($email_data['email'], $email_data['name'])
+                ->subject('Welcome to Digicard Family')
+                ->from(env('MAIL_USERNAME'), 'Digicard');
+        });
+
+        $token = Str::random(64);
+        UserVerify::create([
+            'user_id' => $user->id, 
+            'token'   => $token
+        ]);
+
+        $url = url('account/verify')."/".$token;
+        \Mail::send('email.emailVerificationEmail',['url' => $url, 'user' => $email_data], function ($message) use ($email_data) {
+            $message->to($email_data['email'], $email_data['name'])
+            ->subject('Verify Email Address')
+            ->from(env('MAIL_USERNAME'), 'Digicard');
+        });
+
+
+        return $user;
+
     }
 
     public function showRegistrationForm(Request $request)
@@ -108,5 +140,6 @@ class RegisterController extends Controller
 
         return view('auth.register', compact('countryData','selectedCode', 'productData', 'skuCustomPackage', 'packageId'));
     }
+
 
 }

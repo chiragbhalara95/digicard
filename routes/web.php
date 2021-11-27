@@ -14,6 +14,17 @@ use Illuminate\Support\Facades\Route;
 */
 
 
+Route::get('/clear', function() {
+    Artisan::call('cache:clear');
+    Artisan::call('route:clear');
+    Artisan::call('config:clear');
+    Artisan::call('view:clear');
+    return "All cleared";
+});
+
+Route::get('reset-password/{token}', [App\Http\Controllers\Auth\ForgotPasswordController::class, 'showResetPasswordForm'])->name('reset.password.get');
+Route::post('reset-password', [App\Http\Controllers\Auth\ForgotPasswordController::class, 'submitResetPasswordForm'])->name('reset.password.post');
+Route::get('account/verify/{token}', [App\Http\Controllers\Auth\VerificationController::class, 'verifyAccount'])->name('user.verify'); 
 
 Auth::routes(['verify' => true]);
 
@@ -21,11 +32,13 @@ Route::get('/email/verify', function () {
     return view('auth.verify-email');
 })->middleware('auth')->name('verification.notice');
 
+/*
 Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
     $request->fulfill();
 
     return redirect('/home');
 })->middleware(['auth', 'signed'])->name('verification.verify');
+*/
 
 // Front Website
 Route::namespace('App\Http\Controllers')->group(function() {

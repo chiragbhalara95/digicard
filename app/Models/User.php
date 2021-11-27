@@ -9,9 +9,10 @@ use Illuminate\Notifications\Notifiable;
 use App\Models\SkuPackageModel;
 use Auth;
 
-class User extends Authenticatable implements MustVerifyEmail
+class User extends Authenticatable //implements MustVerifyEmail
 {
-    use HasFactory, Notifiable;
+    //use HasFactory, Notifiable;
+    use HasFactory;
 
     /**
      * The attributes that are mass assignable.

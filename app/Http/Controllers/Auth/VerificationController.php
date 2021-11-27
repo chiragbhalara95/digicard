@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\VerifiesEmails;
+use App\Models\UserVerify;
+use Auth;
+use App\Models\User;
 
 class VerificationController extends Controller
 {
@@ -35,8 +38,38 @@ class VerificationController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        //$this->middleware('auth');
         $this->middleware('signed')->only('verify');
         $this->middleware('throttle:6,1')->only('verify', 'resend');
     }
+
+    public function verifyAccount($token)
+    {
+        $verifyUser = UserVerify::where('token', $token)->first();
+        if (Auth::check())
+        {
+            //Auth::logout();
+        }
+
+        $userObj    = User::find($verifyUser->user_id);
+        if (!empty($userObj)) {
+            if ($userObj->email_verified_at != null) {
+                  $status = "Your e-mail is already verified. You can now login.";
+                 return redirect('/login')->with('error', $status);
+
+            } else {
+                $userObj->email_verified_at = date("Y-m-d H:i:s");
+                $userObj->save();
+                UserVerify::where('token', $token)->delete();
+                $status = "Your e-mail is verified. You can now login.";
+                 return redirect('/login')->with('success', $status);
+
+            }
+
+       }
+
+        return redirect('/login')->with('error', "Sorry your email cannot be identified.");
+    }
+
+
 }
