@@ -13,6 +13,7 @@ use App\Helpers\CustomHelper;
 use Illuminate\Http\Request;
 use Str;
 use App\Models\UserVerify;
+use App\Models\ThemeModel;
 
 class RegisterController extends Controller
 {
@@ -69,6 +70,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $themeData = ThemeModel::where('product_id', $data['product_id'])->first();
         $user =  User::create([
             'product_id'   => $data['product_id'],
             'sku_package_id'  => $data['sku_package_id'],
@@ -78,6 +80,7 @@ class RegisterController extends Controller
             'phone'        => $data['phone'],
             'password'     => Hash::make($data['password']),
             'is_admin'     => 0,
+            'theme'        => $themeData->blade_file
         ]);
 
         // email data

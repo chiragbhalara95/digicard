@@ -57,6 +57,8 @@
                   </form>
                   @else
                   <li><a href="{{url('/login')}}">Login</a></li>
+                  <li><a href="{{url('/register?packageId=2')}}">Register</a></li>
+
                   @endif
                </ul>
             </nav>
@@ -122,7 +124,7 @@
                         New York, NY 535022<br>
                         United States <br>
                         <strong>Phone:</strong> +1 5589 55488 55<br>
-                        <strong>Email:</strong> info@example.com<br>
+                        <strong>Email:</strong> info@digitalcards.tech<br>
                      </p>
                      <div class="social-links">
                         <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>

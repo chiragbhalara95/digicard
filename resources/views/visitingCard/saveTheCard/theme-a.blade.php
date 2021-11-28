@@ -63,7 +63,7 @@
             <div style="display:block;float:right;">
                 <div class="nav-sec  position-relative" style="float:right;margin-top:0.1em;">
                     <a>
-                        <i style="color:white;font-size:1.5em;" id="btnSendWhatsapp" class="fa fa-share" aria-hidden="true"></i>
+                        <i style="color:white;font-size:1.5em;" id="btnSendWhatsapp" class="fa fa-whatsapp" aria-hidden="true"></i>
                     </a>
                 </div>
 
@@ -239,6 +239,8 @@
     <!-- Comment Section End -->
 
     <!-- Story Section -->
+     @if (!empty($occasionEventData))
+
     <section id="story">
         <div class="container">
             <div class="row">
@@ -254,7 +256,6 @@
                 </div>
             </div>
 
-            @if (!empty($occasionEventData))
             <div class="inner_w3l_agile_grids spa-agile">
 
                 @foreach($occasionEventData as $occasionEventDetail)
@@ -277,11 +278,12 @@
 
                 <div class="clearfix"> </div>
             </div>
-            @endif
 
 
         </div>
     </section>
+    @endif
+
     <!-- Story Section  End -->
     <!-- Event Section -->
     <section id="event" style="padding:1rem 0!important;">
@@ -318,7 +320,7 @@
                         Your browser does not support the audio element.
                     </audio>
 
-                        <a id="welcomebanner" class="fancybox-welcome" rel="group1" href="{{url('public/upload/save-the-date/cover_image/'.$occasionData['cover_image'])}}"></a>
+                        <a id="welcomebanner" class="fancybox-welcome" rel="group1" href="{{url('public/upload/save-the-date/welcome_image/'.$occasionData['welcome_image'])}}"></a>
 
                 </div>
 
@@ -504,6 +506,7 @@
             <script>
                 $(document).on('click', '.closemodelbtn', function (e) {
                     e.preventDefault();
+                    $.fancybox.close()
                     $("#myAudioElement")[0].play();
                     parent.$.fancybox.close();
                 });
@@ -541,7 +544,9 @@
                 },
                 beforeShow: function () {
                     // add content
-                    this.title = '<div class="welcomebannercontainer"><img id="welcomebannerimage" src="{{url('public/upload/save-the-date/welcome_image/'.$occasionData['welcome_image'])}}" style="width:50%;" /><h3 id="welcomebannerdate" style="color:#147efb;font-size:1.3em;"><span style="color:#ac877e">{{date("d", strtotime($marriageData['event_date']['value']))}} <span class="custom-color">{{date("F", strtotime($marriageData['event_date']['value']))}}</span> {{date("Y", strtotime($marriageData['event_date']['value']))}}</span></h3><a id="closemodelbtn" class="closemodelbtn" style="text-align:center;cursor:pointer;text-decoration:none;" data-count="none">&nbsp;&nbsp;View&nbsp;&nbsp;</a></div>';
+                    /*
+                    this.title = '<div class="welcomebannercontainer"><img id="welcomebannerimage" src="{{url('public/upload/save-the-date/welcome_image/'.$occasionData['welcome_image'])}}" style="width:50%;" /><h3 id="welcomebannerdate" style="color:#147efb;font-size:1.3em;"><span style="color:#ac877e">{{date("d", strtotime($marriageData['event_date']['value']))}} <span class="custom-color">{{date("F", strtotime($marriageData['event_date']['value']))}}</span> {{date("Y", strtotime($marriageData['event_date']['value']))}}</span></h3><a id="closemodelbtn" class="closemodelbtn" style="text-align:center;cursor:pointer;text-decoration:none;" data-count="none">&nbsp;&nbsp;View&nbsp;&nbsp;</a></div>';*/
+                    this.title = '<div class="welcomebannercontainer"><h3 id="welcomebannerdate" style="color:#147efb;font-size:1.3em;"><span style="color:#ac877e">{{date("d", strtotime($marriageData['event_date']['value']))}} <span class="custom-color">{{date("F", strtotime($marriageData['event_date']['value']))}}</span> {{date("Y", strtotime($marriageData['event_date']['value']))}}</span></h3><a id="closemodelbtn" class="closemodelbtn" style="text-align:center;cursor:pointer;text-decoration:none;" data-count="none">&nbsp;&nbsp;View&nbsp;&nbsp;</a></div>';
             },
         beforeClose: function() {
                 // alert('add Calendar');

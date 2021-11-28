@@ -32,6 +32,8 @@ class RazorpayPaymentController extends BasicController
         if(count($input)  && !empty($input['razorpay_payment_id'])) {
             try {
                 $response = $api->payment->fetch($input['razorpay_payment_id'])->capture(array('amount'=>$payment['amount']));
+                \Log::info("[PAYMENT] response: ", $response->toArray());
+
                 User::initUserPayment(auth()->user()->id);
 
                 return $this->responseSuccess([], "Your payment has been successful.");

@@ -9,6 +9,7 @@ use App\Helpers\CustomHelper;
 use App\Models\User;
 use App\Models\OccasionModel;
 use App\Models\OccasionEventsModel;
+use App\Helpers\Constants;
 
 class FrontWebsiteController extends Controller
 {
@@ -86,10 +87,15 @@ class FrontWebsiteController extends Controller
             $marriageData = Constants::$MARRIAGE_FORM;
         }
 
-        $occasionEventData = OccasionEventsModel::select('*')->orderBy('event_time', 'ASC')->get();
+        $occasionEventData = OccasionEventsModel::select('*')->where('occasion_id', $occasionData->id)->orderBy('event_time', 'ASC')->get();
         $themeData         = \DB::table('table_theme')->where('id', $userObj->theme)->first();
+        if(empty($themeData)) {
+             return redirect('user/occasion')->with('error', "Please configure account.");
+        }
 
-            return view('visitingCard/saveTheCard/'.$themeData->blade_file, compact('marriageData', 'userObj', 'occasionData', 'occasionEventData'));
+        $bladeFile = !empty($themeData) ? $themeData->blade_file : 'theme-a';
+
+            return view('visitingCard/saveTheCard/'.$bladeFile, compact('marriageData', 'userObj', 'occasionData', 'occasionEventData'));
         }
 
     }
