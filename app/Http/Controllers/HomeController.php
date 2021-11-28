@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class HomeController extends BasicController
 {
@@ -26,6 +27,11 @@ class HomeController extends BasicController
     {
         if(!empty(auth()->user()) && auth()->user()->is_admin === 1){
             return redirect('/admin/home')->with('error',"You don't have admin access.");
+        }
+
+        $userObj = User::find(auth()->user()->id);
+        if(!empty($userObj) && empty($userObj->theme)) {
+             return redirect('user/occasion')->with('error', "Please configure account.");
         }
 
         $postReq = [
