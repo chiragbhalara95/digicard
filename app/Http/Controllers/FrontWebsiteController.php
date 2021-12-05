@@ -77,7 +77,7 @@ class FrontWebsiteController extends Controller
 
     public function userVisitCard($slug)
     {
-        $userObj = User::find($slug);
+        $userObj = User::where('slug', $slug)->first();
         if ($userObj->product_id == \App\Helpers\Constants::$PRODUCT_THEME['save_card']) {
         $occasionData = OccasionModel::where('userId', $userObj->id)->first();
         if (!empty($occasionData)) {
