@@ -41,6 +41,19 @@
             </a>
           </li>
 
+          @if(Auth::check())
+          <li class="nav-item">
+            <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('frm-logout').submit();">
+              <i class="nav-icon fa fa-sign-out"></i>
+              <p>Logout</p>
+          </a>
+        </li>
+        <form id="frm-logout" action="{{ route('logout') }}" method="POST" style="display: none;">
+           {{ csrf_field() }}
+        </form>
+        @endif
+
+
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
