@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use App\Models\SkuPackageModel;
 use Auth;
+use Str;
 
 class User extends Authenticatable //implements MustVerifyEmail
 {
@@ -27,7 +28,9 @@ class User extends Authenticatable //implements MustVerifyEmail
         'password',
         'is_admin',
         'phone',
-        'country_code'
+        'country_code',
+        'theme',
+        'slug',
     ];
 
     /**
@@ -74,15 +77,27 @@ class User extends Authenticatable //implements MustVerifyEmail
         ->join('package_duration', 'package_duration.package_duration_id', '=', 'sku_package.package_duration_id')
         ->where('sku_package.sku_package_id', $skuPackageId)
         ->first();
-        $duration = $packageData->duration." ".$packageData->durationType;
+        $duration                    = $packageData->duration." ".$packageData->durationType;
         $userObj->package_start_date = date("Y-m-d");
         $userObj->package_end_date   = date("Y-m-d", strtotime($userObj->package_start_date . $duration));
+        if (empty($userObj->slug)) {
+            $userObj->slug = self::createSlug($userObj->name);
+        }
 
         $userObj->save();
 
         Auth::setUser($userObj);
 
         return true;
+    }
+
+    public static function createSlug($title){
+        $slug = Str::slug($title);
+        if (self::where('slug', $slug)->exists()) {
+            $slug = $slug.date("Ymdhis");
+        }
+  
+        return $slug;
     }
 
 }

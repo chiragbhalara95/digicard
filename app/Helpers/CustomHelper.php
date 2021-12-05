@@ -63,6 +63,9 @@ class CustomHelper {
             case 'Save The Card':
                 $templateName = 'save-card';
                 break;
+            case 'Business Card':
+                    $templateName = 'user-bussiness';
+                    break;
         }
 
         return $templateName;

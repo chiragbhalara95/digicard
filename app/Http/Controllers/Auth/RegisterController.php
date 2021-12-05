@@ -71,16 +71,16 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         $themeData = ThemeModel::where('product_id', $data['product_id'])->first();
-        $user =  User::create([
-            'product_id'   => $data['product_id'],
-            'sku_package_id'  => $data['sku_package_id'],
-            'name'         => $data['name'],
-            'email'        => $data['email'],
-            'country_code' => $data['country_code'],
-            'phone'        => $data['phone'],
-            'password'     => Hash::make($data['password']),
-            'is_admin'     => 0,
-            'theme'        => $themeData->blade_file
+        $user      =  User::create([
+            'product_id'     => $data['product_id'],
+            'sku_package_id' => $data['sku_package_id'],
+            'name'           => $data['name'],
+            'email'          => $data['email'],
+            'country_code'   => $data['country_code'],
+            'phone'          => $data['phone'],
+            'password'       => Hash::make($data['password']),
+            'is_admin'       => 0,
+            'theme'          => $themeData->blade_file
         ]);
 
         // email data
