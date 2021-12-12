@@ -10,7 +10,10 @@ class CompanyInfoController extends Controller
 {
     public function index()
     {
-        return view('user/edit-about');
+        $userId = auth()->user()->id;
+        $companyData = CompanyInfoModel::where('user_id', $userId)->first();
+
+        return view('user/edit-about', compact('companyData'));
     }
 
     public function storeCompanyInfo(Request $request)
@@ -30,7 +33,6 @@ class CompanyInfoController extends Controller
             $companyData = [
                 'user_id'            => $userId,
                 'company_name'       => $params['company_name'],
-                'company_logo'       => $params['company_logo'],
                 'country_code'       => $params['country_code'],
                 'company_mobile'     => $params['company_mobile'],
                 'country_landline'   => $params['country_landline'],

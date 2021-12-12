@@ -53,7 +53,8 @@
 
                   <div class="form-group">
                     <label for="exampleInputEmail1">Profession</label>
-                    <input type="text" name="company_profession" class="form-control" id="exampleInputEmail1" placeholder="Enter Profession">
+                    <input type="text" name="company_profession" class="form-control" id="exampleInputEmail1" placeholder="Enter Profession" 
+                      value="{{$companyData->company_profession ?? ''}}">
                   </div>
 
                 </div>
@@ -88,12 +89,17 @@
 
                   <div class="form-group">
                     <label for="exampleInputEmail1">Company Name</label>
-                    <input type="text" name="company_name" class="form-control" id="exampleInputEmail1" placeholder="Enter Name">
+                    <input type="text" name="company_name" class="form-control" id="exampleInputEmail1" placeholder="Enter Name" 
+                    value="{{$companyData->company_name ?? ''}}">
                   </div>
 
                   <div class="form-group">
                     <!-- <label for="customFile">Custom File</label> -->
                     <label for="exampleInputEmail1">Company Logo</label>
+
+                    @if(isset($companyData->company_logo))
+                    <img src="{{url('public')}}/{{$companyData->company_logo}}" width="100px" height="80px">
+                    @endif
 
                     <div class="custom-file">
                       <input type="file" class="custom-file-input" id="customFile" name="company_logo">
@@ -108,7 +114,7 @@
                             <select class="form-control col-md-3" name="country_code">
                                 <option value="+91">India(+91)</option>
                             </select>
-                            <input type="tel" class="form-control" name="company_mobile">
+                            <input type="tel" class="form-control" name="company_mobile" value="{{$companyData->company_mobile ?? ''}}">
                         </div>
                     <!-- /input-group -->
                     </div>
@@ -118,7 +124,7 @@
                     <label for="exampleInputEmail1">Company Land line Number</label>
                     <div class="input-group input-group-lg col-md-12">
                         <div class="input-group-prepend  col-md-12">
-                            <input type="tel" class="form-control" name="country_landline">
+                            <input type="tel" class="form-control" name="country_landline" value="{{$companyData->country_landline ?? ''}}">
                         </div>
                     <!-- /input-group -->
                     </div>
@@ -128,7 +134,7 @@
                     <label for="exampleInputEmail1">Company Info</label>
                     <textarea class="company-info" placeholder="Place some text here" name="company_info"
                           style="width: 100%; height: 300px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">
-                          
+                          {!! $companyData->company_info ?? ''!!}
                     </textarea>
                   </div>
 
@@ -136,7 +142,7 @@
                     <label for="exampleInputEmail1">Company Address</label>
                     <textarea class="company-address" placeholder="Place some text here" name="company_address"
                           style="width: 100%; height: 300px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">
-                          
+                          {!! $companyData->company_address ?? ''!!}
                     </textarea>
                   </div>
 
@@ -144,13 +150,13 @@
                     <div class="col-md-6">
                         <div class="form-group">
                           <label for="exampleInputEmail1">Latitude</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="latitude" placeholder="Enter Name">
+                          <input type="text" class="form-control" id="exampleInputEmail1" name="latitude" placeholder="Enter Name" value="{{$companyData->latitude ?? ''}}">
                         </div>
                     </div>
                     <div class="col-md-6">
                       <div class="form-group">
                         <label for="exampleInputEmail1">Logitude</label>
-                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter Name" name="longitude">
+                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter Name" name="longitude" value="{{$companyData->longitude ?? ''}}">
                       </div>
                     </div>
                   </div>
@@ -158,7 +164,8 @@
 
                   <div class="form-group">
                     <label for="exampleInputEmail1">Company Website <small>(use: https:// e.g. http://www.abc.com)</small></label>
-                    <input type="text" name="company_website" class="form-control" id="exampleInputEmail1" placeholder="Enter Website Url (use: https:// e.g. http://www.abc.com)">
+                    <input type="text" name="company_website" class="form-control" id="exampleInputEmail1" placeholder="Enter Website Url (use: https:// e.g. http://www.abc.com)"
+                      value="{{$companyData->company_website ?? ''}}">
                   </div>
 
 
