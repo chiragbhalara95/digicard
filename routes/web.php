@@ -51,17 +51,23 @@ Route::namespace('App\Http\Controllers')->group(function() {
 Route::middleware(['auth', 'verified', 'check_payment_status'])->namespace('App\Http\Controllers')->group(function() {
     // front desk
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-    Route::get('/about', [App\Http\Controllers\AboutUsController::class, 'aboutView'])->name('edit-about-view');
     Route::get('/social-link', [App\Http\Controllers\SocialLinkController::class, 'socialLinkListView'])->name('social-list-view');
+  
     Route::get('user/occasion', [App\Http\Controllers\SaveTheCard\OccasionController::class, 'occasionView'])->name('edit-occasion-view');
     Route::post('user/occasion', [App\Http\Controllers\SaveTheCard\OccasionController::class, 'saveOccasion'])->name('save-occasion');
+ 
     Route::get('/card-theme-selection', [App\Http\Controllers\SaveTheCard\ThemeController::class, 'cardThemeSelectView'])->name('card-theme-selection');
     Route::post('user/saveTheme', [App\Http\Controllers\SaveTheCard\ThemeController::class, 'saveUserTheme'])->name('save-user-theme');
+ 
     Route::get('/user/occasion/events', [App\Http\Controllers\SaveTheCard\EventController::class, 'index'])->name('user-occasion-event');
     Route::get('/user/occasion/event/add', [App\Http\Controllers\SaveTheCard\EventController::class, 'addEvent'])->name('add-user-occasion-event');
     Route::get('/user/occasion/event/edit/{id}', [App\Http\Controllers\SaveTheCard\EventController::class, 'editEvent'])->name('edit-user-occasion-event');
     Route::post('/user/occasion/event/save', [App\Http\Controllers\SaveTheCard\EventController::class, 'saveEvent'])->name('save-user-occasion-event');
     Route::get('/user/occasion/event/delete/{id}', [App\Http\Controllers\SaveTheCard\EventController::class, 'deleteEvent'])->name('delete-user-occasion-event');
+
+    // Business Card
+    Route::get('/company-info', [App\Http\Controllers\BussinessCard\CompanyInfoController::class, 'index'])->name('edit-about-view');
+    Route::post('/company-info', [App\Http\Controllers\BussinessCard\CompanyInfoController::class, 'storeCompanyInfo'])->name('store-about-view');
 
 });
 
