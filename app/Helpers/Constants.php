@@ -4,7 +4,8 @@
     class Constants {
 
     public static $PRODUCT_THEME = [
-        'save_card' => '3'
+        'save_card' => '3',
+        'bussiness_card' => 4,
     ];
 
     public static $MARRIAGE_FORM = [
