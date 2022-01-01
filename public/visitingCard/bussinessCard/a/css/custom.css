@@ -1,0 +1,142 @@
+a, a:focus, a:hover, a:link {
+    text-decoration: none !important;
+    /*color: inherit !important;*/
+}
+.about-us-text ul {
+    padding-left: 20px !important;
+    width: 95% !important;
+}
+.about-us-text {
+    max-width: 100% !important; 
+}
+.about-us-text h1, .about-us-text h2, .about-us-text h3, .about-us-text h4, .about-us-text h5, .about-us-text h6 {
+    /*text-align: left !important;*/
+}
+.contact-action-table {
+    text-align: left !important;
+}
+.share-buttons.inprofile .share-button i {
+    height: 35px !important;
+    width: 35px !important;
+    font-size: 25px !important;
+    border-radius: 10px 0px 10px 0px !important
+}
+.footer {
+    z-index: 2;
+}
+#products-services-section .card, #products-services-section div {
+    text-align: justify !important;
+    line-height: 22px !important;
+    font-size: 14px;
+}
+#products-services-section .card ul {
+    margin-bottom: 10px !important;
+}
+#caption {
+    disply:none !important;
+}
+.iti {
+    width: 100%;
+}
+.iti__country-name, .iti__flag-box {
+    color: #555555;
+}
+.section-container .container{
+    width: 100% !important;
+}
+#products-services-section .card section, #products-services-section .card div, #products-services-section .card ul {
+    margin:0px !important;
+    padding:0px !important;
+    width: 100% !important;
+}
+#products-services-section .card ul li {
+    width: 100% !important;
+    min-height: 0px !important;
+    padding: 0px !important;
+    margin: 0px !important;
+    list-style-type: disc !important;
+    list-style: disc !important;
+    margin-left: 15px !important;
+    display: list-item !important;
+    text-align: left !important;
+}
+#imageModal #imageModalClose {
+    background-color: #fff !important;
+    padding: 5px !important;
+    border-radius: 25px !important;
+    opacity: 1 !important;
+    z-index: 2 !important;
+}
+#imageModal {
+    overflow: scroll !important;
+    padding-top: 20px !important;
+}
+.product-enquiry-btn {
+    margin-top: 15px !important;
+}
+#products-services-section .card ul {
+    list-style-type: disc !important;
+    list-style: disc !important;
+}
+#feedbackModal .modal-body {
+    color: #333;
+}
+#products-services-section .card .product-price {
+    display: inline-block !important;
+    width: 60% !important;
+}
+#home-section .contact-buttons i{
+    line-height: 1;
+    font-size: 14px;
+}
+#home-section table.contact-action-table i{
+    line-height: 2;
+    font-size: 16px;
+}
+#home-section .round-contact-buttons i{
+    line-height: 2;
+    font-size: 20px;
+}
+#home-section table.contact-action-table a.square-bg-btn i {
+    line-height: 2.5;
+    font-size: 16px;
+}
+#gallery-section .col-md-4 {
+    -webkit-box-flex: 0 !important;
+    -webkit-flex: 0 0 33.333333% !important;
+    -ms-flex: 0 0 33.333333% !important;
+    flex: 0 0 33.333333% !important;
+    max-width: 94% !important;
+    width: 100% !important;
+}
+/*#video-section .row div {
+	width: 100%;
+}*/
+#products-services-section table, #about-us-section table {
+    width: 100% !important;
+}
+.section-header {
+    padding-top: 15px !important;
+}
+/*.shadow-button .shadow-button-icon, .shadow-button {
+    color: #000 !important;
+}
+.shadow-button {
+    color: #000 !important;
+    background: var(--theme-color-light) !important;
+}*/
+a:hover, a:focus {
+    text-decoration: none !important;
+}
+
+@media only screen and (max-width: 480px) {
+  .footer-menu li {
+    min-width: 85px !important;
+}
+.footer-menu .footer-menu-link {
+    padding: 5px 0px !important;
+}
+#imageModal #imageModalClose {
+    right: 5px !important;
+}
+}

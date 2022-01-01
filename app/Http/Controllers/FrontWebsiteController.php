@@ -10,6 +10,7 @@ use App\Models\User;
 use App\Models\OccasionModel;
 use App\Models\OccasionEventsModel;
 use App\Helpers\Constants;
+use App\Models\CompanyInfoModel;
 
 class FrontWebsiteController extends Controller
 {
@@ -78,16 +79,6 @@ class FrontWebsiteController extends Controller
     public function userVisitCard($slug)
     {
         $userObj = User::where('slug', $slug)->first();
-        if ($userObj->product_id == \App\Helpers\Constants::$PRODUCT_THEME['save_card']) {
-        $occasionData = OccasionModel::where('userId', $userObj->id)->first();
-        if (!empty($occasionData)) {
-            $marriageData = $occasionData->response;
-            $marriageData['event_date']['value'] = str_replace("/", "-", $marriageData['event_date']['value']);
-        } else {
-            $marriageData = Constants::$MARRIAGE_FORM;
-        }
-
-        $occasionEventData = OccasionEventsModel::select('*')->where('occasion_id', $occasionData->id)->orderBy('event_time', 'ASC')->get();
         $themeData         = \DB::table('table_theme')->where('id', $userObj->theme)->first();
         if(empty($themeData)) {
              return redirect('user/occasion')->with('error', "Please configure account.");
@@ -95,7 +86,21 @@ class FrontWebsiteController extends Controller
 
         $bladeFile = !empty($themeData) ? $themeData->blade_file : 'theme-a';
 
+        if ($userObj->product_id == \App\Helpers\Constants::$PRODUCT_THEME['save_card']) {
+            $occasionData = OccasionModel::where('userId', $userObj->id)->first();
+            if (!empty($occasionData)) {
+                $marriageData = $occasionData->response;
+                $marriageData['event_date']['value'] = str_replace("/", "-", $marriageData['event_date']['value']);
+            } else {
+                $marriageData = Constants::$MARRIAGE_FORM;
+            }
+
+            $occasionEventData = OccasionEventsModel::select('*')->where('occasion_id', $occasionData->id)->orderBy('event_time', 'ASC')->get();
+
             return view('visitingCard/saveTheCard/'.$bladeFile, compact('marriageData', 'userObj', 'occasionData', 'occasionEventData'));
+        }else if ($userObj->product_id == \App\Helpers\Constants::$PRODUCT_THEME['bussiness_card']) {
+            $companyInfoData = CompanyInfoModel::where('user_id', $userObj->id)->first();
+            return view('visitingCard/bussinessCard/'.$bladeFile, compact('companyInfoData', 'userObj'));
         }
 
     }

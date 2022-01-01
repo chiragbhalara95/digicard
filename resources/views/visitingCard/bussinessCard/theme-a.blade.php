@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html style="--theme-color:#2196f3; --theme-color-light:#2196f326; --theme-color-medium:#2196f375; --theme-color-dark-lighter:#2196f3bf; --theme-color-dark1:#1a78c2; --theme-color-dark2:#145a92; --theme-color-dark3:#0d3c61;">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link href="{{asset('public/visitingCard/bussinessCard/a/css/1.css')}}" rel="stylesheet">
+    <link rel="stylesheet" href="{{asset('public/visitingCard/bussinessCard/a/css/2.css')}}" media="all" id="shr-font-shadows-into light">
+    <link rel="stylesheet" id="hestia-google-font-raleway-css" href="{{asset('public/visitingCard/bussinessCard/a/css/3.css')}}" type="text/css" media="all">
+    <link rel="stylesheet" id="hestia-google-font-barlow-css" href="{{asset('public/visitingCard/bussinessCard/a/css/4.css')}}" type="text/css" media="all">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0 minimal-ui">
+    <link href="{{asset('public/visitingCard/bussinessCard/a/css/style.css')}}" rel="stylesheet">
+    <link href="{{asset('public/visitingCard/bussinessCard/a/css/star-rating.css')}}" rel="stylesheet">
+    <link rel="stylesheet" href="{{asset('public/visitingCard/bussinessCard/a/css/intlTelInput.min.css')}}">
+    <link href="{{asset('public/visitingCard/bussinessCard/a/css/parsely.css')}}" rel="stylesheet">
+    <link href="{{asset('public/visitingCard/bussinessCard/a/css/jquery-confirm.css')}}" rel="stylesheet">
+    <link href="{{asset('public/visitingCard/bussinessCard/a/css/model-css.css')}}" rel="stylesheet">
+    <link href="{{asset('public/visitingCard/bussinessCard/a/css/custom.css')}}" rel="stylesheet">
+    <link rel="icon" href="{{url('public')}}/{{$companyInfoData->company_logo}}" type="image/png" sizes="16x16">
+    <script id="skype_bootstrap" src="{{asset('public/visitingCard/bussinessCard/a/js/SkypeBootstrap.min.js')}}"></script>
+    <script src="{{asset('public/visitingCard/bussinessCard/a/js/sdk.js')}}" async="" crossorigin="anonymous"></script>
+    <script id="skype_web_sdk" src="{{asset('public/visitingCard/bussinessCard/a/js/skypewebsdk.js')}}"></script>
+    <script async="" defer="" crossorigin="anonymous" src="{{asset('public/visitingCard/bussinessCard/a/js/sdk2.js')}}"></script>
+    <script src="{{asset('public/visitingCard/bussinessCard/a/js/color-script.js')}}"></script>
+    <title>{{$companyInfoData->company_name}}</title>
+    <meta property="og:title" content="{{$companyInfoData->company_name}}">
+    <meta name="description" content="{{$companyInfoData->company_info}}">
+    <meta property="og:description" content="{{$companyInfoData->company_info}}">
+    <meta name="keywords" content="{{$companyInfoData->company_name}}">
+    <meta property="og:url" content="{{url('vc')}}/{{$userObj->slug}}">
+    <meta property="og:image" itemprop="image" content="{{url('public')}}/{{$companyInfoData->company_logo}}">
+    <meta property="og:type" content="website">
+    <meta property="og:image:width" content="800">
+    <meta property="og:image:height" content="800">
+    <link rel="canonical" href="{{url('vc')}}/{{$userObj->slug}}">
+    <link rel="alternate" hreflang="en-IN" href="{{url('vc')}}/{{$userObj->slug}}">
+    <link rel="alternate" hreflang="en-IN" href="{{url('vc')}}/{{$userObj->slug}}">
+    <link rel="alternate" hreflang="en-US" href="{{url('vc')}}/{{$userObj->slug}}">
+    <link rel="alternate" hreflang="en-GB" href="{{url('vc')}}/{{$userObj->slug}}">
+    <script>
+      document.documentElement.style.setProperty('--theme-color', '#2196f3');
+      document.documentElement.style.setProperty('--theme-color-light', '#2196f326');
+      document.documentElement.style.setProperty('--theme-color-medium', '#2196f375');
+      document.documentElement.style.setProperty('--theme-color-dark-lighter', '#2196f3bf');
+      document.documentElement.style.setProperty('--theme-color-dark1', ColorLuminance('#2196f3', -0.20));
+      document.documentElement.style.setProperty('--theme-color-dark2', ColorLuminance('#2196f3', -0.40));
+      document.documentElement.style.setProperty('--theme-color-dark3', ColorLuminance('#2196f3', -0.60));
+    </script>
+    <script>
+      var dynamicManifest = {
+        "name": "Demo Company",
+        "short_name": "Demo Company",
+        "description": "Demo Company",
+        "start_url": "https://www.e-digicard.com/demo-company",
+        "background_color": "#efefef",
+        "theme_color": "#2196f3",
+        "icons": [{
+          "src": "https://www.e-digicard.com/web-services/company-profile/5fa3c10faa14c-1604567311-5fa3c10faa151.png",
+          "sizes": "256x256",
+          "type": "image/png"
+        }],
+        "display": "standalone"
+      }
+      const stringManifest = JSON.stringify(dynamicManifest);
+      const blob = new Blob([stringManifest], {
+        type: 'application/json'
+      });
+      const manifestURL = window.URL.createObjectURL(blob);
+      document.querySelector('#manifest-placeholder').setAttribute('href', manifestURL);
+    </script>
+    <style type="text/css" data-fbcssmodules="css:fb.css.base css:fb.css.dialog css:fb.css.iframewidget css:fb.css.customer_chat_plugin_iframe">
+      .fb_hidden {
+        position: absolute;
+        top: -10000px;
+        z-index: 10001
+      }
+
+      .fb_reposition {
+        overflow: hidden;
+        position: relative
+      }
+
+      .fb_invisible {
+        display: none
+      }
+
+      .fb_reset {
+        background: none;
+        border: 0;
+        border-spacing: 0;
+        color: #000;
+        cursor: auto;
+        direction: ltr;
+        font-family: "lucida grande", tahoma, verdana, arial, sans-serif;
+        font-size: 11px;
+        font-style: normal;
+        font-variant: normal;
+        font-weight: normal;
+        letter-spacing: normal;
+        line-height: 1;
+        margin: 0;
+        overflow: visible;
+        padding: 0;
+        text-align: left;
+        text-decoration: none;
+        text-indent: 0;
+        text-shadow: none;
+        text-transform: none;
+        visibility: visible;
+        white-space: normal;
+        word-spacing: normal
+      }
+
+      .fb_reset>div {
+        overflow: hidden
+      }
+
+      @keyframes fb_transform {
+        from {
+          opacity: 0;
+          transform: scale(.95)
+        }
+
+        to {
+          opacity: 1;
+          transform: scale(1)
+        }
+      }
+
+      .fb_animate {
+        animation: fb_transform .3s forwards
+      }
+
+      .fb_dialog {
+        background: rgba(82, 82, 82, .7);
+        position: absolute;
+        top: -10000px;
+        z-index: 10001
+      }
+
+      .fb_dialog_advanced {
+        border-radius: 8px;
+        padding: 10px
+      }
+
+      .fb_dialog_content {
+        background: #fff;
+        color: #373737
+      }
+
+      .fb_dialog_close_icon {
+        background: url(https://z-p3-static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;
+        cursor: pointer;
+        display: block;
+        height: 15px;
+        position: absolute;
+        right: 18px;
+        top: 17px;
+        width: 15px
+      }
+
+      .fb_dialog_mobile .fb_dialog_close_icon {
+        left: 5px;
+        right: auto;
+        top: 5px
+      }
+
+      .fb_dialog_padding {
+        background-color: transparent;
+        position: absolute;
+        width: 1px;
+        z-index: -1
+      }
+
+      .fb_dialog_close_icon:hover {
+        background: url(https://z-p3-static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent
+      }
+
+      .fb_dialog_close_icon:active {
+        background: url(https://z-p3-static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent
+      }
+
+      .fb_dialog_iframe {
+        line-height: 0
+      }
+
+      .fb_dialog_content .dialog_title {
+        background: #6d84b4;
+        border: 1px solid #365899;
+        color: #fff;
+        font-size: 14px;
+        font-weight: bold;
+        margin: 0
+      }
+
+      .fb_dialog_content .dialog_title>span {
+        background: url(https://z-p3-static.xx.fbcdn.net/rsrc.php/v3/yd/r/Cou7n-nqK52.gif) no-repeat 5px 50%;
+        float: left;
+        padding: 5px 0 7px 26px
+      }
+
+      body.fb_hidden {
+        height: 100%;
+        left: 0;
+        margin: 0;
+        overflow: visible;
+        position: absolute;
+        top: -10000px;
+        transform: none;
+        width: 100%
+      }
+
+      .fb_dialog.fb_dialog_mobile.loading {
+        background: url(https://z-p3-static.xx.fbcdn.net/rsrc.php/v3/ya/r/3rhSv5V8j3o.gif) white no-repeat 50% 50%;
+        min-height: 100%;
+        min-width: 100%;
+        overflow: hidden;
+        position: absolute;
+        top: 0;
+        z-index: 10001
+      }
+
+      .fb_dialog.fb_dialog_mobile.loading.centered {
+        background: none;
+        height: auto;
+        min-height: initial;
+        min-width: initial;
+        width: auto
+      }
+
+      .fb_dialog.fb_dialog_mobile.loading.centered #fb_dialog_loader_spinner {
+        width: 100%
+      }
+
+      .fb_dialog.fb_dialog_mobile.loading.centered .fb_dialog_content {
+        background: none
+      }
+
+      .loading.centered #fb_dialog_loader_close {
+        clear: both;
+        color: #fff;
+        display: block;
+        font-size: 18px;
+        padding-top: 20px
+      }
+
+      #fb-root #fb_dialog_ipad_overlay {
+        background: rgba(0, 0, 0, .4);
+        bottom: 0;
+        left: 0;
+        min-height: 100%;
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 100%;
+        z-index: 10000
+      }
+
+      #fb-root #fb_dialog_ipad_overlay.hidden {
+        display: none
+      }
+
+      .fb_dialog.fb_dialog_mobile.loading iframe {
+        visibility: hidden
+      }
+
+      .fb_dialog_mobile .fb_dialog_iframe {
+        position: sticky;
+        top: 0
+      }
+
+      .fb_dialog_content .dialog_header {
+        background: linear-gradient(from(#738aba), to(#2c4987));
+        border-bottom: 1px solid;
+        border-color: #043b87;
+        box-shadow: white 0 1px 1px -1px inset;
+        color: #fff;
+        font: bold 14px Helvetica, sans-serif;
+        text-overflow: ellipsis;
+        text-shadow: rgba(0, 30, 84, .296875) 0 -1px 0;
+        vertical-align: middle;
+        white-space: nowrap
+      }
+
+      .fb_dialog_content .dialog_header table {
+        height: 43px;
+        width: 100%
+      }
+
+      .fb_dialog_content .dialog_header td.header_left {
+        font-size: 12px;
+        padding-left: 5px;
+        vertical-align: middle;
+        width: 60px
+      }
+
+      .fb_dialog_content .dialog_header td.header_right {
+        font-size: 12px;
+        padding-right: 5px;
+        vertical-align: middle;
+        width: 60px
+      }
+
+      .fb_dialog_content .touchable_button {
+        background: linear-gradient(from(#4267B2), to(#2a4887));
+        background-clip: padding-box;
+        border: 1px solid #29487d;
+        border-radius: 3px;
+        display: inline-block;
+        line-height: 18px;
+        margin-top: 3px;
+        max-width: 85px;
+        padding: 4px 12px;
+        position: relative
+      }
+
+      .fb_dialog_content .dialog_header .touchable_button input {
+        background: none;
+        border: none;
+        color: #fff;
+        font: bold 12px Helvetica, sans-serif;
+        margin: 2px -12px;
+        padding: 2px 6px 3px 6px;
+        text-shadow: rgba(0, 30, 84, .296875) 0 -1px 0
+      }
+
+      .fb_dialog_content .dialog_header .header_center {
+        color: #fff;
+        font-size: 16px;
+        font-weight: bold;
+        line-height: 18px;
+        text-align: center;
+        vertical-align: middle
+      }
+
+      .fb_dialog_content .dialog_content {
+        background: url(https://z-p3-static.xx.fbcdn.net/rsrc.php/v3/y9/r/jKEcVPZFk-2.gif) no-repeat 50% 50%;
+        border: 1px solid #4a4a4a;
+        border-bottom: 0;
+        border-top: 0;
+        height: 150px
+      }
+
+      .fb_dialog_content .dialog_footer {
+        background: #f5f6f7;
+        border: 1px solid #4a4a4a;
+        border-top-color: #ccc;
+        height: 40px
+      }
+
+      #fb_dialog_loader_close {
+        float: left
+      }
+
+      .fb_dialog.fb_dialog_mobile .fb_dialog_close_icon {
+        visibility: hidden
+      }
+
+      #fb_dialog_loader_spinner {
+        animation: rotateSpinner 1.2s linear infinite;
+        background-color: transparent;
+        background-image: url(https://z-p3-static.xx.fbcdn.net/rsrc.php/v3/yD/r/t-wz8gw1xG1.png);
+        background-position: 50% 50%;
+        background-repeat: no-repeat;
+        height: 24px;
+        width: 24px
+      }
+
+      @keyframes rotateSpinner {
+        0% {
+          transform: rotate(0deg)
+        }
+
+        100% {
+          transform: rotate(360deg)
+        }
+      }
+
+      .fb_iframe_widget {
+        display: inline-block;
+        position: relative
+      }
+
+      .fb_iframe_widget span {
+        display: inline-block;
+        position: relative;
+        text-align: justify
+      }
+
+      .fb_iframe_widget iframe {
+        position: absolute
+      }
+
+      .fb_iframe_widget_fluid_desktop,
+      .fb_iframe_widget_fluid_desktop span,
+      .fb_iframe_widget_fluid_desktop iframe {
+        max-width: 100%
+      }
+
+      .fb_iframe_widget_fluid_desktop iframe {
+        min-width: 220px;
+        position: relative
+      }
+
+      .fb_iframe_widget_lift {
+        z-index: 1
+      }
+
+      .fb_iframe_widget_fluid {
+        display: inline
+      }
+
+      .fb_iframe_widget_fluid span {
+        width: 100%
+      }
+
+      .fb_mpn_mobile_landing_page_slide_out {
+        animation-duration: 200ms;
+        animation-name: fb_mpn_landing_page_slide_out;
+        transition-timing-function: ease-in
+      }
+
+      .fb_mpn_mobile_landing_page_slide_out_from_left {
+        animation-duration: 200ms;
+        animation-name: fb_mpn_landing_page_slide_out_from_left;
+        transition-timing-function: ease-in
+      }
+
+      .fb_mpn_mobile_landing_page_slide_up {
+        animation-duration: 500ms;
+        animation-name: fb_mpn_landing_page_slide_up;
+        transition-timing-function: ease-in
+      }
+
+      .fb_mpn_mobile_bounce_in {
+        animation-duration: 300ms;
+        animation-name: fb_mpn_bounce_in;
+        transition-timing-function: ease-in
+      }
+
+      .fb_mpn_mobile_bounce_out {
+        animation-duration: 300ms;
+        animation-name: fb_mpn_bounce_out;
+        transition-timing-function: ease-in
+      }
+
+      .fb_mpn_mobile_bounce_out_v2 {
+        animation-duration: 300ms;
+        animation-name: fb_mpn_fade_out;
+        transition-timing-function: ease-in
+      }
+
+      .fb_customer_chat_bounce_in_v2 {
+        animation-duration: 300ms;
+        animation-name: fb_bounce_in_v2;
+        transition-timing-function: ease-in
+      }
+
+      .fb_customer_chat_bounce_in_from_left {
+        animation-duration: 300ms;
+        animation-name: fb_bounce_in_from_left;
+        transition-timing-function: ease-in
+      }
+
+      .fb_customer_chat_bounce_out_v2 {
+        animation-duration: 300ms;
+        animation-name: fb_bounce_out_v2;
+        transition-timing-function: ease-in
+      }
+
+      .fb_customer_chat_bounce_out_from_left {
+        animation-duration: 300ms;
+        animation-name: fb_bounce_out_from_left;
+        transition-timing-function: ease-in
+      }
+
+      .fb_invisible_flow {
+        display: inherit;
+        height: 0;
+        overflow-x: hidden;
+        width: 0
+      }
+
+      @keyframes fb_mpn_landing_page_slide_out {
+        0% {
+          margin: 0 12px;
+          width: 100% - 24px
+        }
+
+        60% {
+          border-radius: 18px
+        }
+
+        100% {
+          border-radius: 50%;
+          margin: 0 24px;
+          width: 60px
+        }
+      }
+
+      @keyframes fb_mpn_landing_page_slide_out_from_left {
+        0% {
+          left: 12px;
+          width: 100% - 24px
+        }
+
+        60% {
+          border-radius: 18px
+        }
+
+        100% {
+          border-radius: 50%;
+          left: 12px;
+          width: 60px
+        }
+      }
+
+      @keyframes fb_mpn_landing_page_slide_up {
+        0% {
+          bottom: 0;
+          opacity: 0
+        }
+
+        100% {
+          bottom: 24px;
+          opacity: 1
+        }
+      }
+
+      @keyframes fb_mpn_bounce_in {
+        0% {
+          opacity: .5;
+          top: 100%
+        }
+
+        100% {
+          opacity: 1;
+          top: 0
+        }
+      }
+
+      @keyframes fb_mpn_fade_out {
+        0% {
+          bottom: 30px;
+          opacity: 1
+        }
+
+        100% {
+          bottom: 0;
+          opacity: 0
+        }
+      }
+
+      @keyframes fb_mpn_bounce_out {
+        0% {
+          opacity: 1;
+          top: 0
+        }
+
+        100% {
+          opacity: .5;
+          top: 100%
+        }
+      }
+
+      @keyframes fb_bounce_in_v2 {
+        0% {
+          opacity: 0;
+          transform: scale(0, 0);
+          transform-origin: bottom right
+        }
+
+        50% {
+          transform: scale(1.03, 1.03);
+          transform-origin: bottom right
+        }
+
+        100% {
+          opacity: 1;
+          transform: scale(1, 1);
+          transform-origin: bottom right
+        }
+      }
+
+      @keyframes fb_bounce_in_from_left {
+        0% {
+          opacity: 0;
+          transform: scale(0, 0);
+          transform-origin: bottom left
+        }
+
+        50% {
+          transform: scale(1.03, 1.03);
+          transform-origin: bottom left
+        }
+
+        100% {
+          opacity: 1;
+          transform: scale(1, 1);
+          transform-origin: bottom left
+        }
+      }
+
+      @keyframes fb_bounce_out_v2 {
+        0% {
+          opacity: 1;
+          transform: scale(1, 1);
+          transform-origin: bottom right
+        }
+
+        100% {
+          opacity: 0;
+          transform: scale(0, 0);
+          transform-origin: bottom right
+        }
+      }
+
+      @keyframes fb_bounce_out_from_left {
+        0% {
+          opacity: 1;
+          transform: scale(1, 1);
+          transform-origin: bottom left
+        }
+
+        100% {
+          opacity: 0;
+          transform: scale(0, 0);
+          transform-origin: bottom left
+        }
+      }
+
+      @keyframes slideInFromBottom {
+        0% {
+          opacity: .1;
+          transform: translateY(100%)
+        }
+
+        100% {
+          opacity: 1;
+          transform: translateY(0)
+        }
+      }
+
+      @keyframes slideInFromBottomDelay {
+        0% {
+          opacity: 0;
+          transform: translateY(100%)
+        }
+
+        97% {
+          opacity: 0;
+          transform: translateY(100%)
+        }
+
+        100% {
+          opacity: 1;
+          transform: translateY(0)
+        }
+      }
+    </style>
+  </head>
+  <body style="zoom: 1;">
+    <div class="page-wrapper" id="home-section">
+      <div class="page-details">
+        <div>
+          <!-- User Profile Pic -->
+          <div class="profile-pic">
+            <img src="{{url('public')}}/{{$companyInfoData->company_logo}}" class="profile-pic-img">
+          </div>
+          <!-- User Company Name -->
+          <h1 class="firmname">
+            <b>{{$companyInfoData->company_name}}</b>
+          </h1>
+          <div class="divider"></div>
+          <br>
+          <!-- User First Name and Last Name -->
+          <h1 class="name"> {{$userObj->name}}
+            <br>
+            <span class="designation">Founder </span>
+          </h1>
+          <!-- Cover Photo, Photo, Name and Profession section completed -->
+        </div>
+        <div>
+          <!-- FRONT CONTACT ACTIONS START-->
+          <div class="p-10"></div>
+          <div class="contact-buttons">
+            <a class="contact-button" href="tel:+91{{$companyInfoData->company_mobile}}">
+              <i class="fas fa-phone" aria-hidden="true"></i> Call </a>
+            <a class="contact-button" href="sms:+91{{$companyInfoData->company_mobile}}">
+              <i class="fas fa-sms" aria-hidden="true"></i> SMS </a>
+            <a class="contact-button" target="_blank" href="https://wa.me/91{{$companyInfoData->company_mobile}}?text=Got%20reference%20from%20your%20Digital%20vCard.%20Want%20to%20know%20more%20about%20your%20products%20and%20services.">
+              <i class="fab fa-whatsapp" aria-hidden="true"></i> Whatsapp </a>
+          </div>
+          <table class="contact-action-table" style="max-width:89%;">
+            <tbody>
+              <tr>
+                <td>
+                  <a target="_blank" href="https://www.google.com/maps?q=india&amp;um=1&amp;ie=UTF-8&amp;sa=X&amp;ved=2ahUKEwiWyNX76N3qAhWrzTgGHQuCBicQ_AUoAXoECCMQAw">
+                    <i class="fas fa-map-marker-alt contact-action-container-icon" aria-hidden="true"></i>
+                  </a>
+                </td>
+                <td>
+                  <a target="_blank" href="https://www.google.com/maps?q=india&amp;um=1&amp;ie=UTF-8&amp;sa=X&amp;ved=2ahUKEwiWyNX76N3qAhWrzTgGHQuCBicQ_AUoAXoECCMQAw" class="contact-action-container-text"> {!!$companyInfoData->company_address!!}</a>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a href="mailto:{{$userObj->email}}">
+                    <i class="fas fa-envelope contact-action-container-icon" aria-hidden="true"></i>
+                  </a>
+                </td>
+                <td>
+                  <a href="mailto:{{$userObj->email}}" class="contact-action-container-text">
+                    {{$userObj->email}} </a>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a target="_blank" href="{{$companyInfoData->company_website}}">
+                    <i class="fas fa-globe contact-action-container-icon" aria-hidden="true"></i>
+                  </a>
+                </td>
+                <td>
+                  <a target="_blank" href="{{$companyInfoData->company_website}}" class="contact-action-container-text">
+                    {{$companyInfoData->company_website}} </a>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a target="_blank" href="tel:+91{{$companyInfoData->company_mobile}}   ">
+                    <i class="fas fa-phone contact-action-container-icon" aria-hidden="true"></i>
+                  </a>
+                </td>
+                <td>
+                  <a target="_blank" href="tel:+91{{$companyInfoData->company_mobile}}" class="contact-action-container-text"> +91{{$companyInfoData->company_mobile}} </a>
+                  <br>
+                  <a target="_blank" href="tel:{{$companyInfoData->country_landline}}" class="contact-action-container-text">
+                    {{$companyInfoData->country_landline}} </a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="p-30"></div>
+          <div class="whatsapp-input">
+            <div class="input-wrapper">
+              <input type="tel" id="whatsapp-input" class="input" placeholder="Enter whatsapp number" oninput="this.value=this.value.replace(/[^0-9]/g,&#39;&#39;);" autocomplete="off" data-intl-tel-input-id="0">
+            </div>
+            <a class="whatsapp-button" target="_blank" href="javascript:;" onclick="handleWhatsappShare(this)">
+              <i class="fab fa-whatsapp" aria-hidden="true"></i>Share on Whatsapp </a>
+          </div>
+        </div>
+        <div class="p-30"></div>
+        <div class="p-30"></div>
+        <div class="p-20"></div>
+      </div>
+    </div>
+    </div>
+    <div class="section-container" id="about-us-section">
+      <h2 class="section-header">ABOUT US</h2>
+      <div class="full-divider"></div>
+      <div class="about-us-text">
+        <div style="text-align: justify;">{{$companyInfoData->company_info}}</div>
+      </div>
+      <div>
+        <div style="clear:both">&nbsp;</div>
+      </div>
+    </div>
+    </div>
+    </div>
+    <div class="copyright-wrapper">
+      <div class="copyright-wrapper-inner"> © {{date('Y')}}
+        <a href="{{url('/')}}" target="_blank">
+          <b>{{url('/')}}</b>
+        </a>.
+      </div>
+    </div>
+    <!-- Footer Menu -->
+    <div class="footer">
+      <ul class="footer-menu">
+        <li>
+          <a class="footer-menu-link" href="#home-section">
+            <i class="footer-menu-icon fas fa-home" aria-hidden="true"></i>
+            <div class="footer-menu-text">HOME</div>
+          </a>
+        </li>
+        <li>
+          <a class="footer-menu-link" href="#about-us-section">
+            <i class="footer-menu-icon fas fa-users" aria-hidden="true"></i>
+            <div class="footer-menu-text">ABOUT US</div>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <script>
+      // Place this code in the head section of your HTML file 
+      (function(r, d, s) {
+        r.loadSkypeWebSdkAsync = r.loadSkypeWebSdkAsync || function(p) {
+          var js, sjs = d.getElementsByTagName(s)[0];
+          if (d.getElementById(p.id)) {
+            return;
+          }
+          js = d.createElement(s);
+          js.id = p.id;
+          js.src = p.scriptToLoad;
+          js.onload = p.callback
+          sjs.parentNode.insertBefore(js, sjs);
+        };
+        var p = {
+          scriptToLoad: 'https://swx.cdn.skype.com/shared/v/latest/skypewebsdk.js',
+          id: 'skype_web_sdk'
+        };
+        r.loadSkypeWebSdkAsync(p);
+      })(window, document, 'script');
+    </script>
+    <script src="{{asset('public/visitingCard/bussinessCard/a/js/intlTelInput.min.js')}}"></script>
+    <script src="{{asset('public/visitingCard/bussinessCard/a/js/utils.min.js')}}"></script>
+    <script src="{{asset('public/visitingCard/bussinessCard/a/js/star-rating.js')}}"></script>
+    <script src="{{asset('public/visitingCard/bussinessCard/a/js/jquery.min.js')}}"></script>
+    <script src="{{asset('public/visitingCard/bussinessCard/a/js/parsley.min.js')}}"></script>
+    <script src="{{asset('public/visitingCard/bussinessCard/a/js/form-action.js')}}"></script>
+    <script src="{{asset('public/visitingCard/bussinessCard/a/js/jquery-confirm.js')}}"></script>
+    <script src="{{asset('public/visitingCard/bussinessCard/a/js/script.js')}}"></script>
+    <script src="{{asset('public/visitingCard/bussinessCard/a/js/24ee31a944.js')}}" crossorigin="anonymous"></script>
+    <style media="all" id="fa-v4-shims">
+      <div id="fb-root"class=" fb_reset"><div style="position: absolute; top: -10000px; width: 0px; height: 0px;"><div></div></div></div></body></html>
