@@ -23,7 +23,7 @@
                             <label for="name" class="col-md-4 col-form-label text-md-right">Select Product</label>
                             <select class="form-control selectpicker col-md-6" id="product-select-list" data-live-search="true" name="product_id">
                                     @foreach($productData AS $key => $productDetail)
-                                    <option @if($key == 0) selected @endif value="{{$productDetail['product_id']}}">{{$productDetail['product_name']}}</option>
+                                    <option @if($productDetail['product_id'] == $selectedProduct) selected @endif value="{{$productDetail['product_id']}}">{{$productDetail['product_name']}}</option>
                                     @endforeach
                             </select>
                         </div>
