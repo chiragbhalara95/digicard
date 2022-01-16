@@ -98,9 +98,11 @@ class FrontWebsiteController extends Controller
             $occasionEventData = OccasionEventsModel::select('*')->where('occasion_id', $occasionData->id)->orderBy('event_time', 'ASC')->get();
 
             return view('visitingCard/saveTheCard/'.$bladeFile, compact('marriageData', 'userObj', 'occasionData', 'occasionEventData'));
-        }else if ($userObj->product_id == \App\Helpers\Constants::$PRODUCT_THEME['bussiness_card']) {
+        } else if ($userObj->product_id == \App\Helpers\Constants::$PRODUCT_THEME['bussiness_card']) {
             $companyInfoData = CompanyInfoModel::where('user_id', $userObj->id)->first();
-            return view('visitingCard/bussinessCard/'.$bladeFile, compact('companyInfoData', 'userObj'));
+            $galleryData     = \DB::table('gallery')->where('user_id', $userObj->id)->get();
+
+            return view('visitingCard/bussinessCard/'.$bladeFile, compact('companyInfoData', 'userObj', 'galleryData'));
         }
 
     }
