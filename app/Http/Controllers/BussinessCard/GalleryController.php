@@ -166,7 +166,7 @@ class GalleryController extends Controller
           $fullpath=public_path('upload/product/').$data;
           File::delete($fullpath);
         
-        
+        /*
       $data=DB::table('gallery')->where('id','=',$product_id)->value('mul_image');
           $backimagess=json_decode($data);
           foreach($backimagess as $proudctimage)
@@ -174,7 +174,7 @@ class GalleryController extends Controller
             $fullpath=public_path('upload/product/').$proudctimage;
             File::delete($fullpath);
           }
-        
+       */ 
         
       $m = DB::table('gallery')->where('id','=',$product_id)->delete();
       $request->session()->flash('alert-success','Gallery has been deleted Successfully!!');

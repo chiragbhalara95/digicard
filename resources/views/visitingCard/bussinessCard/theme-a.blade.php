@@ -763,7 +763,24 @@
         <div style="clear:both">&nbsp;</div>
       </div>
     </div>
+
+    @if($galleryData->count() > 0)
+    <div class="section-container" id="gallery-section">
+        <h2 class="section-header">GALLERY</h2>
+        <div class="full-divider"></div>
+        <div class="images-container">
+          @foreach($galleryData as $galleryDetail)
+            <div class="image-wrapper">
+                <img onclick="openImageModal(this)" alt="Demo Company" src="{{URL::asset('public/upload/product/'.$galleryDetail->head_image)}}" style="width:100%">
+            </div>
+          @endforeach
+          </div>
     </div>
+    @endif
+ 
+
+
+  </div>
     </div>
     <div class="copyright-wrapper">
       <div class="copyright-wrapper-inner"> © {{date('Y')}}
@@ -787,6 +804,14 @@
             <div class="footer-menu-text">ABOUT US</div>
           </a>
         </li>
+        <li>
+          <a class="footer-menu-link" href="#gallery-section">
+            <i class="footer-menu-icon fas fa-images" aria-hidden="true"></i>
+            <div class="footer-menu-text">GALLERY</div>
+          </a>
+        </li>
+
+        
       </ul>
     </div>
     <script>
