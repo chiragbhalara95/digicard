@@ -19,6 +19,7 @@ class PaymentController extends Controller
     public function index()
     {
         $productId = auth()->user()->product_id;
+        echo $productId;exit;
         $packageData = SkuPackageModel::select([
             'price',
             'special_price',

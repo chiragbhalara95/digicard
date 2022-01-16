@@ -757,7 +757,7 @@
       <h2 class="section-header">ABOUT US</h2>
       <div class="full-divider"></div>
       <div class="about-us-text">
-        <div style="text-align: justify;">{{$companyInfoData->company_info}}</div>
+        <div style="text-align: justify;">{!!$companyInfoData->company_info!!}</div>
       </div>
       <div>
         <div style="clear:both">&nbsp;</div>

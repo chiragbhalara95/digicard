@@ -16,7 +16,7 @@
 
           <li class="nav-item">
             <a href="{{route('home')}}" class="nav-link">
-              <i class="nav-icon fas fa-dashboard"></i>
+              <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
               </p>
@@ -33,6 +33,16 @@
           </li>
 
           <li class="nav-item">
+            <a href="{{url('product')}}" class="nav-link">
+              <i class="nav-icon fas fa-list"></i>
+              <p>
+                Gallery
+              </p>
+            </a>
+          </li>
+
+          {{--
+          <li class="nav-item">
             <a href="{{route('social-list-view')}}" class="nav-link">
               <i class="nav-icon fas fa-share-alt"></i>
               <p>
@@ -40,11 +50,12 @@
               </p>
             </a>
           </li>
+          --}}
 
           @if(Auth::check())
           <li class="nav-item">
             <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('frm-logout').submit();">
-              <i class="nav-icon fa fa-sign-out"></i>
+              <i class="nav-icon fas fa-sign-out-alt"></i>
               <p>Logout</p>
           </a>
         </li>

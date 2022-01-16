@@ -80,7 +80,7 @@ class RegisterController extends Controller
             'phone'          => $data['phone'],
             'password'       => Hash::make($data['password']),
             'is_admin'       => 0,
-            'theme'          => $themeData->blade_file
+            'theme'          => $themeData->id
         ]);
 
         // email data
@@ -116,6 +116,7 @@ class RegisterController extends Controller
 
     public function showRegistrationForm(Request $request)
     {
+        $selectedProduct = '';
         $packageId   = isset($request->packageId) ? $request->packageId : null;
         $countryData = file_get_contents('public/country-tel-code.json');
         $countryData = json_decode($countryData, true);
@@ -137,11 +138,15 @@ class RegisterController extends Controller
 
         if (!empty($packageData)) {
             foreach ($packageData as $key => $packageDeatil) {
+                if ($packageDeatil->sku_package_id == $packageId) {
+                    $selectedProduct = $packageDeatil->product_id;
+                }
+
                 $skuCustomPackage[$packageDeatil->product_id][] = $packageDeatil->toArray();
             }
         }
 
-        return view('auth.register', compact('countryData','selectedCode', 'productData', 'skuCustomPackage', 'packageId'));
+        return view('auth.register', compact('countryData','selectedCode', 'productData', 'skuCustomPackage', 'packageId','selectedProduct'));
     }
 
 

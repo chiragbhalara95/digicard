@@ -69,6 +69,13 @@ Route::middleware(['auth', 'verified', 'check_payment_status'])->namespace('App\
     Route::get('/company-info', [App\Http\Controllers\BussinessCard\CompanyInfoController::class, 'index'])->name('edit-about-view');
     Route::post('/company-info', [App\Http\Controllers\BussinessCard\CompanyInfoController::class, 'storeCompanyInfo'])->name('store-about-view');
 
+     Route::any('product', [App\Http\Controllers\BussinessCard\GalleryController::class, 'productPage']);
+     Route::any('addProduct', [App\Http\Controllers\BussinessCard\GalleryController::class, 'addProductPage']);
+     Route::post('productSave', [App\Http\Controllers\BussinessCard\GalleryController::class, 'productStore']);
+     Route::get('productUpdate/{product_id}', [App\Http\Controllers\BussinessCard\GalleryController::class, 'productUpdatePage']);
+     Route::get('productDelete/{product_id}', [App\Http\Controllers\BussinessCard\GalleryController::class, 'productDeleteFormat']);
+     Route::post('productEditSave', [App\Http\Controllers\BussinessCard\GalleryController::class, 'productEditStoer']);
+
 });
 
 Route::middleware(['auth', 'verified', 'check_payment_required'])->namespace('App\Http\Controllers')->group(function() {
