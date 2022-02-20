@@ -36,9 +36,9 @@ class GalleryController extends Controller
         unset($input['_token']);
         $input['user_id'] = $user_id;
          $this->validate($request, [
-        'head_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-        'document' => 'mimes:pdf,doc,docx|max:2048',
-    ]);
+          'head_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+          'document' => 'mimes:pdf,doc,docx|max:2048',
+        ]);
 
       if($request->file('document')!='')
       {
@@ -51,34 +51,34 @@ class GalleryController extends Controller
           unset($input['document']);
       }
 
-    if ($request->hasFile('head_image')) {
-        if($request->file('head_image')!='')
-        {
-            $file=$request->file('head_image');
-            $filename=$file->getClientOriginalName();
-            $imgname = $filename;
-            $input['head_image']= $imgname;       
-            $destinationPath=public_path('upload/product/');       
-            $request->file('head_image')->move($destinationPath, $imgname);
-        } 
-        $product_image = null;
-        if($request->file('mul_image')!='')
-        {
-            foreach($request->file('mul_image') as $image)
-            {
-                $name= $image->getClientOriginalName();
-                $destinationPath=public_path('upload/product/');       
-                $image->move($destinationPath,$name);  
-                $product_image[] = $name;
-            }
-            $input['mul_image'] = json_encode($product_image);
-        }
-        
-        DB::table('gallery')->insert($input);
-        $request->session()->flash('alert-success','Gallery has been sucessfully added.');
-    
-        return redirect('product'); 
-    }
+      if ($request->hasFile('head_image')) {
+          if($request->file('head_image')!='')
+          {
+              $file=$request->file('head_image');
+              $filename=$file->getClientOriginalName();
+              $imgname = $filename;
+              $input['head_image']= $imgname;       
+              $destinationPath=public_path('upload/product/');       
+              $request->file('head_image')->move($destinationPath, $imgname);
+          } 
+
+          $product_image = null;
+
+          if($request->file('mul_image')!='') {
+              foreach($request->file('mul_image') as $image)
+              {
+                  $name= $image->getClientOriginalName();
+                  $destinationPath=public_path('upload/product/');       
+                  $image->move($destinationPath,$name);  
+                  $product_image[] = $name;
+              }
+              $input['mul_image'] = json_encode($product_image);
+          }
+          
+          DB::table('gallery')->insert($input);
+
+          return redirect('product')->with("success", 'Gallery has been sucessfully added.'); 
+      }
     }
     
     public function productUpdatePage(Request $request, $product_id)
@@ -154,9 +154,7 @@ class GalleryController extends Controller
         
         DB::table('gallery')->where('id','=',$product_id)->update($input);
 
-        $request->session()->flash('alert-success','Gallery has been sucessfully Updated.');
-
-        return redirect('product'); 
+        return redirect('product')->with("success", 'Gallery has been sucessfully Updated.'); 
     }
     
     public function productDeleteFormat(Request $request,$product_id)
@@ -177,7 +175,7 @@ class GalleryController extends Controller
        */ 
         
       $m = DB::table('gallery')->where('id','=',$product_id)->delete();
-      $request->session()->flash('alert-success','Gallery has been deleted Successfully!!');
-      return redirect('product'); 
+
+      return redirect('product')->with("success", "Gallery has been deleted Successfully!!"); 
   }
 }

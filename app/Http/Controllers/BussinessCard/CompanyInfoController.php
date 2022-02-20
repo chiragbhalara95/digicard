@@ -27,7 +27,11 @@ class CompanyInfoController extends Controller
 
         if ($params['type'] == 'person') {
             $companyObj->user_id = $userId;
-            $companyObj->company_profession = $params['company_profession'];
+
+            if (isset($params['company_profession'])) {
+                $companyObj->company_profession = $params['company_profession'];
+            }
+
             $companyObj->save();
         } else {
             $companyData = [
@@ -58,8 +62,7 @@ class CompanyInfoController extends Controller
       
         }
 
-        $request->session()->flash('alert-success', 'Info update successfully');
-        return redirect()->back(); 
+        return redirect()->back()->with("success", "Info update successfully"); 
     }
 
 }

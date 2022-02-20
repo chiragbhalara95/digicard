@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
+use Hash;
 
 class AboutUsController extends Controller
 {
@@ -40,6 +42,45 @@ class AboutUsController extends Controller
     {
 
         return view('user/edit-about');
+    }
+
+    public function profile()
+    {
+        $userId = auth()->user()->id;
+        $userInfo = User::find($userId); 
+
+        return view('user/profile', compact('userInfo'));
+    }
+
+    public function storeProfile(Request $request)
+    {
+        $params = $request->all();
+        $userId = auth()->user()->id;
+        $userInfo = User::find($userId); 
+        if (isset($params['want_chang_pwd'])) {
+            if(empty($params['current_password'])) {
+                return back()->with('error',"Please enter current password.")->withInput();
+            }
+
+            if(empty($params['password']) || empty($params['password_confirmation'])) {
+                return back()->with('error',"Please enter new password and confirm password.")->withInput();
+            }
+            if($params['password'] !== $params['password_confirmation']) {
+                return back()->with('error',"new password and confirm password didn't match.")->withInput();
+            }
+
+            if(Hash::check($params['current_password'], $userInfo->password)):
+                $userInfo->password = Hash::make($params['password']);
+            else:
+                return back()->with('error',"Current password didn't match.");
+            endif;    
+        }
+
+
+        $userInfo->name = $params['name'];
+        $userInfo->save();
+
+        return redirect("profile")->with("success", "Profile updated successfully.");
     }
 
 }
