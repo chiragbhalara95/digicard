@@ -35,7 +35,9 @@
                               @if(!empty($skuCustomPackage))
                                   @foreach($skuCustomPackage AS $productId => $skuCustomDetail)
                                     @foreach($skuCustomDetail as $detail)
-                                      <option data-product-id="{{$detail['product_id']}}" value="{{$detail['sku_package_id']}}" disabled="disabled" @if($packageId == $detail['sku_package_id']) selected @endif>{{$detail['duration']}} {{$detail['durationType']}} (₹{{$detail['price']}})</option>
+                                      <option data-product-id="{{$detail['product_id']}}" value="{{$detail['sku_package_id']}}" disabled="disabled" @if($packageId == $detail['sku_package_id']) selected @endif>
+                                          {{$detail['duration']}} {{$detail['durationType']}} <del>(₹{{$detail['price']}})</del>(₹{{$detail['price']}})
+                                    </option>
                                     @endforeach
                                   @endforeach
                               @endif
@@ -62,10 +64,10 @@
 
                         <div class="col-md-3">
                             <select class="form-control selectpicker" required name="country_code" data-live-search="true">
-                                <option value="" class="text-center">Select Country Code</option>
+                                <option value="" class="">Select Country Code</option>
                                 @if (!empty($countryData))
                                     @foreach($countryData AS $countryDetail)
-                                    <option class="text-center" value="{{$countryDetail['dial_code']}}" 
+                                    <option class="" value="{{$countryDetail['dial_code']}}" 
                                         placeholder = "{{$countryDetail['name']}}"
                                         @if($countryDetail['dial_code'] === $selectedCode) selected @endif>
                                         {{$countryDetail['name']}} ({{$countryDetail['dial_code']}})
@@ -146,7 +148,9 @@
     });
     $("#product-select-list").change(function() {
         var productId = $('#product-select-list').val();
-        displaySkuOpt(productId)
+        $("#product-sku-list").val('');
+        displaySkuOpt(productId);
+        $("#product-sku-list :last").attr("selected", "seleected");
     })
 
     function displaySkuOpt(reqProductId)

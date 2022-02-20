@@ -41,6 +41,16 @@
             </a>
           </li>
 
+          <li class="nav-item">
+            <a href="{{url('profile')}}" class="nav-link">
+              <i class="nav-icon fas fa-user"></i>
+              <p>
+                Profile
+              </p>
+            </a>
+          </li>
+
+
           {{--
           <li class="nav-item">
             <a href="{{route('social-list-view')}}" class="nav-link">

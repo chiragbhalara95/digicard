@@ -76,6 +76,9 @@ Route::middleware(['auth', 'verified', 'check_payment_status'])->namespace('App\
      Route::get('productDelete/{product_id}', [App\Http\Controllers\BussinessCard\GalleryController::class, 'productDeleteFormat']);
      Route::post('productEditSave', [App\Http\Controllers\BussinessCard\GalleryController::class, 'productEditStoer']);
 
+     Route::get('profile', [App\Http\Controllers\AboutUsController::class, 'profile'])->name('profile');
+     Route::post('profile', [App\Http\Controllers\AboutUsController::class, 'storeProfile'])->name('storeProfile');
+
 });
 
 Route::middleware(['auth', 'verified', 'check_payment_required'])->namespace('App\Http\Controllers')->group(function() {
