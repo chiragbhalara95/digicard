@@ -12,7 +12,7 @@ class GalleryController extends Controller
 {
     public function productPage(Request $request)
     {
-        $page_title = "Product - Digicard Pro";
+        $page_title = "Product - Digicard";
         
         $user_id = Auth::user()->id;
         

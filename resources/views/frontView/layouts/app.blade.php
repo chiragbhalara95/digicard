@@ -50,6 +50,7 @@
                   <li><a href="#services">Our Products</a></li>
                   <li><a href="#contact">Contact Us</a></li>
                   @if(Auth::check())
+                  <li><a href="{{route('home')}}">Dashboard</a></li>
                   <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('frm-logout').submit();">
                   Logout</a></li>
                   <form id="frm-logout" action="{{ route('logout') }}" method="POST" style="display: none;">
