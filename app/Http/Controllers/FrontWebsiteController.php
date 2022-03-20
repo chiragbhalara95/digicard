@@ -84,6 +84,10 @@ class FrontWebsiteController extends Controller
              return redirect('user/occasion')->with('error', "Please configure account.");
         }
 
+        if(empty($userObj->package_end_date) || $userObj->package_end_date < date("Y-m-d H:i:s")) {
+            return redirect('/')->with('error', "Your package is expired, please do payment.");
+        }
+
         $bladeFile = !empty($themeData) ? $themeData->blade_file : 'theme-a';
 
         if ($userObj->product_id == \App\Helpers\Constants::$PRODUCT_THEME['save_card']) {

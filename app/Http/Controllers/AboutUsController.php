@@ -29,8 +29,10 @@ class AboutUsController extends Controller
         if(!empty(auth()->user()) && auth()->user()->is_admin === 1){
             return redirect('/admin/home')->with('error',"You don't have admin access.");
         }
+        $countryData = file_get_contents(url('public/country-tel-code.json'));
+        $countryData = json_decode($countryData, true);
 
-        return view('user/edit-about');
+        return view('user/edit-about', compact('countryData'));
     }
   
     /**
@@ -40,8 +42,10 @@ class AboutUsController extends Controller
      */
     public function aboutView()
     {
+        $countryData = file_get_contents(url('public/country-tel-code.json'));
+        $countryData = json_decode($countryData, true);
 
-        return view('user/edit-about');
+        return view('user/edit-about', compact('countryData'));
     }
 
     public function profile()

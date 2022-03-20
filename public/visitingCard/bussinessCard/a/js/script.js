@@ -76,13 +76,16 @@ shareModalClose.onclick = function () {
 };
 
 function handleWhatsappShare(e) {
-    const { value } = document.getElementById('whatsapp-input');
+    /*const { value } = document.getElementById('whatsapp-input');
 
     if (value.length < 8) {
         e.preventDefault();
         return;
-    }
-    e.href = `https://wa.me/${iti.getNumber()}?text=${window.location.href}`;
+    }*/
+    var country_code =$("#country_code").val().replace("+", "");
+    var phone = $("#company_mobile").val();
+    //e.href = `https://wa.me/${country_code}${phone}?text=${window.location.href}`;
+    e.href = `https://api.whatsapp.com/send?phone=${country_code}${phone}&text=${window.location.href}`;
 }
 function handleDirectWhatsappShare(e, whatsappNumber) {
     if (window.mobileCheck()) {

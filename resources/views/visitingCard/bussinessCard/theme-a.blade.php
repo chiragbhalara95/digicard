@@ -21,6 +21,13 @@
     <script async="" defer="" crossorigin="anonymous" src="{{asset('public/visitingCard/bussinessCard/a/js/sdk2.js')}}"></script>
     <script src="{{asset('public/visitingCard/bussinessCard/a/js/color-script.js')}}"></script>
     <title>{{$companyInfoData->company_name}}</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
     <meta property="og:title" content="{{$companyInfoData->company_name}}">
     <meta name="description" content="{{$companyInfoData->company_info}}">
     <meta property="og:description" content="{{$companyInfoData->company_info}}">
@@ -674,7 +681,7 @@
           <!-- User First Name and Last Name -->
           <h1 class="name"> {{$userObj->name}}
             <br>
-            <span class="designation">Founder </span>
+            <span class="designation">{{$companyInfoData->company_profession}} </span>
           </h1>
           <!-- Cover Photo, Photo, Name and Profession section completed -->
         </div>
@@ -682,23 +689,30 @@
           <!-- FRONT CONTACT ACTIONS START-->
           <div class="p-10"></div>
           <div class="contact-buttons">
-            <a class="contact-button" href="tel:+91{{$companyInfoData->company_mobile}}">
+            <a class="contact-button" href="tel:{{$companyInfoData->country_code}}{{$companyInfoData->company_mobile}}">
               <i class="fas fa-phone" aria-hidden="true"></i> Call </a>
-            <a class="contact-button" href="sms:+91{{$companyInfoData->company_mobile}}">
+            <a class="contact-button" href="sms:{{$companyInfoData->country_code}}{{$companyInfoData->company_mobile}}">
               <i class="fas fa-sms" aria-hidden="true"></i> SMS </a>
-            <a class="contact-button" target="_blank" href="https://wa.me/91{{$companyInfoData->company_mobile}}?text=Got%20reference%20from%20your%20Digital%20vCard.%20Want%20to%20know%20more%20about%20your%20products%20and%20services.">
-              <i class="fab fa-whatsapp" aria-hidden="true"></i> Whatsapp </a>
-          </div>
+            <!--
+              <a class="contact-button" target="_blank" href="https://wa.me/{{$companyInfoData->country_code}}{{$companyInfoData->company_mobile}}?text=Got%20reference%20from%20your%20Digital%20vCard.%20Want%20to%20know%20more%20about%20your%20products%20and%20services.">
+              <i class="fab fa-whatsapp" aria-hidden="true"></i> Whatsapp 
+            </a>
+          -->
+          <a class="contact-button" target="_blank" href="https://api.whatsapp.com/send?phone={{str_replace('+','',$companyInfoData->country_code)}}{{$companyInfoData->company_mobile}}&text=Got%20reference%20from%20your%20Digital%20vCard.%20Want%20to%20know%20more%20about%20your%20products%20and%20services.">
+              <i class="fab fa-whatsapp" aria-hidden="true"></i> Whatsapp 
+            </a>
+
+        </div>
           <table class="contact-action-table" style="max-width:89%;">
             <tbody>
               <tr>
                 <td>
-                  <a target="_blank" href="https://www.google.com/maps?q=india&amp;um=1&amp;ie=UTF-8&amp;sa=X&amp;ved=2ahUKEwiWyNX76N3qAhWrzTgGHQuCBicQ_AUoAXoECCMQAw">
+                  <a target="_blank" href="https://maps.google.com?q={{$companyInfoData->latitude}},{{$companyInfoData->longitude}}&z=12&amp;um=1&amp;ie=UTF-8&amp;sa=X&amp;ved=2ahUKEwiWyNX76N3qAhWrzTgGHQuCBicQ_AUoAXoECCMQAw">
                     <i class="fas fa-map-marker-alt contact-action-container-icon" aria-hidden="true"></i>
                   </a>
                 </td>
                 <td>
-                  <a target="_blank" href="https://www.google.com/maps?q=india&amp;um=1&amp;ie=UTF-8&amp;sa=X&amp;ved=2ahUKEwiWyNX76N3qAhWrzTgGHQuCBicQ_AUoAXoECCMQAw" class="contact-action-container-text"> {!!$companyInfoData->company_address!!}</a>
+                  <a target="_blank" href="https://maps.google.com?q={{$companyInfoData->latitude}},{{$companyInfoData->longitude}}&z=12&amp;um=1&amp;ie=UTF-8&amp;sa=X&amp;ved=2ahUKEwiWyNX76N3qAhWrzTgGHQuCBicQ_AUoAXoECCMQAw" class="contact-action-container-text"> {!!$companyInfoData->company_address!!}</a>
                 </td>
               </tr>
               <tr>
@@ -725,12 +739,12 @@
               </tr>
               <tr>
                 <td>
-                  <a target="_blank" href="tel:+91{{$companyInfoData->company_mobile}}   ">
+                  <a target="_blank" href="tel:{{$companyInfoData->country_code}}{{$companyInfoData->company_mobile}}   ">
                     <i class="fas fa-phone contact-action-container-icon" aria-hidden="true"></i>
                   </a>
                 </td>
                 <td>
-                  <a target="_blank" href="tel:+91{{$companyInfoData->company_mobile}}" class="contact-action-container-text"> +91{{$companyInfoData->company_mobile}} </a>
+                  <a target="_blank" href="tel:{{$companyInfoData->country_code}}{{$companyInfoData->company_mobile}}" class="contact-action-container-text"> {{$companyInfoData->country_code}}{{$companyInfoData->company_mobile}} </a>
                   <br>
                   <a target="_blank" href="tel:{{$companyInfoData->country_landline}}" class="contact-action-container-text">
                     {{$companyInfoData->country_landline}} </a>
@@ -739,6 +753,7 @@
             </tbody>
           </table>
           <div class="p-30"></div>
+ <!--
           <div class="whatsapp-input">
             <div class="input-wrapper">
               <input type="tel" id="whatsapp-input" class="input" placeholder="Enter whatsapp number" oninput="this.value=this.value.replace(/[^0-9]/g,&#39;&#39;);" autocomplete="off" data-intl-tel-input-id="0">
@@ -746,7 +761,43 @@
             <a class="whatsapp-button" target="_blank" href="javascript:;" onclick="handleWhatsappShare(this)">
               <i class="fab fa-whatsapp" aria-hidden="true"></i>Share on Whatsapp </a>
           </div>
-        </div>
+    -->
+    <?php
+                            $countryData = file_get_contents(url('public/country-tel-code.json'));
+                            $countryData = json_decode($countryData, true);
+                          ?>
+<div class="form-group">
+
+<div class="input-group input-group-lg col-md-12">
+  <div class="input-group-prepend  col-md-12 row">
+  <div class="col-md-4">
+
+      <select class="form-control" id="country_code" name="country_code" >
+                                <option value="" class="">Select Country Code</option>
+                                @if (!empty($countryData))
+                                    @foreach($countryData AS $countryDetail)
+                                    <option class="" value="{{$countryDetail['dial_code']}}" 
+                                        placeholder = "{{$countryDetail['name']}}">
+                                        {{$countryDetail['name']}} ({{$countryDetail['dial_code']}})
+                                    </option>
+                                    @endforeach
+                                @endif
+                            </select>
+    </div>
+                            <div class="col-md-8">
+                              <input type="tel" class="form-control" name="company_mobile" id="company_mobile" value="">
+                            </div>
+
+                    </div>
+                    <div class="row" style="margin-top:10px">                    
+                      <div class="col-md-12">
+                              <a class="whatsapp-button" target="_blank" href="javascript:;" onclick="handleWhatsappShare(this)">
+                                <i class="fab fa-whatsapp" aria-hidden="true"></i>Share on Whatsapp 
+                              </a>
+                            </div>
+    </div>
+
+                  </div>
         <div class="p-30"></div>
         <div class="p-30"></div>
         <div class="p-20"></div>

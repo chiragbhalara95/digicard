@@ -36,7 +36,7 @@
                                   @foreach($skuCustomPackage AS $productId => $skuCustomDetail)
                                     @foreach($skuCustomDetail as $detail)
                                       <option data-product-id="{{$detail['product_id']}}" value="{{$detail['sku_package_id']}}" disabled="disabled" @if($packageId == $detail['sku_package_id']) selected @endif>
-                                          {{$detail['duration']}} {{$detail['durationType']}} <del>(₹{{$detail['price']}})</del>(₹{{$detail['price']}})
+                                          {{$detail['duration']}} {{$detail['durationType']}}(₹{{$detail['price']}})
                                     </option>
                                     @endforeach
                                   @endforeach
