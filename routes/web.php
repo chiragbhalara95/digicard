@@ -80,6 +80,7 @@ Route::middleware(['auth', 'verified', 'check_payment_status'])->namespace('App\
      Route::get('profile', [App\Http\Controllers\AboutUsController::class, 'profile'])->name('profile');
      Route::post('profile', [App\Http\Controllers\AboutUsController::class, 'storeProfile'])->name('storeProfile');
 
+     Route::any('enquiry/list', [App\Http\Controllers\BussinessCard\EnquiryController::class, 'enquiryList']);
      Route::post('/companies/sendEnquiry', [App\Http\Controllers\FrontWebsiteController::class, 'sendEnquiry'])->name('sendEnquiry');
 
 });

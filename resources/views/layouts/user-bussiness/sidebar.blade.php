@@ -50,6 +50,14 @@
             </a>
           </li>
 
+          <li class="nav-item">
+            <a href="{{url('enquiry/list')}}" class="nav-link">
+              <i class="nav-icon fas fa-list"></i>
+              <p>
+                Enquiry List
+              </p>
+            </a>
+          </li>
 
           {{--
           <li class="nav-item">
