@@ -46,6 +46,7 @@ Route::namespace('App\Http\Controllers')->group(function() {
     Route::get('/', [App\Http\Controllers\FrontWebsiteController::class, 'index'])->name('home');
     Route::post('contact-us', [App\Http\Controllers\ContactController::class, 'saveContact'])->name('saveContact');
     Route::get('/vc/{slug}', [App\Http\Controllers\FrontWebsiteController::class, 'userVisitCard'])->name('userVisitCard');
+    Route::any('saveViewCard/{visitor_id}',[App\Http\Controllers\FrontWebsiteController::class, 'SavePrevCard']);
 });
 
 Route::middleware(['auth', 'verified', 'check_payment_status'])->namespace('App\Http\Controllers')->group(function() {
@@ -78,6 +79,8 @@ Route::middleware(['auth', 'verified', 'check_payment_status'])->namespace('App\
 
      Route::get('profile', [App\Http\Controllers\AboutUsController::class, 'profile'])->name('profile');
      Route::post('profile', [App\Http\Controllers\AboutUsController::class, 'storeProfile'])->name('storeProfile');
+
+     Route::post('/companies/sendEnquiry', [App\Http\Controllers\FrontWebsiteController::class, 'sendEnquiry'])->name('sendEnquiry');
 
 });
 

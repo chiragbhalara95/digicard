@@ -116,12 +116,17 @@ function sendEnquiry() {
     const phoneNumber = document.getElementById('phoneNumber');
     const email = document.getElementById('email');
     const message = document.getElementById('message');
+    const slug = document.getElementById('slug');
+
     const data = {};
     data.mailTo = document.getElementById('companyEmail').value;
     data.name = name.value;
     data.phoneNumber = phoneNumber.value;
     data.email = email.value;
     data.message = message.value;
+    data.slug = slug.value;
+    data._token = $('meta[name="csrf_token"]').attr('content');
+
     const xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function () {
         if (this.readyState === 4) {
@@ -152,7 +157,7 @@ function sendEnquiry() {
             ele.disabled = false;
         }
     };
-    xhr.open('POST', '/web-services/companies/sendEnquiry');
+    xhr.open('POST', $("#send_enquiry_url").val());
     xhr.setRequestHeader('Content-type', 'application/json');
     xhr.send(JSON.stringify(data));
     return false;

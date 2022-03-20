@@ -668,6 +668,11 @@
     <div class="page-wrapper" id="home-section">
       <div class="page-details">
         <div>
+          @if($userConfigObj->isShowNoOfVisit == '1')
+          <div class="p-10"></div>
+          <div class="views-label"><i class="fas fa-eye" aria-hidden="true"></i> Views: <b>{{$userObj->no_visit}}</b>
+          </div>
+          @endif
           <!-- User Profile Pic -->
           <div class="profile-pic">
             <img src="{{url('public')}}/{{$companyInfoData->company_logo}}" class="profile-pic-img">
@@ -705,6 +710,7 @@
         </div>
           <table class="contact-action-table" style="max-width:89%;">
             <tbody>
+              @if (!empty($companyInfoData->company_address))
               <tr>
                 <td>
                   <a target="_blank" href="https://maps.google.com?q={{$companyInfoData->latitude}},{{$companyInfoData->longitude}}&z=12&amp;um=1&amp;ie=UTF-8&amp;sa=X&amp;ved=2ahUKEwiWyNX76N3qAhWrzTgGHQuCBicQ_AUoAXoECCMQAw">
@@ -712,9 +718,10 @@
                   </a>
                 </td>
                 <td>
-                  <a target="_blank" href="https://maps.google.com?q={{$companyInfoData->latitude}},{{$companyInfoData->longitude}}&z=12&amp;um=1&amp;ie=UTF-8&amp;sa=X&amp;ved=2ahUKEwiWyNX76N3qAhWrzTgGHQuCBicQ_AUoAXoECCMQAw" class="contact-action-container-text"> {!!$companyInfoData->company_address!!}</a>
+                  <a target="_blank" href="https://maps.google.com?q={{$companyInfoData->latitude}},{{$companyInfoData->longitude}}&z=12&amp;um=1&amp;ie=UTF-8&amp;sa=X&amp;ved=2ahUKEwiWyNX76N3qAhWrzTgGHQuCBicQ_AUoAXoECCMQAw" class="contact-action-container-text"> {!!rtrim(preg_replace('#<p(.*?)>(.*?)</p>#is', '$2<br/>', $companyInfoData->company_address), "<br/>");!!}</a>
                 </td>
               </tr>
+              @endif
               <tr>
                 <td>
                   <a href="mailto:{{$userObj->email}}">
@@ -745,9 +752,11 @@
                 </td>
                 <td>
                   <a target="_blank" href="tel:{{$companyInfoData->country_code}}{{$companyInfoData->company_mobile}}" class="contact-action-container-text"> {{$companyInfoData->country_code}}{{$companyInfoData->company_mobile}} </a>
-                  <br>
+                  @if(!empty($companyInfoData->country_landline))
+                  <br/>
                   <a target="_blank" href="tel:{{$companyInfoData->country_landline}}" class="contact-action-container-text">
                     {{$companyInfoData->country_landline}} </a>
+                  @endif
                 </td>
               </tr>
             </tbody>
@@ -798,7 +807,16 @@
     </div>
 
                   </div>
-        <div class="p-30"></div>
+        <div class="p-30">
+        <div class="col-md-12 text-center btn btn-primary">
+                        <a href="{{url('saveViewCard')}}/{{$userObj->slug}}" download="contact.vcf">
+                            <div class="icon-i whitegreenicon rounded-circle text-white">
+                                <i class="fa fa-vcard" aria-hidden="true"></i>&nbsp;Save Contact
+                            </div>
+                        </a>
+                    </div>
+
+        </div>
         <div class="p-30"></div>
         <div class="p-20"></div>
       </div>
@@ -833,6 +851,36 @@
 
   </div>
     </div>
+
+    @if($userConfigObj->isShowEnquiry == '1')
+    <div class="section-container" id="enquiry-section">
+        <h2 class="section-header">ENQUIRY</h2>
+        <div class="full-divider"></div>
+            <form data-parsley-validate="" method="post" class="enquiry-form" id="enquiry-form" novalidate="">
+                <meta name="csrf_token" content="{{ csrf_token() }}" />
+                <input type="hidden" name="slug" id="slug" value="{{$userObj->slug}}">
+                <!-- Full Name:<br/> -->
+                <input type="text" name="enquiryName" data-parsley-trigger="change" id="enquiryName" placeholder="Enter Full Name" pattern="[a-zA-Z ]*$" required=""><br>
+                <!-- <div class="flex"> -->
+                    <div class="enquiry-phoneNumber">
+                        <!-- Phone Number:<br/> -->
+                        <input type="text" data-parsley-length-message="Contact should have (4-10) digits." data-parsley-type-message="Contact should have only digits." data-parsley-type="number" data-parsley-length="[4, 10]" name="phoneNumber" id="phoneNumber" required="" placeholder="Enter Phone Number"><br>
+                    </div>
+                    <div class="enquiry-email">
+                        <!-- Email:<br/> -->
+                        <input type="email" name="email" id="email" data-parsley-trigger="change" placeholder="Enter Email"><br>
+                    </div>
+                <!-- </div> -->
+                <!-- Message:<br/> -->
+                <textarea name="message" id="message" required="" placeholder="Enter Message"></textarea><br>
+                <input type="hidden" id="companyEmail" value="admin.admin@gmail.com">
+                <input type="submit" id="inquiry-send" value="Send">
+            </form>
+    </div>
+    @endif
+
+
+    <input type="hidden" id="send_enquiry_url" value="{{route('sendEnquiry')}}">
     <div class="copyright-wrapper">
       <div class="copyright-wrapper-inner"> © {{date('Y')}}
         <a href="{{url('/')}}" target="_blank">
