@@ -111,8 +111,19 @@
                     <label for="exampleInputEmail1">Company phone Number</label>
                     <div class="input-group input-group-lg col-md-12">
                         <div class="input-group-prepend  col-md-12">
-                            <select class="form-control col-md-3" name="country_code">
-                                <option value="+91">India(+91)</option>
+                          <?php
+                            $countryData = file_get_contents(url('public/country-tel-code.json'));
+                            $countryData = json_decode($countryData, true);
+                          ?>
+                          <select class="form-control col-md-3" name="country_code" id="country_code">
+                              @if (!empty($countryData))
+                                  @foreach($countryData AS $countryDetail)
+                                <option value="{{$countryDetail['dial_code']}}"
+                                @if($countryDetail['dial_code'] === $companyData->country_code) selected @endif>
+                                {{$countryDetail['name']}} ({{$countryDetail['dial_code']}})
+                              </option>  
+                              @endforeach
+                              @endif
                             </select>
                             <input type="tel" class="form-control" name="company_mobile" value="{{$companyData->company_mobile ?? ''}}">
                         </div>
