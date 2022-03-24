@@ -903,15 +903,23 @@
             <div class="footer-menu-text">ABOUT US</div>
           </a>
         </li>
+        @if($galleryData->count() > 0)
         <li>
           <a class="footer-menu-link" href="#gallery-section">
             <i class="footer-menu-icon fas fa-images" aria-hidden="true"></i>
             <div class="footer-menu-text">GALLERY</div>
           </a>
         </li>
-
-        
-      </ul>
+        @endif
+        @if($userConfigObj->isShowEnquiry == '1')
+        <li>
+            <a class="footer-menu-link" href="#enquiry-section">
+                    <i class="footer-menu-icon fas fa-comment-alt" aria-hidden="true"></i>
+                    <div class="footer-menu-text">ENQUIRY</div>
+                </a>
+            </li>
+          @endif
+    </ul>
     </div>
     <script>
       // Place this code in the head section of your HTML file 

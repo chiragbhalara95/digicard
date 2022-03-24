@@ -47,6 +47,8 @@ Route::namespace('App\Http\Controllers')->group(function() {
     Route::post('contact-us', [App\Http\Controllers\ContactController::class, 'saveContact'])->name('saveContact');
     Route::get('/vc/{slug}', [App\Http\Controllers\FrontWebsiteController::class, 'userVisitCard'])->name('userVisitCard');
     Route::any('saveViewCard/{visitor_id}',[App\Http\Controllers\FrontWebsiteController::class, 'SavePrevCard']);
+    Route::post('/companies/sendEnquiry', [App\Http\Controllers\FrontWebsiteController::class, 'sendEnquiry'])->name('sendEnquiry');
+
 });
 
 Route::middleware(['auth', 'verified', 'check_payment_status'])->namespace('App\Http\Controllers')->group(function() {
@@ -81,8 +83,10 @@ Route::middleware(['auth', 'verified', 'check_payment_status'])->namespace('App\
      Route::post('profile', [App\Http\Controllers\AboutUsController::class, 'storeProfile'])->name('storeProfile');
 
      Route::any('enquiry/list', [App\Http\Controllers\BussinessCard\EnquiryController::class, 'enquiryList']);
-     Route::post('/companies/sendEnquiry', [App\Http\Controllers\FrontWebsiteController::class, 'sendEnquiry'])->name('sendEnquiry');
 
+    Route::get('business/card-theme-selection', [App\Http\Controllers\BussinessCard\ThemeController::class, 'cardThemeSelectView'])->name('business.card-theme-selection');
+    Route::post('business/saveTheme', [App\Http\Controllers\BussinessCard\ThemeController::class, 'saveUserTheme'])->name('business.save-user-theme');
+ 
 });
 
 Route::middleware(['auth', 'verified', 'check_payment_required'])->namespace('App\Http\Controllers')->group(function() {

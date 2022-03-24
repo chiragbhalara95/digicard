@@ -68,12 +68,13 @@ function openShareModal(e, title) {
 }
 
 // Get the <span> element that closes the modal
+/*
 const shareModalClose = document.getElementById('shareModalClose');
 
 // When the user clicks on <span> (x), close the modal
 shareModalClose.onclick = function () {
     shareModal.style.display = 'none';
-};
+};*/
 
 function handleWhatsappShare(e) {
     /*const { value } = document.getElementById('whatsapp-input');
