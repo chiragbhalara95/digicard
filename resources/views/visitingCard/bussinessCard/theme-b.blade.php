@@ -285,7 +285,10 @@
 
 <!-- The image Modal Popup-->
 
-<div id="imageModal" class="modal"> <span class="close" id="imageModalClose">×</span> <img class="modal-content fadeIn" id="img01" alt="">
+<div id="imageModal" class="modal">  
+<span class="button" data-dismiss="modal" aria-label="Close">&times;</span>
+
+ <img class="modal-content fadeIn" id="img01" alt="">
 
   <div id="caption"></div>
 
