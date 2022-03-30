@@ -37,7 +37,7 @@ const captionText = document.getElementById('caption');
 
 function openImageModal(e) {
     imageModal.style.display = 'block';
-    modalImg.src = e.src;
+    document.getElementById('img01').src = e.src;
     //captionText.innerHTML = e.alt;
 }
 

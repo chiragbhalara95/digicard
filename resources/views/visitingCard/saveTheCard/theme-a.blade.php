@@ -264,12 +264,12 @@
                             <h4 class="OccasionTitle" style="">{{$occasionEventDetail->name}}</h4>
                             <p class="Occasiondatetime">
                                 <i class="fa fa-calendar" aria-hidden="true" style="font-size:inherit!important;"></i> {{date("d/m/Y", strtotime($occasionEventDetail->event_time))}} <br />
-                                <i class="fa fa-clock-o" aria-hidden="true" style="font-size:inherit!important;"></i> {{date("h:s A", strtotime($occasionEventDetail->event_time))}}
+                                <i class="fa fa-clock-o" aria-hidden="true" style="font-size:inherit!important;"></i> {{date("h:i A", strtotime($occasionEventDetail->event_time))}}
                             </p>
 
                             <p class="OccasionContent">
-                                <span style="font-weight:bold;">{{$marriageData['boy_name']['value']}}</span><br />
-                                    <a href="http://google.co.in" target="_blank"><i class="fa fa-map-marker" aria-hidden="true" style="font-size:inherit!important;"></i> {{isset($marriageData['venue']['value']) ? $marriageData['venue']['value'] : ''}}</a>
+                                <span style="font-weight:bold;">{{$occasionEventDetail->invite_by}}</span><br />
+                                    <a href="http://google.co.in" target="_blank"><i class="fa fa-map-marker" aria-hidden="true" style="font-size:inherit!important;"></i> {{$occasionEventDetail->address}}</a>
                             </p>
 
                         </div>
@@ -657,6 +657,7 @@
         if ($('#countdown').length) {
             // Set the date we're counting down to
             var countDownDate = new Date({{date("Y", strtotime($marriageData["event_date"]["value"]))}}, {{date("m", strtotime($marriageData["event_date"]["value"]))}}, {{date("d", strtotime($marriageData["event_date"]["value"]))}}, 0,0,0,0);
+            var countDownDate = new Date('{{date("Y", strtotime($marriageData["event_date"]["value"]))}}-{{date("m", strtotime($marriageData["event_date"]["value"]))}}-{{date("d", strtotime($marriageData["event_date"]["value"]))}}');
 
             // Update the count down every 1 second
             var x = setInterval(function () {
@@ -703,7 +704,7 @@
                     var number = $('#SendWhatsappNumber').val();
                     number = number.replace("+", "");
                     window.open(
-                      "https://wa.me/" + number + "?text=" + "Hi, " + "%0A%0A" + "I am {{$marriageData['boy_name']['value']}}" + "%0A%0A" + "This is my digital Save the Date. Contact us for any Enquiry." + "%0A%0A" + "{{url("vc/".$userObj->id)}}",
+                      "https://wa.me/" + number + "?text=" + "Hi, " + "%0A%0A" + "I am {{$marriageData['boy_name']['value']}}" + "%0A%0A" + "This is my digital Save the Date. Contact us for any Enquiry." + "%0A%0A" + "{{url("vc/".$userObj->slug)}}",
                       '_tab' // <- This is what makes it open in a new window.
                     );
 

@@ -59,6 +59,15 @@
             </a>
           </li>
 
+          <li class="nav-item">
+            <a href="{{route('business.card-theme-selection')}}" class="nav-link">
+              <i class="nav-icon fa fa-paint-brush"></i>
+              <p>
+                Theme Selection
+              </p>
+            </a>
+          </li>
+
           {{--
           <li class="nav-item">
             <a href="{{route('social-list-view')}}" class="nav-link">
