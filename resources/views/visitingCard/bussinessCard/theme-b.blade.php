@@ -286,7 +286,7 @@
 <!-- The image Modal Popup-->
 
 <div id="imageModal" class="modal">  
-<span class="button" data-dismiss="modal" aria-label="Close">&times;</span>
+<span class="close">&times;</span>
 
  <img class="modal-content fadeIn" id="img01" alt="">
 
@@ -306,6 +306,8 @@
     <script src="{{asset('public/visitingCard/bussinessCard/a/js/script.js')}}"></script>
 
 <script type="text/javascript">
-  
+  $(".close").click(function() {
+    document.getElementById('imageModal').style.display = 'none'
+  })
 </script>
 </body></html>
