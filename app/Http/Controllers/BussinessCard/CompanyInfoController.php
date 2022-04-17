@@ -5,6 +5,7 @@ namespace App\Http\Controllers\BussinessCard;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\CompanyInfoModel;
+use App\Models\User;
 
 class CompanyInfoController extends Controller
 {
@@ -12,8 +13,9 @@ class CompanyInfoController extends Controller
     {
         $userId = auth()->user()->id;
         $companyData = CompanyInfoModel::where('user_id', $userId)->first();
+        $userInfo = User::find($userId);
 
-        return view('user/edit-about', compact('companyData'));
+        return view('user/edit-about', compact('companyData', 'userInfo'));
     }
 
     public function storeCompanyInfo(Request $request)
@@ -23,6 +25,20 @@ class CompanyInfoController extends Controller
         $companyObj = CompanyInfoModel::where('user_id', $userId)->first();
         if (empty($companyObj)) {
             $companyObj = new CompanyInfoModel();
+        }
+
+        $userData = [];
+        if($request->file('profile_pic')!='')
+        {
+            $file             = $request->file('profile_pic');
+            $filename         = $file->getClientOriginalName();
+            $imgname          = date("YmdHis").$filename;
+            $userData['profile_pic'] = "upload/bussiness-card/logo/".$imgname;
+            $destinationPath  = public_path('upload/bussiness-card/logo/');
+            $request->file('profile_pic')->move($destinationPath, $imgname);
+            $userObj = User::find($userId);
+            $userObj->profile_pic = $userData['profile_pic'];
+            $userObj->save();
         }
 
         if ($params['type'] == 'person') {

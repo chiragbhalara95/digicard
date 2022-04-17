@@ -36,7 +36,7 @@
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form action="{{route('store-about-view')}}" method="POST">
+              <form action="{{route('store-about-view')}}" method="POST"  enctype="multipart/form-data">
             @csrf
                 <input type="hidden" name="type" value="person">
                 <div class="card-body">
@@ -55,6 +55,20 @@
                     <label for="exampleInputEmail1">Profession</label>
                     <input type="text" name="company_profession" class="form-control" id="exampleInputEmail1" placeholder="Enter Profession" 
                       value="{{$companyData->company_profession ?? ''}}">
+                  </div>
+
+                  <div class="form-group">
+                    <!-- <label for="customFile">Custom File</label> -->
+                    <label for="exampleInputEmail1">Profile Picture</label>
+
+                    @if(isset($userInfo->profile_pic))
+                    <img src="{{url('public')}}/{{$userInfo->profile_pic}}" width="100px" height="80px">
+                    @endif
+
+                    <div class="custom-file">
+                      <input type="file" class="custom-file-input" id="customFile" name="profile_pic">
+                      <label class="custom-file-label" for="customFile">Choose file</label>
+                    </div>
                   </div>
 
                 </div>
