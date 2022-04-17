@@ -16,6 +16,7 @@ class UserConfigModel extends Model
         'isShowNoOfVisit',
         'isShowEnquiry',
         'isShowfeedback',
+        'aboutLabel'
     ];
 
 }

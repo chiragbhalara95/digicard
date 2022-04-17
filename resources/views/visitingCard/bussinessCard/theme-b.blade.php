@@ -186,7 +186,7 @@
 
 <div class="page-container" id="aboutus">
 
-  <h2 class="section-heading">ABOUT US</h2>
+  <h2 class="section-heading">{{$userConfigObj->aboutLabel}}</h2>
 
 
   <p class="about-txt">{!!$companyInfoData->company_info!!}</p>
@@ -268,7 +268,7 @@
       </a> </li>
 
     <li> <a class="footer-menu-link" href="#aboutus"> <i class="footer-menu-icon fa fa-user"></i>
-      <div class="footer-menu-text">ABOUT US</div>
+      <div class="footer-menu-text">{{$userConfigObj->aboutLabel}}</div>
       </a> </li>
 
         @if($galleryData->count() > 0)
