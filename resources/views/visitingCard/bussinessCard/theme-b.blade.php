@@ -54,17 +54,23 @@
 
     <!-- Card Holder Profile Pic -->
 
-    <div class="profilepic"><img src="{{url('public')}}/{{$companyInfoData->company_logo}}" class="img-responsive" alt=""></div>
+    <div class="companylogo">
+      <img src="{{url('public')}}/{{$companyInfoData->company_logo}}" class="img-responsive" alt="">
+    </div>
 
-    <!-- Card Holder First Name and Last Name -->
+    <div class="companyname bottomborder">{{$companyInfoData->company_name}}</div>
 
-    <div class="name">{{$userObj->name}} <br>
+    <div class="profile">
 
-      <span>{{$companyInfoData->company_profession}} at
+      <div class="profilepic">
+        <img src="{{url('public')}}/{{$companyInfoData->company_logo}}" class="img-responsive" alt="">
+      </div>
 
-      <div class="companyname">{{$companyInfoData->company_name}}</div>
+      <div class="name">{{$userObj->name}} <br>
+        <span>({{$companyInfoData->company_profession}})</span>
+      </div>
+    </div>
 
-      </span></div>
 
     <div class="actionbtn"> <a target="_blank" href="tel:{{$companyInfoData->country_code}}{{$companyInfoData->company_mobile}}"> <i class="fa fa-phone iconbtn"></i> </a> 
       <a target="_blank" href="https://api.whatsapp.com/send?phone={{str_replace('+','',$companyInfoData->country_code)}}{{$companyInfoData->company_mobile}}&text=Got%20reference%20from%20your%20Digital%20vCard.%20Want%20to%20know%20more%20about%20your%20products%20and%20services."> <i class="fa fa-whatsapp iconbtn"></i> </a> 

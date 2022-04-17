@@ -957,3 +957,23 @@ a.share{min-width:80px;}
 .pdf {
     padding-bottom: 0;
 }
+
+
+.name {
+    font-family: 'LatoRegular';
+    margin: 0;
+    color: #333333;
+    font-size: 15px;
+    font-weight: 550;
+    letter-spacing: 0.4px;  text-align:left;
+}
+
+.name span{margin-top: 5px;display: inline; font-style:italic; font-size:12px;}
+
+.profile{display:flex; width:90%;justify-content: center;
+    align-items: center;}
+.profilepic{width: 60px;
+    margin: 10px;
+    border: 1px solid #e5e5e5;
+    height: 60px; border-radius: 50%;
+    overflow: hidden;}
