@@ -63,7 +63,12 @@
     <div class="profile">
 
       <div class="profilepic">
-        <img src="{{url('public')}}/{{$companyInfoData->company_logo}}" class="img-responsive" alt="">
+      @if(!empty($userObj->profile_pic))
+        <img src="{{url('public')}}/{{$userObj->profile_pic}}" class="img-responsive" alt="">
+      @else
+        <img src="{{url('public')}}/upload/user_profile.jpg" class="img-responsive" alt="">
+      @endif
+
       </div>
 
       <div class="name">{{$userObj->name}} <br>
