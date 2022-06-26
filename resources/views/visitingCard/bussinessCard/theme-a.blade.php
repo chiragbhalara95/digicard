@@ -794,11 +794,13 @@
                             </select>
     </div>
                             <div class="col-md-8">
-                              <input type="tel" class="form-control" name="company_mobile" id="company_mobile" placeholder="Enter whatsapp number" value="">
+                              <input type="tel" class="form-control" name="company_mobile" id="company_mobile" placeholder="Enter whatsapp number" value="" pattern="[789][0-9]{9}" title="Please enter valid phone number">
                             </div>
+                            <span id="spnPhoneStatus"></span>
+
 
                     </div>
-                    <div class="row" style="margin-top:10px">                    
+                    <div class="row" style="margin-top:10px">
                       <div class="col-md-12">
                               <a class="whatsapp-button" target="_blank" href="javascript:;" onclick="handleWhatsappShare(this)">
                                 <i class="fab fa-whatsapp" aria-hidden="true"></i>Share on Whatsapp 
@@ -941,6 +943,35 @@
         };
         r.loadSkypeWebSdkAsync(p);
       })(window, document, 'script');
+
+
+
+$('#company_mobile').blur(function(e) {
+   if (validatePhone('company_mobile')) {
+      $('#company_mobile').css('border-color', 'black');
+       $('#spnPhoneStatus').html('');
+       $('#spnPhoneStatus').css('color', 'green');
+       $(".whatsapp-button").css('display', 'inline');
+   }
+   else {
+      $('#company_mobile').css('border-color', 'red');
+      $('#spnPhoneStatus').html('Invalid Phone Number');
+      $('#spnPhoneStatus').css('color', 'red');
+       $(".whatsapp-button").css('display', 'none');
+   }
+});
+
+  function validatePhone(txtPhone) {
+    var a = document.getElementById(txtPhone).value;
+    var filter = /^[+]*[(]{0,1}[0-9]{1,3}[)]{0,1}[-\s\./0-9]*$/g;
+    if (filter.test(a)) {
+        return true;
+    }
+    else {
+        return false;
+    }
+  }
+
     </script>
     <script src="{{asset('public/visitingCard/bussinessCard/a/js/intlTelInput.min.js')}}"></script>
     <script src="{{asset('public/visitingCard/bussinessCard/a/js/utils.min.js')}}"></script>

@@ -113,8 +113,9 @@
                             </select>
     </div>
                             <div class="col-md-8">
-                              <input type="text" class="form-control" name="company_mobile" id="company_mobile" value="" placeholder="Enter whatsapp number">
+                              <input type="text" class="form-control" name="company_mobile" id="company_mobile" value="" placeholder="Enter whatsapp number" pattern="[789][0-9]{9}">
                             </div>
+                            <span id="spnPhoneStatus"></span>
 
                     </div>
                     <div class="row" style="margin-top:10px">                    
@@ -320,5 +321,32 @@
   $(".close").click(function() {
     document.getElementById('imageModal').style.display = 'none'
   })
+
+
+$('#company_mobile').blur(function(e) {
+   if (validatePhone('company_mobile')) {
+      $('#company_mobile').css('border-color', 'black');
+       $('#spnPhoneStatus').html('');
+       $('#spnPhoneStatus').css('color', 'green');
+       $(".whatsapp-btn").css('display', 'inline');
+   }
+   else {
+      $('#company_mobile').css('border-color', 'red');
+      $('#spnPhoneStatus').html('Invalid Phone Number');
+      $('#spnPhoneStatus').css('color', 'red');
+       $(".whatsapp-btn").css('display', 'none');
+   }
+});
+
+  function validatePhone(txtPhone) {
+    var a = document.getElementById(txtPhone).value;
+    var filter = /^[+]*[(]{0,1}[0-9]{1,3}[)]{0,1}[-\s\./0-9]*$/g;
+    if (filter.test(a)) {
+        return true;
+    }
+    else {
+        return false;
+    }
+  }
 </script>
 </body></html>
