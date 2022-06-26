@@ -23,7 +23,7 @@
 
 
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
-<link href="{{asset('public/visitingCard/bussinessCard/b/css/template5.css')}}" rel="stylesheet">
+<link href="{{asset('public/visitingCard/bussinessCard/b/css/template5.css')}}?date={{date('YmdHis')}}" rel="stylesheet">
 <!--<link href="{{asset('public/visitingCard/bussinessCard/b/css/font-awesome.min.css')}}" rel="stylesheet">-->
 <link href="{{asset('public/visitingCard/bussinessCard/b/css/fonts.css')}}" rel="stylesheet">
 <link href="{{asset('public/visitingCard/bussinessCard/a/css/parsely.css')}}" rel="stylesheet">
@@ -49,7 +49,7 @@
 
     @if($userConfigObj->isShowNoOfVisit == '1')
 
-    <div class="views"><i class="fa fa-eye"></i> Views: <b>{{$userObj->no_visit}}</b></div>
+    <div class="views text-white"><i class="fa fa-eye"></i> Views: <b>{{$userObj->no_visit}}</b></div>
     @endif
 
     <!-- Card Holder Profile Pic -->
@@ -58,7 +58,7 @@
       <img src="{{url('public')}}/{{$companyInfoData->company_logo}}" class="img-responsive" alt="">
     </div>
 
-    <div class="companyname bottomborder">{{$companyInfoData->company_name}}</div>
+    <div class="companyname bottomborder text-white">{{$companyInfoData->company_name}}</div>
 
     <div class="profile">
 
@@ -71,8 +71,8 @@
 
       </div>
 
-      <div class="name">{{$userObj->name}} <br>
-        <span>({{$companyInfoData->company_profession}})</span>
+      <div class="name text-white">{{$userObj->name}} <br>
+        <span class="text-white" style="color: white;">@if(!empty($companyInfoData->company_profession)) ({{$companyInfoData->company_profession}}) @endif</span>
       </div>
     </div>
 
@@ -113,7 +113,7 @@
                             </select>
     </div>
                             <div class="col-md-8">
-                              <input type="text" class="form-control" name="company_mobile" id="company_mobile" value="">
+                              <input type="text" class="form-control" name="company_mobile" id="company_mobile" value="" placeholder="Enter whatsapp number">
                             </div>
 
                     </div>

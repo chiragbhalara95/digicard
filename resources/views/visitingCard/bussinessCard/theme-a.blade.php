@@ -794,7 +794,7 @@
                             </select>
     </div>
                             <div class="col-md-8">
-                              <input type="tel" class="form-control" name="company_mobile" id="company_mobile" value="">
+                              <input type="tel" class="form-control" name="company_mobile" id="company_mobile" placeholder="Enter whatsapp number" value="">
                             </div>
 
                     </div>

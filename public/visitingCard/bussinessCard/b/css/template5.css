@@ -291,9 +291,10 @@ a.share{min-width:80px;}
 
 /* Section common classes Starts */
 .main-wrapper {
-    background: background-color: white; 
-  background-image: linear-gradient(white, var(--theme-color)); 
-  background-image:linear-gradient(0deg, var(--theme-color) 0%, var(--theme-color) 30%, rgba(255,255,255,1) 85%)
+    background: var(--theme-color); 
+    background-color: var(--theme-color); 
+  background-image:linear-gradient(0deg, var(--theme-color) 0%, rgba(28, 83, 101, 1) 85%, rgba(28, 83, 101, 1) 10%)
+  background:linear-gradient(0deg, var(--theme-color) 0%, rgba(28, 83, 101, 1) 85%, rgba(28, 83, 101, 1) 10%)
 }
 .section-heading {
     color: var(--theme-color); margin:0 0 20px 0; display:inline-block;
@@ -977,3 +978,8 @@ a.share{min-width:80px;}
     border: 1px solid #e5e5e5;
     height: 60px; border-radius: 50%;
     overflow: hidden;}
+
+
+.text-white {
+    color:white !important;
+}
