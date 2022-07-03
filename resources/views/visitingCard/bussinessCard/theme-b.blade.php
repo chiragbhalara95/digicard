@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html style="--theme-color:#034054; --theme-color-light:#03405460;"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0 minimal-ui">
 <title>{{$companyInfoData->company_name}}</title>
 
 <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0 minimal-ui">
-<title>{{$companyInfoData->company_name}}</title>
+<meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0 minimal-ui">
 <meta property="og:title" content="{{$companyInfoData->company_name}}">
 <meta name="description" content="{{$companyInfoData->company_info}}">
 <meta property="og:description" content="{{$companyInfoData->company_info}}">
@@ -14,6 +13,7 @@
 <meta property="og:type" content="website">
 <meta property="og:image:width" content="800">
 <meta property="og:image:height" content="800">
+
 <link rel="canonical" href="{{url('vc')}}/{{$userObj->slug}}">
 <link rel="alternate" hreflang="en-IN" href="{{url('vc')}}/{{$userObj->slug}}">
 <link rel="alternate" hreflang="en-IN" href="{{url('vc')}}/{{$userObj->slug}}">
@@ -78,7 +78,8 @@
 
 
     <div class="actionbtn"> <a target="_blank" href="tel:{{$companyInfoData->country_code}}{{$companyInfoData->company_mobile}}"> <i class="fa fa-phone iconbtn"></i> </a> 
-      <a target="_blank" href="https://api.whatsapp.com/send?phone={{str_replace('+','',$companyInfoData->country_code)}}{{$companyInfoData->company_mobile}}&text=Got%20reference%20from%20your%20Digital%20vCard.%20Want%20to%20know%20more%20about%20your%20products%20and%20services."> <i class="fa fa-whatsapp iconbtn"></i> </a> 
+      <a target="_blank" href="https://api.whatsapp.com/send?phone={{str_replace('+','',$companyInfoData->country_code)}}{{$companyInfoData->company_mobile}}&text=Got%20reference%20from%20your%20Digital%20vCard.%20Want%20to%20know%20more%20about%20your%20products%20and%20services."> <i class="fa fa-whatsapp iconbtn"></i> </a>
+
       @if (!empty($companyInfoData->company_address))
       <a target="_blank" href="https://maps.google.com?q={{$companyInfoData->latitude}},{{$companyInfoData->longitude}}&z=12&amp;um=1&amp;ie=UTF-8&amp;sa=X&amp;ved=2ahUKEwiWyNX76N3qAhWrzTgGHQuCBicQ_AUoAXoECCMQAw"> <i class="fa fa-map-marker iconbtn"></i> </a> 
       @endif
@@ -113,7 +114,7 @@
                             </select>
     </div>
                             <div class="col-md-8">
-                              <input type="text" class="form-control" name="company_mobile" id="company_mobile" value="" placeholder="Enter whatsapp number" pattern="[789][0-9]{9}">
+                              <input type="text" class="form-control" name="company_mobile" id="company_mobile" value="" placeholder="Enter Whatsapp number">
                             </div>
                             <span id="spnPhoneStatus"></span>
 
@@ -143,7 +144,14 @@
 
           <td><a target="_blank" href="tel:{{$companyInfoData->country_code}}{{$companyInfoData->company_mobile}}"> <i class="fa fa-phone contact-icon"></i> </a></td>
 
-          <td><a target="_blank" href="tel:{{$companyInfoData->country_code}}{{$companyInfoData->company_mobile}}" class="contact-text"> {{$companyInfoData->country_code}}{{$companyInfoData->company_mobile}}</a></td>
+          <td><a target="_blank" href="tel:{{$companyInfoData->country_code}}{{$companyInfoData->company_mobile}}" class="contact-text"> {{$companyInfoData->country_code}}{{$companyInfoData->company_mobile}}</a>
+        @if(!empty($companyInfoData->country_landline))
+        <br/>
+        <a target="_blank" href="tel:{{$companyInfoData->country_landline}}" class="contact-text">
+          {{$companyInfoData->country_landline}} </a>
+        @endif
+
+          </td>
 
         </tr>
 
@@ -305,6 +313,9 @@
   <div id="caption"></div>
 
 </div>
+
+<!-- The image Modal Popup END-->
+
     <input type="hidden" id="send_enquiry_url" value="{{route('sendEnquiry')}}">
 
     <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>

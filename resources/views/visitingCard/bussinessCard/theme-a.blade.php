@@ -843,6 +843,8 @@
           @foreach($galleryData as $galleryDetail)
             <div class="image-wrapper">
                 <img onclick="openImageModal(this)" alt="Demo Company" src="{{URL::asset('public/upload/product/'.$galleryDetail->head_image)}}" style="width:100%">
+
+              <span class="pricing-currency text-white">INR</span> <span class="pricing-price text-red">{{$galleryDetail->mrp_price}}</span> <span class="pricing-period text-white">/ Year.</span>
             </div>
           @endforeach
           </div>
