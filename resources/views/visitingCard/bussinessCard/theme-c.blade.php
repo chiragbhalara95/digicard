@@ -189,27 +189,38 @@
 
       <tr>
 
-          <td><a href="mailto:edesignguru@gmail.com"> <i class="fa fa-envelope inside-icon yellow"></i> </a></td>
+          <td><a href="mailto:{{$userObj->email}}"> <i class="fa fa-envelope inside-icon yellow"></i> </a></td>
 
-          <td><a href="mailto:edesignguru@gmail.com" class="contact-text"> edesignguru@gmail.com </a></td>
+          <td><a href="mailto:{{$userObj->email}}" class="contact-text"> {{$userObj->email}} </a></td>
 
         </tr>
 
+        @if(!empty($companyInfoData->company_website))
         <tr>
 
-          <td><a target="_blank" href="http://www.edesignguru.com/"> <i class="fa fa-globe inside-icon green"></i> </a></td>
+          <td><a target="_blank" href="{{$companyInfoData->company_website}}"> <i class="fa fa-globe inside-icon green"></i> </a></td>
 
-          <td><a target="_blank" href="http://www.edesignguru.com/" class="contact-text"> http://www.edesignguru.com/ </a></td>
+          <td><a target="_blank" href="{{$companyInfoData->company_website}}" class="contact-text"> {{$companyInfoData->company_website}} </a></td>
 
         </tr>
+        @endif
+
 
         <tr>
-
-          <td><a target="_blank" href="tel:9825222824"> <i class="fa fa-phone inside-icon red"></i> </a></td>
-
-          <td><a target="_blank" href="tel:9825222824" class="contact-text"> +91 98252 22824 </a></td>
-
-        </tr>
+                <td>
+                  <a target="_blank" href="tel:{{$companyInfoData->country_code}}{{$companyInfoData->company_mobile}}   ">
+                  <i class="fa fa-phone inside-icon red"></i>
+                  </a>
+                </td>
+                <td>
+                  <a target="_blank" href="tel:{{$companyInfoData->country_code}}{{$companyInfoData->company_mobile}}" class="contact-action-container-text"> {{$companyInfoData->country_code}}{{$companyInfoData->company_mobile}} </a>
+                  @if(!empty($companyInfoData->country_landline))
+                  <br/>
+                  <a target="_blank" href="tel:{{$companyInfoData->country_landline}}" class="contact-action-container-text">
+                    {{$companyInfoData->country_landline}} </a>
+                  @endif
+                </td>
+              </tr>
 
       </tbody>
 
@@ -225,84 +236,17 @@
 
   <h2 class="section-heading">ABOUT US</h2>
 
-  <table class="about-tbl">
+      <div class="about-us-text">
+        <div style="text-align: justify;">{!!$companyInfoData->company_info!!}</div>
+      </div>
 
-    <tbody>
 
-      <tr>
 
-        <td class="td-label"><h3>Company Name</h3></td>
-
-        <td>:</td>
-
-        <td> eDesignGuru </td>
-
-      </tr>
-
-      <tr>
-
-        <td class="td-label"><h3>Year of Est.</h3></td>
-
-        <td>:</td>
-
-        <td> 2013 </td>
-
-      </tr>
-
-      <tr>
-
-        <td class="td-label"><h3>Nature of Business</h3></td>
-
-        <td>:</td>
-
-        <td> Website Design &amp; Development </td>
-
-      </tr>
-
-    </tbody>
-
-  </table>
-
-  <p class="about-txt">eDesignGuru is a leading Website Design and Development company. We are located in Ahmedabad, Gujarat, India. Making attractive and easy to use websites has always been our main planning. We provide specialized services in wide range of Website Design and Development, Graphic Design, Logo Design and Branding, Digital Marketing, Search Engine Optimization (SEO), Digital Business Card and much more.</p>
-
-  <h3>Our Services :</h3>
-
-  <ul class="unorderedList">
-
-    <li>Website Design &amp; Development</li>
-
-    <li>Graphic Design</li>
-
-    <li>Logo Design &amp; Branding</li>
-
-    <li>Digital Marketing</li>
-
-    <li>Digital Business Card</li>
-
-  </ul>
   
-  <div class="other-links-wrapper">
 
-        <h3 class="other-links-header">Other Links :</h3>
 
-           <a class="other-links-link" href="javascript:void(0);"><i class="fa fa-external-link"></i> https://www.justdial.com/</a>
-
-           <a class="other-links-link" href="javascript:void(0);"><i class="fa fa-external-link"></i> https://www.indiamart.com/</a>
-
-  </div>
-
-  <h3>Documents</h3>
-
-  <a class="download" href="https://www.virtualbusinesscard.in/images/eDesignGuru%20Flyer.pdf" download="">
-
-  <div class="pdf-icon"><i class="fa fa-file-pdf-o"></i></div>
-
-  <div class="pdf-number">eDesignGuru Flyer.pdf</div>
-
-  <div class="download-icon"><i class="fa fa-download"></i></div>
-
-  </a> </div>
-
+</div>
+{{--
 <div class="page-container" id="products-services">
 
   <h2 class="section-heading">Services</h2>
@@ -392,6 +336,8 @@
   </div>
 
 </div>
+--}}
+{{--
 
 <div class="page-container" id="payment">
 
@@ -520,6 +466,7 @@
   </div>
 
 </div>
+--}}
 
 <div class="page-container" id="photogallery">
 
@@ -529,20 +476,19 @@
 
   <div class="images-container">
 
-    <div class="image-wrapper"> <img onclick="openImageModal(this)" alt="" src="./Digital Business Card _ Virtual Business Card_files/gallery1.jpg" style="width:100%"> </div>
+  @foreach($galleryData as $galleryDetail)
+            <div class="image-wrapper">
+                <img onclick="openImageModal(this)" alt="Demo Company" src="{{URL::asset('public/upload/product/'.$galleryDetail->head_image)}}" style="width:100%">
 
-    <div class="image-wrapper"> <img onclick="openImageModal(this)" alt="" src="./Digital Business Card _ Virtual Business Card_files/gallery2.jpg" style="width:100%"> </div>
-
-    <div class="image-wrapper"> <img onclick="openImageModal(this)" alt="" src="./Digital Business Card _ Virtual Business Card_files/gallery3.jpg" style="width:100%"> </div>
-
-    <div class="image-wrapper"> <img onclick="openImageModal(this)" alt="" src="./Digital Business Card _ Virtual Business Card_files/gallery4.jpg" style="width:100%"> </div>
-
-    <div class="image-wrapper"> <img onclick="openImageModal(this)" alt="" src="./Digital Business Card _ Virtual Business Card_files/gallery5.jpg" style="width:100%"> </div>
-
+              <span class="pricing-currency text-white">INR</span> <span class="pricing-price text-red">{{$galleryDetail->mrp_price}}</span> <span class="pricing-period text-white">/ Year.</span>
+            </div>
+          @endforeach
+ 
   </div>
 
 </div>
 
+{{--
 <div class="page-container" id="videogallery">
 
   <h2 class="section-heading">Videos</h2>
@@ -563,7 +509,8 @@
   <div class="section-close"></div>
 
 </div>
-
+--}}
+{{--
 <div class="page-container" id="feedback">
 
   <h2 class="section-heading">Feedbacks</h2>
@@ -592,7 +539,8 @@
 
   </div>
 
-  <form class="feedback-form card" novalidate="">
+
+<form class="feedback-form card" novalidate="">
 
     <div class="feedback-form-heading">Give Feedback</div>
 
@@ -621,14 +569,17 @@
   </form>
 
 </div>
+--}}
+@if($userConfigObj->isShowEnquiry == '1')
 
 <div class="page-container" id="enquiry">
 
   <h2 class="section-heading">ENQUIRY FORM</h2>
 
-  <form class="enquiry-form" novalidate="">
+  <form data-parsley-validate="" method="post" class="enquiry-form" id="enquiry-form" novalidate="">
+  <meta name="csrf_token" content="{{ csrf_token() }}" />
 
-    <input type="text" name="enquiryName" id="enquiryName" placeholder="Enter Full Name">
+  <input type="text" name="enquiryName" data-parsley-trigger="change" id="enquiryName" placeholder="Enter Full Name" pattern="[a-zA-Z ]*$" required=""><br>
 
     <br>
 
@@ -636,7 +587,7 @@
 
       <div class="enquiry-phoneNumber">
 
-        <input type="text" name="phoneNumber" id="phoneNumber" placeholder="Enter Phone Number">
+      <input type="text" data-parsley-length-message="Contact should have (4-10) digits." data-parsley-type-message="Contact should have only digits." data-parsley-type="number" data-parsley-length="[4, 10]" name="phoneNumber" id="phoneNumber" required="" placeholder="Enter Phone Number"><br>
 
         <br>
 
@@ -644,7 +595,7 @@
 
       <div class="enquiry-email">
 
-        <input type="text" name="email" id="email" placeholder="Enter Email">
+      <input type="email" name="email" id="email" data-parsley-trigger="change" placeholder="Enter Email"><br>
 
         <br>
 
@@ -652,21 +603,27 @@
 
     </div>
 
-    <textarea name="message" id="message" placeholder="Enter Message"></textarea>
+    <textarea name="message" id="message" required="" placeholder="Enter Message"></textarea><br>
+    <input type="hidden" id="companyEmail" value="admin.admin@gmail.com">
+                <input type="submit" id="inquiry-send" value="Send">
 
     <br>
 
-    <input type="submit" value="Sending..." onclick="sendEnquiry(this, &#39;edesignguru@gmail.com&#39;)" disabled="">
 
   </form>
 
 </div>
 
-<div class="copyright">
+<input type="hidden" id="send_enquiry_url" value="{{route('sendEnquiry')}}">
+@endif
 
-  <div class="copyright-inner"> © 2022 <a href="http://www.virtualbusinesscard.in/" target="_blank">www.virtualbusinesscard.in</a> </div>
-
-</div>
+<div class="copyright-wrapper">
+      <div class="copyright-wrapper-inner"> © {{date('Y')}}
+        <a href="{{url('/')}}" target="_blank">
+          <b>{{url('/')}}</b>
+        </a>.
+      </div>
+    </div>
 
 
 
@@ -676,49 +633,55 @@
 
   <ul class="footer-menu">
 
-    <li> <a class="footer-menu-link red" href="https://www.virtualbusinesscard.in/template7#home"> <i class="footer-menu-icon fa fa-home"></i>
+    <li> <a class="footer-menu-link red" href="#home"> <i class="footer-menu-icon fa fa-home"></i>
 
       <div class="footer-menu-text">HOME</div>
 
       </a> </li>
 
-    <li> <a class="footer-menu-link green" href="https://www.virtualbusinesscard.in/template7#aboutus"> <i class="footer-menu-icon fa fa-user"></i>
+    <li> <a class="footer-menu-link green" href="#aboutus"> <i class="footer-menu-icon fa fa-user"></i>
 
       <div class="footer-menu-text">ABOUT US</div>
 
       </a> </li>
-
-    <li> <a class="footer-menu-link blue" href="https://www.virtualbusinesscard.in/template7#products-services"> <i class="footer-menu-icon fa fa-shopping-cart"></i>
+{{--
+    <li> <a class="footer-menu-link blue" href="#products-services"> <i class="footer-menu-icon fa fa-shopping-cart"></i>
 
       <div class="footer-menu-text">PRODUCTS</div>
 
       </a> </li>
-
-    <li> <a class="footer-menu-link yellow" href="https://www.virtualbusinesscard.in/template7#payment"> <i class="footer-menu-icon fa fa-inr"></i>
+      --}}
+  {{-- 
+    <li> <a class="footer-menu-link yellow" href="#payment"> <i class="footer-menu-icon fa fa-inr"></i>
 
       <div class="footer-menu-text">PAYMENT</div>
 
       </a> </li>
+      --}}
+      @if($galleryData->count() > 0)
 
-    <li> <a class="footer-menu-link navyblue" href="https://www.virtualbusinesscard.in/template7#photogallery"> <i class="footer-menu-icon fa fa-picture-o"></i>
+      <li> <a class="footer-menu-link navyblue" href="#photogallery"> <i class="footer-menu-icon fa fa-picture-o"></i>
 
       <div class="footer-menu-text">GALLERY</div>
 
       </a> </li>
-
-    <li> <a class="footer-menu-link purple" href="https://www.virtualbusinesscard.in/template7#videogallery"> <i class="footer-menu-icon fa fa-youtube-square"></i>
+      @endif
+{{--
+    <li> <a class="footer-menu-link purple" href="videogallery"> <i class="footer-menu-icon fa fa-youtube-square"></i>
 
       <div class="footer-menu-text">VIDEOS</div>
 
       </a> </li>
-
-    <li> <a class="footer-menu-link seagreen" href="https://www.virtualbusinesscard.in/template7#feedback"> <i class="footer-menu-icon fa fa-star-half-o"></i>
+      --}}
+{{--
+    <li> <a class="footer-menu-link seagreen" href="#feedback"> <i class="footer-menu-icon fa fa-star-half-o"></i>
 
       <div class="footer-menu-text">FEEDBACK</div>
 
       </a> </li>
 
-    <li> <a class="footer-menu-link orange" href="https://www.virtualbusinesscard.in/template7#enquiry"> <i class="footer-menu-icon fa fa-comments"></i>
+      --}}
+    <li> <a class="footer-menu-link orange" href="#enquiry"> <i class="footer-menu-icon fa fa-comments"></i>
 
       <div class="footer-menu-text">ENQUIRY</div>
 
