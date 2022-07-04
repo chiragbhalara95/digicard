@@ -30,6 +30,12 @@
 
 <link href="{{asset('public/visitingCard/bussinessCard/a/css/jquery-confirm.css')}}" rel="stylesheet">
 
+<style type="text/css">
+    .purchase-form__renewal-price--strikethrough {
+        text-decoration: line-through;
+        color: red;
+    }
+</style>
 <script>
     document.documentElement.style.setProperty('--theme-color', '#e91e63');
     document.documentElement.style.setProperty('--theme-color-light', '#6d126f70');
@@ -483,7 +489,23 @@
             <div class="image-wrapper">
                 <img onclick="openImageModal(this)" alt="Demo Company" src="{{URL::asset('public/upload/product/'.$galleryDetail->head_image)}}" style="width:100%">
 
-              <span class="pricing-currency text-white">INR</span> <span class="pricing-price text-red">{{$galleryDetail->mrp_price}}</span> <span class="pricing-period text-white">/ Year.</span>
+                @if ($galleryDetail->special_price > 0)
+                    <span class="purchase-form__price purchase-form__price--before-after-price t-heading -size-xs h-pull-right">
+                            <span class="js-renewal__price t-currency purchase-form__renewal-price purchase-form__renewal-price--strikethrough">₹{{$galleryDetail->mrp_price}}</span>
+
+                          <b class="t-currency">
+                            <span class="js-support__price">₹{{$galleryDetail->special_price}}</span>
+                          </b>
+                        </span>
+                @elseif ($galleryDetail->mrp_price > 0)
+                    <span class="purchase-form__price purchase-form__price--before-after-price t-heading -size-xs h-pull-right">
+
+                          <b class="t-currency">
+                            <span class="js-support__price">₹{{$galleryDetail->mrp_price}}</span>
+                          </b>
+                        </span>
+
+                @endif
             </div>
           @endforeach
  
