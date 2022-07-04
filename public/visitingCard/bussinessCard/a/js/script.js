@@ -110,6 +110,7 @@ function handleDirectWhatsappShare(e) {
     e.href = `https:\/\/wa.me/91${document.getElementById('whatsapp-input').value}?text=${window.location.href}`;
 }*/
 function sendEnquiry() {
+
     let ele = document.getElementById('inquiry-send');
     ele.value = 'Sending...';
     ele.disabled = true;
@@ -127,7 +128,6 @@ function sendEnquiry() {
     data.message = message.value;
     data.slug = slug.value;
     data._token = $('meta[name="csrf_token"]').attr('content');
-
     const xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function () {
         if (this.readyState === 4) {

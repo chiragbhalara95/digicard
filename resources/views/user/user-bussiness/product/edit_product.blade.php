@@ -57,7 +57,7 @@
                 --}}
 
                 <div class="form-group">
-                    <label class="control-label">Description<span class="text-danger">*</span></label>
+                    <label class="control-label">Description</label>
                     <textarea name="description" class="form-control"><?php echo $data->description; ?></textarea>
                 </div>
                 <div class="form-group">
@@ -66,13 +66,13 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label">Mrp Price<span class="text-danger">*</span></label>
-                    <input type="number" required name="mrp_price" class="form-control" placeholder="Enter MRP" step="0.01" min="0" value="{{$data->mrp_price}}">
+                    <label class="control-label">Mrp Price</label>
+                    <input type="number" name="mrp_price" class="form-control" placeholder="Enter MRP" step="0.01" min="0" value="{{$data->mrp_price}}">
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label">Special Price<span class="text-danger">*</span></label>
-                    <input type="number" required name="special_price" class="form-control" placeholder="Enter Special Price" step="0.01" min="0" value="{{$data->special_price}}">
+                    <label class="control-label">Special Price</label>
+                    <input type="number" name="special_price" class="form-control" placeholder="Enter Special Price" step="0.01" min="0" value="{{$data->special_price}}">
                 </div>
 
                 <div class="form-group">

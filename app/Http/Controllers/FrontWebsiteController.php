@@ -133,15 +133,15 @@ class FrontWebsiteController extends BasicController
 
     public function SavePrevCard(Request $request, $visitor_id)
     {
-        $userInfo = \DB::table('users')->where('slug', $visitor_id)->first();
-        $userId = $userInfo->id;
-        $companyInfo = \DB::table('company_info')->where('user_id', $userId)->first();
-        $name = $userInfo->name;
-        $company_name= $companyInfo->company_name;
-        $email= $userInfo->email;
-        $mobile_no= $companyInfo->country_code.$companyInfo->company_mobile;
-        $landline_no= $companyInfo->country_landline;
-        $vistiURL = url('vc/').'/'.$userInfo->slug;
+        $userInfo     = \DB::table('users')->where('slug', $visitor_id)->first();
+        $userId       = $userInfo->id;
+        $companyInfo  = \DB::table('company_info')->where('user_id', $userId)->first();
+        $name         = $userInfo->name;
+        $company_name = $companyInfo->company_name;
+        $email        = $userInfo->email;
+        $mobile_no    = $companyInfo->country_code.$companyInfo->company_mobile;
+        $landline_no  = $companyInfo->country_landline;
+        $vistiURL     = url('vc/').'/'.$userInfo->slug;
 
         header('Content-Type: text/x-vcard');  
         header('Content-Disposition: inline; filename= "'.$name.'.vcf"');  
@@ -158,18 +158,18 @@ class FrontWebsiteController extends BasicController
         if($mobile_no){
             $vCard .= "TEL;TYPE=work,voice:" . $mobile_no . "\r\n"; 
         }
-        
+
         if ($landline_no) {
             $vCard .= "TEL;TYPE=work,voice:" . $landline_no . "\r\n";   
         }
-        
+
         if ($vistiURL) {
             $vCard .= "URL:" . $vistiURL . "\r\n";   
             //$vCard .= "NOTE:" . $vistiURL . "\r\n";
         }
 
         $vCard .= "END:VCARD\r\n";
-        
+
         echo $vCard;
     }
 

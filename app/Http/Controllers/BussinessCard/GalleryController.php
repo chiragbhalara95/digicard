@@ -112,7 +112,7 @@ class GalleryController extends Controller
 
         if($request->file('head_image')!='')
       {
-          $data=DB::table('gallery')->where('product_id','=',$product_id)->value('head_image');
+          $data=DB::table('gallery')->where('id','=',$product_id)->value('head_image');
           $fullpath=public_path('upload/product/').$data;
           File::delete($fullpath);
           

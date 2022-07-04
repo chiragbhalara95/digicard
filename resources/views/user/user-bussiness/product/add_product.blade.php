@@ -85,8 +85,8 @@
                 --}}
                 
                 <div class="form-group">
-                    <label class="control-label">Description<span class="text-danger">*</span></label>
-                    <textarea name="description" placeholder="Description" required class="form-control"></textarea>
+                    <label class="control-label">Description</label>
+                    <textarea name="description" placeholder="Description" class="form-control"></textarea>
                 </div>
                 <div class="form-group">
                     <label class="control-label">Gallery Link (Use - https OR http://)</label>
@@ -94,13 +94,13 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label">Mrp Price<span class="text-danger">*</span></label>
-                    <input type="number" required name="mrp_price" class="form-control" placeholder="Enter MRP" step="0.01" min="0">
+                    <label class="control-label">Mrp Price</label>
+                    <input type="number" name="mrp_price" class="form-control" placeholder="Enter MRP" step="0.01" min="0">
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label">Special Price<span class="text-danger">*</span></label>
-                    <input type="number" required name="special_price" class="form-control" placeholder="Enter Special Price" step="0.01" min="0">
+                    <label class="control-label">Special Price</label>
+                    <input type="number" name="special_price" class="form-control" placeholder="Enter Special Price" step="0.01" min="0">
                 </div>
 
                 <div class="form-group">
