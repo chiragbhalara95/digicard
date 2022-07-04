@@ -30,6 +30,12 @@
 <link href="{{asset('public/visitingCard/bussinessCard/a/css/jquery-confirm.css')}}" rel="stylesheet">
 <link rel="stylesheet" href="{{asset('public/visitingCard/bussinessCard/a/css/intlTelInput.min.css')}}">
 
+<style type="text/css">
+    .purchase-form__renewal-price--strikethrough {
+        text-decoration: line-through;
+        color: red;
+    }
+</style>
 
 <script>
 
@@ -214,7 +220,26 @@
   <div class="images-container">
     @foreach($galleryData as $galleryDetail)
 
-    <div class="image-wrapper"> <img onclick="openImageModal(this)" alt="" src="{{URL::asset('public/upload/product/'.$galleryDetail->head_image)}}" style="width:100%"> </div>
+    <div class="image-wrapper"> <img onclick="openImageModal(this)" alt="" src="{{URL::asset('public/upload/product/'.$galleryDetail->head_image)}}" style="width:100%"> 
+                @if ($galleryDetail->special_price > 0)
+                    <span class="purchase-form__price purchase-form__price--before-after-price t-heading -size-xs h-pull-right">
+                            <span class="js-renewal__price t-currency purchase-form__renewal-price purchase-form__renewal-price--strikethrough">₹{{$galleryDetail->mrp_price}}</span>
+
+                          <b class="t-currency">
+                            <span class="js-support__price">₹{{$galleryDetail->special_price}}</span>
+                          </b>
+                        </span>
+                @elseif ($galleryDetail->mrp_price > 0)
+                    <span class="purchase-form__price purchase-form__price--before-after-price t-heading -size-xs h-pull-right">
+
+                          <b class="t-currency">
+                            <span class="js-support__price">₹{{$galleryDetail->mrp_price}}</span>
+                          </b>
+                        </span>
+
+                @endif
+
+    </div>
 
     @endforeach
 
