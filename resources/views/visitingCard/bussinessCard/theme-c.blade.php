@@ -27,6 +27,9 @@
 <link href="{{asset('public/visitingCard/bussinessCard/c/css/star-rating.css')}}" rel="stylesheet">
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
 
+
+<link href="{{asset('public/visitingCard/bussinessCard/a/css/jquery-confirm.css')}}" rel="stylesheet">
+
 <script>
     document.documentElement.style.setProperty('--theme-color', '#e91e63');
     document.documentElement.style.setProperty('--theme-color-light', '#6d126f70');
@@ -540,7 +543,7 @@
   </div>
 
 
-<form class="feedback-form card" novalidate="">
+<form class="feedback-form card" novalidate="" id="feedback-form">
 
     <div class="feedback-form-heading">Give Feedback</div>
 
@@ -578,6 +581,8 @@
 
   <form data-parsley-validate="" method="post" class="enquiry-form" id="enquiry-form" novalidate="">
   <meta name="csrf_token" content="{{ csrf_token() }}" />
+  @csrf
+  <input type="hidden" name="slug" id="slug" value="{{$userObj->slug}}">
 
   <input type="text" name="enquiryName" data-parsley-trigger="change" id="enquiryName" placeholder="Enter Full Name" pattern="[a-zA-Z ]*$" required=""><br>
 
@@ -614,7 +619,6 @@
 
 </div>
 
-<input type="hidden" id="send_enquiry_url" value="{{route('sendEnquiry')}}">
 @endif
 
 <div class="copyright-wrapper">
@@ -713,7 +717,7 @@
 
     <div class="share-form-buttons-container">
 
-      <div class="share-btn-heading"> <img src="./Digital Business Card _ Virtual Business Card_files/tild-arrow.svg" class="share-btn-arrow" alt="">
+      <div class="share-btn-heading"> <img src="{{url('public/visitingCard/bussinessCard/c/img/tild-arrow.svg')}}" class="share-btn-arrow" alt="">
 
         <div class="share-btn-heading-text">Share my Virtual Business Card in your network.</div>
 
@@ -750,6 +754,7 @@
 <input type="hidden" id="send_enquiry_url" value="{{route('sendEnquiry')}}">
 
 <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="{{asset('public/visitingCard/bussinessCard/a/js/intlTelInput.min.js')}}"></script>
 
 <script src="{{asset('public/visitingCard/bussinessCard/a/js/jquery.min.js')}}"></script>
 <script src="{{asset('public/visitingCard/bussinessCard/a/js/jquery-confirm.js')}}"></script>
