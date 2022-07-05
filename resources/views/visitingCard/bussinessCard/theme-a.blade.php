@@ -51,7 +51,15 @@
       document.documentElement.style.setProperty('--theme-color-dark2', ColorLuminance('#2196f3', -0.40));
       document.documentElement.style.setProperty('--theme-color-dark3', ColorLuminance('#2196f3', -0.60));
     </script>
-    <script>
+
+<style type="text/css">
+    .purchase-form__renewal-price--strikethrough {
+        text-decoration: line-through;
+        color: red;
+    }
+</style>
+
+<script>
       var dynamicManifest = {
         "name": "Demo Company",
         "short_name": "Demo Company",
@@ -842,9 +850,34 @@
         <div class="images-container">
           @foreach($galleryData as $galleryDetail)
             <div class="image-wrapper">
-                <img onclick="openImageModal(this)" alt="Demo Company" src="{{URL::asset('public/upload/product/'.$galleryDetail->head_image)}}" style="width:100%">
+            <h3 class="text text-center" style="text-align:center;">{{$galleryDetail->title}}</h3>
 
-              <span class="pricing-currency text-white">INR</span> <span class="pricing-price text-red">{{$galleryDetail->mrp_price}}</span> <span class="pricing-period text-white">/ Year.</span>
+              <img onclick="openImageModal(this)" alt="Demo Company" src="{{URL::asset('public/upload/product/'.$galleryDetail->head_image)}}" style="width:100%">
+                @if ($galleryDetail->special_price > 0 && $galleryDetail->mrp_price > $galleryDetail->special_price)
+                    <span class="purchase-form__price purchase-form__price--before-after-price t-heading -size-xs h-pull-right">
+                            <span class="js-renewal__price t-currency purchase-form__renewal-price purchase-form__renewal-price--strikethrough">₹{{$galleryDetail->mrp_price}}</span>
+
+                          <b class="t-currency">
+                            <span class="js-support__price">₹{{$galleryDetail->special_price}}</span>
+                          </b>
+                        </span>
+                @elseif ($galleryDetail->mrp_price > 0)
+                    <span class="purchase-form__price purchase-form__price--before-after-price t-heading -size-xs h-pull-right">
+
+                          <b class="t-currency">
+                            <span class="js-support__price">₹{{$galleryDetail->mrp_price}}</span>
+                          </b>
+                        </span>
+
+                @endif
+
+                @if(!empty($galleryDetail->links))
+                  <a href="{{$galleryDetail->links}}" target="_blank" class="btn btn-sm btn-warning">Gallery Link</a> 
+                @endif
+                @if(!empty($galleryDetail->doc_url))
+                  <a href="{{url('public/upload/product-doc')}}/{{$galleryDetail->doc_url}}" target="_blank" class="btn btn-sm  btn-primary" download>Document</a> 
+                @endif
+
             </div>
           @endforeach
           </div>

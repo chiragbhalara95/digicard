@@ -220,8 +220,10 @@
   <div class="images-container">
     @foreach($galleryData as $galleryDetail)
 
-    <div class="image-wrapper"> <img onclick="openImageModal(this)" alt="" src="{{URL::asset('public/upload/product/'.$galleryDetail->head_image)}}" style="width:100%"> 
-                @if ($galleryDetail->special_price > 0)
+    <div class="image-wrapper">
+    <h3 class="text text-center" style="text-align:center;">{{$galleryDetail->title}}</h3>
+    <img onclick="openImageModal(this)" alt="" src="{{URL::asset('public/upload/product/'.$galleryDetail->head_image)}}" style="width:100%"> 
+      @if ($galleryDetail->special_price > 0 && $galleryDetail->mrp_price > $galleryDetail->special_price)
                     <span class="purchase-form__price purchase-form__price--before-after-price t-heading -size-xs h-pull-right">
                             <span class="js-renewal__price t-currency purchase-form__renewal-price purchase-form__renewal-price--strikethrough">₹{{$galleryDetail->mrp_price}}</span>
 
