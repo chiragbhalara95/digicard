@@ -475,6 +475,7 @@
 </div>
 --}}
 
+@if($galleryData->count() > 0)
 <div class="page-container" id="photogallery">
 
   <h2 class="section-heading">GALLERY</h2>
@@ -485,9 +486,10 @@
 
   @foreach($galleryData as $galleryDetail)
             <div class="image-wrapper">
-                <img onclick="openImageModal(this)" alt="Demo Company" src="{{URL::asset('public/upload/product/'.$galleryDetail->head_image)}}" style="width:100%">
+              <h3 class="text text-center" style="text-align:center;">{{$galleryDetail->title}}</h3>
+              <img onclick="openImageModal(this)" alt="Demo Company" src="{{URL::asset('public/upload/product/'.$galleryDetail->head_image)}}" style="width:100%">
 
-                @if ($galleryDetail->special_price > 0)
+              @if ($galleryDetail->special_price > 0 && $galleryDetail->mrp_price > $galleryDetail->special_price)
                     <span class="purchase-form__price purchase-form__price--before-after-price t-heading -size-xs h-pull-right">
                             <span class="js-renewal__price t-currency purchase-form__renewal-price purchase-form__renewal-price--strikethrough">₹{{$galleryDetail->mrp_price}}</span>
 
@@ -504,12 +506,21 @@
                         </span>
 
                 @endif
-            </div>
-          @endforeach
+
+                @if(!empty($galleryDetail->links))
+                  <a href="{{$galleryDetail->links}}" target="_blank" class="btn btn-primary">Gallery Link</a> 
+                @endif
+                @if(!empty($galleryDetail->doc_url))
+                  <a href="{{url('public/upload/product-doc')}}/{{$galleryDetail->doc_url}}" target="_blank" class="btn btn-primary" download>Download Document</a> 
+                @endif
+
+              </div>
+            @endforeach
  
   </div>
 
 </div>
+@endif
 
 {{--
 <div class="page-container" id="videogallery">
