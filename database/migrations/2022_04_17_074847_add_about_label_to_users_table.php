@@ -14,7 +14,7 @@ class AddAboutLabelToUsersTable extends Migration
     public function up()
     {
         Schema::table('user_configure', function (Blueprint $table) {
-            $table->string('aboutLabel', 255)->default('About Us');
+            // $table->string('aboutLabel', 255)->default('About Us');
         });
     }
 
