@@ -44,9 +44,16 @@
                     <input type="text" class="form-control" name="title" value="{{$data->title}}">
                     
                 </div>
-                <div class="form-group">
+                <div class="form-group row">
                     <label class="control-label">Heading Image<span class="text-danger">*</span></label>
-                    <input type="file" class="form-control" name="head_image" accept="image/*">
+                    <div class="col-md-6">
+                        <input type="file" class="form-control" name="head_image" accept="image/*">
+                    </div>
+                    <div class="col-md-6">
+                        @if(!empty($data->head_image))
+                        <img alt="Product Image" src="{{URL::asset('public/upload/product/'.$data->head_image)}}" width="100px" height="70px">
+                        @endif
+                    </div>
                 </div>
                 
                 {{--
@@ -77,6 +84,10 @@
 
                 <div class="form-group">
                     <label class="control-label">Document</label>
+                    @if(!empty($data->doc_url))
+                        <a href="{{url('public/upload/product-doc')}}/{{$data->doc_url}}" target="_blank" class="btn btn-sm btn-primary" download>Download Document</a> 
+                    @endif
+
                     <input type="file" class="form-control" name="document" accept=".doc,.docx,application/msword,.pdf">
                     @error('head_image')
                         <label id="mobile-error" class="error" for="image">

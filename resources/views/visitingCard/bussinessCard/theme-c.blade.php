@@ -487,7 +487,7 @@
   @foreach($galleryData as $galleryDetail)
             <div class="image-wrapper">
               <h3 class="text text-center" style="text-align:center;">{{$galleryDetail->title}}</h3>
-              <img onclick="openImageModal(this)" alt="Demo Company" src="{{URL::asset('public/upload/product/'.$galleryDetail->head_image)}}" style="width:100%">
+              <img onclick="openImageModal(this)" alt="Product Image" src="{{URL::asset('public/upload/product/'.$galleryDetail->head_image)}}" style="width:100%">
 
               @if ($galleryDetail->special_price > 0 && $galleryDetail->mrp_price > $galleryDetail->special_price)
                     <span class="purchase-form__price purchase-form__price--before-after-price t-heading -size-xs h-pull-right">

@@ -75,7 +75,7 @@ Route::middleware(['auth', 'verified', 'check_payment_status'])->namespace('App\
      Route::any('product', [App\Http\Controllers\BussinessCard\GalleryController::class, 'productPage']);
      Route::any('addProduct', [App\Http\Controllers\BussinessCard\GalleryController::class, 'addProductPage']);
      Route::post('productSave', [App\Http\Controllers\BussinessCard\GalleryController::class, 'productStore']);
-     Route::get('productUpdate/{product_id}', [App\Http\Controllers\BussinessCard\GalleryController::class, 'productUpdatePage']);
+     Route::get('product/edit/{product_id}', [App\Http\Controllers\BussinessCard\GalleryController::class, 'productUpdatePage'])->name('productUpdatePage');
      Route::get('productDelete/{product_id}', [App\Http\Controllers\BussinessCard\GalleryController::class, 'productDeleteFormat']);
      Route::post('productEditSave', [App\Http\Controllers\BussinessCard\GalleryController::class, 'productEditStoer']);
 
