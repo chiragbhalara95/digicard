@@ -86,7 +86,13 @@ Route::middleware(['auth', 'verified', 'check_payment_status'])->namespace('App\
 
     Route::get('business/card-theme-selection', [App\Http\Controllers\BussinessCard\ThemeController::class, 'cardThemeSelectView'])->name('business.card-theme-selection');
     Route::post('business/saveTheme', [App\Http\Controllers\BussinessCard\ThemeController::class, 'saveUserTheme'])->name('business.save-user-theme');
- 
+
+    Route::middleware(['auth', 'verified'])->namespace('App\Http\Controllers\SaveTheCard')->prefix('payment-master')->group(function() {
+        Route::get('list', [App\Http\Controllers\BussinessCard\PaymentController::class, 'index'])->name('business.payment-master-list');
+        Route::get('delete/{id}', [App\Http\Controllers\BussinessCard\PaymentController::class, 'deletePaymentMaster'])->name('business.payment-master-delete');
+
+    });
+
 });
 
 Route::middleware(['auth', 'verified', 'check_payment_required'])->namespace('App\Http\Controllers')->group(function() {
