@@ -75,7 +75,7 @@
                                 <td><?php echo $data->links; ?></td>
                                 <td class="text-center">
 
-                                    <a href="{{url('productUpdate',$data->id)}}" class="btn btn-primary"><span class="basic_table_icon" style="font-size: 20px;"><i class="fa fa-pencil" aria-hidden="true"></i>Edit</span></a>
+                                    <a href="{{route('productUpdatePage',$data->id)}}" class="btn btn-primary"><span class="basic_table_icon" style="font-size: 20px;"><i class="fa fa-pencil" aria-hidden="true"></i>Edit</span></a>
 
                                     <a href="{{url('productDelete',$data->id)}}" class="btn btn-danger" onClick="return confirm('Are you sure?');"><span class="basic_table_icon" style="font-size: 20px;"><i class="fa fa-trash-o" aria-hidden="true"></i></span>Delete</a>
                                 </td>

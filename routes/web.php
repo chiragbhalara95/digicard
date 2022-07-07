@@ -75,7 +75,7 @@ Route::middleware(['auth', 'verified', 'check_payment_status'])->namespace('App\
      Route::any('product', [App\Http\Controllers\BussinessCard\GalleryController::class, 'productPage']);
      Route::any('addProduct', [App\Http\Controllers\BussinessCard\GalleryController::class, 'addProductPage']);
      Route::post('productSave', [App\Http\Controllers\BussinessCard\GalleryController::class, 'productStore']);
-     Route::get('productUpdate/{product_id}', [App\Http\Controllers\BussinessCard\GalleryController::class, 'productUpdatePage']);
+     Route::get('product/edit/{product_id}', [App\Http\Controllers\BussinessCard\GalleryController::class, 'productUpdatePage'])->name('productUpdatePage');
      Route::get('productDelete/{product_id}', [App\Http\Controllers\BussinessCard\GalleryController::class, 'productDeleteFormat']);
      Route::post('productEditSave', [App\Http\Controllers\BussinessCard\GalleryController::class, 'productEditStoer']);
 
@@ -86,7 +86,17 @@ Route::middleware(['auth', 'verified', 'check_payment_status'])->namespace('App\
 
     Route::get('business/card-theme-selection', [App\Http\Controllers\BussinessCard\ThemeController::class, 'cardThemeSelectView'])->name('business.card-theme-selection');
     Route::post('business/saveTheme', [App\Http\Controllers\BussinessCard\ThemeController::class, 'saveUserTheme'])->name('business.save-user-theme');
- 
+
+    Route::middleware(['auth', 'verified'])->namespace('App\Http\Controllers\SaveTheCard')->prefix('payment-master')->group(function() {
+        Route::get('list', [App\Http\Controllers\BussinessCard\PaymentController::class, 'index'])->name('business.payment-master-list');
+        Route::get('add', [App\Http\Controllers\BussinessCard\PaymentController::class, 'addPaymentMaster'])->name('business.payment-master-add-view'); 
+        Route::post('save', [App\Http\Controllers\BussinessCard\PaymentController::class, 'savePaymentMaster'])->name('business.payment-master-save'); 
+        Route::get('edit/{id}', [App\Http\Controllers\BussinessCard\PaymentController::class, 'editPaymentMaster'])->name('business.payment-master-edit-view'); 
+
+        Route::get('delete/{id}', [App\Http\Controllers\BussinessCard\PaymentController::class, 'deletePaymentMaster'])->name('business.payment-master-delete');
+
+    });
+
 });
 
 Route::middleware(['auth', 'verified', 'check_payment_required'])->namespace('App\Http\Controllers')->group(function() {

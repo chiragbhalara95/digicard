@@ -15,6 +15,7 @@ use App\Models\EnquiryModel;
 use Validator;
 use Mail;
 use App\Models\UserConfigModel;
+use App\Models\PaymentModel;
 
 class FrontWebsiteController extends BasicController
 {
@@ -125,8 +126,11 @@ class FrontWebsiteController extends BasicController
             }
             $companyInfoData = CompanyInfoModel::where('user_id', $userObj->id)->first();
             $galleryData     = \DB::table('gallery')->where('user_id', $userObj->id)->get();
+            $paymentMasterData = PaymentModel::where('user_id', $userObj->id)->get();
 
-            return view('visitingCard/bussinessCard/'.$bladeFile, compact('companyInfoData', 'userObj', 'galleryData', 'userConfigObj'));
+            return view('visitingCard/bussinessCard/'.$bladeFile, 
+                compact('companyInfoData', 'userObj', 'galleryData', 'userConfigObj', 'paymentMasterData')
+            );
         }
 
     }

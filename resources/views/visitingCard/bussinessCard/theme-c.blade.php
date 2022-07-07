@@ -344,8 +344,8 @@
 
 </div>
 --}}
-{{--
 
+@if(!empty($paymentMasterData))
 <div class="page-container" id="payment">
 
   <h2 class="section-heading">Payment</h2>
@@ -356,124 +356,75 @@
 
       <tbody>
 
+      @foreach($paymentMasterData as $paymentMasterDetail)
+        @if ($paymentMasterDetail->type == 'bank')
         <tr>
-
-          <td width="50%" class="td-label"><h3>Paytm Number</h3></td>
-
-          <td>: </td>
-
-          <td> 9825222824 </td>
-
+          <td align="center" colspan="2">Account Details:</td>
         </tr>
-
         <tr>
-
-          <td width="50%" class="td-label"><h3>Phone Pe Number</h3></td>
-
-          <td>: </td>
-
-          <td> 9825222824 </td>
-
+          <td colspan="2">
+          <table class="about-tbl">
+            <tbody>
+              <tr>
+                <td width="50%" bgcolor="#f5f5f5" class="td-label"><h3>Bank Name</h3></td>
+                <td bgcolor="#f5f5f5">: </td>
+                <td bgcolor="#f5f5f5"> {{$paymentMasterDetail->bank_name}} </td>
+              </tr>
+              <tr>
+                <td width="50%" class="td-label"><h3>Account Holder Name</h3></td>
+                <td>: </td>
+                <td> {{$paymentMasterDetail->account_holder_name}} </td>
+              </tr>
+              <tr>
+                <td width="50%" bgcolor="#f5f5f5" class="td-label"><h3>Account Number</h3></td>
+                <td bgcolor="#f5f5f5">: </td>
+                <td bgcolor="#f5f5f5"> {{$paymentMasterDetail->account_no}} </td>
+              </tr>
+              <tr>
+                <td width="50%" class="td-label"><h3>Account Type</h3></td>
+                <td>: </td>
+                <td> {{$paymentMasterDetail->account_type}} Account </td>
+              </tr>
+              <tr>
+                <td width="50%" bgcolor="#f5f5f5" class="td-label"><h3>IFSC code</h3></td>
+                <td bgcolor="#f5f5f5">: </td>
+                <td bgcolor="#f5f5f5"> {{$paymentMasterDetail->ifsc_code}} </td>
+              </tr>
+            </tbody>
+          </table>
+          </td>
         </tr>
-
+        @else
         <tr>
+            <td width="50%" class="td-label">Paytm Number:</td>
+            <td> {{$paymentMasterDetail->account_no}} </td>
+          </tr>
+          <tr>
+            <td>
+                @if(!empty($paymentMasterDetail->qr_img))
+                    <img src="{{url('public/upload/payment/')}}/{{$paymentMasterDetail->qr_img}}" class="qr-image">
+                @endif
 
-          <td width="50%" class="td-label"><h3>Google Pay Number</h3></td>
+            </td>
+          </tr>
+        @endif
+      @endforeach
 
-          <td>: </td>
 
-          <td> 9825222824 </td>
-
-        </tr>
 
       </tbody>
 
     </table>
 
-    <h3 align="center">Account Details:</h3>
 
-    <table class="about-tbl">
-
-      <tbody>
-
-        <tr>
-
-          <td width="50%" bgcolor="#f5f5f5" class="td-label"><h3>Bank Name</h3></td>
-
-          <td bgcolor="#f5f5f5">: </td>
-
-          <td bgcolor="#f5f5f5"> ICICI Bank </td>
-
-        </tr>
-
-        <tr>
-
-          <td width="50%" class="td-label"><h3>Account Holder Name</h3></td>
-
-          <td>: </td>
-
-          <td> Prashant Dave </td>
-
-        </tr>
-
-        <tr>
-
-          <td width="50%" bgcolor="#f5f5f5" class="td-label"><h3>Account Number</h3></td>
-
-          <td bgcolor="#f5f5f5">: </td>
-
-          <td bgcolor="#f5f5f5"> 174001504832 </td>
-
-        </tr>
-
-        <tr>
-
-          <td width="50%" class="td-label"><h3>Account Type</h3></td>
-
-          <td>: </td>
-
-          <td> Savings Account </td>
-
-        </tr>
-
-        <tr>
-
-          <td width="50%" bgcolor="#f5f5f5" class="td-label"><h3>IFSC code</h3></td>
-
-          <td bgcolor="#f5f5f5">: </td>
-
-          <td bgcolor="#f5f5f5"> ICIC0006244 </td>
-
-        </tr>
-
-      </tbody>
-
-    </table>
-
-    <h3 align="center">QR codes:</h3>
 
     <div>
 
-      <h4>Paytm</h4>
 
-      <img src="./Digital Business Card _ Virtual Business Card_files/paytmQR.png" class="qr-image"> </div>
 
-    <div>
-
-      <h4>Google Pay</h4>
-
-      <img src="./Digital Business Card _ Virtual Business Card_files/googlepayQR.png" class="qr-image"> </div>
-      
-      <div>
-
-      <h4>PhonePe</h4>
-
-      <img src="./Digital Business Card _ Virtual Business Card_files/phonepeQR.png" class="qr-image"> </div>
-
-  </div>
 
 </div>
---}}
+@endif
 
 @if($galleryData->count() > 0)
 <div class="page-container" id="photogallery">
@@ -487,7 +438,7 @@
   @foreach($galleryData as $galleryDetail)
             <div class="image-wrapper">
               <h3 class="text text-center" style="text-align:center;">{{$galleryDetail->title}}</h3>
-              <img onclick="openImageModal(this)" alt="Demo Company" src="{{URL::asset('public/upload/product/'.$galleryDetail->head_image)}}" style="width:100%">
+              <img onclick="openImageModal(this)" alt="Product Image" src="{{URL::asset('public/upload/product/'.$galleryDetail->head_image)}}" style="width:100%">
 
               @if ($galleryDetail->special_price > 0 && $galleryDetail->mrp_price > $galleryDetail->special_price)
                     <span class="purchase-form__price purchase-form__price--before-after-price t-heading -size-xs h-pull-right">
@@ -686,13 +637,15 @@
 
       </a> </li>
       --}}
-  {{-- 
+    @if(!empty($paymentMasterData))
+
     <li> <a class="footer-menu-link yellow" href="#payment"> <i class="footer-menu-icon fa fa-inr"></i>
 
       <div class="footer-menu-text">PAYMENT</div>
 
       </a> </li>
-      --}}
+      @endif
+
       @if($galleryData->count() > 0)
 
       <li> <a class="footer-menu-link navyblue" href="#photogallery"> <i class="footer-menu-icon fa fa-picture-o"></i>
