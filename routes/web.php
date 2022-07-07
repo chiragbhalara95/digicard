@@ -89,6 +89,10 @@ Route::middleware(['auth', 'verified', 'check_payment_status'])->namespace('App\
 
     Route::middleware(['auth', 'verified'])->namespace('App\Http\Controllers\SaveTheCard')->prefix('payment-master')->group(function() {
         Route::get('list', [App\Http\Controllers\BussinessCard\PaymentController::class, 'index'])->name('business.payment-master-list');
+        Route::get('add', [App\Http\Controllers\BussinessCard\PaymentController::class, 'addPaymentMaster'])->name('business.payment-master-add-view'); 
+        Route::post('save', [App\Http\Controllers\BussinessCard\PaymentController::class, 'savePaymentMaster'])->name('business.payment-master-save'); 
+        Route::get('edit/{id}', [App\Http\Controllers\BussinessCard\PaymentController::class, 'editPaymentMaster'])->name('business.payment-master-edit-view'); 
+
         Route::get('delete/{id}', [App\Http\Controllers\BussinessCard\PaymentController::class, 'deletePaymentMaster'])->name('business.payment-master-delete');
 
     });

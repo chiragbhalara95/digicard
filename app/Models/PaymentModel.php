@@ -21,6 +21,7 @@ class PaymentModel extends Model
         'ifsc_code',
         'account_holder_name',
         'account_type',
+        'qr_img',
     ];
 
     protected $casts = [];

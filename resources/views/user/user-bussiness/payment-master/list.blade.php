@@ -34,7 +34,7 @@
     <div class="row">
         <div class="col-sm-12 bg-white py-3 border">
             <div class="form-group formGroupShadow">
-                <a class="form-control d-flex justify-content-center" href="{{url('addProduct')}}" style="background-color:#009688; color:white;"> + Add Payment Master </a>
+                <a class="form-control d-flex justify-content-center" href="{{route('business.payment-master-add-view')}}" style="background-color:#009688; color:white;"> + Add Payment Master </a>
             </div>
             <div class="table-rep-plugin">
                 <div class="table-responsive" data-pattern="priority-columns">
@@ -56,7 +56,7 @@
                                 <td>{{$data->account_no}}</td>
                                 <td class="text-center">
 
-                                    <a href="{{route('productUpdatePage',$data->id)}}" class="btn btn-primary"><span class="basic_table_icon" style="font-size: 20px;"><i class="fa fa-pencil" aria-hidden="true"></i>Edit</span></a>
+                                    <a href="{{route('business.payment-master-edit-view',$data->id)}}" class="btn btn-primary"><span class="basic_table_icon" style="font-size: 20px;"><i class="fa fa-pencil" aria-hidden="true"></i>Edit</span></a>
 
                                     <a href="{{route('business.payment-master-delete',$data->id)}}" class="btn btn-danger" onClick="return confirm('Are you sure?');"><span class="basic_table_icon" style="font-size: 20px;"><i class="fa fa-trash-o" aria-hidden="true"></i></span>Delete</a>
                                 </td>

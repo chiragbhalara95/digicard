@@ -22,6 +22,7 @@ class CreatePaymentModelsTable extends Migration
             $table->string('ifsc_code', 100)->nullable();
             $table->string('account_holder_name', 100)->nullable();
             $table->string('account_type', 100)->nullable()->comment('saving/current');
+            $table->string('qr_img', 255)->nullable();
             $table->timestamps();
         });
     }
