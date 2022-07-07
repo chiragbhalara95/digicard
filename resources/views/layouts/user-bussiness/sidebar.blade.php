@@ -68,6 +68,15 @@
             </a>
           </li>
 
+          <li class="nav-item">
+            <a href="{{route('business.payment-master-list')}}" class="nav-link">
+              <i class="nav-icon fa fa-list"></i>
+              <p>
+                Payment Master
+              </p>
+            </a>
+          </li>
+
           {{--
           <li class="nav-item">
             <a href="{{route('social-list-view')}}" class="nav-link">
