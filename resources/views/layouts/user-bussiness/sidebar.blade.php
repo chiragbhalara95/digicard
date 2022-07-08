@@ -77,16 +77,14 @@
             </a>
           </li>
 
-          {{--
           <li class="nav-item">
-            <a href="{{route('social-list-view')}}" class="nav-link">
+            <a href="{{route('business.social-media-master-list')}}" class="nav-link">
               <i class="nav-icon fas fa-share-alt"></i>
               <p>
                 Social Link
               </p>
             </a>
           </li>
-          --}}
 
           @if(Auth::check())
           <li class="nav-item">
