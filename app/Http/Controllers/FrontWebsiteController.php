@@ -16,6 +16,7 @@ use Validator;
 use Mail;
 use App\Models\UserConfigModel;
 use App\Models\PaymentModel;
+use App\Models\socialLink AS SocialLinkModel;
 
 class FrontWebsiteController extends BasicController
 {
@@ -127,9 +128,10 @@ class FrontWebsiteController extends BasicController
             $companyInfoData = CompanyInfoModel::where('user_id', $userObj->id)->first();
             $galleryData     = \DB::table('gallery')->where('user_id', $userObj->id)->get();
             $paymentMasterData = PaymentModel::where('user_id', $userObj->id)->get();
+            $socialMediaData   = SocialLinkModel::where('user_id', $userObj->id)->get();
 
             return view('visitingCard/bussinessCard/'.$bladeFile, 
-                compact('companyInfoData', 'userObj', 'galleryData', 'userConfigObj', 'paymentMasterData')
+                compact('companyInfoData', 'userObj', 'galleryData', 'userConfigObj', 'paymentMasterData', 'socialMediaData')
             );
         }
 

@@ -95,6 +95,26 @@
 
   <div class="firstpagebottom">
 
+  @if (count($socialMediaData) > 0)
+    <ul class="firstpage share-btn">
+      @foreach($socialMediaData as $socialMediaDetail)
+        @if ($socialMediaDetail->type == 'fb')
+          <li> <a href="{{$socialMediaDetail->url}}" target="_blank"><i class="share-btn-facebook fa fa-facebook"></i></a> </li>
+        @elseif($socialMediaDetail->type == 'in')
+          <li> <a href="{{$socialMediaDetail->url}}" target="_blank"><i class="share-btn-linkedin fa fa-instagram"></i></a> </li>
+          @elseif($socialMediaDetail->type == 'li')
+          <li> <a href="{{$socialMediaDetail->url}}" target="_blank"><i class="share-btn-facebook fa fa-linkedin"></i></a> </li>
+          @elseif($socialMediaDetail->type == 'tw')
+          <li> <a href="{{$socialMediaDetail->url}}" target="_blank"><i class="share-btn-twitter fa fa-twitter"></i></a> </li>
+          @elseif($socialMediaDetail->type == 'pi')
+          <li> <a href="{{$socialMediaDetail->url}}" target="_blank"><i class="share-btn-facebook fa fa-pinterest"></i></a> </li>
+          @elseif($socialMediaDetail->type == 'yt')
+          <li> <a href="{{$socialMediaDetail->url}}" target="_blank"><i class="share-btn-facebook fa fa-youtube"></i></a> </li>
+        @endif
+      @endforeach
+    </ul>
+    @endif
+
     <div class="shadow-btn"> <a href="{{url('saveViewCard')}}/{{$userObj->slug}}" download="contact.vcf" class="addphonebook"><i class="fa fa-download shadow-button-icon"></i>Add to Phone Book</a> </div>
 
 

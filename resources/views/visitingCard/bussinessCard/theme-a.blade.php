@@ -828,6 +828,38 @@
 
         </div>
         <div class="p-30"></div>
+        @if (count($socialMediaData) > 0)
+        <ul class="inprofile share-buttons">
+        @foreach($socialMediaData as $socialMediaDetail)
+          @if ($socialMediaDetail->type == 'fb')
+          <li class="share-button">
+          <a href="{{$socialMediaDetail->url}}" target="_blank"><i class="share-button-facebook fab fa-facebook" aria-hidden="true"></i></a>
+                      </li>
+                      @elseif($socialMediaDetail->type == 'in')
+                      <li class="share-button">
+                      <a href="{{$socialMediaDetail->url}}" target="_blank"><i class="share-button-instagram fab fa-instagram" aria-hidden="true"></i></a>
+                </li>
+                @elseif($socialMediaDetail->type == 'tw')
+                <li class="share-button">
+                <a href="{{$socialMediaDetail->url}}" target="_blank"><i class="share-button-twitter fab fa-twitter" aria-hidden="true"></i></a>
+                        </li>
+                        @elseif($socialMediaDetail->type == 'li')
+                        <li class="share-button">
+                        <a href="{{$socialMediaDetail->url}}" target="_blank"><i class="share-button-linkedin fab fa-linkedin" aria-hidden="true"></i></a>
+                        </li>
+                        @elseif($socialMediaDetail->type == 'yt')
+                        <li class="share-button">
+                        <a href="{{$socialMediaDetail->url}}" target="_blank"><i class="share-button-youtube fab fa-youtube" aria-hidden="true"></i></a>
+                        </li>
+                        @elseif($socialMediaDetail->type == 'pi')
+
+                        <li class="share-button">
+                        <a href="{{$socialMediaDetail->url}}" target="_blank"><i class="share-button-pinterest fab fa-pinterest" aria-hidden="true"></i></a>
+                        </li>
+                      @endif
+                    @endforeach
+                    </ul>
+                @endif
         <div class="p-20"></div>
       </div>
     </div>
