@@ -208,6 +208,82 @@
 
 </div>
 
+@if(count($paymentMasterData) > 0)
+<div class="page-container" id="payment">
+
+  <h2 class="section-heading">Payment</h2>
+
+  <div>
+
+    <table class="about-tbl">
+
+      <tbody>
+
+      @foreach($paymentMasterData as $paymentMasterDetail)
+        @if ($paymentMasterDetail->type == 'bank')
+        <tr>
+          <td align="center" colspan="2">Account Details:</td>
+        </tr>
+        <tr>
+          <td colspan="2">
+          <table class="about-tbl">
+            <tbody>
+              <tr>
+                <td width="50%" bgcolor="#f5f5f5" class="td-label"><h3>Bank Name</h3></td>
+                <td bgcolor="#f5f5f5">: </td>
+                <td bgcolor="#f5f5f5"> {{$paymentMasterDetail->bank_name}} </td>
+              </tr>
+              <tr>
+                <td width="50%" class="td-label"><h3>Account Holder Name</h3></td>
+                <td>: </td>
+                <td> {{$paymentMasterDetail->account_holder_name}} </td>
+              </tr>
+              <tr>
+                <td width="50%" bgcolor="#f5f5f5" class="td-label"><h3>Account Number</h3></td>
+                <td bgcolor="#f5f5f5">: </td>
+                <td bgcolor="#f5f5f5"> {{$paymentMasterDetail->account_no}} </td>
+              </tr>
+              <tr>
+                <td width="50%" class="td-label"><h3>Account Type</h3></td>
+                <td>: </td>
+                <td> {{ucwords($paymentMasterDetail->account_type)}} Account </td>
+              </tr>
+              <tr>
+                <td width="50%" bgcolor="#f5f5f5" class="td-label"><h3>IFSC code</h3></td>
+                <td bgcolor="#f5f5f5">: </td>
+                <td bgcolor="#f5f5f5"> {{$paymentMasterDetail->ifsc_code}} </td>
+              </tr>
+            </tbody>
+          </table>
+          </td>
+        </tr>
+        @else
+        <tr>
+        <td width="50%" class="td-label"><h6>{{ucwords($paymentMasterDetail->type)}} Number:</h6></td>
+            <td> {{$paymentMasterDetail->account_no}} </td>
+          </tr>
+          <tr>
+            <td>
+                @if(!empty($paymentMasterDetail->qr_img))
+                    <img src="{{url('public/upload/payment/')}}/{{$paymentMasterDetail->qr_img}}" class="qr-image">
+                @endif
+
+            </td>
+          </tr>
+        @endif
+      @endforeach
+
+
+      </tbody>
+
+    </table>
+
+
+
+  </div>
+
+</div>
+@endif
 
   @if($galleryData->count() > 0)
 
@@ -306,6 +382,14 @@
     <li> <a class="footer-menu-link" href="#aboutus"> <i class="footer-menu-icon fa fa-user"></i>
       <div class="footer-menu-text">{{$userConfigObj->aboutLabel}}</div>
       </a> </li>
+
+      @if(count($paymentMasterData) > 0)
+      <li> <a class="footer-menu-link" href="#payment"> <i class="footer-menu-icon fa fa-inr"></i>
+
+      <div class="footer-menu-text">PAYMENT</div>
+
+      </a> </li>
+      @endif
 
         @if($galleryData->count() > 0)
 

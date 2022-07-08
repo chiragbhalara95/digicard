@@ -345,7 +345,7 @@
 </div>
 --}}
 
-@if(!empty($paymentMasterData))
+@if(count($paymentMasterData) > 0)
 <div class="page-container" id="payment">
 
   <h2 class="section-heading">Payment</h2>
@@ -383,7 +383,7 @@
               <tr>
                 <td width="50%" class="td-label"><h3>Account Type</h3></td>
                 <td>: </td>
-                <td> {{$paymentMasterDetail->account_type}} Account </td>
+                <td> {{ucwords($paymentMasterDetail->account_type)}} Account </td>
               </tr>
               <tr>
                 <td width="50%" bgcolor="#f5f5f5" class="td-label"><h3>IFSC code</h3></td>
@@ -396,7 +396,7 @@
         </tr>
         @else
         <tr>
-            <td width="50%" class="td-label">Paytm Number:</td>
+        <td width="50%" class="td-label"><h6>{{ucwords($paymentMasterDetail->type)}} Number:</h6></td>
             <td> {{$paymentMasterDetail->account_no}} </td>
           </tr>
           <tr>
