@@ -828,6 +828,38 @@
 
         </div>
         <div class="p-30"></div>
+        @if (count($socialMediaData) > 0)
+        <ul class="inprofile share-buttons">
+        @foreach($socialMediaData as $socialMediaDetail)
+          @if ($socialMediaDetail->type == 'fb')
+          <li class="share-button">
+          <a href="{{$socialMediaDetail->url}}" target="_blank"><i class="share-button-facebook fab fa-facebook" aria-hidden="true"></i></a>
+                      </li>
+                      @elseif($socialMediaDetail->type == 'in')
+                      <li class="share-button">
+                      <a href="{{$socialMediaDetail->url}}" target="_blank"><i class="share-button-instagram fab fa-instagram" aria-hidden="true"></i></a>
+                </li>
+                @elseif($socialMediaDetail->type == 'tw')
+                <li class="share-button">
+                <a href="{{$socialMediaDetail->url}}" target="_blank"><i class="share-button-twitter fab fa-twitter" aria-hidden="true"></i></a>
+                        </li>
+                        @elseif($socialMediaDetail->type == 'li')
+                        <li class="share-button">
+                        <a href="{{$socialMediaDetail->url}}" target="_blank"><i class="share-button-linkedin fab fa-linkedin" aria-hidden="true"></i></a>
+                        </li>
+                        @elseif($socialMediaDetail->type == 'yt')
+                        <li class="share-button">
+                        <a href="{{$socialMediaDetail->url}}" target="_blank"><i class="share-button-youtube fab fa-youtube" aria-hidden="true"></i></a>
+                        </li>
+                        @elseif($socialMediaDetail->type == 'pi')
+
+                        <li class="share-button">
+                        <a href="{{$socialMediaDetail->url}}" target="_blank"><i class="share-button-pinterest fab fa-pinterest" aria-hidden="true"></i></a>
+                        </li>
+                      @endif
+                    @endforeach
+                    </ul>
+                @endif
         <div class="p-20"></div>
       </div>
     </div>
@@ -843,6 +875,73 @@
       </div>
     </div>
 
+@if(count($paymentMasterData) > 0)
+<div class="section-container" id="payment">
+  <h2 class="section-header">Payment</h2>
+  <div class="full-divider"></div>
+  <div>
+    <table class="about-tbl">
+      <tbody>
+
+      @foreach($paymentMasterData as $paymentMasterDetail)
+        @if ($paymentMasterDetail->type == 'bank')
+        <tr>
+          <td align="center" colspan="2"><h4>Account Details:</h4></td>
+        </tr>
+        <tr>
+          <td colspan="2">
+          <table class="about-tbl">
+            <tbody>
+              <tr>
+                <td width="50%" bgcolor="#f5f5f5" class="td-label"><h6>Bank Name</h6></td>
+                <td bgcolor="#f5f5f5">: </td>
+                <td bgcolor="#f5f5f5"> {{$paymentMasterDetail->bank_name}} </td>
+              </tr>
+              <tr>
+                <td width="50%" class="td-label"><h6>Account Holder Name</h6></td>
+                <td>: </td>
+                <td> {{$paymentMasterDetail->account_holder_name}} </td>
+              </tr>
+              <tr>
+                <td width="50%" bgcolor="#f5f5f5" class="td-label"><h6>Account Number</h6></td>
+                <td bgcolor="#f5f5f5">: </td>
+                <td bgcolor="#f5f5f5"> {{$paymentMasterDetail->account_no}} </td>
+              </tr>
+              <tr>
+                <td width="50%" class="td-label"><h6>Account Type</h6></td>
+                <td>: </td>
+                <td> {{ucwords($paymentMasterDetail->account_type)}} Account </td>
+              </tr>
+              <tr>
+                <td width="50%" bgcolor="#f5f5f5" class="td-label"><h6>IFSC code</h6></td>
+                <td bgcolor="#f5f5f5">: </td>
+                <td bgcolor="#f5f5f5"> {{$paymentMasterDetail->ifsc_code}} </td>
+              </tr>
+            </tbody>
+          </table>
+          </td>
+        </tr>
+        @else
+        <tr>
+            <td width="50%" class="td-label"><h6>{{ucwords($paymentMasterDetail->type)}} Number:</h6></td>
+            <td> {{$paymentMasterDetail->account_no}} </td>
+          </tr>
+          <tr>
+            <td>
+                @if(!empty($paymentMasterDetail->qr_img))
+                    <img src="{{url('public/upload/payment/')}}/{{$paymentMasterDetail->qr_img}}" class="qr-image">
+                @endif
+
+            </td>
+          </tr>
+        @endif
+      @endforeach
+      </tbody>
+    </table>
+  </div>
+</div>
+@endif
+
     @if($galleryData->count() > 0)
     <div class="section-container" id="gallery-section">
         <h2 class="section-header">GALLERY</h2>
@@ -850,7 +949,7 @@
         <div class="images-container">
           @foreach($galleryData as $galleryDetail)
             <div class="image-wrapper">
-            <h3 class="text text-center" style="text-align:center;">{{$galleryDetail->title}}</h3>
+            <h5 class="text text-center" style="text-align:center;">{{$galleryDetail->title}}</h5>
 
               <img onclick="openImageModal(this)" alt="Demo Company" src="{{URL::asset('public/upload/product/'.$galleryDetail->head_image)}}" style="width:100%">
                 @if ($galleryDetail->special_price > 0 && $galleryDetail->mrp_price > $galleryDetail->special_price)
@@ -872,10 +971,10 @@
                 @endif
 
                 @if(!empty($galleryDetail->links))
-                  <a href="{{$galleryDetail->links}}" target="_blank" class="btn btn-sm btn-warning">Gallery Link</a> 
+                  <a href="{{$galleryDetail->links}}" target="_blank" class="btn btn-sm btn-warning"><i class="fa fa-link"></i></a> 
                 @endif
                 @if(!empty($galleryDetail->doc_url))
-                  <a href="{{url('public/upload/product-doc')}}/{{$galleryDetail->doc_url}}" target="_blank" class="btn btn-sm  btn-primary" download>Document</a> 
+                  <a href="{{url('public/upload/product-doc')}}/{{$galleryDetail->doc_url}}" target="_blank" class="btn btn-sm  btn-primary" download><i class="fa fa-download"></i></a> 
                 @endif
 
             </div>
@@ -940,6 +1039,14 @@
             <div class="footer-menu-text">ABOUT US</div>
           </a>
         </li>
+        @if(count($paymentMasterData) > 0)
+      <li> <a class="footer-menu-link" href="#payment"> <i class="footer-menu-icon fa fa-inr"></i>
+
+      <div class="footer-menu-text">PAYMENT</div>
+
+      </a> </li>
+      @endif
+
         @if($galleryData->count() > 0)
         <li>
           <a class="footer-menu-link" href="#gallery-section">

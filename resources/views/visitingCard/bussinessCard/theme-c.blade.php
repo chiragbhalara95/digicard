@@ -113,19 +113,26 @@
   </div>
 
   <div class="firstpagebottom">
-{{--
+
+  @if (count($socialMediaData) > 0)
     <ul class="firstpage share-btn">
-
-      <li> <a href="javascript:void(0);"><i class="share-btn-linkedin fa fa-linkedin"></i></a> </li>
-
-      <li> <a href="javascript:void(0);"><i class="share-btn-facebook fa fa-facebook"></i></a> </li>
-
-      <li> <a href="javascript:void(0);"><i class="share-btn-twitter fa fa-twitter"></i></a> </li>
-
-            
-
+      @foreach($socialMediaData as $socialMediaDetail)
+        @if ($socialMediaDetail->type == 'fb')
+          <li> <a href="{{$socialMediaDetail->url}}" target="_blank"><i class="share-btn-facebook fa fa-facebook"></i></a> </li>
+        @elseif($socialMediaDetail->type == 'in')
+        <li> <a href="{{$socialMediaDetail->url}}" target="_blank"><i class="share-btn-linkedin fa fa-instagram"></i></a> </li>
+          @elseif($socialMediaDetail->type == 'li')
+          <li> <a href="{{$socialMediaDetail->url}}" target="_blank"><i class="share-btn-facebook fa fa-linkedin"></i></a> </li>
+          @elseif($socialMediaDetail->type == 'tw')
+          <li> <a href="{{$socialMediaDetail->url}}" target="_blank"><i class="share-btn-twitter fa fa-twitter"></i></a> </li>
+          @elseif($socialMediaDetail->type == 'pi')
+          <li> <a href="{{$socialMediaDetail->url}}" target="_blank"><i class="share-btn-facebook fa fa-pinterest"></i></a> </li>
+          @elseif($socialMediaDetail->type == 'yt')
+          <li> <a href="{{$socialMediaDetail->url}}" target="_blank"><i class="share-btn-facebook fa fa-youtube"></i></a> </li>
+        @endif
+      @endforeach
     </ul>
-    --}}
+    @endif
 
     <div class="shadow-btn"> 
     <a href="{{url('saveViewCard')}}/{{$userObj->slug}}" download="contact.vcf" class="addphonebook">
@@ -345,7 +352,7 @@
 </div>
 --}}
 
-@if(!empty($paymentMasterData))
+@if(count($paymentMasterData) > 0)
 <div class="page-container" id="payment">
 
   <h2 class="section-heading">Payment</h2>
@@ -383,7 +390,7 @@
               <tr>
                 <td width="50%" class="td-label"><h3>Account Type</h3></td>
                 <td>: </td>
-                <td> {{$paymentMasterDetail->account_type}} Account </td>
+                <td> {{ucwords($paymentMasterDetail->account_type)}} Account </td>
               </tr>
               <tr>
                 <td width="50%" bgcolor="#f5f5f5" class="td-label"><h3>IFSC code</h3></td>
@@ -396,7 +403,7 @@
         </tr>
         @else
         <tr>
-            <td width="50%" class="td-label">Paytm Number:</td>
+        <td width="50%" class="td-label"><h6>{{ucwords($paymentMasterDetail->type)}} Number:</h6></td>
             <td> {{$paymentMasterDetail->account_no}} </td>
           </tr>
           <tr>

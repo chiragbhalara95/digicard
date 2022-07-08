@@ -87,14 +87,20 @@ Route::middleware(['auth', 'verified', 'check_payment_status'])->namespace('App\
     Route::get('business/card-theme-selection', [App\Http\Controllers\BussinessCard\ThemeController::class, 'cardThemeSelectView'])->name('business.card-theme-selection');
     Route::post('business/saveTheme', [App\Http\Controllers\BussinessCard\ThemeController::class, 'saveUserTheme'])->name('business.save-user-theme');
 
-    Route::middleware(['auth', 'verified'])->namespace('App\Http\Controllers\SaveTheCard')->prefix('payment-master')->group(function() {
+    Route::middleware(['auth', 'verified'])->namespace('App\Http\Controllers\BussinessCard')->prefix('payment-master')->group(function() {
         Route::get('list', [App\Http\Controllers\BussinessCard\PaymentController::class, 'index'])->name('business.payment-master-list');
         Route::get('add', [App\Http\Controllers\BussinessCard\PaymentController::class, 'addPaymentMaster'])->name('business.payment-master-add-view'); 
         Route::post('save', [App\Http\Controllers\BussinessCard\PaymentController::class, 'savePaymentMaster'])->name('business.payment-master-save'); 
         Route::get('edit/{id}', [App\Http\Controllers\BussinessCard\PaymentController::class, 'editPaymentMaster'])->name('business.payment-master-edit-view'); 
-
         Route::get('delete/{id}', [App\Http\Controllers\BussinessCard\PaymentController::class, 'deletePaymentMaster'])->name('business.payment-master-delete');
+    });
 
+    Route::middleware(['auth', 'verified'])->namespace('App\Http\Controllers\BussinessCard')->prefix('social-link')->group(function() {
+        Route::get('list', [App\Http\Controllers\BussinessCard\SocialLinkController::class, 'index'])->name('business.social-media-master-list');
+        Route::get('add', [App\Http\Controllers\BussinessCard\SocialLinkController::class, 'addLinkView'])->name('business.social-media-master-add');
+        Route::post('save', [App\Http\Controllers\BussinessCard\SocialLinkController::class, 'saveSocialLink'])->name('business.social-media-master-save');
+        Route::get('edit/{id}', [App\Http\Controllers\BussinessCard\SocialLinkController::class, 'editLinkView'])->name('business.social-media-master-edit');
+        Route::get('delete/{id}', [App\Http\Controllers\BussinessCard\SocialLinkController::class, 'deleteLinkView'])->name('business.social-media-master-delete');
     });
 
 });
