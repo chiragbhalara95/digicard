@@ -466,10 +466,10 @@
                 @endif
 
                 @if(!empty($galleryDetail->links))
-                  <a href="{{$galleryDetail->links}}" target="_blank" class="btn btn-primary">Gallery Link</a> 
+                  <a href="{{$galleryDetail->links}}" target="_blank" class="btn btn-sm btn-warning"><i class="fa fa-link"></i></a> 
                 @endif
                 @if(!empty($galleryDetail->doc_url))
-                  <a href="{{url('public/upload/product-doc')}}/{{$galleryDetail->doc_url}}" target="_blank" class="btn btn-primary" download>Download Document</a> 
+                  <a href="{{url('public/upload/product-doc')}}/{{$galleryDetail->doc_url}}" target="_blank" class="btn btn-sm  btn-primary" download><i class="fa fa-download"></i></a> 
                 @endif
 
               </div>
@@ -644,13 +644,12 @@
 
       </a> </li>
       --}}
-    @if(!empty($paymentMasterData))
-
-    <li> <a class="footer-menu-link yellow" href="#payment"> <i class="footer-menu-icon fa fa-inr"></i>
-
-      <div class="footer-menu-text">PAYMENT</div>
-
-      </a> </li>
+    @if(count($paymentMasterData) > 0)
+      <li>
+        <a class="footer-menu-link yellow" href="#payment"> <i class="footer-menu-icon fa fa-inr"></i>
+          <div class="footer-menu-text">PAYMENT</div>
+        </a>
+      </li>
       @endif
 
       @if($galleryData->count() > 0)
