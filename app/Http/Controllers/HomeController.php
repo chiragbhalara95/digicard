@@ -35,10 +35,11 @@ class HomeController extends BasicController
         }
 
         $postReq = [
-            'template_name' => \App\Helpers\CustomHelper::getUserTemplateName(),
-            'keyword' => '',
-            'page_title' => '',
+            'template_name'    => \App\Helpers\CustomHelper::getUserTemplateName(),
+            'keyword'          => '',
+            'page_title'       => '',
             'page_description' => '',
+            'userObj'          => $userObj,
         ];
 
         //echo "<pre>";print_r(\APp\Models\User::find(12)->product()->first()->product_name);exit;
