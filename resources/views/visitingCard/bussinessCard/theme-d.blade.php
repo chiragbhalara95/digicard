@@ -656,11 +656,11 @@
 
         {{--
         <li> <a class="footer-menu-link" href="#videogallery"> <i class="footer-menu-icon fa fa-youtube-square"></i>
-            --}}
 
             <div class="footer-menu-text">VIDEOS</div>
 
             </a> </li>
+            --}}
 
         {{--
         <li> <a class="footer-menu-link" href="#feedback"> <i class="footer-menu-icon fa fa-star-half-o"></i>
