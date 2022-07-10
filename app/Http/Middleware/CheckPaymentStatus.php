@@ -58,7 +58,12 @@ class CheckPaymentStatus
             return redirect('payment')->with('error',"Please configure your account.");
         }
 
-        if (empty($userObj->package_start_date) || empty($userObj->package_end_date) || $userObj->package_end_date < date("Y-m-d")) {
+        $expDate = date("Y-m-d");
+        if ($request->path() == 'home') {
+            $expDate = date("Y-m-d", strtotime("+3 day"));
+        }
+
+        if (empty($userObj->package_start_date) || empty($userObj->package_end_date) || $userObj->package_end_date < $expDate) {
             return redirect('/payment')->with('error',"Please do payment.");
 
         }
