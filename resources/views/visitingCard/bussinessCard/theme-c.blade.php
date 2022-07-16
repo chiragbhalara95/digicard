@@ -149,7 +149,7 @@
                                 <option value="" class="">Select Country Code</option>
                                 @if (!empty($countryData))
                                     @foreach($countryData AS $countryDetail)
-                                    <option class="" value="{{$countryDetail['dial_code']}}" 
+                                    <option class="" @if($countryDetail['dial_code'] == $userConfigObj->defaultCountry) selected @endif value="{{$countryDetail['dial_code']}}" 
                                         placeholder = "{{$countryDetail['name']}}">
                                         {{$countryDetail['name']}} ({{$countryDetail['dial_code']}})
                                     </option>

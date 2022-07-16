@@ -131,9 +131,12 @@ function sendEnquiry() {
     const xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function () {
         if (this.readyState === 4) {
-            //const response = JSON.parse(this.response);
-            console.log(this.response);
-            if (this.status === 200) {
+            var detail = this.response;
+            detail = JSON.parse(detail);
+            if (detail.code === 0) {
+                if (detail.data.redirect !== '') {
+                    window.open(detail.data.redirect, '_blank');
+                }
                 jQuery.alert({
     						title: "Enquiry sent !",
     						animation: "top",
