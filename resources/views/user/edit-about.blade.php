@@ -193,6 +193,16 @@
                       value="{{$companyData->company_website ?? ''}}">
                   </div>
 
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Broucher File</label>
+                    @if(isset($companyData->broucher_file))
+                    <a href="{{url('public')}}/{{$companyData->broucher_file}}" class="btn btn-primary" download>Brocher<i class="fa fa-download"></i></a>
+                    @endif
+                    <div class="custom-file">
+                      <input type="file" class="custom-file-input" id="customFile" name="broucher_file_input" accept=".pdf">
+                      <label class="custom-file-label" for="customFile">Choose file</label>
+                    </div>
+                  </div>
 
                 </div>
                 <!-- /.card-body -->

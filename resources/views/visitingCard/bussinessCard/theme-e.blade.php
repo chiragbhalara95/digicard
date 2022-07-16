@@ -235,19 +235,20 @@
         <div style="text-align: justify;">{!!$companyInfoData->company_info!!}</div>
       </div>
 
-{{--
-  <h3>Documents</h3>
+@if(!empty($companyInfoData->broucher_file))
+<h3>Documents</h3>
 
-  <a class="download" href="https://www.virtualbusinesscard.in/demo-templates/images/eDesignGuru%20Flyer.pdf" download="">
+  <a class="download" href="{{url('public')}}/{{$companyInfoData->broucher_file}}" download="">
 
   <div class="pdf-icon"><i class="fa fa-file-pdf-o"></i></div>
 
-  <div class="pdf-number">eDesignGuru Flyer.pdf</div>
+  <div class="pdf-number">{{$companyInfoData->company_name}}</div>
 
   <div class="download-icon"><i class="fa fa-download"></i></div>
 
   </a>
-  --}} 
+@endif
+
 </div>
 
 {{--
@@ -781,7 +782,7 @@
 <script src="{{asset('public/visitingCard/bussinessCard/a/js/star-rating.js')}}"></script>
 <script src="{{asset('public/visitingCard/bussinessCard/a/js/form-action.js')}}"></script>
 <script src="{{asset('public/visitingCard/bussinessCard/a/js/parsley.min.js')}}"></script>
-<script src="{{asset('public/visitingCard/bussinessCard/a/js/script.js')}}"></script>
+<script src="{{asset('public/visitingCard/bussinessCard/a/js/script.js')}}?v={{date('YmdHis')}}"></script>
 
 <script type="text/javascript">
 $(".close").click(function() {

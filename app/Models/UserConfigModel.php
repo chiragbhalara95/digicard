@@ -16,7 +16,10 @@ class UserConfigModel extends Model
         'isShowNoOfVisit',
         'isShowEnquiry',
         'isShowfeedback',
-        'aboutLabel'
+        'isFeedbackOnWhatsapp',
+        'aboutLabel',
+        'whatsappMsg',
+        'defaultCountry',
     ];
 
 }

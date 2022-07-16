@@ -867,10 +867,17 @@
       <div class="about-us-text">
         <div style="text-align: justify;">{!!$companyInfoData->company_info!!}</div>
       </div>
+
       <div>
-        <div style="clear:both">&nbsp;</div>
+            <div style="clear:both">&nbsp;</div>
+                <h4>Documents</h4>
+                <a class="document-wrapper" href="https://www.e-digicard.com/web-services/company-profile/5f7f48c4ea65b-1602177220-5f7f48c4ea65f.pdf" target="_blank">
+                <div class="pdf-icon"><i class="fa fa-file-pdf" aria-hidden="true"></i></div>
+                <div class="pdf-number text text-dark">Download Brochure </div>
+                <div class="download-icon"><i class="fa fa-download" aria-hidden="true"></i></div>
+            </a>
       </div>
-    </div>
+  </div>
 
 @if(count($paymentMasterData) > 0)
 <div class="section-container" id="payment">
@@ -1119,7 +1126,7 @@ $('#company_mobile').blur(function(e) {
     <script src="{{asset('public/visitingCard/bussinessCard/a/js/parsley.min.js')}}"></script>
     <script src="{{asset('public/visitingCard/bussinessCard/a/js/form-action.js')}}"></script>
     <script src="{{asset('public/visitingCard/bussinessCard/a/js/jquery-confirm.js')}}"></script>
-    <script src="{{asset('public/visitingCard/bussinessCard/a/js/script.js')}}"></script>
+    <script src="{{asset('public/visitingCard/bussinessCard/a/js/script.js')}}?v={{date('YmdHis')}}"></script>
     <script src="{{asset('public/visitingCard/bussinessCard/a/js/24ee31a944.js')}}" crossorigin="anonymous"></script>
     <style media="all" id="fa-v4-shims">
       <div id="fb-root"class=" fb_reset"><div style="position: absolute; top: -10000px; width: 0px; height: 0px;"><div></div></div></div></body></html>
