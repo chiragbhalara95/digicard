@@ -72,7 +72,17 @@ class CompanyInfoController extends Controller
                 $destinationPath  = public_path('upload/bussiness-card/logo/');
                 $request->file('company_logo')->move($destinationPath, $imgname);
             }
-            
+
+            if($request->file('broucher_file_input')!='')
+            {
+                $file             = $request->file('broucher_file_input');
+                $filename         = $file->getClientOriginalName();
+                $imgname          = date("YmdHis").$filename;
+                $companyData['broucher_file'] = "upload/bussiness-card/broucher/".$imgname;
+                $destinationPath  = public_path('upload/bussiness-card/broucher/');
+                $request->file('broucher_file_input')->move($destinationPath, $imgname);
+            }
+
             $companyObj->fill($companyData);
             $companyObj->save();
       
