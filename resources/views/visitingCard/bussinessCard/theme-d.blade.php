@@ -249,18 +249,19 @@
       </div>
 
 
-    {{--
-    <h3>Documents</h3>
+@if(!empty($companyInfoData->broucher_file))
+<h3>Documents</h3>
 
-    <a class="download" href="../demo-templates/images/eDesignGuru%20Flyer.pdf" download="">
+  <a class="download" href="{{url('public')}}/{{$companyInfoData->broucher_file}}" download="">
 
-    <div class="pdf-icon"><i class="fa fa-file-pdf-o"></i></div>
+  <div class="pdf-icon"><i class="fa fa-file-pdf-o"></i></div>
 
-    <div class="pdf-number">eDesignGuru Flyer.pdf</div>
+  <div class="pdf-number">{{$companyInfoData->company_name}}</div>
 
-    <div class="download-icon"><i class="fa fa-download"></i></div>
+  <div class="download-icon"><i class="fa fa-download"></i></div>
 
-    </a> --}}
+  </a>
+@endif
 
 </div>
 
