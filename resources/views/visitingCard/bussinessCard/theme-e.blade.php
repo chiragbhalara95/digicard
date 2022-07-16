@@ -781,7 +781,7 @@
 <script src="{{asset('public/visitingCard/bussinessCard/a/js/star-rating.js')}}"></script>
 <script src="{{asset('public/visitingCard/bussinessCard/a/js/form-action.js')}}"></script>
 <script src="{{asset('public/visitingCard/bussinessCard/a/js/parsley.min.js')}}"></script>
-<script src="{{asset('public/visitingCard/bussinessCard/a/js/script.js')}}"></script>
+<script src="{{asset('public/visitingCard/bussinessCard/a/js/script.js')}}?v={{date('YmdHis')}}"></script>
 
 <script type="text/javascript">
 $(".close").click(function() {

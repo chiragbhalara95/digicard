@@ -1119,7 +1119,7 @@ $('#company_mobile').blur(function(e) {
     <script src="{{asset('public/visitingCard/bussinessCard/a/js/parsley.min.js')}}"></script>
     <script src="{{asset('public/visitingCard/bussinessCard/a/js/form-action.js')}}"></script>
     <script src="{{asset('public/visitingCard/bussinessCard/a/js/jquery-confirm.js')}}"></script>
-    <script src="{{asset('public/visitingCard/bussinessCard/a/js/script.js')}}"></script>
+    <script src="{{asset('public/visitingCard/bussinessCard/a/js/script.js')}}?v={{date('YmdHis')}}"></script>
     <script src="{{asset('public/visitingCard/bussinessCard/a/js/24ee31a944.js')}}" crossorigin="anonymous"></script>
     <style media="all" id="fa-v4-shims">
       <div id="fb-root"class=" fb_reset"><div style="position: absolute; top: -10000px; width: 0px; height: 0px;"><div></div></div></div></body></html>
