@@ -90,15 +90,18 @@
        <i class="fa fa-phone iconbtn"></i>
         </a>
 
-        <a class="contact-icon" target="_blank" href="https://api.whatsapp.com/send?phone={{str_replace('+','',$companyInfoData->country_code)}}{{$companyInfoData->company_mobile}}&text=Got%20reference%20from%20your%20Digital%20vCard.%20Want%20to%20know%20more%20about%20your%20products%20and%20services.">
-        <i class="fa fa-whatsapp iconbtn"></i></a>
+      <a class="contact-icon" target="_blank" href="https://api.whatsapp.com/send?phone={{str_replace('+','',$companyInfoData->country_code)}}{{$companyInfoData->company_mobile}}&text={{urlencode($userConfigObj->whatsappMsg)}}">
+        <i class="fa fa-whatsapp iconbtn"></i>
+      </a>
 
-              @if (!empty($companyInfoData->company_address))
+      @if (!empty($companyInfoData->company_address))
       <a class="contact-icon" target="_blank" href="https://maps.google.com?q={{$companyInfoData->latitude}},{{$companyInfoData->longitude}}&z=12&amp;um=1&amp;ie=UTF-8&amp;sa=X&amp;ved=2ahUKEwiWyNX76N3qAhWrzTgGHQuCBicQ_AUoAXoECCMQAw">
-
-          <i class="fa fa-map-marker iconbtn"></i></a>
-          @endif
-         <a class="contact-icon" target="_blank" href="mailto:{{$userObj->email}}"> <i class="fa fa-envelope fa-flip-horizontal iconbtn"></i></a> 
+        <i class="fa fa-map-marker iconbtn"></i>
+      </a>
+      @endif
+ 
+      <a class="contact-icon" target="_blank" href="mailto:{{$userObj->email}}"> <i class="fa fa-envelope fa-flip-horizontal iconbtn"></i>
+      </a> 
        </div>
 
   </div>

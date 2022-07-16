@@ -706,12 +706,8 @@
               <i class="fas fa-phone" aria-hidden="true"></i> Call </a>
             <a class="contact-button" href="sms:{{$companyInfoData->country_code}}{{$companyInfoData->company_mobile}}">
               <i class="fas fa-sms" aria-hidden="true"></i> SMS </a>
-            <!--
-              <a class="contact-button" target="_blank" href="https://wa.me/{{$companyInfoData->country_code}}{{$companyInfoData->company_mobile}}?text=Got%20reference%20from%20your%20Digital%20vCard.%20Want%20to%20know%20more%20about%20your%20products%20and%20services.">
-              <i class="fab fa-whatsapp" aria-hidden="true"></i> Whatsapp 
-            </a>
-          -->
-          <a class="contact-button" target="_blank" href="https://api.whatsapp.com/send?phone={{str_replace('+','',$companyInfoData->country_code)}}{{$companyInfoData->company_mobile}}&text=Got%20reference%20from%20your%20Digital%20vCard.%20Want%20to%20know%20more%20about%20your%20products%20and%20services.">
+
+              <a class="contact-button" target="_blank" href="https://api.whatsapp.com/send?phone={{str_replace('+','',$companyInfoData->country_code)}}{{$companyInfoData->company_mobile}}&text={{urlencode($userConfigObj->whatsappMsg)}}">
               <i class="fab fa-whatsapp" aria-hidden="true"></i> Whatsapp 
             </a>
 
