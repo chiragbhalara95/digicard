@@ -16,7 +16,8 @@ class ThemeController extends BasicController
         $userId    = auth()->user()->id;
         $userData  = User::find($userId);
         $tmemeData = ThemeModel::where('product_id', \App\Helpers\Constants::$PRODUCT_THEME['bussiness_card'])
-                ->get();
+            ->where('status', '1')    
+            ->get();
         $postReq = [
             'theme_data' => $tmemeData,
             'theme' => $userData->theme

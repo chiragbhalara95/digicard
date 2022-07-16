@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<!-- saved from url=(0044)https://www.virtualbusinesscard.in/template7 -->
-<html style="--theme-color:#e91e63; --theme-color-light:#6d126f70;"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!-- saved from url=(0044)https://www.virtualbusinesscard.in/template2 -->
+<html style="--theme-color:#FF9800; --theme-color-light:#d8d8d870;"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <title>{{$companyInfoData->company_name}}</title>
 
@@ -18,27 +18,18 @@
 
 
 
-<!-- Favicon -->
-
 <link rel="shortcut icon" href="{{url('public')}}/{{$companyInfoData->company_logo}}">
-<link href="{{asset('public/visitingCard/bussinessCard/c/css/font-awesome.min.css')}}" rel="stylesheet">
-<link href="{{asset('public/visitingCard/bussinessCard/c/css/template7.css')}}" rel="stylesheet">
-<link href="{{asset('public/visitingCard/bussinessCard/c/css/fonts.css')}}" rel="stylesheet">
-<link href="{{asset('public/visitingCard/bussinessCard/c/css/star-rating.css')}}" rel="stylesheet">
+<link href="{{asset('public/visitingCard/bussinessCard/e/css/font-awesome.min.css')}}" rel="stylesheet">
+<link href="{{asset('public/visitingCard/bussinessCard/e/css/template2.css')}}" rel="stylesheet">
+<link href="{{asset('public/visitingCard/bussinessCard/e/css/fonts.css')}}" rel="stylesheet">
+<link href="{{asset('public/visitingCard/bussinessCard/e/css/star-rating.css')}}" rel="stylesheet">
+
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
-
-
 <link href="{{asset('public/visitingCard/bussinessCard/a/css/jquery-confirm.css')}}" rel="stylesheet">
 
-<style type="text/css">
-    .purchase-form__renewal-price--strikethrough {
-        text-decoration: line-through;
-        color: red;
-    }
-</style>
 <script>
-    document.documentElement.style.setProperty('--theme-color', '#e91e63');
-    document.documentElement.style.setProperty('--theme-color-light', '#6d126f70');
+    document.documentElement.style.setProperty('--theme-color', '#FF9800');
+    document.documentElement.style.setProperty('--theme-color-light', '#d8d8d870');
 </script>
 
 </head>
@@ -47,95 +38,127 @@
 
 <div class="main-wrapper" id="home">
 
-  <div class="companylogo">
-    @if(!empty($companyInfoData->company_logo))
-      <img src="{{url('public')}}/{{$companyInfoData->company_logo}}" class="profile-pic-img">
-    @endif
-</div>
+  <div class="firstpagetop">
+
   @if($userConfigObj->isShowNoOfVisit == '1')
-  <div class="views text-white"><i class="fa fa-eye"></i> Views: <b>{{$userObj->no_visit}}</b></div>
+    <div class="views"><i class="fa fa-eye"></i> 
+      Views: <b>{{$userObj->no_visit}}
+      </b></div>
   @endif
 
-  <div class="clearfix"></div>
+    <!-- Card Holder Profile Pic -->
 
-  <div class="headerbg">
+    <div class="companylogo">
+        @if(!empty($companyInfoData->company_logo))
+          <img src="{{url('public')}}/{{$companyInfoData->company_logo}}" class="img-responsive">
+        @endif
 
-    <div class="personface">
-    @if(!empty($userObj->profile_pic))
-        <img src="{{url('public')}}/{{$userObj->profile_pic}}" class="img-responsive" alt="">
-      @else
-        <img src="{{url('public')}}/upload/user_profile.jpg" class="img-responsive" alt="">
-      @endif
     </div>
 
-    <div class="text-center">
+    
 
-     
+    <!-- Card Holder Company Name -->
 
-      <div class="personname"><span>{{$userObj->name}}</span>
+    @if (!empty($companyInfoData->company_name))
+    <div class="companyname bottomborder">{{$companyInfoData->company_name}}</div>
+    @endif
+    
+
+    <!-- Card Holder First Name and Last Name -->
+
+    <div class="profile">
+
+      <div class="profilepic">
+        @if(!empty($userObj->profile_pic))
+            <img src="{{url('public')}}/{{$userObj->profile_pic}}" class="img-responsive" alt="">
+        @else
+            <img src="{{url('public')}}/upload/user_profile.jpg" class="img-responsive" alt="">
+        @endif
 
       </div>
-		 <div class="companyname"><span class="designation">@if(!empty($companyInfoData->company_profession)) ({{$companyInfoData->company_profession}}) @endif</div>
+
+      <div class="name">{{$userObj->name}} <br>
+
+        <span>@if(!empty($companyInfoData->company_profession)) ({{$companyInfoData->company_profession}}) @endif</span></div>
 
     </div>
 
-    <div class="clearfix"></div>
+    <!--<div class="name">Ms. Yashvi Dave <span>(Co-Founder)</span></div>-->
 
-    <div class="contact-row"> 
-    <a class="contact-icon red" target="_blank" href="tel:{{$companyInfoData->country_code}}{{$companyInfoData->company_mobile}}">  
-    <i class="fa fa-phone"></i> 
+    <div class="actionbtn"> 
+      <a class="contact-icon" target="_blank" href="tel:{{$companyInfoData->country_code}}{{$companyInfoData->company_mobile}}">
+       <i class="fa fa-phone iconbtn"></i>
+        </a>
 
-      <!-- Call --> 
-
-      </a> 
-
-      <a class="contact-icon" target="_blank" href="https://api.whatsapp.com/send?phone={{str_replace('+','',$companyInfoData->country_code)}}{{$companyInfoData->company_mobile}}&text={{urlencode($userConfigObj->whatsappMsg)}}">    
-        <i class="fa fa-whatsapp"></i> 
-      </a> 
+      <a class="contact-icon" target="_blank" href="https://api.whatsapp.com/send?phone={{str_replace('+','',$companyInfoData->country_code)}}{{$companyInfoData->company_mobile}}&text={{urlencode($userConfigObj->whatsappMsg)}}">
+        <i class="fa fa-whatsapp iconbtn"></i>
+      </a>
 
       @if (!empty($companyInfoData->company_address))
-      <a class="contact-icon blue" target="_blank" href="https://maps.google.com?q={{$companyInfoData->latitude}},{{$companyInfoData->longitude}}&z=12&amp;um=1&amp;ie=UTF-8&amp;sa=X&amp;ved=2ahUKEwiWyNX76N3qAhWrzTgGHQuCBicQ_AUoAXoECCMQAw">
-        <i class="fa fa-map-marker"></i> 
-      <!-- Direction --> 
-      </a> 
+      <a class="contact-icon" target="_blank" href="https://maps.google.com?q={{$companyInfoData->latitude}},{{$companyInfoData->longitude}}&z=12&amp;um=1&amp;ie=UTF-8&amp;sa=X&amp;ved=2ahUKEwiWyNX76N3qAhWrzTgGHQuCBicQ_AUoAXoECCMQAw">
+        <i class="fa fa-map-marker iconbtn"></i>
+      </a>
       @endif
-
-      <a class="contact-icon yellow" target="_blank" href="mailto:{{$userObj->email}}"> <i class="fa fa-envelope"></i> 
-
-      <!-- Mail --> 
-
-      </a> </div>
+ 
+      <a class="contact-icon" target="_blank" href="mailto:{{$userObj->email}}"> <i class="fa fa-envelope fa-flip-horizontal iconbtn"></i>
+      </a> 
+       </div>
 
   </div>
 
   <div class="firstpagebottom">
 
-  @if (count($socialMediaData) > 0)
-    <ul class="firstpage share-btn">
-      @foreach($socialMediaData as $socialMediaDetail)
-        @if ($socialMediaDetail->type == 'fb')
-          <li> <a href="{{$socialMediaDetail->url}}" target="_blank"><i class="share-btn-facebook fa fa-facebook"></i></a> </li>
-        @elseif($socialMediaDetail->type == 'in')
-        <li> <a href="{{$socialMediaDetail->url}}" target="_blank"><i class="share-btn-linkedin fa fa-instagram"></i></a> </li>
-          @elseif($socialMediaDetail->type == 'li')
-          <li> <a href="{{$socialMediaDetail->url}}" target="_blank"><i class="share-btn-facebook fa fa-linkedin"></i></a> </li>
-          @elseif($socialMediaDetail->type == 'tw')
-          <li> <a href="{{$socialMediaDetail->url}}" target="_blank"><i class="share-btn-twitter fa fa-twitter"></i></a> </li>
-          @elseif($socialMediaDetail->type == 'pi')
-          <li> <a href="{{$socialMediaDetail->url}}" target="_blank"><i class="share-btn-facebook fa fa-pinterest"></i></a> </li>
-          @elseif($socialMediaDetail->type == 'yt')
-          <li> <a href="{{$socialMediaDetail->url}}" target="_blank"><i class="share-btn-facebook fa fa-youtube"></i></a> </li>
+    <table class="contact-table">
+
+      <tbody>
+
+        @if (!empty($companyInfoData->company_address))
+        <tr>
+          <td><a target="_blank" href="https://maps.google.com?q={{$companyInfoData->latitude}},{{$companyInfoData->longitude}}&z=12&amp;um=1&amp;ie=UTF-8&amp;sa=X&amp;ved=2ahUKEwiWyNX76N3qAhWrzTgGHQuCBicQ_AUoAXoECCMQAw">
+           <i class="fa fa-map-marker contact-icon"></i> </a></td>
+          <td><a target="_blank" href="https://maps.google.com?q={{$companyInfoData->latitude}},{{$companyInfoData->longitude}}&z=12&amp;um=1&amp;ie=UTF-8&amp;sa=X&amp;ved=2ahUKEwiWyNX76N3qAhWrzTgGHQuCBicQ_AUoAXoECCMQAw" class="contact-text"> {!!$companyInfoData->company_address!!} </a></td>
+        </tr>
         @endif
-      @endforeach
-    </ul>
-    @endif
 
-    <div class="shadow-btn"> 
-    <a href="{{url('saveViewCard')}}/{{$userObj->slug}}" download="contact.vcf" class="addphonebook">
-        <i class="fa fa-download shadow-button-icon"></i>Add to Contact</a> 
-        {{--<a onclick="openShareModal(this, &#39;vbc&#39;)" class="share"><i class="fa fa-share-alt"></i>Share</a>--}} 
-      </div>
+      <tr>
+          <td><a href="mailto:{{$userObj->email}}"> <i class="fa fa-envelope contact-icon"></i> </a></td>
+          <td><a href="mailto:{{$userObj->email}}" class="contact-text"> {{$userObj->email}} </a></td>
+        </tr>
+        <tr>
 
+        @if(!empty($companyInfoData->company_website))
+        <tr>
+          <td><a target="_blank" href="{{$companyInfoData->company_website}}"> <i class="fa fa-globe contact-icon"></i> </a></td>
+          <td><a target="_blank" href="{{$companyInfoData->company_website}}" class="contact-text"> {{$companyInfoData->company_website}} </a></td>
+        </tr>
+        @endif
+
+
+        <tr>
+          <td>
+            <a target="_blank" href="tel:{{$companyInfoData->country_code}}{{$companyInfoData->company_mobile}}   ">
+            <i class="fa fa-phone contact-icon"></i>
+            </a>
+          </td>
+          <td>
+            <a target="_blank" href="tel:{{$companyInfoData->country_code}}{{$companyInfoData->company_mobile}}" class="contact-text"> {{$companyInfoData->country_code}}{{$companyInfoData->company_mobile}} </a>
+            @if(!empty($companyInfoData->country_landline))
+            <br/>
+            <a target="_blank" href="tel:{{$companyInfoData->country_landline}}" class="contact-text">
+              {{$companyInfoData->country_landline}} </a>
+            @endif
+          </td>
+        </tr>
+
+
+      </tbody>
+
+    </table>
+
+    <?php
+          $countryData = file_get_contents(url('public/country-tel-code.json'));
+          $countryData = json_decode($countryData, true);
+    ?>
     <?php
           $countryData = file_get_contents(url('public/country-tel-code.json'));
           $countryData = json_decode($countryData, true);
@@ -177,68 +200,29 @@
 </div>
 
 
+</div>
 
 
-    <table class="contact-table">
-
-      <tbody>
-
-      @if (!empty($companyInfoData->company_address))
-
-        <tr>
-
-          <td><a target="_blank" href="https://maps.google.com?q={{$companyInfoData->latitude}},{{$companyInfoData->longitude}}&z=12&amp;um=1&amp;ie=UTF-8&amp;sa=X&amp;ved=2ahUKEwiWyNX76N3qAhWrzTgGHQuCBicQ_AUoAXoECCMQAw"> <i class="fa fa-map-marker inside-icon blue"></i> </a></td>
-
-          <td>
-          
-          <a target="_blank" href="https://maps.google.com?q={{$companyInfoData->latitude}},{{$companyInfoData->longitude}}&z=12&amp;um=1&amp;ie=UTF-8&amp;sa=X&amp;ved=2ahUKEwiWyNX76N3qAhWrzTgGHQuCBicQ_AUoAXoECCMQAw" class="contact-text">{!!rtrim(preg_replace('#<p(.*?)>(.*?)</p>#is', '$2<br/>', $companyInfoData->company_address), "<br/>");!!}</a>
-          </td>
-
-        </tr>
-      @endif
-
-      <tr>
-
-          <td><a href="mailto:{{$userObj->email}}"> <i class="fa fa-envelope inside-icon yellow"></i> </a></td>
-
-          <td><a href="mailto:{{$userObj->email}}" class="contact-text"> {{$userObj->email}} </a></td>
-
-        </tr>
-
-        @if(!empty($companyInfoData->company_website))
-        <tr>
-
-          <td><a target="_blank" href="{{$companyInfoData->company_website}}"> <i class="fa fa-globe inside-icon green"></i> </a></td>
-
-          <td><a target="_blank" href="{{$companyInfoData->company_website}}" class="contact-text"> {{$companyInfoData->company_website}} </a></td>
-
-        </tr>
+  @if (count($socialMediaData) > 0)
+    <ul class="firstpage share-btn">
+      @foreach($socialMediaData as $socialMediaDetail)
+        @if ($socialMediaDetail->type == 'fb')
+          <li> <a href="{{$socialMediaDetail->url}}" target="_blank"><i class="share-btn-facebook fa fa-facebook"></i></a> </li>
+        @elseif($socialMediaDetail->type == 'in')
+        <li> <a href="{{$socialMediaDetail->url}}" target="_blank"><i class="share-btn-linkedin fa fa-instagram"></i></a> </li>
+          @elseif($socialMediaDetail->type == 'li')
+          <li> <a href="{{$socialMediaDetail->url}}" target="_blank"><i class="share-btn-facebook fa fa-linkedin"></i></a> </li>
+          @elseif($socialMediaDetail->type == 'tw')
+          <li> <a href="{{$socialMediaDetail->url}}" target="_blank"><i class="share-btn-twitter fa fa-twitter"></i></a> </li>
+          @elseif($socialMediaDetail->type == 'pi')
+          <li> <a href="{{$socialMediaDetail->url}}" target="_blank"><i class="share-btn-facebook fa fa-pinterest"></i></a> </li>
+          @elseif($socialMediaDetail->type == 'yt')
+          <li> <a href="{{$socialMediaDetail->url}}" target="_blank"><i class="share-btn-facebook fa fa-youtube"></i></a> </li>
         @endif
-
-
-        <tr>
-                <td>
-                  <a target="_blank" href="tel:{{$companyInfoData->country_code}}{{$companyInfoData->company_mobile}}   ">
-                  <i class="fa fa-phone inside-icon red"></i>
-                  </a>
-                </td>
-                <td>
-                  <a target="_blank" href="tel:{{$companyInfoData->country_code}}{{$companyInfoData->company_mobile}}" class="contact-action-container-text"> {{$companyInfoData->country_code}}{{$companyInfoData->company_mobile}} </a>
-                  @if(!empty($companyInfoData->country_landline))
-                  <br/>
-                  <a target="_blank" href="tel:{{$companyInfoData->country_landline}}" class="contact-action-container-text">
-                    {{$companyInfoData->country_landline}} </a>
-                  @endif
-                </td>
-              </tr>
-
-      </tbody>
-
-    </table>
-
+      @endforeach
+    </ul>
+    @endif
     <div class="p-20"></div>
-
-  </div>
 
 </div>
 
@@ -250,12 +234,21 @@
         <div style="text-align: justify;">{!!$companyInfoData->company_info!!}</div>
       </div>
 
+{{--
+  <h3>Documents</h3>
 
+  <a class="download" href="https://www.virtualbusinesscard.in/demo-templates/images/eDesignGuru%20Flyer.pdf" download="">
 
-  
+  <div class="pdf-icon"><i class="fa fa-file-pdf-o"></i></div>
 
+  <div class="pdf-number">eDesignGuru Flyer.pdf</div>
 
+  <div class="download-icon"><i class="fa fa-download"></i></div>
+
+  </a>
+  --}} 
 </div>
+
 {{--
 <div class="page-container" id="products-services">
 
@@ -273,7 +266,7 @@
 
       <p></p>
 
-      <img onclick="openImageModal(this)" alt="Website Design &amp; Development" src="./Digital Business Card _ Virtual Business Card_files/web-design-and-development.jpg" style="width:100%;margin-bottom: 15px;">
+      <img onclick="openImageModal(this)" alt="Website Design &amp; Development" src="./Digital Business Card _ Create Your Digital Business Cards Online__files/web-design-and-development.jpg" style="width:100%;margin-bottom: 15px;">
 
       <div class="product-enquiry-section">
 
@@ -293,7 +286,7 @@
 
       <p></p>
 
-      <img onclick="openImageModal(this)" alt="Graphic Design" src="./Digital Business Card _ Virtual Business Card_files/graphic-design.jpg" style="width:100%;margin-bottom: 15px;">
+      <img onclick="openImageModal(this)" alt="Graphic Design" src="./Digital Business Card _ Create Your Digital Business Cards Online__files/graphic-design.jpg" style="width:100%;margin-bottom: 15px;">
 
       <div class="product-enquiry-section">
 
@@ -313,7 +306,7 @@
 
       <p></p>
 
-      <img onclick="openImageModal(this)" alt="Logo Design &amp; Branding" src="./Digital Business Card _ Virtual Business Card_files/logo-design.jpg" style="width:100%;margin-bottom: 15px;">
+      <img onclick="openImageModal(this)" alt="Logo Design &amp; Branding" src="./Digital Business Card _ Create Your Digital Business Cards Online__files/logo-design.jpg" style="width:100%;margin-bottom: 15px;">
 
       <div class="product-enquiry-section">
 
@@ -333,7 +326,7 @@
 
       <p></p>
 
-      <img onclick="openImageModal(this)" alt="Digital Marketing" src="./Digital Business Card _ Virtual Business Card_files/digital-marketing.jpg" style="width:100%;margin-bottom: 15px;">
+      <img onclick="openImageModal(this)" alt="Digital Marketing" src="./Digital Business Card _ Create Your Digital Business Cards Online__files/digital-marketing.jpg" style="width:100%;margin-bottom: 15px;">
 
       <div class="product-enquiry-section">
 
@@ -354,6 +347,46 @@
   <h2 class="section-heading">Payment</h2>
 
   <div>
+
+    <table class="about-tbl">
+
+      <tbody>
+
+        <tr>
+
+          <td width="50%" class="td-label"><h3>Paytm Number</h3></td>
+
+          <td>: </td>
+
+          <td> 9825222824 </td>
+
+        </tr>
+
+        <tr>
+
+          <td width="50%" class="td-label"><h3>Phone Pe Number</h3></td>
+
+          <td>: </td>
+
+          <td> 9825222824 </td>
+
+        </tr>
+
+        <tr>
+
+          <td width="50%" class="td-label"><h3>Google Pay Number</h3></td>
+
+          <td>: </td>
+
+          <td> 9825222824 </td>
+
+        </tr>
+
+      </tbody>
+
+    </table>
+
+    <h3 align="center">Account Details:</h3>
 
     <table class="about-tbl">
 
@@ -412,19 +445,16 @@
           </tr>
         @endif
       @endforeach
-
-
-
       </tbody>
-
     </table>
 
 
 
-    <div>
 
 
 
+
+  </div>
 
 </div>
 @endif
@@ -471,11 +501,11 @@
               </div>
             @endforeach
  
+
   </div>
 
 </div>
 @endif
-
 {{--
 <div class="page-container" id="videogallery">
 
@@ -487,7 +517,7 @@
 
     <div class="card" style="padding: 10px">
 
-      <iframe src="./Digital Business Card _ Virtual Business Card_files/qyekpPUBOJU.html" frameborder="0" allowfullscreen="" style="width: 100%"></iframe>
+      <iframe src="./Digital Business Card _ Create Your Digital Business Cards Online__files/qyekpPUBOJU.html" frameborder="0" allowfullscreen="" style="width: 100%"></iframe>
 
     </div>
 
@@ -527,8 +557,7 @@
 
   </div>
 
-
-<form class="feedback-form card" novalidate="" id="feedback-form">
+  <form class="feedback-form card" novalidate="">
 
     <div class="feedback-form-heading">Give Feedback</div>
 
@@ -552,12 +581,13 @@
 
     <textarea name="feedback" id="feedback" placeholder="Enter your feedback"></textarea>
 
-    <input type="submit" value="Sending..." onclick="sendFeedback(this, &#39;prashant-dave&#39;)" disabled="">
+    <input type="submit" value="Give Feedback" onclick="sendFeedback(this, &#39;prashant-dave&#39;)">
 
   </form>
 
 </div>
 --}}
+
 @if($userConfigObj->isShowEnquiry == '1')
 
 <div class="page-container" id="enquiry">
@@ -606,6 +636,7 @@
 
 @endif
 
+
 <div class="copyright-wrapper">
       <div class="copyright-wrapper-inner"> © {{date('Y')}}
         <a href="{{url('/')}}" target="_blank">
@@ -616,62 +647,65 @@
 
 
 
+
 <!-- Footer Menu -->
 
 <div class="footer">
 
   <ul class="footer-menu">
 
-    <li> <a class="footer-menu-link red" href="#home"> <i class="footer-menu-icon fa fa-home"></i>
+    <li> <a class="footer-menu-link" href="#home"> <i class="footer-menu-icon fa fa-home"></i>
 
       <div class="footer-menu-text">HOME</div>
 
       </a> </li>
 
-    <li> <a class="footer-menu-link green" href="#aboutus"> <i class="footer-menu-icon fa fa-user"></i>
+    <li> <a class="footer-menu-link" href="#aboutus"> <i class="footer-menu-icon fa fa-user"></i>
 
       <div class="footer-menu-text">ABOUT US</div>
 
       </a> </li>
-{{--
-    <li> <a class="footer-menu-link blue" href="#products-services"> <i class="footer-menu-icon fa fa-shopping-cart"></i>
+
+      {{--
+    <li> <a class="footer-menu-link" href="#products-services"> <i class="footer-menu-icon fa fa-shopping-cart"></i>
 
       <div class="footer-menu-text">PRODUCTS</div>
 
       </a> </li>
       --}}
+
     @if(count($paymentMasterData) > 0)
-      <li>
-        <a class="footer-menu-link yellow" href="#payment"> <i class="footer-menu-icon fa fa-inr"></i>
-          <div class="footer-menu-text">PAYMENT</div>
-        </a>
-      </li>
+
+    <li> <a class="footer-menu-link" href="#payment"> <i class="footer-menu-icon fa fa-inr"></i>
+
+      <div class="footer-menu-text">PAYMENT</div>
+
+      </a> </li>
       @endif
 
       @if($galleryData->count() > 0)
-
-      <li> <a class="footer-menu-link navyblue" href="#photogallery"> <i class="footer-menu-icon fa fa-picture-o"></i>
+    <li> <a class="footer-menu-link" href="#photogallery"> <i class="footer-menu-icon fa fa-picture-o"></i>
 
       <div class="footer-menu-text">GALLERY</div>
 
       </a> </li>
       @endif
-{{--
-    <li> <a class="footer-menu-link purple" href="videogallery"> <i class="footer-menu-icon fa fa-youtube-square"></i>
+
+    {{--
+    <li> <a class="footer-menu-link" href="#videogallery"> <i class="footer-menu-icon fa fa-youtube-square"></i>
 
       <div class="footer-menu-text">VIDEOS</div>
 
       </a> </li>
-      --}}
-{{--
-    <li> <a class="footer-menu-link seagreen" href="#feedback"> <i class="footer-menu-icon fa fa-star-half-o"></i>
+
+    <li> <a class="footer-menu-link" href="#feedback"> <i class="footer-menu-icon fa fa-star-half-o"></i>
 
       <div class="footer-menu-text">FEEDBACK</div>
 
       </a> </li>
-
       --}}
-    <li> <a class="footer-menu-link orange" href="#enquiry"> <i class="footer-menu-icon fa fa-comments"></i>
+
+    <li> <a class="footer-menu-link" href="#enquiry"> <i class="footer-menu-icon fa fa-comments"></i>
 
       <div class="footer-menu-text">ENQUIRY</div>
 
@@ -703,7 +737,7 @@
 
     <div class="share-form-buttons-container">
 
-      <div class="share-btn-heading"> <img src="{{url('public/visitingCard/bussinessCard/c/img/tild-arrow.svg')}}" class="share-btn-arrow" alt="">
+      <div class="share-btn-heading"> <img src="./Digital Business Card _ Create Your Digital Business Cards Online__files/tild-arrow.svg" class="share-btn-arrow" alt="">
 
         <div class="share-btn-heading-text">Share my Virtual Business Card in your network.</div>
 
@@ -735,12 +769,10 @@
 
 </div>
 
-<!-- The image Modal Popup END-->
-
 <input type="hidden" id="send_enquiry_url" value="{{route('sendEnquiry')}}">
 
 <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
-    <script src="{{asset('public/visitingCard/bussinessCard/a/js/intlTelInput.min.js')}}"></script>
+<script src="{{asset('public/visitingCard/bussinessCard/a/js/intlTelInput.min.js')}}"></script>
 
 <script src="{{asset('public/visitingCard/bussinessCard/a/js/jquery.min.js')}}"></script>
 <script src="{{asset('public/visitingCard/bussinessCard/a/js/jquery-confirm.js')}}"></script>
@@ -782,6 +814,7 @@ else {
 }
 }
 </script>
+
 
 
 

@@ -87,7 +87,7 @@
             <!-- Call --> 
 
             </a> 
-              <a class="contact-icon" target="_blank" href="https://api.whatsapp.com/send?phone={{str_replace('+','',$companyInfoData->country_code)}}{{$companyInfoData->company_mobile}}&text=Got%20reference%20from%20your%20Digital%20vCard.%20Want%20to%20know%20more%20about%20your%20products%20and%20services.">
+              <a class="contact-icon" target="_blank" href="https://api.whatsapp.com/send?phone={{str_replace('+','',$companyInfoData->country_code)}}{{$companyInfoData->company_mobile}}&text={{urlencode($userConfigObj->whatsappMsg)}}">
                 <i class="fa fa-whatsapp"></i> 
 
             <!-- Whatsapp --> 
@@ -656,11 +656,11 @@
 
         {{--
         <li> <a class="footer-menu-link" href="#videogallery"> <i class="footer-menu-icon fa fa-youtube-square"></i>
-            --}}
 
             <div class="footer-menu-text">VIDEOS</div>
 
             </a> </li>
+            --}}
 
         {{--
         <li> <a class="footer-menu-link" href="#feedback"> <i class="footer-menu-icon fa fa-star-half-o"></i>
