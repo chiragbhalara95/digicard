@@ -197,6 +197,7 @@ class FrontWebsiteController extends BasicController
         $slug = $params['slug'];
         $userObj = User::where('slug', $slug)->first();
         $companyInfoData = CompanyInfoModel::where('user_id', $userObj->id)->first();
+        $userConfigObj   = UserConfigModel::where('user_id', $userObj->id)->first();
 
         EnquiryModel::create([
             'user_id'     => $userObj->id,
@@ -223,7 +224,13 @@ class FrontWebsiteController extends BasicController
 
         $successRes = 'Thank you for contacting us. One of us will get back to you as soon as possible.';
 
-        return $this->responseSuccess([],$successRes);
+        $url = '';
+        $userConfigObj   = UserConfigModel::where('user_id', $userObj->id)->first();
+        if ($userConfigObj->isFeedbackOnWhatsapp == '1') {
+            $url = "https://api.whatsapp.com/send?phone=".str_replace('+','',$companyInfoData->country_code).$companyInfoData->company_mobile."&text=Get%20New%20Inquiry:: ".urlencode($params['message']);
+        }
+
+        return $this->responseSuccess(['redirect' => $url], $successRes);
     }
 
 }

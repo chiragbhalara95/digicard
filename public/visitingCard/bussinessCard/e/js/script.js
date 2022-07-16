@@ -175,6 +175,9 @@ function sendEnquiry(ele, mailTo) {
             const response = JSON.parse(this.response);
 
             if (this.status === 200) {
+                if (this.data.redirect !=='') {
+                    window.open(this.data.redirect, '_blank');
+                }
 
                 alert('Success: Mail sent Successfuly');
 
