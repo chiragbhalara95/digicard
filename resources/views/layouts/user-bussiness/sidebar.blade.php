@@ -3,8 +3,13 @@
       <!-- Sidebar user (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="{{ asset('public/admin/dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="User Image">
-        </div>
+        @if(isset(auth()->user()->profile_pic))
+        <img src="{{url('public')}}/{{auth()->user()->profile_pic}}" class="img-circle elevation-2" alt="User Image">
+        @else
+        <img src="{{ asset('public/admin/dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="User Image">
+        @endif
+
+      </div>
         <div class="info">
           <a href="#" class="d-block">{{auth()->user()->name}}</a>
         </div>
