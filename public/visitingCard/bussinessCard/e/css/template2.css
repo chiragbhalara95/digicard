@@ -16,7 +16,9 @@ body {
     text-align: center;
     box-shadow: 1px 2px 15px #48484833;
     padding-bottom: 85px;
-    background-image: url('../common/img/template2-bg.jpg');
+
+
+    background-image: url('../img/template2-bg.jpg');
     background-attachment: fixed;
 }
 
