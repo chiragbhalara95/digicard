@@ -1067,7 +1067,13 @@
                 </a>
             </li>
           @endif
-    </ul>
+          <li>
+            <a class="footer-menu-link" href="{{url('register?packageId=2')}}">
+                    <i class="footer-menu-icon fas fa-id-card" aria-hidden="true"></i>
+                    <div class="footer-menu-text">MAkE My CARD</div>
+                </a>
+          </li>
+        </ul>
     </div>
     <script>
       // Place this code in the head section of your HTML file 
