@@ -689,7 +689,12 @@
       <div class="footer-menu-text">ENQUIRY</div>
 
       </a> </li>
-
+      <li>
+            <a class="footer-menu-link" href="{{url('register?packageId=2')}}">
+                    <i class="footer-menu-icon fa fa-id-card" aria-hidden="true"></i>
+                    <div class="footer-menu-text">MAkE My CARD</div>
+                </a>
+          </li>
   </ul>
 
 </div>
