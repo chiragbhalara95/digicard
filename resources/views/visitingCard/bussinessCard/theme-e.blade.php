@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!-- saved from url=(0044)https://www.virtualbusinesscard.in/template2 -->
 <html style="--theme-color:#FF9800; --theme-color-light:#d8d8d870;"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <title>{{$companyInfoData->company_name}}</title>
