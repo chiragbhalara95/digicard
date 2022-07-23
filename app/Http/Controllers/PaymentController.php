@@ -48,7 +48,7 @@ class PaymentController extends Controller
         }
 
         $userData        = CustomHelper::getUserDataByIp();
-        $userCountryCode = !empty($userData->geoplugin_countryCode) ? $userData->geoplugin_countryCode :'IN';
+        $userCountryCode = 'IN';//!empty($userData->geoplugin_countryCode) ? $userData->geoplugin_countryCode :'IN';
         $userCurrency    = ($userCountryCode !== 'IN') ? 'USD' : 'INR';
 
         $formatePackage = [];

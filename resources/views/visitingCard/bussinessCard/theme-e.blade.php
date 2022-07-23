@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!-- saved from url=(0044)https://www.virtualbusinesscard.in/template2 -->
 <html style="--theme-color:#FF9800; --theme-color-light:#d8d8d870;"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <title>{{$companyInfoData->company_name}}</title>
@@ -155,10 +154,6 @@
 
     </table>
 
-    <?php
-          $countryData = file_get_contents(url('public/country-tel-code.json'));
-          $countryData = json_decode($countryData, true);
-    ?>
     <?php
           $countryData = file_get_contents(url('public/country-tel-code.json'));
           $countryData = json_decode($countryData, true);
@@ -713,7 +708,7 @@
 
       </a> </li>
       <li>
-            <a class="footer-menu-link" href="{{url('register?packageId=2')}}">
+            <a class="footer-menu-link" href="{{url('register?packageId=3')}}">
                     <i class="footer-menu-icon fa fa-id-card" aria-hidden="true"></i>
                     <div class="footer-menu-text">MAkE My CARD</div>
                 </a>
