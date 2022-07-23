@@ -59,7 +59,7 @@
   <div class="clearfix"></div>
 
   <div class="headerbg">
-
+    <div class="personname"><span>{{$companyInfoData->company_name}}</span></div>
     <div class="personface">
     @if(!empty($userObj->profile_pic))
         <img src="{{url('public')}}/{{$userObj->profile_pic}}" class="img-responsive" alt="">
@@ -69,8 +69,6 @@
     </div>
 
     <div class="text-center">
-
-     
 
       <div class="personname"><span>{{$userObj->name}}</span>
 
@@ -690,7 +688,7 @@
 
       </a> </li>
       <li>
-            <a class="footer-menu-link" href="{{url('register?packageId=2')}}">
+            <a class="footer-menu-link pink" href="{{url('register?packageId=3')}}">
                     <i class="footer-menu-icon fa fa-id-card" aria-hidden="true"></i>
                     <div class="footer-menu-text">MAkE My CARD</div>
                 </a>

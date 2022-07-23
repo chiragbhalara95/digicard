@@ -713,7 +713,7 @@
 
       </a> </li>
       <li>
-            <a class="footer-menu-link" href="{{url('register?packageId=2')}}">
+            <a class="footer-menu-link" href="{{url('register?packageId=3')}}">
                     <i class="footer-menu-icon fa fa-id-card" aria-hidden="true"></i>
                     <div class="footer-menu-text">MAkE My CARD</div>
                 </a>
