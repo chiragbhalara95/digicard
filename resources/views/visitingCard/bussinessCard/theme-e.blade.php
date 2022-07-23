@@ -158,10 +158,6 @@
           $countryData = file_get_contents(url('public/country-tel-code.json'));
           $countryData = json_decode($countryData, true);
     ?>
-    <?php
-          $countryData = file_get_contents(url('public/country-tel-code.json'));
-          $countryData = json_decode($countryData, true);
-    ?>
 
 <div class="enquiry-form input-group input-group-lg col-md-12">
   <div class="input-group-prepend  col-md-12 row">
