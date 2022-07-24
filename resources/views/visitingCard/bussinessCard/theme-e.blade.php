@@ -15,8 +15,6 @@
 <meta property="og:image:width" content="800">
 <meta property="og:image:height" content="800">
 
-
-
 <link rel="shortcut icon" href="{{url('public')}}/{{$companyInfoData->company_logo}}">
 <link href="{{asset('public/visitingCard/bussinessCard/e/css/font-awesome.min.css')}}" rel="stylesheet">
 <link href="{{asset('public/visitingCard/bussinessCard/e/css/template2.css')}}" rel="stylesheet">
@@ -153,6 +151,9 @@
       </tbody>
 
     </table>
+    <div class="shadow-btn"> 
+            <a href="{{url('saveViewCard')}}/{{$userObj->slug}}" download="contact.vcf" class="addphonebook"><i class="fa fa-download shadow-button-icon"></i>Add to Contact</a>
+        </div>
 
     <?php
           $countryData = file_get_contents(url('public/country-tel-code.json'));
@@ -224,7 +225,7 @@
 
 <div class="page-container" id="aboutus">
 
-  <h2 class="section-heading">ABOUT US</h2>
+  <h2 class="section-heading">{{$userConfigObj->aboutLabel}}</h2>
 
       <div class="about-us-text">
         <div style="text-align: justify;">{!!$companyInfoData->company_info!!}</div>
@@ -659,7 +660,9 @@
 
     <li> <a class="footer-menu-link" href="#aboutus"> <i class="footer-menu-icon fa fa-user"></i>
 
-      <div class="footer-menu-text">ABOUT US</div>
+      <div class="footer-menu-text">{{$userConfigObj->aboutLabel}}1
+
+      </div>
 
       </a> </li>
 
