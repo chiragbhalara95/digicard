@@ -356,14 +356,17 @@ color:white}
 
 #about_us {}
 #about_us h3{}
-#about_us p{      white-space: pre-line;
+#about_us p{   
+    white-space: pre-line;
     font-size: 12px;
     font-weight: 500;
     line-height: 1.5;
     background: white;
     padding: 26px;
     margin: 0;}
-
+#about_us p{   
+        padding: 5px !important;
+}
 /*payment */
 
 #payment {}
