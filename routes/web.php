@@ -82,6 +82,9 @@ Route::middleware(['auth', 'verified', 'check_payment_status'])->namespace('App\
      Route::get('profile', [App\Http\Controllers\AboutUsController::class, 'profile'])->name('profile');
      Route::post('profile', [App\Http\Controllers\AboutUsController::class, 'storeProfile'])->name('storeProfile');
 
+     Route::get('user/configure', [App\Http\Controllers\BussinessCard\UserConfigureController::class, 'getUserConfigure'])->name('getUserConfigure');
+     Route::post('user/configure', [App\Http\Controllers\BussinessCard\UserConfigureController::class, 'storeUserConfigure'])->name('storeUserConfigure');
+
      Route::any('enquiry/list', [App\Http\Controllers\BussinessCard\EnquiryController::class, 'enquiryList']);
 
     Route::get('business/card-theme-selection', [App\Http\Controllers\BussinessCard\ThemeController::class, 'cardThemeSelectView'])->name('business.card-theme-selection');
