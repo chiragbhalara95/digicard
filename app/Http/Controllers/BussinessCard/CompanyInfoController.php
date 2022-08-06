@@ -43,10 +43,7 @@ class CompanyInfoController extends Controller
 
         if ($params['type'] == 'person') {
             $companyObj->user_id = $userId;
-
-            if (isset($params['company_profession'])) {
-                $companyObj->company_profession = $params['company_profession'];
-            }
+            $companyObj->company_profession = $params['company_profession'];
 
             $companyObj->save();
         } else {
@@ -86,6 +83,12 @@ class CompanyInfoController extends Controller
             $companyObj->fill($companyData);
             $companyObj->save();
       
+        }
+
+        if (isset($params['name'])) {
+            $userInfo = User::find($userId);
+            $userInfo->name = $params['name'];
+            $userInfo->save();
         }
 
         return redirect()->back()->with("success", "Info update successfully"); 
