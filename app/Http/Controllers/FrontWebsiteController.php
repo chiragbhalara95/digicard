@@ -85,6 +85,10 @@ class FrontWebsiteController extends BasicController
     public function userVisitCard(Request $request, $slug)
     {
         $userObj = User::where('slug', $slug)->first();
+        if(empty($userObj)) {
+            return redirect('/')->with('error', "Your url is wrong, Please contact admin.");
+        }
+
         $themeData         = \DB::table('table_theme')->where('id', $userObj->theme)->first();
         if(empty($themeData)) {
              return redirect('user/occasion')->with('error', "Please configure account.");
