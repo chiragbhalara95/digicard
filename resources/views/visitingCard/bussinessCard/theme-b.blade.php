@@ -235,7 +235,7 @@
 
   <div class="pdf-icon"><i class="fa fa-file-pdf-o"></i></div>
 
-  <div class="pdf-number">{{$companyInfoData->company_name}}</div>
+  <div class="pdf-number">@if(!empty($companyInfoData->company_name)){{$companyInfoData->company_name}}@else{!! $userObj->name !!}@endif</div>
 
   <div class="download-icon"><i class="fa fa-download"></i></div>
 

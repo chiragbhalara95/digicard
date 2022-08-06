@@ -868,16 +868,19 @@
         <div style="text-align: justify;">{!!$companyInfoData->company_info!!}</div>
       </div>
 
+      @if(!empty($companyInfoData->broucher_file))
       <div>
             <div style="clear:both">&nbsp;</div>
                 <h4>Documents</h4>
-                <a class="document-wrapper" href="https://www.e-digicard.com/web-services/company-profile/5f7f48c4ea65b-1602177220-5f7f48c4ea65f.pdf" target="_blank">
+                <a class="document-wrapper" href="{{url('public')}}/{{$companyInfoData->broucher_file}}" download="">
                 <div class="pdf-icon"><i class="fa fa-file-pdf" aria-hidden="true"></i></div>
-                <div class="pdf-number text text-dark">Download Brochure </div>
+                <div class="pdf-number text text-dark">@if(!empty($companyInfoData->company_name)){{$companyInfoData->company_name}}@else{!! $userObj->name !!}@endif</div>
                 <div class="download-icon"><i class="fa fa-download" aria-hidden="true"></i></div>
             </a>
       </div>
-  </div>
+      @endif
+
+    </div>
 
 @if(count($paymentMasterData) > 0)
 <div class="section-container" id="payment">

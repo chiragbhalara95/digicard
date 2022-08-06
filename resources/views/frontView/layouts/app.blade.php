@@ -65,36 +65,37 @@
             </nav>
             <!-- .main-nav -->
          </div>
+         @if (session()->has('success'))
+            @if(is_array(session('success')))
+               <ul>
+                     @foreach (session('success') as $message)
+                        <li>{{ $message }}</li>
+                     @endforeach
+               </ul>
+            @else
+               {{ session('success') }}
+            @endif
+         </div>
+         @endif
+
+         @if (session()->has('error'))
+         <div class="alert alert-danger alert-dismissible fade show">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            @if(is_array(session('error')))
+               <ul>
+                     @foreach (session('error') as $message)
+                        <li>{{ $message }}</li>
+                     @endforeach
+               </ul>
+            @else
+               {{ session('error') }}
+            @endif
+         </div>
+         @endif
+
       </header>
       <!-- #header -->
       <main id="main">
-@if (session()->has('success'))
-<div class="alert alert-success">
-    @if(is_array(session('success')))
-        <ul>
-            @foreach (session('success') as $message)
-                <li>{{ $message }}</li>
-            @endforeach
-        </ul>
-    @else
-        {{ session('success') }}
-    @endif
-</div>
-@endif
-
-@if (session()->has('error'))
-<div class="alert alert-danger">
-    @if(is_array(session('error')))
-        <ul>
-            @foreach (session('error') as $message)
-                <li>{{ $message }}</li>
-            @endforeach
-        </ul>
-    @else
-        {{ session('error') }}
-    @endif
-</div>
-@endif
 
          @yield('content')
       </main>
@@ -173,6 +174,10 @@
       <script src="{{ asset('public/frontView/assets/js/main.js') }}"></script>
       <script src="{{ asset('public/frontView/assets/js/custom.js') }}?v={{date('YmdHis')}}"></script>
       @yield('custom_script')
-
+      <script>
+         setTimeout(() => {
+            $(".alert").alert('close');
+         }, 2000);
+      </script>
    </body>
 </html>

@@ -1,3 +1,4 @@
+        
 <!DOCTYPE html>
 <html>
     <head>
@@ -23,191 +24,48 @@
     <meta name="twitter:title" content="@if(!empty($companyInfoData->company_name)){{$companyInfoData->company_name}}@else{!! $userObj->name !!}@endif">
     <meta name="twitter:description" content="{{$companyInfoData->company_info}}">
 
-  <!-- Required meta tags -->
-    <link href="{{asset('public/visitingCard/bussinessCard/f/css/card_css20.css')}}" rel="stylesheet">
-    <link href="{{asset('public/visitingCard/bussinessCard/f/css/all.css')}}" rel="stylesheet">
-    <link href="{{asset('public/visitingCard/bussinessCard/f/css/awesome.min.css')}}" rel="stylesheet">
-    <link href="{{asset('public/visitingCard/bussinessCard/f/css/cart.css')}}" rel="stylesheet">
-    <link href="{{asset('public/visitingCard/bussinessCard/f/css/feedback.css')}}" rel="stylesheet">
-    <link href="{{asset('public/visitingCard/bussinessCard/f/css/css2.css')}}" rel="stylesheet">
-    <link href="{{asset('public/visitingCard/bussinessCard/f/css/mobile_css.css')}}" rel="stylesheet">
-    <link rel="stylesheet" href="{{asset('public/visitingCard/bussinessCard/f/css/slider.css')}}">
-    <script src="{{asset('public/visitingCard/bussinessCard/f/js/master_js.js')}}"></script>
-    <script src="{{asset('public/visitingCard/bussinessCard/f/js/flickity-docs.min.js')}}"></script>
+    <link href="{{asset('public/visitingCard/bussinessCard/g/css/all.css')}}" rel="stylesheet">
+    <link href="{{asset('public/visitingCard/bussinessCard/g/css/awesome.min.css')}}" rel="stylesheet">
+    <link href="{{asset('public/visitingCard/bussinessCard/g/css/cart.css')}}" rel="stylesheet">
+    <link href="{{asset('public/visitingCard/bussinessCard/g/css/feedback.css')}}" rel="stylesheet">
+    <link href="{{asset('public/visitingCard/bussinessCard/g/css/css2.css')}}" rel="stylesheet">
+    <link href="{{asset('public/visitingCard/bussinessCard/g/css/mobile_css.css')}}" rel="stylesheet">
+    <link rel="stylesheet" href="{{asset('public/visitingCard/bussinessCard/g/css/slider.css')}}">
+    <link rel="stylesheet" href="{{asset('public/visitingCard/bussinessCard/g/css/card_css14.css')}}">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
     <link href="{{asset('public/visitingCard/bussinessCard/a/css/jquery-confirm.css')}}" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 
+    <script src="{{asset('public/visitingCard/bussinessCard/g/js/master_js.js')}}"></script>
+    <script src="{{asset('public/visitingCard/bussinessCard/g/js/flickity-docs.min.js')}}"></script>
 
-    
-    <style>
-      .btn2 {
-          background: chartreuse;
-          border-radius: 20px;
-          border-color: #ff0082;
-          padding-top: 13px;
-          padding-bottom: 14px;
-          padding-left: 4px;
-      }
-    </style>
-    <style>
-        /* Gallery  Starts */
-    .images-container {
-        column-count: 3; 
-        -webkit-column-count: 3;
-        column-gap: 0;
-        -webkit-column-gap: 0;
-    }
+  <!-- Required meta tags -->
+<style>
+    .btn2 {
+    background: chartreuse;
+    border-radius: 20px;
+    border-color: #ff0082;
+    padding-top: 13px;
+    padding-bottom: 14px;
+    padding-left: 4px;
+}
+</style>
 
-    .images-container .image-wrapper {
-        break-inside: avoid;
-        -webkit-column-break-inside: avoid;
-        /* padding: 3px; */
-    }
-
-    .images-container .image-wrapper img {
-        width: 100%;
-        height: auto;
-        border-radius: 5px;
-        cursor: pointer;
-        transition: 0.3s; border:1px solid #f5f5f5;
-    }
-
-    .images-container .image-wrapper img:hover {
-        opacity: 0.7;
-    }
-    /* Gallery Completed */
-    </style>
-    <style>
-        .font-white {
-            color:white;
-        }
-      .create_card_btn {
-                background: linear-gradient(45deg, black, black);
-        color: white;
-        width: auto;
-        padding: 20px;
-        border-radius: 2px;
-        line-height: 0.8;
-        margin: 11px auto;
-        font-size: 9px;
-        text-align: center;
-      }
-      #svg_down{position: fixed;
-          bottom: 0;
-          z-index: -1;
-          left: 0;}
-      </style>
-      <style type="text/css">
-          .purchase-form__renewal-price--strikethrough {
-              text-decoration: line-through;
-              color: red;
-          }
-      </style>
-      <style>
-      .full_page_alert {position: fixed;
-          width: -webkit-fill-available;
-          height: -webkit-fill-available;
-          background: white;
-          top: 0;
-          z-index: 9999999;
-          padding: 63px;
-          text-align: center;}
-
-      </style>
-
-      <!-- CSS -->
-      <!-- JavaScript -->
+<script>
 
 
-      <style type="text/css">
-      .carousel-cell {
-        width: 100%; /* full width */
-        height: 200px;
-        background: #fdf1d900;
-        border-radius: 5px;
-        
-        counter-increment: gallelry-cel;
-        /* center images in cells with flexbox */
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-
-      .carousel.is-fullscreen .carousel-cell {
-        height: 100%;
-      }
-
-      .carousel-cell img {
-      display: block;
-          height: 100%;
-          width: 100%;
-      }
-    
-    </style>
-    <style>
-.modal {
-    display: none; 
-    position: fixed; 
-    z-index: 1; 
-    padding-top: 50px; 
-    left: 0;
-    top: 0;
-    width: 100%; 
-    height: 100%; 
-    overflow: auto; 
-    background-color: rgb(0,0,0);
-    background-color: rgba(0,0,0,0.9); 
+function closeLoader(){
+    console.log('yes');
+    $('.card_loader_back').hide();
 }
 
-.modal-content {
-    margin: auto;
-    display: block;
-    width: 80%;
-    max-width: 700px;
-}
+setTimeout(closeLoader,3000);
 
-#caption {
-    margin: auto;
-    display: block;
-    width: 80%;
-    max-width: 700px;
-    text-align: center;
-    color: #ccc;
-    padding: 10px 0;
-}
+</script>
 
-.close {
-    position: absolute;
-    top: 0px;
-    right: 15px;
-    color: #f1f1f1;
-    font-size: 40px;
-    font-weight:600;
-    transition: 0.3s;
-}
-
-.close:hover,
-.close:focus {
-    color: #bbb;
-    text-decoration: none;
-    cursor: pointer;
-}
-  </style>
-
-      <script>
-        function closeLoader(){
-            console.log('yes');
-            $('.card_loader_back').hide();
-        }
-
-        setTimeout(closeLoader,3000);
-      </script>
-    </head>
-
-    <body>
+</head><body>
         <div class="card_loader_back" style="display: block;">
-        	<div class="loader2">
+            <div class="loader2">
             <div class="loader_box">
               <div class="load1"></div>
               <div class="load2"></div>
@@ -215,29 +73,75 @@
               <div class="load4"></div>
               <div class="load5"></div>
             </div>
-	          <h2>Loading...</h2>
+              <h2>Loading...</h2>
           </div>
         </div>
+
+
+
+
+<script>
+$(document).ready(function(){
+    $('.mobile_home').on('click',function(){
+        $('#header').toggleClass('add_height');
+        
+    })
+})
+
+</script>
+
+<style>
+.full_page_alert {position: fixed;
+    width: -webkit-fill-available;
+    height: -webkit-fill-available;
+    background: white;
+    top: 0;
+    z-index: 9999999;
+    padding: 63px;
+    text-align: center;}
+
+</style>
+
+
+<style type="text/css">
+.carousel-cell {
+  width: 100%; /* full width */
+  height: 200px;
+  background: #fdf1d900;
+   border-radius: 5px;
+   
+  counter-increment: gallelry-cel;
+  /* center images in cells with flexbox */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel.is-fullscreen .carousel-cell {
+  height: 100%;
+}
+
+.carousel-cell img {
+ display: block;
+    height: 100%;
+    width: 100%;
+}
+</style>
+
+
 <!----------------------copy from here ------------------------->
-<!-- The image Modal Popup-->
-<div id="imageModal" class="modal" style="display:none"> 
 
-<span class="close" id="imageModalClose">×</span>
-<img class="modal-content fadeIn" id="img01" alt="">
-  <div id="caption"></div>
-</div>
-
-        <div class="card" id="home">
+<div class="card" id="home">
             @if($userConfigObj->isShowNoOfVisit == '1')
             <div class="view_counter"><i class="fa fa-eye"></i> <br>{{$userObj->no_visit}}</div>
             @endif
-						
-      			<div class="card_content">
+
+        <div class="card_content">
             @if(!empty($companyInfoData->company_logo))
               <img src="{{url('public')}}/{{$companyInfoData->company_logo}}" class="img-responsive" alt="Logo">
             @endif
         </div>
-			  
+
         <div class="card_content2">
           @if (!empty($companyInfoData->company_name))
             <h2>{!! $companyInfoData->company_name !!}</h2>
@@ -247,77 +151,96 @@
           @endif
           <hr/>
           <p>@if(!empty($companyInfoData->company_profession)) ({{$companyInfoData->company_profession}}) @endif</p>
-			</div>
+            </div>
 
-			<div class="dis_flex">
-				<a href="tel:{{$companyInfoData->country_code}}{{$companyInfoData->company_mobile}}" target="_blank">
+            <div class="dis_flex">
+                <a href="tel:{{$companyInfoData->country_code}}{{$companyInfoData->company_mobile}}" target="_blank">
             <div class="link_btn"><i class="fa fa-phone"></i> Call</div>
         </a>
-        <a href="https://api.whatsapp.com/send?phone={{str_replace('+','',$companyInfoData->country_code)}}{{$companyInfoData->company_mobile}}&text={{urlencode($userConfigObj->whatsappMsg)}}" target="_blank"><div class="link_btn"><i class="fa fa-whatsapp"></i> WhatsApp</div></a>				
-				
+        <a href="https://api.whatsapp.com/send?phone={{str_replace('+','',$companyInfoData->country_code)}}{{$companyInfoData->company_mobile}}&text={{urlencode($userConfigObj->whatsappMsg)}}" target="_blank"><div class="link_btn"><i class="fa fa-whatsapp"></i> WhatsApp</div></a>                
+                
         @if (!empty($companyInfoData->company_address))
-				<a href="https://maps.google.com?q={{$companyInfoData->latitude}},{{$companyInfoData->longitude}}&z=12&amp;um=1&amp;ie=UTF-8&amp;sa=X&amp;ved=2ahUKEwiWyNX76N3qAhWrzTgGHQuCBicQ_AUoAXoECCMQAw" target="_blank"><div class="link_btn"><i class="fa fa-map-marker"></i> Direction</div></a>
+                <a href="https://maps.google.com?q={{$companyInfoData->latitude}},{{$companyInfoData->longitude}}&z=12&amp;um=1&amp;ie=UTF-8&amp;sa=X&amp;ved=2ahUKEwiWyNX76N3qAhWrzTgGHQuCBicQ_AUoAXoECCMQAw" target="_blank"><div class="link_btn"><i class="fa fa-map-marker"></i> Direction</div></a>
         @endif
         <a href="mailto:{{$userObj->email}}" target="_blank"><div class="link_btn"><i class="fa fa-envelope"></i> Mail</div></a>
         @if(!empty($companyInfoData->company_website))
         <a href="{{$companyInfoData->company_website}}" target="_blank"><div class="link_btn"><i class="fa fa-globe"></i> Website</div></a>
         @endif
       </div>
-	
-			<div class="contact_details">
-				 <div class="contact_d" onclick="location.href=&#39;tel:{{$companyInfoData->country_code}}{{$companyInfoData->company_mobile}}&#39;"><i class="fa fa-phone"></i>
+
+    <div class="contact_details">
+                 <div class="contact_d" onclick="location.href=&#39;tel:{{$companyInfoData->country_code}}{{$companyInfoData->company_mobile}}&#39;"><i class="fa fa-phone"></i>
           <p>{{$companyInfoData->country_code}}{{$companyInfoData->company_mobile}} </p>
       </div>
       @if(!empty($companyInfoData->country_landline))
-				 <div class="contact_d" onclick="location.href=&#39;tel:{{$companyInfoData->country_landline}}&#39;"><i class="fa fa-phone"></i><p>{{$companyInfoData->country_landline}}</p>
+                 <div class="contact_d" onclick="location.href=&#39;tel:{{$companyInfoData->country_landline}}&#39;"><i class="fa fa-phone"></i><p>{{$companyInfoData->country_landline}}</p>
         </div>
       @endif
       <div class="contact_d" onclick="location.href=&#39;Mailto:{{$userObj->email}}&#39;"><i class="fa fa-envelope"></i><p>{{$userObj->email}}</p></div>
-      @if (!empty($companyInfoData->company_address))				
-      <div class="contact_d" onclick="location.href=&#39;https://maps.google.com?q={{$companyInfoData->latitude}},{{$companyInfoData->longitude}}&z=12&amp;um=1&amp;ie=UTF-8&amp;sa=X&amp;ved=2ahUKEwiWyNX76N3qAhWrzTgGHQuCBicQ_AUoAXoECCMQAw&#39;"><i class="fa fa-map-marker"></i><p>{!!$companyInfoData->company_address!!}</p></div>
-      @endif				
+      @if (!empty($companyInfoData->company_address))               
+      <div class="contact_d" onclick="location.href=&#39;https://maps.google.com?q={{$companyInfoData->latitude}},{{$companyInfoData->longitude}}&z=12&amp;um=1&amp;ie=UTF-8&amp;sa=X&amp;ved=2ahUKEwiWyNX76N3qAhWrzTgGHQuCBicQ_AUoAXoECCMQAw&#39;"><i class="fa fa-map-marker"></i>{!!$companyInfoData->company_address!!}</div>
+      @endif                
       </div>
-	
-      <div class="dis_flex">
-				<div class="share_wtsp">
-					<form action="https://api.whatsapp.com/send" id="wtsp_form" target="_blank">
+
+          <div class="dis_flex">
+                <div class="share_wtsp">
+                    <form action="https://api.whatsapp.com/send" id="wtsp_form" target="_blank">
             <input type="text" name="phone" placeholder="WhatsApp Number with Country code" value="{{$userConfigObj->defaultCountry}}">
             <input type="hidden" name="text" value="{{url('vc')}}/{{$userObj->slug}}">
-            <div class="wtsp_share_btn" onclick="subForm()"><i class="fa fa-whatsapp"></i> Share</div></form>					
-				</div>
-			</div>
-			
-		<div class="dis_flex">
+            <div class="wtsp_share_btn" onclick="subForm()"><i class="fa fa-whatsapp"></i> Share</div></form>                   
+                </div>
+            </div>
+            
+        <div class="dis_flex">
         <a href="{{url('saveViewCard')}}/{{$userObj->slug}}" download="contact.vcf" class="addphonebook">
-        <div class="big_btns">Save to Contacts <i class="fa fa-download"></i></div></a>	
-			
-			</div> 
-			<div class="dis_flex"></div>
-	</div>
-	{{--
-	<div class="card2" style="display:block;">
-	
-	<h3>Scan QR Code to get the details</h3>
-	<img src="./Salah Services __ Best Visiting Card __ Mini Website_files/chart" id="qr_code_d">
-	
-	<p style="background: #fae3f7;
+        <div class="big_btns">Save to Contacts <i class="fa fa-download"></i></div></a> 
+            
+            </div> 
+            <div class="dis_flex"></div>
+    </div>
+
+                <script>
+                    $(document).ready(function(){
+                        $('#close_sharer,#share_box_pop').on('click',function(){
+                            $('.share_box').slideToggle();
+                        });
+                    })
+                
+                
+                </script>
+            
+            </div> 
+            <div class="dis_flex">
+            
+                                                                                                            </div>
+            
+            
+            
+    
+    </div>
+    
+<!--     <div class="card2" style="display:block;">
+    
+    <h3>Scan QR Code to get the details</h3>
+    <img src="./Mr Architect __ Digital Profile __ Mini Website_files/chart" id="qr_code_d">
+    
+    <p style="background: #fae3f7;
     color: #59018f;
     width: 86%;
     margin: 0px auto 9px;
     border-radius: 5px;
     padding: 11px;
-    font-size: 12px;"></p>
-	
-	</div>
-    --}}
-	
-	
-<!--------------about us --------------------------->	
-	
-	<div class="card2" id="about_us">
-		<h3>{{$userConfigObj->aboutLabel}}</h3>
-	<p>{!!$companyInfoData->company_info!!}</p>
-	@if(!empty($companyInfoData->broucher_file))
+    font-size: 12px;">https://carda.in/Mr-Architect</p>
+    
+    </div>
+    
+ -->    
+<!--------------about us --------------------------->   
+    
+    <div class="card2" id="about_us">
+        <h3>{{$userConfigObj->aboutLabel}}</h3>
+    <p>{!!$companyInfoData->company_info!!}</p>
+    @if(!empty($companyInfoData->broucher_file))
 <h3>Documents</h3>
   <div class="dis_flex">
       <a class="download" href="{{url('public')}}/{{$companyInfoData->broucher_file}}" download="">
@@ -328,40 +251,37 @@
               @if(!empty($companyInfoData->company_name)){{$companyInfoData->company_name}}@else{!! $userObj->name !!}@endif&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-download"></i>
           </div>
         </div>
-      </a>	
-			
-			</div> 
-			<div class="dis_flex"></div>
-	</div>
+      </a>  
+            
+            </div> 
+            <div class="dis_flex"></div>
+    </div>
 
 @endif
 
-	</div>
-	
+    
+    </div>
+    
 <!------------shopping online-------------------------->
 
 
-	
-		
-	
-	
-<!--------------youtube videos--------------------------->	
+    
+        
+    
+    
+<!--------------youtube videos--------------------------->  
 
-	
-	
-		
-<!----------product and services ----------------------->		
-<!--
-	<div class="card2" id="product_services">
-		<h3>Products &amp; Services</h3>
-		
-	
-	</div>
--->	
+    
+    
+        
+<!----------product and services ----------------------->       
+    
+    
 
 
-		
-<!----------image gallery----------------------->		
+        
+<!----------image gallery----------------------->       
+
 
 @if($galleryData->count() > 0)
 
@@ -415,13 +335,16 @@
 
 </div>
 @endif
-		
-<!----------payment info----------------------->	
+
+
+
+        
+<!----------payment info----------------------->    
 
 @if(count($paymentMasterData) > 0)
 
-	<div class="card2" id="payment">
-		<h3>Payment Info</h3>
+    <div class="card2" id="payment">
+        <h3>Payment Info</h3>
         <table class="about-tbl">
         <tbody>
 
@@ -485,13 +408,13 @@
             </table>
           </tr>
         @endif
-		@endforeach
+        @endforeach
         </tbody>
     </table>
 
     </div>
-@endif		
-	
+@endif      
+    
 <!----------Feedback----------------------->
 
 <!---div class="card2" id="feedback">
@@ -505,47 +428,47 @@ $(':radio').change(function() {
 </script>
 <form id="feedback_form"  method="post">
 <p class="select_star"> Select Star</p>
-	<div class="rating">
-	
-	  <label>
-		<input type="radio" name="r_star" value="1" required>
-		<span class="icon">★</span>
-	  </label>
-	  <label>
-		<input type="radio" name="r_star" value="2" required>
-		<span class="icon">★</span>
-		<span class="icon">★</span>
-	  </label>
-	  <label>
-		<input type="radio" name="r_star" value="3" required>
-		<span class="icon">★</span>
-		<span class="icon">★</span>
-		<span class="icon">★</span>   
-	  </label>
-	  <label>
-		<input type="radio" name="r_star" value="4" required>
-		<span class="icon">★</span>
-		<span class="icon">★</span>
-		<span class="icon">★</span>
-		<span class="icon">★</span>
-	  </label>
-	  <label>
-		<input type="radio" name="r_star"  value="5" required>
-		<span class="icon">★</span>
-		<span class="icon">★</span>
-		<span class="icon">★</span>
-		<span class="icon">★</span>
-		<span class="icon">★</span>
-	  </label>
+    <div class="rating">
+    
+      <label>
+        <input type="radio" name="r_star" value="1" required>
+        <span class="icon">★</span>
+      </label>
+      <label>
+        <input type="radio" name="r_star" value="2" required>
+        <span class="icon">★</span>
+        <span class="icon">★</span>
+      </label>
+      <label>
+        <input type="radio" name="r_star" value="3" required>
+        <span class="icon">★</span>
+        <span class="icon">★</span>
+        <span class="icon">★</span>   
+      </label>
+      <label>
+        <input type="radio" name="r_star" value="4" required>
+        <span class="icon">★</span>
+        <span class="icon">★</span>
+        <span class="icon">★</span>
+        <span class="icon">★</span>
+      </label>
+      <label>
+        <input type="radio" name="r_star"  value="5" required>
+        <span class="icon">★</span>
+        <span class="icon">★</span>
+        <span class="icon">★</span>
+        <span class="icon">★</span>
+        <span class="icon">★</span>
+      </label>
 
-	</div>
-	
-	<input type="name" name="r_name" placeholder="Your name" required>
-	<input type="email" name="r_email" placeholder="Your email id" >
-	
-	<input type="number" max="999999999999" min="5555555555" name="r_contact" placeholder="Your contact ">
-	<textarea name="r_msg" placeholder="Your feedback "></textarea>
-	<input type="submit" name="submit_feedback" value="Submit Feedback"> 
+    </div>
+    
+    <input type="name" name="r_name" placeholder="Your name" required>
+    <input type="email" name="r_email" placeholder="Your email id" >
+    
+    <input type="number" max="999999999999" min="5555555555" name="r_contact" placeholder="Your contact ">
+    <textarea name="r_msg" placeholder="Your feedback "></textarea>
+    <input type="submit" name="submit_feedback" value="Submit Feedback"> 
 
 </form>
 
@@ -563,62 +486,62 @@ $(':radio').change(function() {
 <!--</script>-->
 <!--<form id="feedback_form"  method="post">-->
 <!--<p class="select_star"> Select Star</p>-->
-<!--	<div class="rating">-->
-	
-<!--	  <label>-->
-<!--		<input type="radio" name="r_star" value="1" required>-->
-<!--		<span class="icon">★</span>-->
-<!--	  </label>-->
-<!--	  <label>-->
-<!--		<input type="radio" name="r_star" value="2" required>-->
-<!--		<span class="icon">★</span>-->
-<!--		<span class="icon">★</span>-->
-<!--	  </label>-->
-<!--	  <label>-->
-<!--		<input type="radio" name="r_star" value="3" required>-->
-<!--		<span class="icon">★</span>-->
-<!--		<span class="icon">★</span>-->
-<!--		<span class="icon">★</span>   -->
-<!--	  </label>-->
-<!--	  <label>-->
-<!--		<input type="radio" name="r_star" value="4" required>-->
-<!--		<span class="icon">★</span>-->
-<!--		<span class="icon">★</span>-->
-<!--		<span class="icon">★</span>-->
-<!--		<span class="icon">★</span>-->
-<!--	  </label>-->
-<!--	  <label>-->
-<!--		<input type="radio" name="r_star"  value="5" required>-->
-<!--		<span class="icon">★</span>-->
-<!--		<span class="icon">★</span>-->
-<!--		<span class="icon">★</span>-->
-<!--		<span class="icon">★</span>-->
-<!--		<span class="icon">★</span>-->
-<!--	  </label>-->
+<!--    <div class="rating">-->
+    
+<!--      <label>-->
+<!--        <input type="radio" name="r_star" value="1" required>-->
+<!--        <span class="icon">★</span>-->
+<!--      </label>-->
+<!--      <label>-->
+<!--        <input type="radio" name="r_star" value="2" required>-->
+<!--        <span class="icon">★</span>-->
+<!--        <span class="icon">★</span>-->
+<!--      </label>-->
+<!--      <label>-->
+<!--        <input type="radio" name="r_star" value="3" required>-->
+<!--        <span class="icon">★</span>-->
+<!--        <span class="icon">★</span>-->
+<!--        <span class="icon">★</span>   -->
+<!--      </label>-->
+<!--      <label>-->
+<!--        <input type="radio" name="r_star" value="4" required>-->
+<!--        <span class="icon">★</span>-->
+<!--        <span class="icon">★</span>-->
+<!--        <span class="icon">★</span>-->
+<!--        <span class="icon">★</span>-->
+<!--      </label>-->
+<!--      <label>-->
+<!--        <input type="radio" name="r_star"  value="5" required>-->
+<!--        <span class="icon">★</span>-->
+<!--        <span class="icon">★</span>-->
+<!--        <span class="icon">★</span>-->
+<!--        <span class="icon">★</span>-->
+<!--        <span class="icon">★</span>-->
+<!--      </label>-->
 
-<!--	</div>-->
-	
-<!--	<input type="name" name="r_name" placeholder="Your name" required>-->
-<!--	<input type="email" name="r_email" placeholder="Your email id" >-->
-	
-<!--	<input type="number" max="999999999999" min="5555555555" name="r_contact" placeholder="Your contact ">-->
-<!--	<textarea name="r_msg" placeholder="Your feedback "></textarea>-->
-<!--	<input type="submit" name="submit_feedback" value="Submit Feedback"> -->
+<!--    </div>-->
+    
+<!--    <input type="name" name="r_name" placeholder="Your name" required>-->
+<!--    <input type="email" name="r_email" placeholder="Your email id" >-->
+    
+<!--    <input type="number" max="999999999999" min="5555555555" name="r_contact" placeholder="Your contact ">-->
+<!--    <textarea name="r_msg" placeholder="Your feedback "></textarea>-->
+<!--    <input type="submit" name="submit_feedback" value="Submit Feedback"> -->
 
-<!--	<p class="note">Note: for privecy and security reasons we do not show your contact details. For more info you can contact admin or your franchisee.</p>-->
+<!--    <p class="note">Note: for privecy and security reasons we do not show your contact details. For more info you can contact admin or your franchisee.</p>-->
 <!--</form>-->
 
 
 <!--</div>-->
 <!----------Feedback end ----------------------->
-	
-	
+    
+    
 
-	
+    
 
 
 
-<!----------email to  info----------------------->	
+<!----------email to  info----------------------->  
 @if($userConfigObj->isShowEnquiry == '1')
 
 <div class="card2 page-container" id="enquery">
@@ -649,43 +572,66 @@ $(':radio').change(function() {
 </div>
 @endif
 
-		
+        
+    <br>
+        
+        
 <div class="create_card_btn">
     <a class="font-white" href="{{url('register?packageId=3')}}" target="_blank">Create Your Card <b> </b></a><b>
     <a class="font-white" href="{{url('/')}}" target="_blank"> © {{date('Y')}}</a><br></b></div><b>
-		
+        
     </b></div><b>
 
-	
-	
-	
-	<br>
-	<br>
-	<br>
-	<br>
-	<div class="menu_bottom">
-		<div class="menu_container">
-			<div class="menu_item" onclick="location.href=&#39;#home&#39;"><i class="fa fa-home"></i> Home</div>
-			<div class="menu_item" onclick="location.href=&#39;#about_us&#39;"><i class="fa fa-briefcase"></i>{{$userConfigObj->aboutLabel}}</div>
-			<!-- <div class="menu_item" onclick="location.href=&#39;#product_services&#39;"><i class="fa fa-ticket"></i>Product &amp; Services</div> -->
-			<!-- <div class="menu_item" onclick="location.href=&#39;#shop_online&#39;"><i class="fa fa-archive"></i>Shop</div> -->
+    
+    <style>
+    .create_card_btn {
+                 background: linear-gradient(45deg, black, black);
+    color: white;
+    width: auto;
+    padding: 20px;
+    border-radius: 2px;
+    line-height: 0.8;
+    margin: 11px auto;
+    font-size: 9px;
+    text-align: center;
+    }
+    
+    
+    
+#svg_down{position: fixed;
+    bottom: 0;
+    z-index: -1;
+    left: 0;}
+
+    
+    </style>
+    
+    
+    
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="menu_bottom">
+        <div class="menu_container">
+            <div class="menu_item" onclick="location.href=&#39;#home&#39;"><i class="fa fa-home"></i> Home</div>
+            <div class="menu_item" onclick="location.href=&#39;#about_us&#39;"><i class="fa fa-briefcase"></i>{{$userConfigObj->aboutLabel}}</div>
+            <!-- <div class="menu_item" onclick="location.href=&#39;#product_services&#39;"><i class="fa fa-ticket"></i>Product &amp; Services</div> -->
+            <!-- <div class="menu_item" onclick="location.href=&#39;#shop_online&#39;"><i class="fa fa-archive"></i>Shop</div> -->
             @if($galleryData->count() > 0)
-			<div class="menu_item" onclick="location.href=&#39;#photogallery&#39;"><i class="fa fa-image"></i>Gallery</div>
-			@endif
+            <div class="menu_item" onclick="location.href=&#39;#photogallery&#39;"><i class="fa fa-image"></i>Gallery</div>
+            @endif
             <!-- <div class="menu_item" onclick="location.href=&#39;#youtube_video&#39;"><i class="fa fa-video-camera"></i>Youtube Videos</div> -->
             @if(count($paymentMasterData) > 0)
             <div class="menu_item" onclick="location.href=&#39;#payment&#39;"><i class="fa fa-money"></i>Payment</div>
             @endif
-			<div class="menu_item" onclick="location.href=&#39;#enquery&#39;"><i class="fa fa-comment"></i>Enquery</div>
-		</div>
-	</div>
+            <div class="menu_item" onclick="location.href=&#39;#enquery&#39;"><i class="fa fa-comment"></i>Enquery</div>
+        </div>
+    </div>
     <input type="hidden" id="send_enquiry_url" value="{{route('sendEnquiry')}}">
 
 
-</b>
-
-
-</body>
+</b></body>
 <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 <script src="{{asset('public/visitingCard/bussinessCard/a/js/jquery.min.js')}}"></script>
 <script src="{{asset('public/visitingCard/bussinessCard/a/js/intlTelInput.min.js')}}"></script>
@@ -699,10 +645,10 @@ document.getElementById('imageModal').style.display = 'none';
 </script>
 <script>
 $(document).ready(function(){
-	$('.mobile_home').on('click',function(){
-		$('#header').toggleClass('add_height');
-		
-	})
+    $('.mobile_home').on('click',function(){
+        $('#header').toggleClass('add_height');
+        
+    })
 })
 </script>
 <script>
@@ -713,7 +659,7 @@ $(document).ready(function(){
   
 })
 </script>
-		
+        
 <script>
   $(document).ready(function(){
     $('#close_sharer,#share_box_pop').on('click',function(){
