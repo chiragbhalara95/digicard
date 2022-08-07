@@ -24,20 +24,20 @@
     <meta name="twitter:title" content="@if(!empty($companyInfoData->company_name)){{$companyInfoData->company_name}}@else{!! $userObj->name !!}@endif">
     <meta name="twitter:description" content="{{$companyInfoData->company_info}}">
 
-    <link href="{{asset('public/visitingCard/bussinessCard/g/css/all.css')}}" rel="stylesheet">
-    <link href="{{asset('public/visitingCard/bussinessCard/g/css/awesome.min.css')}}" rel="stylesheet">
-    <link href="{{asset('public/visitingCard/bussinessCard/g/css/cart.css')}}" rel="stylesheet">
-    <link href="{{asset('public/visitingCard/bussinessCard/g/css/feedback.css')}}" rel="stylesheet">
-    <link href="{{asset('public/visitingCard/bussinessCard/g/css/css2.css')}}" rel="stylesheet">
-    <link href="{{asset('public/visitingCard/bussinessCard/g/css/mobile_css.css')}}" rel="stylesheet">
-    <link rel="stylesheet" href="{{asset('public/visitingCard/bussinessCard/g/css/slider.css')}}">
-    <link rel="stylesheet" href="{{asset('public/visitingCard/bussinessCard/g/css/card_css14.css')}}">
+    <link href="{{asset('public/visitingCard/bussinessCard/h/css/all.css')}}" rel="stylesheet">
+    <link href="{{asset('public/visitingCard/bussinessCard/h/css/awesome.min.css')}}" rel="stylesheet">
+    <link href="{{asset('public/visitingCard/bussinessCard/h/css/cart.css')}}" rel="stylesheet">
+    <link href="{{asset('public/visitingCard/bussinessCard/h/css/feedback.css')}}" rel="stylesheet">
+    <link href="{{asset('public/visitingCard/bussinessCard/h/css/css2.css')}}" rel="stylesheet">
+    <link href="{{asset('public/visitingCard/bussinessCard/h/css/mobile_css.css')}}" rel="stylesheet">
+    <link rel="stylesheet" href="{{asset('public/visitingCard/bussinessCard/h/css/slider.css')}}">
+    <link rel="stylesheet" href="{{asset('public/visitingCard/bussinessCard/h/css/card_css14.css')}}">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
     <link href="{{asset('public/visitingCard/bussinessCard/a/css/jquery-confirm.css')}}" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 
-    <script src="{{asset('public/visitingCard/bussinessCard/g/js/master_js.js')}}"></script>
-    <script src="{{asset('public/visitingCard/bussinessCard/g/js/flickity-docs.min.js')}}"></script>
+    <script src="{{asset('public/visitingCard/bussinessCard/h/js/master_js.js')}}"></script>
+    <script src="{{asset('public/visitingCard/bussinessCard/h/js/flickity-docs.min.js')}}"></script>
 
   <!-- Required meta tags -->
 <style>
