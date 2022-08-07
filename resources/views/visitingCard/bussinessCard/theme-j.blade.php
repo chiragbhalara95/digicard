@@ -30,6 +30,12 @@
     document.documentElement.style.setProperty('--theme-color', '#095da0');
     document.documentElement.style.setProperty('--theme-color-light', '#d8d8d870');
 </script>
+<style type="text/css">
+    .purchase-form__renewal-price--strikethrough {
+        text-decoration: line-through;
+        color: red;
+    }
+</style>
 
 </head>
 

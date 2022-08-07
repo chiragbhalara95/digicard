@@ -32,6 +32,13 @@
   background-color:#FFF !important;
 }
 </style>
+<style type="text/css">
+    .purchase-form__renewal-price--strikethrough {
+        text-decoration: line-through;
+        color: red;
+    }
+</style>
+
 <script>
     document.documentElement.style.setProperty('--theme-color', '#64af35');
     document.documentElement.style.setProperty('--theme-color-light', '#64af35');
