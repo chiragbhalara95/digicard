@@ -29,6 +29,7 @@ class ThemeModel extends Model
         'blade_file',
         'image',
         'status',
+        'sortOrder',
     ];
 
     protected $casts = [];
