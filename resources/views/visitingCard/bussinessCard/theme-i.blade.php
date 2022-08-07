@@ -397,7 +397,10 @@ $(document).ready(function(){
         <td colspan="2">
             <table class="about-tbl">
             <tbody>
-                <tr>
+            <tr>
+              <td align="center" colspan="2">{{ucwords($paymentMasterDetail->type)}} Details:</td>
+            </tr>
+              <tr>
                 <td width="50%"><b>{{ucwords($paymentMasterDetail->type)}} Number</b></td>
                 <td>: </td>
                 <td>{{$paymentMasterDetail->account_no}} </td>
