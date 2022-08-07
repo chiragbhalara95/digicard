@@ -29,6 +29,12 @@
 
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
 <link href="{{asset('public/visitingCard/bussinessCard/a/css/jquery-confirm.css')}}" rel="stylesheet">
+<style type="text/css">
+    .purchase-form__renewal-price--strikethrough {
+        text-decoration: line-through;
+        color: red;
+    }
+</style>
 
 <script>
     document.documentElement.style.setProperty('--theme-color', '#6d126f');

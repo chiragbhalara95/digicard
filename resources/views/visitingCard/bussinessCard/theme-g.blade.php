@@ -50,6 +50,12 @@
     padding-left: 4px;
 }
 </style>
+<style type="text/css">
+    .purchase-form__renewal-price--strikethrough {
+        text-decoration: line-through;
+        color: red;
+    }
+</style>
 
 <script>
 
