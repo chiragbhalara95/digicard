@@ -121,7 +121,7 @@ class RegisterController extends Controller
         $countryData = file_get_contents('public/country-tel-code.json');
         $countryData = json_decode($countryData, true);
         $selectedCode = '+91';
-        $productData = ProductModel::select('product_id', 'product_name')->get()->toArray();
+        $productData = ProductModel::select('product_id', 'product_name')->where('status', 1)->get()->toArray();
         $packageData = SkuPackageModel::select([
             'price',
             'special_price',
