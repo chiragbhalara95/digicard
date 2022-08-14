@@ -22,7 +22,7 @@ class FrontWebsiteController extends BasicController
 {
     public function index()
     {
-        $productData = ProductModel::select('product_id', 'product_name')->get()->toArray();
+        $productData = ProductModel::select('product_id', 'product_name')->where('status', 1)->get()->toArray();
         $packageData = SkuPackageModel::select([
             'price',
             'special_price',
@@ -41,6 +41,7 @@ class FrontWebsiteController extends BasicController
         ->join('product', 'product.product_id', '=', 'sku_package.product_id')
         ->join('package_type', 'package_type.package_type_id', '=', 'sku_package.package_type_id')
         ->join('package_duration', 'package_duration.package_duration_id', '=', 'sku_package.package_duration_id')
+        ->where('product.status', 1)
         ->get();
 
         $skuCustomPackage = [];
