@@ -179,7 +179,8 @@
             <p>Projects</p>
          </div>
          <div class="col-lg-3 col-6 text-center">
-            <span data-toggle="counter-up">1,364</span>
+            <span data-toggle="counter-up">
+               1,364</span>
             <p>Hours Of Support</p>
          </div>
          <div class="col-lg-3 col-6 text-center">
