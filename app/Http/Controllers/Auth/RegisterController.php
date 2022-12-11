@@ -136,12 +136,17 @@ class RegisterController extends Controller
         ->join('package_duration', 'package_duration.package_duration_id', '=', 'sku_package.package_duration_id')
         ->get();
 
+        $userCurrency = 'INR';
+        if (!empty(env('CURRENCY'))) {
+            $userCurrency = env('CURRENCY');
+        }
+
         if (!empty($packageData)) {
             foreach ($packageData as $key => $packageDeatil) {
                 if ($packageDeatil->sku_package_id == $packageId) {
                     $selectedProduct = $packageDeatil->product_id;
                 }
-
+                $packageDeatil->currency = $userCurrency;
                 $skuCustomPackage[$packageDeatil->product_id][] = $packageDeatil->toArray();
             }
         }

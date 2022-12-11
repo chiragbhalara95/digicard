@@ -46,7 +46,13 @@
                                        <select name="sku_price" id="sku_price" class="form-control select2 custom-duration" data-live-search="true">
                                           <option class="text-center" value="">Select Duration</option>
                                           @foreach($detail['duration'] AS $key => $duration)
-                                          <option class="text-center" value="{{$key}}" data-price="{{$detail['price']}}">{{$duration}}</option>
+                                          <option class="text-center" value="{{$key}}" 
+                                          @if($skuCustomDetail[0]['currency'] == 'USD')
+                                          data-price="{{$detail['price_usd']}}"
+                                          @else
+                                          data-price="{{$detail['price']}}"
+                                          @endif
+                                           data-currecy="{{$skuCustomDetail[0]['currency']}}">{{$duration}}</option>
                                           @endforeach
                                        </select>
                                  @endforeach
@@ -99,6 +105,7 @@
            "name": "Digicard",
            "description": "Payment",
            "image": "http://w3adda.com/wp-content/uploads/2019/07/w3a-fb-dp.png",
+           "currency":$(this).attr("data-currency"),
            "handler": function (response){
            $.ajaxSetup({
              headers: {
