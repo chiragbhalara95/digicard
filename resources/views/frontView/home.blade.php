@@ -10,7 +10,7 @@
          <img src="{{ asset('public/frontView/assets/img/intro-img.svg') }}" alt="intro" class="img-fluid">
       </div>
       <div class="intro-info" data-aos="zoom-in" data-aos-delay="100">
-         <h1>We offer Below Services:</h1>
+         <h1 class="text-white">We offer Below Services:</h1>
          @foreach($productData AS $productDetail)
          <h5 class="text-white">{{$productDetail['product_name']}}</h5>
          @endforeach
