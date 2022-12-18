@@ -16,12 +16,12 @@
 		<meta property="og:image:height" content="800">
 		<link rel="shortcut icon" href="{{url('public')}}/{{$companyInfoData->company_logo}}">
 
-        <link rel="stylesheet" href="{{asset('public/visitingCard/bussinessCard/o/css/ncss.css')}}" >
-        <link rel="stylesheet" href="{{asset('public/visitingCard/bussinessCard/o/css/feedback.css')}}" >
-        <link rel="stylesheet" href="{{asset('public/visitingCard/bussinessCard/o/css/cart.css')}}" >
-        <link rel="stylesheet" href="{{asset('public/visitingCard/bussinessCard/o/css/card_css41.css')}}" >
-        <script src="{{asset('public/visitingCard/bussinessCard/o/js/master_js.js')}}"></script>
-		<link href="{{asset('public/visitingCard/bussinessCard/o/css/awesome.min.css')}}" rel="stylesheet">
+        <link rel="stylesheet" href="{{asset('public/visitingCard/bussinessCard/p/css/ncss.css')}}" >
+        <link rel="stylesheet" href="{{asset('public/visitingCard/bussinessCard/p/css/feedback.css')}}" >
+        <link rel="stylesheet" href="{{asset('public/visitingCard/bussinessCard/p/css/cart.css')}}" >
+        <link rel="stylesheet" href="{{asset('public/visitingCard/bussinessCard/p/css/card_css41.css')}}" >
+        <script src="{{asset('public/visitingCard/bussinessCard/p/js/master_js.js')}}"></script>
+		<link href="{{asset('public/visitingCard/bussinessCard/p/css/awesome.min.css')}}" rel="stylesheet">
 		<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
 
 		<meta name="apple-mobile-web-app-capable" content="yes">
@@ -34,7 +34,7 @@
         <link rel="manifest" id="manifest-placeholder">
     </head>
     <style>
-        body {    background: url({{asset('public/visitingCard/bussinessCard/o/img/bg36.png')}}) !important;
+        body {    background: url({{asset('public/visitingCard/bussinessCard/p/img/bg.png')}}) !important;
         background-position: center !important;
         background-attachment: fixed !important;
         background-repeat: repeat !important;
@@ -42,6 +42,11 @@
         .card_content2 h2 {
         margin: 1px 3px 10px;
         }
+        .card{  width: 437px;
+            background: url({{asset('public/visitingCard/bussinessCard/p/img/bg36.png')}}) !important;
+            }
+            
+
     </style>
     <script>
         function closeLoader(){
