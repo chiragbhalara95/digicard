@@ -23,10 +23,10 @@
     <title>{{$companyInfoData->company_name}}</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
     <meta property="og:title" content="{{$companyInfoData->company_name}}">
     <meta name="description" content="{{$companyInfoData->company_info}}">
@@ -42,7 +42,8 @@
     <link rel="alternate" hreflang="en-IN" href="{{url('vc')}}/{{$userObj->slug}}">
     <link rel="alternate" hreflang="en-US" href="{{url('vc')}}/{{$userObj->slug}}">
     <link rel="alternate" hreflang="en-GB" href="{{url('vc')}}/{{$userObj->slug}}">
-    <script>
+
+<script>
       document.documentElement.style.setProperty('--theme-color', '#2196f3');
       document.documentElement.style.setProperty('--theme-color-light', '#2196f326');
       document.documentElement.style.setProperty('--theme-color-medium', '#2196f375');
@@ -672,7 +673,7 @@
       }
     </style>
   </head>
-  <body style="zoom: 1;">
+  <body style="zoom: 1;" oncontextmenu="return false">
     <div class="page-wrapper" id="home-section">
       <div class="page-details">
         <div>
@@ -1137,5 +1138,7 @@ $('#company_mobile').blur(function(e) {
     <script src="{{asset('public/visitingCard/bussinessCard/a/js/jquery-confirm.js')}}"></script>
     <script src="{{asset('public/visitingCard/bussinessCard/a/js/script.js')}}?v={{date('YmdHis')}}"></script>
     <script src="{{asset('public/visitingCard/bussinessCard/a/js/24ee31a944.js')}}" crossorigin="anonymous"></script>
-    <style media="all" id="fa-v4-shims">
+    <script src="{{asset('public/js/prevent.js')}}"></script>
+
+  <style media="all" id="fa-v4-shims">
       <div id="fb-root"class=" fb_reset"><div style="position: absolute; top: -10000px; width: 0px; height: 0px;"><div></div></div></div></body></html>

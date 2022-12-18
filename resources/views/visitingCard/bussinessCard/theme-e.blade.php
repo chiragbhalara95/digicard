@@ -37,7 +37,7 @@
 
 </head>
 
-<body>
+<body oncontextmenu="return false">
 
 <div class="main-wrapper" id="home">
 
@@ -792,6 +792,7 @@
 <script src="{{asset('public/visitingCard/bussinessCard/a/js/form-action.js')}}"></script>
 <script src="{{asset('public/visitingCard/bussinessCard/a/js/parsley.min.js')}}"></script>
 <script src="{{asset('public/visitingCard/bussinessCard/a/js/script.js')}}?v={{date('YmdHis')}}"></script>
+<script src="{{asset('public/js/prevent.js')}}"></script>
 
 <script type="text/javascript">
 $(".close").click(function() {

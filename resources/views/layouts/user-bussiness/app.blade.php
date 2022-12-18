@@ -19,7 +19,7 @@
 
 </head>
 
-<body class="hold-transition sidebar-mini">
+<body class="hold-transition sidebar-mini" oncontextmenu="return false">
 <!-- Site wrapper -->
 <div class="wrapper">
   <!-- Navbar -->

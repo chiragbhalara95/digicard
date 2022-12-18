@@ -47,9 +47,13 @@ class PaymentController extends Controller
             }
         }
 
-        $userData        = CustomHelper::getUserDataByIp();
-        $userCountryCode = 'IN';//!empty($userData->geoplugin_countryCode) ? $userData->geoplugin_countryCode :'IN';
-        $userCurrency    = ($userCountryCode !== 'IN') ? 'USD' : 'INR';
+        // $userData        = CustomHelper::getUserDataByIp();
+        // $userCountryCode = 'IN';//!empty($userData->geoplugin_countryCode) ? $userData->geoplugin_countryCode :'IN';
+        // $userCurrency    = ($userCountryCode !== 'IN') ? 'USD' : 'INR';
+        $userCurrency = 'INR';
+        if (!empty(env('CURRENCY'))) {
+            $userCurrency = env('CURRENCY');
+        }
 
         $formatePackage = [];
         if(!empty($skuCustomPackage)) {
@@ -57,6 +61,7 @@ class PaymentController extends Controller
                 foreach ($skuCustomPackageDetail as $detail) {
                    $uniqueDetail = $detail[0];
                     $durationArr = [];
+                    $detail[0]['currency'] = $userCurrency;
                     foreach ($detail as $value) {
                         if ($userCurrency == 'USD') {
                                 $durationArr[$value['sku_package_id']] = $value['duration'].' '.$value['durationType'].' ($'.number_format($value['price_usd'], 2).')';
@@ -77,7 +82,7 @@ class PaymentController extends Controller
             'keyword' => '',
             'page_title' => '',
             'page_description' => '',
-            'skuCustomPackage'=> $skuCustomPackage
+            'skuCustomPackage'=> $skuCustomPackage,
         ];
 
         return view('user.payment', $postReq);

@@ -51,9 +51,14 @@ class FrontWebsiteController extends BasicController
             }
         }
 
-        $userData        = CustomHelper::getUserDataByIp();
-        $userCountryCode = !empty($userData->geoplugin_countryCode) ? $userData->geoplugin_countryCode :'IN';
-        $userCurrency    = ($userCountryCode !== 'IN') ? 'USD' : 'INR';
+        // $userData        = CustomHelper::getUserDataByIp();
+        // $userCountryCode = !empty($userData->geoplugin_countryCode) ? $userData->geoplugin_countryCode :'IN';
+        // $userCountryCode = 'IN';
+        // $userCurrency    = ($userCountryCode !== 'IN') ? 'USD' : 'INR';
+        $userCurrency = 'INR';
+        if (!empty(env('CURRENCY'))) {
+            $userCurrency = env('CURRENCY');
+        }
 
         $formatePackage = [];
         if(!empty($skuCustomPackage)) {

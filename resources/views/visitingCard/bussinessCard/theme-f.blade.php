@@ -205,7 +205,7 @@
       </script>
     </head>
 
-    <body>
+    <body oncontextmenu="return false">
         <div class="card_loader_back" style="display: block;">
         	<div class="loader2">
             <div class="loader_box">
@@ -693,6 +693,7 @@ $(':radio').change(function() {
 <script src="{{asset('public/visitingCard/bussinessCard/a/js/jquery-confirm.js')}}"></script>
 <script src="{{asset('public/visitingCard/bussinessCard/a/js/form-action.js')}}"></script>
 <script src="{{asset('public/visitingCard/bussinessCard/a/js/script.js')}}?v={{date('YmdHis')}}"></script>
+<script src="{{asset('public/js/prevent.js')}}"></script>
 
 <script>
 document.getElementById('imageModal').style.display = 'none';
