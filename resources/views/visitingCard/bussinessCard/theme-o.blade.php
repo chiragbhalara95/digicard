@@ -125,7 +125,10 @@
             <div class="view_counter"><i class="fa fa-eye"></i> <span class="count"> View: {{$userObj->no_visit}}</span></div>
 			@endif
             <div class="card_content">
-            </div>
+            @if(!empty($companyInfoData->company_logo))
+              <img src="{{url('public')}}/{{$companyInfoData->company_logo}}" class="img-responsive" alt="Logo">
+            @endif
+        </div>
             <div class="card_content2" >
                 <h2>
 				@if (!empty($companyInfoData->company_name))
