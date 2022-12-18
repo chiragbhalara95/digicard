@@ -7,10 +7,10 @@
 <section id="intro" class="clearfix">
    <div class="container" data-aos="fade-up">
       <div class="intro-img" data-aos="zoom-out" data-aos-delay="200">
-         <img src="{{ asset('public/frontView/assets/img/intro-img.svg') }}" alt="" class="img-fluid">
+         <img src="{{ asset('public/frontView/assets/img/intro-img.svg') }}" alt="intro" class="img-fluid">
       </div>
       <div class="intro-info" data-aos="zoom-in" data-aos-delay="100">
-         <h2>We offer</h2>
+         <h1>We offer Below Services:</h1>
          @foreach($productData AS $productDetail)
          <h5 class="text-white">{{$productDetail['product_name']}}</h5>
          @endforeach
@@ -62,7 +62,7 @@
             </div>
          </div>
          <div class="col-lg-6 background order-lg-2" data-aos="zoom-in">
-            <img src="{{ asset('public/frontView/assets/img/about-img.svg') }}" class="img-fluid" alt="">
+            <img src="{{ asset('public/frontView/assets/img/about-img.svg') }}" class="img-fluid" alt="about img">
          </div>
       </div>
    </div>
@@ -73,7 +73,7 @@
    <div class="" data-aos="fade-up">
       <header class="section-header">
          <h3>Our Products</h3>
-         <p>We Belive In Success, Your Success Is Our Success</p>
+         <p>We Believe In Success, Your Success Is Our Success</p>
          <div class="row">
             <div class="col-md-5"></div>
             <div class="col-md-3">
