@@ -1,0 +1,435 @@
+	.view_counter {    width: fit-content;
+    max-width: 200px;
+    text-align: center;
+    font-size: 11px;
+    padding: 5px 12px;
+    background: #00000078;
+    color: white;
+    margin: 0 auto;
+    top: 0px;
+    z-index: 5;
+    position: relative;
+    right: 3px;
+    border: 2px solid white;
+    border-top: 0;
+    border-radius: 0px 0px 10px 10px;}
+    .ads_class {      border: 0px solid #ff5722;
+    width: 435px;
+    margin: 0 auto;
+    height: auto;
+    overflow: hidden;}
+    .wtsp_share_btn {
+    background: #1aab2c;
+    font-size: 12px;
+    padding: 10px;
+    cursor: pointer;
+        width: fit-content;
+    display: inline-block;
+}
+
+.qr_h2 {    text-align: center;
+    margin: 0px 0px 16px;
+    text-transform: uppercase;
+    font-size: 23px;}
+
+
+.dis_flex .big_btns {
+   
+    cursor: pointer;
+    user-select: none;
+}
+
+.m_menu_head {    display: block;
+    position: fixed;
+    right: 11px;
+    top: 10px;
+    background: #464646;
+    padding: 13px;
+    color: white;
+    border-radius: 4px;
+    border: 2px solid white;}
+
+.ads_class_pc {        border: 0px solid #ff5722;
+    margin: 0 auto;
+    height: auto;
+    overflow: hidden;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 27%;}
+#qr_code_d {
+    left: 50%;
+    position: relative;
+    transform: translate(-50%, 0px);
+    margin: 0px 0px 24px;
+}
+
+
+	.share_box .close { font-size: 47px;
+    text-align: end;
+    padding: 0px 10px;
+    font-weight: 400;
+    color: red;}
+	
+	#whatsapp2 {background:#1aab2c;color:white}
+	.fa-comment-dots	 {background: #1cbdff;
+    color: white;}
+	.share_box .close i {}
+	.share_box {
+		display: none;
+    background: white;
+    color: black;
+    position: fixed;
+    top: 10%;
+    width: 351px;
+    padding: 10px;
+    box-shadow: 0px 0px 10px 0px #00000033;
+    z-index: 3;
+    border-radius: 11px;
+    left: 50%;
+    transform: translate(-50%);
+    text-align: center;}
+	.shar_btns {    width: 100px;
+    text-align: center;
+    display: inline-block;}
+	.shar_btns i{padding: 10px;
+    border-radius: 8px;}
+	.shar_btns p{font-size: 10px;}
+	
+	
+	.error_page i {    font-size: 70px;
+    margin: 34px;
+    color: #f56342;}
+	.error_page h1 {    color: gray;}
+	.error_page p {       font-size: 14px;
+    color: gray;
+    font-weight: 500;
+    margin: 20px;
+    font-style: italic;}
+	
+	.error_page {    position: fixed;
+    width: -webkit-fill-available;
+    height: -webkit-fill-available;
+    background: white;
+    z-index: 1100;
+    top: 0;left:0;text-align:center;}
+	
+	.error_page  .home_btn {       background: #2196f3;
+    width: fit-content;
+    margin: 10px auto;
+    padding: 13px 30px;
+    color: white;
+    border-radius: 5px;
+    font-weight: 500;}
+	
+	
+/* Position the image container (needed to position the left and right arrows) */
+
+.containerimgback 	 {}
+.containerimg {
+      position: relative;
+    width: 400px;
+    margin: 0 auto;
+}
+
+/* Hide the images by default */
+.mySlides {
+          display: none;
+    height: 400px;
+    align-items: center;
+    overflow: hidden;
+    text-align: center;
+    background: #ffffff;
+animation: scaleEff 0.1s linear forwards;}
+
+
+@-webkit-keyframes scaleEff {
+	0% {transform:scale(0);}
+	100% {transform:scale(1.0);}
+
+}
+
+.row {    text-align: center;
+    background: #eeeeee;}
+
+
+
+/* Add a pointer when hovering over the thumbnail images */
+.cursor {
+  cursor: pointer;
+}
+
+/* Next & previous buttons */
+.prev,
+.next {
+  cursor: pointer;
+  position: absolute;
+  top: 40%;
+  width: auto;
+  padding: 16px;
+  margin-top: -50px;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  -webkit-user-select: none;background:rgba(0, 0, 0, 0.8);
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover,
+.next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* Container for image text */
+.caption-container {
+  text-align: center;
+  background-color: #222;
+  padding: 2px 16px;
+  color: white;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Six columns side by side */
+.column {
+            width: 16.66%;
+    margin: 7px 3px;
+    border: 2px solid #000000;
+    border-radius: 4px;
+    display: inline-block;
+    vertical-align: text-top;
+}
+
+/* Add a transparency effect for thumnbail images */
+.demo {
+          opacity: 0.9;
+    min-height: 55px;
+    max-height: 100px;
+}
+
+.active,
+.demo:hover {
+  opacity: 1;
+}
+
+.mySlides img {          max-width: 100%;
+    height: auto;
+    margin: 0 auto;
+    max-height: 400px;
+	
+}
+
+
+
+
+.select_pdf_card_theme {
+    position: fixed;
+    z-index: 4;
+    background: white;
+    padding: 20px;
+    left: 50%;
+    transform: translate(-50%);
+    top: 30px;
+    border: 2px solid #ff9800;
+    width: auto;
+}
+
+.select_pdf_card_theme h3 {
+    font-size: 21px;
+    text-align: center;
+    margin: 8px;
+    font-weight: 500;
+}
+.select_pdf_card_theme img {
+    width: 200px;
+    margin: 6px;
+    border: 2px solid orange;
+    height: 200px;
+}
+
+.change_lang {       background: white;
+    width: fit-content;
+    margin: 5px auto;
+    font-size: 12px;
+    color: black;
+    padding: 7px 12px 5px;
+    border-radius: 24px;
+    border: 2px solid #2196f3;}
+	
+	.dis_flex .link_btn {
+ 
+    vertical-align: text-top;
+}
+
+.lang_pop {      display:none;  position: relative;
+    z-index: 1;
+    margin: 0 auto;
+    background: #ffffff;
+    padding: 10px;
+    width: 416px;
+    text-align: center;
+    color: black;	}
+.lang_pop .goog-te-gadget .goog-te-combo {
+       margin: 4px 0;
+    padding: 6px;
+    width: 73%;
+    border-radius: 3px;
+    color: black;
+    background: #ffffff;
+    border: 2px solid #2196f3;
+}
+
+
+.url_copy {         width: -webkit-fill-available;
+    background: #eeffd9;
+    margin: 5px;
+    padding: 8px;}
+.url_copy input{    width: -webkit-fill-available;
+    border: 0px;
+    background: transparent;
+    padding: 14px;
+    color: #000000;}
+.url_copy .buttonCopy{    font-size: 14px;
+    display: block;
+    margin: 2px auto;
+    width: fit-content;
+    background: #2196f3;
+    color: white;
+    padding: 5px;
+    cursor: pointer;
+    border-radius: 3px;}
+.url_copy .buttonCopy i{}
+.url_copy .url_copy_tag {          position: absolute;
+    bottom: 0;
+    left: 0;
+    color: white;
+    padding: 2px 6px;
+    font-size: 12px;
+    background: #4caf50;
+    border-radius: 0px;}
+
+/*=========================================================================================================================*/
+/*=========================================================================================================================*/
+/*=========================================================================================================================*/
+/*=========================================================================================================================*/
+/*=========================================================================================================================*/
+/*=========================================================================================================================*/
+/*=========================================================================================================================*/
+/*=========================================================================================================================*/
+/*=========================================================================================================================*/
+/*=========================================================================================================================*/
+@media screen and (max-width:700px){
+		.containerimg {
+			position: relative;
+			max-width: 400px;
+			width: auto;
+			margin: 0 auto;
+		}
+		
+		.lang_pop {
+   
+    width: -webkit-fill-available;
+    
+}
+
+
+.select_pdf_card_theme {    position: fixed;
+    z-index: 4;
+    background: white;
+    padding: 20px;
+    left: 50%;
+    transform: translate(-50%);
+    top: 30px;
+    border: 2px solid #ff9800;
+    width: auto;}
+.select_pdf_card_theme h3{    font-size: 21px;
+    text-align: center;
+    margin: 8px;
+    font-weight: 500;}
+.select_pdf_card_theme img{     width: 200px;
+    margin: 6px;
+    border: 2px solid orange;
+    height: 200px;}
+	
+	.ads_class_pc {display:none;z-index: -1;}
+	
+		.ads_class {
+    
+    width: -webkit-fill-available;
+    border: 0px;
+}
+
+/* --------Menu mobile -----------*/ 
+
+.m_menu_head {               display: block;
+    position: fixed;
+    top: 2px;
+    right: 3px;
+    color: #000000;
+    font-weight: 200;
+    padding: 8px;
+    font-size: 25px;
+    background: #ffffff;
+    border-radius: 3px;
+    width: 7%;
+    height: auto;
+    border: 2px solid #000000;}
+
+.menu_bottom {                          background: linear-gradient(90deg, white 87%, #ffffff00 10%) !important;
+    width: 100% !important;
+    text-align: center !important;
+    position: fixed !important;
+    height: -webkit-fill-available !important;
+    top: 0 !important;
+    left: -100%;
+    overflow-x: unset !important;
+}
+
+.menu_container {           width: 81% !important;
+    text-align: left !important;
+    display: grid !important;
+    background: white !important;
+    top: 45px !important;
+    overflow-y: auto;
+    height: 90%;}
+ .menu_item{           text-align: left !important;
+    font-weight: unset !important;
+    display: inline-grid !important;
+    grid-template-columns: 27% auto !important;
+    font-size: 18px !important;
+    margin: 0px !important;
+    width: -webkit-fill-available !important;
+    border-bottom: 1px solid #ededed;
+    white-space: pre !important;
+    padding: 17px 10px !important;
+    border-radius: 4px !important;
+    background: #ffffff !important;
+    color: black !important;}
+ .menu_item i{
+    margin: auto;}
+
+
+/* --------Menu mobile -----------*/ 
+
+
