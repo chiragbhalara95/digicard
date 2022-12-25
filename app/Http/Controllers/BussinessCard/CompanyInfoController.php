@@ -46,6 +46,16 @@ class CompanyInfoController extends Controller
             $companyObj->company_profession = $params['company_profession'];
 
             $companyObj->save();
+        } else if ($params['type'] == 'seo') {
+            $companyData = [
+                'user_id'            => $userId,
+                'seo_keyword'        => $params['seo_keyword'],
+                'seo_description'    => $params['seo_description'],
+
+            ];
+            $companyObj->fill($companyData);
+            $companyObj->save();
+
         } else {
             $companyData = [
                 'user_id'            => $userId,

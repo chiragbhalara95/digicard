@@ -3,9 +3,16 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Dashboard
-                @if (!empty($userObj->package_end_date))
-                    <span class="text text-danger">&nbsp;&nbsp;(Expiry Date: {{date("d F Y", strtotime($userObj->package_end_date))}})</span>
+                <div class="card-header">
+                    <div class="row">
+                    <h2>Dashboard</h2>
+                    @if (!empty($userObj->package_end_date))
+                        <span class="text text-danger text-end">&nbsp;&nbsp;(Expiry Date: {{date("d F Y", strtotime($userObj->package_end_date))}})</span>
+                    @endif
+                    </div>
+                <br/>
+                @if (!empty($userObj->slug))
+                {{url('/')}}/vc/{{$userObj->slug}}
                 @endif
                 </div>
                 <div class="card-body">

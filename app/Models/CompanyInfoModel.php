@@ -32,6 +32,8 @@ class CompanyInfoModel extends Model
         'longitude',
         'company_website',
         'broucher_file',
+        'seo_keyword',
+        'seo_description'
     ];
 
     protected $casts = [];

@@ -31,13 +31,14 @@
           <div class="col-md-6">
           <!-- general form elements -->
             <div class="card card-primary">
+
               <div class="card-header">
                 <h3 class="card-title">Person Detail</h3>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
               <form action="{{route('store-about-view')}}" method="POST"  enctype="multipart/form-data">
-            @csrf
+                @csrf
                 <input type="hidden" name="type" value="person">
                 <div class="card-body">
 
@@ -78,14 +79,37 @@
                   <button type="submit" class="btn btn-primary">Submit</button>
                 </div>
               </form>
-            </div>
+
+              <div class="card-header">
+                <h3 class="card-title">SEO Detail</h3>
+              </div>
+                  <form action="{{route('store-about-view')}}" method="POST"  enctype="multipart/form-data">
+                    @csrf
+                    <input type="hidden" name="type" value="seo">
+
+                      <div class="card-body">
+
+                        <div class="form-group">
+                          <label for="exampleInputEmail1">Seo Keyword</label>
+                          <input type="text" name="seo_keyword" class="form-control" id="seo_keyword" placeholder="Enter Seo" value="{{$companyData->seo_keyword ?? ''}}">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Seo Keyword Description</label>
+                              <textarea row="3" class="form-control" name="seo_description" placeholder="Seo Description">{{$companyData->seo_description ?? ''}}</textarea>
+                        </div>
+
+                <div class="card-footer">
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+
+                      </div>
             <!-- /.card -->
-
-            </form>
-
+                  </form>
+                    </div>
           </div>
           <!--/.col (left) -->
- 
+    
           <!-- left column -->
           <div class="col-md-6">
 
