@@ -11,11 +11,23 @@
     <meta property="og:description" content="{{$companyInfoData->company_info}}">
     <meta name="keywords" content="@if(!empty($companyInfoData->company_name)){{$companyInfoData->company_name}}@else{!! $userObj->name !!}@endif">
     <meta property="og:url" content="{{url('vc')}}/{{$userObj->slug}}">
+    @if(!empty($companyInfoData->company_logo))
     <meta property="og:image" itemprop="image" content="{{url('public')}}/{{$companyInfoData->company_logo}}">
+    @elseif(!empty($userObj->profile_pic))
+    <meta property="og:image" itemprop="image" content="{{url('public')}}/{{$userObj->profile_pic}}">
+    @else
+    <meta property="og:image" itemprop="image" content="{{url('public')}}/upload/user_profile.jpg">
+    @endif
     <meta property="og:type" content="website">
     <meta property="og:image:width" content="800">
     <meta property="og:image:height" content="800">
-    <link rel="shortcut icon" href="{{url('public')}}/{{$companyInfoData->company_logo}}">
+    @if(!empty($companyInfoData->company_logo))
+    <link rel="icon" href="{{url('public')}}/{{$companyInfoData->company_logo}}" type="image/png" sizes="16x16">
+    @elseif(!empty($userObj->profile_pic))
+    <link rel="icon" href="{{url('public')}}/{{$userObj->profile_pic}}" type="image/png" sizes="16x16">
+    @else
+    <link rel="icon" href="{{url('public')}}/upload/user_profile.jpg" type="image/png" sizes="16x16">
+    @endif
 
     <!-- Twitter Meta Tags -->
     <meta name="twitter:image" content="{{url('public')}}/{{$companyInfoData->company_logo}}">

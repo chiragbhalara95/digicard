@@ -14,7 +14,15 @@
     <link href="{{asset('public/visitingCard/bussinessCard/a/css/jquery-confirm.css')}}" rel="stylesheet">
     <link href="{{asset('public/visitingCard/bussinessCard/a/css/model-css.css')}}" rel="stylesheet">
     <link href="{{asset('public/visitingCard/bussinessCard/a/css/custom.css')}}" rel="stylesheet">
+
+    @if(!empty($companyInfoData->company_logo))
     <link rel="icon" href="{{url('public')}}/{{$companyInfoData->company_logo}}" type="image/png" sizes="16x16">
+    @elseif(!empty($userObj->profile_pic))
+    <link rel="icon" href="{{url('public')}}/{{$userObj->profile_pic}}" type="image/png" sizes="16x16">
+    @else
+    <link rel="icon" href="{{url('public')}}/upload/user_profile.jpg" type="image/png" sizes="16x16">
+    @endif
+
     <script id="skype_bootstrap" src="{{asset('public/visitingCard/bussinessCard/a/js/SkypeBootstrap.min.js')}}"></script>
     <script src="{{asset('public/visitingCard/bussinessCard/a/js/sdk.js')}}" async="" crossorigin="anonymous"></script>
     <script id="skype_web_sdk" src="{{asset('public/visitingCard/bussinessCard/a/js/skypewebsdk.js')}}"></script>
@@ -33,7 +41,15 @@
     <meta property="og:description" content="{{$companyInfoData->company_info}}">
     <meta name="keywords" content="{{$companyInfoData->company_name}}">
     <meta property="og:url" content="{{url('vc')}}/{{$userObj->slug}}">
+
+    @if(!empty($companyInfoData->company_logo))
     <meta property="og:image" itemprop="image" content="{{url('public')}}/{{$companyInfoData->company_logo}}">
+    @elseif(!empty($userObj->profile_pic))
+    <meta property="og:image" itemprop="image" content="{{url('public')}}/{{$userObj->profile_pic}}">
+    @else
+    <meta property="og:image" itemprop="image" content="{{url('public')}}/upload/user_profile.jpg">
+    @endif
+
     <meta property="og:type" content="website">
     <meta property="og:image:width" content="800">
     <meta property="og:image:height" content="800">
