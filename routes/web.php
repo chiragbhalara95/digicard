@@ -120,4 +120,6 @@ Route::middleware(['auth', 'verified', 'is_admin'])->namespace('App\Http\Control
     // Admin route
     Route::get('admin', [App\Http\Controllers\HomeController::class, 'adminHome'])->name('admin.home');
     Route::get('admin/home', [App\Http\Controllers\HomeController::class, 'adminHome'])->name('admin.home');
+    Route::get('admin/digital-card/create', [App\Http\Controllers\Admin\DigitalcardController::class, 'createDigitalCard'])->name('admin.digital-card.create');
+    Route::post('admin/digital-card/save', [App\Http\Controllers\Admin\DigitalcardController::class, 'saveDigitalCard'])->name('admin.digital-card.save');
 });
