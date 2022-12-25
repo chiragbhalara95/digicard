@@ -31,6 +31,13 @@
   color:var(--theme-color) !important;
   background-color:#FFF !important;
 }
+.iconbtn {
+      display: flex !important;
+    }
+    .contact-icon {
+      display: table-cell !important;
+    }
+
 </style>
 <style type="text/css">
     .purchase-form__renewal-price--strikethrough {

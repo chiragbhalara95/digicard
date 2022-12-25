@@ -37,6 +37,13 @@
         text-decoration: line-through;
         color: red;
     }
+    .iconbtn {
+      display: flex !important;
+    }
+    .contact-icon {
+      display: table-cell !important;
+    }
+
 </style>
 
 <script>

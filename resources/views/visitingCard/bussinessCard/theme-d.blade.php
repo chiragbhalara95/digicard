@@ -34,6 +34,9 @@
         text-decoration: line-through;
         color: red;
     }
+    .inside-icon {
+      display: flex !important;
+    }
 </style>
 
 <script>
