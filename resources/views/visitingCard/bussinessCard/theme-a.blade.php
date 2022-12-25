@@ -36,10 +36,10 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
+    <meta content="{{$companyInfoData->seo_description}}" name="description">
+    <meta content="{{$companyInfoData->seo_keyword}}" name="keywords">
+
     <meta property="og:title" content="{{$companyInfoData->company_name}}">
-    <meta name="description" content="{{$companyInfoData->company_info}}">
-    <meta property="og:description" content="{{$companyInfoData->company_info}}">
-    <meta name="keywords" content="{{$companyInfoData->company_name}}">
     <meta property="og:url" content="{{url('vc')}}/{{$userObj->slug}}">
 
     @if(!empty($companyInfoData->company_logo))
