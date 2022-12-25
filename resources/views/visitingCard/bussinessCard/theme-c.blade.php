@@ -221,11 +221,11 @@
                   </a>
                 </td>
                 <td>
-                  <a target="_blank" href="tel:{{$companyInfoData->country_code}}{{$companyInfoData->company_mobile}}" class="contact-action-container-text"> {{$companyInfoData->country_code}}{{$companyInfoData->company_mobile}} </a>
+                  <a target="_blank" href="tel:{{$companyInfoData->country_code}}{{$companyInfoData->company_mobile}}" class="contact-action-container-text"><p> {{$companyInfoData->country_code}}{{$companyInfoData->company_mobile}}</p> </a>
                   @if(!empty($companyInfoData->country_landline))
                   <br/>
                   <a target="_blank" href="tel:{{$companyInfoData->country_landline}}" class="contact-action-container-text">
-                    {{$companyInfoData->country_landline}} </a>
+                    <p>&nbsp;{{$companyInfoData->country_landline}}</p> </a>
                   @endif
                 </td>
               </tr>
