@@ -140,6 +140,16 @@ class FrontWebsiteController extends BasicController
             $paymentMasterData = PaymentModel::where('user_id', $userObj->id)->get();
             $socialMediaData   = SocialLinkModel::where('user_id', $userObj->id)->get();
 
+            if (!empty($companyInfoData->company_address)) {
+                $unwanted = [
+                    '<p>',
+                    '</p>'
+                ];
+                foreach ($unwanted as $tag) {
+                    $companyInfoData->company_address = preg_replace('<'.$tag.'>', '', $companyInfoData->company_address);
+                }
+            }
+
             return view('visitingCard/bussinessCard/'.$bladeFile, 
                 compact('companyInfoData', 'userObj', 'galleryData', 'userConfigObj', 'paymentMasterData', 'socialMediaData')
             );

@@ -10,11 +10,23 @@
 		<meta property="og:description" content="{{$companyInfoData->company_info}}">
 		<meta name="keywords" content="@if(!empty($companyInfoData->company_name)){{$companyInfoData->company_name}}@else{!! $userObj->name !!}@endif">
 		<meta property="og:url" content="{{url('vc')}}/{{$userObj->slug}}">
-		<meta property="og:image" itemprop="image" content="{{url('public')}}/{{$companyInfoData->company_logo}}">
+        @if(!empty($companyInfoData->company_logo))
+    <meta property="og:image" itemprop="image" content="{{url('public')}}/{{$companyInfoData->company_logo}}">
+    @elseif(!empty($userObj->profile_pic))
+    <meta property="og:image" itemprop="image" content="{{url('public')}}/{{$userObj->profile_pic}}">
+    @else
+    <meta property="og:image" itemprop="image" content="{{url('public')}}/upload/user_profile.jpg">
+    @endif
 		<meta property="og:type" content="website">
 		<meta property="og:image:width" content="800">
 		<meta property="og:image:height" content="800">
-		<link rel="shortcut icon" href="{{url('public')}}/{{$companyInfoData->company_logo}}">
+        @if(!empty($companyInfoData->company_logo))
+    <link rel="icon" href="{{url('public')}}/{{$companyInfoData->company_logo}}" type="image/png" sizes="16x16">
+    @elseif(!empty($userObj->profile_pic))
+    <link rel="icon" href="{{url('public')}}/{{$userObj->profile_pic}}" type="image/png" sizes="16x16">
+    @else
+    <link rel="icon" href="{{url('public')}}/upload/user_profile.jpg" type="image/png" sizes="16x16">
+    @endif
 
         <link rel="stylesheet" href="{{asset('public/visitingCard/bussinessCard/p/css/ncss.css')}}" >
         <link rel="stylesheet" href="{{asset('public/visitingCard/bussinessCard/p/css/feedback.css')}}" >
@@ -42,8 +54,9 @@
         .card_content2 h2 {
         margin: 1px 3px 10px;
         }
-        .card{  width: 437px;
+        .card{ 
             background: url({{asset('public/visitingCard/bussinessCard/p/img/bg36.png')}}) !important;
+            /* background-repeat: no-repeat !important; */
             }
             
 
@@ -922,16 +935,16 @@ Showing result:
         <div class="m_menu_head" id="mmhead" ><span onclick="openMenu()"><i class="fa fa-bars"></i></span></div>
             
         <div class="menu_container" onclick="closeMenu()">
-            <div class="menu_item" onclick="location.href='#home'"><i class="fa fa-home"></i> Home</div>
-            <div class="menu_item" onclick="location.href='#about_us'"><i class="fa fa-briefcase"></i>About Us</div>
+            <div class="menu_item" onclick="location.href='#home'"><i class="fa fa-home" aria-hidden="true"></i> Home</div>
+            <div class="menu_item" onclick="location.href='#about_us'"><i class="fa fa-briefcase" aria-hidden="true"></i>About Us</div>
             <!-- <div class="menu_item" onclick="location.href='#product_services'"><i class="fa fa-ticket"></i>Product & Services</div> -->
             <!-- <div class="menu_item" onclick="location.href='#shop_online'"><i class="fa fa-archive"></i>Shop</div> -->
             @if($galleryData->count() > 0)
-			<div class="menu_item" onclick="location.href='#gallery'"><i class="fa fa-image"></i>Gallery</div>
+			<div class="menu_item" onclick="location.href='#gallery'"><i class="fa fa-image" aria-hidden="true"></i>Gallery</div>
             @endif
 			<!-- <div class="menu_item" onclick="location.href='#youtube_video'"><i class="fa fa-video-camera"></i>Youtube Videos</div> -->
             @if(count($paymentMasterData) > 0)
-			<div class="menu_item" onclick="location.href='#payment'"><i class="fa fa-money"></i>Payment</div>
+			<div class="menu_item" onclick="location.href='#payment'"><i class="fa fa-money" aria-hidden="true"></i>Payment</div>
 			@endif
 			<!-- <div class="menu_item" onclick="location.href='#feedback'"><i class="fa fa-star"></i>Feedback</div>
             <div class="menu_item" onclick="location.href='#enquery'"><i class="fa fa-comment"></i>Enquiry</div> -->

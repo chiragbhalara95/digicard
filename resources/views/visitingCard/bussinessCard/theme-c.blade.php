@@ -11,7 +11,13 @@
 <meta property="og:description" content="{{$companyInfoData->company_info}}">
 <meta name="keywords" content="{{$companyInfoData->company_name}}">
 <meta property="og:url" content="{{url('vc')}}/{{$userObj->slug}}">
-<meta property="og:image" itemprop="image" content="{{url('public')}}/{{$companyInfoData->company_logo}}">
+@if(!empty($companyInfoData->company_logo))
+    <meta property="og:image" itemprop="image" content="{{url('public')}}/{{$companyInfoData->company_logo}}">
+    @elseif(!empty($userObj->profile_pic))
+    <meta property="og:image" itemprop="image" content="{{url('public')}}/{{$userObj->profile_pic}}">
+    @else
+    <meta property="og:image" itemprop="image" content="{{url('public')}}/upload/user_profile.jpg">
+    @endif
 <meta property="og:type" content="website">
 <meta property="og:image:width" content="800">
 <meta property="og:image:height" content="800">
@@ -20,7 +26,13 @@
 
 <!-- Favicon -->
 
-<link rel="shortcut icon" href="{{url('public')}}/{{$companyInfoData->company_logo}}">
+@if(!empty($companyInfoData->company_logo))
+    <link rel="icon" href="{{url('public')}}/{{$companyInfoData->company_logo}}" type="image/png" sizes="16x16">
+    @elseif(!empty($userObj->profile_pic))
+    <link rel="icon" href="{{url('public')}}/{{$userObj->profile_pic}}" type="image/png" sizes="16x16">
+    @else
+    <link rel="icon" href="{{url('public')}}/upload/user_profile.jpg" type="image/png" sizes="16x16">
+    @endif
 <link href="{{asset('public/visitingCard/bussinessCard/c/css/font-awesome.min.css')}}" rel="stylesheet">
 <link href="{{asset('public/visitingCard/bussinessCard/c/css/template7.css')}}" rel="stylesheet">
 <link href="{{asset('public/visitingCard/bussinessCard/c/css/fonts.css')}}" rel="stylesheet">
@@ -221,11 +233,11 @@
                   </a>
                 </td>
                 <td>
-                  <a target="_blank" href="tel:{{$companyInfoData->country_code}}{{$companyInfoData->company_mobile}}" class="contact-action-container-text"> {{$companyInfoData->country_code}}{{$companyInfoData->company_mobile}} </a>
+                  <a target="_blank" href="tel:{{$companyInfoData->country_code}}{{$companyInfoData->company_mobile}}" class="contact-action-container-text"><p> {{$companyInfoData->country_code}}{{$companyInfoData->company_mobile}}</p> </a>
                   @if(!empty($companyInfoData->country_landline))
                   <br/>
                   <a target="_blank" href="tel:{{$companyInfoData->country_landline}}" class="contact-action-container-text">
-                    {{$companyInfoData->country_landline}} </a>
+                    <p>&nbsp;{{$companyInfoData->country_landline}}</p> </a>
                   @endif
                 </td>
               </tr>

@@ -12,12 +12,24 @@
 <meta property="og:description" content="{{$companyInfoData->company_info}}">
 <meta name="keywords" content="{{$companyInfoData->company_name}}">
 <meta property="og:url" content="{{url('vc')}}/{{$userObj->slug}}">
-<meta property="og:image" itemprop="image" content="{{url('public')}}/{{$companyInfoData->company_logo}}">
+@if(!empty($companyInfoData->company_logo))
+    <meta property="og:image" itemprop="image" content="{{url('public')}}/{{$companyInfoData->company_logo}}">
+    @elseif(!empty($userObj->profile_pic))
+    <meta property="og:image" itemprop="image" content="{{url('public')}}/{{$userObj->profile_pic}}">
+    @else
+    <meta property="og:image" itemprop="image" content="{{url('public')}}/upload/user_profile.jpg">
+    @endif
 <meta property="og:type" content="website">
 <meta property="og:image:width" content="800">
 <meta property="og:image:height" content="800">
 
-<link rel="shortcut icon" href="{{url('public')}}/{{$companyInfoData->company_logo}}">
+@if(!empty($companyInfoData->company_logo))
+    <link rel="icon" href="{{url('public')}}/{{$companyInfoData->company_logo}}" type="image/png" sizes="16x16">
+    @elseif(!empty($userObj->profile_pic))
+    <link rel="icon" href="{{url('public')}}/{{$userObj->profile_pic}}" type="image/png" sizes="16x16">
+    @else
+    <link rel="icon" href="{{url('public')}}/upload/user_profile.jpg" type="image/png" sizes="16x16">
+    @endif
 <link href="{{asset('public/visitingCard/bussinessCard/e/css/font-awesome.min.css')}}" rel="stylesheet">
 <link href="{{asset('public/visitingCard/bussinessCard/e/css/template2.css')}}" rel="stylesheet">
 <link href="{{asset('public/visitingCard/bussinessCard/e/css/fonts.css')}}" rel="stylesheet">
@@ -37,6 +49,13 @@
         text-decoration: line-through;
         color: red;
     }
+    .iconbtn {
+      display: flex !important;
+    }
+    .contact-icon {
+      display: table-cell !important;
+    }
+
 </style>
 
 <script>
@@ -361,7 +380,7 @@
 
   <div>
 
-    <table class="about-tbl">
+<!--     <table class="about-tbl">
 
       <tbody>
 
@@ -399,7 +418,7 @@
 
     </table>
 
-    <h3 align="center">Account Details:</h3>
+ -->    <h3 align="center">Account Details:</h3>
 
     <table class="about-tbl">
 

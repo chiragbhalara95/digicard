@@ -11,11 +11,23 @@
     <meta property="og:description" content="{{$companyInfoData->company_info}}">
     <meta name="keywords" content="@if(!empty($companyInfoData->company_name)){{$companyInfoData->company_name}}@else{!! $userObj->name !!}@endif">
     <meta property="og:url" content="{{url('vc')}}/{{$userObj->slug}}">
+    @if(!empty($companyInfoData->company_logo))
     <meta property="og:image" itemprop="image" content="{{url('public')}}/{{$companyInfoData->company_logo}}">
+    @elseif(!empty($userObj->profile_pic))
+    <meta property="og:image" itemprop="image" content="{{url('public')}}/{{$userObj->profile_pic}}">
+    @else
+    <meta property="og:image" itemprop="image" content="{{url('public')}}/upload/user_profile.jpg">
+    @endif
     <meta property="og:type" content="website">
     <meta property="og:image:width" content="800">
     <meta property="og:image:height" content="800">
-    <link rel="shortcut icon" href="{{url('public')}}/{{$companyInfoData->company_logo}}">
+    @if(!empty($companyInfoData->company_logo))
+    <link rel="icon" href="{{url('public')}}/{{$companyInfoData->company_logo}}" type="image/png" sizes="16x16">
+    @elseif(!empty($userObj->profile_pic))
+    <link rel="icon" href="{{url('public')}}/{{$userObj->profile_pic}}" type="image/png" sizes="16x16">
+    @else
+    <link rel="icon" href="{{url('public')}}/upload/user_profile.jpg" type="image/png" sizes="16x16">
+    @endif
 
     <!-- Twitter Meta Tags -->
     <meta name="twitter:image" content="{{url('public')}}/{{$companyInfoData->company_logo}}">
@@ -184,7 +196,7 @@ $(document).ready(function(){
       @endif
       <div class="contact_d" onclick="location.href=&#39;Mailto:{{$userObj->email}}&#39;"><i class="fa fa-envelope"></i><p>{{$userObj->email}}</p></div>
       @if (!empty($companyInfoData->company_address))               
-      <div class="contact_d" onclick="location.href=&#39;https://maps.google.com?q={{$companyInfoData->latitude}},{{$companyInfoData->longitude}}&z=12&amp;um=1&amp;ie=UTF-8&amp;sa=X&amp;ved=2ahUKEwiWyNX76N3qAhWrzTgGHQuCBicQ_AUoAXoECCMQAw&#39;"><i class="fa fa-map-marker"></i>{!!$companyInfoData->company_address!!}</div>
+      <div class="contact_d" onclick="location.href=&#39;https://maps.google.com?q={{$companyInfoData->latitude}},{{$companyInfoData->longitude}}&z=12&amp;um=1&amp;ie=UTF-8&amp;sa=X&amp;ved=2ahUKEwiWyNX76N3qAhWrzTgGHQuCBicQ_AUoAXoECCMQAw&#39;"><i class="fa fa-map-marker"></i><p>{!!$companyInfoData->company_address!!}</p></div>
       @endif                
       </div>
 
