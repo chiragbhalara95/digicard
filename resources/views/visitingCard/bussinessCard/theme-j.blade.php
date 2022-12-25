@@ -354,7 +354,7 @@
 
   <div>
 
-    <table class="about-tbl">
+<!--     <table class="about-tbl">
 
       <tbody>
 
@@ -391,7 +391,7 @@
       </tbody>
 
     </table>
-
+ -->
     <h3 align="center">Account Details:</h3>
 
     <table class="about-tbl">
@@ -400,10 +400,10 @@
 
       @foreach($paymentMasterData as $paymentMasterDetail)
         @if ($paymentMasterDetail->type == 'bank')
-        <tr>
+<!--         <tr>
           <td align="center" colspan="2">Account Details:</td>
         </tr>
-        <tr>
+ -->        <tr>
           <td colspan="2">
           <table class="about-tbl">
             <tbody>

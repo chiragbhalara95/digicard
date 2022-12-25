@@ -41,7 +41,7 @@
 
   <!-- Required meta tags -->
 <style>
-    .btn2 {
+.btn2 {
     background: chartreuse;
     border-radius: 20px;
     border-color: #ff0082;
@@ -69,7 +69,7 @@ setTimeout(closeLoader,3000);
 
 </script>
 
-</head><body oncontextmenu="return false">
+</head><body oncontextmenu="return true">
         <div class="card_loader_back" style="display: block;">
             <div class="loader2">
             <div class="loader_box">
@@ -184,7 +184,8 @@ $(document).ready(function(){
       @endif
       <div class="contact_d" onclick="location.href=&#39;Mailto:{{$userObj->email}}&#39;"><i class="fa fa-envelope"></i><p>{{$userObj->email}}</p></div>
       @if (!empty($companyInfoData->company_address))               
-      <div class="contact_d" onclick="location.href=&#39;https://maps.google.com?q={{$companyInfoData->latitude}},{{$companyInfoData->longitude}}&z=12&amp;um=1&amp;ie=UTF-8&amp;sa=X&amp;ved=2ahUKEwiWyNX76N3qAhWrzTgGHQuCBicQ_AUoAXoECCMQAw&#39;"><i class="fa fa-map-marker"></i>{!!$companyInfoData->company_address!!}</div>
+      <div class="contact_d" onclick="location.href=&#39;https://maps.google.com?q={{$companyInfoData->latitude}},{{$companyInfoData->longitude}}&z=12&amp;um=1&amp;ie=UTF-8&amp;sa=X&amp;ved=2ahUKEwiWyNX76N3qAhWrzTgGHQuCBicQ_AUoAXoECCMQAw&#39;"><i class="fa fa-map-marker"></i><p class="text-align:justify-content">{!!$companyInfoData->company_address!!}</p>
+      </div>
       @endif                
       </div>
 
@@ -645,7 +646,7 @@ $(':radio').change(function() {
 <script src="{{asset('public/visitingCard/bussinessCard/a/js/jquery-confirm.js')}}"></script>
 <script src="{{asset('public/visitingCard/bussinessCard/a/js/form-action.js')}}"></script>
 <script src="{{asset('public/visitingCard/bussinessCard/a/js/script.js')}}?v={{date('YmdHis')}}"></script>
-<script src="{{asset('public/js/prevent.js')}}"></script>
+<!-- <script src="{{asset('public/js/prevent.js')}}"></script> -->
 
 <script>
 document.getElementById('imageModal').style.display = 'none';

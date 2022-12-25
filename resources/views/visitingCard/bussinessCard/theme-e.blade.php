@@ -352,7 +352,7 @@
 
   <div>
 
-    <table class="about-tbl">
+<!--     <table class="about-tbl">
 
       <tbody>
 
@@ -389,7 +389,7 @@
       </tbody>
 
     </table>
-
+ -->
     <h3 align="center">Account Details:</h3>
 
     <table class="about-tbl">
