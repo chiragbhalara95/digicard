@@ -363,6 +363,9 @@
                         </span>
 
                 @endif
+                <a class="whatsapp-btn" href='https://api.whatsapp.com/send?phone={{str_replace('+','',$companyInfoData->country_code)}}{{$companyInfoData->company_mobile}}&text=Enquery for product: {{urlencode($galleryDetail->title)}}' target='_blank'>
+                      Enquiry Now
+                </a>
 
     </div>
 

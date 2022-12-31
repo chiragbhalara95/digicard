@@ -1000,6 +1000,9 @@
                 @if(!empty($galleryDetail->doc_url))
                   <a href="{{url('public/upload/product-doc')}}/{{$galleryDetail->doc_url}}" target="_blank" class="btn btn-sm  btn-primary" download><i class="fa fa-download"></i></a> 
                 @endif
+                <a class="whatsapp-button" href='https://api.whatsapp.com/send?phone={{str_replace('+','',$companyInfoData->country_code)}}{{$companyInfoData->company_mobile}}&text=Enquery for product: {{urlencode($galleryDetail->title)}}' target='_blank'>
+                      Enquiry Now
+                </a>
 
             </div>
           @endforeach
