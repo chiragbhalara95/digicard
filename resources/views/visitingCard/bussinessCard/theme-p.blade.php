@@ -601,7 +601,13 @@ function addToCart(cid,pid){
 					<img alt="{{$galleryDetail->title}}" src="{{URL::asset('public/upload/product/'.$galleryDetail->head_image)}}" style="width:100%">
 					</div>      
 					<h4 class="text text-center" style="text-align:center;">{{$galleryDetail->title}}</h4>
-				@endforeach
+                    <div class="dis_flex">
+                        <a class="addphonebook" href='https://api.whatsapp.com/send?phone={{str_replace('+','',$companyInfoData->country_code)}}{{$companyInfoData->company_mobile}}&text=Enquery for product: {{urlencode($galleryDetail->title)}}' target='_blank'>
+                        <div class="big_btns">Enquiry Now</i></div>
+                        </a>
+                    </div>
+
+                    @endforeach
 
 					<a class="prev" onclick="plusSlides(-1)">❮</a>
 					<a class="next" onclick="plusSlides(1)">❯</a>
