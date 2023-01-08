@@ -1,67 +1,94 @@
 <?php
-
 namespace App\Exceptions;
 
+use Mail;
+use Exception;
+use App\Mail\ExceptionOccured;
+use Illuminate\Auth\AuthenticationException;
+use Symfony\Component\Debug\Exception\FlattenException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
-use Throwable;
+use Symfony\Component\Debug\ExceptionHandler as SymfonyExceptionHandler;
 
 class Handler extends ExceptionHandler
 {
     /**
-     * A list of the exception types that are not reported.
+     * A list of the exception types that should not be reported.
      *
      * @var array
      */
     protected $dontReport = [
-        //
+        \Illuminate\Auth\AuthenticationException::class,
+        \Illuminate\Auth\Access\AuthorizationException::class,
+        \Symfony\Component\HttpKernel\Exception\HttpException::class,
+        \Illuminate\Database\Eloquent\ModelNotFoundException::class,
+        \Illuminate\Session\TokenMismatchException::class,
+        \Illuminate\Validation\ValidationException::class,
     ];
 
     /**
-     * A list of the inputs that are never flashed for validation exceptions.
+     * Report or log an exception.
      *
-     * @var array
-     */
-    protected $dontFlash = [
-        'current_password',
-        'password',
-        'password_confirmation',
-    ];
-
-    /**
-     * Register the exception handling callbacks for the application.
+     * This is a great spot to send exceptions to Sentry, Bugsnag, etc.
      *
+     * @param  \Exception  $exception
      * @return void
      */
-    public function register()
+    public function report(Exception $exception)
     {
-        $this->reportable(function (Throwable $e) {
-            $this->sendEmail($e);
-        });
+        if ($this->shouldReport($exception)) {
+            $this->sendEmail($exception);
+        }
+
+        parent::report($exception);
     }
 
     /**
-     * Write code on Method
+     * Render an exception into an HTTP response.
      *
-     * @return response()
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \Exception  $exception
+     * @return \Illuminate\Http\Response
      */
-    public function sendEmail(Throwable $exception)
+    public function render($request, Exception $exception)
     {
-       try {
-   
-            $content['message'] = $exception->getMessage();
-            $content['file'] = $exception->getFile();
-            $content['line'] = $exception->getLine();
-            $content['trace'] = $exception->getTrace();
-  
-            $content['url'] = request()->url();
-            $content['body'] = request()->all();
-            $content['ip'] = request()->ip();
-   
-            Mail::to('chiragbhalara95@gmail.com')->send(new ExceptionOccured($content));
-  
-        } catch (Throwable $exception) {
-            Log::error($exception);
-        }
+        return parent::render($request, $exception);
     }
 
+    /**
+     * Convert an authentication exception into an unauthenticated response.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Auth\AuthenticationException  $exception
+     * @return \Illuminate\Http\Response
+     */
+    protected function unauthenticated($request, AuthenticationException $exception)
+    {
+        if ($request->expectsJson()) {
+            return response()->json(['error' => 'Unauthenticated.'], 401);
+        }
+
+        return redirect()->guest(route('login'));
+    }
+
+    /**
+     * Sends an email to the developer about the exception.
+     *
+     * @param  \Exception  $exception
+     * @return void
+     */
+    public function sendEmail(Exception $exception)
+    {
+        try {
+            $e = FlattenException::create($exception);
+
+            $handler = new SymfonyExceptionHandler();
+
+            $html = $handler->getHtml($e);
+            print($html);
+
+            Mail::to('chiragbhalara95@gmail.com')->send(new ExceptionOccured($html));
+        } catch (Exception $ex) {
+            dd($ex);
+        }
+    }
 }
