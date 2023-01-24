@@ -42,6 +42,11 @@
 
                     </ul>
 
+                    @if(Session::has('error'))
+                        <div class="alert alert-danger">
+                        {{ Session::get('error')}}
+                        </div>
+                    @endif
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
