@@ -159,7 +159,7 @@
                 </div>
                <div class="vcard-eight__contact">
                   <div class="d-sm-flex justify-content-center mt-5 pb-5">
-                  <a class="vcard-eight-btn mt-4 d-block btn text-white" href="{{url('public')}}/{{$companyInfoData->broucher_file}}" download=""><i class="fa fa-download me-2"></i>Download VCard</a>
+                  <a class="vcard-eight-btn mt-4 d-block btn text-white" href="{{url('saveViewCard')}}/{{$userObj->slug}}" download="contact.vcf"><i class="fa fa-download me-2"></i>Download VCard</a>
 
                   </div>
                </div>
@@ -795,7 +795,7 @@
 <script src="{{asset('public/visitingCard/bussinessCard/q/js/helpers.js')}}"></script>
 <script src="{{asset('public/visitingCard/bussinessCard/q/js/vendor.js')}}"></script>
 <script src="{{asset('public/visitingCard/bussinessCard/q/js/custom.js')}}"></script>
-<script src="{{asset('public/visitingCard/bussinessCard/q/js/vcard-view.js')}}"></script>
+<!-- <script src="{{asset('public/visitingCard/bussinessCard/q/js/vcard-view.js')}}"></script> -->
 
 <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 
