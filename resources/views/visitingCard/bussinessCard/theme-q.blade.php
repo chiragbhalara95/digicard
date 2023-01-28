@@ -30,15 +30,15 @@
     <input type="hidden" id="send_enquiry_url" value="{{route('sendEnquiry')}}">
 
       <!-- Bootstrap CSS -->
-      <link href="https://vcards.juzztap.com/front/css/bootstrap.min.css" rel="stylesheet">
-      <link rel="stylesheet" href="https://vcards.juzztap.com/assets/css/vcard8.css">
-      <link rel="stylesheet" href="https://vcards.juzztap.com/assets/css/custom-vcard.css">
-      <link href="https://vcards.juzztap.com/backend/css/vendor.css" rel="stylesheet" type="text/css">
-      <link href="https://vcards.juzztap.com/backend/css/3rd-party.css" rel="stylesheet" type="text/css">
-      <link href="https://vcards.juzztap.com/backend/css/3rd-party-custom.css" rel="stylesheet" type="text/css">
-      <link href="https://vcards.juzztap.com/backend/css/all.min.css" rel="stylesheet">
-      <link rel="stylesheet" href="https://vcards.juzztap.com/backend/css/slick/slick.css">
-      <link rel="stylesheet" href="https://vcards.juzztap.com/backend/css/slick/slick-theme.css">
+      <link href="{{asset('public/visitingCard/bussinessCard/q/css/bootstrap.min.css')}}" rel="stylesheet">
+      <link rel="stylesheet" href="{{asset('public/visitingCard/bussinessCard/q/css/vcard8.css')}}">
+      <link rel="stylesheet" href="{{asset('public/visitingCard/bussinessCard/q/css/custom-vcard.css')}}">
+      <link href="{{asset('public/visitingCard/bussinessCard/q/css/vendor.css')}}" rel="stylesheet" type="text/css">
+      <link href="{{asset('public/visitingCard/bussinessCard/q/css/3rd-party.css')}}" rel="stylesheet" type="text/css">
+      <link href="{{asset('public/visitingCard/bussinessCard/q/css/3rd-party-custom.css')}}" rel="stylesheet" type="text/css">
+      <link href="{{asset('public/visitingCard/bussinessCard/q/css/all.min.css')}}" rel="stylesheet">
+      <link rel="stylesheet" href="{{asset('public/visitingCard/bussinessCard/q/css/slick.css')}}">
+      <link rel="stylesheet" href="{{asset('public/visitingCard/bussinessCard/q/css/slick-theme.css')}}">
       <link rel="preconnect" href="https://fonts.googleapis.com">
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
       <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&amp;family=Roboto&amp;display=swap" rel="stylesheet">
@@ -323,7 +323,7 @@
                      <div class="col-sm-6 col-12 p-3">
                         <div class="card service-card px-3 py-0 h-100 border-0">
                            <div class="service-image d-flex justify-content-center align-items-center rounded-circle mx-auto">
-                              <img src="https://vcards.juzztap.com//uploads/vcards/services/89/Stock-Market-Investing.png" class="rounded-circle" alt="ALL FINANCIAL SERVICE">
+                              <img src="logo.png" class="rounded-circle" alt="ALL FINANCIAL SERVICE">
                            </div>
                            <div class="service-details mt-3">
                               <h4 class="service-title text-center">ALL FINANCIAL SERVICE</h4>
@@ -347,7 +347,7 @@
                         <div class="col-6 slick-slide slick-cloned" data-slick-index="-2" id="" aria-hidden="true" tabindex="-1" style="width: 268px;">
                            <div class="card product-card p-3 border-0 w-100">
                               <div class="product-profile">
-                                 <img src="https://vcards.juzztap.com//uploads/vcards/products/116/Currency.jpg" alt="profile" class="w-100" height="208px">
+                                 <img src="Currency.jpg" alt="profile" class="w-100" height="208px">
                               </div>
                               <div class="product-details mt-3">
                                  <h4 class="text-white">Currency</h4>
@@ -361,7 +361,7 @@
                         <div class="col-6 slick-slide slick-cloned" data-slick-index="-1" id="" aria-hidden="true" tabindex="-1" style="width: 268px;">
                            <div class="card product-card p-3 border-0 w-100">
                               <div class="product-profile">
-                                 <img src="https://vcards.juzztap.com//uploads/vcards/products/117/Others.jpg" alt="profile" class="w-100" height="208px">
+                                 <img src="Others.jpg" alt="profile" class="w-100" height="208px">
                               </div>
                               <div class="product-details mt-3">
                                  <h4 class="text-white">Other Products</h4>
@@ -378,7 +378,7 @@
                         <div class="col-6 slick-slide" data-slick-index="0" aria-hidden="true" tabindex="-1" role="tabpanel" id="slick-slide00" aria-describedby="slick-slide-control00" style="width: 268px;">
                            <div class="card product-card p-3 border-0 w-100">
                               <div class="product-profile">
-                                 <img src="https://vcards.juzztap.com//uploads/vcards/products/119/Stock-market.jpg" alt="profile" class="w-100" height="208px">
+                                 <img src="Stock-market.jpg" alt="profile" class="w-100" height="208px">
                               </div>
                               <div class="product-details mt-3">
                                  <h4 class="text-white">EQUITY</h4>
@@ -396,7 +396,7 @@
                         <div class="col-6 slick-slide" data-slick-index="1" aria-hidden="true" tabindex="-1" role="tabpanel" id="slick-slide01" aria-describedby="slick-slide-control01" style="width: 268px;">
                            <div class="card product-card p-3 border-0 w-100">
                               <div class="product-profile">
-                                 <img src="https://vcards.juzztap.com//uploads/vcards/products/122/Insurance-01.jpg" alt="profile" class="w-100" height="208px">
+                                 <img src="Insurance-01.jpg" alt="profile" class="w-100" height="208px">
                               </div>
                               <div class="product-details mt-3">
                                  <h4 class="text-white">INSURANCE</h4>
@@ -414,7 +414,7 @@
                         <div class="col-6 slick-slide slick-current slick-active" data-slick-index="2" aria-hidden="false" tabindex="0" role="tabpanel" id="slick-slide02" aria-describedby="slick-slide-control02" style="width: 268px;">
                            <div class="card product-card p-3 border-0 w-100">
                               <div class="product-profile">
-                                 <img src="https://vcards.juzztap.com//uploads/vcards/products/123/Real-Estate-01.jpg" alt="profile" class="w-100" height="208px">
+                                 <img src="Real-Estate-01.jpg" alt="profile" class="w-100" height="208px">
                               </div>
                               <div class="product-details mt-3">
                                  <h4 class="text-white">REAL ESTATE</h4>
@@ -428,7 +428,7 @@
                         <div class="col-6 slick-slide slick-active" data-slick-index="3" aria-hidden="false" tabindex="0" role="tabpanel" id="slick-slide03" aria-describedby="slick-slide-control03" style="width: 268px;">
                            <div class="card product-card p-3 border-0 w-100">
                               <div class="product-profile">
-                                 <img src="https://vcards.juzztap.com//uploads/vcards/products/115/Commodity.jpg" alt="profile" class="w-100" height="208px">
+                                 <img src="/Commodity.jpg" alt="profile" class="w-100" height="208px">
                               </div>
                               <div class="product-details mt-3">
                                  <h4 class="text-white">Commodity</h4>
@@ -445,7 +445,7 @@
                         <div class="col-6 slick-slide" data-slick-index="4" aria-hidden="true" tabindex="-1" role="tabpanel" id="slick-slide04" aria-describedby="slick-slide-control04" style="width: 268px;">
                            <div class="card product-card p-3 border-0 w-100">
                               <div class="product-profile">
-                                 <img src="https://vcards.juzztap.com//uploads/vcards/products/116/Currency.jpg" alt="profile" class="w-100" height="208px">
+                                 <img src="Currency.jpg" alt="profile" class="w-100" height="208px">
                               </div>
                               <div class="product-details mt-3">
                                  <h4 class="text-white">Currency</h4>
@@ -459,7 +459,7 @@
                         <div class="col-6 slick-slide" data-slick-index="5" aria-hidden="true" tabindex="-1" role="tabpanel" id="slick-slide05" aria-describedby="slick-slide-control05" style="width: 268px;">
                            <div class="card product-card p-3 border-0 w-100">
                               <div class="product-profile">
-                                 <img src="https://vcards.juzztap.com//uploads/vcards/products/117/Others.jpg" alt="profile" class="w-100" height="208px">
+                                 <img src="Others.jpg" alt="profile" class="w-100" height="208px">
                               </div>
                               <div class="product-details mt-3">
                                  <h4 class="text-white">Other Products</h4>
@@ -476,7 +476,7 @@
                         <div class="col-6 slick-slide slick-cloned" data-slick-index="6" id="" aria-hidden="true" tabindex="-1" style="width: 268px;">
                            <div class="card product-card p-3 border-0 w-100">
                               <div class="product-profile">
-                                 <img src="https://vcards.juzztap.com//uploads/vcards/products/119/Stock-market.jpg" alt="profile" class="w-100" height="208px">
+                                 <img src="Stock-market.jpg" alt="profile" class="w-100" height="208px">
                               </div>
                               <div class="product-details mt-3">
                                  <h4 class="text-white">EQUITY</h4>
@@ -494,7 +494,7 @@
                         <div class="col-6 slick-slide slick-cloned" data-slick-index="7" id="" aria-hidden="true" tabindex="-1" style="width: 268px;">
                            <div class="card product-card p-3 border-0 w-100">
                               <div class="product-profile">
-                                 <img src="https://vcards.juzztap.com//uploads/vcards/products/122/Insurance-01.jpg" alt="profile" class="w-100" height="208px">
+                                 <img src="Insurance-01.jpg" alt="profile" class="w-100" height="208px">
                               </div>
                               <div class="product-details mt-3">
                                  <h4 class="text-white">INSURANCE</h4>
@@ -512,7 +512,7 @@
                         <div class="col-6 slick-slide slick-cloned" data-slick-index="8" id="" aria-hidden="true" tabindex="-1" style="width: 268px;">
                            <div class="card product-card p-3 border-0 w-100">
                               <div class="product-profile">
-                                 <img src="https://vcards.juzztap.com//uploads/vcards/products/123/Real-Estate-01.jpg" alt="profile" class="w-100" height="208px">
+                                 <img src="Real-Estate-01.jpg" alt="profile" class="w-100" height="208px">
                               </div>
                               <div class="product-details mt-3">
                                  <h4 class="text-white">REAL ESTATE</h4>
@@ -526,7 +526,7 @@
                         <div class="col-6 slick-slide slick-cloned" data-slick-index="9" id="" aria-hidden="true" tabindex="-1" style="width: 268px;">
                            <div class="card product-card p-3 border-0 w-100">
                               <div class="product-profile">
-                                 <img src="https://vcards.juzztap.com//uploads/vcards/products/115/Commodity.jpg" alt="profile" class="w-100" height="208px">
+                                 <img src="Commodity.jpg" alt="profile" class="w-100" height="208px">
                               </div>
                               <div class="product-details mt-3">
                                  <h4 class="text-white">Commodity</h4>
@@ -543,7 +543,7 @@
                         <div class="col-6 slick-slide slick-cloned" data-slick-index="10" id="" aria-hidden="true" tabindex="-1" style="width: 268px;">
                            <div class="card product-card p-3 border-0 w-100">
                               <div class="product-profile">
-                                 <img src="https://vcards.juzztap.com//uploads/vcards/products/116/Currency.jpg" alt="profile" class="w-100" height="208px">
+                                 <img src="Currency.jpg" alt="profile" class="w-100" height="208px">
                               </div>
                               <div class="product-details mt-3">
                                  <h4 class="text-white">Currency</h4>
@@ -557,7 +557,7 @@
                         <div class="col-6 slick-slide slick-cloned" data-slick-index="11" id="" aria-hidden="true" tabindex="-1" style="width: 268px;">
                            <div class="card product-card p-3 border-0 w-100">
                               <div class="product-profile">
-                                 <img src="https://vcards.juzztap.com//uploads/vcards/products/117/Others.jpg" alt="profile" class="w-100" height="208px">
+                                 <img src="Others.jpg" alt="profile" class="w-100" height="208px">
                               </div>
                               <div class="product-details mt-3">
                                  <h4 class="text-white">Other Products</h4>
@@ -632,7 +632,7 @@
                     <div class="card qr-code-card justify-content-center align-items-center px-sm-3 px-4 pt-15 pb-10 position-relative w-100 mx-auto">
                         <!-- <div class="qr-profile mb-3 d-flex justify-content-center position-absolute top-0">
                             
-                            <img src="https://vcards.juzztap.com//uploads/vcards/profiles/364/Picsart_22-12-26_10-45-54-610.png" alt="qr profile" class="rounded-circle">
+                            <img src="Picsart_22-12-26_10-45-54-610.png" alt="qr profile" class="rounded-circle">
                         </div> -->
                         <div class="mt-3 qr-code-scanner mx-md-4 mx-2 pb-8 bg-white">
                             @if(!empty($paymentMasterDetail->qr_img))
@@ -755,25 +755,25 @@
                   <div class="modal-body">
                      <div class="row">
                         <div class="col-sm-12 d-flex justify-content-between">
-                           <a href="http://www.facebook.com/sharer.php?u=https://vcards.juzztap.com/v/krunaltamakuwala" target="_blank" class="mx-2 share8" title="Facebook">
+                           <a href="http://www.facebook.com/sharer.php?u=#" target="_blank" class="mx-2 share8" title="Facebook">
                            <i class="fab fa-facebook fa-3x" style="color: #1B95E0"></i>
                            </a>
-                           <a href="http://twitter.com/share?url=https://vcards.juzztap.com/v/krunaltamakuwala&amp;text=Krunal Tamakuwala&amp;hashtags=sharebuttons" target="_blank" class="mx-2 share8" title="Twitter">
+                           <a href="http://twitter.com/share?url=url&amp;text=&amp;hashtags=sharebuttons" target="_blank" class="mx-2 share8" title="Twitter">
                            <i class="fab fa-twitter fa-3x" style="color: #1DA1F3"></i>
                            </a>
-                           <a href="http://www.linkedin.com/shareArticle?mini=true&amp;url=https://vcards.juzztap.com/v/krunaltamakuwala" target="_blank" class="mx-2 share8" title="Linkedin">
+                           <a href="http://www.linkedin.com/shareArticle?mini=true&amp;url=url" target="_blank" class="mx-2 share8" title="Linkedin">
                            <i class="fab fa-linkedin fa-3x" style="color: #1B95E0"></i>
                            </a>
-                           <a href="mailto:?Subject=&amp;Body=https://vcards.juzztap.com/v/krunaltamakuwala" target="_blank" class="mx-2 share8" title="Email">
+                           <a href="mailto:?Subject=&amp;Body=url" target="_blank" class="mx-2 share8" title="Email">
                            <i class="fas fa-envelope fa-3x" style="color: #191a19  "></i>
                            </a>
-                           <a href="http://pinterest.com/pin/create/link/?url=https://vcards.juzztap.com/v/krunaltamakuwala" target="_blank" class="mx-2 share8">
+                           <a href="http://pinterest.com/pin/create/link/?url=url" target="_blank" class="mx-2 share8">
                            <i class="fab fa-pinterest fa-3x" style="color: #bd081c" title="Pinterest"></i>
                            </a>
-                           <a href="http://reddit.com/submit?url=https://vcards.juzztap.com/v/krunaltamakuwala&amp;title=Krunal Tamakuwala" target="_blank" class="mx-2 share8" title="Reddit">
+                           <a href="http://reddit.com/submit?url=url&amp;title=" target="_blank" class="mx-2 share8" title="Reddit">
                            <i class="fab fa-reddit fa-3x" style="color: #ff4500"></i>
                            </a>
-                           <a href="https://wa.me/?text=https://vcards.juzztap.com/v/krunaltamakuwala" target="_blank" class="mx-2 share8" title="Whatsapp">
+                           <a href="https://wa.me/?text=url" target="_blank" class="mx-2 share8" title="Whatsapp">
                            <i class="fab fa-whatsapp fa-3x" style="color: limegreen"></i>
                            </a>
                         </div>
@@ -787,18 +787,19 @@
       </div>
    </body>
 <script src="https://js.stripe.com/v3/"></script>
-<script type="text/javascript" src="https://vcards.juzztap.com/backend/js/jquery.min.js"></script>
-<script type="text/javascript" src="https://vcards.juzztap.com/front/js/bootstrap.bundle.min.js"></script>
-<script src="https://vcards.juzztap.com/backend/js/slick.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="{{asset('public/visitingCard/bussinessCard/q/js/jquery.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('public/visitingCard/bussinessCard/q/js/bootstrap.bundle.min.js')}}"></script>
+<script src="{{asset('public/visitingCard/bussinessCard/q/js/slick.min.js')}}" type="text/javascript"></script>
 
 
-<script src="/assets/js/custom/helpers.js?id=d557f07dce90932f3ae5"></script>
-<script src="https://vcards.juzztap.com/backend/js/vendor.js"></script>
-<script src="/assets/js/custom/custom.js?id=b8f1a9de526e2fe1c9b9"></script>
-<script src="/assets/js/vcards/vcard-view.js?id=d8bdf93b3b7701a176c0"></script>
+<script src="{{asset('public/visitingCard/bussinessCard/q/js/helpers.js')}}"></script>
+<script src="{{asset('public/visitingCard/bussinessCard/q/js/vendor.js')}}"></script>
+<script src="{{asset('public/visitingCard/bussinessCard/q/js/custom.js')}}"></script>
+<script src="{{asset('public/visitingCard/bussinessCard/q/js/vcard-view.js')}}"></script>
 
 <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
-<script src="{{asset('public/visitingCard/bussinessCard/a/js/jquery.min.js')}}"></script>
+
+<!-- <script src="{{asset('public/visitingCard/bussinessCard/a/js/jquery.min.js')}}"></script> -->
 <script src="{{asset('public/visitingCard/bussinessCard/a/js/intlTelInput.min.js')}}"></script>
 <script src="{{asset('public/visitingCard/bussinessCard/a/js/parsley.min.js')}}"></script>
 <script src="{{asset('public/visitingCard/bussinessCard/a/js/jquery-confirm.js')}}"></script>
