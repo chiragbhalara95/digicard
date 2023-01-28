@@ -4,6 +4,7 @@
 @endsection
 
 @section('content')
+
 <div class="card">
     <div class="card-header">
         <h3 class="card-title"><i class="fa fa-paint-brush"></i> Themes</h3>
@@ -49,16 +50,24 @@
                             </div>
                             <hr>
                         </div>
+
                         @endforeach
                         <div class="col-sm-12 py-5">
                             <button class="btn btn-primary" type="submit"><i class="fa fa-fw fa-lg fa-check-circle"></i>Update</button>&nbsp;
                         </div>
                     </div>
                 </form>
+
             </div>
+
         </div>
+
+        {{ $theme_data->links('pagination::bootstrap-4') }}
+
     </div>
 
     </div>
+
+
 
 @endsection

@@ -19,7 +19,7 @@ class ThemeController extends BasicController
             ->where('status', '1')
             ->orderBy('sortOrder', 'ASC')
             ->orderBy('id', 'ASC')
-            ->get();
+            ->paginate(4);
         $postReq = [
             'theme_data' => $tmemeData,
             'theme' => $userData->theme
