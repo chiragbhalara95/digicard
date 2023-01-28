@@ -24,7 +24,7 @@ body {
   right: 0;
   height: 100%;
   width: 100%;
-  background-image: url(/images/background-image.png?891c1b1d2818801b236c3a41d348150b);
+  background-image: url('../img/background-image.png');
 }
 .vcard-eight .vcard-eight-heading {
   font-weight: 500;
