@@ -452,7 +452,7 @@ function googleTranslateElementInit() {
 <!--------------about us --------------------------->   
     
     <div class="card2" id="about_us">
-        <h3>About Us</h3>
+        <h3>{{$userConfigObj->aboutLabel}}</h3>
         <div style="text-align: justify;">{!!$companyInfoData->company_info!!}</div>
 		@if(!empty($companyInfoData->broucher_file))
 		<center>
@@ -677,7 +677,7 @@ function showSlides(n) {
         @foreach($paymentMasterData as $paymentMasterDetail)
         @if ($paymentMasterDetail->type == 'bank')
         <tr>
-          <td align="center" colspan="2">Account Details:</td>
+          <td align="center" colspan="2">Bank Account Details:</td>
         </tr>
         <tr>
           <td colspan="2">
@@ -982,6 +982,73 @@ Showing result:
 
     
     </script>
+<script>
+    let stripe = ''
+        $('.testimonial-slider').slick({
+        dots: true,
+        infinite: true,
+        arrows: true,
+        autoplay: true,
+        speed: 300,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+    });
+</script>
+<script>
+    $('.product-slider').slick({
+        dots: true,
+        infinite: true,
+        arrows: false,
+        speed: 300,
+        slidesToShow: 2,
+        autoplay: true,
+        slidesToScroll: 1,
+        responsive: [
+            {
+                breakpoint: 575,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    infinite: true,
+                    dots: true
+                }
+            }
+        ]
+    });
+</script>
+<script>
+    $('.gallery-slider').slick({
+        dots: true,
+        infinite: true,
+        arrows: false,
+        speed: 300,
+        slidesToShow: 2,
+        autoplay: true,
+        slidesToScroll: 1,
+        responsive: [
+            {
+                breakpoint: 575,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    infinite: true,
+                    dots: true,
+                },
+            }
+        ]
+    });
+
+    $('.blog-slider').slick({
+        dots: true,
+        infinite: true,
+        arrows: false,
+        speed: 300,
+        slidesToShow: 1,
+        autoplay: true,
+        slidesToScroll: 1,
+    })
+</script>
+
 <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 <script src="{{asset('public/visitingCard/bussinessCard/a/js/jquery.min.js')}}"></script>
 <script src="{{asset('public/visitingCard/bussinessCard/a/js/intlTelInput.min.js')}}"></script>
