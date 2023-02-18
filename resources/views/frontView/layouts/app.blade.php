@@ -8,6 +8,8 @@
       <meta content="business cards,digital business card,business card designer,business card maker,card maker,free business cards,business cards online,business card creator,electronic business card,free business card maker,business card best,business card design free,online card maker,create card,make your own business cards,digital business card free,online business card maker,free card maker,create business cards free,business card app,create your own business cards,digital business card app,best digital business card,business card design online,design your own business cards" name="description">
       <meta content="business cards,digital business card,business card designer,business card maker,card maker,free business cards,business cards online,business card creator,electronic business card,free business card maker,business card best,business card design free,online card maker,create card,make your own business cards,digital business card free,online business card maker,free card maker,create business cards free,business card app,create your own business cards,digital business card app,best digital business card,business card design online,design your own business cards" name="keywords">
       <!-- Favicons -->
+      <link rel="shortcut icon" href="{{ asset('public/frontView/assets/img/favicon.ico') }}">
+
       <link href="{{ asset('public/frontView/assets/img/logo.png') }}" rel="icon" alt="logo">
       <link href="{{ asset('public/frontView/assets/img/apple-touch-icon.png') }}" rel="apple-touch-icon" alt="icon">
       <!-- Google Fonts -->
