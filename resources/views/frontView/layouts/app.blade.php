@@ -22,7 +22,7 @@
       <!-- <link href="{{ asset('public/frontView/assets/vendor/venobox/venobox.css') }}" rel="stylesheet"> -->
       <!-- <link href="{{ asset('public/frontView/assets/vendor/aos/aos.css') }}" rel="stylesheet"> -->
       <!-- Template Main CSS File -->
-      <link href="{{ asset('public/frontView/assets/css/style.css') }}?v={{date('YmdHis')}}" rel="stylesheet">
+      <link href="{{ asset('public/frontView/minify/css/style.min.css') }}?v={{date('YmdHis')}}" rel="stylesheet">
 
       <!-- =======================================================
          * Template Name: NewBiz - v2.1.0
@@ -31,7 +31,7 @@
          * License: https://bootstrapmade.com/license/
          ======================================================== -->
 
-      <link href="{{ asset('public/frontView/assets/css/custom.css') }}?v={{date('YmdHis')}}" rel="stylesheet">
+      <link href="{{ asset('public/frontView/minify/css/custom.min.css') }}?v={{date('YmdHis')}}" rel="stylesheet">
 
     @yield('custom_style')
 
@@ -173,8 +173,8 @@
       <!-- <script src="{{ asset('public/frontView/assets/vendor/venobox/venobox.min.js') }}"></script> -->
       <!-- <script src="{{ asset('public/frontView/assets/vendor/aos/aos.js') }}"></script> -->
       <!-- Template Main JS File -->
-      <script src="{{ asset('public/frontView/assets/js/main.js') }}"></script>
-      <script src="{{ asset('public/frontView/assets/js/custom.js') }}?v={{date('YmdHis')}}"></script>
+      <script src="{{ asset('public/frontView/minify/js/main.min.js') }}"></script>
+      <script src="{{ asset('public/frontView/minify/js/custom.min.js') }}?v={{date('YmdHis')}}"></script>
       @yield('custom_script')
       <script>
          setTimeout(() => {

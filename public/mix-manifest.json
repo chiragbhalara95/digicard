@@ -1,4 +1,8 @@
 {
     "/js/app.js": "/js/app.js",
+    "/frontView/minify/js/main.min.js": "/frontView/minify/js/main.min.js",
+    "/frontView/minify/js/custom.min.js": "/frontView/minify/js/custom.min.js",
+    "/frontView/minify/css/style.min.css.js": "/frontView/minify/css/style.min.css.js",
+    "/frontView/minify/css/custom.min.css.js": "/frontView/minify/css/custom.min.css.js",
     "/css/app.css": "/css/app.css"
 }
