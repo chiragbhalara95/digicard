@@ -1,6 +1,6 @@
 <?php echo '<?xml version="1.0" encoding="UTF-8"?>'; ?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-    @foreach ($user as $users)
+    @foreach ($users as $user)
         <url>
             <loc>{{url('/')}}/vc/{{$user->slug}}</loc>
             <lastmod>{{ $user->created_at->tz('UTC')->toAtomString() }}</lastmod>
