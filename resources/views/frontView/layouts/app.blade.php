@@ -5,7 +5,7 @@
       <meta content="width=device-width, initial-scale=1.0" name="viewport">
       <title>Online Digital Business Cards</title>
       <meta name="csrf-token" content="{{ csrf_token() }}">
-      <meta content="business cards,digital business card,business card designer,business card maker,card maker,free business cards,business cards online,business card creator,electronic business card,free business card maker,business card best,business card design free,online card maker,create card,make your own business cards,digital business card free,online business card maker,free card maker,create business cards free,business card app,create your own business cards,digital business card app,best digital business card,business card design online,design your own business cards" name="description">
+      <meta content="DigitalCards.tech offers free online business card maker that lets you design you own business card in easy steps." name="description">
       <meta content="business cards,digital business card,business card designer,business card maker,card maker,free business cards,business cards online,business card creator,electronic business card,free business card maker,business card best,business card design free,online card maker,create card,make your own business cards,digital business card free,online business card maker,free card maker,create business cards free,business card app,create your own business cards,digital business card app,best digital business card,business card design online,design your own business cards" name="keywords">
       <!-- Favicons -->
       <link rel="shortcut icon" href="{{ asset('public/frontView/assets/img/favicon.ico') }}">

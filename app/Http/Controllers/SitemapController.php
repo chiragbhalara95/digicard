@@ -2,7 +2,7 @@
 namespace App\Http\Controllers;
   
 use Illuminate\Http\Request;
-use App\Models\Post;
+use App\Models\User;
   
 class SitemapController extends Controller
 {
@@ -14,7 +14,7 @@ class SitemapController extends Controller
     public function index($value='')
     {
         $user = User::latest()->get();
-  
+
         return response()->view('sitemap', [
             'users' => $user
         ])->header('Content-Type', 'text/xml');
