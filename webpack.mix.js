@@ -18,5 +18,5 @@ mix.js('resources/js/app.js', 'public/js')
 
 mix.js('public/frontView/assets/js/main.js', 'public/frontView/minify/js/main.min.js');
 mix.js('public/frontView/assets/js/custom.js', 'public/frontView/minify/js/custom.min.js');
-mix.js('public/frontView/assets/css/style.css', 'public/frontView/minify/css/style.min.css');
-mix.js('public/frontView/assets/js/custom.js', 'public/frontView/minify/css/custom.min.css');
+mix.css('public/frontView/assets/css/style.css', 'public/frontView/minify/css/style.min.css');
+mix.css('public/frontView/assets/css/custom.css', 'public/frontView/minify/css/custom.min.css');
