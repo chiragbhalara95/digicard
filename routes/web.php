@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('sitemap.xml', [App\Http\Controllers\SitemapController::class, 'index']);
 
 Route::get('/clear', function() {
     Artisan::call('cache:clear');
