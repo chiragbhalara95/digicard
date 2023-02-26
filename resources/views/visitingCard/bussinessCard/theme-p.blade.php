@@ -493,7 +493,7 @@ function googleTranslateElementInit() {
 
 
 <script>
-function showCart(){
+/*function showCart(){
     $('.cart_show').show();
 }
 function hideCart(){
@@ -558,7 +558,7 @@ function addToCart(cid,pid){
         alert("Please select quantity.");
     }
     
-}
+}*/
     
 </script>
 

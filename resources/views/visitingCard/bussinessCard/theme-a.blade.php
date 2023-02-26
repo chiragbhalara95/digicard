@@ -27,8 +27,8 @@
     <script src="{{asset('public/visitingCard/bussinessCard/a/js/sdk.js')}}" async="" crossorigin="anonymous"></script>
     <script id="skype_web_sdk" src="{{asset('public/visitingCard/bussinessCard/a/js/skypewebsdk.js')}}"></script>
     <script async="" defer="" crossorigin="anonymous" src="{{asset('public/visitingCard/bussinessCard/a/js/sdk2.js')}}"></script>
-    <script src="{{asset('public/visitingCard/bussinessCard/a/js/color-script.js')}}"></script>
-    <title>{{$companyInfoData->company_name}}</title>
+<!--     <script src="{{asset('public/visitingCard/bussinessCard/a/js/color-script.js')}}"></script>
+ -->    <title>{{$companyInfoData->company_name}}</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
