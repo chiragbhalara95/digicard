@@ -108,6 +108,7 @@ class FrontWebsiteController extends BasicController
         $bladeFile = !empty($themeData) ? $themeData->blade_file : 'theme-a';
 
         $isVisitedCount = $request->session()->get('is_count_visitor_'.$userObj->id, 0);
+
         if ($isVisitedCount == 0) {
             // $userObj->no_visit = $userObj->no_visit+1
             User::where('slug', $slug)->update(['no_visit' => $userObj->no_visit+1]);
@@ -115,8 +116,8 @@ class FrontWebsiteController extends BasicController
 
             VisitorLog::insert([
                 'slug' => $slug,
-                // 'ip' => \Request::getClientIp(true),
-                // 'browser' => $request->header('User-Agent')
+                'ip' => \Request::getClientIp(true),
+                'browser' => $request->header('User-Agent')
             ]);
 
         }
