@@ -149,7 +149,7 @@
 					<h2>{!! $userObj->name !!}</h2>
 				@endif
                 </h2>
-				<p>@if(!empty($companyInfoData->company_profession)) ({{$companyInfoData->company_profession}}) @endif</p>
+				<p>@if(!empty($companyInfoData->company_profession)) ({!! $companyInfoData->company_profession !!}) @endif</p>
             </div>
             <div class="dis_flex" id="top_contact_btn">
 				<a href="tel:{{$companyInfoData->country_code}}{{$companyInfoData->company_mobile}}" target="_blank">

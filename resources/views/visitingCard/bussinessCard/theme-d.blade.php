@@ -90,10 +90,10 @@
 
             <div class="companyname">
                 <span class="designation">
-                    @if(!empty($companyInfoData->company_profession)) ({{$companyInfoData->company_profession}}) @endif</span>
+                    @if(!empty($companyInfoData->company_profession)) ({!! $companyInfoData->company_profession !!}) @endif</span>
                 </div>
 
-            <div class="personname"><span>{{$userObj->name}}</span><br>
+            <div class="personname"><span>{!! $userObj->name !!}</span><br>
 
             </div>
 

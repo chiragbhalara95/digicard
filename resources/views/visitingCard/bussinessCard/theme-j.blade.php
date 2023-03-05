@@ -100,7 +100,7 @@
 
       </div>
 
-      <div class="name">{{$userObj->name}} <br>
+      <div class="name">{!! $userObj->name !!} <br>
 
         <span>@if(!empty($companyInfoData->company_profession)) ({{$companyInfoData->company_profession}}) @endif</span></div>
 

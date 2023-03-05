@@ -167,7 +167,7 @@ $(document).ready(function(){
             <h2>{!! $userObj->name !!}</h2>
           @endif
           <hr/>
-          <p>@if(!empty($companyInfoData->company_profession)) ({{$companyInfoData->company_profession}}) @endif</p>
+          <p>@if(!empty($companyInfoData->company_profession)) ({!! $companyInfoData->company_profession !!}) @endif</p>
             </div>
 
             <div class="dis_flex">

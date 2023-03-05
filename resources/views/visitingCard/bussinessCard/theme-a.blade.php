@@ -709,9 +709,9 @@
           <div class="divider"></div>
           <br>
           <!-- User First Name and Last Name -->
-          <h1 class="name"> {{$userObj->name}}
+          <h1 class="name"> {!! $userObj->name !!}
             <br>
-            <span class="designation">{{$companyInfoData->company_profession}} </span>
+            <span class="designation">{!! $companyInfoData->company_profession !!} </span>
           </h1>
           <!-- Cover Photo, Photo, Name and Profession section completed -->
         </div>

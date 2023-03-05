@@ -81,10 +81,10 @@
 
     <div class="text-center">
 
-      <div class="personname"><span>{{$userObj->name}}</span>
+      <div class="personname"><span>{!! $userObj->name !!}</span>
 
       </div>
-		 <div class="companyname"><span class="designation">@if(!empty($companyInfoData->company_profession)) ({{$companyInfoData->company_profession}}) @endif</div>
+		 <div class="companyname"><span class="designation">@if(!empty($companyInfoData->company_profession)) ({!! $companyInfoData->company_profession !!}) @endif</div>
 
     </div>
 
