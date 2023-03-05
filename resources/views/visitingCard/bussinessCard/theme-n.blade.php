@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>@if(!empty($companyInfoData->company_name)){{$companyInfoData->company_name}}@else{!! $userObj->name !!}@endif</title>
+        <title>@if(!empty($companyInfoData->company_name)){!! $companyInfoData->company_name !!}@else{!! $userObj->name !!}@endif</title>
 
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0 minimal-ui">
-		<meta property="og:title" content="@if(!empty($companyInfoData->company_name)){{$companyInfoData->company_name}}@else{!! $userObj->name !!}@endif">
+		<meta property="og:title" content="@if(!empty($companyInfoData->company_name)){!! $companyInfoData->company_name !!}@else{!! $userObj->name !!}@endif">
     <meta content="{{$companyInfoData->seo_description}}" name="description">
     <meta content="{{$companyInfoData->seo_keyword}}" name="keywords">
 		<meta property="og:url" content="{{url('vc')}}/{{$userObj->slug}}">
@@ -149,7 +149,7 @@
 					<h2>{!! $userObj->name !!}</h2>
 				@endif
                 </h2>
-				<p>@if(!empty($companyInfoData->company_profession)) ({{$companyInfoData->company_profession}}) @endif</p>
+				<p>@if(!empty($companyInfoData->company_profession)) ({!! $companyInfoData->company_profession !!}) @endif</p>
             </div>
             <div class="dis_flex" id="top_contact_btn">
 				<a href="tel:{{$companyInfoData->country_code}}{{$companyInfoData->company_mobile}}" target="_blank">

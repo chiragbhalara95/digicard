@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html style="--theme-color:#FF9800; --theme-color-light:#d8d8d870;"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-<title>{{$companyInfoData->company_name}}</title>
+<title>{!! $companyInfoData->company_name !!}</title>
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0 minimal-ui">
-<meta property="og:title" content="{{$companyInfoData->company_name}}">
-    <meta content="{{$companyInfoData->seo_description}}" name="description">
-    <meta content="{{$companyInfoData->seo_keyword}}" name="keywords">
+<meta property="og:title" content="{!! $companyInfoData->company_name !!}">
+<meta content="{{$companyInfoData->seo_description}}" name="description">
+<meta content="{{$companyInfoData->seo_keyword}}" name="keywords">
 <meta property="og:url" content="{{url('vc')}}/{{$userObj->slug}}">
 @if(!empty($companyInfoData->company_logo))
     <meta property="og:image" itemprop="image" content="{{url('public')}}/{{$companyInfoData->company_logo}}">
@@ -80,7 +80,7 @@
     <!-- Card Holder Company Name -->
 
     @if (!empty($companyInfoData->company_name))
-    <div class="companyname bottomborder">{{$companyInfoData->company_name}}</div>
+    <div class="companyname bottomborder">{!! $companyInfoData->company_name !!}</div>
     @endif
     
 
@@ -97,9 +97,9 @@
 
       </div>
 
-      <div class="name">{{$userObj->name}} <br>
+      <div class="name">{!! $userObj->name !!} <br>
 
-        <span>@if(!empty($companyInfoData->company_profession)) ({{$companyInfoData->company_profession}}) @endif</span></div>
+        <span>@if(!empty($companyInfoData->company_profession)) ({!! $companyInfoData->company_profession !!}) @endif</span></div>
 
     </div>
 
@@ -261,7 +261,7 @@
 
   <div class="pdf-icon"><i class="fa fa-file-pdf-o"></i></div>
 
-  <div class="pdf-number">@if(!empty($companyInfoData->company_name)){{$companyInfoData->company_name}}@else{!! $userObj->name !!}@endif</div>
+  <div class="pdf-number">@if(!empty($companyInfoData->company_name)){!! $companyInfoData->company_name !!}@else{!! $userObj->name !!}@endif</div>
 
   <div class="download-icon"><i class="fa fa-download"></i></div>
 

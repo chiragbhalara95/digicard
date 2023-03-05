@@ -2,13 +2,13 @@
 <!-- saved from url=(0044)https://www.virtualbusinesscard.in/template7 -->
 <html style="--theme-color:#e91e63; --theme-color-light:#6d126f70;"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-<title>{{$companyInfoData->company_name}}</title>
+<title>{!! $companyInfoData->company_name !!}</title>
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0 minimal-ui">
-<meta property="og:title" content="{{$companyInfoData->company_name}}">
-    <meta content="{{$companyInfoData->seo_description}}" name="description">
-    <meta content="{{$companyInfoData->seo_keyword}}" name="keywords">
+<meta property="og:title" content="{!! $companyInfoData->company_name !!}">
+<meta content="{{$companyInfoData->seo_description}}" name="description">
+<meta content="{{$companyInfoData->seo_keyword}}" name="keywords">
 <meta property="og:url" content="{{url('vc')}}/{{$userObj->slug}}">
 @if(!empty($companyInfoData->company_logo))
     <meta property="og:image" itemprop="image" content="{{url('public')}}/{{$companyInfoData->company_logo}}">
@@ -70,7 +70,7 @@
   <div class="clearfix"></div>
 
   <div class="headerbg">
-    <div class="personname"><span>{{$companyInfoData->company_name}}</span></div>
+    <div class="personname"><span>{!! $companyInfoData->company_name !!}</span></div>
     <div class="personface">
     @if(!empty($userObj->profile_pic))
         <img src="{{url('public')}}/{{$userObj->profile_pic}}" class="img-responsive" alt="">
@@ -81,10 +81,10 @@
 
     <div class="text-center">
 
-      <div class="personname"><span>{{$userObj->name}}</span>
+      <div class="personname"><span>{!! $userObj->name !!}</span>
 
       </div>
-		 <div class="companyname"><span class="designation">@if(!empty($companyInfoData->company_profession)) ({{$companyInfoData->company_profession}}) @endif</div>
+		 <div class="companyname"><span class="designation">@if(!empty($companyInfoData->company_profession)) ({!! $companyInfoData->company_profession !!}) @endif</div>
 
     </div>
 
@@ -266,7 +266,7 @@
 
   <div class="pdf-icon"><i class="fa fa-file-pdf-o"></i></div>
 
-  <div class="pdf-number">@if(!empty($companyInfoData->company_name)){{$companyInfoData->company_name}}@else{!! $userObj->name !!}@endif</div>
+  <div class="pdf-number">@if(!empty($companyInfoData->company_name)){!! $companyInfoData->company_name !!}@else{!! $userObj->name !!}@endif</div>
 
   <div class="download-icon"><i class="fa fa-download"></i></div>
 
