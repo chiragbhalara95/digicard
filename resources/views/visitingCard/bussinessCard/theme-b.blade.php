@@ -87,7 +87,7 @@
 
       </div>
 
-      <div class="name text-white">{!!$userObj->name!!} <br>
+      <div class="name text-white">{!! $userObj->name!!} <br>
         <span class="text-white" style="color: white;">@if(!empty($companyInfoData->company_profession)) ({!! $companyInfoData->company_profession !!}) @endif</span>
       </div>
     </div>
