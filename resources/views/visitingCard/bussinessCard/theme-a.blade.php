@@ -28,7 +28,7 @@
     <script id="skype_web_sdk" src="{{asset('public/visitingCard/bussinessCard/a/js/skypewebsdk.js')}}"></script>
     <script async="" defer="" crossorigin="anonymous" src="{{asset('public/visitingCard/bussinessCard/a/js/sdk2.js')}}"></script>
 <!--     <script src="{{asset('public/visitingCard/bussinessCard/a/js/color-script.js')}}"></script>
- -->    <title>{{$companyInfoData->company_name}}</title>
+ -->    <title>{!! $companyInfoData->company_name !!}</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
@@ -39,7 +39,7 @@
     <meta content="{{$companyInfoData->seo_description}}" name="description">
     <meta content="{{$companyInfoData->seo_keyword}}" name="keywords">
 
-    <meta property="og:title" content="{{$companyInfoData->company_name}}">
+    <meta property="og:title" content="{!! $companyInfoData->company_name !!}">
     <meta property="og:url" content="{{url('vc')}}/{{$userObj->slug}}">
 
     @if(!empty($companyInfoData->company_logo))
@@ -704,7 +704,7 @@
           </div>
           <!-- User Company Name -->
           <h1 class="firmname">
-            <b>{{$companyInfoData->company_name}}</b>
+            <b>{!! $companyInfoData->company_name !!}</b>
           </h1>
           <div class="divider"></div>
           <br>
@@ -891,7 +891,7 @@
                 <h4>Documents</h4>
                 <a class="document-wrapper" href="{{url('public')}}/{{$companyInfoData->broucher_file}}" download="">
                 <div class="pdf-icon"><i class="fa fa-file-pdf" aria-hidden="true"></i></div>
-                <div class="pdf-number text text-dark">@if(!empty($companyInfoData->company_name)){{$companyInfoData->company_name}}@else{!! $userObj->name !!}@endif</div>
+                <div class="pdf-number text text-dark">@if(!empty($companyInfoData->company_name)){!! $companyInfoData->company_name !!}@else{!! $userObj->name !!}@endif</div>
                 <div class="download-icon"><i class="fa fa-download" aria-hidden="true"></i></div>
             </a>
       </div>

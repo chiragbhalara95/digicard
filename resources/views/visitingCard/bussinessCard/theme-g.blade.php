@@ -2,11 +2,11 @@
 <!DOCTYPE html>
 <html>
     <head>
-    <title>@if(!empty($companyInfoData->company_name)){{$companyInfoData->company_name}}@else{!! $userObj->name !!}@endif</title>
+    <title>@if(!empty($companyInfoData->company_name)){!! $companyInfoData->company_name !!}@else{!! $userObj->name !!}@endif</title>
 
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0 minimal-ui">
-    <meta property="og:title" content="@if(!empty($companyInfoData->company_name)){{$companyInfoData->company_name}}@else{!! $userObj->name !!}@endif">
+    <meta property="og:title" content="@if(!empty($companyInfoData->company_name)){!! $companyInfoData->company_name !!}@else{!! $userObj->name !!}@endif">
     <meta content="{{$companyInfoData->seo_description}}" name="description">
     <meta content="{{$companyInfoData->seo_keyword}}" name="keywords">
     <meta property="og:url" content="{{url('vc')}}/{{$userObj->slug}}">
@@ -32,7 +32,7 @@
     <meta name="twitter:image" content="{{url('public')}}/{{$companyInfoData->company_logo}}">
     <meta property="twitter:url" content="{{url('vc')}}/{{$userObj->slug}}">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="@if(!empty($companyInfoData->company_name)){{$companyInfoData->company_name}}@else{!! $userObj->name !!}@endif">
+    <meta name="twitter:title" content="@if(!empty($companyInfoData->company_name)){!! $companyInfoData->company_name !!}@else{!! $userObj->name !!}@endif">
     <meta name="twitter:description" content="{{$companyInfoData->company_info}}">
 
     <link href="{{asset('public/visitingCard/bussinessCard/g/css/all.css')}}" rel="stylesheet">
@@ -265,7 +265,7 @@ $(document).ready(function(){
         <div class="big_btns" style="width:300px">
             <div class="pdf-number">
               <i class="fa fa-file-pdf-o"></i>&nbsp;&nbsp;&nbsp;&nbsp;
-              @if(!empty($companyInfoData->company_name)){{$companyInfoData->company_name}}@else{!! $userObj->name !!}@endif&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-download"></i>
+              @if(!empty($companyInfoData->company_name)){!! $companyInfoData->company_name !!}@else{!! $userObj->name !!}@endif&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-download"></i>
           </div>
         </div>
       </a>  

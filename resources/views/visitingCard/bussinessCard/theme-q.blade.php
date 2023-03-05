@@ -4,7 +4,7 @@
 
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0 minimal-ui">
-    <meta property="og:title" content="@if(!empty($companyInfoData->company_name)){{$companyInfoData->company_name}}@else{!! $userObj->name !!}@endif">
+    <meta property="og:title" content="@if(!empty($companyInfoData->company_name)){!! $companyInfoData->company_name !!}@else{!! $userObj->name !!}@endif">
     <meta content="{{$companyInfoData->seo_description}}" name="description">
     <meta content="{{$companyInfoData->seo_keyword}}" name="keywords">
     <meta property="og:url" content="{{url('vc')}}/{{$userObj->slug}}">
@@ -79,7 +79,7 @@
                  <div class="vcard-eight__position d-flex flex-column mx-4 position-relative">
                     <div class="d-flex flex-column">
                     @if (!empty($companyInfoData->company_name))
-                       <h4 class="vcard-eight-heading fw-bold text-sm-start text-center">{!!$companyInfoData->company_info!!}</h4>
+                       <h4 class="vcard-eight-heading fw-bold text-sm-start text-center">{!!$companyInfoData->company_name!!}</h4>
                        <h6 class="vcard-eight-heading fw-bold text-sm-start text-center">{!! $userObj->name !!}</h6>
                   @else
                      <h4 class="vcard-eight-heading fw-bold text-sm-start text-center">{!! $userObj->name !!}</h4>

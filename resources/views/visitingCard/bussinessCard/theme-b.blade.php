@@ -1,20 +1,22 @@
 <!DOCTYPE html>
 <html style="--theme-color:#034054; --theme-color-light:#03405460;"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>{{$companyInfoData->company_name}}</title>
+<title>{!! $companyInfoData->company_name !!}</title>
 
 <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0 minimal-ui">
 <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0 minimal-ui">
-<meta property="og:title" content="{{$companyInfoData->company_name}}">
-    <meta content="{{$companyInfoData->seo_description}}" name="description">
-    <meta content="{{$companyInfoData->seo_keyword}}" name="keywords">
+<meta property="og:title" content="{!! $companyInfoData->company_name !!}">
+<meta content="{{$companyInfoData->seo_description}}" name="description">
+<meta content="{{$companyInfoData->seo_keyword}}" name="keywords">
 <meta property="og:url" content="{{url('vc')}}/{{$userObj->slug}}">
-    @if(!empty($companyInfoData->company_logo))
-    <meta property="og:image" itemprop="image" content="{{url('public')}}/{{$companyInfoData->company_logo}}">
-    @elseif(!empty($userObj->profile_pic))
-    <meta property="og:image" itemprop="image" content="{{url('public')}}/{{$userObj->profile_pic}}">
-    @else
-    <meta property="og:image" itemprop="image" content="{{url('public')}}/upload/user_profile.jpg">
-    @endif
+
+@if(!empty($companyInfoData->company_logo))
+  <meta property="og:image" itemprop="image" content="{{url('public')}}/{{$companyInfoData->company_logo}}">
+@elseif(!empty($userObj->profile_pic))
+  <meta property="og:image" itemprop="image" content="{{url('public')}}/{{$userObj->profile_pic}}">
+@else
+  <meta property="og:image" itemprop="image" content="{{url('public')}}/upload/user_profile.jpg">
+@endif
+
 <meta property="og:type" content="website">
 <meta property="og:image:width" content="800">
 <meta property="og:image:height" content="800">
@@ -24,14 +26,14 @@
 <link rel="alternate" hreflang="en-IN" href="{{url('vc')}}/{{$userObj->slug}}">
 <link rel="alternate" hreflang="en-US" href="{{url('vc')}}/{{$userObj->slug}}">
 <link rel="alternate" hreflang="en-GB" href="{{url('vc')}}/{{$userObj->slug}}">
+
 @if(!empty($companyInfoData->company_logo))
     <link rel="icon" href="{{url('public')}}/{{$companyInfoData->company_logo}}" type="image/png" sizes="16x16">
-    @elseif(!empty($userObj->profile_pic))
+@elseif(!empty($userObj->profile_pic))
     <link rel="icon" href="{{url('public')}}/{{$userObj->profile_pic}}" type="image/png" sizes="16x16">
-    @else
+@else
     <link rel="icon" href="{{url('public')}}/upload/user_profile.jpg" type="image/png" sizes="16x16">
-    @endif
-
+@endif
 
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
 <link href="{{asset('public/visitingCard/bussinessCard/b/css/template5.css')}}?date={{date('YmdHis')}}" rel="stylesheet">
@@ -49,12 +51,9 @@
 </style>
 
 <script>
-
-            document.documentElement.style.setProperty('--theme-color', '#034054');
-
-            document.documentElement.style.setProperty('--theme-color-light', '#03405460');
-
-        </script>
+  document.documentElement.style.setProperty('--theme-color', '#034054');
+  document.documentElement.style.setProperty('--theme-color-light', '#03405460');
+</script>
 
 </head>
 
@@ -75,7 +74,7 @@
       <img src="{{url('public')}}/{{$companyInfoData->company_logo}}" class="img-responsive" alt="">
     </div>
 
-    <div class="companyname bottomborder text-white">{{$companyInfoData->company_name}}</div>
+    <div class="companyname bottomborder text-white">{!! $companyInfoData->company_name !!}</div>
 
     <div class="profile">
 
@@ -246,7 +245,7 @@
 
   <div class="pdf-icon"><i class="fa fa-file-pdf-o"></i></div>
 
-  <div class="pdf-number">@if(!empty($companyInfoData->company_name)){{$companyInfoData->company_name}}@else{!! $userObj->name !!}@endif</div>
+  <div class="pdf-number">@if(!empty($companyInfoData->company_name)){!! $companyInfoData->company_name !!}@else{!! $userObj->name !!}@endif</div>
 
   <div class="download-icon"><i class="fa fa-download"></i></div>
 

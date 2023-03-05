@@ -17,6 +17,7 @@ use Mail;
 use App\Models\UserConfigModel;
 use App\Models\PaymentModel;
 use App\Models\socialLink AS SocialLinkModel;
+use App\Models\VisitorLog;
 
 class FrontWebsiteController extends BasicController
 {
@@ -108,8 +109,16 @@ class FrontWebsiteController extends BasicController
 
         $isVisitedCount = $request->session()->get('is_count_visitor_'.$userObj->id, 0);
         if ($isVisitedCount == 0) {
+            $userObj->no_visit = $userObj->no_visit+1
             User::where('slug', $slug)->update(['no_visit' => $userObj->no_visit+1]);
             $request->session()->put('is_count_visitor_'.$userObj->id, 1);
+
+            VisitorLog::insert([
+                'slug' => $slug,
+                'ip' => \Request::getClientIp(true),
+                // 'browser' => $request->header('User-Agent')
+            ]);
+
         }
 
         if ($userObj->product_id == \App\Helpers\Constants::$PRODUCT_THEME['save_card']) {
