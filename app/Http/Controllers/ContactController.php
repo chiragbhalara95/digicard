@@ -28,34 +28,40 @@ class ContactController extends Controller
         $contact->message = $request->message;
 
         $contact->save();
+          // _mail_send_general(['email' => 'chiragbhalara95@gmail.com', 'name' => 'Conttact digitalcards'], 'Contact Us', $request->get('subject'));
 
-        \Mail::send('email.contact_email',
-             array(
-                 'name' => $request->get('name'),
-                 'email' => $request->get('email'),
-                 'subject' => $request->get('subject'),
-                 'phone_number' => $request->get('phone_number'),
-                 'user_message' => $request->get('message'),
-             ), function($message) use ($request)
-               {
-                  $message->from(env('MAIL_USERNAME'));
-                  $message->to('contact@digitalcards.tech');
-                  $message->subject('Contact Us');
-               });
+        // try {
 
-        \Mail::send('email.contact_response',
-             array(
-                 'name' => $request->get('name'),
-                 'email' => $request->get('email'),
-                 'subject' => $request->get('subject'),
-                 'phone_number' => $request->get('phone_number'),
-                 'user_message' => $request->get('message'),
-             ), function($message) use ($request)
-               {
-                  $message->from(env('MAIL_USERNAME'));
-                  $message->to($request->get('email'));
-                  $message->subject('Re:Contact Us');
-               });
+          // $res = \Mail::send('email.contact_email',
+          //      array(
+          //          'name' => $request->get('name'),
+          //          'email' => $request->get('email'),
+          //          'subject' => $request->get('subject'),
+          //          'phone_number' => $request->get('phone_number'),
+          //          'user_message' => $request->get('message'),
+          //      ), function($message) use ($request)
+          //        {
+          //           $message->from(env('MAIL_USERNAME'));
+          //           $message->to('contact@digitalcards.tech');
+          //           $message->subject('Contact Us');
+          //        });
+
+          // \Mail::send('email.contact_response',
+          //      array(
+          //          'name' => $request->get('name'),
+          //          'email' => $request->get('email'),
+          //          'subject' => $request->get('subject'),
+          //          'phone_number' => $request->get('phone_number'),
+          //          'user_message' => $request->get('message'),
+          //      ), function($message) use ($request)
+          //        {
+          //           $message->from(env('MAIL_USERNAME'));
+          //           $message->to($request->get('email'));
+          //           $message->subject('Re:Contact Us');
+          //        });
+        // }catch (Throwable $t) {
+        //   Log::info('Throwable caught.');
+        // }   
 
         return "Thank you for contact us!";
     }

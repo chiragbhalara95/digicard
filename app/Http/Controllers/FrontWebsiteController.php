@@ -245,11 +245,11 @@ class FrontWebsiteController extends BasicController
         $data['email']      = $params['email'];
         $data['contact_no'] = $params['phoneNumber'];
         $data['message']    = $params['message'];
-        Mail::send('email.inquiry-mail', ['data'=>$data], function ($message) use($data) 
-        {
-            $message->from($data['from']);
-            $message->to($data['to'])->subject($data['subject']); 
-        });
+        // Mail::send('email.inquiry-mail', ['data'=>$data], function ($message) use($data) 
+        // {
+        //     $message->from($data['from']);
+        //     $message->to($data['to'])->subject($data['subject']); 
+        // });
 
         $successRes = 'Thank you for contacting us. One of us will get back to you as soon as possible.';
 
