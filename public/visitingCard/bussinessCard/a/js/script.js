@@ -142,7 +142,10 @@ function sendEnquiry() {
     						animation: "top",
     						icon: "fa fa-check",
     						confirmButton: "Ok",
-    						content: "We received you valuable inquiry, We will contact you soon. Thanks"
+    						content: "We received you valuable inquiry, We will contact you soon. Thanks",
+                            'closeOnClick': true,
+                            'theme': "black",
+
     					});
                 name.value = '';
                 phoneNumber.value = '';
@@ -154,7 +157,10 @@ function sendEnquiry() {
     						animation: "top",
     						icon: "fa fa-info",
     						confirmButton: "Ok",
-    						content: `${response.data.message}`
+    						content: `${response.data.message}`,
+                            'closeOnClick': true,
+                            'theme': "black",
+
     					});
             }
             ele.value = 'Send';

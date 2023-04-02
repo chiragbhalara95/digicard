@@ -34,6 +34,7 @@
     <link href="{{asset('public/visitingCard/bussinessCard/r/css/css.css')}}" rel="stylesheet">
     <link href="{{asset('public/visitingCard/bussinessCard/r/css/mobile_css.css')}}" rel="stylesheet">
     <link href="{{asset('public/visitingCard/bussinessCard/r/css/card_css6.css')}}" rel="stylesheet">
+    <link href="{{asset('public/visitingCard/bussinessCard/a/css/jquery-confirm.css')}}" rel="stylesheet">
 
 
       <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&amp;family=Roboto&amp;display=swap" rel="stylesheet">
@@ -52,16 +53,9 @@
         .vcard-eight .vcard-eight-heading {
           line-height: 24px;
         }
+
     </style>
 
-<script>
-    $(document).ready(function(){
-        $('.mobile_home').on('click',function(){
-            $('#header').toggleClass('add_height');
-
-        })
-    })
-</script>
 
 <style>
 .full_page_alert {position: fixed;
@@ -98,13 +92,13 @@
           @endif
     </div>
     <div class="card_content2">
-        <div class="vcard-eight__avatar">
-        @if(!empty($userObj->profile_pic))  
-        <img src="{{url('public')}}/{{$userObj->profile_pic}}" class="rounded-circle">
-        @else
-        <img src="{{url('public')}}/upload/user_profile.jpg" class="rounded-circle">
-        @endif
-    </div>
+    <!--    <div class="vcard-eight__avatar">-->
+    <!--    @if(!empty($userObj->profile_pic))  -->
+    <!--    <img src="{{url('public')}}/{{$userObj->profile_pic}}" class="rounded-circle">-->
+    <!--    @else-->
+    <!--    <img src="{{url('public')}}/upload/user_profile.jpg" class="rounded-circle">-->
+    <!--    @endif-->
+    <!--</div>-->
 
     @if (!empty($companyInfoData->company_name))
     <h2>{!!$companyInfoData->company_name!!}</h2>
@@ -141,7 +135,9 @@
     <div class="contact_d"><i class="fa fa-envelope"></i>
         <p><a href="mailto:{{$userObj->email}}" target="_blank">{{$userObj->email}}</a></p>
     </div>
+     @if (!empty($companyInfoData->company_address))
     <div class="contact_d"><i class="fa fa-map-marker"></i><p>{!! $companyInfoData->company_address !!}</p></div>
+    @endif
 </div>
 
 <div class="dis_flex" id="share_on_whatsapp">
@@ -149,15 +145,8 @@
         <form action="https://api.whatsapp.com/send" id="wtsp_form" target="_blank">
             <input type="text" name="phone" placeholder="WhatsApp Number with Country code" value="{{$userConfigObj->defaultCountry}}">
             <input type="hidden" name="text" value="{{url('vc')}}/{{$userObj->slug}}">
-            <div class="wtsp_share_btn" onclick="subForm()"><i class="fa fa-whatsapp"></i> Share On WhatsApp</div>
+            <div class="wtsp_share_btn" ><i class="fa fa-whatsapp"></i> Share On WhatsApp</div>
         </form>
-        <script>
-            $(document).ready(function(){
-                $('.wtsp_share_btn').on('click',function(){
-                    $('#wtsp_form').submit();
-                })
-            })
-        </script>
     </div>
 </div>
 
@@ -165,7 +154,6 @@
             <div class="dis_flex">
 
             <a href="{{url('saveViewCard')}}/{{$userObj->slug}}" download="contact.vcf"><div class="big_btns">Save to Contacts <i class="fa fa-download"></i></div></a>
-                <div class="big_btns" id="share_box_pop">Share <i class="fa fa-share-alt"></i></div>
 
               @if (count($socialMediaData) > 0)
                 <div class="dis_flex">
@@ -213,7 +201,7 @@
 
     <div class="card2" id="about_us">
         <h3>{{$userConfigObj->aboutLabel}}</h3>
-        {!!$companyInfoData->company_info!!}
+        <p class="text text-dark">{!!$companyInfoData->company_info!!}</p>
           @if(!empty($companyInfoData->broucher_file))
             <div class="dis_flex">
                 <a href="{{url('public')}}/{{$companyInfoData->broucher_file}}"><div class="big_btns">Download PDF<i class="fa fa-download"></i></div></a>
@@ -367,6 +355,7 @@
     <div class="card2" id="enquery">
 
        <form data-parsley-validate="" method="post" class="enquiry-form" id="enquiry-form" novalidate="">
+            <input type="hidden" id="send_enquiry_url" value="{{route('sendEnquiry')}}">
 
         <meta name="csrf_token" content="{{ csrf_token() }}" />
         @csrf
@@ -437,6 +426,7 @@
         </div>
     </div>
 </div></body>
+
 <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 <script src="{{asset('public/visitingCard/bussinessCard/a/js/jquery.min.js')}}"></script>
 <script src="{{asset('public/visitingCard/bussinessCard/a/js/intlTelInput.min.js')}}"></script>
@@ -444,7 +434,21 @@
 <script src="{{asset('public/visitingCard/bussinessCard/a/js/jquery-confirm.js')}}"></script>
 <script src="{{asset('public/visitingCard/bussinessCard/a/js/form-action.js')}}"></script>
 <script src="{{asset('public/visitingCard/bussinessCard/a/js/script.js')}}?v={{date('YmdHis')}}"></script>
-<!-- <script src="{{asset('public/js/prevent.js')}}"></script> -->
+
+<script>
+    $(document).ready(function(){
+        $('.wtsp_share_btn').on('click',function(){
+            $('#wtsp_form').submit();
+        })
+    })
+    $(document).ready(function(){
+        $('.mobile_home').on('click',function(){
+            $('#header').toggleClass('add_height');
+
+        })
+    })
+
+</script>
 
 
 </html>
