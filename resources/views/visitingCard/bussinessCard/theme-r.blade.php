@@ -411,12 +411,14 @@
         <div class="menu_container" onclick="closeMenu()">
             <div class="menu_item" onclick="location.href='#home'"><i class="fa fa-home" aria-hidden="true"></i> Home</div>
             <div class="menu_item" onclick="location.href='#about_us'"><i class="fa fa-briefcase" aria-hidden="true"></i>About Us</div>
-            <!-- <div class="menu_item" onclick="location.href='#product_services'"><i class="fa fa-ticket"></i>Product & Services</div> -->
-            <!-- <div class="menu_item" onclick="location.href='#shop_online'"><i class="fa fa-archive"></i>Shop</div> -->
             @if($galleryData->count() > 0)
+            <div class="menu_item" onclick="location.href='#product_services'"><i class="fa fa-ticket"></i>Product & Services</div>
+            @endif
+            <!-- <div class="menu_item" onclick="location.href='#shop_online'"><i class="fa fa-archive"></i>Shop</div> -->
+<!--             @if($galleryData->count() > 0)
             <div class="menu_item" onclick="location.href='#gallery'"><i class="fa fa-image" aria-hidden="true"></i>Gallery</div>
             @endif
-            <!-- <div class="menu_item" onclick="location.href='#youtube_video'"><i class="fa fa-video-camera"></i>Youtube Videos</div> -->
+ -->            <!-- <div class="menu_item" onclick="location.href='#youtube_video'"><i class="fa fa-video-camera"></i>Youtube Videos</div> -->
             @if(count($paymentMasterData) > 0)
             <div class="menu_item" onclick="location.href='#payment'"><i class="fa fa-money" aria-hidden="true"></i>Payment</div>
             @endif
