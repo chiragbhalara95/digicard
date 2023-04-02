@@ -53,6 +53,15 @@
         .vcard-eight .vcard-eight-heading {
           line-height: 24px;
         }
+.personface {
+width: 60px;
+    margin: 10px;
+    border: 1px solid #e5e5e5;
+    height: 60px; border-radius: 50%;
+    overflow: hidden;}
+.profile{display:flex; width:90%;justify-content: center;
+    align-items: center;}
+.img-responsive{max-width:100%;height:auto;width:auto;}
 
     </style>
 
@@ -89,21 +98,37 @@
     <div class="card_content">
           @if(!empty($companyInfoData->company_logo))
           <img src="{{url('public')}}/{{$companyInfoData->company_logo}}" class="img-fluid banner-image position-relative" alt="Company Logo">
+          @elseif(!empty($userObj->profile_pic))
+          <img src="{{url('public')}}/{{$userObj->profile_pic}}" class="img-fluid banner-image position-relative" alt="Company Logo">
           @endif
     </div>
     <div class="card_content2">
-    <!--    <div class="vcard-eight__avatar">-->
-    <!--    @if(!empty($userObj->profile_pic))  -->
-    <!--    <img src="{{url('public')}}/{{$userObj->profile_pic}}" class="rounded-circle">-->
-    <!--    @else-->
-    <!--    <img src="{{url('public')}}/upload/user_profile.jpg" class="rounded-circle">-->
-    <!--    @endif-->
-    <!--</div>-->
 
     @if (!empty($companyInfoData->company_name))
     <h2>{!!$companyInfoData->company_name!!}</h2>
+    <div class="profile">
+          <div class="personface">
+            @if(!empty($userObj->profile_pic))
+                <img src="{{url('public')}}/{{$userObj->profile_pic}}" class="img-responsive" alt="">
+            @else
+                <img src="{{url('public')}}/upload/user_profile.jpg" class="img-responsive" alt="">
+            @endif
+
+          </div>
+      </div>
+
     <p>{!! $userObj->name !!}</p>
     @else
+    <div class="profile">
+      <div class="personface">
+        @if(!empty($userObj->profile_pic))
+            <img src="{{url('public')}}/{{$userObj->profile_pic}}" class="img-responsive" alt="">
+        @else
+            <img src="{{url('public')}}/upload/user_profile.jpg" class="img-responsive" alt="">
+        @endif
+        </div>
+      </div>
+
     <h2>{!! $userObj->name !!}</h2>
     @endif
 
