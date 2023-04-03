@@ -53,7 +53,7 @@
 
                         @endforeach
                         <div class="col-sm-12 py-5">
-                            <button class="btn btn-primary" type="submit"><i class="fa fa-fw fa-lg fa-check-circle"></i>Update</button>&nbsp;
+                            <button class="btn btn-primary" type="submit"><i class="fa fa-fw fa-lg fa-check-circle"></i>Save</button>&nbsp;
                         </div>
                     </div>
                 </form>

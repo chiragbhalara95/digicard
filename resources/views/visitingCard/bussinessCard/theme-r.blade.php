@@ -431,9 +431,8 @@ width: 60px;
     <br>
     <br>
     <div class="menu_bottom">
-        <div class="m_menu_head" id="mmhead" ><span onclick="openMenu()"><i class="fa fa-bars"></i></span></div>
             
-        <div class="menu_container" onclick="closeMenu()">
+        <div class="menu_container">
             <div class="menu_item" onclick="location.href='#home'"><i class="fa fa-home" aria-hidden="true"></i> Home</div>
             <div class="menu_item" onclick="location.href='#about_us'"><i class="fa fa-briefcase" aria-hidden="true"></i>About Us</div>
             @if($galleryData->count() > 0)

@@ -599,13 +599,14 @@ function addToCart(cid,pid){
 				@foreach($galleryData as $galleryDetail)
 					<div class="mySlides" >
 					<img alt="{{$galleryDetail->title}}" src="{{URL::asset('public/upload/product/'.$galleryDetail->head_image)}}" style="width:100%">
-					</div>      
-					<h4 class="text text-center" style="text-align:center;">{{$galleryDetail->title}}</h4>
+                    <h4 class="text text-center" style="text-align:center;">{{$galleryDetail->title}}</h4>
                     <div class="dis_flex">
                         <a class="addphonebook" href='https://api.whatsapp.com/send?phone={{str_replace('+','',$companyInfoData->country_code)}}{{$companyInfoData->company_mobile}}&text=Enquery for product: {{urlencode($galleryDetail->title)}}' target='_blank'>
                         <div class="big_btns">Enquiry Now</i></div>
                         </a>
                     </div>
+
+					</div>      
 
                     @endforeach
 
