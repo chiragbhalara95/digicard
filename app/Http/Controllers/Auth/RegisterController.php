@@ -83,6 +83,7 @@ class RegisterController extends Controller
             'theme'          => $themeData->id
         ]);
 
+        /*
         // email data
         $email_data = array(
             'name' => $data['name'],
@@ -108,7 +109,7 @@ class RegisterController extends Controller
             ->subject('Verify Email Address')
             ->from(env('MAIL_USERNAME'), 'Digicard');
         });
-
+        */
 
         return $user;
 
