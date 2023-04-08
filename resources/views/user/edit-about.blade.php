@@ -67,7 +67,7 @@
                     @endif
 
                     <div class="custom-file">
-                      <input type="file" class="custom-file-input" id="customFile" name="profile_pic">
+                      <input type="file" class="custom-file-input" id="customFile" name="profile_pic" accept=".jpg,.jpeg,.png">
                       <label class="custom-file-label" for="customFile">Choose file</label>
                     </div>
                   </div>
@@ -140,7 +140,7 @@
                     @endif
 
                     <div class="custom-file">
-                      <input type="file" class="custom-file-input" id="customFile" name="company_logo">
+                      <input type="file" class="custom-file-input" id="customFile" name="company_logo"  accept=".jpg,.jpeg,.png">
                       <label class="custom-file-label" for="customFile">Choose file</label>
                     </div>
                   </div>
@@ -258,8 +258,33 @@
 <script>
   $(function () {
     // Summernote
-    $('.company-info').summernote()
-    $('.company-address').summernote()
+    $('.company-info').summernote({
+      toolbar: [
+        ['view',['undo', 'redo']],
+        ['style', ['style', 'bold', 'italic', 'underline', 'clear']],
+        ['font', ['fontname','strikethrough', 'superscript', 'subscript']],
+        ['fontsize', ['fontsize', 'fontsizeunit']],
+        ['color', ['forecolor', 'backcolor']],
+        ['para', ['ul', 'ol', 'paragraph']],
+        ['insert', ['link', 'hr']],
+        ['height', ['height']],
+        ['view', ['fullscreen', 'codeview', 'help']]
+        ]
+      }
+    )
+    $('.company-address').summernote({
+    toolbar: [
+        ['view',['undo', 'redo']],
+        ['style', ['style', 'bold', 'italic', 'underline', 'clear']],
+        ['font', ['fontname','strikethrough', 'superscript', 'subscript']],
+        ['fontsize', ['fontsize', 'fontsizeunit']],
+        ['color', ['forecolor', 'backcolor']],
+        ['para', ['ul', 'ol', 'paragraph']],
+        ['insert', ['link', 'hr']],
+        ['height', ['height']],
+        ['view', ['fullscreen', 'codeview', 'help']]
+      ]
+    })
   })
 </script>
 

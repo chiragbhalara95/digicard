@@ -22,6 +22,7 @@ class PaymentModel extends Model
         'account_holder_name',
         'account_type',
         'qr_img',
+        'branch_name',
     ];
 
     protected $casts = [];

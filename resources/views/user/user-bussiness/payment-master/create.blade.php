@@ -70,16 +70,18 @@
                         <option value="paytm">Paytm</option>
                         <option value="phonepay">Phone Pay</option>
                         <option value="googlepay">Google Pay</option>
+                        <option value="upi">Upi</option>
                     </select>
 
                 </div>
 
+
+                <div class="bank_section">
                 <div class="form-group">
                         <label class="control-label"> Account Number<span class="text-danger">*</span></label>
                         <input type="text" name="account_no" class="form-control" placeholder="Enter Account Number">
                   </div>
 
-                <div class="bank_section">
                   <div class="form-group">
                       <label class="control-label"> Account Type<span class="text-danger">*</span></label>
                       <select class="form-control" name="account_type">
@@ -106,9 +108,20 @@
                         <input type="text" name="bank_name" class="form-control" placeholder="Enter Bank Name">
                     </div>
 
+                  <div class="form-group">
+                        <label class="control-label"> Branch Name<span class="text-danger">*</span></label>
+                        <input type="text" name="branch_name" class="form-control" placeholder="Enter Branch Name"
+                        >
+                  </div>
+
                 </div>
 
                 <div class="qr_section">
+
+                <div class="form-group">
+                        <label class="control-label"> Upi Id<span class="text-danger">*</span></label>
+                        <input type="text" name="account_no" class="form-control" placeholder="Enter Upi Id format(abcd@upi)">
+                  </div>
 
                     <div class="form-group">
                         <label class="control-label">Qr code<span class="text-danger">*</span></label>

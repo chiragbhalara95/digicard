@@ -40,6 +40,15 @@ class PaymentController extends Controller
         }
 
         $params['user_id'] = Auth::user()->id;
+        $paymentExist = PaymentModel::where('type', $params['type'])->where('user_id', $params['user_id']);
+        if (!empty($id)) {
+            $paymentExist = $paymentExist->where('id', '!=', $id);
+        }
+        $paymentExist = $paymentExist->exists();
+        if ($paymentExist) {
+            return redirect(route('business.payment-master-list'))->with("error", $params['type'].' is already exist, please edit it');
+        }
+
         $paymentObj = PaymentModel::find($id);
         if (empty($paymentObj)) {
             $paymentObj = new PaymentModel();

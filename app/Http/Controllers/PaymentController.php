@@ -83,6 +83,7 @@ class PaymentController extends Controller
             'page_title' => '',
             'page_description' => '',
             'skuCustomPackage'=> $skuCustomPackage,
+            'userCurrency' => $userCurrency,
         ];
 
         return view('user.payment', $postReq);

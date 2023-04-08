@@ -38,7 +38,7 @@
             </div>
             <div class="table-rep-plugin">
                 <div class="table-responsive" data-pattern="priority-columns">
-                    <table class="table  table-striped table-bordered" cellspacing="0" style="width:100%;">
+                    <table id="example1" class="table  table-striped table-bordered" cellspacing="0">
                         <thead>
                             <tr>
                                 <th>S.No</th>
@@ -90,3 +90,26 @@
     </div>
 </main>
 @stop
+
+
+@section('custom_script')
+<!-- DataTables -->
+<script src="{{ asset('public/admin/plugins/datatables/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('public/admin/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
+<script src="{{ asset('public/admin/plugins/datatables-responsive/js/dataTables.responsive.min.js') }}"></script>
+<script src="{{ asset('public/admin/plugins/datatables-responsive/js/responsive.bootstrap4.min.js') }}"></script>
+
+<script>
+  $(function () {
+    $("#example1").DataTable({
+      "paging": true,
+      "lengthChange": true,
+      "searching": true,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": false,
+    });
+  });
+</script>
+@endsection

@@ -70,6 +70,7 @@
                         <option @if($paymentMasterData->type == 'paytm') selected @endif value="paytm">Paytm</option>
                         <option @if($paymentMasterData->type == 'phonepay') selected @endif value="phonepay">Phone Pay</option>
                         <option @if($paymentMasterData->type == 'googlepay') selected @endif value="googlepay">Google Pay</option>
+                        <option @if($paymentMasterData->type == 'upi') selected @endif value="upi">Upi</option>
                     </select>
 
                 </div>
@@ -107,7 +108,13 @@
                         <label class="control-label"> Bank Name<span class="text-danger">*</span></label>
                         <input type="text" name="bank_name" class="form-control" placeholder="Enter Bank Name"
                         value="{{$paymentMasterData->bank_name}}">
-                    </div>
+                  </div>
+
+                  <div class="form-group">
+                        <label class="control-label"> Branch Name<span class="text-danger">*</span></label>
+                        <input type="text" name="branch_name" class="form-control" placeholder="Enter Branch Name"
+                        value="{{$paymentMasterData->branch_name}}">
+                  </div>
 
                 </div>
 
