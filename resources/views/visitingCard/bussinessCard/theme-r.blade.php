@@ -54,12 +54,12 @@
           line-height: 24px;
         }
 .personface {
-width: 60px;
+    width: 92px;
     margin: 10px;
     border: 1px solid #e5e5e5;
-    height: 60px; border-radius: 50%;
+    height: 92px; border-radius: 50%;
     overflow: hidden;}
-.profile{display:flex; width:90%;justify-content: center;
+.profile{display:flex; justify-content: center;
     align-items: center;}
 .img-responsive{max-width:100%;height:auto;width:auto;}
 
@@ -106,7 +106,8 @@ width: 60px;
 
     @if (!empty($companyInfoData->company_name))
     <h2>{!!$companyInfoData->company_name!!}</h2>
-    <div class="profile">
+
+    <div class="profile card_content">
           <div class="personface">
             @if(!empty($userObj->profile_pic))
                 <img src="{{url('public')}}/{{$userObj->profile_pic}}" class="img-responsive" alt="">
@@ -117,9 +118,14 @@ width: 60px;
           </div>
       </div>
 
-    <p>{!! $userObj->name !!}</p>
+    <h4>{!! $userObj->name !!}</h4>
+    <p>@if(!empty($companyInfoData->company_profession)) ({{$companyInfoData->company_profession}}) @endif</p>
+
     @else
-    <div class="profile">
+    <h2>{!! $userObj->name !!}</h2>
+    <p>@if(!empty($companyInfoData->company_profession)) ({{$companyInfoData->company_profession}}) @endif</p>
+
+    <div class="profile card_content">
       <div class="personface">
         @if(!empty($userObj->profile_pic))
             <img src="{{url('public')}}/{{$userObj->profile_pic}}" class="img-responsive" alt="">
@@ -129,10 +135,8 @@ width: 60px;
         </div>
       </div>
 
-    <h2>{!! $userObj->name !!}</h2>
     @endif
 
-    <p>@if(!empty($companyInfoData->company_profession)) ({{$companyInfoData->company_profession}}) @endif</p>
 
 </div>
 
@@ -155,8 +159,20 @@ width: 60px;
     <p>
         <a href="tel:{{$companyInfoData->country_code}}{{$companyInfoData->company_mobile}}" class="text-white">
         {{$companyInfoData->country_code}}{{$companyInfoData->company_mobile}}
+        </a>
     </p>
     </div>
+
+    @if(!empty($companyInfoData->country_landline))
+    <div class="contact_d"><i class="fa fa-phone"></i>
+    <p>
+        <a href="tel:{{$companyInfoData->country_landline}}" class="text-white">
+        {{$companyInfoData->country_landline}}
+        </a>
+    </p>
+    </div>
+    @endif
+
     <div class="contact_d"><i class="fa fa-envelope"></i>
         <p><a href="mailto:{{$userObj->email}}" target="_blank">{{$userObj->email}}</a></p>
     </div>
