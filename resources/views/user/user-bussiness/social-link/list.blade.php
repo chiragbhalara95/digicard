@@ -41,7 +41,8 @@
     <div class="row">
         <div class="col-sm-12 bg-white py-3 border">
             <div class="form-group formGroupShadow">
-                <a class="form-control d-flex justify-content-center" href="{{url('addProduct')}}" style="background-color:#009688; color:white;"> + Add Gallery </a>
+                <a class="form-control d-flex justify-content-center" href="{{route('business.social-media-master-add')}}" style="background-color:#009688; color:white;"> + Add Social Media Link </a>
+
             </div>
 
             <div class="table-rep-plugin">
