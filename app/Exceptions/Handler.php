@@ -33,14 +33,14 @@ class Handler extends ExceptionHandler
      * @param  \Exception  $exception
      * @return void
      */
-    public function report(Exception $exception)
-    {
-        if ($this->shouldReport($exception)) {
-            $this->sendEmail($exception);
-        }
+    // public function report(Exception $exception)
+    // {
+    //     if ($this->shouldReport($exception)) {
+    //         $this->sendEmail($exception);
+    //     }
 
-        parent::report($exception);
-    }
+    //     parent::report($exception);
+    // }
 
     /**
      * Render an exception into an HTTP response.
@@ -49,10 +49,10 @@ class Handler extends ExceptionHandler
      * @param  \Exception  $exception
      * @return \Illuminate\Http\Response
      */
-    public function render($request, Exception $exception)
-    {
-        return parent::render($request, $exception);
-    }
+    // public function render($request, Exception $exception)
+    // {
+    //     return parent::render($request, $exception);
+    // }
 
     /**
      * Convert an authentication exception into an unauthenticated response.

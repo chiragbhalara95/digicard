@@ -114,9 +114,9 @@ class FrontWebsiteController extends BasicController
             $request->session()->put('is_count_visitor_'.$userObj->id, 1);
 
             VisitorLog::insert([
-                'slug' => $slug,
-                // 'ip' => \Request::getClientIp(true),
-                // 'browser' => $request->header('User-Agent')
+                'slug'    => $slug,
+                'ip'      => \Request::getClientIp(true),
+                'browser' => substr($request->header('User-Agent'), 0, 250),
             ]);
 
         }
