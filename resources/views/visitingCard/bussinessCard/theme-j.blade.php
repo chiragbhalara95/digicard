@@ -53,6 +53,9 @@
       display: table-cell !important;
     }
 
+    .ml-logo{
+      margin-left: 10%
+    }
 </style>
 
 </head>
@@ -71,12 +74,25 @@
 
     <!-- Card Holder Profile Pic -->
 
-    <div class="companylogo">
-        @if(!empty($companyInfoData->company_logo))
-          <img src="{{url('public')}}/{{$companyInfoData->company_logo}}" class="img-responsive">
-        @endif
 
+        @if(!empty($companyInfoData->company_logo) && !empty($companyInfoData->company_alt_logo))
+
+        <div class="profile">
+          <div class="companylogo ml-logo">
+              <img src="{{url('public')}}/{{$companyInfoData->company_logo}}" class="img-responsive">
+          </div>
+          <div class="companylogo ml-logo">
+              <img src="{{url('public')}}/{{$companyInfoData->company_alt_logo}}" class="img-responsive">
+          </div>
+
+        </div>
+
+        @elseif(!empty($companyInfoData->company_logo))
+    <div class="companylogo">
+          <img src="{{url('public')}}/{{$companyInfoData->company_logo}}" class="img-responsive">
     </div>
+
+        @endif
 
     
 

@@ -194,7 +194,7 @@
 
             <div class="dis_flex">
 
-            <a href="{{url('saveViewCard')}}/{{$userObj->slug}}" download="contact.vcf"><div class="big_btns">Save to Contacts <i class="fa fa-download"></i></div></a>
+            <a href="{{url('saveViewCard')}}/{{$userObj->slug}}" download="{{$userObj->slug}}.vcf"><div class="big_btns">Save to Contacts <i class="fa fa-download"></i></div></a>
 
               @if (count($socialMediaData) > 0)
                 <div class="dis_flex">
@@ -296,9 +296,10 @@
                   <a href="{{url('public/upload/product-doc')}}/{{$galleryDetail->doc_url}}" target="_blank" class="btn btn-sm  btn-primary" download><i class="fa fa-download"></i></a> 
                   @endif
                   <div class="dis_flex">
-                  <a class="addphonebook" href='https://api.whatsapp.com/send?phone={{str_replace('+','',$companyInfoData->country_code)}}{{$companyInfoData->company_mobile}}&text=Enquery for product: {{urlencode($galleryDetail->title)}}' target='_blank'>
-                  <div class="big_btns">Enquiry Now</i></div>
-                  </a>
+                    <a class="addphonebook" href='https://api.whatsapp.com/send?phone={{str_replace('+','',$companyInfoData->country_code)}}{{$companyInfoData->company_mobile}}&text=Enquery for product: {{urlencode($galleryDetail->title)}}' target='_blank'>
+                      <div class="big_btns">Enquiry Now</i></div>
+                    </a>
+                  </div>
         </div>
 
         @endforeach
@@ -322,40 +323,40 @@
 
     <div class="card2" id="payment">
         <h3>Payment Info</h3>
-        <table class="about-tbl">
+        <table class="about-tbl table table-responsive">
         <tbody>
 
         @foreach($paymentMasterData as $paymentMasterDetail)
         @if ($paymentMasterDetail->type == 'bank')
         <tr>
-          <td align="center" colspan="2">Bank Account Details:</td>
+          <td align="center" colspan="2"><h3>Bank Account Details:</h3></td>
         </tr>
         <tr>
           <td colspan="2">
-          <table class="about-tbl">
+          <table class="about-tbl table table-responsive table-boardered">
             <tbody>
               <tr>
-                <td width="50%" class="td-label">Bank Name</td>
+                <td class="td-label">Bank Name</td>
                 <td >: </td>
                 <td > {{$paymentMasterDetail->bank_name}} </td>
               </tr>
               <tr>
-                <td width="50%" class="td-label">Account Holder Name</td>
+                <td class="td-label">Account Holder Name</td>
                 <td>: </td>
                 <td> {{$paymentMasterDetail->account_holder_name}} </td>
               </tr>
               <tr>
-                <td width="50%" class="td-label">Account Number</td>
+                <td class="td-label">Account Number</td>
                 <td >: </td>
                 <td > {{$paymentMasterDetail->account_no}} </td>
               </tr>
               <tr>
-                <td width="50%" class="td-label">Account Type</td>
+                <td class="td-label">Account Type</td>
                 <td>: </td>
                 <td> {{ucwords($paymentMasterDetail->account_type)}} Account </td>
               </tr>
               <tr>
-                <td width="50%" class="td-label">IFSC code</td>
+                <td class="td-label">IFSC code</td>
                 <td>: </td>
                 <td> {{$paymentMasterDetail->ifsc_code}} </td>
               </tr>

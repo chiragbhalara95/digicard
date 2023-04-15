@@ -120,6 +120,11 @@
 
                 <div class="qr_section" @if($paymentMasterData->type == 'bank') style="display:none;" @endif>
 
+                <div class="form-group">
+                        <label class="control-label"> Upi Id<span class="text-danger">*</span></label>
+                        <input type="text" name="upi_no" class="form-control" placeholder="Enter Upi Id format(abcd@upi)" value="{{$paymentMasterData->account_no}}">
+                  </div>
+
                     <div class="form-group">
                         <label class="control-label">Qr code<span class="text-danger">*</span></label>
                         <input type="file" class="form-control" name="qr_img" accept="image/*">

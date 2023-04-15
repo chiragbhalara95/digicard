@@ -101,7 +101,8 @@
                </select>
                <p>{!!$detail['description']!!}</p>
             </div>
-            @if ($userCurrency == 'USD')
+            @if ($userCurrency == 'USD')  
+
       <div class="razorpay-embed-btn" data-url="https://pages.razorpay.com/pl_LbNfvLjHouwTBp/view" data-text="Pay Now" data-color="#528FF0" data-size="large">
         <script>
           (function(){

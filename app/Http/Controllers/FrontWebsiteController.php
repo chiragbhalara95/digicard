@@ -178,9 +178,6 @@ class FrontWebsiteController extends BasicController
         $landline_no  = $companyInfo->country_landline;
         $vistiURL     = url('vc/').'/'.$userInfo->slug;
 
-        header('Content-Type: text/x-vcard');  
-        header('Content-Disposition: inline; filename= "'.$name.'.vcf"');  
-    
         $vCard = "BEGIN:VCARD\r\n";
         $vCard .= "VERSION:3.0\r\n";
         $vCard .= "FN:" . $name . "\r\n";
@@ -204,8 +201,17 @@ class FrontWebsiteController extends BasicController
         }
 
         $vCard .= "END:VCARD\r\n";
-
+        header('Content-Description: Download vCard');
+        header('Content-Type: text/vcard');
+        header('Content-Disposition: attachment; filename='.$name.'.vcf');
+        header('Content-Transfer-Encoding: binary');
+        header('Expires: 0');
+        header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
+        header('Pragma: public');
+        ob_clean();
+        flush();
         echo $vCard;
+        exit;
     }
 
     public function sendEnquiry(Request $request)

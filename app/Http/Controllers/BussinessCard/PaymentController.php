@@ -53,6 +53,10 @@ class PaymentController extends Controller
         if (empty($paymentObj)) {
             $paymentObj = new PaymentModel();
         }
+        if ($params['type'] != 'bank'){
+            $params['account_no'] = $params['upi_no'];
+            unset($params['upi_no']);
+        }
         $paymentObj->fill($params);
         $paymentObj->save();
 

@@ -120,7 +120,7 @@
 
                 <div class="form-group">
                         <label class="control-label"> Upi Id<span class="text-danger">*</span></label>
-                        <input type="text" name="account_no" class="form-control" placeholder="Enter Upi Id format(abcd@upi)">
+                        <input type="text" name="upi_no" class="form-control" placeholder="Enter Upi Id format(abcd@upi)">
                   </div>
 
                     <div class="form-group">
