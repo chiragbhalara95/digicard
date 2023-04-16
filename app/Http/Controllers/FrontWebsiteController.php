@@ -159,8 +159,24 @@ class FrontWebsiteController extends BasicController
                 }
             }
 
+            $galleryCatData     = \DB::table('gallery')->where('user_id', $userObj->id)->whereNotNull('category_name')->where('category_name', '!=', '')->pluck('category_name')->toArray();
+
+            $galleryCatInfo = [];
+            if (!empty($galleryCatData)) {
+                foreach ($galleryCatData as $galleryCatDetail) {
+                    $slug = \Str::slug($galleryCatDetail);
+                    $galleryCatInfo[$slug] = $galleryCatDetail;
+                }
+            }
+
+            if (!empty($galleryData)) {
+                foreach ($galleryData as $galleryDetail) {
+                    $galleryDetail->category_name = \Str::slug($galleryDetail->category_name);
+                }
+            }
+
             return view('visitingCard/bussinessCard/'.$bladeFile, 
-                compact('companyInfoData', 'userObj', 'galleryData', 'userConfigObj', 'paymentMasterData', 'socialMediaData')
+                compact('companyInfoData', 'userObj', 'galleryData', 'userConfigObj', 'paymentMasterData', 'socialMediaData', 'galleryCatInfo')
             );
         }
 

@@ -76,7 +76,12 @@
                 @enderror
                                         
                 </div>
-                
+
+                <div class="form-group">
+                    <label class="control-label">Category</label>
+                    <input type="text" class="form-control" name="category_name" placeholder="Enter Category Name">
+                </div>
+
                 {{--
                 <div class="form-group">
                     <label class="control-label">Multipal Image<span class="text-danger">*</span></label>

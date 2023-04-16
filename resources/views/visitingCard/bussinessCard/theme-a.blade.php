@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html style="--theme-color:#2196f3; --theme-color-light:#2196f326; --theme-color-medium:#2196f375; --theme-color-dark-lighter:#2196f3bf; --theme-color-dark1:#1a78c2; --theme-color-dark2:#145a92; --theme-color-dark3:#0d3c61;">
   <head>
+
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
     <link href="{{asset('public/visitingCard/bussinessCard/a/css/1.css')}}" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('public/visitingCard/bussinessCard/a/css/2.css')}}" media="all" id="shr-font-shadows-into light">
     <link rel="stylesheet" id="hestia-google-font-raleway-css" href="{{asset('public/visitingCard/bussinessCard/a/css/3.css')}}" type="text/css" media="all">
@@ -15,6 +17,7 @@
     <link href="{{asset('public/visitingCard/bussinessCard/a/css/model-css.css')}}" rel="stylesheet">
     <link href="{{asset('public/visitingCard/bussinessCard/a/css/custom.css')}}" rel="stylesheet">
 
+
     @if(!empty($companyInfoData->company_logo))
     <link rel="icon" href="{{url('public')}}/{{$companyInfoData->company_logo}}" type="image/png" sizes="16x16">
     @elseif(!empty($userObj->profile_pic))
@@ -27,14 +30,16 @@
     <script src="{{asset('public/visitingCard/bussinessCard/a/js/sdk.js')}}" async="" crossorigin="anonymous"></script>
     <script id="skype_web_sdk" src="{{asset('public/visitingCard/bussinessCard/a/js/skypewebsdk.js')}}"></script>
     <script async="" defer="" crossorigin="anonymous" src="{{asset('public/visitingCard/bussinessCard/a/js/sdk2.js')}}"></script>
-<!--     <script src="{{asset('public/visitingCard/bussinessCard/a/js/color-script.js')}}"></script>
- -->    <title>{!! $companyInfoData->company_name !!}</title>
+
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
+     <title>{!! $companyInfoData->company_name !!}</title>
 
     <meta content="{{$companyInfoData->seo_description}}" name="description">
     <meta content="{{$companyInfoData->seo_keyword}}" name="keywords">
@@ -59,16 +64,6 @@
     <link rel="alternate" hreflang="en-US" href="{{url('vc')}}/{{$userObj->slug}}">
     <link rel="alternate" hreflang="en-GB" href="{{url('vc')}}/{{$userObj->slug}}">
 
-<script>
-      document.documentElement.style.setProperty('--theme-color', '#2196f3');
-      document.documentElement.style.setProperty('--theme-color-light', '#2196f326');
-      document.documentElement.style.setProperty('--theme-color-medium', '#2196f375');
-      document.documentElement.style.setProperty('--theme-color-dark-lighter', '#2196f3bf');
-      document.documentElement.style.setProperty('--theme-color-dark1', ColorLuminance('#2196f3', -0.20));
-      document.documentElement.style.setProperty('--theme-color-dark2', ColorLuminance('#2196f3', -0.40));
-      document.documentElement.style.setProperty('--theme-color-dark3', ColorLuminance('#2196f3', -0.60));
-    </script>
-
 <style type="text/css">
     .purchase-form__renewal-price--strikethrough {
         text-decoration: line-through;
@@ -76,29 +71,7 @@
     }
 </style>
 
-<script>
-      var dynamicManifest = {
-        "name": "Demo Company",
-        "short_name": "Demo Company",
-        "description": "Demo Company",
-        "start_url": "https://www.e-digicard.com/demo-company",
-        "background_color": "#efefef",
-        "theme_color": "#2196f3",
-        "icons": [{
-          "src": "https://www.e-digicard.com/web-services/company-profile/5fa3c10faa14c-1604567311-5fa3c10faa151.png",
-          "sizes": "256x256",
-          "type": "image/png"
-        }],
-        "display": "standalone"
-      }
-      const stringManifest = JSON.stringify(dynamicManifest);
-      const blob = new Blob([stringManifest], {
-        type: 'application/json'
-      });
-      const manifestURL = window.URL.createObjectURL(blob);
-      document.querySelector('#manifest-placeholder').setAttribute('href', manifestURL);
-    </script>
-    <style type="text/css" data-fbcssmodules="css:fb.css.base css:fb.css.dialog css:fb.css.iframewidget css:fb.css.customer_chat_plugin_iframe">
+        <style type="text/css" data-fbcssmodules="css:fb.css.base css:fb.css.dialog css:fb.css.iframewidget css:fb.css.customer_chat_plugin_iframe">
       .fb_hidden {
         position: absolute;
         top: -10000px;
@@ -966,13 +939,34 @@
 </div>
 @endif
 
+
     @if($galleryData->count() > 0)
-    <div class="section-container" id="gallery-section">
-        <h2 class="section-header">GALLERY</h2>
+
+
+
+    <div class="section-container container" id="gallery-section">
+      <div class="row">
+
+        <div class="gallery col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <h2 class="section-header">GALLERY</h2>
+        </div>
+
         <div class="full-divider"></div>
-        <div class="images-container">
+
+        @if (!empty($galleryCatInfo))
+        <div align="center">
+            <button class="btn btn-default filter-button" data-filter="all">All</button>
+            @foreach($galleryCatInfo as $catlbl => $catName)
+            <button class="btn btn-default filter-button" data-filter="{{$catlbl}}">{{$catName}}</button>
+            @endforeach
+        </div>
+        @endif
+
+        <br/>
+
+        <div class="images-container row">
           @foreach($galleryData as $galleryDetail)
-            <div class="image-wrapper">
+          <div class="gallery_product col-lg-6 col-md-6 col-sm-6 col-xs-6 filter {{$galleryDetail->category_name}}">
             <h5 class="text text-center" style="text-align:center;">{{$galleryDetail->title}}</h5>
 
               <img onclick="openImageModal(this)" alt="Demo Company" src="{{URL::asset('public/upload/product/'.$galleryDetail->head_image)}}" style="width:100%">
@@ -1158,6 +1152,9 @@ $('#company_mobile').blur(function(e) {
     <script src="{{asset('public/visitingCard/bussinessCard/a/js/script.js')}}?v={{date('YmdHis')}}"></script>
     <script src="{{asset('public/visitingCard/bussinessCard/a/js/24ee31a944.js')}}" crossorigin="anonymous"></script>
     <script src="{{asset('public/js/prevent.js')}}"></script>
+
+    <link href="{{asset('public/visitingCard/bussinessCard/common/css/gallery-category.css')}}" rel="stylesheet">
+    <script id="skype_bootstrap" src="{{asset('public/visitingCard/bussinessCard/common/js/gallery-category.js')}}"></script>
 
   <style media="all" id="fa-v4-shims">
       <div id="fb-root"class=" fb_reset"><div style="position: absolute; top: -10000px; width: 0px; height: 0px;"><div></div></div></div></body></html>

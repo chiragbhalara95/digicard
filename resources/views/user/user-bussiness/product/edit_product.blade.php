@@ -42,8 +42,8 @@
                 <div class="form-group">
                     <label class="control-label"> Title<span class="text-danger">*</span></label>
                     <input type="text" class="form-control" name="title" value="{{$data->title}}">
-                    
                 </div>
+
                 <div class="form-group row">
                     <label class="control-label">Heading Image<span class="text-danger">*</span></label>
                     <div class="col-md-6">
@@ -55,7 +55,12 @@
                         @endif
                     </div>
                 </div>
-                
+
+                <div class="form-group">
+                    <label class="control-label">Category</label>
+                    <input type="text" class="form-control" name="category_name" placeholder="Enter Category Name" value="{{$data->category_name}}">
+                </div>
+
                 {{--
                 <div class="form-group">
                     <label class="control-label">Multipal Image<span class="text-danger">*</span></label>
