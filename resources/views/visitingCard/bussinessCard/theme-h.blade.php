@@ -312,10 +312,19 @@ $(document).ready(function(){
 
   <div class="p-10"></div>
 
-  <div class="images-container">
+  @if (!empty($galleryCatInfo))
+  <div align="center">
+      <button class="btn btn-default filter-button active all-filter-btn" data-filter="all">All</button>
+      @foreach($galleryCatInfo as $catlbl => $catName)
+      <button class="btn btn-default filter-button" data-filter="{{$catlbl}}">{{$catName}}</button>
+      @endforeach
+  </div>
+  @endif
+
+  <div class="images-container row">
 
   @foreach($galleryData as $galleryDetail)
-            <div class="image-wrapper">
+    <div class="image-wrapper gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter {{$galleryDetail->category_name}}">
             <h4 class="text text-center" style="text-align:center;">{{$galleryDetail->title}}</h4>
 
             <img onclick="openImageModal(this)" alt="Product Image" src="{{URL::asset('public/upload/product/'.$galleryDetail->head_image)}}" style="width:100%">
@@ -405,6 +414,12 @@ $(document).ready(function(){
                 <td>: </td>
                 <td> {{$paymentMasterDetail->ifsc_code}} </td>
               </tr>
+              <tr>
+                <td width="50%" class="td-label">Branch Name</td>
+                <td >: </td>
+                <td > {{$paymentMasterDetail->branch_name}} </td>
+              </tr>
+
             </tbody>
           </table>
           </td>
@@ -663,6 +678,9 @@ $(':radio').change(function() {
 <script src="{{asset('public/visitingCard/bussinessCard/a/js/form-action.js')}}"></script>
 <script src="{{asset('public/visitingCard/bussinessCard/a/js/script.js')}}?v={{date('YmdHis')}}"></script>
 <script src="{{asset('public/js/prevent.js')}}"></script>
+
+<link href="{{asset('public/visitingCard/bussinessCard/common/css/gallery-category.css')}}" rel="stylesheet">
+<script id="skype_bootstrap" src="{{asset('public/visitingCard/bussinessCard/common/js/gallery-category.js')}}"></script>
 
 <script>
 document.getElementById('imageModal').style.display = 'none';

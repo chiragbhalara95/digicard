@@ -233,12 +233,21 @@
                 </td>
                 <td>
                   <a target="_blank" href="tel:{{$companyInfoData->country_code}}{{$companyInfoData->company_mobile}}" class="contact-action-container-text"><p> {{$companyInfoData->country_code}}{{$companyInfoData->company_mobile}}</p> </a>
+                </td>
+        </tr>
+
                   @if(!empty($companyInfoData->country_landline))
-                  <br/>
+                <td>
+                  <a target="_blank" href="tel:{{$companyInfoData->country_code}}{{$companyInfoData->company_mobile}}   ">
+                  <i class="fa fa-phone inside-icon red"></i>
+                  </a>
+                </td>
+
+                <td>
                   <a target="_blank" href="tel:{{$companyInfoData->country_landline}}" class="contact-action-container-text">
                     <p>&nbsp;{{$companyInfoData->country_landline}}</p> </a>
-                  @endif
                 </td>
+                  @endif
               </tr>
 
       </tbody>
@@ -415,6 +424,12 @@
                 <td bgcolor="#f5f5f5">: </td>
                 <td bgcolor="#f5f5f5"> {{$paymentMasterDetail->ifsc_code}} </td>
               </tr>
+              <tr>
+                <td width="50%" class="td-label"><h3>Branch Name</h3></td>
+                <td >: </td>
+                <td > {{$paymentMasterDetail->branch_name}} </td>
+              </tr>
+
             </tbody>
           </table>
           </td>
@@ -458,10 +473,20 @@
 
   <div class="p-10"></div>
 
-  <div class="images-container">
+
+        @if (!empty($galleryCatInfo))
+        <div align="center">
+            <button class="btn btn-default filter-button active all-filter-btn" data-filter="all">All</button>
+            @foreach($galleryCatInfo as $catlbl => $catName)
+            <button class="btn btn-default filter-button" data-filter="{{$catlbl}}">{{$catName}}</button>
+            @endforeach
+        </div>
+        @endif
+
+    <div class="images-container row">
 
   @foreach($galleryData as $galleryDetail)
-            <div class="image-wrapper">
+    <div class="image-wrapper gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter {{$galleryDetail->category_name}}">
               <h3 class="text text-center" style="text-align:center;">{{$galleryDetail->title}}</h3>
               <img onclick="openImageModal(this)" alt="Product Image" src="{{URL::asset('public/upload/product/'.$galleryDetail->head_image)}}" style="width:100%">
 
@@ -769,17 +794,18 @@
 
 <input type="hidden" id="send_enquiry_url" value="{{route('sendEnquiry')}}">
 
-<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
-    <script src="{{asset('public/visitingCard/bussinessCard/a/js/intlTelInput.min.js')}}"></script>
+  <script src="{{asset('public/visitingCard/bussinessCard/common/js/jquery-3.6.4.min.js')}}"></script>
 
-<script src="{{asset('public/visitingCard/bussinessCard/a/js/jquery.min.js')}}"></script>
+  <script src="{{asset('public/visitingCard/bussinessCard/a/js/intlTelInput.min.js')}}"></script>
+
 <script src="{{asset('public/visitingCard/bussinessCard/a/js/jquery-confirm.js')}}"></script>
-<script src="{{asset('public/visitingCard/bussinessCard/a/js/utils.min.js')}}"></script>
-<script src="{{asset('public/visitingCard/bussinessCard/a/js/star-rating.js')}}"></script>
 <script src="{{asset('public/visitingCard/bussinessCard/a/js/form-action.js')}}"></script>
 <script src="{{asset('public/visitingCard/bussinessCard/a/js/parsley.min.js')}}"></script>
 <script src="{{asset('public/visitingCard/bussinessCard/a/js/script.js')}}?v={{date('YmdHis')}}"></script>
 <script src="{{asset('public/js/prevent.js')}}"></script>
+
+  <link href="{{asset('public/visitingCard/bussinessCard/common/css/gallery-category.css')}}" rel="stylesheet">
+  <script id="skype_bootstrap" src="{{asset('public/visitingCard/bussinessCard/common/js/gallery-category.js')}}"></script>
 
 <script type="text/javascript">
 $(".close").click(function() {

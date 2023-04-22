@@ -1,4 +1,4 @@
-jQuery.noConflict();
+// jQuery.noConflict();
 jQuery(function () {
     jQuery('#enquiry-form').parsley().on('field:validated', function(e) {
         var ok = jQuery('.parsley-error').length === 0;

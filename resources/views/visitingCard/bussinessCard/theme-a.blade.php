@@ -914,6 +914,12 @@
                 <td bgcolor="#f5f5f5">: </td>
                 <td bgcolor="#f5f5f5"> {{$paymentMasterDetail->ifsc_code}} </td>
               </tr>
+              <tr>
+                <td width="50%" bgcolor="#f5f5f5" class="td-label"><h6>Branch Name</h6></td>
+                <td bgcolor="#f5f5f5">: </td>
+                <td bgcolor="#f5f5f5"> {{$paymentMasterDetail->branch_name}} </td>
+              </tr>
+
             </tbody>
           </table>
           </td>
@@ -955,7 +961,7 @@
 
         @if (!empty($galleryCatInfo))
         <div align="center">
-            <button class="btn btn-default filter-button" data-filter="all">All</button>
+            <button class="btn btn-default filter-button active all-filter-btn" data-filter="all">All</button>
             @foreach($galleryCatInfo as $catlbl => $catName)
             <button class="btn btn-default filter-button" data-filter="{{$catlbl}}">{{$catName}}</button>
             @endforeach
@@ -966,7 +972,7 @@
 
         <div class="images-container row">
           @foreach($galleryData as $galleryDetail)
-          <div class="gallery_product col-lg-6 col-md-6 col-sm-6 col-xs-6 filter {{$galleryDetail->category_name}}">
+          <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter {{$galleryDetail->category_name}}">
             <h5 class="text text-center" style="text-align:center;">{{$galleryDetail->title}}</h5>
 
               <img onclick="openImageModal(this)" alt="Demo Company" src="{{URL::asset('public/upload/product/'.$galleryDetail->head_image)}}" style="width:100%">
@@ -1142,15 +1148,15 @@ $('#company_mobile').blur(function(e) {
   }
 
     </script>
+
+  <script src="{{asset('public/visitingCard/bussinessCard/common/js/jquery-3.6.4.min.js')}}"></script>
+
     <script src="{{asset('public/visitingCard/bussinessCard/a/js/intlTelInput.min.js')}}"></script>
     <script src="{{asset('public/visitingCard/bussinessCard/a/js/utils.min.js')}}"></script>
-    <script src="{{asset('public/visitingCard/bussinessCard/a/js/star-rating.js')}}"></script>
-    <script src="{{asset('public/visitingCard/bussinessCard/a/js/jquery.min.js')}}"></script>
     <script src="{{asset('public/visitingCard/bussinessCard/a/js/parsley.min.js')}}"></script>
     <script src="{{asset('public/visitingCard/bussinessCard/a/js/form-action.js')}}"></script>
     <script src="{{asset('public/visitingCard/bussinessCard/a/js/jquery-confirm.js')}}"></script>
     <script src="{{asset('public/visitingCard/bussinessCard/a/js/script.js')}}?v={{date('YmdHis')}}"></script>
-    <script src="{{asset('public/visitingCard/bussinessCard/a/js/24ee31a944.js')}}" crossorigin="anonymous"></script>
     <script src="{{asset('public/js/prevent.js')}}"></script>
 
     <link href="{{asset('public/visitingCard/bussinessCard/common/css/gallery-category.css')}}" rel="stylesheet">
