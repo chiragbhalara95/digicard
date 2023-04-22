@@ -310,6 +310,9 @@ $(document).ready(function(){
 
 
   <div class="p-10"></div>
+  <br/>
+        <div class="full-divider"></div>
+
 
   @if (!empty($galleryCatInfo))
   <div align="center">

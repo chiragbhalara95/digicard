@@ -234,7 +234,7 @@ strong, b, h1, h2, h3, h4, h5 {
     -webkit-appearance: none;
     padding: 10px;
     font-size: 13px;
-    background-color: #51B14D;
+    background-color: var(--theme-color);
     color: #fff;
     border: none;
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2), 0 0 40px rgba(255, 251, 251, 0.1) inset;
@@ -956,4 +956,19 @@ a.share{min-width:80px;}
 
 .pdf {
     padding-bottom: 0;
+}
+
+.filter-button {
+    border-color: var(--theme-color) !important;
+    color: var(--theme-color) !important;
+}
+.filter-button.active {
+    border-color: var(--theme-color) !important;
+    background-color: var(--theme-color) !important;
+    color: #FFF !important
+}
+.filter-button:hover {
+    border-color: var(--theme-color) !important;
+    background-color: var(--theme-color) !important;
+    color: #FFF !important
 }

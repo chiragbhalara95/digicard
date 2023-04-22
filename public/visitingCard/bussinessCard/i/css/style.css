@@ -217,7 +217,7 @@ input::placeholder {font-size:12px}
     top: -2px;
     position: relative;}
 
-.dis_flex .big_btns {background: #2e2c41;
+.dis_flex .big_btns {background: #e91e63;
     color: white;
     border-radius: 3px;
     font-size: 12px;
@@ -229,7 +229,7 @@ input::placeholder {font-size:12px}
     width: 139px;
     font-weight: 500;
     box-shadow: 0px 0px 10px 0px #0000002e;
-
+    border-radius: 5px;
 }
 .dis_flex .big_btns i{}
 .dis_flex .social_med {    padding: 2px;
@@ -517,3 +517,4 @@ color:white}
     margin: 3px 0px;
     
 }
+

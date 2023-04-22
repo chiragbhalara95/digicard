@@ -239,7 +239,7 @@ a, a:hover {
     -webkit-appearance: none;
     padding: 10px;
     font-size: 13px;
-    background-color: #51B14D;
+    background-color: #2196f3;
     opacity: 0.9;
     color: #fff;
     border: none;
@@ -247,6 +247,7 @@ a, a:hover {
     margin-left: 10px;
     display: flex;
     align-items: center;
+    border-radius: 5px;
 }
 
 .whatsapp-button i {

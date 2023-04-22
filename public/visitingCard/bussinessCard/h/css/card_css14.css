@@ -217,7 +217,7 @@ input::placeholder {font-size:12px}
     top: -2px;
     position: relative;}
 
-.dis_flex .big_btns {background: #2e2c41;
+.dis_flex .big_btns {background: #64af35;
     color: white;
     border-radius: 3px;
     font-size: 12px;
@@ -516,4 +516,19 @@ color:white}
    width: auto;
     margin: 3px 0px;
     
+}
+
+.filter-button {
+    border-color: #64af35 !important;
+    color: #64af35 !important;
+}
+.filter-button.active {
+    border-color: #64af35 !important;
+    background-color: #64af35 !important;
+    color: #FFF !important
+}
+.filter-button:hover {
+    border-color: #64af35 !important;
+    background-color: #64af35 !important;
+    color: #FFF !important
 }

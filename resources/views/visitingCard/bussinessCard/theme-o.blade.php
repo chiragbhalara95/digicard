@@ -703,6 +703,12 @@ function showSlides(n) {
                 <td>: </td>
                 <td> {{$paymentMasterDetail->ifsc_code}} </td>
               </tr>
+              <tr>
+                <td width="50%" class="td-label">Branch Name</td>
+                <td >: </td>
+                <td > {{$paymentMasterDetail->branch_name}} </td>
+              </tr>
+
             </tbody>
           </table>
           </td>

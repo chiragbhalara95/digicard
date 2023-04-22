@@ -592,7 +592,13 @@ function addToCart(cid,pid){
 @if($galleryData->count() > 0)
 	<div class="card2" id="gallery" >
         <h3>Gallery</h3>
-        <div class="image_container">
+
+      <div class="p-10"></div>
+
+        <div class="full-divider"></div>
+
+
+    <div class="images-container">
 
 			<div class="containerimgback">
 				<div class="containerimg">
@@ -709,6 +715,12 @@ function showSlides(n) {
                 <td>: </td>
                 <td> {{$paymentMasterDetail->ifsc_code}} </td>
               </tr>
+              <tr>
+                <td width="50%" class="td-label">Branch Name</td>
+                <td >: </td>
+                <td > {{$paymentMasterDetail->branch_name}} </td>
+              </tr>
+
             </tbody>
           </table>
           </td>
@@ -1050,14 +1062,14 @@ Showing result:
     })
 </script>
 
-<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
-<script src="{{asset('public/visitingCard/bussinessCard/a/js/jquery.min.js')}}"></script>
+<script src="{{asset('public/visitingCard/bussinessCard/common/js/jquery-3.6.4.min.js')}}"></script>
 <script src="{{asset('public/visitingCard/bussinessCard/a/js/intlTelInput.min.js')}}"></script>
 <script src="{{asset('public/visitingCard/bussinessCard/a/js/parsley.min.js')}}"></script>
 <script src="{{asset('public/visitingCard/bussinessCard/a/js/jquery-confirm.js')}}"></script>
 <script src="{{asset('public/visitingCard/bussinessCard/a/js/form-action.js')}}"></script>
 <script src="{{asset('public/visitingCard/bussinessCard/a/js/script.js')}}?v={{date('YmdHis')}}"></script>
 <script src="{{asset('public/js/prevent.js')}}"></script>
+
 
 
 </body>

@@ -269,6 +269,7 @@
               <div class="vcard-eight__service py-4 position-relative px-sm-4 px-3">
                  <div class="container">
                     <h4 class="vcard-eight-heading heading-line position-relative text-center d-block mx-auto pb-3">Gallery</h4>
+
                     <div class="row mt-3 service-bg bg-white d-flex justify-content-center">
 
                     @foreach($galleryData as $galleryDetail)
@@ -626,6 +627,12 @@
                           <td>: </td>
                           <td> {{$paymentMasterDetail->ifsc_code}} </td>
                       </tr>
+              <tr>
+                <td width="50%" class="td-label">Branch Name</td>
+                <td >: </td>
+                <td > {{$paymentMasterDetail->branch_name}} </td>
+              </tr>
+
                       </tbody>
                   </table>
 
@@ -796,8 +803,10 @@
         </div>
 
    </body>
+
+<script src="{{asset('public/visitingCard/bussinessCard/common/js/jquery-3.6.4.min.js')}}"></script>
+
 <script src="https://js.stripe.com/v3/"></script>
-<script type="text/javascript" src="{{asset('public/visitingCard/bussinessCard/q/js/jquery.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('public/visitingCard/bussinessCard/q/js/bootstrap.bundle.min.js')}}"></script>
 <script src="{{asset('public/visitingCard/bussinessCard/q/js/slick.min.js')}}" type="text/javascript"></script>
 
@@ -807,15 +816,14 @@
 <script src="{{asset('public/visitingCard/bussinessCard/q/js/custom.js')}}"></script>
 <!-- <script src="{{asset('public/visitingCard/bussinessCard/q/js/vcard-view.js')}}"></script> -->
 
-<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 
-<!-- <script src="{{asset('public/visitingCard/bussinessCard/a/js/jquery.min.js')}}"></script> -->
 <script src="{{asset('public/visitingCard/bussinessCard/a/js/intlTelInput.min.js')}}"></script>
 <script src="{{asset('public/visitingCard/bussinessCard/a/js/parsley.min.js')}}"></script>
 <script src="{{asset('public/visitingCard/bussinessCard/a/js/jquery-confirm.js')}}"></script>
 <script src="{{asset('public/visitingCard/bussinessCard/a/js/form-action.js')}}"></script>
 <script src="{{asset('public/visitingCard/bussinessCard/a/js/script.js')}}?v={{date('YmdHis')}}"></script>
 <script src="{{asset('public/js/prevent.js')}}"></script>
+
 
 
 </html>

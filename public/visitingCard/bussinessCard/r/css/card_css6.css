@@ -406,3 +406,18 @@ color:white}
 .td-label {
     text-align: left;
 }
+
+.filter-button {
+    border-color: linear-gradient(45deg, black 80%, #fed517 65%) !important;
+    color: linear-gradient(45deg, black 80%, #fed517 65%) !important;
+}
+.filter-button.active {
+    border-color: linear-gradient(45deg, black 80%, #fed517 65%) !important;
+    background-color: linear-gradient(45deg, black 80%, #fed517 65%) !important;
+    color: #FFF !important
+}
+.filter-button:hover {
+    border-color: linear-gradient(45deg, black 80%, #fed517 65%) !important;
+    background-color: linear-gradient(45deg, black 80%, #fed517 65%) !important;
+    color: #FFF !important
+}

@@ -233,8 +233,8 @@ strong, b, h1, h2, h3, h4, h5 {
     -webkit-appearance: none;
     padding: 10px;
     font-size: 13px;
-    background-color: #fff;
-    color: var(--theme-color);
+    background-color: var(--theme-color);
+    color: #fff;
     border: none;
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2), 0 0 40px rgba(255, 251, 251, 0.1) inset;
     display: flex;
@@ -982,4 +982,19 @@ a.share{min-width:80px;}
 
 .text-white {
     color:white !important;
+}
+
+.filter-button {
+    border-color: #034054 !important;
+    color: #034054 !important;
+}
+.filter-button.active {
+    border-color: #034054 !important;
+    background-color: #034054 !important;
+    color: #FFF !important
+}
+.filter-button:hover {
+    border-color: #034054 !important;
+    background-color: #034054 !important;
+    color: #FFF !important
 }

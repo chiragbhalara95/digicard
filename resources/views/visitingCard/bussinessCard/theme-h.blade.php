@@ -312,6 +312,7 @@ $(document).ready(function(){
 
   <div class="p-10"></div>
 
+  <br/>
   @if (!empty($galleryCatInfo))
   <div align="center">
       <button class="btn btn-default filter-button active all-filter-btn" data-filter="all">All</button>

@@ -80,7 +80,8 @@ setTimeout(closeLoader,3000);
 
 </script>
 
-</head><body oncontextmenu="return false">
+</head>
+<body oncontextmenu="return false">
         <div class="card_loader_back" style="display: block;">
             <div class="loader2">
             <div class="loader_box">
@@ -310,7 +311,8 @@ $(document).ready(function(){
   <h3 class="section-heading">GALLERY</h3>
 
 
-  <div class="p-10"></div>
+  <div class="p-10"></div><hr/>
+
   @if (!empty($galleryCatInfo))
   <div align="center">
       <button class="btn btn-default filter-button active all-filter-btn" data-filter="all">All</button>

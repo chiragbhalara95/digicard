@@ -35,6 +35,8 @@
     <meta name="twitter:title" content="@if(!empty($companyInfoData->company_name)){!! $companyInfoData->company_name !!}@else{!! $userObj->name !!}@endif">
     <meta name="twitter:description" content="{{$companyInfoData->company_info}}">
 
+<link href="{{asset('public/visitingCard/bussinessCard/common/css/gallery-category.css')}}" rel="stylesheet">
+
     <link href="{{asset('public/visitingCard/bussinessCard/m/css/all.css')}}" rel="stylesheet">
     <link href="{{asset('public/visitingCard/bussinessCard/m/css/awesome.min.css')}}" rel="stylesheet">
     <link href="{{asset('public/visitingCard/bussinessCard/m/css/cart.css')}}" rel="stylesheet">
@@ -311,10 +313,21 @@ $(document).ready(function(){
 
   <div class="p-10"></div>
 
-  <div class="images-container">
+        <div class="full-divider"></div>
+<br/>
+        @if (!empty($galleryCatInfo))
+        <div align="center">
+            <button class="btn btn-default filter-button active all-filter-btn" data-filter="all">All</button>
+            @foreach($galleryCatInfo as $catlbl => $catName)
+            <button class="btn btn-default filter-button" data-filter="{{$catlbl}}">{{$catName}}</button>
+            @endforeach
+        </div>
+        @endif
+
+    <div class="images-container row">
 
   @foreach($galleryData as $galleryDetail)
-            <div class="image-wrapper">
+    <div class="image-wrapper gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter {{$galleryDetail->category_name}}">
             <h4 class="text text-center" style="text-align:center;">{{$galleryDetail->title}}</h4>
 
             <img onclick="openImageModal(this)" alt="Product Image" src="{{URL::asset('public/upload/product/'.$galleryDetail->head_image)}}" style="width:100%">
@@ -404,6 +417,12 @@ $(document).ready(function(){
                 <td>: </td>
                 <td> {{$paymentMasterDetail->ifsc_code}} </td>
               </tr>
+              <tr>
+                <td width="50%" class="td-label">Branch Name</td>
+                <td >: </td>
+                <td > {{$paymentMasterDetail->branch_name}} </td>
+              </tr>
+
             </tbody>
           </table>
           </td>
@@ -654,7 +673,8 @@ $(':radio').change(function() {
 
 
 </b></body>
-<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+<script src="{{asset('public/visitingCard/bussinessCard/common/js/jquery-3.6.4.min.js')}}"></script>
 <script src="{{asset('public/visitingCard/bussinessCard/a/js/jquery.min.js')}}"></script>
 <script src="{{asset('public/visitingCard/bussinessCard/a/js/intlTelInput.min.js')}}"></script>
 <script src="{{asset('public/visitingCard/bussinessCard/a/js/parsley.min.js')}}"></script>
@@ -662,6 +682,8 @@ $(':radio').change(function() {
 <script src="{{asset('public/visitingCard/bussinessCard/a/js/form-action.js')}}"></script>
 <script src="{{asset('public/visitingCard/bussinessCard/a/js/script.js')}}?v={{date('YmdHis')}}"></script>
 <script src="{{asset('public/js/prevent.js')}}"></script>
+
+<script id="skype_bootstrap" src="{{asset('public/visitingCard/bussinessCard/common/js/gallery-category.js')}}"></script>
 
 <script>
 document.getElementById('imageModal').style.display = 'none';

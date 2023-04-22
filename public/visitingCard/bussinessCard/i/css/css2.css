@@ -1449,3 +1449,18 @@ header .head_txt h3 .notification {
     }
 }
 
+
+.filter-button {
+    border-color: #e91e63 !important;
+    color: #e91e63 !important;
+}
+.filter-button.active {
+    border-color: #e91e63 !important;
+    background-color: #e91e63 !important;
+    color: #FFF !important
+}
+.filter-button:hover {
+    border-color: #e91e63 !important;
+    background-color: #e91e63 !important;
+    color: #FFF !important
+}

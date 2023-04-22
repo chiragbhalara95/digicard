@@ -217,7 +217,8 @@ input::placeholder {font-size:12px}
     top: -2px;
     position: relative;}
 
-.dis_flex .big_btns {background: #2e2c41;
+.dis_flex .big_btns {
+    background: #095da0;
     color: white;
     border-radius: 3px;
     font-size: 12px;

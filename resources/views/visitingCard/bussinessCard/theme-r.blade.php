@@ -29,6 +29,8 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 
+  <link href="{{asset('public/visitingCard/bussinessCard/common/css/gallery-category.css')}}" rel="stylesheet">
+
     <link href="{{asset('public/visitingCard/bussinessCard/r/css/awesome.min.css')}}" rel="stylesheet">
     <link href="{{asset('public/visitingCard/bussinessCard/r/css/all.css')}}" rel="stylesheet">
     <link href="{{asset('public/visitingCard/bussinessCard/r/css/css.css')}}" rel="stylesheet">
@@ -76,6 +78,21 @@
     padding: 63px;
     text-align: center;}
 
+
+.filter-button {
+    border-color: #2e2c41 !important;
+    color: #2e2c41 !important;
+}
+.filter-button.active {
+    border-color: #2e2c41 !important;
+    background-color: #2e2c41 !important;
+    color: #FFF !important
+}
+.filter-button:hover {
+    border-color: #2e2c41 !important;
+    background-color: #2e2c41 !important;
+    color: #FFF !important
+}
 </style>
 
 
@@ -268,8 +285,22 @@
     @if($galleryData->count() > 0)
     <div class="card2" id="product_services">
         <h3>Products &amp; Services</h3>
+
+      <div class="p-10"></div>
+
+        <div class="full-divider"></div>
+
+        @if (!empty($galleryCatInfo))
+        <div align="center ">
+            <button class="btn btn-default filter-button active all-filter-btn" data-filter="all">All</button>
+            @foreach($galleryCatInfo as $catlbl => $catName)
+            <button class="btn btn-default filter-button" data-filter="{{$catlbl}}">{{$catName}}</button>
+            @endforeach
+        </div>
+        @endif
+
         @foreach($galleryData as $galleryDetail)
-        <div class="product_s">
+        <div class="product_s filter {{$galleryDetail->category_name}}">
             <p>{{$galleryDetail->title}}</p>
             <img alt="Product Image" src="{{URL::asset('public/upload/product/'.$galleryDetail->head_image)}}" class="rounded-circle" >
             <br/>
@@ -360,6 +391,12 @@
                 <td>: </td>
                 <td> {{$paymentMasterDetail->ifsc_code}} </td>
               </tr>
+              <tr>
+                <td width="50%" class="td-label">Branch Name</td>
+                <td >: </td>
+                <td > {{$paymentMasterDetail->branch_name}} </td>
+              </tr>
+
             </tbody>
           </table>
           </td>
@@ -470,13 +507,14 @@
     </div>
 </div></body>
 
-<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
-<script src="{{asset('public/visitingCard/bussinessCard/a/js/jquery.min.js')}}"></script>
+<script src="{{asset('public/visitingCard/bussinessCard/common/js/jquery-3.6.4.min.js')}}"></script>
 <script src="{{asset('public/visitingCard/bussinessCard/a/js/intlTelInput.min.js')}}"></script>
 <script src="{{asset('public/visitingCard/bussinessCard/a/js/parsley.min.js')}}"></script>
 <script src="{{asset('public/visitingCard/bussinessCard/a/js/jquery-confirm.js')}}"></script>
 <script src="{{asset('public/visitingCard/bussinessCard/a/js/form-action.js')}}"></script>
 <script src="{{asset('public/visitingCard/bussinessCard/a/js/script.js')}}?v={{date('YmdHis')}}"></script>
+
+<script id="skype_bootstrap" src="{{asset('public/visitingCard/bussinessCard/common/js/gallery-category.js')}}"></script>
 
 <script>
     $(document).ready(function(){

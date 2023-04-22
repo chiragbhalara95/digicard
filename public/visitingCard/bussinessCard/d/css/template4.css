@@ -953,3 +953,19 @@ a.share{min-width:80px;}
 .pdf {
     padding-bottom: 0;
 }
+
+
+.filter-button {
+    border-color: #6d126f !important;
+    color: #6d126f !important;
+}
+.filter-button.active {
+    border-color: #6d126f !important;
+    background-color: #6d126f !important;
+    color: #FFF !important
+}
+.filter-button:hover {
+    border-color: #6d126f !important;
+    background-color: #6d126f !important;
+    color: #FFF !important
+}

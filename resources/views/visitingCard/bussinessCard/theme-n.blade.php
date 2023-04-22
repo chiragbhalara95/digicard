@@ -586,6 +586,12 @@ function addToCart(cid,pid){
 @if($galleryData->count() > 0)
 	<div class="card2" id="gallery" >
         <h3>Gallery</h3>
+
+      <div class="p-10"></div>
+
+        <div class="full-divider"></div>
+
+
         <div class="image_container">
 
 			<div class="containerimgback">
@@ -703,6 +709,12 @@ function showSlides(n) {
                 <td>: </td>
                 <td> {{$paymentMasterDetail->ifsc_code}} </td>
               </tr>
+              <tr>
+                <td width="50%" class="td-label"><h3>Branch Name</h3></td>
+                <td >: </td>
+                <td > {{$paymentMasterDetail->branch_name}} </td>
+              </tr>
+
             </tbody>
           </table>
           </td>
@@ -977,8 +989,8 @@ Showing result:
 
     
     </script>
-<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
-<script src="{{asset('public/visitingCard/bussinessCard/a/js/jquery.min.js')}}"></script>
+
+<script src="{{asset('public/visitingCard/bussinessCard/common/js/jquery-3.6.4.min.js')}}"></script>
 <script src="{{asset('public/visitingCard/bussinessCard/a/js/intlTelInput.min.js')}}"></script>
 <script src="{{asset('public/visitingCard/bussinessCard/a/js/parsley.min.js')}}"></script>
 <script src="{{asset('public/visitingCard/bussinessCard/a/js/jquery-confirm.js')}}"></script>
