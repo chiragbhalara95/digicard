@@ -54,8 +54,8 @@
         margin: 1px 3px 10px;
         }
         .card{ 
-            background: url({{asset('public/visitingCard/bussinessCard/p/img/bg36.png')}}) !important;
-            /* background-repeat: no-repeat !important; */
+            background: url({{asset('public/visitingCard/bussinessCard/p/img/bg38.jpeg')}}) !important;
+             background-repeat: no-repeat !important; 
             }
             
 
@@ -83,7 +83,7 @@
             </div>
         </div>
     </div>
-    <body onload="closeLoader()" oncontextmenu="return false">
+    <!-- <body onload="closeLoader()" oncontextmenu="return false"> -->
         <script>
             $(document).ready(function(){
                 $('.mobile_home').on('click',function(){
