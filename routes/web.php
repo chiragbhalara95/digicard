@@ -92,6 +92,8 @@ Route::middleware(['auth', 'verified', 'check_payment_status'])->namespace('App\
 
      Route::any('enquiry/list', [App\Http\Controllers\BussinessCard\EnquiryController::class, 'enquiryList']);
 
+     Route::any('visitor-log/list', [App\Http\Controllers\BussinessCard\VisitorLogController::class, 'getList'])->name('business.get-visitor-log');
+
     Route::get('business/card-theme-selection', [App\Http\Controllers\BussinessCard\ThemeController::class, 'cardThemeSelectView'])->name('business.card-theme-selection');
     Route::post('business/saveTheme', [App\Http\Controllers\BussinessCard\ThemeController::class, 'saveUserTheme'])->name('business.save-user-theme');
 

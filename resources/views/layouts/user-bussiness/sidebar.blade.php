@@ -100,6 +100,15 @@
             </a>
           </li>
 
+          <li class="nav-item">
+            <a href="{{route('business.get-visitor-log')}}" class="nav-link">
+              <i class="nav-icon fas fa-users"></i>
+              <p>
+                Visitor Logs
+              </p>
+            </a>
+          </li>
+
           @if(Auth::check())
           <li class="nav-item">
             <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('frm-logout').submit();">
