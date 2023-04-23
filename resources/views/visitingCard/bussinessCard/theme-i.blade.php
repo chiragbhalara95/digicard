@@ -194,6 +194,7 @@ $(document).ready(function(){
                  <div class="contact_d" onclick="location.href=&#39;tel:{{$companyInfoData->country_landline}}&#39;"><i class="fa fa-phone"></i><p>{{$companyInfoData->country_landline}}</p>
         </div>
       @endif
+      
       <div class="contact_d" onclick="location.href=&#39;Mailto:{{$userObj->email}}&#39;"><i class="fa fa-envelope"></i><p>{{$userObj->email}}</p></div>
       @if (!empty($companyInfoData->company_address))               
       <div class="contact_d" onclick="location.href=&#39;https://maps.google.com?q={{$companyInfoData->latitude}},{{$companyInfoData->longitude}}&z=12&amp;um=1&amp;ie=UTF-8&amp;sa=X&amp;ved=2ahUKEwiWyNX76N3qAhWrzTgGHQuCBicQ_AUoAXoECCMQAw&#39;"><i class="fa fa-map-marker"></i>

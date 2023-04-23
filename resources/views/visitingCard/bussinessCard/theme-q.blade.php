@@ -122,6 +122,7 @@
                   <span class="social-back rounded-circle d-flex justify-content-center align-items-center m-sm-2 m-1">
                       <a href="mailto:{{$userObj->email}}" target="_blank"><i class="fa fa-envelope icon fa-2x" title="Mail"></i> </a>
                   </span>
+
                   @if(!empty($companyInfoData->company_website))
                   <span class="social-back rounded-circle d-flex justify-content-center align-items-center m-sm-2 m-1">
                       <a href="{{$companyInfoData->company_website}}" target="_blank"><i class="fa fa-globe icon fa-2x" title="Website"></i></a>
@@ -189,6 +190,14 @@
                                    <h5 class="text-center mb-0 text-white"><a href="mailto:{{$userObj->email}}" class="text-white">{{$userObj->email}}</a>
                                    </h5>
                                 </div>
+                                      @if (!empty($userObj->alternative_email))
+                                <div class="event-details">
+                                   <h5 class="text-center mb-0 text-white"><a href="mailto:{{$userObj->alternative_email}}" class="text-white">{{$userObj->alternative_email}}</a>
+                                   </h5>
+                                </div>
+                                          @endif
+
+
                              </div>
                              <div class="col-sm-6 col-12">
 

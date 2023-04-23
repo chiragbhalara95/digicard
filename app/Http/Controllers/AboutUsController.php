@@ -80,6 +80,9 @@ class AboutUsController extends Controller
         }
 
 
+        if (isset($params['alternative_email'])) {
+            $userInfo->alternative_email = $params['alternative_email'];
+        }
         $userInfo->name = $params['name'];
         $userInfo->save();
 

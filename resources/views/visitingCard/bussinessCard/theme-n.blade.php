@@ -182,6 +182,13 @@
                     <i class="fa fa-envelope"></i>
                     <p>{{$userObj->email}}</p>
                 </div>
+      @if (!empty($userObj->alternative_email))
+                <div class="contact_d" onclick="location.href='Mailto:{{$userObj->alternative_email}}'">
+                    <i class="fa fa-envelope"></i>
+                    <p>{{$userObj->alternative_email}}</p>
+                </div>
+      @endif
+
                 <div class="contact_d" onclick="location.href='#address'">
                     <i class="fa fa-map-marker"></i>
                     <p>

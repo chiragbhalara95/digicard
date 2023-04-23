@@ -163,7 +163,15 @@
           <td><a href="mailto:{{$userObj->email}}"> <i class="fa fa-envelope contact-icon"></i> </a></td>
           <td><a href="mailto:{{$userObj->email}}" class="contact-text"> {{$userObj->email}} </a></td>
         </tr>
+
+      @if (!empty($userObj->alternative_email))
         <tr>
+          <td><a href="mailto:{{$userObj->alternative_email}}"> <i class="fa fa-envelope contact-icon"></i> </a></td>
+
+          <td><a href="mailto:{{$userObj->alternative_email}}" class="contact-text"> {{$userObj->alternative_email}} </a></td>
+        </tr>
+      @endif
+
 
         @if(!empty($companyInfoData->company_website))
         <tr>

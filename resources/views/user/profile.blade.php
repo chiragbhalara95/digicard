@@ -51,6 +51,11 @@
                     <input type="email" name="email" readonly class="form-control" id="exampleInputEmail1" placeholder="Enter email" value="{{$userInfo->email}}">
                   </div>
 
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Secondary Email address</label>
+                    <input type="email" name="alternative_email" class="form-control" id="exampleInputEmail1" placeholder="Enter Secondary email" value="{{$userInfo->alternative_email}}">
+                  </div>
+
                   <div class="form-group row">
                             <div class="col-md-6">
                                 <div class="form-check">

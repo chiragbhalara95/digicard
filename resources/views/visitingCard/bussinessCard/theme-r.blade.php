@@ -193,6 +193,12 @@
     <div class="contact_d"><i class="fa fa-envelope"></i>
         <p><a href="mailto:{{$userObj->email}}" target="_blank">{{$userObj->email}}</a></p>
     </div>
+     @if (!empty($userObj->alternative_email))
+    <div class="contact_d"><i class="fa fa-envelope"></i>
+        <p><a href="mailto:{{$userObj->alternative_email}}" target="_blank">{{$userObj->alternative_email}}</a></p>
+    </div>
+      @endif
+
      @if (!empty($companyInfoData->company_address))
     <div class="contact_d"><i class="fa fa-map-marker"></i><p>{!! $companyInfoData->company_address !!}</p></div>
     @endif

@@ -727,6 +727,20 @@
                     {{$userObj->email}} </a>
                 </td>
               </tr>
+              @if (!empty($userObj->alternative_email))
+              <tr>
+                <td>
+                  <a href="mailto:{{$userObj->alternative_email}}">
+                    <i class="fas fa-envelope contact-action-container-icon" aria-hidden="true"></i>
+                  </a>
+                </td>
+                <td>
+                  <a href="mailto:{{$userObj->alternative_email}}" class="contact-action-container-text">
+                    {{$userObj->alternative_email}} </a>
+                </td>
+              </tr>
+              @endif
+
               <tr>
                 <td>
                   <a target="_blank" href="{{$companyInfoData->company_website}}">
@@ -756,19 +770,10 @@
             </tbody>
           </table>
           <div class="p-30"></div>
- <!--
-          <div class="whatsapp-input">
-            <div class="input-wrapper">
-              <input type="tel" id="whatsapp-input" class="input" placeholder="Enter whatsapp number" oninput="this.value=this.value.replace(/[^0-9]/g,&#39;&#39;);" autocomplete="off" data-intl-tel-input-id="0">
-            </div>
-            <a class="whatsapp-button" target="_blank" href="javascript:;" onclick="handleWhatsappShare(this)">
-              <i class="fab fa-whatsapp" aria-hidden="true"></i>Share on Whatsapp </a>
-          </div>
-    -->
     <?php
-                            $countryData = file_get_contents(url('public/country-tel-code.json'));
-                            $countryData = json_decode($countryData, true);
-                          ?>
+      $countryData = file_get_contents(url('public/country-tel-code.json'));
+      $countryData = json_decode($countryData, true);
+    ?>
 <div class="form-group">
 
 <div class="input-group input-group-lg col-md-12">
@@ -776,25 +781,25 @@
   <div class="col-md-4">
 
       <select class="form-control" id="country_code" name="country_code" >
-                                <option value="" class="">Select Country Code</option>
-                                @if (!empty($countryData))
-                                    @foreach($countryData AS $countryDetail)
-                                    <option class="" value="{{$countryDetail['dial_code']}}" 
-                                    @if($countryDetail['dial_code'] == $userConfigObj->defaultCountry) selected @endif
-                                      placeholder = "{{$countryDetail['name']}}">
-                                        {{$countryDetail['name']}} ({{$countryDetail['dial_code']}})
-                                    </option>
-                                    @endforeach
-                                @endif
-                            </select>
+          <option value="" class="">Select Country Code</option>
+          @if (!empty($countryData))
+              @foreach($countryData AS $countryDetail)
+              <option class="" value="{{$countryDetail['dial_code']}}" 
+              @if($countryDetail['dial_code'] == $userConfigObj->defaultCountry) selected @endif
+                placeholder = "{{$countryDetail['name']}}">
+                  {{$countryDetail['name']}} ({{$countryDetail['dial_code']}})
+              </option>
+              @endforeach
+          @endif
+      </select>
     </div>
-                            <div class="col-md-8">
-                              <input type="tel" class="form-control" name="company_mobile" id="company_mobile" placeholder="Enter whatsapp number" value="" pattern="[789][0-9]{9}" title="Please enter valid phone number">
-                            </div>
-                            <span id="spnPhoneStatus"></span>
+    <div class="col-md-8">
+      <input type="tel" class="form-control" name="company_mobile" id="company_mobile" placeholder="Enter whatsapp number" value="" pattern="[789][0-9]{9}" title="Please enter valid phone number">
+    </div>
+    <span id="spnPhoneStatus"></span>
 
 
-                    </div>
+    </div>
                     <div class="row" style="margin-top:10px">
                       <div class="col-md-12">
                               <a class="whatsapp-button" target="_blank" href="javascript:;" onclick="handleWhatsappShare(this)">

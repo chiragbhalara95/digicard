@@ -80,7 +80,8 @@ setTimeout(closeLoader,3000);
 
 </script>
 
-</head><body oncontextmenu="return false">
+</head>
+<body oncontextmenu="return false">
         <div class="card_loader_back" style="display: block;">
             <div class="loader2">
             <div class="loader_box">
@@ -190,14 +191,19 @@ $(document).ready(function(){
           <p>{{$companyInfoData->country_code}}{{$companyInfoData->company_mobile}} </p>
       </div>
       @if(!empty($companyInfoData->country_landline))
-                 <div class="contact_d" onclick="location.href=&#39;tel:{{$companyInfoData->country_landline}}&#39;"><i class="fa fa-phone"></i><p>{{$companyInfoData->country_landline}}</p>
+       <div class="contact_d" onclick="location.href=&#39;tel:{{$companyInfoData->country_landline}}&#39;"><i class="fa fa-phone"></i><p>{{$companyInfoData->country_landline}}</p>
         </div>
       @endif
-      <div class="contact_d" onclick="location.href=&#39;Mailto:{{$userObj->email}}&#39;"><i class="fa fa-envelope"></i><p>{{$userObj->email}}</p></div>
+      <div class="contact_d" onclick="location.href=&#39;Mailto:{{$userObj->email}}&#39;"><i class="fa fa-envelope"></i><p>{{$userObj->email}}</p>
+      </div>
+
       @if (!empty($companyInfoData->company_address))               
       <div class="contact_d" onclick="location.href=&#39;https://maps.google.com?q={{$companyInfoData->latitude}},{{$companyInfoData->longitude}}&z=12&amp;um=1&amp;ie=UTF-8&amp;sa=X&amp;ved=2ahUKEwiWyNX76N3qAhWrzTgGHQuCBicQ_AUoAXoECCMQAw&#39;"><i class="fa fa-map-marker"></i><p>{!!$companyInfoData->company_address!!}</p></div>
       @endif                
+
+
       </div>
+
 
           <div class="dis_flex">
                 <div class="share_wtsp">
