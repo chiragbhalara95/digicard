@@ -202,6 +202,14 @@
      @if (!empty($companyInfoData->company_address))
     <div class="contact_d"><i class="fa fa-map-marker"></i><p>{!! $companyInfoData->company_address !!}</p></div>
     @endif
+
+    @if(!empty($companyInfoData->company_website))
+    <div class="contact_d"><i class="fa fa-globe"></i>
+        <p><a href="{{$companyInfoData->company_website}}" target="_blank">{{$companyInfoData->company_website}}</a></p>
+    </div>
+
+    @endif
+
 </div>
 
 <div class="dis_flex" id="share_on_whatsapp">

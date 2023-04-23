@@ -813,7 +813,7 @@
         <div class="col-md-12 text-center btn btn-primary">
                         <a href="{{url('saveViewCard')}}/{{$userObj->slug}}" download="contact.vcf">
                             <div class="icon-i whitegreenicon rounded-circle text-white">
-                                <i class="fa fa-vcard" aria-hidden="true"></i>&nbsp;Save Contact
+                                <i class="fa fa-vcard" aria-hidden="true"></i>&nbsp;Save to Contacts
                             </div>
                         </a>
                     </div>

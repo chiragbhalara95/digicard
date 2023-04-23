@@ -141,7 +141,7 @@
 
     <div class="shadow-btn"> 
     <a href="{{url('saveViewCard')}}/{{$userObj->slug}}" download="contact.vcf" class="addphonebook">
-        <i class="fa fa-download shadow-button-icon"></i>Add to Contact</a> 
+        <i class="fa fa-download shadow-button-icon"></i>Save to Contacts</a> 
         {{--<a onclick="openShareModal(this, &#39;vbc&#39;)" class="share"><i class="fa fa-share-alt"></i>Share</a>--}} 
       </div>
 

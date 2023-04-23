@@ -169,7 +169,7 @@
                   </div>
                  <div class="vcard-eight__contact">
                     <div class="d-sm-flex justify-content-center mt-5 pb-5">
-                    <a class="vcard-eight-btn mt-4 d-block btn text-white" href="{{url('saveViewCard')}}/{{$userObj->slug}}" download="contact.vcf"><i class="fa fa-download me-2"></i>Download VCard</a>
+                    <a class="vcard-eight-btn mt-4 d-block btn text-white" href="{{url('saveViewCard')}}/{{$userObj->slug}}" download="contact.vcf"><i class="fa fa-download me-2"></i>Save to Contacts</a>
 
                     </div>
                  </div>

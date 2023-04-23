@@ -189,7 +189,7 @@
 
     </table>
     <div class="shadow-btn"> 
-            <a href="{{url('saveViewCard')}}/{{$userObj->slug}}" download="contact.vcf" class="addphonebook"><i class="fa fa-download shadow-button-icon"></i>Add to Contact</a>
+            <a href="{{url('saveViewCard')}}/{{$userObj->slug}}" download="contact.vcf" class="addphonebook"><i class="fa fa-download shadow-button-icon"></i>Save to Contacts</a>
         </div>
 
     <?php

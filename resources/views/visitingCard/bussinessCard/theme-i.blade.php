@@ -213,7 +213,7 @@ $(document).ready(function(){
             
         <div class="dis_flex">
         <a href="{{url('saveViewCard')}}/{{$userObj->slug}}" download="contact.vcf" class="addphonebook">
-        <div class="big_btns">Save to Contacts <i class="fa fa-download"></i></div></a> 
+        <div class="big_btns">Save to Contacts<i class="fa fa-download"></i></div></a> 
             
             </div> 
             <div class="dis_flex"></div>
