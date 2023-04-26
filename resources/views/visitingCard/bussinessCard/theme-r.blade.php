@@ -267,6 +267,13 @@
 
     </div>
 
+    <div class="card2" style="height: 350px">
+      <h3>Scan QR Code for share your digital cards</h3>
+        <div class="full-divider"></div>
+          <div class="text text-center" style="text-align: center;">
+          {!! QrCode::size(250)->generate($vistingUrl) !!}
+      </div>
+    </div>
 
 
 <!--------------about us --------------------------->

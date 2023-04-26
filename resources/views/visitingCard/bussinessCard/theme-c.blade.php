@@ -274,6 +274,14 @@
 
 </div>
 
+    <div class="page-container">
+      <h2 class="section-heading">Scan QR Code for share your digital cards</h2>
+        <div class="full-divider"></div>
+          <div class="text text-center" style="text-align: center;">
+          {!! QrCode::size(250)->generate($vistingUrl) !!}
+      </div>
+    </div>
+
 <div class="page-container" id="aboutus">
 
   <h2 class="section-heading">{{$userConfigObj->aboutLabel}}</h2>

@@ -255,6 +255,15 @@ $(document).ready(function(){
     </div>
     
  -->    
+
+    <div class="card2">
+      <h3 style="margin-top: 1%">Scan QR Code for share your digital cards</h3>
+        <div class="full-divider"></div>
+          <div class="text text-center" style="margin-top:1%;text-align: center;">
+          {!! QrCode::size(250)->generate($vistingUrl) !!}
+      </div>
+    </div>
+
 <!--------------about us --------------------------->   
     
     <div class="card2" id="about_us">

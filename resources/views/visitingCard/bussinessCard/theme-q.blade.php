@@ -252,6 +252,16 @@
                  </div>
               </div>
 
+  <div class="vcard-eight__service py-4 position-relative px-sm-4 px-3">
+   <div class="container">
+      <h4 class="vcard-eight-heading heading-line position-relative text-center d-block mx-auto pb-3">Scan QR Code for share your digital cards</h3>
+        <div class="full-divider"></div>
+          <div class="text text-center" style="margin-top:1%;text-align: center;">
+          {!! QrCode::size(250)->generate($vistingUrl) !!}
+      </div>
+    </div>
+  </div>
+
               <div class="vcard-eight__service py-4 position-relative px-sm-4 px-3">
                  <div class="container">
                      <h4 class="vcard-eight-heading heading-line position-relative text-center d-block mx-auto pb-3">{{$userConfigObj->aboutLabel}}</h4>

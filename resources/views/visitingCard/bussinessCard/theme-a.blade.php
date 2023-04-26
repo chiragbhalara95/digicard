@@ -853,11 +853,21 @@
                     </ul>
                 @endif
         <div class="p-20"></div>
+
       </div>
     </div>
     </div>
+
+      <div class="section-container">
+        <h2 class="section-header">Scan QR Code for share your digital cards</h2>
+          <div class="full-divider"></div>
+        <div class="text text-center">
+            {!! QrCode::size(250)->generate($vistingUrl) !!}
+        </div>
+      </div>
+
     <div class="section-container" id="about-us-section">
-      <h2 class="section-header">ABOUT US</h2>
+      <h2 class="section-header">{{$userConfigObj->aboutLabel}}</h2>
       <div class="full-divider"></div>
       <div class="about-us-text">
         <div style="text-align: justify;">{!!$companyInfoData->company_info!!}</div>
