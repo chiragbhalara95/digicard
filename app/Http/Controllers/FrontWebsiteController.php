@@ -175,7 +175,7 @@ class FrontWebsiteController extends BasicController
                 }
             }
 
-            $vistingUrl = url('vc').$userObj->slug;
+            $vistingUrl = url('vc').'/'.$userObj->slug;
 
             return view('visitingCard/bussinessCard/'.$bladeFile, 
                 compact('companyInfoData', 'userObj', 'galleryData', 'userConfigObj', 'paymentMasterData', 'socialMediaData', 'galleryCatInfo', 'vistingUrl')
