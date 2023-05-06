@@ -156,3 +156,200 @@ a:hover, a:focus {
     background-color: #2196f3 !important;
     color: #FFF !important
 }
+
+
+    .card_content {text-align: center;
+    margin: 44px auto 10px;
+    z-index: 2;}
+    .card_content img{height: 100px;
+    max-width: 300px;
+    border-radius: 12px;
+    border: 3px solid white;
+    padding: 3px;background: white;}
+
+
+        .purchase-form__renewal-price--strikethrough {
+        text-decoration: line-through;
+        color: red;
+    }
+
+    .card_content2 {z-index: 2;
+    text-align: center;
+    font-weight: 400;
+    margin: 0;}
+    .card_content2 h2{font-weight: 400;
+    margin: 0px;
+    letter-spacing: -1px;
+    text-transform: capitalize;
+    font-size: 20px;
+    border-bottom: 3px solid #f9aa79;
+    width: fit-content;
+    margin: 0 auto;
+    padding-bottom: 10px;
+    color: #FFF;
+}
+    .card_content2 p{margin: 6px;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 12px;
+    color: #f4f4f4;}
+.dis_flex {display: block;
+    text-align: center;
+    padding: 4px 14px}
+.dis_flex .link_btn {background: #0278b0;
+    color: white;
+    margin: 5px;
+    border-radius: 20px;
+    padding: 5px 11px;
+    width: fit-content;
+    font-size: 10px;
+    margin: 10px 0px;
+    display: inline-block;
+    box-shadow: 1px 1px 10px 0px #00000040;}
+
+    .share_wtsp form{    display: flex;
+    margin: 14px auto 20px;
+    position: relative;
+    width: fit-content;}
+    .wtsp_share_btn  {background-color: #2196f3;
+    color: white;
+    font-size: 12px;
+    padding: 10px;cursor:pointer}
+    .wtsp_share_btn i {}
+    
+    
+    .share_box .close { font-size: 47px;
+    text-align: end;
+    padding: 0px 10px;
+    font-weight: 400;
+    color: red;}
+    
+    #whatsapp2 {background:#1aab2c;color:white}
+    .fa-comment-dots     {background: #1cbdff;
+    color: white;}
+    .share_box .close i {}
+    .share_box {
+        display:none;
+        background: white;
+    color: black;
+    position: fixed;
+    top: 10%;
+    width: 351px;
+    padding: 10px;
+    box-shadow: 0px 0px 10px 0px #00000033;
+    z-index: 3;
+    border-radius: 11px;}
+    .shar_btns {    width: 100px;
+    text-align: center;
+    display: inline-block;}
+    .shar_btns i{padding: 10px;
+    border-radius: 8px;}
+    .shar_btns p{font-size: 10px;}
+    
+    /* animated button */
+    .btn2 {background: #4CAF50;
+    color: white;
+    padding: 10px;
+    width: fit-content;
+    border-radius: 5px;
+    margin: 20px auto;
+    box-shadow: 0px 0px 10px 0px #00000017;}
+    
+
+
+
+ .order_box {width: 142px;
+    display: inline-block;
+    margin: 6px auto;
+    vertical-align: text-top;
+    border-radius: 4px;
+    background: white;
+    overflow: hidden;
+    box-shadow: 0px 0px 10px 0px #00000030;
+    border: 2px solid #FF9800;
+}
+ .order_box img{width: 100%;
+    max-height: 100px;}
+ .order_box h2{padding: 9px 0px 3px;
+    margin: 0px;
+    font-size: 13px;
+    text-align: center;
+    font-weight: 500;}
+ .order_box h4{padding: 0px 0px 7px;
+    margin: 0px;
+    font-size: 13px;
+    text-align: center;
+    font-weight: 500;
+    color: #4CAF50;
+}
+ .order_box p{padding: 2px;
+    margin: 0px;
+    font-size: 13px;
+    text-align: center;
+    font-weight: 500;
+    color: gray;}
+ .btn_buy{background: #FF5722;
+    color: white;
+    padding: 8px 10px;
+    text-align: center;
+    font-size: 12px;
+    width: fit-content;
+    margin: 0 auto 10px;
+    border-radius: 3px;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+.gallery_section {
+     display: grid;
+    grid-template-columns: 50% 50%;
+    text-align: center;
+ }
+
+
+
+
+ .order_box {
+    width: 142px;
+    display: inline-block;
+    margin: 6px auto;
+    vertical-align: text-top;
+    border-radius: 4px;
+    background: white;
+    overflow: hidden;
+    box-shadow: 0px 0px 10px 0px #00000030;
+    border: 2px solid #2196f3;
+}
+ .order_box img{width: 100%;
+    max-height: 100px;}
+ .order_box h2{padding: 9px 0px 3px;
+    margin: 0px;
+    font-size: 13px;
+    text-align: center;
+    font-weight: 500;}
+ .order_box h4{padding: 0px 0px 7px;
+    margin: 0px;
+    font-size: 13px;
+    text-align: center;
+    font-weight: 500;
+    color: #4CAF50;
+}
+ .order_box p{padding: 2px;
+    margin: 0px;
+    font-size: 13px;
+    text-align: center;
+    font-weight: 500;
+    color: gray;}
+ .btn_buy{background: #2196f3 ;
+    color: white;
+    padding: 8px 10px;
+    text-align: center;
+    font-size: 12px;
+    width: fit-content;
+    margin: 0 auto 10px;
+    border-radius: 3px;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+

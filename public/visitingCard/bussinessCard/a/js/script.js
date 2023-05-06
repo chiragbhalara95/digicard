@@ -10,6 +10,11 @@ window.onclick = function (event) {
     }
 };
 
+$("#imageModal .close").click(function(event) {
+    /* Act on the event */
+    $("#imageModal").css("display", "none")
+});
+
 // set Country code
 const input = document.querySelector('#whatsapp-input');
 const iti = window.intlTelInput(input, {

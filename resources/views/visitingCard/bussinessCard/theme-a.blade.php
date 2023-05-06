@@ -65,10 +65,8 @@
     <link rel="alternate" hreflang="en-GB" href="{{url('vc')}}/{{$userObj->slug}}">
 
 <style type="text/css">
-    .purchase-form__renewal-price--strikethrough {
-        text-decoration: line-through;
-        color: red;
-    }
+
+
 </style>
 
         <style type="text/css" data-fbcssmodules="css:fb.css.base css:fb.css.dialog css:fb.css.iframewidget css:fb.css.customer_chat_plugin_iframe">
@@ -671,22 +669,26 @@
           <div class="views-label"><i class="fas fa-eye" aria-hidden="true"></i> Views: <b>{{$userObj->no_visit}}</b>
           </div>
           @endif
-          <!-- User Profile Pic -->
-          <div class="profile-pic">
+
+          <div class="card_content">
             <img src="{{url('public')}}/{{$companyInfoData->company_logo}}" class="profile-pic-img">
+
           </div>
-          <!-- User Company Name -->
-          <h1 class="firmname">
-            <b>{!! $companyInfoData->company_name !!}</b>
-          </h1>
-          <div class="divider"></div>
-          <br>
-          <!-- User First Name and Last Name -->
-          <h1 class="name"> {!! $userObj->name !!}
-            <br>
-            <span class="designation">{!! $companyInfoData->company_profession !!} </span>
-          </h1>
-          <!-- Cover Photo, Photo, Name and Profession section completed -->
+
+        <div class="card_content2">
+          
+            @if(!empty($companyInfoData->company_name))
+            <h2>{!! $companyInfoData->company_name !!}</h2>
+            <p>{!! $userObj->name !!}</p>
+            <p>{!! $companyInfoData->company_profession !!} </p>
+
+            @else
+            <h2>{!! $userObj->name !!}</h2>
+            <p>{!! $companyInfoData->company_profession !!} </p>
+
+            @endif
+        </div>
+
         </div>
         <div>
           <!-- FRONT CONTACT ACTIONS START-->
@@ -770,45 +772,23 @@
             </tbody>
           </table>
           <div class="p-30"></div>
-    <?php
-      $countryData = file_get_contents(url('public/country-tel-code.json'));
-      $countryData = json_decode($countryData, true);
-    ?>
-<div class="form-group">
+            <div class="dis_flex" id="share_on_whatsapp">
+                <div class="share_wtsp">
+        <form action="https://api.whatsapp.com/send" id="wtsp_form" target="_blank">
+            <input type="text" name="phone" placeholder="WhatsApp Number with Country code" value="{{$userConfigObj->defaultCountry}}">
+            <input type="hidden" name="text" value="{{url('vc')}}/{{$userObj->slug}}">
+            <div class="wtsp_share_btn" onclick="subForm()"><i class="fa fa-whatsapp"></i> Share On WhatsApp</div></form>                   
+                    <script>
+                        $(document).ready(function(){
+                            $('.wtsp_share_btn').on('click',function(){
+                                $('#wtsp_form').submit();
+                            })
+                            
+                        })
+                    </script>
+                </div>
+            </div>
 
-<div class="input-group input-group-lg col-md-12">
-  <div class="input-group-prepend  col-md-12 row">
-  <div class="col-md-4">
-
-      <select class="form-control" id="country_code" name="country_code" >
-          <option value="" class="">Select Country Code</option>
-          @if (!empty($countryData))
-              @foreach($countryData AS $countryDetail)
-              <option class="" value="{{$countryDetail['dial_code']}}" 
-              @if($countryDetail['dial_code'] == $userConfigObj->defaultCountry) selected @endif
-                placeholder = "{{$countryDetail['name']}}">
-                  {{$countryDetail['name']}} ({{$countryDetail['dial_code']}})
-              </option>
-              @endforeach
-          @endif
-      </select>
-    </div>
-    <div class="col-md-8">
-      <input type="tel" class="form-control" name="company_mobile" id="company_mobile" placeholder="Enter whatsapp number" value="" pattern="[789][0-9]{9}" title="Please enter valid phone number">
-    </div>
-    <span id="spnPhoneStatus"></span>
-
-
-    </div>
-                    <div class="row" style="margin-top:10px">
-                      <div class="col-md-12">
-                              <a class="whatsapp-button" target="_blank" href="javascript:;" onclick="handleWhatsappShare(this)">
-                                <i class="fab fa-whatsapp" aria-hidden="true"></i>Share on Whatsapp 
-                              </a>
-                            </div>
-    </div>
-
-                  </div>
         <div class="p-30">
         <div class="col-md-12 text-center btn btn-primary">
                         <a href="{{url('saveViewCard')}}/{{$userObj->slug}}" download="contact.vcf">
@@ -986,43 +966,27 @@
 
         <br/>
 
-        <div class="images-container row">
+        <div class="gallery_section">
           @foreach($galleryData as $galleryDetail)
-          <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter {{$galleryDetail->category_name}}">
+        <div class="order_box filter {{$galleryDetail->category_name}}">
+          <img onclick="openImageModal(this)" alt="{{$galleryDetail->title}}" src="{{URL::asset('public/upload/product/'.$galleryDetail->head_image)}}" class="profile-pic-img">
             <h5 class="text text-center" style="text-align:center;">{{$galleryDetail->title}}</h5>
 
-              <img onclick="openImageModal(this)" alt="Demo Company" src="{{URL::asset('public/upload/product/'.$galleryDetail->head_image)}}" style="width:100%">
-                @if ($galleryDetail->special_price > 0 && $galleryDetail->mrp_price > $galleryDetail->special_price)
-                    <span class="purchase-form__price purchase-form__price--before-after-price t-heading -size-xs h-pull-right">
-                            <span class="js-renewal__price t-currency purchase-form__renewal-price purchase-form__renewal-price--strikethrough">₹{{$galleryDetail->mrp_price}}</span>
+            <p>
+            @if ($galleryDetail->special_price > 0 && $galleryDetail->mrp_price > $galleryDetail->special_price)
+          <del>₹{{$galleryDetail->special_price}} <i class="fa fa-rupee"></i></del>
+          @endif
 
-                          <b class="t-currency">
-                            <span class="js-support__price">₹{{$galleryDetail->special_price}}</span>
-                          </b>
-                        </span>
-                @elseif ($galleryDetail->mrp_price > 0)
-                    <span class="purchase-form__price purchase-form__price--before-after-price t-heading -size-xs h-pull-right">
-
-                          <b class="t-currency">
-                            <span class="js-support__price">₹{{$galleryDetail->mrp_price}}</span>
-                          </b>
-                        </span>
-
-                @endif
-
-                @if(!empty($galleryDetail->links))
-                  <a href="{{$galleryDetail->links}}" target="_blank" class="btn btn-sm btn-warning"><i class="fa fa-link"></i></a> 
-                @endif
-                @if(!empty($galleryDetail->doc_url))
-                  <a href="{{url('public/upload/product-doc')}}/{{$galleryDetail->doc_url}}" target="_blank" class="btn btn-sm  btn-primary" download><i class="fa fa-download"></i></a> 
-                @endif
-                <a class="whatsapp-button" href='https://api.whatsapp.com/send?phone={{str_replace('+','',$companyInfoData->country_code)}}{{$companyInfoData->company_mobile}}&text=Enquery for product: {{urlencode($galleryDetail->title)}}' target='_blank'>
-                      Enquiry Now
-                </a>
-
-            </div>
+          @if ($galleryDetail->mrp_price > 0)
+          <h4>₹{{$galleryDetail->mrp_price}} <i class="fa fa-rupee"></i></h4>
+          @endif
+          </p>
+          <a href='https://api.whatsapp.com/send?phone={{str_replace('+','',$companyInfoData->country_code)}}{{$companyInfoData->company_mobile}}&text=Enquery for product: {{urlencode($galleryDetail->title)}}' target='_blank'><div class="btn_buy">Inquire Now</div></a>
+        </div>
           @endforeach
-          </div>
+        </div>
+
+
     </div>
     @endif
  
@@ -1057,6 +1021,19 @@
             </form>
     </div>
     @endif
+
+<!-- The image Modal Popup-->
+
+<div id="imageModal" class="modal">  
+<span class="close">&times;</span>
+
+ <img class="modal-content fadeIn" id="img01" alt="">
+
+  <div id="caption"></div>
+
+</div>
+
+<!-- The image Modal Popup END-->
 
 
     <input type="hidden" id="send_enquiry_url" value="{{route('sendEnquiry')}}">
