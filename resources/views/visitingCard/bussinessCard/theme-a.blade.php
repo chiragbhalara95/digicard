@@ -677,12 +677,30 @@
 
         <div class="card_content2">
           
+
             @if(!empty($companyInfoData->company_name))
             <h2>{!! $companyInfoData->company_name !!}</h2>
+
+          <div class="profilepic">
+            @if(!empty($userObj->profile_pic))
+              <img src="{{url('public')}}/{{$userObj->profile_pic}}" class="img-responsive" alt="">
+            @else
+              <img src="{{url('public')}}/upload/user_profile.jpg" class="img-responsive" alt="">
+            @endif
+            </div>
+
             <p>{!! $userObj->name !!}</p>
             <p>{!! $companyInfoData->company_profession !!} </p>
 
             @else
+          <div class="profilepic">
+            @if(!empty($userObj->profile_pic))
+              <img src="{{url('public')}}/{{$userObj->profile_pic}}" class="img-responsive" alt="">
+            @else
+              <img src="{{url('public')}}/upload/user_profile.jpg" class="img-responsive" alt="">
+            @endif
+            </div>
+
             <h2>{!! $userObj->name !!}</h2>
             <p>{!! $companyInfoData->company_profession !!} </p>
 
@@ -983,6 +1001,8 @@
           </p>
           <a href='https://api.whatsapp.com/send?phone={{str_replace('+','',$companyInfoData->country_code)}}{{$companyInfoData->company_mobile}}&text=Enquery for product: {{urlencode($galleryDetail->title)}}' target='_blank'><div class="btn_buy">Inquire Now</div></a>
         </div>
+
+
           @endforeach
         </div>
 

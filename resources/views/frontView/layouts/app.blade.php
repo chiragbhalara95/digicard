@@ -2,6 +2,8 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
    <head>
       <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, user-scalable=no">
+
       <meta content="width=device-width, initial-scale=1.0" name="viewport">
       <title>Online Digital Business Cards</title>
       <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -12,11 +14,12 @@
 
       <link href="{{ asset('public/frontView/assets/img/logo.png') }}" rel="icon" alt="logo">
       <link href="{{ asset('public/frontView/assets/img/apple-touch-icon.png') }}" rel="apple-touch-icon" alt="icon">
+
       <!-- Google Fonts -->
       <!-- <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Montserrat:300,400,500,700" rel="stylesheet"> -->
       <!-- Vendor CSS Files -->
       <link href="{{ asset('public/frontView/assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
-      <!-- <link href="{{ asset('public/frontView/assets/vendor/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet"> -->
+      <link href="{{ asset('public/frontView/assets/vendor/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
       <!-- <link href="{{ asset('public/frontView/assets/vendor/ionicons/css/ionicons.min.css') }}" rel="stylesheet"> -->
       <!-- <link href="{{ asset('public/frontView/assets/vendor/owl.carousel/assets/owl.carousel.min.css') }}" rel="stylesheet"> -->
       <!-- <link href="{{ asset('public/frontView/assets/vendor/venobox/venobox.css') }}" rel="stylesheet"> -->
@@ -39,13 +42,23 @@
    <body >
       <!-- ======= Header ======= -->
       <header id="header" class="fixed-top">
+
          <div class="container">
             <div class="logo float-left">
                <!-- Uncomment below if you prefer to use an text logo -->
                <!-- <h1><a href="index.html">NewBiz</a></h1> -->
                <a href="{{url('/')}}"><img src="{{ asset('public/frontView/assets/img/logo.png') }}" alt="logo" class="img-fluid"></a>
             </div>
+
+<!--             <div class="float-right d-sm-block">
+               <i class="fa fa-list"></i>
+            </div>
+ -->
+
+
             <nav class="main-nav float-right d-none d-lg-block">
+
+
                <ul>
                   <li><a href="#">Home</a></li>
                   <li><a href="#about">About Us</a></li>
