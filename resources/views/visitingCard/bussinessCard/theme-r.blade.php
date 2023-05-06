@@ -56,11 +56,16 @@
           line-height: 24px;
         }
 .personface {
-    width: 92px;
+    width: 100px;
     margin: 10px;
     border: 1px solid #e5e5e5;
-    height: 92px; border-radius: 50%;
-    overflow: hidden;}
+    height: 100px;
+    border-radius: 50%;
+    overflow: hidden;
+    text-align: center;
+    align-items: center;
+    padding-right: 0%;
+}
 .profile{display:flex; justify-content: center;
     align-items: center;}
 .img-responsive{max-width:100%;height:auto;width:auto;}
