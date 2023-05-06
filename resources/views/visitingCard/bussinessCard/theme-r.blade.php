@@ -56,10 +56,10 @@
           line-height: 24px;
         }
 .personface {
-    width: 100px;
+    width: 90px;
     margin: 10px;
     border: 1px solid #e5e5e5;
-    height: 100px;
+    height: 91px;
     border-radius: 50%;
     overflow: hidden;
     text-align: center;
@@ -442,7 +442,7 @@
                 <td>{{$paymentMasterDetail->account_no}} </td>
                 </tr>
                 <tr colspan="3">
-                    <td>
+                    <td colspan="3">
                         @if(!empty($paymentMasterDetail->qr_img))
                             <img src="{{url('public/upload/payment/')}}/{{$paymentMasterDetail->qr_img}}" class="qr-image">
                         @endif
