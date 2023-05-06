@@ -271,13 +271,16 @@ color:white}
 
 #about_us {}
 #about_us h3{}
-#about_us p{      white-space: pre-line;
+#about_us p{
+  white-space: pre-line;
     font-size: 12px;
     font-weight: 500;
     line-height: 1.5;
     background: white;
     padding: 2px;
-    margin: 0;}
+    margin: 0;
+    color: #2e2c41;
+}
 
 /*payment */
 
@@ -420,4 +423,7 @@ color:white}
     border-color: linear-gradient(45deg, black 80%, #fed517 65%) !important;
     background-color: linear-gradient(45deg, black 80%, #fed517 65%) !important;
     color: #FFF !important
+}
+#about_us {
+    color: #000;
 }

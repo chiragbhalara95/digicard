@@ -861,8 +861,9 @@
       <div class="section-container">
         <h2 class="section-header">Scan QR Code for share your digital cards</h2>
           <div class="full-divider"></div>
-        <div class="text text-center">
-            {!! QrCode::size(250)->generate($vistingUrl) !!}
+        <div class="visible-print text-center">
+            {!! QrCode::size(350)->margin(5)->generate($vistingUrl) !!}
+        {{$vistingUrl}}
         </div>
       </div>
 

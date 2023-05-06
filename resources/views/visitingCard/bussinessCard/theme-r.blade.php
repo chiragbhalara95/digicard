@@ -375,45 +375,45 @@
 
     <div class="card2" id="payment">
         <h3>Payment Info</h3>
-        <table class="about-tbl table table-responsive">
+        <table class="about-tbl table table-responsive table-boardered">
         <tbody>
 
         @foreach($paymentMasterData as $paymentMasterDetail)
         @if ($paymentMasterDetail->type == 'bank')
         <tr>
-          <td align="center" colspan="2"><h3>Bank Account Details:</h3></td>
+          <td align="center" colspan="3"><h3>Bank Account Details:</h3></td>
         </tr>
         <tr>
-          <td colspan="2">
+          <td colspan="3">
           <table class="about-tbl table table-responsive table-boardered">
             <tbody>
               <tr>
-                <td class="td-label">Bank Name</td>
+                <td width="45%">Bank Name</td>
                 <td >: </td>
                 <td > {{$paymentMasterDetail->bank_name}} </td>
               </tr>
               <tr>
-                <td class="td-label">Account Holder Name</td>
+                <td width="45%">Account Holder Name</td>
                 <td>: </td>
                 <td> {{$paymentMasterDetail->account_holder_name}} </td>
               </tr>
               <tr>
-                <td class="td-label">Account Number</td>
+                <td width="45%">Account Number</td>
                 <td >: </td>
                 <td > {{$paymentMasterDetail->account_no}} </td>
               </tr>
               <tr>
-                <td class="td-label">Account Type</td>
+                <td width="45%">Account Type</td>
                 <td>: </td>
                 <td> {{ucwords($paymentMasterDetail->account_type)}} Account </td>
               </tr>
               <tr>
-                <td class="td-label">IFSC code</td>
+                <td class="td-label" width="45%">IFSC code</td>
                 <td>: </td>
                 <td> {{$paymentMasterDetail->ifsc_code}} </td>
               </tr>
               <tr>
-                <td width="50%" class="td-label">Branch Name</td>
+                <td width="45%" class="td-label">Branch Name</td>
                 <td >: </td>
                 <td > {{$paymentMasterDetail->branch_name}} </td>
               </tr>
@@ -424,15 +424,19 @@
         </tr>
         @else
         <tr>
-        <td colspan="2">
+        <td colspan="3">
             <table class="about-tbl">
             <tbody>
+            <tr>
+              <td align="center" colspan="3"><h3>Upi Details:</h3></td>
+            </tr>
+
                 <tr>
-                <td width="50%"><b>{{ucwords($paymentMasterDetail->type)}} Number</b></td>
+                <td width="45%"><b>{{ucwords($paymentMasterDetail->type)}} Number</b></td>
                 <td>: </td>
                 <td>{{$paymentMasterDetail->account_no}} </td>
                 </tr>
-                <tr>
+                <tr colspan="3">
                     <td>
                         @if(!empty($paymentMasterDetail->qr_img))
                             <img src="{{url('public/upload/payment/')}}/{{$paymentMasterDetail->qr_img}}" class="qr-image">

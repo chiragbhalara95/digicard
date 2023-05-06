@@ -462,7 +462,7 @@ function googleTranslateElementInit() {
 <!--------------about us --------------------------->   
     
     <div class="card2" id="about_us">
-        <h3>About Us</h3>
+        <h3>{{$userConfigObj->aboutLabel}}</h3>
         <div style="text-align: justify;">{!!$companyInfoData->company_info!!}</div>
 		@if(!empty($companyInfoData->broucher_file))
 		<center>
@@ -964,7 +964,7 @@ Showing result:
             
         <div class="menu_container" onclick="closeMenu()">
             <div class="menu_item" onclick="location.href='#home'"><i class="fa fa-home"></i> Home</div>
-            <div class="menu_item" onclick="location.href='#about_us'"><i class="fa fa-briefcase"></i>About Us</div>
+            <div class="menu_item" onclick="location.href='#about_us'"><i class="fa fa-briefcase"></i>{{$userConfigObj->aboutLabel}}</div>
             <!-- <div class="menu_item" onclick="location.href='#product_services'"><i class="fa fa-ticket"></i>Product & Services</div> -->
             <!-- <div class="menu_item" onclick="location.href='#shop_online'"><i class="fa fa-archive"></i>Shop</div> -->
             @if($galleryData->count() > 0)
