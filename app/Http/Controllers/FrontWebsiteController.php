@@ -286,4 +286,15 @@ class FrontWebsiteController extends BasicController
         return $this->responseSuccess(['redirect' => $url], $successRes);
     }
 
+    public function downloadQrCode(Request $request, $slug)
+    {
+            $vistingUrl = url('vc').'/'.$slug;
+            $image = \QrCode::format('png')
+                             ->size(300)
+                             ->errorCorrection('H')
+                             ->generate($vistingUrl);
+            return response($image)->header('Content-type','image/png');
+
+    }
+
 }

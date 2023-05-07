@@ -53,6 +53,7 @@ Route::namespace('App\Http\Controllers')->group(function() {
     Route::get('/vc/{slug}', [App\Http\Controllers\FrontWebsiteController::class, 'userVisitCard'])->name('userVisitCard');
     Route::any('saveViewCard/{visitor_id}',[App\Http\Controllers\FrontWebsiteController::class, 'SavePrevCard']);
     Route::post('/companies/sendEnquiry', [App\Http\Controllers\FrontWebsiteController::class, 'sendEnquiry'])->name('sendEnquiry');
+    Route::any('downloadQrCode/{visitor_id}',[App\Http\Controllers\FrontWebsiteController::class, 'downloadQrCode']);
 
 });
 

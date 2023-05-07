@@ -71,9 +71,11 @@
 
     <!-- Card Holder Profile Pic -->
 
+    @if(!empty($companyInfoData->company_logo))
     <div class="companylogo">
       <img src="{{url('public')}}/{{$companyInfoData->company_logo}}" class="img-responsive" alt="">
     </div>
+    @endif
 
     <div class="companyname bottomborder text-white">{!! $companyInfoData->company_name !!}</div>
 
@@ -414,6 +416,19 @@
 
 </div>
 @endif
+
+<div class="page-container" id="youtube_video-section">
+
+    <h2 class="section-heading">VIDEOS</h2>
+
+
+    <div class="order_box">
+      <iframe src="https://www.youtube.com/embed/3XD1oMKg-N0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+    </div>
+    <div class="order_box">
+    <iframe src="https://www.youtube.com/embed/HZNk7hGV8SA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>    
+    </div>
+  </div>
 
 @if($userConfigObj->isShowEnquiry == '1')
 
