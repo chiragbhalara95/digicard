@@ -288,13 +288,14 @@ class FrontWebsiteController extends BasicController
 
     public function downloadQrCode(Request $request, $slug)
     {
-            $vistingUrl = url('vc').'/'.$slug;
-            $image = \QrCode::format('png')
-                             ->size(300)
-                             ->errorCorrection('H')
-                             ->generate($vistingUrl);
+        $vistingUrl = url('vc').'/'.$slug;
+        $image = \QrCode::format('png')
+                     ->size(500)
+                     ->errorCorrection('H')
+                     ->margin(10)
+                     ->generate($vistingUrl);
         header('Content-Description: Download vCard QR Code');
-        header('Content-Type: text/vcard');
+        header('Content-Type: image/png');
         header('Content-Disposition: attachment; filename='.$slug.'.png');
         header('Content-Transfer-Encoding: binary');
         header('Expires: 0');
@@ -303,9 +304,7 @@ class FrontWebsiteController extends BasicController
         ob_clean();
         flush();
 
-        echo $image;
-
-
+        echo $image;exit;
     }
 
 
