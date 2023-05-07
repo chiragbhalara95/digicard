@@ -388,7 +388,7 @@
 
     <div class="image-wrapper gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter {{$galleryDetail->category_name}}">
     <h3 class="text text-center" style="text-align:center;">{{$galleryDetail->title}}</h3>
-    <img onclick="openImageModal(this)" alt="" src="{{URL::asset('public/upload/product/'.$galleryDetail->head_image)}}" style="width:100%"> 
+    <img onclick="openImageModal(this)" alt="{{$galleryDetail->title}}" src="{{URL::asset('public/upload/product/'.$galleryDetail->head_image)}}" style="width:100%" description="{{$galleryDetail->description}}"> 
       @if ($galleryDetail->special_price > 0 && $galleryDetail->mrp_price > $galleryDetail->special_price)
                     <span class="purchase-form__price purchase-form__price--before-after-price t-heading -size-xs h-pull-right">
                             <span class="js-renewal__price t-currency purchase-form__renewal-price purchase-form__renewal-price--strikethrough">₹{{$galleryDetail->mrp_price}}</span>
@@ -418,7 +418,7 @@
 
 </div>
 @endif
-
+<!--
 <div class="page-container" id="youtube_video-section">
 
     <h2 class="section-heading">VIDEOS</h2>
@@ -431,6 +431,7 @@
     <iframe src="https://www.youtube.com/embed/HZNk7hGV8SA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>    
     </div>
   </div>
+-->
 
 @if($userConfigObj->isShowEnquiry == '1')
 
@@ -534,6 +535,8 @@
  <img class="modal-content fadeIn" id="img01" alt="">
 
   <div id="caption"></div>
+  <div id="gallery_description"></div>
+
 
 </div>
 

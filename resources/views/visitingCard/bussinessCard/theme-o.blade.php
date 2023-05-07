@@ -554,7 +554,7 @@ function addToCart(cid,pid){
 				<div class="containerimg">
 				@foreach($galleryData as $galleryDetail)
 					<div class="mySlides" >
-					<img alt="{{$galleryDetail->title}}" src="{{URL::asset('public/upload/product/'.$galleryDetail->head_image)}}" style="width:100%">
+					<img alt="{{$galleryDetail->title}}" src="{{URL::asset('public/upload/product/'.$galleryDetail->head_image)}}" style="width:100%" description="{{$galleryDetail->description}}">
                     <h4 class="text text-center" style="text-align:center;">{{$galleryDetail->title}}</h4>
                     <div class="dis_flex">
                         <a class="addphonebook" href='https://api.whatsapp.com/send?phone={{str_replace('+','',$companyInfoData->country_code)}}{{$companyInfoData->company_mobile}}&text=Enquery for product: {{urlencode($galleryDetail->title)}}' target='_blank'>
@@ -897,6 +897,15 @@ Showing result:
   </form>
 </div>
 @endif
+
+<!-- The image Modal Popup-->
+<div id="imageModal" class="modal" style="display:none"> 
+
+<span class="close" id="imageModalClose">×</span>
+<img class="modal-content fadeIn" id="img01" alt="">
+  <div id="caption"></div>
+<div id="gallery_description"></div>
+</div>
 
     
     <div class="menu_bottom">

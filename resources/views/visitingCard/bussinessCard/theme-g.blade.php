@@ -81,7 +81,7 @@ setTimeout(closeLoader,3000);
 </script>
 
 </head>
-<body oncontextmenu="return false">
+<body>
         <div class="card_loader_back" style="display: block;">
             <div class="loader2">
             <div class="loader_box">
@@ -331,7 +331,9 @@ $(document).ready(function(){
     <div class="image-wrapper gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter {{$galleryDetail->category_name}}">
             <h4 class="text text-center" style="text-align:center;">{{$galleryDetail->title}}</h4>
 
-            <img onclick="openImageModal(this)" alt="Product Image" src="{{URL::asset('public/upload/product/'.$galleryDetail->head_image)}}" style="width:100%">
+            <img onclick="openImageModal(this)" alt="{{$galleryDetail->title}}" src="{{URL::asset('public/upload/product/'.$galleryDetail->head_image)}}" style="width:100%" {{$galleryDetail->title}}
+description="{{$galleryDetail->description}}"
+>
 
               @if ($galleryDetail->special_price > 0 && $galleryDetail->mrp_price > $galleryDetail->special_price)
                     <span class="purchase-form__price purchase-form__price--before-after-price t-heading -size-xs h-pull-right">
@@ -618,6 +620,17 @@ $(':radio').change(function() {
     <br>
         
         
+
+<!-- The image Modal Popup-->
+<div id="imageModal" class="modal" style="display:none"> 
+
+<span class="close" id="imageModalClose">×</span>
+<img class="modal-content fadeIn" id="img01" alt="">
+  <div id="caption"></div>
+<div id="gallery_description"></div>
+</div>
+
+
 <div class="create_card_btn">
     <a class="font-white" href="{{url('register?packageId=3')}}" target="_blank">Create Your Card <b> </b></a><b>
     <a class="font-white" href="{{url('/')}}" target="_blank"> © {{date('Y')}}</a><br></b></div><b>
@@ -673,7 +686,10 @@ $(':radio').change(function() {
     <input type="hidden" id="send_enquiry_url" value="{{route('sendEnquiry')}}">
 
 
-</b></body>
+</b>
+
+
+</body>
 
 <script src="{{asset('public/visitingCard/bussinessCard/common/js/jquery-3.6.4.min.js')}}"></script>
 <script src="{{asset('public/visitingCard/bussinessCard/a/js/intlTelInput.min.js')}}"></script>
@@ -713,9 +729,5 @@ $(document).ready(function(){
     });
   })
 
-$(document).on("click", "#imageModalClose", function(e) {
-  e.preventDefault();
-  $("#imageModal").hide()
-})
 </script>
 </html>

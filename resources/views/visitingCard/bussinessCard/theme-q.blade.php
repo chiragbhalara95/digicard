@@ -299,7 +299,8 @@
                           <div class="card service-card px-3 py-0 h-100 border-0">
 
                              <div class="service-image d-flex justify-content-center align-items-center rounded-circle mx-auto">
-                                <img alt="Product Image" src="{{URL::asset('public/upload/product/'.$galleryDetail->head_image)}}" class="rounded-circle" >
+                                <img alt="{{$galleryDetail->title}}" src="{{URL::asset('public/upload/product/'.$galleryDetail->head_image)}}" class="rounded-circle" description="{{$galleryDetail->description}}"
+>
                              </div>
 
                              <div class="service-details mt-3">
@@ -823,6 +824,15 @@
               </div>
            </div>
         </div>
+
+<!-- The image Modal Popup-->
+<div id="imageModal" class="modal" style="display:none"> 
+
+<span class="close" id="imageModalClose">×</span>
+<img class="modal-content fadeIn" id="img01" alt="">
+  <div id="caption"></div>
+<div id="gallery_description"></div>
+</div>
 
    </body>
 

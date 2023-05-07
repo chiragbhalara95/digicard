@@ -331,7 +331,7 @@
         @foreach($galleryData as $galleryDetail)
         <div class="product_s filter {{$galleryDetail->category_name}}">
             <p>{{$galleryDetail->title}}</p>
-            <img alt="Product Image" src="{{URL::asset('public/upload/product/'.$galleryDetail->head_image)}}" class="rounded-circle" >
+            <img alt="{{$galleryDetail->title}}" src="{{URL::asset('public/upload/product/'.$galleryDetail->head_image)}}" class="rounded-circle" description="{{$galleryDetail->description}}">
             <br/>
             @if ($galleryDetail->special_price > 0 && $galleryDetail->mrp_price > $galleryDetail->special_price)
                   <span class="purchase-form__price purchase-form__price--before-after-price t-heading -size-xs h-pull-right">
@@ -538,7 +538,18 @@
             <div class="menu_item" onclick="location.href='#enquery'"><i class="fa fa-comment"></i>Enquiry</div>
         </div>
     </div>
-</div></body>
+</div>
+
+<!-- The image Modal Popup-->
+<div id="imageModal" class="modal" style="display:none"> 
+
+<span class="close" id="imageModalClose">×</span>
+<img class="modal-content fadeIn" id="img01" alt="">
+  <div id="caption"></div>
+<div id="gallery_description"></div>
+</div>
+
+</body>
 
 <script src="{{asset('public/visitingCard/bussinessCard/common/js/jquery-3.6.4.min.js')}}"></script>
 <script src="{{asset('public/visitingCard/bussinessCard/a/js/intlTelInput.min.js')}}"></script>

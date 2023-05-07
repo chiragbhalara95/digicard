@@ -43,7 +43,8 @@ const captionText = document.getElementById('caption');
 function openImageModal(e) {
     imageModal.style.display = 'block';
     document.getElementById('img01').src = e.src;
-    //captionText.innerHTML = e.alt;
+    document.getElementById('caption').innerHTML = e.alt;
+    document.getElementById('gallery_description').innerHTML =e.getAttribute('description')
 }
 
 // Get the <span> element that closes the modal

@@ -326,7 +326,7 @@ $(document).ready(function(){
     <div class="image-wrapper gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter {{$galleryDetail->category_name}}">
             <h4 class="text text-center" style="text-align:center;">{{$galleryDetail->title}}</h4>
 
-            <img onclick="openImageModal(this)" alt="Product Image" src="{{URL::asset('public/upload/product/'.$galleryDetail->head_image)}}" style="width:100%">
+            <img onclick="openImageModal(this)" alt="{{$galleryDetail->title}}" src="{{URL::asset('public/upload/product/'.$galleryDetail->head_image)}}" style="width:100%" description="{{$galleryDetail->description}}">
 
               @if ($galleryDetail->special_price > 0 && $galleryDetail->mrp_price > $galleryDetail->special_price)
                     <span class="purchase-form__price purchase-form__price--before-after-price t-heading -size-xs h-pull-right">
@@ -666,6 +666,16 @@ $(':radio').change(function() {
         </div>
     </div>
     <input type="hidden" id="send_enquiry_url" value="{{route('sendEnquiry')}}">
+
+
+<!-- The image Modal Popup-->
+<div id="imageModal" class="modal" style="display:none"> 
+
+<span class="close" id="imageModalClose">×</span>
+<img class="modal-content fadeIn" id="img01" alt="">
+  <div id="caption"></div>
+<div id="gallery_description"></div>
+</div>
 
 
 </b></body>
