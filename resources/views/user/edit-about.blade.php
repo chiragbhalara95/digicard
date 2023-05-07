@@ -91,7 +91,7 @@
 
                         <div class="form-group">
                           <label for="exampleInputEmail1">Seo Keyword</label>
-                          <input type="text" name="seo_keyword" class="form-control" id="seo_keyword" placeholder="Enter Seo" value="{{$companyData->seo_keyword ?? ''}}">
+                          <textarea row="3" class="form-control" name="seo_description" placeholder="Seo Description">{{$companyData->seo_keyword ?? ''}}</textarea>
                         </div>
 
                         <div class="form-group">

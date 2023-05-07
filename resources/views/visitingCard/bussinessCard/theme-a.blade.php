@@ -16,6 +16,7 @@
     <link href="{{asset('public/visitingCard/bussinessCard/a/css/jquery-confirm.css')}}" rel="stylesheet">
     <link href="{{asset('public/visitingCard/bussinessCard/a/css/model-css.css')}}" rel="stylesheet">
     <link href="{{asset('public/visitingCard/bussinessCard/a/css/custom.css')}}" rel="stylesheet">
+    <link href="{{ asset('public/frontView/assets/vendor/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
 
 
     @if(!empty($companyInfoData->company_logo))
@@ -666,7 +667,7 @@
         <div>
           @if($userConfigObj->isShowNoOfVisit == '1')
           <div class="p-10"></div>
-          <div class="views-label"><i class="fas fa-eye" aria-hidden="true"></i> Views: <b>{{$userObj->no_visit}}</b>
+          <div class="views-label"><i class="fa fa-eye" aria-hidden="true"></i> Views: <b>{{$userObj->no_visit}}</b>
           </div>
           @endif
 
@@ -713,12 +714,12 @@
           <div class="p-10"></div>
           <div class="contact-buttons">
             <a class="contact-button" href="tel:{{$companyInfoData->country_code}}{{$companyInfoData->company_mobile}}">
-              <i class="fas fa-phone" aria-hidden="true"></i> Call </a>
+              <i class="fa fa-phone" aria-hidden="true"></i> Call </a>
             <a class="contact-button" href="sms:{{$companyInfoData->country_code}}{{$companyInfoData->company_mobile}}">
-              <i class="fas fa-sms" aria-hidden="true"></i> SMS </a>
+              <i class="fa fa-sms" aria-hidden="true"></i> SMS </a>
 
               <a class="contact-button" target="_blank" href="https://api.whatsapp.com/send?phone={{str_replace('+','',$companyInfoData->country_code)}}{{$companyInfoData->company_mobile}}&text={{urlencode($userConfigObj->whatsappMsg)}}">
-              <i class="fab fa-whatsapp" aria-hidden="true"></i> Whatsapp 
+              <i class="fa fa-whatsapp" aria-hidden="true"></i> Whatsapp 
             </a>
 
         </div>
@@ -728,7 +729,7 @@
               <tr>
                 <td>
                   <a target="_blank" href="https://maps.google.com?q={{$companyInfoData->latitude}},{{$companyInfoData->longitude}}&z=12&amp;um=1&amp;ie=UTF-8&amp;sa=X&amp;ved=2ahUKEwiWyNX76N3qAhWrzTgGHQuCBicQ_AUoAXoECCMQAw">
-                    <i class="fas fa-map-marker-alt contact-action-container-icon" aria-hidden="true"></i>
+                    <i class="fa fa-map-marker contact-action-container-icon" aria-hidden="true"></i>
                   </a>
                 </td>
                 <td>
@@ -739,7 +740,7 @@
               <tr>
                 <td>
                   <a href="mailto:{{$userObj->email}}">
-                    <i class="fas fa-envelope contact-action-container-icon" aria-hidden="true"></i>
+                    <i class="fa fa-envelope contact-action-container-icon" aria-hidden="true"></i>
                   </a>
                 </td>
                 <td>
@@ -751,7 +752,7 @@
               <tr>
                 <td>
                   <a href="mailto:{{$userObj->alternative_email}}">
-                    <i class="fas fa-envelope contact-action-container-icon" aria-hidden="true"></i>
+                    <i class="fa fa-envelope contact-action-container-icon" aria-hidden="true"></i>
                   </a>
                 </td>
                 <td>
@@ -764,7 +765,7 @@
               <tr>
                 <td>
                   <a target="_blank" href="{{$companyInfoData->company_website}}">
-                    <i class="fas fa-globe contact-action-container-icon" aria-hidden="true"></i>
+                    <i class="fa fa-globe contact-action-container-icon" aria-hidden="true"></i>
                   </a>
                 </td>
                 <td>
@@ -775,7 +776,7 @@
               <tr>
                 <td>
                   <a target="_blank" href="tel:{{$companyInfoData->country_code}}{{$companyInfoData->company_mobile}}   ">
-                    <i class="fas fa-phone contact-action-container-icon" aria-hidden="true"></i>
+                    <i class="fa fa-phone contact-action-container-icon" aria-hidden="true"></i>
                   </a>
                 </td>
                 <td>
@@ -823,28 +824,28 @@
         @foreach($socialMediaData as $socialMediaDetail)
           @if ($socialMediaDetail->type == 'fb')
           <li class="share-button">
-          <a href="{{$socialMediaDetail->url}}" target="_blank"><i class="share-button-facebook fab fa-facebook" aria-hidden="true"></i></a>
+          <a href="{{$socialMediaDetail->url}}" target="_blank"><i class="share-button-facebook fa fa-facebook" aria-hidden="true"></i></a>
                       </li>
                       @elseif($socialMediaDetail->type == 'in')
                       <li class="share-button">
-                      <a href="{{$socialMediaDetail->url}}" target="_blank"><i class="share-button-instagram fab fa-instagram" aria-hidden="true"></i></a>
+                      <a href="{{$socialMediaDetail->url}}" target="_blank"><i class="share-button-instagram fa fa-instagram" aria-hidden="true"></i></a>
                 </li>
                 @elseif($socialMediaDetail->type == 'tw')
                 <li class="share-button">
-                <a href="{{$socialMediaDetail->url}}" target="_blank"><i class="share-button-twitter fab fa-twitter" aria-hidden="true"></i></a>
+                <a href="{{$socialMediaDetail->url}}" target="_blank"><i class="share-button-twitter fa fa-twitter" aria-hidden="true"></i></a>
                         </li>
                         @elseif($socialMediaDetail->type == 'li')
                         <li class="share-button">
-                        <a href="{{$socialMediaDetail->url}}" target="_blank"><i class="share-button-linkedin fab fa-linkedin" aria-hidden="true"></i></a>
+                        <a href="{{$socialMediaDetail->url}}" target="_blank"><i class="share-button-linkedin fa fa-linkedin" aria-hidden="true"></i></a>
                         </li>
                         @elseif($socialMediaDetail->type == 'yt')
                         <li class="share-button">
-                        <a href="{{$socialMediaDetail->url}}" target="_blank"><i class="share-button-youtube fab fa-youtube" aria-hidden="true"></i></a>
+                        <a href="{{$socialMediaDetail->url}}" target="_blank"><i class="share-button-youtube fa fa-youtube" aria-hidden="true"></i></a>
                         </li>
                         @elseif($socialMediaDetail->type == 'pi')
 
                         <li class="share-button">
-                        <a href="{{$socialMediaDetail->url}}" target="_blank"><i class="share-button-pinterest fab fa-pinterest" aria-hidden="true"></i></a>
+                        <a href="{{$socialMediaDetail->url}}" target="_blank"><i class="share-button-pinterest fa fa-pinterest" aria-hidden="true"></i></a>
                         </li>
                       @endif
                     @endforeach
@@ -875,7 +876,7 @@
       @if(!empty($companyInfoData->broucher_file))
       <div>
             <div style="clear:both">&nbsp;</div>
-                <h4>Documents</h4>
+            <h2 class="section-header">Documents</h2>
                 <a class="document-wrapper" href="{{url('public')}}/{{$companyInfoData->broucher_file}}" download="">
                 <div class="pdf-icon"><i class="fa fa-file-pdf" aria-hidden="true"></i></div>
                 <div class="pdf-number text text-dark">@if(!empty($companyInfoData->company_name)){!! $companyInfoData->company_name !!}@else{!! $userObj->name !!}@endif</div>
@@ -897,39 +898,42 @@
       @foreach($paymentMasterData as $paymentMasterDetail)
         @if ($paymentMasterDetail->type == 'bank')
         <tr>
-          <td align="center" colspan="2"><h4>Account Details:</h4></td>
+          <td align="center"><h2 class="section-header">Account Details</h2>  <div class="full-divider"></div></td>
+ 
         </tr>
         <tr>
-          <td colspan="2">
-          <table class="about-tbl">
+          <td width="100%">
+          <table class="about-tbl" width="100%">
             <tbody>
               <tr>
-                <td width="50%" bgcolor="#f5f5f5" class="td-label"><h6>Bank Name</h6></td>
+                <td width="60%" bgcolor="#f5f5f5" class="td-label"><h6>Bank Name</h6></td>
                 <td bgcolor="#f5f5f5">: </td>
                 <td bgcolor="#f5f5f5"> {{$paymentMasterDetail->bank_name}} </td>
               </tr>
               <tr>
-                <td width="50%" class="td-label"><h6>Account Holder Name</h6></td>
+                <td width="60%" class="td-label"><h6>Account Holder Name</h6></td>
                 <td>: </td>
                 <td> {{$paymentMasterDetail->account_holder_name}} </td>
               </tr>
               <tr>
-                <td width="50%" bgcolor="#f5f5f5" class="td-label"><h6>Account Number</h6></td>
+                <td width="60%" bgcolor="#f5f5f5" class="td-label">
+                  <h6>Account Number</h6>
+                </td>
                 <td bgcolor="#f5f5f5">: </td>
                 <td bgcolor="#f5f5f5"> {{$paymentMasterDetail->account_no}} </td>
               </tr>
               <tr>
-                <td width="50%" class="td-label"><h6>Account Type</h6></td>
+                <td width="60%" class="td-label"><h6>Account Type</h6></td>
                 <td>: </td>
                 <td> {{ucwords($paymentMasterDetail->account_type)}} Account </td>
               </tr>
               <tr>
-                <td width="50%" bgcolor="#f5f5f5" class="td-label"><h6>IFSC code</h6></td>
+                <td width="60%" bgcolor="#f5f5f5" class="td-label"><h6>IFSC code</h6></td>
                 <td bgcolor="#f5f5f5">: </td>
                 <td bgcolor="#f5f5f5"> {{$paymentMasterDetail->ifsc_code}} </td>
               </tr>
               <tr>
-                <td width="50%" bgcolor="#f5f5f5" class="td-label"><h6>Branch Name</h6></td>
+                <td width="60%" bgcolor="#f5f5f5" class="td-label"><h6>Branch Name</h6></td>
                 <td bgcolor="#f5f5f5">: </td>
                 <td bgcolor="#f5f5f5"> {{$paymentMasterDetail->branch_name}} </td>
               </tr>
@@ -938,13 +942,27 @@
           </table>
           </td>
         </tr>
+
         @else
         <tr>
-            <td width="50%" class="td-label"><h6>{{ucwords($paymentMasterDetail->type)}} Number:</h6></td>
-            <td> {{$paymentMasterDetail->account_no}} </td>
+          <td><h2 class="section-header">UPI Detail</h2>  <div class="full-divider"></div></td>
+        </tr>
+
+        <tr>
+            <table>
+              <tr>
+              <td width="50%">
+                <h6>{{ucwords($paymentMasterDetail->type)}} Number</h6>
+              </td>
+              <td bgcolor="#f5f5f5">: </td>
+              <td > <h6>{{$paymentMasterDetail->account_no}} </h6></td>
+
+              </tr>
+            </table>
           </tr>
+
           <tr>
-            <td>
+            <td colspan="3">
                 @if(!empty($paymentMasterDetail->qr_img))
                     <img src="{{url('public/upload/payment/')}}/{{$paymentMasterDetail->qr_img}}" class="qr-image">
                 @endif
@@ -1008,12 +1026,27 @@
 
 
     </div>
-    @endif
- 
-
-
   </div>
+
+    @endif
+
+<!-- 
+<div class="section-container container" id="youtube_video-section">
+
+    <div class="gallery col-lg-12 col-md-12 col-sm-12 col-xs-12">
+      <h2 class="section-header">Videos</h2>
     </div>
+    <div class="full-divider"></div>
+
+    <div class="order_box">
+      <iframe src="https://www.youtube.com/embed/3XD1oMKg-N0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+    </div>
+    <div class="order_box">
+    <iframe src="https://www.youtube.com/embed/HZNk7hGV8SA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>    
+    </div>
+  </div>
+
+ -->
 
     @if($userConfigObj->isShowEnquiry == '1')
     <div class="section-container" id="enquiry-section">
@@ -1069,13 +1102,13 @@
       <ul class="footer-menu">
         <li>
           <a class="footer-menu-link" href="#home-section">
-            <i class="footer-menu-icon fas fa-home" aria-hidden="true"></i>
+            <i class="footer-menu-icon fa fa-home" aria-hidden="true"></i>
             <div class="footer-menu-text">HOME</div>
           </a>
         </li>
         <li>
           <a class="footer-menu-link" href="#about-us-section">
-            <i class="footer-menu-icon fas fa-users" aria-hidden="true"></i>
+            <i class="footer-menu-icon fa fa-users" aria-hidden="true"></i>
             <div class="footer-menu-text">ABOUT US</div>
           </a>
         </li>
@@ -1090,7 +1123,7 @@
         @if($galleryData->count() > 0)
         <li>
           <a class="footer-menu-link" href="#gallery-section">
-            <i class="footer-menu-icon fas fa-images" aria-hidden="true"></i>
+            <i class="footer-menu-icon fa fa-images" aria-hidden="true"></i>
             <div class="footer-menu-text">GALLERY</div>
           </a>
         </li>
@@ -1098,14 +1131,14 @@
         @if($userConfigObj->isShowEnquiry == '1')
         <li>
             <a class="footer-menu-link" href="#enquiry-section">
-                    <i class="footer-menu-icon fas fa-comment-alt" aria-hidden="true"></i>
+                    <i class="footer-menu-icon fa fa-comment-alt" aria-hidden="true"></i>
                     <div class="footer-menu-text">ENQUIRY</div>
                 </a>
             </li>
           @endif
           <li>
             <a class="footer-menu-link" href="{{url('register?packageId=3')}}">
-                    <i class="footer-menu-icon fas fa-id-card" aria-hidden="true"></i>
+                    <i class="footer-menu-icon fa fa-id-card" aria-hidden="true"></i>
                     <div class="footer-menu-text">MAkE My CARD</div>
                 </a>
           </li>

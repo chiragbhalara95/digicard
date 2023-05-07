@@ -334,7 +334,8 @@ a:hover, a:focus {
     font-weight: 500;
     color: #4CAF50;
 }
- .order_box p{padding: 2px;
+ .order_box p{
+    padding: 2px;
     margin: 0px;
     font-size: 13px;
     text-align: center;
@@ -353,3 +354,36 @@ a:hover, a:focus {
 }
 
 
+
+.contact-action-table td{
+    padding-bottom: 0.5vw;
+}
+
+
+#youtube_video-section iframe {margin: 8px auto;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, 0px);
+    border-radius: 5px;
+    width: auto;
+    height: 188px;}
+    .btn_6 {background: #c72d31;
+    width: fit-content;
+    padding: 9px;
+    font-size: 12px;
+    margin: 0 auto;
+    border-radius: 4px;
+    color: white;
+    box-shadow: 0px 0px 10px 0px #0000} 
+
+ #youtube_video-section .order_box {
+    width: 100%;
+    display: inline-block;
+    margin: 6px auto;
+    vertical-align: text-top;
+    border-radius: 4px;
+    background: white;
+    overflow: hidden;
+    box-shadow: 0px 0px 10px 0px #00000030;
+    border: 2px solid #2196f3;
+}
