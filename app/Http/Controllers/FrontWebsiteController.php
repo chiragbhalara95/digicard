@@ -293,8 +293,20 @@ class FrontWebsiteController extends BasicController
                              ->size(300)
                              ->errorCorrection('H')
                              ->generate($vistingUrl);
-            return response($image)->header('Content-type','image/png');
+        header('Content-Description: Download vCard QR Code');
+        header('Content-Type: text/vcard');
+        header('Content-Disposition: attachment; filename='.$slug.'.png');
+        header('Content-Transfer-Encoding: binary');
+        header('Expires: 0');
+        header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
+        header('Pragma: public');
+        ob_clean();
+        flush();
+
+        echo $image;
+
 
     }
+
 
 }

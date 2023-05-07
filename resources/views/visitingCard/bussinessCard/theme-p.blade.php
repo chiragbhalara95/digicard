@@ -463,6 +463,9 @@ function googleTranslateElementInit() {
         <div class="full-divider"></div>
           <div class="text text-center" style="margin-top:1%;text-align: center;">
           {!! QrCode::size(250)->generate($vistingUrl) !!}
+                      <p>{{$vistingUrl}}</p>
+            <a class="col-md-12 text-center pdf_download text-white" href="{{url('downloadQrCode')}}/{{$userObj->slug}}" >Download QR Code &nbsp;<i class="fa fa-download"></i></a>  
+
       </div>
     </div>
 

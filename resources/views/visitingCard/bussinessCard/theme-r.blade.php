@@ -272,11 +272,14 @@
 
     </div>
 
-    <div class="card2" style="height: 350px">
+    <div class="card2 dis_flex" style="height: 450px">
       <h3>Scan QR Code for share your digital cards</h3>
         <div class="full-divider"></div>
           <div class="text text-center" style="text-align: center;">
           {!! QrCode::size(250)->generate($vistingUrl) !!}
+            <p>{{$vistingUrl}}</p>
+            <a class="col-md-12 text-center big_btns text-white" href="{{url('downloadQrCode')}}/{{$userObj->slug}}" >Download QR Code &nbsp;<i class="fa fa-download"></i></a>  
+
       </div>
     </div>
 

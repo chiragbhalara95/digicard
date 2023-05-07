@@ -238,27 +238,14 @@ $(document).ready(function(){
     
     </div>
     
-<!--     <div class="card2" style="display:block;">
-    
-    <h3>Scan QR Code to get the details</h3>
-    <img src="qr.png" id="qr_code_d">
-    
-    <p style="background: #fae3f7;
-    color: #59018f;
-    width: 86%;
-    margin: 0px auto 9px;
-    border-radius: 5px;
-    padding: 11px;
-    font-size: 12px;">Qr Code</p>
-    
-    </div>
-    
- -->    
-     <div class="card2">
+     <div class="card2 dis_flex">
       <h3 style="margin-top: 1%">Scan QR Code for share your digital cards</h3>
         <div class="full-divider"></div>
           <div class="text text-center" style="margin-top:1%;text-align: center;">
           {!! QrCode::size(250)->generate($vistingUrl) !!}
+            <p>{{$vistingUrl}}</p>
+            <a class="col-md-12 text-center big_btns text-white" href="{{url('downloadQrCode')}}/{{$userObj->slug}}" >Download QR Code &nbsp;<i class="fa fa-download"></i></a>  
+
       </div>
     </div>
 

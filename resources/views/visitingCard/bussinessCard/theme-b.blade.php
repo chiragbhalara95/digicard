@@ -252,7 +252,9 @@
         <div class="full-divider"></div>
         <div class="visible-print text-center" style="text-align: center;">
             {!! QrCode::size(350)->margin(5)->generate($vistingUrl) !!}
-          {{$vistingUrl}}
+          <p>{{$vistingUrl}}</p>
+          <a class="col-md-12 text-center whatsapp-btn text-white" href="{{url('downloadQrCode')}}/{{$userObj->slug}}" >Download QR Code&nbsp;<i class="fa fa-download"></i></a>  
+
         </div>
     </div>
 

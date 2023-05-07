@@ -357,64 +357,6 @@ function googleTranslateElementInit() {
                 
             
      -->
-    <!-- <div class="card2" >
-    
-    <h3>Scan QR Code to go to Mini Website</h3>
-    <img style="display:none" src="https://chart.googleapis.com/chart?cht=qr&chs=150x150&chl=#" id="qr_code_d">
-    
-        <div class="url_copy" style="display:none">
-        <input type="" value="#" id="myInputurl">
-        <div class="buttonCopy" onclick="copyUrlFirst()">Copy Link <i class="fa fa-copy"></i></div>
-
-            <script>
-            function copyUrlFirst() {
-              // Get the text field
-              var copyText = document.getElementById("myInputurl");
-
-              // Select the text field
-              copyText.select();
-              copyText.setSelectionRange(0, 99999); // For mobile devices
-
-              // Copy the text inside the text field
-              navigator.clipboard.writeText(copyText.value);
-              
-              // Alert the copied text
-              alert("Url Copied: ");
-            }
-            </script>
-        </div>
-    
-    
-        
-    
-            <img src="https://chart.googleapis.com/chart?cht=qr&chs=150x150&chl=#" id="qr_code_d">
-                <h2 class="qr_h2">sn global services</h2>
-                <div class="url_copy"><span class="url_copy_tag">New URL </span>
-                <input type="" value="#" id="myInputurl2"><div class="buttonCopy" onclick="copyUrlSecond()">Copy URL <i class="fa fa-copy"></i></div>
-
-                    <script>
-                    function copyUrlSecond() {
-                      // Get the text field
-                      var copyText = document.getElementById("myInputurl2");
-
-                      // Select the text field
-                      copyText.select();
-                      copyText.setSelectionRange(0, 99999); // For mobile devices
-
-                      // Copy the text inside the text field
-                      navigator.clipboard.writeText(copyText.value);
-                      
-                      // Alert the copied text
-                      alert("Url Copied: ");
-                    }
-                    </script>
-                
-                </div>
-        
-        
-    </div>
-    
-     -->
 <!--------------Ads us ---------------------------> 
 
 <!--------------Ads us ---------------------------> 
@@ -452,11 +394,14 @@ function googleTranslateElementInit() {
     
     </div>
 
-    <div class="card2">
+    <div class="card2 ">
       <h3 style="margin-top: 1%">Scan QR Code for share your digital cards</h3>
         <div class="full-divider"></div>
           <div class="text text-center" style="margin-top:1%;text-align: center;">
           {!! QrCode::size(250)->generate($vistingUrl) !!}
+            <p>{{$vistingUrl}}</p>
+            <a class="col-md-12 text-center pdf_download text-white" href="{{url('downloadQrCode')}}/{{$userObj->slug}}" >Download QR Code &nbsp;<i class="fa fa-download"></i></a>  
+
       </div>
     </div>
 
