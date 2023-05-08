@@ -387,3 +387,31 @@ a:hover, a:focus {
     box-shadow: 0px 0px 10px 0px #00000030;
     border: 2px solid #2196f3;
 }
+
+
+
+    .card_content2 {margin: 44px auto 10px;
+    z-index: 2;
+    text-align: center;
+    padding: 0px 29px;}
+    .card_content2 img{   height: 93px;
+    max-width: 296px;
+    border-radius: 6px;
+    border: 0px;
+}
+
+.personface {
+    width: 90px;
+    margin: 10px;
+    border: 1px solid #e5e5e5;
+    height: 91px;
+    border-radius: 50%;
+    overflow: hidden;
+    text-align: center;
+    align-items: center;
+    padding-right: 0%;
+}
+.profile{display:flex; justify-content: center;
+    align-items: center;}
+.img-responsive{max-width:100%;height:auto;width:auto;}
+
