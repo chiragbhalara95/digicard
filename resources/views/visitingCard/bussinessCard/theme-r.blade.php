@@ -277,7 +277,7 @@
         <div class="full-divider"></div>
           <div class="text text-center" style="text-align: center;">
           {!! QrCode::size(250)->generate($vistingUrl) !!}
-            <p>{{$vistingUrl}}</p>
+            <p class="text text-dark">{{$vistingUrl}}</p>
             <a class="col-md-12 text-center big_btns text-white" href="{{url('downloadQrCode')}}/{{$userObj->slug}}" >Download QR Code &nbsp;<i class="fa fa-download"></i></a>  
 
       </div>
@@ -335,25 +335,25 @@
             <br/>
             @if ($galleryDetail->special_price > 0 && $galleryDetail->mrp_price > $galleryDetail->special_price)
                   <span class="purchase-form__price purchase-form__price--before-after-price t-heading -size-xs h-pull-right">
-                          <span class="js-renewal__price t-currency purchase-form__renewal-price purchase-form__renewal-price--strikethrough">₹{{$galleryDetail->mrp_price}}</span>
+                          <span class="js-renewal__price t-currency purchase-form__renewal-price purchase-form__renewal-price--strikethrough text-dark">₹{{$galleryDetail->mrp_price}}</span>
                       <b class="t-currency">
-                          <span class="js-support__price">₹{{$galleryDetail->special_price}}</span>
+                          <span class="js-support__price text-dark">₹{{$galleryDetail->special_price}}</span>
                       </b>
                       </span>
               @elseif ($galleryDetail->mrp_price > 0)
                   <span class="purchase-form__price purchase-form__price--before-after-price t-heading -size-xs h-pull-right">
                       <b class="t-currency">
-                          <span class="js-support__price">₹{{$galleryDetail->mrp_price}}</span>
+                          <span class="js-support__price text-dark">₹{{$galleryDetail->mrp_price}}</span>
                       </b>
                       </span>
 
               @endif
 
               @if(!empty($galleryDetail->links))
-                  <a href="{{$galleryDetail->links}}" target="_blank" class="btn btn-sm btn-warning"><i class="fa fa-link"></i></a> 
+                  <a href="{{$galleryDetail->links}}" target="_blank" class="btn btn-sm btn-warning text-dark"><i class="fa fa-link"></i></a> 
                   @endif
                   @if(!empty($galleryDetail->doc_url))
-                  <a href="{{url('public/upload/product-doc')}}/{{$galleryDetail->doc_url}}" target="_blank" class="btn btn-sm  btn-primary" download><i class="fa fa-download"></i></a> 
+                  <a href="{{url('public/upload/product-doc')}}/{{$galleryDetail->doc_url}}" target="_blank" class="btn btn-sm  btn-primary text-dark" download><i class="fa fa-download"></i></a> 
                   @endif
                   <div class="dis_flex">
                     <a class="addphonebook" href='https://api.whatsapp.com/send?phone={{str_replace('+','',$companyInfoData->country_code)}}{{$companyInfoData->company_mobile}}&text=Enquery for product: {{urlencode($galleryDetail->title)}}' target='_blank'>
