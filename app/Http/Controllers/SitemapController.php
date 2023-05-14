@@ -13,7 +13,7 @@ class SitemapController extends Controller
      */
     public function index($value='')
     {
-        $user = User::latest()->get();
+        $user = User::whereNotNull('slug')->where('package_end_date', '>', date('Y-m-d'))->latest()->get();
 
         return response()->view('sitemap', [
             'users' => $user

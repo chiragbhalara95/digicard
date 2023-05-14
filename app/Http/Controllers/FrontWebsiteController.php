@@ -307,5 +307,30 @@ class FrontWebsiteController extends BasicController
         echo $image;exit;
     }
 
+    public function search(Request $request)
+    {
+        $params = $request->all();
+        $keywords = isset($params['keywords']) ? $params['keywords'] : null;
+        $cityName = isset($params['city_name']) ? $params['city_name'] : null;
+
+        $userData = User::leftJoin('company_info As cinfo', 'cinfo.user_id', '=', 'users.id')
+            ->whereNotNull('users.slug')
+            ->where('users.package_end_date', '>', date('Y-m-d'));
+
+        if (!empty($keywords)) {
+            $userData->where(function($query) use($keywords){
+                $query->where('cinfo.company_name', 'LIKE', '%'.$keywords.'%')
+                        ->orWhere('users.name', 'LIKE', '%'.$keywords.'%');
+            });
+        }
+
+        if (!empty($cityName)) {
+            $userData->where('cinfo.company_address', 'LIKE', '%'.$cityName.'%');
+        }
+
+        $userData = $userData->paginate(10);
+
+        return view('frontView/search', compact('userData'));
+    }
 
 }

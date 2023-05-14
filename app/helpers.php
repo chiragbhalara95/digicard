@@ -51,3 +51,15 @@ function _mail_send_general( $replyData = array() ,$subject="" , $message="" , $
     $a = $mail->send();
     return $a;
 }
+
+function initials($str) {
+    $outputStr =  array_reduce(
+        explode(' ', $str),
+        function ($initials, $word) {
+            return sprintf('%s%s', $initials, substr($word, 0, 1));
+        },
+        ''
+    );
+
+    return substr($outputStr, 0,3);
+}

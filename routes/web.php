@@ -48,7 +48,9 @@ Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $requ
 // Front Website
 Route::namespace('App\Http\Controllers')->group(function() {
     // front desk
-    Route::get('/', [App\Http\Controllers\FrontWebsiteController::class, 'index'])->name('home');
+    Route::get('/', [App\Http\Controllers\FrontWebsiteController::class, 'index'])->name('frontpage');
+    Route::get('/search', [App\Http\Controllers\FrontWebsiteController::class, 'search'])->name('search');
+
     Route::post('contact-us', [App\Http\Controllers\ContactController::class, 'saveContact'])->name('saveContact');
     Route::get('/vc/{slug}', [App\Http\Controllers\FrontWebsiteController::class, 'userVisitCard'])->name('userVisitCard');
     Route::any('saveViewCard/{visitor_id}',[App\Http\Controllers\FrontWebsiteController::class, 'SavePrevCard']);

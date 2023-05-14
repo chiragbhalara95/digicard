@@ -34,7 +34,6 @@
          * License: https://bootstrapmade.com/license/
          ======================================================== -->
 
-      <link href="{{ asset('public/frontView/minify/css/custom.min.css') }}?v={{date('YmdHis')}}" rel="stylesheet">
 
     @yield('custom_style')
 
@@ -60,10 +59,12 @@
 
 
                <ul>
-                  <li><a href="#">Home</a></li>
-                  <li><a href="#about">About Us</a></li>
-                  <li><a href="#services">Our Products</a></li>
-                  <li><a href="#contact">Contact Us</a></li>
+                  <li><a href="{{route('frontpage')}}">Home</a></li>
+                  <li><a href="{{route('frontpage')}}#about">About Us</a></li>
+                  <li><a href="{{route('frontpage')}}#services">Our Products</a></li>
+                  <li><a href="{{route('frontpage')}}#contact">Contact Us</a></li>
+                  <li><a href="{{route('search')}}">Our Partners</a></li>
+
                   @if(Auth::check())
                   <li><a href="{{route('home')}}">Dashboard</a></li>
                   <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('frm-logout').submit();">
@@ -127,11 +128,11 @@
                   <div class="col-lg-2 col-md-6 footer-links">
                      <h4>Useful Links</h4>
                      <ul>
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">About us</a></li>
-                        <li><a href="#">Services</a></li>
-                        <li><a href="#">Terms of service</a></li>
-                        <li><a href="#">Privacy policy</a></li>
+                        <li><a href="{{route('frontpage')}}">Home</a></li>
+                        <li><a href="{{route('frontpage')}}">About us</a></li>
+                        <li><a href="{{route('frontpage')}}">Services</a></li>
+                        <li><a href="{{route('frontpage')}}">Terms of service</a></li>
+                        <li><a href="{{route('frontpage')}}">Privacy policy</a></li>
                      </ul>
                   </div>
                   <div class="col-lg-3 col-md-6 footer-contact">
@@ -144,11 +145,11 @@
                         <strong>Email:</strong> info@digitalcards.tech<br>
                      </p>
                      <div class="social-links">
-                        <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
-                        <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
-                        <a href="#" class="instagram"><i class="fa fa-instagram"></i></a>
-                        <a href="#" class="google-plus"><i class="fa fa-google-plus"></i></a>
-                        <a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a>
+                        <a href="{{route('frontpage')}}" class="twitter"><i class="fa fa-twitter"></i></a>
+                        <a href="{{route('frontpage')}}" class="facebook"><i class="fa fa-facebook"></i></a>
+                        <a href="{{route('frontpage')}}" class="instagram"><i class="fa fa-instagram"></i></a>
+                        <a href="{{route('frontpage')}}" class="google-plus"><i class="fa fa-google-plus"></i></a>
+                        <a href="{{route('frontpage')}}" class="linkedin"><i class="fa fa-linkedin"></i></a>
                      </div>
                   </div>
                   <!--

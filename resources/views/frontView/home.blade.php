@@ -1,5 +1,7 @@
 @extends('frontView.layouts.app')
 @section('custom_style')
+   <link href="{{ asset('public/frontView/minify/css/custom.min.css') }}?v={{date('YmdHis')}}" rel="stylesheet">
+
 @endsection
 
 @section('content')

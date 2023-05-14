@@ -158,9 +158,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #header .logo img {
-  padding: 0;
-  margin: 7px 0;
-  max-height: 26px;
+  margin-top:-4%;
+  width: 10%;
+  position: fixed;
+  height: 40%;
 }
 
 /*--------------------------------------------------------------
@@ -1633,7 +1634,49 @@ section {
 
 
 
-
 .mobile-nav-toggle {
     margin-right: 10vw
 }
+
+@media screen and (min-width:980px){
+    #header .logo img {
+      top: -5%;
+      left: 0;
+      position: fixed;
+    }
+
+}
+
+@media screen and (max-width:980px){
+    #header .logo img {
+      top: -5%;
+      left: 0;
+      position: fixed;
+    }
+
+}
+
+@media screen and (max-width:820px){
+    #header .logo img {
+      top: -2.2%;
+      left: 0;
+      position: fixed;
+    }
+}
+
+@media screen and (max-width:770px){
+    #header .logo img {
+      top: -2.5%;
+      left: 0;
+      position: fixed;
+    }
+}
+
+@media screen and (max-width:480px){
+    #header .logo img {
+      top: -3.5%;
+      left: 0;
+      position: fixed;
+    }
+}
+
