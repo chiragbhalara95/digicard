@@ -792,7 +792,7 @@
 
 <!-- The image Modal Popup-->
 
-<div id="imageModal" class="modal"> <span class="close" id="imageModalClose">×</span> <img class="modal-content fadeIn" id="img01" alt="{{$galleryDetail->title}}">
+<div id="imageModal" class="modal"> <span class="close" id="imageModalClose">×</span> <img class="modal-content fadeIn" id="img01" alt="Gallery Image">
 
   <div id="caption"></div>
 <div id="gallery_description"></div>

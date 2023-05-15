@@ -187,7 +187,25 @@ ul {
 
 
 .card_content2 img{
-    max-width: 296px;
+    max-width: 10vw;
+    max-height: 5vw;
+}
+@media (max-width: 480px) {
+  .card_content2 img{
+      max-width: unset;
+      width: 100%;
+      max-height: unset;
+  }
+
+}
+
+@media (max-width: 820px) {
+  .card_content2 img{
+      max-width: unset;
+      width: 100%;
+      max-height: unset;
+  }
+
 }
 
 .personface {

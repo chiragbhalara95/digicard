@@ -57,12 +57,10 @@
     <!-- <p class="mb-30 ff-montserrat">Total Job Openings : 89</p> -->
 
     @foreach($userData as $userDetail)
-        <div class="job-box d-md-flex align-items-center justify-content-between mb-30">
-
-            <div class="job-left my-4 d-md-flex align-items-center flex-wrap">
-
+    <div class="row">
+        <div class="col-lg-2 col-md-6 col-sm-12 mx-auto mb-4">
                 @if(!empty($userDetail->company_logo) || !empty($userDetail->profile_pic))
-                <div class="card_content2 mr-md-4 mb-md-0 mb-4 mx-auto mx-md-0">
+                <div class="card_content2 mb-md-0 mb-4 mx-auto">
                     <div class="profile card_content">
                       <div class=" personface profilepic">
                         @if(!empty($userDetail->company_logo))
@@ -82,8 +80,8 @@
                     @endif
                 </div>
                 @endif
-
-                <div class="job-content">
+        </div>
+        <div class="col-lg-8 mx-auto mb-4">
                     @if (!empty($userDetail->company_name))
                     <h5 class="text-center text-md-left">{!! $userDetail->company_name !!}</h5>
                     <h4 class="text-center text-md-left">{!! $userDetail->name !!}</h4>
@@ -93,18 +91,14 @@
                     @if(!empty($userDetail->company_profession))<span>{!! $userDetail->company_profession!!}</span>@endif
 
                     @if (!empty($userDetail->company_address))
-                    <p class="mb-30 ff-montserrat">Address: <br/>{!! $userDetail->company_address !!}</p>
+                    <!-- <p class="mb-30 ff-montserrat">Address: <br/>{!! $userDetail->company_address !!}</p> -->
                     @endif
-
-                </div>
-
-            </div>
-
-            <div class="job-right my-4 flex-shrink-0">
-                <a href="#" class="btn d-block w-100 d-sm-inline-block btn-primary">Visit Digital Card</a>
-            </div>
-
         </div>
+        <div class="col-lg-2 mx-auto">
+            <a href="{{url('vc')}}/{{$userDetail->slug}}" class="btn d-block w-100 d-sm-inline-block btn-primary">Visit Digital Card</a>
+        </div>
+    </div>
+
     @endforeach
 
     {!! $userData->appends(request()->query())->links('pagination::bootstrap-4') !!}

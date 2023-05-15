@@ -328,7 +328,7 @@ class FrontWebsiteController extends BasicController
             $userData->where('cinfo.company_address', 'LIKE', '%'.$cityName.'%');
         }
 
-        $userData = $userData->paginate(10);
+        $userData = $userData->orderBy('cinfo.company_name')->paginate(10);
 
         return view('frontView/search', compact('userData'));
     }
