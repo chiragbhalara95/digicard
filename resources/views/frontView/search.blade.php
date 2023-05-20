@@ -57,8 +57,8 @@
     <!-- <p class="mb-30 ff-montserrat">Total Job Openings : 89</p> -->
 
     @foreach($userData as $userDetail)
-    <div class="row">
-        <div class="col-lg-2 col-md-6 col-sm-12 mx-auto mb-4">
+    <div class="row job-box">
+        <div class="col-lg-2 col-md-6 col-sm-12 mx-auto mb-4 ">
                 @if(!empty($userDetail->company_logo) || !empty($userDetail->profile_pic))
                 <div class="card_content2 mb-md-0 mb-4 mx-auto">
                     <div class="profile card_content">
@@ -72,7 +72,7 @@
                       </div>
                 </div>
                 @else
-                <div class="img-holder mr-md-4 mb-md-0 mb-4 mx-auto mx-md-0 d-md-none d-lg-flex">
+                <div class=" img-holder">
                     @if (!empty($userDetail->company_name))
                     @php echo initials($userDetail->company_name) @endphp
                     @else
@@ -83,24 +83,25 @@
         </div>
         <div class="col-lg-8 mx-auto mb-4">
                     @if (!empty($userDetail->company_name))
-                    <h5 class="text-center text-md-left">{!! $userDetail->company_name !!}</h5>
-                    <h4 class="text-center text-md-left">{!! $userDetail->name !!}</h4>
+                    <h5 class="text-center">{!! $userDetail->company_name !!}</h5>
+                    <h4 class="text-center">{!! $userDetail->name !!}</h4>
                     @else
-                    <h4 class="text-center text-md-left">{!! $userDetail->name !!}</h4>
+                    <h4 class="text-center">{!! $userDetail->name !!}</h4>
                     @endif
-                    @if(!empty($userDetail->company_profession))<span>{!! $userDetail->company_profession!!}</span>@endif
+                    @if(!empty($userDetail->company_profession))<span class="text-center">{!! $userDetail->company_profession!!}</span>@endif
 
                     @if (!empty($userDetail->company_address))
-                    <!-- <p class="mb-30 ff-montserrat">Address: <br/>{!! $userDetail->company_address !!}</p> -->
+                    <br/>
+                    <div class="mb-30 ff-montserrat text-center company_address">Address: <br/>{!! $userDetail->company_address !!}</div>
                     @endif
         </div>
         <div class="col-lg-2 mx-auto">
-            <a href="{{url('vc')}}/{{$userDetail->slug}}" class="btn d-block w-100 d-sm-inline-block btn-primary">Visit Digital Card</a>
+            <a href="{{url('vc')}}/{{$userDetail->slug}}" class="btn d-block w-100 d-sm-inline-block btn-primary" target="_tab">Visit Digital Card</a>
         </div>
     </div>
 
     @endforeach
-
+<br/>
     {!! $userData->appends(request()->query())->links('pagination::bootstrap-4') !!}
     
     @if ($userData->total() == 0)
