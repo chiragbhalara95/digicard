@@ -75,3 +75,10 @@
     color: #ccc;
     padding: 10px 0;
 }
+
+
+
+
+.full_video_width {
+    width: -webkit-fill-available !important;
+}

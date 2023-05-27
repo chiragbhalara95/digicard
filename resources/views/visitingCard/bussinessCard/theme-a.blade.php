@@ -1037,7 +1037,6 @@
 
     @endif
 
-<!-- 
 <div class="section-container container" id="youtube_video-section">
 
     <div class="gallery col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -1045,15 +1044,14 @@
     </div>
     <div class="full-divider"></div>
 
+      @foreach($videosData as $videosDetail)
     <div class="order_box">
-      <iframe src="https://www.youtube.com/embed/3XD1oMKg-N0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
-    </div>
-    <div class="order_box">
-    <iframe src="https://www.youtube.com/embed/HZNk7hGV8SA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>    
+      <div class="embed-responsive embed-responsive-16by9">
+        <iframe class="embed-responsive-item " src="{{$videosDetail->video_path}}" title="{{$videosDetail->title}}" allowfullscreen ng-show="showvideo" frameborder="0" ></iframe>
     </div>
   </div>
+    @endforeach
 
- -->
 
     @if($userConfigObj->isShowEnquiry == '1')
     <div class="section-container" id="enquiry-section">
@@ -1136,6 +1134,14 @@
           </a>
         </li>
         @endif
+
+    @if (!empty($videosData))
+    <li> <a class="footer-menu-link" href="#youtube_video-section"> <i class="footer-menu-icon fa fa-youtube-square"></i>
+
+      <div class="footer-menu-text">VIDEOS</div>
+
+      </a> </li>
+      @endif
         @if($userConfigObj->isShowEnquiry == '1')
         <li>
             <a class="footer-menu-link" href="#enquiry-section">

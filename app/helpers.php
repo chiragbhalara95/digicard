@@ -63,3 +63,51 @@ function initials($str) {
 
     return substr($outputStr, 0,3);
 }
+
+
+function getEmbedUrl($url) {
+    // function for generating an embed link
+    $finalUrl = '';
+
+    if (strpos($url, 'facebook.com/') !== false) {
+        // Facebook Video
+        $finalUrl.='https://www.facebook.com/plugins/video.php?href='.rawurlencode($url).'&show_text=1&width=200';
+
+    } else if(strpos($url, 'vimeo.com/') !== false) {
+        // Vimeo video
+        $videoId = isset(explode("vimeo.com/",$url)[1]) ? explode("vimeo.com/",$url)[1] : null;
+        if (strpos($videoId, '&') !== false){
+            $videoId = explode("&",$videoId)[0];
+        }
+        $finalUrl.='https://player.vimeo.com/video/'.$videoId;
+
+    } else if (strpos($url, 'youtube.com/') !== false) {
+        // Youtube video
+        $videoId = isset(explode("v=",$url)[1]) ? explode("v=",$url)[1] : null;
+        if (strpos($videoId, '&') !== false){
+            $videoId = explode("&",$videoId)[0];
+        }
+        $finalUrl.='https://www.youtube.com/embed/'.$videoId;
+
+    } else if(strpos($url, 'youtu.be/') !== false) {
+        // Youtube  video
+        $videoId = isset(explode("youtu.be/",$url)[1]) ? explode("youtu.be/",$url)[1] : null;
+        if (strpos($videoId, '&') !== false) {
+            $videoId = explode("&",$videoId)[0];
+        }
+        $finalUrl.='https://www.youtube.com/embed/'.$videoId;
+
+    } else if (strpos($url, 'dailymotion.com/') !== false) {
+        // Dailymotion Video
+        $videoId = isset(explode("dailymotion.com/",$url)[1]) ? explode("dailymotion.com/",$url)[1] : null;
+        if (strpos($videoId, '&') !== false) {
+            $videoId = explode("&",$videoId)[0];
+        }
+        $finalUrl.='https://www.dailymotion.com/embed/'.$videoId;
+
+    } else{
+        $finalUrl.=$url;
+    }
+
+    return $finalUrl;
+}

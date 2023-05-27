@@ -307,7 +307,6 @@
 
 
 
-<!--------------youtube videos--------------------------->
 
 
 
@@ -372,6 +371,23 @@
 
     </div>
 
+
+
+@if (!empty($videosData))
+<div class="card2" id="youtube_video">
+    <h3>VIDEOS</h3>
+      @foreach($videosData as $videosDetail)
+    <div class="order_box full_video_width">
+      <div class="embed-responsive embed-responsive-16by9">
+        <iframe class="embed-responsive-item " src="{{$videosDetail->video_path}}" title="{{$videosDetail->title}}" allowfullscreen ng-show="showvideo" frameborder="0" ></iframe>
+    </div>
+    <h4 class="text text-center" style="text-align:center;">{{$videosDetail->title}}</h4>
+
+  </div>
+    @endforeach
+
+</div>
+@endif
 
 
 
@@ -466,6 +482,7 @@
     </div>
 @endif      
 
+
 <!----------email to  info----------------------->
     <div class="card2" id="enquery">
 
@@ -536,7 +553,11 @@
 <!--             @if($galleryData->count() > 0)
             <div class="menu_item" onclick="location.href='#gallery'"><i class="fa fa-image" aria-hidden="true"></i>Gallery</div>
             @endif
- -->            <!-- <div class="menu_item" onclick="location.href='#youtube_video'"><i class="fa fa-video-camera"></i>Youtube Videos</div> -->
+ -->            
+           @if (!empty($videosData))
+           <div class="menu_item" onclick="location.href='#youtube_video'"><i class="fa fa-video-camera"></i>Youtube Videos</div>
+           @endif
+
             @if(count($paymentMasterData) > 0)
             <div class="menu_item" onclick="location.href='#payment'"><i class="fa fa-money" aria-hidden="true"></i>Payment</div>
             @endif

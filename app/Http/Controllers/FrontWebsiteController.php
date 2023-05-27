@@ -18,6 +18,7 @@ use App\Models\UserConfigModel;
 use App\Models\PaymentModel;
 use App\Models\socialLink AS SocialLinkModel;
 use App\Models\VisitorLog;
+use App\Models\Videos;
 
 class FrontWebsiteController extends BasicController
 {
@@ -177,8 +178,17 @@ class FrontWebsiteController extends BasicController
 
             $vistingUrl = url('vc').'/'.$userObj->slug;
 
+            $videosData = Videos::where('user_id', $userObj->id)->orderBy('id', 'DESC')->get();
+            if (!empty($videosData)) {
+                foreach ($videosData as $videoDetail) {
+                    if (strpos($videoDetail->video_path, "/embed/") === false) {
+                        $videoDetail->video_path = getEmbedUrl($videoDetail->video_path);
+                    }
+                }
+            }
+
             return view('visitingCard/bussinessCard/'.$bladeFile, 
-                compact('companyInfoData', 'userObj', 'galleryData', 'userConfigObj', 'paymentMasterData', 'socialMediaData', 'galleryCatInfo', 'vistingUrl')
+                compact('companyInfoData', 'userObj', 'galleryData', 'userConfigObj', 'paymentMasterData', 'socialMediaData', 'galleryCatInfo', 'vistingUrl', 'videosData')
             );
         }
 

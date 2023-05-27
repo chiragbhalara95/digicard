@@ -541,7 +541,7 @@
 </div>
 @endif
 
-{{--
+@if (!empty($videosData))
 <div class="page-container" id="videogallery">
 
     <h2 class="section-heading">Videos</h2>
@@ -550,11 +550,14 @@
 
     <div>
 
-        <div class="card" style="padding: 10px">
-
-            <iframe src="./Digital Visiting Card _ Digital Business Card_files/qyekpPUBOJU.html" frameborder="0" allowfullscreen="" style="width: 100%"></iframe>
-
-        </div>
+      @foreach($videosData as $videosDetail)
+    <div class="card">
+      <div class="embed-responsive embed-responsive-16by9">
+        <iframe class="embed-responsive-item full_video_width" src="{{$videosDetail->video_path}}" title="{{$videosDetail->title}}" allowfullscreen ng-show="showvideo" frameborder="0" ></iframe>
+      </div>
+      <h3 class="text text-center" style="text-align:center;">{{$videosDetail->title}}</h3>
+      </div>
+      @endforeach
 
         
     </div>
@@ -562,7 +565,8 @@
     <div class="section-close"></div>
 
 </div>
---}}
+@endif
+
 {{--
 <div class="page-container" id="feedback">
 
@@ -723,13 +727,13 @@
             </a> </li>
       @endif
 
-        {{--
+    @if (!empty($videosData))
         <li> <a class="footer-menu-link" href="#videogallery"> <i class="footer-menu-icon fa fa-youtube-square"></i>
 
             <div class="footer-menu-text">VIDEOS</div>
 
             </a> </li>
-            --}}
+    @endif
 
         {{--
         <li> <a class="footer-menu-link" href="#feedback"> <i class="footer-menu-icon fa fa-star-half-o"></i>
