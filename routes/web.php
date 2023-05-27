@@ -116,6 +116,14 @@ Route::middleware(['auth', 'verified', 'check_payment_status'])->namespace('App\
         Route::get('delete/{id}', [App\Http\Controllers\BussinessCard\SocialLinkController::class, 'deleteLinkView'])->name('business.social-media-master-delete');
     });
 
+    Route::middleware(['auth', 'verified'])->namespace('App\Http\Controllers\BussinessCard')->prefix('videos')->group(function() {
+        Route::get('list', [App\Http\Controllers\BussinessCard\VideosController::class, 'index'])->name('business.videos.list');
+        Route::get('add', [App\Http\Controllers\BussinessCard\VideosController::class, 'add'])->name('business.videos.add');
+        Route::post('save', [App\Http\Controllers\BussinessCard\VideosController::class, 'save'])->name('business.videos.save');
+        Route::get('edit/{id}', [App\Http\Controllers\BussinessCard\VideosController::class, 'edit'])->name('business.videos.edit');
+        Route::get('delete/{id}', [App\Http\Controllers\BussinessCard\VideosController::class, 'deleteVideo'])->name('business.videos.delete');
+    });
+
 });
 
 Route::middleware(['auth', 'verified', 'check_payment_required'])->namespace('App\Http\Controllers')->group(function() {

@@ -80,11 +80,11 @@ class SocialLinkController extends Controller
         if (!empty($socialMediaLinkData)) {
             socialLink::where('id', $id)->delete();
 
-          return redirect(route('business.social-media-master-list'))->with("success", 'Social Media link has been sucessfully deleted.'); 
+          return redirect(route('business.videos.list'))->with("success", 'Videos has been deleted sucessfully.'); 
         }
 
 
-          return redirect(route('business.social-media-master-list'))->with("error", 'Invalid Request.'); 
+          return redirect(route('business.videos.list'))->with("error", 'Invalid Request.'); 
     }
 
 }

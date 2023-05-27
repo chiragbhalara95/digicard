@@ -39,9 +39,18 @@
 
           <li class="nav-item">
             <a href="{{url('product')}}" class="nav-link">
-              <i class="nav-icon fas fa-list"></i>
+              <i class="nav-icon fas fa-image"></i>
               <p>
                 Gallery
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="{{route('business.videos.list')}}" class="nav-link">
+              <i class="nav-icon fas fa-video"></i>
+              <p>
+                Videos
               </p>
             </a>
           </li>
