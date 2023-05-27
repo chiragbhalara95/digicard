@@ -435,7 +435,7 @@
 
 
   </div>
-@eendif
+@endif
 
 @if($userConfigObj->isShowEnquiry == '1')
 
