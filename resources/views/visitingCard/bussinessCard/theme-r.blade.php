@@ -118,10 +118,13 @@
     @endif
 
     <div class="card_content">
-          @if(!empty($companyInfoData->company_logo))
+        @if(!empty($companyInfoData->company_logo) && !empty($companyInfoData->company_alt_logo))
+
+              <img src="{{url('public')}}/{{$companyInfoData->company_logo}}" class="img-responsive ml-logo" style="margin-left: ">
+              <img src="{{url('public')}}/{{$companyInfoData->company_alt_logo}}" class="img-responsive ml-logo">
+
+          @elseif(!empty($companyInfoData->company_logo))
           <img src="{{url('public')}}/{{$companyInfoData->company_logo}}" class="img-fluid banner-image position-relative" alt="Company Logo">
-          @elseif(!empty($userObj->profile_pic))
-          <img src="{{url('public')}}/{{$userObj->profile_pic}}" class="img-fluid banner-image position-relative" alt="Company Logo">
           @endif
     </div>
     <div class="card_content2">
@@ -129,7 +132,7 @@
     @if (!empty($companyInfoData->company_name))
     <h2>{!!$companyInfoData->company_name!!}</h2>
 
-    <div class="profile card_content">
+    <div class="profile">
           <div class="personface">
             @if(!empty($userObj->profile_pic))
                 <img src="{{url('public')}}/{{$userObj->profile_pic}}" class="img-responsive" alt="">
@@ -147,9 +150,9 @@
     <h2>{!! $userObj->name !!}</h2>
     <p>@if(!empty($companyInfoData->company_profession)) ({{$companyInfoData->company_profession}}) @endif</p>
 
-    <div class="profile card_content">
+    <div class="profile">
       <div class="personface">
-        @if(!empty($userObj->profile_pic))
+      @if(!empty($userObj->profile_pic))
             <img src="{{url('public')}}/{{$userObj->profile_pic}}" class="img-responsive" alt="">
         @else
             <img src="{{url('public')}}/upload/user_profile.jpg" class="img-responsive" alt="">
@@ -508,6 +511,10 @@
     z-index: -1;
     left: 0;}
 
+
+    .ml-logo{
+      margin-left: 10%
+    }
 
     </style>
 

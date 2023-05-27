@@ -9,13 +9,13 @@ body {padding: 0;
     background-position: center;
     background-size: 107px 108px;
     background-attachment: fixed;}
-	a {text-decoration:none;color:unset;}
+    a {text-decoration:none;color:unset;}
 div,h1,h2,h3,h4,p,i,a {position:relative;transition:0.4s;}
 
 form,input,textarea,select {font-family:Montserrat;}
 :root {
-	--color:#848484;
-	--color2:#64af35;
+    --color:#848484;
+    --color2:#64af35;
 }
 /*alerts */
 div,h1,h2,h3,h4,p,i,a,footer {position:relative;transition:0.4s;}
@@ -34,7 +34,7 @@ input::placeholder {font-size:12px}
     margin: 0px auto;
     font-weight: 500;
     border-radius: 6px;}
-	
+    
 .danger {background: #ffd0d082;
     color: #d45050;}
 .info {    background: #d0deff82;
@@ -51,22 +51,22 @@ input::placeholder {font-size:12px}
     background-size: 100% 100%;
     color: white;
     padding: 0px 0px 27px;
-	}
-	
-	.card_content {margin: 44px auto 10px;
+    }
+    
+    .card_content {margin: 44px auto 10px;
     z-index: 2;
     text-align: center;
     padding: 0px 29px;}
-	.card_content img{   height: 93px;
+    .card_content img{   height: 93px;
     max-width: 296px;
     border-radius: 6px;
     border: 0px;
 }
-	.card_content2 {z-index: 2;
+    .card_content2 {z-index: 2;
     text-align: left;
     font-weight: 400;
     margin: 0;}
-	.card_content2 h2{
+    .card_content2 h2{
         font-weight: 600;
         text-transform: uppercase;
         margin: 5px 30px;
@@ -103,8 +103,8 @@ input::placeholder {font-size:12px}
     text-align: center;
     padding: 16px 11px 0px;}
 .dis_flex .link_btn:hover {
-	background:orange;
-	transition:0.3s;
+    background:orange;
+    transition:0.3s;
 }
 .dis_flex .link_btn {    color: white;
     padding: 4px 10px;
@@ -116,7 +116,7 @@ input::placeholder {font-size:12px}
     border: 1px solid;
 }
 .dis_flex .link_btn i {
-	
+    
 }
 .contact_details {
         padding: 21px 24px;
@@ -231,7 +231,7 @@ color:white}
     border-radius: 5px;
     width: auto;
     height: 188px;}
-	
+    
 /*prouct services*/
 
 .product_s {   text-align: center;
@@ -240,18 +240,18 @@ color:white}
     width: fit-content;
     margin: 9px;
     border-radius: 7px;
-    display: inline-block;}	
-	
-	#product_services {text-align:center}
+    display: inline-block;} 
+    
+    #product_services {text-align:center}
 .product_s p{font-weight: 600;
     text-transform: capitalize;
     color: #848484;
-}	
+}   
 .product_s img{width: auto;
     max-width: 91%;
     max-height: auto;
     background: white;
-    border-radius: 5px;}	
+    border-radius: 5px;}    
 
 
 /*image gallery*/
@@ -328,7 +328,7 @@ color:white}
 /* order page */
  
  #shop_online {
-	 display: grid;
+     display: grid;
     grid-template-columns: 50% 50%;
     text-align: center;
  }
@@ -391,7 +391,7 @@ color:white}
 
 
 @media screen and (max-width:700px){
-	.card {
+    .card {
     width: -webkit-fill-available;
    
     overflow: hidden;
@@ -426,4 +426,10 @@ color:white}
 }
 #about_us {
     color: #000;
+}
+
+.personface img
+{
+    min-width: -webkit-fill-available;
+}
 }
