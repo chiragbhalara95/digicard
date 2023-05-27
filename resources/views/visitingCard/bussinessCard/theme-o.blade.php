@@ -611,7 +611,7 @@ function showSlides(n) {
     
 <!--------------youtube videos--------------------------->  
 
-@if (!empty($videosData))
+            @if(count($videosData) > 0)
 <div class="card2" id="youtube_video">
     <h3>VIDEOS</h3>
       @foreach($videosData as $videosDetail)
@@ -927,7 +927,7 @@ Showing result:
             @if($galleryData->count() > 0)
 			<div class="menu_item" onclick="location.href='#gallery'"><i class="fa fa-image"></i>Gallery</div>
             @endif
-            @if (!empty($videosData))
+            @if(count($videosData) > 0)
 			<div class="menu_item" onclick="location.href='#youtube_video'"><i class="fa fa-video-camera"></i>Youtube Videos</div>
             @endif
 

@@ -541,7 +541,7 @@
 </div>
 @endif
 
-@if (!empty($videosData))
+            @if(count($videosData) > 0)
 <div class="page-container" id="videogallery">
 
     <h2 class="section-heading">Videos</h2>
@@ -727,7 +727,7 @@
             </a> </li>
       @endif
 
-    @if (!empty($videosData))
+            @if(count($videosData) > 0)
         <li> <a class="footer-menu-link" href="#videogallery"> <i class="footer-menu-icon fa fa-youtube-square"></i>
 
             <div class="footer-menu-text">VIDEOS</div>

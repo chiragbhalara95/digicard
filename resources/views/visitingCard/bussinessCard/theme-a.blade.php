@@ -1037,6 +1037,8 @@
 
     @endif
 
+            @if(count($videosData) > 0)
+
 <div class="section-container container" id="youtube_video-section">
 
     <div class="gallery col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -1051,7 +1053,8 @@
     </div>
   </div>
     @endforeach
-
+</div>
+@endif
 
     @if($userConfigObj->isShowEnquiry == '1')
     <div class="section-container" id="enquiry-section">
@@ -1135,7 +1138,7 @@
         </li>
         @endif
 
-    @if (!empty($videosData))
+            @if(count($videosData) > 0)
     <li> <a class="footer-menu-link" href="#youtube_video-section"> <i class="footer-menu-icon fa fa-youtube-square"></i>
 
       <div class="footer-menu-text">VIDEOS</div>

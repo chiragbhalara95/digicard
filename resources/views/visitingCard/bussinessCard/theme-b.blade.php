@@ -419,6 +419,8 @@
 </div>
 @endif
 
+            @if(count($videosData) > 0)
+
 <div class="page-container" id="youtube_video-section">
 
     <h2 class="section-heading">VIDEOS</h2>
@@ -433,6 +435,7 @@
 
 
   </div>
+@eendif
 
 @if($userConfigObj->isShowEnquiry == '1')
 
@@ -508,7 +511,7 @@
       </a> </li>
       @endif
 
-    @if (!empty($videosData))
+            @if(count($videosData) > 0)
     <li> <a class="footer-menu-link" href="#youtube_video-section"> <i class="footer-menu-icon fa fa-youtube-square"></i>
 
       <div class="footer-menu-text">VIDEOS</div>
