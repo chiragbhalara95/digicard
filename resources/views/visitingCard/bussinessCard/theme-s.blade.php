@@ -71,13 +71,21 @@
          </div>
       </div>
       <nav class=" " style="z-index:2010; background-color:#42929D ;box-shadow: rgba(0, 0, 0, 0.1) 0px 5px 5px 2px;position: fixed;height:50px; top: 0; width: 100%;">
-         <h4 class="text-center attraction-text-adv animated fadeInDown delay head-text1 " style="color:#FFFF00;margin-top:15px;">LOCALBEL</h4>
+         <h4 class="text-center attraction-text-adv animated fadeInDown delay head-text1 " style="color:#FFFF00;margin-top:15px;">
+           
+         </h4>
       </nav>
       <div class="wrapper" style="min-height:100vh; content-visibility:auto">
          <header class="main-header " style="">
             <!-- Logo --> <!-- Header Navbar: style can be found in header.less --> 
             <nav class="navbar navbar-fixed-top hidden" role="navigation" style="z-index: 2010; background-color: rgb(66, 146, 157); box-shadow: rgba(0, 0, 0, 0.1) 0px 5px 5px 2px; position: fixed;">
-               <h4 class="text-center attraction-text-adv animated fadeInDown delay head-text1 " style="color:#FFFF00;margin-top:15px;">LOCALBEL</h4>
+               <h4 class="text-center attraction-text-adv animated fadeInDown delay head-text1 " style="color:#FFFF00;margin-top:15px;">
+                   @if (!empty($companyInfoData->company_name))
+                   {!!$companyInfoData->company_name!!}
+                   @else
+                   {!! $userObj->name !!}
+                   @endif
+             </h4>
             </nav>
             <nav class="navbar navbar-fixed-bottom " role="navigation" style="z-index:2020;margin-bottom:36px; background-color:#E7D7B9 ;box-shadow: rgba(0, 0, 0, 0.1) 0px -3px 5px 0px;">
                <center>
@@ -104,20 +112,37 @@
                                        <section class="bussinesscard ">
                                           <div class="front metal" style="">
                                              <div class="front1 metal " style="">
-                                                <h4 class=" gradient-text text2 " style=" font-weight:750;">LOCALBEL</h4>
-                                                <div class="CardLikes " style="position: absolute;z-index: 200; margin-top: 0px;margin-left: -10px; opacity: 1;vertical-align: super; font-size: small;">
-                                                   <div class="fb-like text-center fb_iframe_widget" data-href="https://www.facebook.com/localbel.search.local/" data-layout="button_count" data-action="like" data-size="small" data-show-faces="true" data-share="false" fb-xfbml-state="rendered" fb-iframe-plugin-query="action=like&amp;app_id=203576567010598&amp;container_width=0&amp;href=https%3A%2F%2Fwww.facebook.com%2Flocalbel.search.local%2F&amp;layout=button_count&amp;locale=en_US&amp;sdk=joey&amp;share=false&amp;show_faces=true&amp;size=small"><span style="vertical-align: bottom; width: 90px; height: 28px;"><iframe name="f2459a5b35ee9f4" width="1000px" height="1000px" data-testid="fb:like Facebook Social Plugin" title="fb:like Facebook Social Plugin" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" allow="encrypted-media" src="https://www.facebook.com/v3.0/plugins/like.php?action=like&amp;app_id=203576567010598&amp;channel=https%3A%2F%2Fstaticxx.facebook.com%2Fx%2Fconnect%2Fxd_arbiter%2F%3Fversion%3D46%23cb%3Dfa7c1f4379965%26domain%3Dwww.localbel.com%26is_canvas%3Dfalse%26origin%3Dhttps%253A%252F%252Fwww.localbel.com%252Ff378ad0f3d85cdc%26relation%3Dparent.parent&amp;container_width=0&amp;href=https%3A%2F%2Fwww.facebook.com%2Flocalbel.search.local%2F&amp;layout=button_count&amp;locale=en_US&amp;sdk=joey&amp;share=false&amp;show_faces=true&amp;size=small" class="" style="border: none; visibility: visible; width: 90px; height: 28px;"></iframe></span></div>
+                                                <h4 class=" gradient-text text2 " style=" font-weight:750;">
+                                                 @if (!empty($companyInfoData->company_name))
+                                                 {!!$companyInfoData->company_name!!}
+                                                 @else
+                                                 {!! $userObj->name !!}
+                                                 @endif
+
+                                                </h4>
+                                             </div>
+                                             <div class="top b-lazy  b-loaded" style="background-image: url({{url('public')}}/{{$companyInfoData->company_logo}})">
+
+                                                @if(empty(!$userObj->profile_pic))
+
+                                                <div class="logo drop-shadow b-lazy b-loaded" style="opacity: 1; background-image: url({{url('public')}}/{{$userObj->profile_pic}})"> </div>
+                                                @else
+                                                <div class="logo drop-shadow b-lazy b-loaded" style="opacity: 1; background-image: url({{url('public')}}/upload/user_profile.jpg);"> </div>
+                                                @endif
+
+                                                <div class="hiddenName text-bold text-shadow ">
+                                                 @if (!empty($companyInfoData->company_name))
+                                                 {!!$companyInfoData->company_name!!}
+                                                 @else
+                                                 {!! $userObj->name !!}
+                                                 @endif
+
                                                 </div>
                                              </div>
-                                             <div class="top b-lazy  b-loaded" style="background-image: url(&quot;/images/thumbsVC/511.jpg?p=1621795835&quot;);">
-                                                <div class="logo drop-shadow b-lazy b-loaded" style="opacity: 1; background-image: url(&quot; /images/profile/511.jpg?p=1635797630&quot;);"> </div>
-                                                <!-- <div class="logo_strip" style="text-shadow: -2px 2px 0 #fff,--> <!-- 2px 2px 0 #fff,--> <!-- 2px -2px 0 #fff,--> <!-- -2px -2px 0 #fff;">--> <!--Life Insurance --> <!-- </div>--> 
-                                                <div class="hiddenName text-bold text-shadow ">LOCALBEL</div>
-                                             </div>
                                              <div class="nametroduction ">
-                                                <div class="name" style=" ">LocalBel</div>
+                                                <div class="name" style=" ">{!! $userObj->name !!}</div>
                                                 <div class="line "></div>
-                                                <div class="introduction" style="width:100%;">Founder &amp; Developer </div>
+                                                <div class="introduction" style="width:100%;">@if(!empty($companyInfoData->company_profession)) ({{$companyInfoData->company_profession}}) @endif</div>
                                              </div>
                                              <div class="contact ">
                                                 <div class="social-btns ">

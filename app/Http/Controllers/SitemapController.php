@@ -13,7 +13,8 @@ class SitemapController extends Controller
      */
     public function index($value='')
     {
-        $user = User::whereNotNull('slug')->where('package_end_date', '>', date('Y-m-d'))->latest()->get();
+        $cutoffDate = date("Y-m-d", strtotime('+15 day'));
+        $user = User::whereNotNull('slug')->where('package_end_date', '>', $cutoffDate)->latest()->get();
 
         return response()->view('sitemap', [
             'users' => $user
