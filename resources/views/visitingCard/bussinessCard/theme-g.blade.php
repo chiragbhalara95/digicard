@@ -337,6 +337,40 @@
 </div>
 @endif
 
+@if(count($paymentMasterData) > 0)
+
+<div class="section-container" id="payment-options-section">
+    <h2 class="section-header">Payment</h2>
+    <div class="section-header-underline"></div>
+
+      @foreach($paymentMasterData as $paymentMasterDetail)
+        @if ($paymentMasterDetail->type == 'bank')
+
+        <h4 class="section-header">Bank Detail</h4>
+        <div class="section-header-underline"></div>
+
+        <h3 class="section-item-title-2"><i class="fa fa-chevron-circle-right"></i>&nbsp; Bank Name: {{$paymentMasterDetail->bank_name}}</h3>
+        <h3 class="section-item-title-2"><i class="fa fa-chevron-circle-right"></i>&nbsp; Account Holder Name: {{$paymentMasterDetail->account_holder_name}}</h3>
+        <h3 class="section-item-title-2"><i class="fa fa-chevron-circle-right"></i>&nbsp; Account Number: {{$paymentMasterDetail->account_no}}</h3>
+        <h3 class="section-item-title-2"><i class="fa fa-chevron-circle-right"></i>&nbsp; Account Type: {{ucwords($paymentMasterDetail->account_type)}} Account</h3>
+        <h3 class="section-item-title-2"><i class="fa fa-chevron-circle-right"></i>&nbsp; IFSC code: {{$paymentMasterDetail->ifsc_code}}</h3>
+        <h3 class="section-item-title-2"><i class="fa fa-chevron-circle-right"></i>&nbsp; Branch Name: {{$paymentMasterDetail->branch_name}}</h3>
+
+        @else
+        <h4 class="section-header">UPI Detail</h4>
+        <div class="section-header-underline"></div>
+        <h3 class="section-item-title-2"><i class="fa fa-chevron-circle-right"></i>&nbsp; {{ucwords($paymentMasterDetail->type)}} Number : {{$paymentMasterDetail->account_no}}</h3>
+        @if(!empty($paymentMasterDetail->qr_img))
+            <img src="{{url('public/upload/payment/')}}/{{$paymentMasterDetail->qr_img}}" class="img-thumbnail" style="width: 100%;">
+        @endif
+
+        @endif
+      @endforeach
+
+     <div class="section-close"></div>
+</div>
+@endif
+
     @if($userConfigObj->isShowEnquiry == '1')
    <div class="section-container" id="enquiry-section">
       <div class="separator"></div>
@@ -390,17 +424,20 @@
          <li>
             <a class="footer-menu-link" href="#products-services-section">
                <i class="footer-menu-icon fas fa-box-open"></i>
-               <div class="footer-menu-text">                        GALLERY
+               <div class="footer-menu-text">
+                GALLERY
                </div>
             </a>
          </li>
          @endif
+         @if(count($paymentMasterData) > 0)
          <li>
             <a class="footer-menu-link" href="#payment-options-section">
                <i class="footer-menu-icon fas fa-money-bill-alt"></i>
                <div class="footer-menu-text">PAYMENT</div>
             </a>
          </li>
+         @endif
          @if(count($videosData) > 0)
          <li>
             <a class="footer-menu-link" href="#video-section">
@@ -440,32 +477,32 @@
             </div>
             <ul class="share-buttons">
                <li class="share-button">
-                  <a href="https://api.whatsapp.com/send?phone=917016015808&amp;text=https://dcard.live/405/rd-property%20-solutions" target="_blank">
+                  <a href="https://api.whatsapp.com/send?phone={{str_replace('+','',$companyInfoData->country_code)}}{{$companyInfoData->company_mobile}}&amp;text={{url('vc')}}/{{$userObj->slug}}" target="_blank">
                   <i class="share-button-whatsapp fab fa-whatsapp"></i>
                   </a>
                </li>
                <li class="share-button">
-                  <a target="_blank" href="sms:?body=https://dcard.live/405/rd-property%20-solutions">
+                  <a target="_blank" href="sms:?body={{url('vc')}}/{{$userObj->slug}}">
                   <i class="share-button-sms fas fa-comment-dots"></i>
                   </a>
                </li>
                <li class="share-button">
-                  <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://dcard.live/405/rd-property%20-solutions" class="fb-xfbml-parse-ignore">
+                  <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{url('vc')}}/{{$userObj->slug}}" class="fb-xfbml-parse-ignore">
                   <i class="share-button-facebook fab fa-facebook-f"></i>
                   </a>
                </li>
                <li class="share-button">
-                  <a target="_blank" href="https://twitter.com/intent/tweet?text=https://dcard.live/405/rd-property%20-solutions" data-size="large">
+                  <a target="_blank" href="https://twitter.com/intent/tweet?text={{url('vc')}}/{{$userObj->slug}}" data-size="large">
                   <i class="share-button-twitter fab fa-twitter"></i>
                   </a>
                </li>
                <li class="share-button">
-                  <a target="_blank" href="https://pinterest.com/pin/create/link/?url=https://dcard.live/405/rd-property%20-solutions">
+                  <a target="_blank" href="https://pinterest.com/pin/create/link/?url={{url('vc')}}/{{$userObj->slug}}">
                   <i class="share-button-pinterest fab fa-pinterest-p"></i>
                   </a>
                </li>
                <li class="share-button">
-                  <a target="_blank" href="mailto:?subject=Digital%20Card&amp;body=Check%20out%20this%20digital%20card%20https://dcard.live/405/rd-property%20-solutions">
+                  <a target="_blank" href="mailto:?subject=Digital%20Card&amp;body=Check%20out%20this%20digital%20card%20{{url('vc')}}/{{$userObj->slug}}">
                   <i class="share-button-mail fas fa-envelope"></i>
                   </a>
                </li>
