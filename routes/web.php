@@ -26,6 +26,7 @@ Route::get('/email/verify', function () {
 
 
 Route::get('sitemap.xml', [App\Http\Controllers\SitemapController::class, 'index']);
+Route::get('robots.txt', [App\Http\Controllers\SitemapController::class, 'robots']);
 
 
 

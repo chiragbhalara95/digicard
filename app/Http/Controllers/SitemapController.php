@@ -20,4 +20,10 @@ class SitemapController extends Controller
             'users' => $user
         ])->header('Content-Type', 'text/xml');
     }
+
+    public function robots()
+    {
+        return response()->view('robots', [
+        ])->header('Content-Type', 'text/txt');
+    }
 }
