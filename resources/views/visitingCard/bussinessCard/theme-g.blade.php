@@ -1,7 +1,6 @@
-        
 <!DOCTYPE html>
-<html>
-    <head>
+<html style="--theme-color: #F5B343; --theme-color-light: #F5B34326; --theme-color-100: #F5B343; --theme-color-75: #F5B34390; --theme-color-50: #F5B34380; --theme-color-25: #F5B34370;">
+<head>
     <title>@if(!empty($companyInfoData->company_name)){!! $companyInfoData->company_name !!}@else{!! $userObj->name !!}@endif</title>
 
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -35,230 +34,217 @@
     <meta name="twitter:title" content="@if(!empty($companyInfoData->company_name)){!! $companyInfoData->company_name !!}@else{!! $userObj->name !!}@endif">
     <meta name="twitter:description" content="{{$companyInfoData->company_info}}">
 
+    <link href="{{asset('public/visitingCard/bussinessCard/g/css/t6-style.css')}}" rel="stylesheet">
     <link href="{{asset('public/visitingCard/bussinessCard/g/css/all.css')}}" rel="stylesheet">
-    <link href="{{asset('public/visitingCard/bussinessCard/g/css/awesome.min.css')}}" rel="stylesheet">
-    <link href="{{asset('public/visitingCard/bussinessCard/g/css/cart.css')}}" rel="stylesheet">
-    <link href="{{asset('public/visitingCard/bussinessCard/g/css/feedback.css')}}" rel="stylesheet">
-    <link href="{{asset('public/visitingCard/bussinessCard/g/css/css2.css')}}" rel="stylesheet">
-    <link href="{{asset('public/visitingCard/bussinessCard/g/css/mobile_css.css')}}" rel="stylesheet">
-    <link rel="stylesheet" href="{{asset('public/visitingCard/bussinessCard/g/css/slider.css')}}">
-    <link rel="stylesheet" href="{{asset('public/visitingCard/bussinessCard/g/css/card_css14.css')}}">
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+    <link href="{{asset('public/visitingCard/bussinessCard/g/css/custom.css')}}" rel="stylesheet">
+    <link href="{{asset('public/visitingCard/bussinessCard/g/css/intlTelInput.min.css')}}" rel="stylesheet">
     <link href="{{asset('public/visitingCard/bussinessCard/a/css/jquery-confirm.css')}}" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 
-    <script src="{{asset('public/visitingCard/bussinessCard/g/js/master_js.js')}}"></script>
-    <script src="{{asset('public/visitingCard/bussinessCard/g/js/flickity-docs.min.js')}}"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
 
-  <!-- Required meta tags -->
-<style>
-    .btn2 {
-    background: chartreuse;
-    border-radius: 20px;
-    border-color: #ff0082;
-    padding-top: 13px;
-    padding-bottom: 14px;
-    padding-left: 4px;
-}
-</style>
-<style type="text/css">
-    .purchase-form__renewal-price--strikethrough {
-        text-decoration: line-through;
-        color: red;
-    }
-</style>
-
-<script>
-
-
-function closeLoader(){
-    console.log('yes');
-    $('.card_loader_back').hide();
-}
-
-setTimeout(closeLoader,3000);
-
-</script>
+        <script>
+         function ColorLuminance(hex, lum) {
+             // validate hex string
+             hex = String(hex).replace(/[^0-9a-f]/gi, '');
+             if (hex.length < 6) {
+                 hex = hex[0]+hex[0]+hex[1]+hex[1]+hex[2]+hex[2];
+             }
+             lum = lum || 0;
+         
+             // convert to decimal and change luminosity
+             var rgb = "#", c, i;
+             for (i = 0; i < 3; i++) {
+                 c = parseInt(hex.substr(i*2,2), 16);
+                 c = Math.round(Math.min(Math.max(0, c + (c * lum)), 255)).toString(16);
+                 rgb += ("00"+c).substr(c.length);
+             }
+         
+             return rgb;
+         }
+         document.documentElement.style.setProperty('--theme-color', '#F5B343');
+         document.documentElement.style.setProperty('--theme-color-light', '#F5B34326');
+         document.documentElement.style.setProperty('--theme-color-100', '#F5B343');
+         document.documentElement.style.setProperty('--theme-color-75', '#F5B34390');
+         document.documentElement.style.setProperty('--theme-color-50', '#F5B34380');
+         document.documentElement.style.setProperty('--theme-color-25', '#F5B34370');
+      </script>
 
 </head>
+
 <body>
-        <div class="card_loader_back" style="display: block;">
-            <div class="loader2">
-            <div class="loader_box">
-              <div class="load1"></div>
-              <div class="load2"></div>
-              <div class="load3"></div>
-              <div class="load4"></div>
-              <div class="load5"></div>
-            </div>
-              <h2>Loading...</h2>
-          </div>
-        </div>
+   <div class="page-wrapper" id="home-section">
+      <div class="separator"></div>
+        @if($userConfigObj->isShowNoOfVisit == '1')
+        <div class="views-label"><i class="fas fa-eye"></i> Views: <b>{{$userObj->no_visit}}</b></div>
+        @endif
 
-
-
-
-<script>
-$(document).ready(function(){
-    $('.mobile_home').on('click',function(){
-        $('#header').toggleClass('add_height');
-        
-    })
-})
-
-</script>
-
-<style>
-.full_page_alert {position: fixed;
-    width: -webkit-fill-available;
-    height: -webkit-fill-available;
-    background: white;
-    top: 0;
-    z-index: 9999999;
-    padding: 63px;
-    text-align: center;}
-
-</style>
-
-
-<style type="text/css">
-.carousel-cell {
-  width: 100%; /* full width */
-  height: 200px;
-  background: #fdf1d900;
-   border-radius: 5px;
-   
-  counter-increment: gallelry-cel;
-  /* center images in cells with flexbox */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.carousel.is-fullscreen .carousel-cell {
-  height: 100%;
-}
-
-.carousel-cell img {
- display: block;
-    height: 100%;
-    width: 100%;
-}
-</style>
-
-
-<!----------------------copy from here ------------------------->
-
-<div class="card" id="home">
-            @if($userConfigObj->isShowNoOfVisit == '1')
-            <div class="view_counter"><i class="fa fa-eye"></i> <br>{{$userObj->no_visit}}</div>
-            @endif
-
-        <div class="card_content">
+      <div class="upper">
             @if(!empty($companyInfoData->company_logo))
-              <img src="{{url('public')}}/{{$companyInfoData->company_logo}}" class="img-responsive" alt="Logo">
+              <img src="{{url('public')}}/{{$companyInfoData->company_logo}}" class="profile-pic-img" alt="Logo">
+            @elseif(!empty($userObj->profile_pic))
+              <img src="{{url('public')}}/{{$userObj->profile_pic}}" class="profile-pic-img" alt="Logo">
             @endif
-        </div>
 
-        <div class="card_content2">
           @if (!empty($companyInfoData->company_name))
-            <h2>{!! $companyInfoData->company_name !!}</h2>
-            <p>{!! $userObj->name !!}</p>
+            <div class="firmname">{!! $companyInfoData->company_name !!}</div>
+            <div class="firmname-underline"></div>
+            <div class="name"><span style="margin-top: 5px;display: block;font-size: 16px;">{!! $userObj->name !!}</div>
           @else
-            <h2>{!! $userObj->name !!}</h2>
+            <div class="firmname">{!! $userObj->name !!}</div>
+            <div class="firmname-underline"></div>
           @endif
-          <hr/>
-          <p>@if(!empty($companyInfoData->company_profession)) ({!! $companyInfoData->company_profession !!}) @endif</p>
+
+         @if(!empty($companyInfoData->company_profession))
+         <div class="name"><span style="margin-top: 5px;display: block"><i style="font-size: 12px;">{!! $companyInfoData->company_profession !!}</i></span>
+         </div>
+        @endif
+
+         <div class="contact-buttons">
+            <a class="contact-button" href="tel:{{$companyInfoData->country_code}}{{$companyInfoData->company_mobile}}">
+            <i class="fas fa-phone fa-flip-horizontal"></i>
+            </a>
+            <a class="contact-button" target="_blank" href="https://api.whatsapp.com/send?phone={{str_replace('+','',$companyInfoData->country_code)}}{{$companyInfoData->company_mobile}}&text={{urlencode($userConfigObj->whatsappMsg)}}">
+            <i class="fab fa-whatsapp"></i>
+            </a>
+            @if (!empty($companyInfoData->company_address))
+            <a class="contact-button" target="_blank" href="https://maps.google.com?q={{$companyInfoData->latitude}},{{$companyInfoData->longitude}}&z=12&amp;um=1&amp;ie=UTF-8&amp;sa=X&amp;ved=2ahUKEwiWyNX76N3qAhWrzTgGHQuCBicQ_AUoAXoECCMQAw">
+            <i class="fas fa-map-marker-alt fa-flip-horizontal"></i>
+            </a>
+            @endif
+
+            <a class="contact-button" target="_blank" href="mailto:{{$userObj->email}}">
+            <i class="fas fa-envelope fa-flip-horizontal"></i>
+            </a>
+         </div>
+      </div>
+      <div class="lower">
+         <div class="contact-info-container">
+            <div class="contact-info-wrapper">
+               <a class="contact-piller-button call" target="_blank" href="tel:{{$companyInfoData->country_code}}{{$companyInfoData->company_mobile}}">
+               <i class="fas fa-phone fa-flip-horizontal"></i>
+               </a>
+               <div class="contact-info">
+                  <div>
+                     <a target="_blank" href="tel:{{$companyInfoData->country_code}}{{$companyInfoData->company_mobile}}">{{$companyInfoData->country_code}}{{$companyInfoData->company_mobile}}</a>
+                    @if(!empty($companyInfoData->country_landline))
+                     <br><a target="_blank" href="tel:{{$companyInfoData->country_landline}}" class="contact-action-container-text">
+                     {{$companyInfoData->country_landline}}</a>
+                     @endif
+                  </div>
+               </div>
+            </div>
+            @if(!empty($companyInfoData->company_website))
+            <div class="contact-info-wrapper">
+               <a class="contact-piller-button" target="_blank" href="{{$companyInfoData->company_website}}">
+               <i class="fas fa-globe"></i>
+               </a>
+               <div class="contact-info">
+                  <a target="_blank" href="{{$companyInfoData->company_website}}">{{$companyInfoData->company_website}}</a>
+               </div>
+            </div>
+            @endif
+
+            <div class="contact-info-wrapper">
+               <a class="contact-piller-button" target="_blank" href="mailto:{{$userObj->email}}">
+               <i class="fas fa-envelope"></i>
+               </a>
+               <div class="contact-info">
+                  <a target="_blank" href="mailto:{{$userObj->email}}">{{$userObj->email}}</a>
+               </div>
             </div>
 
-            <div class="dis_flex">
-                <a href="tel:{{$companyInfoData->country_code}}{{$companyInfoData->company_mobile}}" target="_blank">
-                  <div class="link_btn"><i class="fa fa-phone"></i> Call</div>
-                </a>
-                <a href="https://api.whatsapp.com/send?phone={{str_replace('+','',$companyInfoData->country_code)}}{{$companyInfoData->company_mobile}}&text={{urlencode($userConfigObj->whatsappMsg)}}" target="_blank"><div class="link_btn"><i class="fa fa-whatsapp"></i> WhatsApp</div></a>                
-                
-                @if (!empty($companyInfoData->company_address))
-                        <a href="https://maps.google.com?q={{$companyInfoData->latitude}},{{$companyInfoData->longitude}}&z=12&amp;um=1&amp;ie=UTF-8&amp;sa=X&amp;ved=2ahUKEwiWyNX76N3qAhWrzTgGHQuCBicQ_AUoAXoECCMQAw" target="_blank"><div class="link_btn"><i class="fa fa-map-marker"></i> Direction</div></a>
-                @endif
-                <a href="mailto:{{$userObj->email}}" target="_blank"><div class="link_btn"><i class="fa fa-envelope"></i> Mail</div></a>
-                @if(!empty($companyInfoData->company_website))
-                <a href="{{$companyInfoData->company_website}}" target="_blank"><div class="link_btn"><i class="fa fa-globe"></i> Website</div></a>
-                @endif
+          @if (!empty($companyInfoData->company_address))               
+            <div class="contact-info-wrapper">
+               <a class="contact-piller-button" target="_blank" href="https://maps.app.goo.gl/zeZUirLcgUwHdJbj6">
+               <i class="fas fa-map-marker-alt"></i>
+               </a>
+               <div class="contact-info">
+                  <a target="_blank" href="https://maps.google.com?q={{$companyInfoData->latitude}},{{$companyInfoData->longitude}}&z=12&amp;um=1&amp;ie=UTF-8&amp;sa=X&amp;ved=2ahUKEwiWyNX76N3qAhWrzTgGHQuCBicQ_AUoAXoECCMQAw">{!!$companyInfoData->company_address!!}</a>
+               </div>
+            </div>
+            @endif
+
+         </div>
+
+
+         <div style="padding: 15px;">
+            <div class="p-30"></div>
+
+            <div class="whatsapp-input">
+               <div class="input-wrapper">
+                  <input type="hidden" id="whatsapp-msg" value="{{url('vc')}}/{{$userObj->slug}}">  
+                  <div class="iti iti--allow-dropdown">
+                     <div class="iti__flag-container">
+                        <div class="iti__selected-flag" role="combobox" aria-owns="iti-0__country-listbox" aria-expanded="false" tabindex="0" title="India (भारत): +91" aria-activedescendant="iti-0__item-in"><div class="iti__flag iti__ind"></div></div>                     </div>
+                     <input type="tel" id="whatsapp-input" class="input" placeholder="Enter whatsapp number" maxlength="10" oninput="this.value=this.value.replace(/[^0-9]/g,&#39;&#39;);" autocomplete="off" data-intl-tel-input-id="0">
+                  </div>
+
+               </div>
+                  <a class="whatsapp-button" target="_blank" href="javascript:;" onclick="handleWhatsappShare(this)">
+                  <i class="fab fa-whatsapp"></i>Share on Whatsapp
+                  </a>
             </div>
 
-    <div class="contact_details">
-                 <div class="contact_d" onclick="location.href=&#39;tel:{{$companyInfoData->country_code}}{{$companyInfoData->company_mobile}}&#39;"><i class="fa fa-phone"></i>
-          <p>{{$companyInfoData->country_code}}{{$companyInfoData->company_mobile}} </p>
-      </div>
-      @if(!empty($companyInfoData->country_landline))
-       <div class="contact_d" onclick="location.href=&#39;tel:{{$companyInfoData->country_landline}}&#39;"><i class="fa fa-phone"></i><p>{{$companyInfoData->country_landline}}</p>
-        </div>
-      @endif
-      <div class="contact_d" onclick="location.href=&#39;Mailto:{{$userObj->email}}&#39;"><i class="fa fa-envelope"></i><p>{{$userObj->email}}</p>
-      </div>
-
-      @if (!empty($companyInfoData->company_address))               
-      <div class="contact_d" onclick="location.href=&#39;https://maps.google.com?q={{$companyInfoData->latitude}},{{$companyInfoData->longitude}}&z=12&amp;um=1&amp;ie=UTF-8&amp;sa=X&amp;ved=2ahUKEwiWyNX76N3qAhWrzTgGHQuCBicQ_AUoAXoECCMQAw&#39;"><i class="fa fa-map-marker"></i><p>{!!$companyInfoData->company_address!!}</p></div>
-      @endif                
-
-
-      </div>
-
-
-          <div class="dis_flex">
-                <div class="share_wtsp">
-                    <form action="https://api.whatsapp.com/send" id="wtsp_form" target="_blank">
-            <input type="text" name="phone" placeholder="WhatsApp Number with Country code" value="{{$userConfigObj->defaultCountry}}">
-            <input type="hidden" name="text" value="{{url('vc')}}/{{$userObj->slug}}">
-            <div class="wtsp_share_btn" onclick="subForm()"><i class="fa fa-whatsapp"></i> Share</div></form>                   
-                </div>
+            <div class="p-20"></div>
+            <div class="shadow-buttons">
+               <a class="shadow-button" href="{{url('saveViewCard')}}/{{$userObj->slug}}" download="contact.vcf"><i class="fas fa-download shadow-button-icon"></i>Add to Phone Book</a>
+               <a class="shadow-button" onclick="openShareModal(this, `DCARD`)"><i class="fas fa-share-alt shadow-button-icon"></i>Share</a>
             </div>
-            
-        <div class="dis_flex">
-        <a href="{{url('saveViewCard')}}/{{$userObj->slug}}" download="contact.vcf" class="addphonebook">
-        <div class="big_btns">Save to Contacts <i class="fa fa-download"></i></div></a> 
-            
-            </div> 
-            <div class="dis_flex"></div>
-    </div>
+            <div>
+               <a class="shadow-button save-card-button" style="display: none;"><i class="fas fa-cloud-download-alt shadow-button-icon"></i>Save Card</a>
+            </div>
+            <div class="p-30"></div>
 
-                <script>
-                    $(document).ready(function(){
-                        $('#close_sharer,#share_box_pop').on('click',function(){
-                            $('.share_box').slideToggle();
-                        });
-                    })
-                
-                
-                </script>
-            
-            </div> 
-            <div class="dis_flex">
-            
-                                                                                                            </div>
-            
-            
-            
-    
-    </div>
-    
+  @if (count($socialMediaData) > 0)
+    <ul class="inprofile share-buttons" style="height:70px;margin-left: 3px;">
+      @foreach($socialMediaData as $socialMediaDetail)
+        @if ($socialMediaDetail->type == 'fb')
+        <li class="share-button">
+            <a href="{{$socialMediaDetail->url}}" target="_blank"><i class="share-button-facebook fab fa-facebook"></i></a> </li>
+        @elseif($socialMediaDetail->type == 'in')
+        <li class="share-button"> <a href="{{$socialMediaDetail->url}}" target="_blank"><i class="share-button-instagram fab fa-instagram"></i></a> </li>
+          @elseif($socialMediaDetail->type == 'li')
+          <li class="share-button"> <a href="{{$socialMediaDetail->url}}" target="_blank"><i class="share-button-linkedin fab fa-linkedin"></i></a> </li>
+          @elseif($socialMediaDetail->type == 'tw')
+          <li class="share-button"> <a href="{{$socialMediaDetail->url}}" target="_blank"><i class="share-button-twitter fab fa-twitter"></i></a> </li>
+          @elseif($socialMediaDetail->type == 'pi')
+          <li class="share-button"> <a href="{{$socialMediaDetail->url}}" target="_blank"><i class="share-button-facebook fab fa-pinterest"></i></a> </li>
+          @elseif($socialMediaDetail->type == 'yt')
+          <li class="share-button"> <a href="{{$socialMediaDetail->url}}" target="_blank"><i class="share-button-facebook fab fa-youtube"></i></a> </li>
+        @endif
+      @endforeach
+    </ul>
+    @endif
 
-    <div class="card2 dis_flex">
-      <h3 style="margin-top: 1%">Scan QR Code for share your digital cards</h3>
-        <div class="full-divider"></div>
-          <div class="text text-center" style="margin-top:1%;text-align: center;">
+            <div class="p-20"></div>
+         </div>
+         <div class="bottom-separator"></div>
+      </div>
+   </div>
+
+    <div class="section-container">
+      <div class="separator"></div>
+      <div class="section-content-wrapper">
+         <h2 class="section-header">Scan QR Code for share your digital cards</h2>
+         <div class="section-header-underline"></div>
+          <div class="text text-center" style="text-align: center;">
           {!! QrCode::size(250)->generate($vistingUrl) !!}
             <p>{{$vistingUrl}}</p>
             <a class="col-md-12 text-center big_btns text-white" href="{{url('downloadQrCode')}}/{{$userObj->slug}}" >Download QR Code &nbsp;<i class="fa fa-download"></i></a>  
 
       </div>
+
+     </div>
     </div>
 
-<!--------------about us --------------------------->   
-    
-    <div class="card2" id="about_us">
-        <h3>{{$userConfigObj->aboutLabel}}</h3>
-    <p>{!!$companyInfoData->company_info!!}</p>
+   <div class="section-container" id="about-us-section">
+      <div class="separator"></div>
+      <div class="section-content-wrapper">
+         <h2 class="section-header">{{$userConfigObj->aboutLabel}}</h2>
+         <div class="section-header-underline"></div>
+            <p class="text-white">{!!$companyInfoData->company_info!!}</p>
+
     @if(!empty($companyInfoData->broucher_file))
 <h3>Documents</h3>
   <div class="dis_flex">
@@ -278,459 +264,304 @@ $(document).ready(function(){
 
 @endif
 
-    
-    </div>
-    
-<!------------shopping online-------------------------->
-
-
-    
-        
-    
-    
-<!--------------youtube videos--------------------------->  
-
-    
-    
-        
-<!----------product and services ----------------------->       
-    
-    
-
-
-        
-<!----------image gallery----------------------->       
+      </div>
+      <div class="bottom-separator"></div>
+   </div>
 
 
 @if($galleryData->count() > 0)
+   <div class="section-container" id="products-services-section">
+      <div class="separator"></div>
+      <div class="section-content-wrapper">
+         <h2 class="section-header">
+            Gallery
+         </h2>
+         <div class="section-header-underline"></div>
+         <div>
 
+        <div class="p-10"></div>
+          @if (!empty($galleryCatInfo))
+          <div align="center">
+              <button class="btn btn-default filter-button active all-filter-btn" data-filter="all">All</button>
+              @foreach($galleryCatInfo as $catlbl => $catName)
+              <button class="btn btn-default filter-button" data-filter="{{$catlbl}}">{{$catName}}</button>
+              @endforeach
+          </div>
+          @endif
 
-<div class="card2" id="photogallery">
+        @foreach($galleryData as $galleryDetail)
+        <div class="card filter {{$galleryDetail->category_name}}">
+           <div class="text-center">
+              <img onclick="openImageModal(this)" alt="{{$galleryDetail->title}}" src="{{URL::asset('public/upload/product/'.$galleryDetail->head_image)}}" style="width:100%;margin-bottom: 9px;" description="{{$galleryDetail->description}}">
+                    <h4 class="section-header">{{$galleryDetail->title}}
+                    &nbsp;<br/>
+                    @if ($galleryDetail->special_price > 0 && $galleryDetail->mrp_price > $galleryDetail->special_price)
+                  <del>₹{{$galleryDetail->mrp_price}} <i class="fa fa-rupee"></i></del>
+                  @endif
 
+                  @if ($galleryDetail->mrp_price > 0)
+                  ₹{{$galleryDetail->special_price}} <i class="fa fa-rupee"></i>          @endif
+              </h4>
+            </div>
 
-  <h3 class="section-heading">GALLERY</h3>
-
-
-  <div class="p-10"></div>
-  <br/>
-        <div class="full-divider"></div>
-
-
-  @if (!empty($galleryCatInfo))
-  <div align="center">
-      <button class="btn btn-default filter-button active all-filter-btn" data-filter="all">All</button>
-      @foreach($galleryCatInfo as $catlbl => $catName)
-      <button class="btn btn-default filter-button" data-filter="{{$catlbl}}">{{$catName}}</button>
-      @endforeach
-  </div>
-  @endif
-
-    <div class="images-container row">
-
-  @foreach($galleryData as $galleryDetail)
-    <div class="image-wrapper gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter {{$galleryDetail->category_name}}">
-            <h4 class="text text-center" style="text-align:center;">{{$galleryDetail->title}}</h4>
-
-            <img onclick="openImageModal(this)" alt="{{$galleryDetail->title}}" src="{{URL::asset('public/upload/product/'.$galleryDetail->head_image)}}" style="width:100%" {{$galleryDetail->title}}
-description="{{$galleryDetail->description}}"
->
-
-              @if ($galleryDetail->special_price > 0 && $galleryDetail->mrp_price > $galleryDetail->special_price)
-                    <span class="purchase-form__price purchase-form__price--before-after-price t-heading -size-xs h-pull-right">
-                            <span class="js-renewal__price t-currency purchase-form__renewal-price purchase-form__renewal-price--strikethrough">₹{{$galleryDetail->mrp_price}}</span>
-
-                          <b class="t-currency">
-                            <span class="js-support__price">₹{{$galleryDetail->special_price}}</span>
-                          </b>
-                        </span>
-                @elseif ($galleryDetail->mrp_price > 0)
-                    <span class="purchase-form__price purchase-form__price--before-after-price t-heading -size-xs h-pull-right">
-
-                          <b class="t-currency">
-                            <span class="js-support__price">₹{{$galleryDetail->mrp_price}}</span>
-                          </b>
-                        </span>
-
-                @endif
-
-                @if(!empty($galleryDetail->links))
-                  <a href="{{$galleryDetail->links}}" target="_blank" class="btn btn-sm btn-warning"><i class="fa fa-link"></i></a> 
-                @endif
-                @if(!empty($galleryDetail->doc_url))
-                  <a href="{{url('public/upload/product-doc')}}/{{$galleryDetail->doc_url}}" target="_blank" class="btn btn-sm  btn-primary" download><i class="fa fa-download"></i></a> 
-                @endif
-                <div class="dis_flex">
-                  <a class="addphonebook" href='https://api.whatsapp.com/send?phone={{str_replace('+','',$companyInfoData->country_code)}}{{$companyInfoData->company_mobile}}&text=Enquery for product: {{urlencode($galleryDetail->title)}}' target='_blank'>
-                  <div class="big_btns">Enquiry Now</i></div>
-                  </a>
-			    			</div>
-
-              </div>
-            @endforeach
- 
-
-  </div>
-
-</div>
-@endif
-
-
-
-        
-<!----------payment info----------------------->    
-
-@if(count($paymentMasterData) > 0)
-
-    <div class="card2" id="payment">
-        <h3>Payment Info</h3>
-        <table class="about-tbl">
-        <tbody>
-
-        @foreach($paymentMasterData as $paymentMasterDetail)
-        @if ($paymentMasterDetail->type == 'bank')
-        <tr>
-          <td align="center" colspan="2">Account Details:</td>
-        </tr>
-        <tr>
-          <td colspan="2">
-          <table class="about-tbl">
-            <tbody>
-              <tr>
-                <td width="50%" class="td-label">Bank Name</td>
-                <td >: </td>
-                <td > {{$paymentMasterDetail->bank_name}} </td>
-              </tr>
-              <tr>
-                <td width="50%" class="td-label">Account Holder Name</td>
-                <td>: </td>
-                <td> {{$paymentMasterDetail->account_holder_name}} </td>
-              </tr>
-              <tr>
-                <td width="50%" class="td-label">Account Number</td>
-                <td >: </td>
-                <td > {{$paymentMasterDetail->account_no}} </td>
-              </tr>
-              <tr>
-                <td width="50%" class="td-label">Account Type</td>
-                <td>: </td>
-                <td> {{ucwords($paymentMasterDetail->account_type)}} Account </td>
-              </tr>
-              <tr>
-                <td width="50%" class="td-label">IFSC code</td>
-                <td>: </td>
-                <td> {{$paymentMasterDetail->ifsc_code}} </td>
-              </tr>
-              <tr>
-                <td width="50%" class="td-label">Branch Name</td>
-                <td >: </td>
-                <td > {{$paymentMasterDetail->branch_name}} </td>
-              </tr>
-
-            </tbody>
-          </table>
-          </td>
-        </tr>
-        @else
-        <tr>
-        <td colspan="2">
-            <table class="about-tbl">
-            <tbody>
-                <tr>
-                <td width="50%"><b>{{ucwords($paymentMasterDetail->type)}} Number</b></td>
-                <td>: </td>
-                <td>{{$paymentMasterDetail->account_no}} </td>
-                </tr>
-                <tr>
-                    <td>
-                        @if(!empty($paymentMasterDetail->qr_img))
-                            <img src="{{url('public/upload/payment/')}}/{{$paymentMasterDetail->qr_img}}" class="qr-image">
-                        @endif
-
-                    </td>
-                </tr>
-            </tbody>
-            </table>
-          </tr>
-        @endif
-        @endforeach
-        </tbody>
-    </table>
-
-    </div>
-@endif      
-    
-<!----------Feedback----------------------->
-
-<!---div class="card2" id="feedback">
-
-<h3>Feedback</h3>
-<script>
-
-$(':radio').change(function() {
-  console.log('New star rating: ' + this.value);
-});
-</script>
-<form id="feedback_form"  method="post">
-<p class="select_star"> Select Star</p>
-    <div class="rating">
-    
-      <label>
-        <input type="radio" name="r_star" value="1" required>
-        <span class="icon">★</span>
-      </label>
-      <label>
-        <input type="radio" name="r_star" value="2" required>
-        <span class="icon">★</span>
-        <span class="icon">★</span>
-      </label>
-      <label>
-        <input type="radio" name="r_star" value="3" required>
-        <span class="icon">★</span>
-        <span class="icon">★</span>
-        <span class="icon">★</span>   
-      </label>
-      <label>
-        <input type="radio" name="r_star" value="4" required>
-        <span class="icon">★</span>
-        <span class="icon">★</span>
-        <span class="icon">★</span>
-        <span class="icon">★</span>
-      </label>
-      <label>
-        <input type="radio" name="r_star"  value="5" required>
-        <span class="icon">★</span>
-        <span class="icon">★</span>
-        <span class="icon">★</span>
-        <span class="icon">★</span>
-        <span class="icon">★</span>
-      </label>
-
-    </div>
-    
-    <input type="name" name="r_name" placeholder="Your name" required>
-    <input type="email" name="r_email" placeholder="Your email id" >
-    
-    <input type="number" max="999999999999" min="5555555555" name="r_contact" placeholder="Your contact ">
-    <textarea name="r_msg" placeholder="Your feedback "></textarea>
-    <input type="submit" name="submit_feedback" value="Submit Feedback"> 
-
-</form>
-
-
-</div--->
-
-<!--<div class="card2" id="feedback">-->
-
-<!--<h3>Feedback</h3>-->
-<!--<script>-->
-
-<!--$(':radio').change(function() {-->
-<!--  console.log('New star rating: ' + this.value);-->
-<!--});-->
-<!--</script>-->
-<!--<form id="feedback_form"  method="post">-->
-<!--<p class="select_star"> Select Star</p>-->
-<!--    <div class="rating">-->
-    
-<!--      <label>-->
-<!--        <input type="radio" name="r_star" value="1" required>-->
-<!--        <span class="icon">★</span>-->
-<!--      </label>-->
-<!--      <label>-->
-<!--        <input type="radio" name="r_star" value="2" required>-->
-<!--        <span class="icon">★</span>-->
-<!--        <span class="icon">★</span>-->
-<!--      </label>-->
-<!--      <label>-->
-<!--        <input type="radio" name="r_star" value="3" required>-->
-<!--        <span class="icon">★</span>-->
-<!--        <span class="icon">★</span>-->
-<!--        <span class="icon">★</span>   -->
-<!--      </label>-->
-<!--      <label>-->
-<!--        <input type="radio" name="r_star" value="4" required>-->
-<!--        <span class="icon">★</span>-->
-<!--        <span class="icon">★</span>-->
-<!--        <span class="icon">★</span>-->
-<!--        <span class="icon">★</span>-->
-<!--      </label>-->
-<!--      <label>-->
-<!--        <input type="radio" name="r_star"  value="5" required>-->
-<!--        <span class="icon">★</span>-->
-<!--        <span class="icon">★</span>-->
-<!--        <span class="icon">★</span>-->
-<!--        <span class="icon">★</span>-->
-<!--        <span class="icon">★</span>-->
-<!--      </label>-->
-
-<!--    </div>-->
-    
-<!--    <input type="name" name="r_name" placeholder="Your name" required>-->
-<!--    <input type="email" name="r_email" placeholder="Your email id" >-->
-    
-<!--    <input type="number" max="999999999999" min="5555555555" name="r_contact" placeholder="Your contact ">-->
-<!--    <textarea name="r_msg" placeholder="Your feedback "></textarea>-->
-<!--    <input type="submit" name="submit_feedback" value="Submit Feedback"> -->
-
-<!--    <p class="note">Note: for privecy and security reasons we do not show your contact details. For more info you can contact admin or your franchisee.</p>-->
-<!--</form>-->
-
-
-<!--</div>-->
-<!----------Feedback end ----------------------->
-    
-    
-
-    
-
-
-
-<!----------email to  info----------------------->  
-@if($userConfigObj->isShowEnquiry == '1')
-
-<div class="card2 page-container" id="enquery">
-
-  <h3 class="section-heading">ENQUIRY FORM</h3>
-
-  <form data-parsley-validate="" method="post" class="enquiry-form" id="enquiry-form" novalidate="">
-  <meta name="csrf_token" content="{{ csrf_token() }}" />
-  @csrf
-  <input type="hidden" name="slug" id="slug" value="{{$userObj->slug}}">
-  <input type="text" name="enquiryName" data-parsley-trigger="change" id="enquiryName" placeholder="Enter Full Name" pattern="[a-zA-Z ]*$" required=""><br>
-    <br>
-    <div class="flex">
-      <div class="enquiry-phoneNumber">
-      <input type="text" data-parsley-length-message="Contact should have (4-10) digits." data-parsley-type-message="Contact should have only digits." data-parsley-type="number" data-parsley-length="[4, 10]" name="phoneNumber" id="phoneNumber" required="" placeholder="Enter Phone Number"><br>
-        <br>
-      </div>
-      <div class="enquiry-email">
-      <input type="email" name="email" id="email" data-parsley-trigger="change" placeholder="Enter Email"><br>
-        <br>
-      </div>
-    </div>
-    <textarea name="message" id="message" required="" placeholder="Enter Message"></textarea><br>
-    <input type="hidden" id="companyEmail" value="admin.admin@gmail.com">
-    <input type="submit" id="inquiry-send" value="Send">
-    <br>
-  </form>
-</div>
-@endif
-
-        
-    <br>
-        
-        
-
-<!-- The image Modal Popup-->
-<div id="imageModal" class="modal" style="display:none"> 
-
-<span class="close" id="imageModalClose">×</span>
-<img class="modal-content fadeIn" id="img01" alt="">
-  <div id="caption"></div>
-<div id="gallery_description"></div>
-</div>
-
-
-<div class="create_card_btn">
-    <a class="font-white" href="{{url('register?packageId=3')}}" target="_blank">Create Your Card <b> </b></a><b>
-    <a class="font-white" href="{{url('/')}}" target="_blank"> © {{date('Y')}}</a><br></b></div><b>
-        
-    </b></div><b>
-
-    
-    <style>
-    .create_card_btn {
-                 background: linear-gradient(45deg, black, black);
-    color: white;
-    width: auto;
-    padding: 20px;
-    border-radius: 2px;
-    line-height: 0.8;
-    margin: 11px auto;
-    font-size: 9px;
-    text-align: center;
-    }
-    
-    
-    
-#svg_down{position: fixed;
-    bottom: 0;
-    z-index: -1;
-    left: 0;}
-
-    
-    </style>
-    
-    
-    
-    <br>
-    <br>
-    <br>
-    <br>
-    <div class="menu_bottom">
-        <div class="menu_container">
-            <div class="menu_item" onclick="location.href=&#39;#home&#39;"><i class="fa fa-home"></i> Home</div>
-            <div class="menu_item" onclick="location.href=&#39;#about_us&#39;"><i class="fa fa-briefcase"></i>{{$userConfigObj->aboutLabel}}</div>
-            <!-- <div class="menu_item" onclick="location.href=&#39;#product_services&#39;"><i class="fa fa-ticket"></i>Product &amp; Services</div> -->
-            <!-- <div class="menu_item" onclick="location.href=&#39;#shop_online&#39;"><i class="fa fa-archive"></i>Shop</div> -->
-            @if($galleryData->count() > 0)
-            <div class="menu_item" onclick="location.href=&#39;#photogallery&#39;"><i class="fa fa-image"></i>Gallery</div>
-            @endif
-            <!-- <div class="menu_item" onclick="location.href=&#39;#youtube_video&#39;"><i class="fa fa-video-camera"></i>Youtube Videos</div> -->
-            @if(count($paymentMasterData) > 0)
-            <div class="menu_item" onclick="location.href=&#39;#payment&#39;"><i class="fa fa-money"></i>Payment</div>
-            @endif
-            <div class="menu_item" onclick="location.href=&#39;#enquery&#39;"><i class="fa fa-comment"></i>Enquery</div>
+            <div class="product-enquiry-section text-center">
+                <a href="https://api.whatsapp.com/send?phone={{str_replace('+','',$companyInfoData->country_code)}}{{$companyInfoData->company_mobile}}&text=Enquery for product: {{urlencode($galleryDetail->title)}}" target='_blank' class="product-enquiry-btn text-center"><div class="btn_buy">Inquire Now</div></a>
+            </div>
         </div>
+        @endforeach
+
+         </div>
+      </div>
+      <div class="bottom-separator"></div>
+   </div>
+@endif
+
+@if(count($videosData) > 0)
+
+<div class="section-container" id="video-section">
+  <div class="separator"></div>
+  <div class="section-content-wrapper">
+     <h2 class="section-header">Videos</h2>
+     <div class="section-header-underline"></div>
+
+      @foreach($videosData as $videosDetail)
+    <div class="order_box">
+      <div class="embed-responsive embed-responsive-16by9">
+        <iframe class="embed-responsive-item " src="{{$videosDetail->video_path}}" title="{{$videosDetail->title}}" allowfullscreen ng-show="showvideo" frameborder="0" ></iframe>
+     <h4 class="section-header">{{$videosDetail->title}}</h4>
     </div>
-    <input type="hidden" id="send_enquiry_url" value="{{route('sendEnquiry')}}">
 
+  </div>
+    @endforeach
+</div>
+</div>
+@endif
 
-</b>
+    @if($userConfigObj->isShowEnquiry == '1')
+   <div class="section-container" id="enquiry-section">
+      <div class="separator"></div>
+      <div class="section-content-wrapper">
+         <h2 class="section-header">Enquiry Form</h2>
+         <div class="section-header-underline"></div>
+        <form data-parsley-validate="" method="post" class="enquiry-form" id="enquiry-form" novalidate="">
+        <meta name="csrf_token" content="{{ csrf_token() }}" />
+        <input type="hidden" name="slug" id="slug" value="{{$userObj->slug}}">
+        <input type="hidden" id="companyEmail" value="admin.admin@gmail.com">
 
+            <div class="form-group">
+                <input type="text" name="enquiryName" data-parsley-trigger="change" id="enquiryName" placeholder="Enter Full Name" pattern="[a-zA-Z ]*$" required="">
 
+            </div>
+            <div class="form-group">
+                <input type="email" name="email" id="email" data-parsley-trigger="change" placeholder="Enter Email" class="form-control">
+            </div>
+            <div class="form-group">
+                <input type="text" data-parsley-length-message="Contact should have (4-10) digits." data-parsley-type-message="Contact should have only digits." data-parsley-type="number" data-parsley-length="[4, 10]" name="phoneNumber" id="phoneNumber" required="" placeholder="Enter Phone Number">
+            </div>
+            <div class="form-group">
+                <textarea name="message" id="message" required="" placeholder="Enter Message"></textarea>
+            </div>
+            <div class="form-group">
+                <input type="submit" id="inquiry-send" value="Send">
+            </div>
+         </form>
+      </div>
+      <div class="bottom-separator"></div>
+   </div>
+   @endif
+
+   <!-- Footer Menu -->
+   <div class="footer">
+      <ul class="footer-menu">
+         <li>
+            <a class="footer-menu-link"  href="#home-section">
+               <i class="footer-menu-icon fas fa-home"></i>
+               <div class="footer-menu-text">HOME</div>
+            </a>
+         </li>
+         <li>
+            <a class="footer-menu-link" href="#about-us-section">
+               <i class="footer-menu-icon fas fa-briefcase"></i>
+               <div class="footer-menu-text">{{$userConfigObj->aboutLabel}}</div>
+            </a>
+         </li>
+         @if($galleryData->count() > 0)
+
+         <li>
+            <a class="footer-menu-link" href="#products-services-section">
+               <i class="footer-menu-icon fas fa-box-open"></i>
+               <div class="footer-menu-text">                        GALLERY
+               </div>
+            </a>
+         </li>
+         @endif
+         <li>
+            <a class="footer-menu-link" href="#payment-options-section">
+               <i class="footer-menu-icon fas fa-money-bill-alt"></i>
+               <div class="footer-menu-text">PAYMENT</div>
+            </a>
+         </li>
+         @if(count($videosData) > 0)
+         <li>
+            <a class="footer-menu-link" href="#video-section">
+               <i class="footer-menu-icon fas fa-video"></i>
+               <div class="footer-menu-text">VIDEOS</div>
+            </a>
+         </li>
+         @endif
+         @if($userConfigObj->isShowEnquiry == '1')
+         <li>
+            <a class="footer-menu-link" href="#enquiry-section">
+               <i class="footer-menu-icon fas fa-comment-alt"></i>
+               <div class="footer-menu-text">ENQUIRY</div>
+            </a>
+         </li>
+         @endif
+      </ul>
+   </div>
+   <!-- The image Modal -->
+   <div id="imageModal" class="modal">
+      <span class="close" id="imageModalClose">×</span>
+      <img class="modal-content fadeIn" id="img01">
+      <div id="caption"></div>
+   </div>
+   <!-- The share Modal -->
+   <div id="shareModal" class="modal share-modal">
+      <div class="share-form fadeInUpBig">
+         <div class="share-form-header">
+            <h3 class="share-form-header-text">Share Profile</h3>
+            <span class="close" id="shareModalClose">×</span>
+         </div>
+         <div class="share-form-buttons-container">
+            <p>Share my Digital Card in your network.</p>
+            <div class="share-buttons-heading">
+               <img src="./R&amp;D Property Solution - Dcard_files/tild-arrow.svg" class="share-buttons-arrow">
+               <div class="share-buttons-heading-text">Share my Digital Card</div>
+            </div>
+            <ul class="share-buttons">
+               <li class="share-button">
+                  <a href="https://api.whatsapp.com/send?phone=917016015808&amp;text=https://dcard.live/405/rd-property%20-solutions" target="_blank">
+                  <i class="share-button-whatsapp fab fa-whatsapp"></i>
+                  </a>
+               </li>
+               <li class="share-button">
+                  <a target="_blank" href="sms:?body=https://dcard.live/405/rd-property%20-solutions">
+                  <i class="share-button-sms fas fa-comment-dots"></i>
+                  </a>
+               </li>
+               <li class="share-button">
+                  <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://dcard.live/405/rd-property%20-solutions" class="fb-xfbml-parse-ignore">
+                  <i class="share-button-facebook fab fa-facebook-f"></i>
+                  </a>
+               </li>
+               <li class="share-button">
+                  <a target="_blank" href="https://twitter.com/intent/tweet?text=https://dcard.live/405/rd-property%20-solutions" data-size="large">
+                  <i class="share-button-twitter fab fa-twitter"></i>
+                  </a>
+               </li>
+               <li class="share-button">
+                  <a target="_blank" href="https://pinterest.com/pin/create/link/?url=https://dcard.live/405/rd-property%20-solutions">
+                  <i class="share-button-pinterest fab fa-pinterest-p"></i>
+                  </a>
+               </li>
+               <li class="share-button">
+                  <a target="_blank" href="mailto:?subject=Digital%20Card&amp;body=Check%20out%20this%20digital%20card%20https://dcard.live/405/rd-property%20-solutions">
+                  <i class="share-button-mail fas fa-envelope"></i>
+                  </a>
+               </li>
+            </ul>
+         </div>
+      </div>
+   </div>
 </body>
 
-<script src="{{asset('public/visitingCard/bussinessCard/common/js/jquery-3.6.4.min.js')}}"></script>
-<script src="{{asset('public/visitingCard/bussinessCard/a/js/intlTelInput.min.js')}}"></script>
-<script src="{{asset('public/visitingCard/bussinessCard/a/js/parsley.min.js')}}"></script>
-<script src="{{asset('public/visitingCard/bussinessCard/a/js/jquery-confirm.js')}}"></script>
-<script src="{{asset('public/visitingCard/bussinessCard/a/js/form-action.js')}}"></script>
-<script src="{{asset('public/visitingCard/bussinessCard/a/js/script.js')}}?v={{date('YmdHis')}}"></script>
-<script src="{{asset('public/js/prevent.js')}}"></script>
+<input type="hidden" id="send_enquiry_url" value="{{route('sendEnquiry')}}">
 
-<link href="{{asset('public/visitingCard/bussinessCard/common/css/gallery-category.css')}}" rel="stylesheet">
+  <script src="{{asset('public/visitingCard/bussinessCard/common/js/jquery-3.6.4.min.js')}}"></script>
+<script src="{{asset('public/visitingCard/bussinessCard/a/js/intlTelInput.min.js')}}"></script>
+<script src="{{asset('public/visitingCard/bussinessCard/g/js/script.js')}}?v={{date('YmdHis')}}"></script>
+
+<link href="{{asset('public/visitingCard/bussinessCard/g/css/gallery-category.css')}}" rel="stylesheet">
 <script id="skype_bootstrap" src="{{asset('public/visitingCard/bussinessCard/common/js/gallery-category.js')}}"></script>
 
-<script>
-document.getElementById('imageModal').style.display = 'none';
+<script src="{{asset('public/visitingCard/bussinessCard/a/js/parsley.min.js')}}"></script>
+<script src="{{asset('public/visitingCard/bussinessCard/a/js/form-action.js')}}"></script>
+
+<script src="{{asset('public/visitingCard/bussinessCard/a/js/jquery-confirm.js')}}"></script>
+
+<script type="text/javascript">
+function sendEnquiry() {
+
+    let ele = document.getElementById('inquiry-send');
+    ele.value = 'Sending...';
+    ele.disabled = true;
+    const name = document.getElementById('enquiryName');
+    const phoneNumber = document.getElementById('phoneNumber');
+    const email = document.getElementById('email');
+    const message = document.getElementById('message');
+    const slug = document.getElementById('slug');
+
+    const data = {};
+    data.mailTo = document.getElementById('companyEmail').value;
+    data.name = name.value;
+    data.phoneNumber = phoneNumber.value;
+    data.email = email.value;
+    data.message = message.value;
+    data.slug = slug.value;
+    data._token = $('meta[name="csrf_token"]').attr('content');
+    const xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function () {
+        if (this.readyState === 4) {
+            var detail = this.response;
+            detail = JSON.parse(detail);
+            if (detail.code === 0) {
+                if (detail.data.redirect !== '') {
+                    window.open(detail.data.redirect, '_blank');
+                }
+                jQuery.alert({
+                            title: "Enquiry sent !",
+                            animation: "top",
+                            icon: "fa fa-check",
+                            confirmButton: "Ok",
+                            content: "We received you valuable inquiry, We will contact you soon. Thanks",
+                            'closeOnClick': true,
+                            'theme': "black",
+
+                        });
+                name.value = '';
+                phoneNumber.value = '';
+                email.value = '';
+                message.value = '';
+            } else {
+                jQuery.alert({
+                            title: "Enquiry fail !",
+                            animation: "top",
+                            icon: "fa fa-info",
+                            confirmButton: "Ok",
+                            content: `${response.data.message}`,
+                            'closeOnClick': true,
+                            'theme': "black",
+
+                        });
+            }
+            ele.value = 'Send';
+            ele.disabled = false;
+        }
+    };
+    xhr.open('POST', $("#send_enquiry_url").val());
+    xhr.setRequestHeader('Content-type', 'application/json');
+    xhr.send(JSON.stringify(data));
+    return false;
+}
+
+
 </script>
-<script>
-$(document).ready(function(){
-    $('.mobile_home').on('click',function(){
-        $('#header').toggleClass('add_height');
-        
+
+<script type="text/javascript">
+    intlTelInput(input, {
+        initialCountry:'in'
     })
-})
 </script>
-<script>
-$(document).ready(function(){
-  $('.wtsp_share_btn').on('click',function(){
-    $('#wtsp_form').submit();
-  })
-  
-})
-</script>
-        
-<script>
-  $(document).ready(function(){
-    $('#close_sharer,#share_box_pop').on('click',function(){
-      $('.share_box').slideToggle();
-    });
-  })
-
-</script>
-
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-CJZJHWL0WG"></script>
 <script>

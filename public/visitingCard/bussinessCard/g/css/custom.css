@@ -1,0 +1,105 @@
+body {
+    background-image: url(https://i.ibb.co/G0SQpvN/vintage-bg.jpg) !important;
+}
+.form-control {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 6px;
+    margin-bottom: 6px;
+    resize: vertical;
+    outline: none;
+    font-size: 14px;
+    font-family: 'Uniform', sans-serif;
+}
+.enquiry-form input[type=submit] {
+    background-color: #f5b343;
+    color: white;
+    padding: 7px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 6px 0;
+    font-family: 'Uniform', sans-serif;
+}
+.contact-action-table{
+    text-align: left;
+    font-size: 20px;
+    font-weight: 600;
+    font-family: 'Uniform', sans-serif;
+}
+.contact-action-container-text{
+    font-family: 'Uniform', sans-serif;
+}
+.product-enquiry-btn{
+    font-weight: 600;
+}
+iframe,.projects-list .project-item,.img-thumbnail {border: 2px solid #071330 !important;border-radius: 10px !important;width: 100% !important;height: 200px !important;margin-bottom: 15px !important;}
+.img-thumbnail{
+    height: auto !important;
+}
+.profile-pic-img {
+    width: 200px;
+}
+.form-control {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 6px;
+    margin-bottom: 6px;
+    resize: vertical;
+    outline: none;
+    font-size: 14px;
+    font-family: 'Nunito', sans-serif;
+}
+.enquiry-form input[type=submit] {
+    background-color: #f5b343;
+    color: white;
+    padding: 7px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 6px 0;
+    font-family: 'Nunito', sans-serif;
+}
+.contact-action-table{
+    text-align: left;
+    font-size: 20px;
+    font-weight: 600;
+    font-family: 'Nunito', sans-serif;
+}
+.contact-action-container-text,.designation,.firmname{
+    font-family: 'Nunito', sans-serif;
+    font-weight: 500;
+}
+.product-enquiry-btn{
+    font-weight: 500;
+    width: fit-content;
+    text-align: center;
+}
+iframe,.projects-list .project-item,.img-thumbnail {border: 2px solid #071330 !important;border-radius: 10px !important;width: 100% !important;height: 200px !important;margin-bottom: 15px !important;}
+.img-thumbnail{
+    height: auto !important;
+}
+.profile-pic-img {
+    width: 200px;
+}
+.share-buttons.inprofile .share-button i{
+    height: 40px;
+    width: 40px;
+}
+body,a,p,span,div,button,input,h1,h2,h3,h4,h5,h6,b{
+    font-family: 'Nunito', sans-serif;
+}
+.card{
+    border: none;
+    box-shadow: 0 2px 5px 0 #f5b343ab !important;
+}
+
+del {
+    color: red;
+}

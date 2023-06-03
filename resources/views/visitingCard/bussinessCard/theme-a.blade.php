@@ -1118,7 +1118,7 @@
         <li>
           <a class="footer-menu-link" href="#about-us-section">
             <i class="footer-menu-icon fa fa-users" aria-hidden="true"></i>
-            <div class="footer-menu-text">ABOUT US</div>
+            <div class="footer-menu-text">{{$userConfigObj->aboutLabel}}</div>
           </a>
         </li>
         @if(count($paymentMasterData) > 0)
