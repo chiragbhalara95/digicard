@@ -189,7 +189,13 @@
             <div class="p-20"></div>
             <div class="shadow-buttons">
                <a class="shadow-button" href="{{url('saveViewCard')}}/{{$userObj->slug}}" download="contact.vcf"><i class="fas fa-download shadow-button-icon"></i>Add to Phone Book</a>
-               <a class="shadow-button" onclick="openShareModal(this, `DCARD`)"><i class="fas fa-share-alt shadow-button-icon"></i>Share</a>
+               @if (!empty($companyInfoData->company_name))
+               <a class="shadow-button" onclick="openShareModal(this, '{!! $companyInfoData->company_name !!}')"><i class="fas fa-share-alt shadow-button-icon"></i>Share</a>
+               @else
+               <a class="shadow-button" onclick="openShareModal(this, '{!! $userObj->name !!}')"><i class="fas fa-share-alt shadow-button-icon"></i>Share</a>
+
+               
+               @endif
             </div>
             <div>
                <a class="shadow-button save-card-button" style="display: none;"><i class="fas fa-cloud-download-alt shadow-button-icon"></i>Save Card</a>
