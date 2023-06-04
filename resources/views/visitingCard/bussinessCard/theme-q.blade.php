@@ -171,7 +171,13 @@
                     <div class="d-sm-flex justify-content-center mt-5 pb-5">
                     <a class="vcard-eight-btn mt-4 d-block btn text-white" href="{{url('saveViewCard')}}/{{$userObj->slug}}" download="contact.vcf"><i class="fa fa-download me-2"></i>Save to Contacts</a>
 
-                    </div>
+                     @if (!empty($companyInfoData->company_name))
+                     <a class="vcard-eight-btn mt-4 d-block btn text-white mr-5" style="margin-left: 1vw;" onclick="openShareModal(this, '{!! $companyInfoData->company_name !!}')"><i class="fa fa-share-alt shadow-button-icon"></i>&nbsp;Share</a>
+                     @else
+                     <a class="vcard-eight-btn mt-4 d-block btn text-white mr-5 " style="margin-left: 1vw;" onclick="openShareModal(this, '{!! $userObj->name !!}')"><i class="fa fa-share-alt shadow-button-icon"></i>&nbsp;Share</a>
+                     @endif
+               </div>
+
                  </div>
               </div>
               <div class="vcard-eight__event py-3 px-sm-4 px-3 mt-2 position-relative">

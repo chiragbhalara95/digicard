@@ -308,7 +308,12 @@
 		<div class="dis_flex">
         <a href="{{url('saveViewCard')}}/{{$userObj->slug}}" download="contact.vcf" class="addphonebook">
         <div class="big_btns">Save to Contacts <i class="fa fa-download"></i></div></a>	
-			
+			           @if (!empty($companyInfoData->company_name))
+           <a class="big_btns" onclick="openShareModal(this, '{!! $companyInfoData->company_name !!}')"><i class="fa fa-share-alt shadow-button-icon"></i>&nbsp;Share</a>
+           @else
+           <a class="big_btns" onclick="openShareModal(this, '{!! $userObj->name !!}')"><i class="fa fa-share-alt shadow-button-icon"></i>&nbsp;Share</a>
+           @endif
+
 			</div> 
 			<div class="dis_flex"></div>
 	</div>

@@ -813,16 +813,26 @@
                 </div>
             </div>
 
-        <div class="p-30">
-        <div class="col-md-12 text-center btn btn-primary">
-                        <a href="{{url('saveViewCard')}}/{{$userObj->slug}}" download="contact.vcf">
-                            <div class="icon-i whitegreenicon rounded-circle text-white">
-                                <i class="fa fa-vcard" aria-hidden="true"></i>&nbsp;Save to Contacts
-                            </div>
-                        </a>
-                    </div>
 
+        <div class="row">
+        <div class="col-md-6 text-center btn btn-primary">
+            <a href="{{url('saveViewCard')}}/{{$userObj->slug}}" download="contact.vcf">
+                <div class="icon-i whitegreenicon rounded-circle text-white">
+                    <i class="fa fa-vcard" aria-hidden="true"></i>&nbsp;Save to Contacts
+                </div>
+            </a>
         </div>
+
+        <div class="col-md-4 text-center btn btn-primary" style="margin-left: 0.5vw">
+             @if (!empty($companyInfoData->company_name))
+             <a class="big_btns" onclick="openShareModal(this, '{!! $companyInfoData->company_name !!}')"><i class="fa fa-share-alt shadow-button-icon"></i>&nbsp;Share</a>
+             @else
+             <a class="big_btns" onclick="openShareModal(this, '{!! $userObj->name !!}')"><i class="fa fa-share-alt shadow-button-icon"></i>&nbsp;Share</a>
+             @endif
+         </div>
+
+       </div>
+
         <div class="p-30"></div>
         @if (count($socialMediaData) > 0)
         <ul class="inprofile share-buttons">

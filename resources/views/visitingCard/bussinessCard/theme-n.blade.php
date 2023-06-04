@@ -220,11 +220,12 @@
 				<a href="{{url('saveViewCard')}}/{{$userObj->slug}}" download="contact.vcf" class="addphonebook">
 					<div class="big_btns">Save to Contacts <i class="fa fa-download"></i></div>
                 </a>
-                <!-- <div class="big_btns" id="share_box_pop">Share <i class="fa fa-share-alt"></i></div>
-	                <div class="big_btns save-card-button" id="buttonInstall">Save Card <i class="fa fa-cloud-download"></i></div> -->
-                <!-- <a href="pdf_download.php?n=sn-global-services">
-                    <div class="big_btns" id="">Save PDF <i class="fa fa-file"></i></div>
-                </a> -->
+               @if (!empty($companyInfoData->company_name))
+               <a class="big_btns" onclick="openShareModal(this, '{!! $companyInfoData->company_name !!}')"><i class="fa fa-share-alt shadow-button-icon"></i>&nbsp;Share</a>
+               @else
+               <a class="big_btns" onclick="openShareModal(this, '{!! $userObj->name !!}')"><i class="fa fa-share-alt shadow-button-icon"></i>&nbsp;Share</a>
+               @endif
+
             </div>
 			@if (count($socialMediaData) > 0)
 

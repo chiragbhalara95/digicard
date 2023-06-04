@@ -235,6 +235,12 @@
 
             <a href="{{url('saveViewCard')}}/{{$userObj->slug}}" download="{{$userObj->slug}}.vcf"><div class="big_btns">Save to Contacts <i class="fa fa-download"></i></div></a>
 
+             @if (!empty($companyInfoData->company_name))
+             <a class="big_btns" onclick="openShareModal(this, '{!! $companyInfoData->company_name !!}')"><i class="fa fa-share-alt shadow-button-icon"></i>&nbsp;Share</a>
+             @else
+             <a class="big_btns" onclick="openShareModal(this, '{!! $userObj->name !!}')"><i class="fa fa-share-alt shadow-button-icon"></i>&nbsp;Share</a>
+             @endif
+
               @if (count($socialMediaData) > 0)
                 <div class="dis_flex">
                   @foreach($socialMediaData as $socialMediaDetail)
