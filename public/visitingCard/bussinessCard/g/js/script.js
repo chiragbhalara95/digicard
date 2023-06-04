@@ -201,73 +201,66 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 
 
-function sendEnquiry(ele, mailTo) {
+function sendEnquiry() {
+
+    let ele = document.getElementById('inquiry-send');
     ele.value = 'Sending...';
-
     ele.disabled = true;
-
     const name = document.getElementById('enquiryName');
-
     const phoneNumber = document.getElementById('phoneNumber');
-
     const email = document.getElementById('email');
-
     const message = document.getElementById('message');
+    const slug = document.getElementById('slug');
 
     const data = {};
-
-    data.mailTo = mailTo;
-
+    data.mailTo = document.getElementById('companyEmail').value;
     data.name = name.value;
-
     data.phoneNumber = phoneNumber.value;
-
     data.email = email.value;
-
     data.message = message.value;
-
+    data.slug = slug.value;
+    data._token = $('meta[name="csrf_token"]').attr('content');
     const xhr = new XMLHttpRequest();
-
     xhr.onreadystatechange = function () {
-
         if (this.readyState === 4) {
-
-            const response = JSON.parse(this.response);
-
-            if (this.status === 200) {
-                if (this.data.redirect !== '') {
-                    window.open(this.data.redirect, '_blank');
+            var detail = this.response;
+            detail = JSON.parse(detail);
+            if (detail.code === 0) {
+                if (detail.data.redirect !== '') {
+                    window.open(detail.data.redirect, '_blank');
                 }
+                jQuery.alert({
+                            title: "Enquiry sent !",
+                            animation: "top",
+                            icon: "fa fa-check",
+                            confirmButton: "Ok",
+                            content: "We received you valuable inquiry, We will contact you soon. Thanks",
+                            'closeOnClick': true,
+                            'theme': "black",
 
-                alert('Success: Mail sent Successfuly');
-
+                        });
                 name.value = '';
-
                 phoneNumber.value = '';
-
                 email.value = '';
-
                 message.value = '';
-
             } else {
+                jQuery.alert({
+                            title: "Enquiry fail !",
+                            animation: "top",
+                            icon: "fa fa-info",
+                            confirmButton: "Ok",
+                            content: `${response.data.message}`,
+                            'closeOnClick': true,
+                            'theme': "black",
 
-                alert(`Error: ${response.data.message}`);
-
+                        });
             }
-
             ele.value = 'Send';
-
             ele.disabled = false;
-
         }
-
     };
-
-    xhr.open('POST', '/api/v1/sendEnquiry');
-
+    xhr.open('POST', $("#send_enquiry_url").val());
     xhr.setRequestHeader('Content-type', 'application/json');
-
     xhr.send(JSON.stringify(data));
-
+    return false;
 }
-

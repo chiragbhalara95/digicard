@@ -472,7 +472,7 @@
          <div class="share-form-buttons-container">
             <p>Share my Digital Card in your network.</p>
             <div class="share-buttons-heading">
-               <img src="./R&amp;D Property Solution - Dcard_files/tild-arrow.svg" class="share-buttons-arrow">
+               <img src="{{asset('public/visitingCard/bussinessCard/g/img/tild-arrow.svg')}}" class="share-buttons-arrow">
                <div class="share-buttons-heading-text">Share my Digital Card</div>
             </div>
             <ul class="share-buttons">
@@ -527,69 +527,6 @@
 <script src="{{asset('public/visitingCard/bussinessCard/a/js/jquery-confirm.js')}}"></script>
 
 <script type="text/javascript">
-function sendEnquiry() {
-
-    let ele = document.getElementById('inquiry-send');
-    ele.value = 'Sending...';
-    ele.disabled = true;
-    const name = document.getElementById('enquiryName');
-    const phoneNumber = document.getElementById('phoneNumber');
-    const email = document.getElementById('email');
-    const message = document.getElementById('message');
-    const slug = document.getElementById('slug');
-
-    const data = {};
-    data.mailTo = document.getElementById('companyEmail').value;
-    data.name = name.value;
-    data.phoneNumber = phoneNumber.value;
-    data.email = email.value;
-    data.message = message.value;
-    data.slug = slug.value;
-    data._token = $('meta[name="csrf_token"]').attr('content');
-    const xhr = new XMLHttpRequest();
-    xhr.onreadystatechange = function () {
-        if (this.readyState === 4) {
-            var detail = this.response;
-            detail = JSON.parse(detail);
-            if (detail.code === 0) {
-                if (detail.data.redirect !== '') {
-                    window.open(detail.data.redirect, '_blank');
-                }
-                jQuery.alert({
-                            title: "Enquiry sent !",
-                            animation: "top",
-                            icon: "fa fa-check",
-                            confirmButton: "Ok",
-                            content: "We received you valuable inquiry, We will contact you soon. Thanks",
-                            'closeOnClick': true,
-                            'theme': "black",
-
-                        });
-                name.value = '';
-                phoneNumber.value = '';
-                email.value = '';
-                message.value = '';
-            } else {
-                jQuery.alert({
-                            title: "Enquiry fail !",
-                            animation: "top",
-                            icon: "fa fa-info",
-                            confirmButton: "Ok",
-                            content: `${response.data.message}`,
-                            'closeOnClick': true,
-                            'theme': "black",
-
-                        });
-            }
-            ele.value = 'Send';
-            ele.disabled = false;
-        }
-    };
-    xhr.open('POST', $("#send_enquiry_url").val());
-    xhr.setRequestHeader('Content-type', 'application/json');
-    xhr.send(JSON.stringify(data));
-    return false;
-}
 
 
 </script>
