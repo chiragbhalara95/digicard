@@ -37,11 +37,13 @@ window.onclick = function (event) {
 
 const modalImg = document.getElementById('img01');
 const captionText = document.getElementById('caption');
+const descriptionText = document.getElementById('description');
 
 function openImageModal(e) {
     imageModal.style.display = 'block';
     modalImg.src = e.src;
     captionText.innerHTML = e.alt;
+    descriptionText.innerHTML = e.getAttribute('description');
 }
 
 // Get the <span> element that closes the modal

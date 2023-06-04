@@ -467,6 +467,7 @@
       <span class="close" id="imageModalClose">×</span>
       <img class="modal-content fadeIn" id="img01">
       <div id="caption"></div>
+      <div id="description"></div>
    </div>
    <!-- The share Modal -->
    <div id="shareModal" class="modal share-modal">
