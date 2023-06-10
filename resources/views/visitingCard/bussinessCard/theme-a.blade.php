@@ -3,6 +3,10 @@
   <head>
 
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="author" content="digitalcards.tech">
+    <meta name="subject" content="Website">
+    <meta name="copyright" content="Digital Card">
+    <meta name="classification" content="Digital Card">
 
     <link href="{{asset('public/visitingCard/bussinessCard/a/css/1.css')}}" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('public/visitingCard/bussinessCard/a/css/2.css')}}" media="all" id="shr-font-shadows-into light">

@@ -11,6 +11,8 @@
 </head>
 <body>
 
+
+<!-- /.container -->
 <section id="intro" class="clearfix">
 
 <div class="container">
@@ -23,7 +25,7 @@
 </div>
 </div>
 <div class="row">
-<div class="col-lg-10 mx-auto">
+<div class="col-lg-12 mx-auto">
 <div class="career-search mb-60">
 <form action="{{route('search')}}" method="GET" class="career-form mb-60">
 <div class="row">
@@ -56,8 +58,59 @@
 <div class="filter-result">
     <!-- <p class="mb-30 ff-montserrat">Total Job Openings : 89</p> -->
 
+<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 job-box">
+
     @foreach($userData as $userDetail)
-    <div class="row job-box">
+
+  <div class="col-xl-4 col-lg-6 col-md-6 col-12 mb-30">
+    <div class="card">
+        @if(!empty($userDetail->company_logo))
+          <img src="{{url('public')}}/{{$userDetail->company_logo}}" class="img-responsive" alt="logo">
+        @elseif (!empty($userDetail->profile_pic))
+          <img src="{{url('public')}}/{{$userDetail->profile_pic}}" class="img-responsive" alt="logo">
+        @else
+        <div class=" img-holder">
+            @if (!empty($userDetail->company_name))
+            @php echo initials($userDetail->company_name) @endphp
+            @else
+            @php echo initials($userDetail->name) @endphp
+            @endif
+        </div>
+        @endif
+
+      <div class="card-body">
+        @if (!empty($userDetail->company_name))
+        <h4 class="card-title">{!! $userDetail->company_name !!}</h4>
+        <h6 class="card-title">{!! $userDetail->name !!}</h6>
+        @else
+        <h6 class="card-title">{!! $userDetail->name !!}</h6>
+        @endif
+
+        @if(!empty($userDetail->company_profession))
+        <p class="card-text">{!! $userDetail->company_profession!!}</p>
+        @endif
+        <hr/>
+
+        <ul class="contact-info">
+
+            @if (!empty($userDetail->company_address))
+            <li><p class="card-text"><i class="fa fa-map-marker"></i>&nbsp;{!! strip_tags($userDetail->company_address) !!}</li></p>
+            @endif
+
+            <li><p class="card-text"><a class="numan" href="tel:{{$userDetail->country_code}}{{$userDetail->company_mobile}}"><i class="fa fa-phone"></i>&nbsp;{{$userDetail->country_code}}{{$userDetail->company_mobile}}</a></p></li>
+
+            <li><p class="card-text"><a class="numan" href="mailto:{{$userDetail->email}}"><i class="fa fa-envelope"></i>&nbsp;{{$userDetail->email}}</a></p></li>
+        </ul>
+
+        <a href="{{url('vc')}}/{{$userDetail->slug}}" class="btn d-block w-100 d-sm-inline-block btn-primary" target="_tab">Visit Digital Card</a>
+
+
+      </div>
+
+    </div>
+  </div>
+
+<!--     <div class="row job-box">
         <div class="col-lg-2 col-md-6 col-sm-12 mx-auto mb-4 ">
                 @if(!empty($userDetail->company_logo) || !empty($userDetail->profile_pic))
                 <div class="card_content2 mb-md-0 mb-4 mx-auto">
@@ -99,8 +152,10 @@
             <a href="{{url('vc')}}/{{$userDetail->slug}}" class="btn d-block w-100 d-sm-inline-block btn-primary" target="_tab">Visit Digital Card</a>
         </div>
     </div>
-
+ -->
     @endforeach
+</div>
+
 <br/>
     {!! $userData->appends(request()->query())->links('pagination::bootstrap-4') !!}
     

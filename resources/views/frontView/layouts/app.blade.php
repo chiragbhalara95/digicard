@@ -5,10 +5,14 @@
       <meta name="viewport" content="width=device-width, user-scalable=no">
 
       <meta content="width=device-width, initial-scale=1.0" name="viewport">
-      <title>Online Digital Business Cards</title>
-      <meta name="csrf-token" content="{{ csrf_token() }}">
-      <meta content="DigitalCards.tech offers free online business card maker that lets you design you own business card in easy steps.visiting card, business cards,digital cards,digital business card,business card designer,business card maker,card maker,free business cards,business cards online,business card creator,electronic business card,free business card maker,business card best,business card design free,online card maker,create card,make your own business cards,digital business card free,online business card maker,free card maker,create business cards free,business card app,create your own business cards,digital business card app,best digital business card,business card design online,design your own business cards, digital visiting cards, visiting cards online, company visiting cards" name="description">
-      <meta content="visiting card, business cards,digital cards,digital business card,business card designer,business card maker,card maker,free business cards,business cards online,business card creator,electronic business card,free business card maker,business card best,business card design free,online card maker,create card,make your own business cards,digital business card free,online business card maker,free card maker,create business cards free,business card app,create your own business cards,digital business card app,best digital business card,business card design online,design your own business cards, digital visiting cards, visiting cards online, company visiting cards" name="keywords">
+      <title>Just in 5 min Make your Digital Visiting Card - digitalcards.tech</title>
+      <meta content="Digital Visiting Card is the standard for digital business cards that works on Smartphones, Tablets and computers with no app required. Digital Card creates a digital hub where your customers can pick and choose how they connect with you." name="description">
+      <meta content="online,digital,card,makers,professional card,business card,customize card,consultants,visiting card,contact,email,business,professional,customize,mumbai,surat,ahmedabad,vadodara, india, share,save,online digital card,makes, digital visiting card,digital card online,digitalcard,digital card website,digital cards,what is digital card,digital card,digital card information,digital online card,get digital card,about digital card,how to make digital card online,create digital card,digital business card online,how to make digital card, digitalcards.tech, digicards, digitalcards" name="keywords">
+       <meta name="author" content="digitalcards.tech">
+       <meta name="subject" content="Website">
+       <meta name="copyright" content="Digital Card">
+       <meta name="classification" content="Digital Card">
+
       <!-- Favicons -->
       <link rel="shortcut icon" href="{{ asset('public/frontView/assets/img/favicon.ico') }}">
 

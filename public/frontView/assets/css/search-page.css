@@ -250,10 +250,15 @@ ul {
   border-radius: 65px;
   text-align: center;
   align-items:center;
-  margin-left:25%;
+  margin-left:40%;
   margin-top:10%;
 }
 
 .company_address p {
   margin:unset;
+}
+
+
+.contact-info p a {
+    color: #555555;
 }

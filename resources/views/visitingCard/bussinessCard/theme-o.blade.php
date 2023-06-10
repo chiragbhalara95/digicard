@@ -5,6 +5,11 @@
 
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0 minimal-ui">
+    <meta name="author" content="digitalcards.tech">
+    <meta name="subject" content="Website">
+    <meta name="copyright" content="Digital Card">
+    <meta name="classification" content="Digital Card">
+
 		<meta property="og:title" content="@if(!empty($companyInfoData->company_name)){!! $companyInfoData->company_name !!}@else{!! $userObj->name !!}@endif">
     <meta content="{{$companyInfoData->seo_description}}" name="description">
     <meta content="{{$companyInfoData->seo_keyword}}" name="keywords">
