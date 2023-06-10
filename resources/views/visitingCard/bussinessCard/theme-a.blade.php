@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html style="--theme-color:#2196f3; --theme-color-light:#2196f326; --theme-color-medium:#2196f375; --theme-color-dark-lighter:#2196f3bf; --theme-color-dark1:#1a78c2; --theme-color-dark2:#145a92; --theme-color-dark3:#0d3c61;">
+<html lang="en" style="--theme-color:#2196f3; --theme-color-light:#2196f326; --theme-color-medium:#2196f375; --theme-color-dark-lighter:#2196f3bf; --theme-color-dark1:#1a78c2; --theme-color-dark2:#145a92; --theme-color-dark3:#0d3c61;">
   <head>
 
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">

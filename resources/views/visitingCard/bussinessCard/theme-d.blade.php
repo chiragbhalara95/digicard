@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html style="--theme-color:#6d126f; --theme-color-light:#6d126f70;"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html lang="en" style="--theme-color:#6d126f; --theme-color-light:#6d126f70;"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>{!! $companyInfoData->company_name !!}</title>
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">

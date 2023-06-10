@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!-- saved from url=(0044)https://www.virtualbusinesscard.in/template7 -->
-<html style="--theme-color:#e91e63; --theme-color-light:#6d126f70;"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html lang="en" style="--theme-color:#e91e63; --theme-color-light:#6d126f70;"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <title>{!! $companyInfoData->company_name !!}</title>
 

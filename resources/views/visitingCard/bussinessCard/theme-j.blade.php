@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html style="--theme-color:#095da0; --theme-color-light:#095da0;">
+<html lang="en" style="--theme-color:#095da0; --theme-color-light:#095da0;">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
