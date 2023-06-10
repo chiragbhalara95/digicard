@@ -79,16 +79,19 @@ shareModalClose.onclick = function () {
 
 
 function handleWhatsappShare(e) {
-    const { value } = document.getElementById('whatsapp-input');
+    var whatsappNo = $('#whatsapp-input').val();
+    var countryCode = $(".iti__selected-dial-code").text();
     var msg = $("#whatsapp-msg").val();
-    if (value.length < 10) {
+    
+    if (whatsappNo.length < 10) {
         e.preventDefault();
         return;
     }
     
     var card = window.location.href;
     var name = '';
-    var number = value;
+    var number = countryCode+whatsappNo;
+    alert(number)
     
     // $.ajax(
     // {
@@ -101,7 +104,7 @@ function handleWhatsappShare(e) {
     //     }
     // });
                 
-    e.href = `https://wa.me/${iti.getNumber()}?text=`+msg;
+    e.href = `https://wa.me/${number}?text=`+msg;
 }
 
 function handleDirectWhatsappShare(e, whatsappNumber) {

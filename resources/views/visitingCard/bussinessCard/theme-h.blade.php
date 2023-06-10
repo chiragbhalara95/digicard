@@ -34,9 +34,9 @@
     <meta name="twitter:title" content="@if(!empty($companyInfoData->company_name)){!! $companyInfoData->company_name !!}@else{!! $userObj->name !!}@endif">
     <meta name="twitter:description" content="{{$companyInfoData->company_info}}">
 
-    <link href="{{asset('public/visitingCard/bussinessCard/g/css/t6-style.css')}}" rel="stylesheet">
-    <link href="{{asset('public/visitingCard/bussinessCard/g/css/all.css')}}" rel="stylesheet">
-    <link href="{{asset('public/visitingCard/bussinessCard/g/css/custom.css')}}" rel="stylesheet">
+    <link href="{{asset('public/visitingCard/bussinessCard/h/css/t2-style.css')}}" rel="stylesheet">
+    <link href="{{asset('public/visitingCard/bussinessCard/h/css/all.css')}}" rel="stylesheet">
+    <link href="{{asset('public/visitingCard/bussinessCard/h/css/custom.css')}}" rel="stylesheet">
     <link href="{{asset('public/visitingCard/bussinessCard/g/css/intlTelInput.min.css')}}" rel="stylesheet">
     <link href="{{asset('public/visitingCard/bussinessCard/a/css/jquery-confirm.css')}}" rel="stylesheet">
 
@@ -62,13 +62,10 @@
          
              return rgb;
          }
-         document.documentElement.style.setProperty('--theme-color', '#F5B343');
-         document.documentElement.style.setProperty('--theme-color-light', '#F5B34326');
-         document.documentElement.style.setProperty('--theme-color-100', '#F5B343');
-         document.documentElement.style.setProperty('--theme-color-75', '#F5B34390');
-         document.documentElement.style.setProperty('--theme-color-50', '#F5B34380');
-         document.documentElement.style.setProperty('--theme-color-25', '#F5B34370');
-      </script>
+
+         document.documentElement.style.setProperty('--theme-color', '#F17D3A');
+         document.documentElement.style.setProperty('--theme-color-light', '#F17D3A26');
+          </script>
 
 </head>
 
@@ -101,72 +98,98 @@
         @endif
 
          <div class="contact-buttons">
-            <a class="contact-button" href="tel:{{$companyInfoData->country_code}}{{$companyInfoData->company_mobile}}">
-            <i class="fas fa-phone fa-flip-horizontal"></i>
+            <a class="contact-button" title="Call" href="tel:{{$companyInfoData->country_code}}{{$companyInfoData->company_mobile}}">
+            <i class="fas fa-phone fa-flip-horizontal"></i>&nbsp;all
             </a>
             <a class="contact-button" target="_blank" href="https://api.whatsapp.com/send?phone={{str_replace('+','',$companyInfoData->country_code)}}{{$companyInfoData->company_mobile}}&text={{urlencode($userConfigObj->whatsappMsg)}}">
-            <i class="fab fa-whatsapp"></i>
+            <i class="fab fa-whatsapp"></i>&nbsp;Whatsapp
             </a>
             @if (!empty($companyInfoData->company_address))
             <a class="contact-button" target="_blank" href="https://maps.google.com?q={{$companyInfoData->latitude}},{{$companyInfoData->longitude}}&z=12&amp;um=1&amp;ie=UTF-8&amp;sa=X&amp;ved=2ahUKEwiWyNX76N3qAhWrzTgGHQuCBicQ_AUoAXoECCMQAw">
-            <i class="fas fa-map-marker-alt fa-flip-horizontal"></i>
+            <i class="fas fa-map-marker-alt fa-flip-horizontal"></i>&nbsp;Direction
             </a>
             @endif
 
             <a class="contact-button" target="_blank" href="mailto:{{$userObj->email}}">
-            <i class="fas fa-envelope fa-flip-horizontal"></i>
+            <i class="fas fa-envelope fa-flip-horizontal"></i>&nbsp;Mail
             </a>
          </div>
       </div>
+      <svg viewBox="0 0 400 25" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+            <defs>
+               <pattern id="Wave" x="0" y="0" width="100" height="25" patternUnits="userSpaceOnUse">
+                  <path d="M0 25 0 6C20 9 38 11 55 7 72 4 87 4 100 6l0 19z" id="path4" fill="#F17D3A"></path>
+               </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#Wave)"></rect>
+         </svg>
       <div class="lower">
-         <div class="contact-info-container">
-            <div class="contact-info-wrapper">
-               <a class="contact-piller-button call" target="_blank" href="tel:{{$companyInfoData->country_code}}{{$companyInfoData->company_mobile}}">
-               <i class="fas fa-phone fa-flip-horizontal"></i>
-               </a>
+        <table class="contact-action-table" style="text-align: left;font-size: 20px;font-weight: 600;font-family: 'Uniform', sans-serif;">
+                 <tbody>
+                    <tr>
+                       <td>
 
-               <div class="contact-info">
-                  <div>
-                     <a target="_blank" href="tel:{{$companyInfoData->country_code}}{{$companyInfoData->company_mobile}}">{{$companyInfoData->country_code}}{{$companyInfoData->company_mobile}}</a>
+                          <a target="_blank" href="tel:{{$companyInfoData->country_code}}{{$companyInfoData->company_mobile}}">
+                          <i class="fas fa-phone fa-flip-horizontal contact-action-container-icon"></i>
+                          </a>
+                       </td>
+                       <td>
+                          <a target="_blank" href="tel:9898072992" class="contact-action-container-text" style="margin-bottom: 5px">
+                          {{$companyInfoData->country_code}}{{$companyInfoData->company_mobile}}
+                          </a>
                     @if(!empty($companyInfoData->country_landline))
                      <br><a target="_blank" href="tel:{{$companyInfoData->country_landline}}" class="contact-action-container-text">
                      {{$companyInfoData->country_landline}}</a>
                      @endif
-                  </div>
-               </div>
-            </div>
-            @if(!empty($companyInfoData->company_website))
-            <div class="contact-info-wrapper">
-               <a class="contact-piller-button" target="_blank" href="{{$companyInfoData->company_website}}">
-               <i class="fas fa-globe"></i>
-               </a>
-               <div class="contact-info">
-                  <a target="_blank" href="{{$companyInfoData->company_website}}">{{$companyInfoData->company_website}}</a>
-               </div>
-            </div>
-            @endif
 
-            <div class="contact-info-wrapper">
-               <a class="contact-piller-button" target="_blank" href="mailto:{{$userObj->email}}">
-               <i class="fas fa-envelope"></i>
-               </a>
-               <div class="contact-info">
-                  <a target="_blank" href="mailto:{{$userObj->email}}">{{$userObj->email}}</a>
-               </div>
-            </div>
+                       </td>
+                    </tr>
 
-          @if (!empty($companyInfoData->company_address))               
-            <div class="contact-info-wrapper">
-               <a class="contact-piller-button" target="_blank" href="https://maps.app.goo.gl/zeZUirLcgUwHdJbj6">
-               <i class="fas fa-map-marker-alt"></i>
-               </a>
-               <div class="contact-info">
-                  <a target="_blank" href="https://maps.google.com?q={{$companyInfoData->latitude}},{{$companyInfoData->longitude}}&z=12&amp;um=1&amp;ie=UTF-8&amp;sa=X&amp;ved=2ahUKEwiWyNX76N3qAhWrzTgGHQuCBicQ_AUoAXoECCMQAw">{!!$companyInfoData->company_address!!}</a>
-               </div>
-            </div>
-            @endif
+                    @if (!empty($companyInfoData->company_address))               
+                    <tr>
+                       <td>
+                          <a target="_blank" href="https://maps.google.com?q={{$companyInfoData->latitude}},{{$companyInfoData->longitude}}&z=12&amp;um=1&amp;ie=UTF-8&amp;sa=X&amp;ved=2ahUKEwiWyNX76N3qAhWrzTgGHQuCBicQ_AUoAXoECCMQAw">
+                          <i class="fas fa-map-marker-alt contact-action-container-icon"></i>
+                          </a>
+                       </td>
+                       <td>
+                          <a target="_blank" class="contact-action-container-text" href="https://maps.google.com?q={{$companyInfoData->latitude}},{{$companyInfoData->longitude}}&z=12&amp;um=1&amp;ie=UTF-8&amp;sa=X&amp;ved=2ahUKEwiWyNX76N3qAhWrzTgGHQuCBicQ_AUoAXoECCMQAw">{!!$companyInfoData->company_address!!}</a>
+                       </td>
+                    </tr>
+                    @endif
 
-         </div>
+                    <tr>
+                       <td>
+                          <a href="mailto:{{$userObj->email}}">
+                          <i class="fas fa-envelope contact-action-container-icon"></i>
+                          </a>
+                       </td>
+                       <td>
+                          <a href="mailto:{{$userObj->email}}" class="contact-action-container-text">
+                          {{$userObj->email}}
+                          </a>
+                       </td>
+                    </tr>
+
+                    @if(!empty($companyInfoData->company_website))
+
+                    <tr>
+                       <td>
+                          <a target="_blank" href="{{$companyInfoData->company_website}}">
+                          <i class="fas fa-globe contact-action-container-icon"></i>
+                          </a>
+                       </td>
+                       <td>
+                          <a target="_blank" href="{{$companyInfoData->company_website}}" class="contact-action-container-text">
+                          {{$companyInfoData->company_website}}                        </a>
+                       </td>
+                    </tr>
+                    @endif
+
+                 </tbody>
+            </table>
+
+
 
 
          <div style="padding: 15px;">
@@ -227,6 +250,8 @@
             <div class="p-20"></div>
          </div>
          <div class="bottom-separator"></div>
+         </div>
+
       </div>
    </div>
 

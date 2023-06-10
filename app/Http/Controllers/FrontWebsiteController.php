@@ -322,10 +322,12 @@ class FrontWebsiteController extends BasicController
         $params = $request->all();
         $keywords = isset($params['keywords']) ? $params['keywords'] : null;
         $cityName = isset($params['city_name']) ? $params['city_name'] : null;
+        $cutoffDate = date("Y-m-d", strtotime('+15 day'));
 
         $userData = User::leftJoin('company_info As cinfo', 'cinfo.user_id', '=', 'users.id')
             ->whereNotNull('users.slug')
-            ->where('users.package_end_date', '>', date('Y-m-d'));
+            ->where('users.package_end_date', '>', date('Y-m-d'))
+            ->where('users.package_end_date', '>', $cutoffDate);
 
         if (!empty($keywords)) {
             $userData->where(function($query) use($keywords){
