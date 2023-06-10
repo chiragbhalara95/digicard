@@ -1,0 +1,149 @@
+        body {
+            background-image: url(https://i.ibb.co/G0SQpvN/vintage-bg.jpg) !important;
+        }
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            margin-top: 6px;
+            margin-bottom: 6px;
+            resize: vertical;
+            outline: none;
+            font-size: 14px;
+            font-family: 'Uniform', sans-serif;
+        }
+        .enquiry-form input[type=submit] {
+            background-color: #3b19cd;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 6px 0;
+            font-family: 'Uniform', sans-serif;
+        }
+        .contact-action-table{
+            text-align: left;
+            font-size: 20px;
+            font-weight: 600;
+            font-family: 'Uniform', sans-serif;
+        }
+        .contact-action-container-text{
+            font-family: 'Uniform', sans-serif;
+        }
+        .product-enquiry-btn{
+            font-weight: 600;
+        }
+        iframe,.projects-list .project-item,.img-thumbnail {border: 2px solid #071330 !important;border-radius: 10px !important;width: 100% !important;height: 200px !important;margin-bottom: 15px !important;}
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            margin-top: 6px;
+            margin-bottom: 6px;
+            resize: vertical;
+            outline: none;
+            font-size: 14px;
+            font-family: 'Nunito', sans-serif;
+        }
+        .enquiry-form input[type=submit] {
+            background-color: #b37608;
+            color: white;
+            padding: 7px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 6px 0;
+            font-family: 'Nunito', sans-serif;
+        }
+        .contact-action-table{
+            text-align: left;
+            font-size: 20px;
+            font-weight: 600;
+            font-family: 'Nunito', sans-serif;
+        }
+        .contact-action-container-text,.designation,.firmname{
+            font-family: 'Nunito', sans-serif;
+            font-weight: 500;
+        }
+        .contact-info-container .contact-button .contact-buttons-text{
+            font-family: 'Nunito', sans-serif;
+        }
+        .contact-info-container .contact-button:nth-child(even) .contact-buttons-text{
+            color: #3c3d41 !important;
+        }
+        .contact-info-container .contact-button .contact-buttons-text {
+            color: #3c3d41 !important;
+        }
+        .contact-info-container .contact-button:nth-child(even) .contact-buttons-icon {
+            background-color: #b37608;
+        }
+        .contact-info-container .contact-button:nth-child(even):after {
+            background-color: #b57a10;
+        }
+        .shadow-button {
+            background: rgb(181 122 16);
+        }
+        .product-enquiry-btn{
+            font-weight: 500;
+            width: fit-content;
+            text-align: center;
+        }
+        iframe,.projects-list .project-item,.img-thumbnail {border: 2px solid #071330 !important;border-radius: 10px !important;width: 100% !important;height: 200px !important;margin-bottom: 15px !important;}
+        .img-thumbnail{
+            height: auto !important;
+        }
+        .profile-pic-img {
+            width: 200px;
+        }
+        .share-buttons.inprofile .share-button i{
+            height: 40px;
+            width: 40px;
+        }
+        body,a,p,span,div,button,input,h1,h2,h3,h4,h5,h6,b{
+            font-family: 'Nunito', sans-serif;
+        }
+        .img-thumbnail{
+            height: auto !important;
+        }
+        .contact-buttons {
+            text-align: center;
+            width: calc(100% + 40px);
+            margin-top: 15px;
+            display: flex;
+        }
+        .contact-buttons a{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 35px;
+            height: 35px;
+            font-size: 14px;
+            text-align: center;
+            margin: 0 auto;
+            box-shadow: 1px 1px 5px rgba(107, 128, 168, 0.2);
+            border-radius: 100px;
+            margin-bottom: 5px;
+            background-color: #b37608;
+            color: #ffffff;
+            z-index: 1;
+            position: relative;
+        }
+        .contact-info-container .contact-button::after{
+            height: 2px;
+        }
+        .trapezoid{
+            background: #b57a10b3 !important;
+        }
+        .profile-pic-img {
+            width: 200px;
+        }
+        .card{
+            border: none !important;
+        }
+
+.iti--separate-dial-code .iti__selected-dial-code { color:#555555; }

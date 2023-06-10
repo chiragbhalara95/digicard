@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <title>@if(!empty($companyInfoData->company_name)){!! $companyInfoData->company_name !!}@else{!! $userObj->name !!}@endif</title>
 
@@ -34,9 +35,9 @@
     <meta name="twitter:title" content="@if(!empty($companyInfoData->company_name)){!! $companyInfoData->company_name !!}@else{!! $userObj->name !!}@endif">
     <meta name="twitter:description" content="{{$companyInfoData->company_info}}">
 
-    <link href="{{asset('public/visitingCard/bussinessCard/h/css/t2-style.css')}}" rel="stylesheet">
-    <link href="{{asset('public/visitingCard/bussinessCard/h/css/all.css')}}" rel="stylesheet">
-    <link href="{{asset('public/visitingCard/bussinessCard/h/css/custom.css')}}" rel="stylesheet">
+    <link href="{{asset('public/visitingCard/bussinessCard/i/css/t7-style.css')}}" rel="stylesheet">
+    <link href="{{asset('public/visitingCard/bussinessCard/i/css/all.css')}}" rel="stylesheet">
+    <link href="{{asset('public/visitingCard/bussinessCard/i/css/custom.css')}}" rel="stylesheet">
     <link href="{{asset('public/visitingCard/bussinessCard/g/css/intlTelInput.min.css')}}" rel="stylesheet">
     <link href="{{asset('public/visitingCard/bussinessCard/a/css/jquery-confirm.css')}}" rel="stylesheet">
 
@@ -44,6 +45,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
 
         <script>
+
          function ColorLuminance(hex, lum) {
              // validate hex string
              hex = String(hex).replace(/[^0-9a-f]/gi, '');
@@ -62,21 +64,23 @@
          
              return rgb;
          }
-
-         document.documentElement.style.setProperty('--theme-color', '#F17D3A');
-         document.documentElement.style.setProperty('--theme-color-light', '#F17D3A26');
-          </script>
+         document.documentElement.style.setProperty('--theme-color', '#b37608');
+         document.documentElement.style.setProperty('--theme-color-light', '#b37608');
+         document.documentElement.style.setProperty('--theme-color-100', '#b37608');
+         document.documentElement.style.setProperty('--theme-color-75', '#b37608');
+         document.documentElement.style.setProperty('--theme-color-50', '#b37608');
+         document.documentElement.style.setProperty('--theme-color-25', '#b37608');
+                </script>
 
 </head>
 
 <body>
    <div class="page-wrapper" id="home-section">
-      <div class="separator"></div>
+
+      <div class="upper">
         @if($userConfigObj->isShowNoOfVisit == '1')
         <div class="views-label"><i class="fas fa-eye"></i> Views: <b>{{$userObj->no_visit}}</b></div>
         @endif
-
-      <div class="upper">
             @if(!empty($companyInfoData->company_logo))
               <img src="{{url('public')}}/{{$companyInfoData->company_logo}}" class="profile-pic-img" alt="Logo">
             @elseif(!empty($userObj->profile_pic))
@@ -99,97 +103,63 @@
 
          <div class="contact-buttons">
             <a class="contact-button" title="Call" href="tel:{{$companyInfoData->country_code}}{{$companyInfoData->company_mobile}}">
-            <i class="fas fa-phone fa-flip-horizontal"></i>&nbsp;Call
+            <i class="fas fa-phone fa-flip-horizontal"></i>
             </a>
             <a class="contact-button" target="_blank" href="https://api.whatsapp.com/send?phone={{str_replace('+','',$companyInfoData->country_code)}}{{$companyInfoData->company_mobile}}&text={{urlencode($userConfigObj->whatsappMsg)}}">
-            <i class="fab fa-whatsapp"></i>&nbsp;Whatsapp
+            <i class="fab fa-whatsapp"></i>
             </a>
             @if (!empty($companyInfoData->company_address))
             <a class="contact-button" target="_blank" href="https://maps.google.com?q={{$companyInfoData->latitude}},{{$companyInfoData->longitude}}&z=12&amp;um=1&amp;ie=UTF-8&amp;sa=X&amp;ved=2ahUKEwiWyNX76N3qAhWrzTgGHQuCBicQ_AUoAXoECCMQAw">
-            <i class="fas fa-map-marker-alt fa-flip-horizontal"></i>&nbsp;Direction
+            <i class="fas fa-map-marker-alt fa-flip-horizontal"></i>
             </a>
             @endif
 
             <a class="contact-button" target="_blank" href="mailto:{{$userObj->email}}">
-            <i class="fas fa-envelope fa-flip-horizontal"></i>&nbsp;Mail
+            <i class="fas fa-envelope fa-flip-horizontal"></i>
             </a>
          </div>
       </div>
-      <svg viewBox="0 0 400 25" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-            <defs>
-               <pattern id="Wave" x="0" y="0" width="100" height="25" patternUnits="userSpaceOnUse">
-                  <path d="M0 25 0 6C20 9 38 11 55 7 72 4 87 4 100 6l0 19z" id="path4" fill="#F17D3A"></path>
-               </pattern>
-            </defs>
-            <rect width="100%" height="100%" fill="url(#Wave)"></rect>
-         </svg>
+
+      <div class="theme-stripe"></div>
+      <div class="trapezoid"></div>
+
       <div class="lower">
-        <table class="contact-action-table" style="text-align: left;font-size: 20px;font-weight: 600;font-family: 'Uniform', sans-serif;">
-                 <tbody>
-                    <tr>
-                       <td>
+         <div class="contact-info-container">
 
-                          <a target="_blank" href="tel:{{$companyInfoData->country_code}}{{$companyInfoData->company_mobile}}">
-                          <i class="fas fa-phone fa-flip-horizontal contact-action-container-icon"></i>
-                          </a>
-                       </td>
-                       <td>
-                          <a target="_blank" href="tel:9898072992" class="contact-action-container-text" style="margin-bottom: 5px">
-                          {{$companyInfoData->country_code}}{{$companyInfoData->company_mobile}}
-                          </a>
-                    @if(!empty($companyInfoData->country_landline))
-                     <br><a target="_blank" href="tel:{{$companyInfoData->country_landline}}" class="contact-action-container-text">
-                     {{$companyInfoData->country_landline}}</a>
-                     @endif
-
-                       </td>
-                    </tr>
-
-                    @if (!empty($companyInfoData->company_address))               
-                    <tr>
-                       <td>
-                          <a target="_blank" href="https://maps.google.com?q={{$companyInfoData->latitude}},{{$companyInfoData->longitude}}&z=12&amp;um=1&amp;ie=UTF-8&amp;sa=X&amp;ved=2ahUKEwiWyNX76N3qAhWrzTgGHQuCBicQ_AUoAXoECCMQAw">
-                          <i class="fas fa-map-marker-alt contact-action-container-icon"></i>
-                          </a>
-                       </td>
-                       <td>
-                          <a target="_blank" class="contact-action-container-text" href="https://maps.google.com?q={{$companyInfoData->latitude}},{{$companyInfoData->longitude}}&z=12&amp;um=1&amp;ie=UTF-8&amp;sa=X&amp;ved=2ahUKEwiWyNX76N3qAhWrzTgGHQuCBicQ_AUoAXoECCMQAw">{!!$companyInfoData->company_address!!}</a>
-                       </td>
-                    </tr>
-                    @endif
-
-                    <tr>
-                       <td>
-                          <a href="mailto:{{$userObj->email}}">
-                          <i class="fas fa-envelope contact-action-container-icon"></i>
-                          </a>
-                       </td>
-                       <td>
-                          <a href="mailto:{{$userObj->email}}" class="contact-action-container-text">
-                          {{$userObj->email}}
-                          </a>
-                       </td>
-                    </tr>
-
-                    @if(!empty($companyInfoData->company_website))
-
-                    <tr>
-                       <td>
-                          <a target="_blank" href="{{$companyInfoData->company_website}}">
-                          <i class="fas fa-globe contact-action-container-icon"></i>
-                          </a>
-                       </td>
-                       <td>
-                          <a target="_blank" href="{{$companyInfoData->company_website}}" class="contact-action-container-text">
-                          {{$companyInfoData->company_website}}                        </a>
-                       </td>
-                    </tr>
-                    @endif
-
-                 </tbody>
-            </table>
+            <a class="contact-button" target="_blank" href="tel:{{$companyInfoData->country_code}}{{$companyInfoData->company_mobile}}" style="margin-bottom: 0">
+               <i class="fas fa-phone fa-flip-horizontal contact-buttons-icon"></i>
+               <span class="contact-buttons-text">{{$companyInfoData->country_code}}{{$companyInfoData->company_mobile}}</span>
+           </a>
+            @if(!empty($companyInfoData->country_landline))
+            <a class="contact-button" target="_blank" href="tel:{{$companyInfoData->country_landline}}" style="margin-bottom: 0">
+               <i class="fas fa-phone fa-flip-horizontal contact-buttons-icon"></i>
+               <span class="contact-buttons-text">{{$companyInfoData->country_landline}}</span>
+           </a>
+           @endif
 
 
+            @if(!empty($companyInfoData->company_website))
+            <a class="contact-button" target="_blank" href="{{$companyInfoData->company_website}}" style="margin-bottom: 0">
+               <i class="fas fa-globe fa-flip-horizontal contact-buttons-icon"></i>
+               <span class="contact-buttons-text">{{$companyInfoData->company_website}}</span>
+           </a>
+
+            @endif
+
+            <a class="contact-button" target="_blank" href="mailto:{{$userObj->email}}" style="margin-bottom: 0">
+               <i class="fas fa-envelope fa-flip-horizontal contact-buttons-icon"></i>
+               <span class="contact-buttons-text">{{$userObj->email}}</span>
+           </a>
+
+          @if (!empty($companyInfoData->company_address))               
+            <a class="contact-button" target="_blank" href="https://maps.google.com?q={{$companyInfoData->latitude}},{{$companyInfoData->longitude}}&z=12&amp;um=1&amp;ie=UTF-8&amp;sa=X&amp;ved=2ahUKEwiWyNX76N3qAhWrzTgGHQuCBicQ_AUoAXoECCMQAw" style="margin-bottom: 0">
+               <i class="fas fa-map fa-flip-horizontal contact-buttons-icon"></i>
+               <span class="contact-buttons-text">{!!$companyInfoData->company_address!!}</span>
+           </a>
+
+            @endif
+
+         </div>
 
 
          <div style="padding: 15px;">
@@ -250,15 +220,19 @@
             <div class="p-20"></div>
          </div>
          <div class="bottom-separator"></div>
-         </div>
+      </div>
 
       </div>
+      <div class="trapezoid section-bottom-trapezoid"></div>
+      <div class="theme-stripe"></div>
    </div>
 
     <div class="section-container">
-      <div class="separator"></div>
+      <div class="theme-stripe"></div>
+      <div class="trapezoid section-top-trapezoid"></div>
       <div class="section-content-wrapper">
          <h2 class="section-header">Scan QR Code for share your digital cards</h2>
+
          <div class="section-header-underline"></div>
           <div class="text text-center" style="text-align: center;">
           {!! QrCode::size(250)->generate($vistingUrl) !!}
@@ -268,10 +242,15 @@
       </div>
 
      </div>
+
+      <div class="trapezoid section-bottom-trapezoid"></div>
+      <div class="theme-stripe"></div>
+
     </div>
 
    <div class="section-container" id="about-us-section">
-      <div class="separator"></div>
+      <div class="theme-stripe"></div>
+      <div class="trapezoid section-top-trapezoid"></div>
       <div class="section-content-wrapper">
          <h2 class="section-header">{{$userConfigObj->aboutLabel}}</h2>
          <div class="section-header-underline"></div>
@@ -293,13 +272,15 @@
             @endif
 
       </div>
-      <div class="bottom-separator"></div>
+      <div class="trapezoid section-bottom-trapezoid"></div>
+      <div class="theme-stripe"></div>
    </div>
 
 
 @if($galleryData->count() > 0)
    <div class="section-container" id="products-services-section">
-      <div class="separator"></div>
+      <div class="theme-stripe"></div>
+      <div class="trapezoid section-top-trapezoid"></div>
       <div class="section-content-wrapper">
          <h2 class="section-header">
             Gallery
@@ -340,14 +321,16 @@
 
          </div>
       </div>
-      <div class="bottom-separator"></div>
+      <div class="trapezoid section-bottom-trapezoid"></div>
+      <div class="theme-stripe"></div>
    </div>
 @endif
 
 @if(count($videosData) > 0)
 
 <div class="section-container" id="video-section">
-  <div class="separator"></div>
+      <div class="theme-stripe"></div>
+      <div class="trapezoid section-top-trapezoid"></div>
   <div class="section-content-wrapper">
      <h2 class="section-header">Videos</h2>
      <div class="section-header-underline"></div>
@@ -362,46 +345,62 @@
   </div>
     @endforeach
 </div>
+      <div class="trapezoid section-bottom-trapezoid"></div>
+      <div class="theme-stripe"></div>
+
 </div>
 @endif
 
 @if(count($paymentMasterData) > 0)
 
 <div class="section-container" id="payment-options-section">
-    <h2 class="section-header">Payment</h2>
-    <div class="section-header-underline"></div>
+      <div class="theme-stripe"></div>
+      <div class="trapezoid section-top-trapezoid"></div>
 
-      @foreach($paymentMasterData as $paymentMasterDetail)
-        @if ($paymentMasterDetail->type == 'bank')
+    <div class="section-content-wrapper">
+      <h2 class="section-header">Payment</h2><hr/>
 
-        <h4 class="section-header">Bank Detail</h4>
-        <div class="section-header-underline"></div>
+        <div>
+        @foreach($paymentMasterData as $paymentMasterDetail)
+          @if ($paymentMasterDetail->type == 'bank')
 
-        <h3 class="section-item-title-2"><i class="fa fa-chevron-circle-right"></i>&nbsp; Bank Name: {{$paymentMasterDetail->bank_name}}</h3>
-        <h3 class="section-item-title-2"><i class="fa fa-chevron-circle-right"></i>&nbsp; Account Holder Name: {{$paymentMasterDetail->account_holder_name}}</h3>
-        <h3 class="section-item-title-2"><i class="fa fa-chevron-circle-right"></i>&nbsp; Account Number: {{$paymentMasterDetail->account_no}}</h3>
-        <h3 class="section-item-title-2"><i class="fa fa-chevron-circle-right"></i>&nbsp; Account Type: {{ucwords($paymentMasterDetail->account_type)}} Account</h3>
-        <h3 class="section-item-title-2"><i class="fa fa-chevron-circle-right"></i>&nbsp; IFSC code: {{$paymentMasterDetail->ifsc_code}}</h3>
-        <h3 class="section-item-title-2"><i class="fa fa-chevron-circle-right"></i>&nbsp; Branch Name: {{$paymentMasterDetail->branch_name}}</h3>
+          <div class="section-content-wrapper">
+            <h4 class="section-header">Bank Detail</h4><hr/>
+          </div>
 
-        @else
-        <h4 class="section-header">UPI Detail</h4>
-        <div class="section-header-underline"></div>
-        <h3 class="section-item-title-2"><i class="fa fa-chevron-circle-right"></i>&nbsp; {{ucwords($paymentMasterDetail->type)}} Number : {{$paymentMasterDetail->account_no}}</h3>
-        @if(!empty($paymentMasterDetail->qr_img))
-            <img src="{{url('public/upload/payment/')}}/{{$paymentMasterDetail->qr_img}}" class="img-thumbnail" style="width: 100%;">
-        @endif
+          <h3 class="section-item-title-2"><i class="fa fa-chevron-circle-right"></i>&nbsp; Bank Name: {{$paymentMasterDetail->bank_name}}</h3>
+          <h3 class="section-item-title-2"><i class="fa fa-chevron-circle-right"></i>&nbsp; Account Holder Name: {{$paymentMasterDetail->account_holder_name}}</h3>
+          <h3 class="section-item-title-2"><i class="fa fa-chevron-circle-right"></i>&nbsp; Account Number: {{$paymentMasterDetail->account_no}}</h3>
+          <h3 class="section-item-title-2"><i class="fa fa-chevron-circle-right"></i>&nbsp; Account Type: {{ucwords($paymentMasterDetail->account_type)}} Account</h3>
+          <h3 class="section-item-title-2"><i class="fa fa-chevron-circle-right"></i>&nbsp; IFSC code: {{$paymentMasterDetail->ifsc_code}}</h3>
+          <h3 class="section-item-title-2"><i class="fa fa-chevron-circle-right"></i>&nbsp; Branch Name: {{$paymentMasterDetail->branch_name}}</h3>
 
-        @endif
-      @endforeach
+          @else
+          <div class="section-content-wrapper">
+            <h4 class="section-header">UPI Detail</h4><hr/>
+          </div>
 
-     <div class="section-close"></div>
+          <div class="section-header-underline"></div>
+          <h3 class="section-item-title-2"><i class="fa fa-chevron-circle-right"></i>&nbsp; {{ucwords($paymentMasterDetail->type)}} Number : {{$paymentMasterDetail->account_no}}</h3>
+          @if(!empty($paymentMasterDetail->qr_img))
+              <img src="{{url('public/upload/payment/')}}/{{$paymentMasterDetail->qr_img}}" class="img-thumbnail" style="width: 100%;">
+          @endif
+
+          @endif
+        @endforeach
+      </div>
+    </div>
+
+    <div class="trapezoid section-bottom-trapezoid"></div>
+    <div class="theme-stripe"></div>
+
 </div>
 @endif
 
     @if($userConfigObj->isShowEnquiry == '1')
    <div class="section-container" id="enquiry-section">
-      <div class="separator"></div>
+      <div class="theme-stripe"></div>
+      <div class="trapezoid section-top-trapezoid"></div>
       <div class="section-content-wrapper">
          <h2 class="section-header">Enquiry Form</h2>
          <div class="section-header-underline"></div>
@@ -428,7 +427,8 @@
             </div>
          </form>
       </div>
-      <div class="bottom-separator"></div>
+      <div class="trapezoid section-bottom-trapezoid"></div>
+      <div class="theme-stripe"></div>
    </div>
    @endif
 

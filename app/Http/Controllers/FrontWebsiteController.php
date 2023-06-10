@@ -326,7 +326,6 @@ class FrontWebsiteController extends BasicController
 
         $userData = User::leftJoin('company_info As cinfo', 'cinfo.user_id', '=', 'users.id')
             ->whereNotNull('users.slug')
-            ->where('users.package_end_date', '>', date('Y-m-d'))
             ->where('users.package_end_date', '>', $cutoffDate);
 
         if (!empty($keywords)) {
