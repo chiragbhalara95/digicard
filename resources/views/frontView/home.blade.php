@@ -31,6 +31,9 @@
          <h3>About Us</h3>
          <p>A digital card is an online hosted, digital virtual representation of any plastic card. A digital card, unlike a plastic card, doesn't require any physical representation.</p>
       </header>
+
+      <h2>Digital Business Card</h2>
+
       <h3>Why Digital Cards ?</h3>
       <div class="row about-container">
          <div class="col-lg-6 content order-lg-1 order-2">
