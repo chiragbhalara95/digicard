@@ -9,16 +9,19 @@
 <section id="intro" class="clearfix">
    <div class="container" data-aos="fade-up">
       <div class="intro-img" data-aos="zoom-out" data-aos-delay="200">
-         <img src="{{ asset('public/frontView/assets/img/intro-img.svg') }}" alt="intro" class="img-fluid">
+         <img src="{{ asset('public/frontView/assets/img/intro-img.svg') }}" alt="intro" class="img-fluid" height="200vw" width="1000vw">
       </div>
-      <div class="intro-info" data-aos="zoom-in" data-aos-delay="100">
-         <h1 class="text-white">We offer Below Services:</h1>
-         @foreach($productData AS $productDetail)
-         <h5 class="text-white">{{$productDetail['product_name']}}</h5>
+      <div class="intro-info text text-primary" data-aos="zoom-in" data-aos-delay="100">
+         <h1 class="text text-primary">We offer Below Services:</h1>
+<!--          @foreach($productData AS $productDetail)
+         <h5 class="text text-primary">{{$productDetail['product_name']}}</h5>
          @endforeach
-         <div>
+ -->
+         <h5 class="text text-primary">Digital Business Cards</h5>
+
+          <div>
             <a href="#about" class="btn-get-started scrollto">Get Started</a>
-            <a href="#services" class="btn-services scrollto">Our Services</a>
+            <!-- <a href="#services" class="btn-services scrollto">Our Services</a> -->
          </div>
       </div>
    </div>
@@ -67,7 +70,7 @@
             </div>
          </div>
          <div class="col-lg-6 background order-lg-2" data-aos="zoom-in">
-            <img src="{{ asset('public/frontView/assets/img/about-img.svg') }}" class="img-fluid" alt="about img">
+            <img src="{{ asset('public/frontView/assets/img/about-img.svg') }}" class="img-fluid" alt="about img"  height="200vw" width="1000vw">
          </div>
       </div>
    </div>
@@ -240,22 +243,20 @@
                </div>
             </div>
             <div class="form">
-               <form action="{{route('saveContact')}}" method="post" role="form" class="php-email-form">
+               <form action="{{route('saveContact')}}" method="post" role="form" class="php-email-form" id="contactFrm">
                    {{csrf_field()}}
                   <div class="form-row">
                      <div class="form-group col-lg-6">
-                        <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
-                        <div class="validate"></div>
+                        <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" />
                      </div>
                      <div class="form-group col-lg-6">
-                        <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
-                        <div class="validate"></div>
+                        <input type="email" class="form-control" name="email" id="email" placeholder="Your Email"/>
                      </div>
                   </div>
                   <div class="form-group">
                      <div class="row">
                         <div class="col-md-4">
-                            <select class="selectpicker" required name="country_code" data-live-search="true" data-rule="minlen:1" data-msg="Please select country code">
+                            <select class="selectpicker" required name="country_code" data-live-search="true">
                                 <option class="text-center" value="">Select Country Code</option>
                                 @if (!empty($countryData))
                                     @foreach($countryData AS $countryDetail)
@@ -270,19 +271,17 @@
                         </div>
                         
                         <div class="col-md-8">
-                           <input type="number" class="form-control" name="phone_number" id="subject" placeholder="Phone Number" data-rule="minlen:10" data-msg="Please enter at least 10 digit of phone number" />
-                           <div class="validate"></div>
+                           <input type="number" class="form-control" name="phone_number" id="phone_number" placeholder="Phone Number"/>
                         </div>
                      </div>
 
                   </div>
                   <div class="form-group">
-                     <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 4 chars of subject" />
+                     <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" />
                      <div class="validate"></div>
                   </div>
                   <div class="form-group">
-                     <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
-                     <div class="validate"></div>
+                     <textarea class="form-control" name="message" rows="5" placeholder="Message"></textarea>
                   </div>
                   <div class="mb-3">
                      <div class="loading">Loading</div>
@@ -303,5 +302,62 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.18/css/bootstrap-select.min.css" integrity="sha512-ARJR74swou2y0Q2V9k0GbzQ/5vJ2RBSoCWokg4zkfM29Fb3vZEQyv0iWBMW/yvKgyHSR/7D64pFMmU8nYmbRkg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.18/js/bootstrap-select.min.js" integrity="
 sha512-yDlE7vpGDP7o2eftkCiPZ+yuUyEcaBwoJoIhdXv71KZWugFqEphIS3PU60lEkFaz8RxaVsMpSvQxMBaKVwA5xg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script>
+   $("#contactFrm").validate({
+      rules: {
+         name: {
+            required:true,
+            minlength:4,
+            maxlength:100
+         },
+         email:{
+            required:true,
+            email:true,
+         },
+         subject:{
+            required:true,
+            minlength:4,
+            maxlength:100
+         },
+         phone_number:{
+            required:true,
+            minlength:8
+         },
+         message:{
+            required:true,
+            minlength:4,
+            maxlength:500
+         }
+      },
+      messages: {
+         name: {
+            required:"Please enter name",
+            minlength:"Please enter at least 4 Char",
+            maxlength:"Please enter maximum 100 Char",
+         },
+         email:{
+            required:"Please enter email",
+         },
+         subject:{
+            required:"Please enter subject",
+            minlength:"Please enter at least 4 Char",
+            maxlength:"Please enter maximum 100 Char",
+         },
+         phone_number:{
+            required:"Please enter phone number",
+         },
+         message:{
+            required:"Please enter message",
+            minlength:"Please enter at least 4 Char",
+            maxlength:"Please enter maximum 500 Char",
+
+         }
+      },
+      submitHandler: function(form) {
+         form.submit();
+      }
+    });
+</script>
 
 @endsection

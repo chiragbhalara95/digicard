@@ -91,7 +91,6 @@ function handleWhatsappShare(e) {
     var card = window.location.href;
     var name = '';
     var number = countryCode+whatsappNo;
-    alert(number)
     
     // $.ajax(
     // {

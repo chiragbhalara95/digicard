@@ -22,6 +22,30 @@
 
 
     <script src="{{ asset('public/frontView/assets/js/custom.js') }}?v={{date('YmdHis')}}" defer></script>
+
+      <link href="{{ asset('public/frontView/assets/vendor/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
+
+      <style>
+      .float{
+         position:fixed;
+         width:60px;
+         height:60px;
+         bottom:10px;
+         right:10px;
+         background-color:#25d366;
+         color:#FFF;
+         border-radius:50px;
+         text-align:center;
+        font-size:30px;
+         box-shadow: 2px 2px 3px #999;
+        z-index:100;
+      }
+
+      .my-float{
+         margin-top:16px;
+      }
+      </style>
+
     @yield('custom_style')
 
 </head>
@@ -91,6 +115,10 @@
             @yield('content')
         </main>
     </div>
+
+  <a href="https://api.whatsapp.com/send?phone=919537178057&text=Inquiry%20for%20Digital%20Business%20Cards" class="float " target="_blank">
+     <i class="fa fa-whatsapp my-float"></i>
+  </a>
 
 <!-- jQuery -->
 <script src="{{ asset('public/admin/plugins/jquery/jquery.min.js') }}"></script>

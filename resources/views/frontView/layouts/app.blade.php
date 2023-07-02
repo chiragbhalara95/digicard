@@ -13,16 +13,15 @@
        <meta name="copyright" content="Digital Card">
        <meta name="classification" content="Digital Card">
 
+
       <!-- Favicons -->
       <link rel="shortcut icon" href="{{ asset('public/frontView/assets/img/favicon.ico') }}">
 
       <link href="{{ asset('public/frontView/assets/img/logo.png') }}" rel="icon" alt="logo">
 
-      <!-- Google Fonts -->
-      <!-- <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Montserrat:300,400,500,700" rel="stylesheet"> -->
       <!-- Vendor CSS Files -->
       <link href="{{ asset('public/frontView/assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
-      <link href="{{ asset('public/frontView/assets/vendor/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
+      <link rel="preload" as="font" href="{{ asset('public/frontView/assets/vendor/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
       <!-- <link href="{{ asset('public/frontView/assets/vendor/ionicons/css/ionicons.min.css') }}" rel="stylesheet"> -->
       <!-- <link href="{{ asset('public/frontView/assets/vendor/owl.carousel/assets/owl.carousel.min.css') }}" rel="stylesheet"> -->
       <!-- <link href="{{ asset('public/frontView/assets/vendor/venobox/venobox.css') }}" rel="stylesheet"> -->
@@ -30,13 +29,36 @@
       <!-- Template Main CSS File -->
       <link href="{{ asset('public/frontView/minify/css/style.min.css') }}?v={{date('YmdHis')}}" rel="stylesheet">
 
+      <!-- Google Fonts -->
+      <link rel="preload" as="font" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Montserrat:300,400,500,700" rel="stylesheet">
+
       <!-- =======================================================
          * Template Name: NewBiz - v2.1.0
          * Template URL: https://bootstrapmade.com/newbiz-bootstrap-business-template/
          * Author: BootstrapMade.com
          * License: https://bootstrapmade.com/license/
          ======================================================== -->
+      <style>
 
+      .float{
+         position:fixed;
+         width:60px;
+         height:60px;
+         bottom:100px;
+         right:10px;
+         background-color:#25d366;
+         color:#FFF;
+         border-radius:50px;
+         text-align:center;
+        font-size:30px;
+         box-shadow: 2px 2px 3px #999;
+        z-index:100;
+      }
+
+      .my-float{
+         margin-top:16px;
+      }
+      </style>
 
     @yield('custom_style')
 
@@ -176,6 +198,10 @@
          </div>
       </footer>
       <!-- End Footer -->
+      <a href="https://api.whatsapp.com/send?phone=919537178057&text=Inquiry%20for%20Digital%20Business%20Cards" class="float " target="_blank">
+         <i class="fa fa-whatsapp my-float"></i>
+      </a>
+
       <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
 
       <!-- Vendor JS Files -->
@@ -192,8 +218,11 @@
       <!-- Template Main JS File -->
       <script src="{{ asset('public/frontView/minify/js/main.min.js') }}"></script>
       <script src="{{ asset('public/frontView/minify/js/custom.min.js') }}?v={{date('YmdHis')}}"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js" integrity="sha512-rstIgDs0xPgmG6RX1Aba4KV5cWJbAMcvRCVmglpam9SoHZiUCyQVDdH2LPlxoHtrv17XWblE/V/PP+Tr04hbtA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
       @yield('custom_script')
       <script>
+
          setTimeout(() => {
             $(".alert").alert('close');
          }, 2000);

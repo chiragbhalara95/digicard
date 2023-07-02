@@ -47,3 +47,8 @@ body{background:#fff;color:#444;font-family:Open Sans,sans-serif}a{color:#007bff
 }
 
 /*# sourceMappingURL=style.min.css.map*/
+
+
+.error{
+    color:#d9534f !important;
+}

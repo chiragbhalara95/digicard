@@ -19,12 +19,16 @@ use App\Models\PaymentModel;
 use App\Models\socialLink AS SocialLinkModel;
 use App\Models\VisitorLog;
 use App\Models\Videos;
+use Illuminate\Support\Facades\Redis;
+
 
 class FrontWebsiteController extends BasicController
 {
     public function index()
     {
         $productData = ProductModel::select('product_id', 'product_name')->where('status', 1)->get()->toArray();
+        // Redis::set('productData', $productData);
+
         $packageData = SkuPackageModel::select([
             'price',
             'special_price',
@@ -57,6 +61,7 @@ class FrontWebsiteController extends BasicController
         // $userCountryCode = !empty($userData->geoplugin_countryCode) ? $userData->geoplugin_countryCode :'IN';
         // $userCountryCode = 'IN';
         // $userCurrency    = ($userCountryCode !== 'IN') ? 'USD' : 'INR';
+
         $userCurrency = 'INR';
         if (!empty(env('CURRENCY'))) {
             $userCurrency = env('CURRENCY');

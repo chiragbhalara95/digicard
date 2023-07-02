@@ -55,7 +55,13 @@ class CheckPaymentStatus
         }
 
         if (!empty($userObj) && $userObj->profile_config === '1') {
-            return redirect('payment')->with('error',"Please configure your account.");
+            if (env('CURRENCY') == 'USD') {
+                return redirect('/paypal/payment')->with('error',"Please do payment.");
+
+            } else {
+                return redirect('/payment')->with('error',"Please do payment.");
+            }
+
         }
 
         $expDate = date("Y-m-d");
@@ -64,7 +70,12 @@ class CheckPaymentStatus
         }
 
         if (empty($userObj->package_start_date) || empty($userObj->package_end_date) || $userObj->package_end_date < $expDate) {
-            return redirect('/payment')->with('error',"Please do payment.");
+            if (env('CURRENCY') == 'USD') {
+                return redirect('/paypal/payment')->with('error',"Please do payment.");
+
+            } else {
+                return redirect('/payment')->with('error',"Please do payment.");
+            }
 
         }
 

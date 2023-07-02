@@ -132,6 +132,12 @@ Route::middleware(['auth', 'verified', 'check_payment_required'])->namespace('Ap
     Route::get('payment', [App\Http\Controllers\PaymentController::class, 'index']);
     Route::get('razorpay-payment', [App\Http\Controllers\RazorpayPaymentController::class, 'index']);
     Route::post('razorpay-payment', [App\Http\Controllers\RazorpayPaymentController::class, 'store'])->name('razorpay.payment.store');
+
+    Route::get('paypal/payment', [App\Http\Controllers\PayPalController::class, 'index'])->name('createTransaction');
+    Route::post('process-transaction', [App\Http\Controllers\PayPalController::class, 'processTransaction'])->name('processTransaction');
+    Route::get('success-transaction', [App\Http\Controllers\PayPalController::class, 'successTransaction'])->name('successTransaction');
+    Route::get('cancel-transaction', [App\Http\Controllers\PayPalController::class, 'cancelTransaction'])->name('cancelTransaction');
+
 });
 
 

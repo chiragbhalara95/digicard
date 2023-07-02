@@ -12,9 +12,13 @@ input[type=number] {
 
 li {
     list-style: none;
-    margin-left: -20%;
+    /*margin-left: -20%;*/
 }
 
 .bootstrap-select .dropdown-menu li a span.text {
     text-align: center;
+}
+
+.error{
+    color:#d9534f !important;
 }
