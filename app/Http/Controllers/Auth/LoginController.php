@@ -42,7 +42,7 @@ class LoginController extends Controller
     public function login(Request $request)
     {   
         $input = $request->all();
-   
+        $input['email'] = trim($input['email']);
         $this->validate($request, [
             'email' => 'required|email',
             'password' => 'required',

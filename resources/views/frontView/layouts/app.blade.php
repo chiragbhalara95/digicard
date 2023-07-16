@@ -21,7 +21,8 @@
 
       <!-- Vendor CSS Files -->
       <link href="{{ asset('public/frontView/assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
-      <link rel="preload" as="font" href="{{ asset('public/frontView/assets/vendor/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
+      <link href="{{ asset('public/frontView/assets/vendor/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
+
       <!-- <link href="{{ asset('public/frontView/assets/vendor/ionicons/css/ionicons.min.css') }}" rel="stylesheet"> -->
       <!-- <link href="{{ asset('public/frontView/assets/vendor/owl.carousel/assets/owl.carousel.min.css') }}" rel="stylesheet"> -->
       <!-- <link href="{{ asset('public/frontView/assets/vendor/venobox/venobox.css') }}" rel="stylesheet"> -->

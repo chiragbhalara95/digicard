@@ -9,6 +9,7 @@ use Exception;
 use App\Models\SkuPackageModel;
 use App\Helpers\CustomHelper;
 use App\Models\User;
+use Srmklive\PayPal\Services\ExpressCheckout;
 
 class PayPalController extends BasicController
 {
@@ -98,6 +99,30 @@ class PayPalController extends BasicController
      */
     public function processTransaction(Request $request)
     {
+
+        $data = [];
+        $data['items'] = [
+            [
+                'name' => 'ItSolutionStuff.com',
+                'price' => 100,
+                'desc'  => 'Description for ItSolutionStuff.com',
+                'qty' => 1
+            ]
+        ];
+  
+        $data['invoice_id'] = 1;
+        $data['invoice_description'] = "Order #{$data['invoice_id']} Invoice";
+        $data['return_url'] = route('successTransaction');
+        $data['cancel_url'] = route('cancelTransaction');
+        $data['total'] = 100;
+  
+        $provider = new ExpressCheckout;
+  
+        $response = $provider->setExpressCheckout($data);
+  
+        $response = $provider->setExpressCheckout($data, true);
+        return $this->responseSuccess(['redirect_url'=>$links['href']], "Your payment has been successful.");
+
         $params = $request->all();
         $skuId = $params['sku_price'] ? $params['sku_price'] : null;
         if (empty($skuId)) {
@@ -112,6 +137,7 @@ class PayPalController extends BasicController
         $provider = new PayPalClient;
         $provider->setApiCredentials(config('paypal'));
         $paypalToken = $provider->getAccessToken();
+
         $response = $provider->createOrder([
             "intent" => "CAPTURE",
             "application_context" => [
@@ -127,6 +153,7 @@ class PayPalController extends BasicController
                 ]
             ]
         ]);
+
         if (isset($response['id']) && $response['id'] != null) {
             // redirect to approve href
             foreach ($response['links'] as $links) {
@@ -151,7 +178,9 @@ class PayPalController extends BasicController
         $provider = new PayPalClient;
         $provider->setApiCredentials(config('paypal'));
         $provider->getAccessToken();
-        $response = $provider->capturePaymentOrder($request['token']);
+        // $response = $provider->capturePaymentOrder($request['token']);
+        $response = $provider->getExpressCheckoutDetails($request->token);
+
         \Log::info("[PAYMENT] response: ", $response->toArray());
 
         if (isset($response['status']) && $response['status'] == 'COMPLETED') {

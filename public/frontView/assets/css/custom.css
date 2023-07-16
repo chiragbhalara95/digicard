@@ -22,3 +22,9 @@ li {
 .error{
     color:#d9534f !important;
 }
+
+.showPasswordEle {
+    color:#333;
+    background-color: #eee;
+    padding: 5px;
+}

@@ -19,7 +19,7 @@
         "predis/predis": "^2.2",
         "razorpay/razorpay": "^2.7",
         "simplesoftwareio/simple-qrcode": "^4.2",
-        "srmklive/paypal": "~3.0"
+        "srmklive/paypal": "^3.0"
     },
     "require-dev": {
         "facade/ignition": "^2.5",
