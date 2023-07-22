@@ -352,10 +352,10 @@ class FrontWebsiteController extends BasicController
     public function createLeadOrder(Request $request) {
         $params = $request->all();
         $orderParams = [
-            'first_name' => $params['first_name'],
-            'last_name' => $params['last_name'],
-            'email' => $params['email'],
-            'contactNo' => $params['contactNo'],
+            'first_name' => $params['customer_first_name'],
+            'last_name' => $params['customer_last_name'],
+            'email' => $params['customer_email'],
+            'contactNo' => $params['customer_contactNo'],
         ];
 
         if (isset($params['address']) && !empty($params['address'])) {

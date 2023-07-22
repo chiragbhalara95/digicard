@@ -411,6 +411,7 @@ i:hover {
 
         <div class="p-10"></div>
 
+        @if($userConfigObj->isEcommerceEnable == '1')
         <div id="cart-container">
           <div id="cart">
             <i class="fa fa-shopping-cart fa-2x" aria-hidden="true"></i>
@@ -419,13 +420,13 @@ i:hover {
           <span id="itemCount"></span>
         </div>
 
-
         <div id="shoppingCart">
           <div id="cartItems">
             <h2>Items in your cart</h2>
             <i class="fa fa-times-circle-o fa-3x" aria-hidden="true"></i>
           </div>
         </div>
+        @endif
 
           @if (!empty($galleryCatInfo))
           <div align="center">
@@ -471,9 +472,9 @@ i:hover {
                 </div>
             </div>
             <a href="{{$link}}" target='_blank' class="product-enquiry-btn text-center"><div class="btn_buy">Inquire Now</div></a>
-
+            @if($userConfigObj->isEcommerceEnable == '1')
             <button class="add product-enquiry-btn text-center" data-id="{{$galleryDetail->id}}" data-product="{{$galleryDetail->title}}" data-price="{{$price}}">Add to cart</button>
-
+            @endif
         </div>
 
         @endforeach
@@ -682,6 +683,7 @@ i:hover {
       </div>
    </div>
 
+@if($userConfigObj->isEcommerceEnable == '1')
 <div class="modal" id="checkoutModal">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -711,6 +713,7 @@ i:hover {
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
+
       <form id="createOrderFrm" action="{{route('createLeadOrder')}}" method="POST">
        @csrf
       <input type="hidden" name="array_product" id="array_product">
@@ -746,6 +749,7 @@ i:hover {
   </div>
 
 </div>
+@endif
 
 </body>
 
@@ -768,7 +772,10 @@ i:hover {
 
 <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.js"></script>
 
+@if($userConfigObj->isEcommerceEnable == '1')
 <script src="{{asset('public/visitingCard/bussinessCard/common/js/add2Cart.js')}}"></script>
+@endif
+
 <script src="{{asset('public/visitingCard/bussinessCard/common/js/bootstrap.min.js')}}"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>

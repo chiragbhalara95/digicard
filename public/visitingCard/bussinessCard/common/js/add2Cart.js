@@ -3,6 +3,7 @@ var cartItems = []
   var productIds = []
 
 $('.add').click(function (){
+  $(this).prop("disabled", true)
   $(this).siblings('.itemDetails').clone().appendTo( "#cartItems" ).append('<button class="removeItem product-enquiry-btn text-center">Remove Item</button>');
 
   if (productIds.includes($(this).data('id')) == true) {
@@ -10,7 +11,6 @@ $('.add').click(function (){
   } else {
     itemCount ++;
     $('#itemCount').html(itemCount).css('display', 'block');
-    console.log($(this).data('id'))
     productIds.push($(this).data('id'))
     cartItems[$(this).data('id')] = {
         id: $(this).data('id'),
@@ -46,11 +46,13 @@ $('#cart').click(function(){
       html += '<th>Qty</th>'
       html += '<th>Total</th>'
       html += '</thead>'
+      html += '<tbody>'
 
+      subtotal=0
       $.each(cartItems, function ( index, value) {
 
         if (typeof value != 'undefined') {
-          html += '<tbody>'
+          subtotal+=(value.price*value.quantity)
           html += '<tr title="'+value.name+'" data-id="'+value.id+'" data-price="'+value.price+'">'
           html += '<td>'+value.name+'</td>'
           html += '<td>₹'+value.price+'</td>'
@@ -58,9 +60,15 @@ $('#cart').click(function(){
           html += '<td title="Total" class="my-product-total">₹'+(value.price*value.quantity)+'</td>'
           html += '<td title="Remove from Cart" data-id="'+value.id+'" class="text-center" style="width: 30px;"><a href="javascript:void(0);" class="btn btn-xs btn-danger my-product-remove removeItem">X</a>'
           html += '</tr>'
+
         }
 
       })
+        html += '<tr >'
+        html += '<td colspan="3">Total</td>'
+        html += '<td class="sub_total_amount">₹'+subtotal+'</td>'
+        html += '</tr >'
+
       html +='</tbody></table>'
 
     }
@@ -71,6 +79,16 @@ $('#cart').click(function(){
   // $('#shoppingCart').toggle();
 });
 
+function updateSubTotal()
+{
+  subtotal = 0
+  $(".my-product-total").each(function(i, obj) {
+    itemTotal = parseInt($(obj).text().replace("₹",""))
+    subtotal += itemTotal
+  })
+  $(".sub_total_amount").text('₹'+subtotal)
+}
+
 $(document).on('click', '.removeItem', function(){
     itemCount --;
     $('#itemCount').html(itemCount);
@@ -80,7 +98,7 @@ $(document).on('click', '.removeItem', function(){
     productIds.splice( $.inArray(id, productIds), 1 );
     $('#cart').trigger('click')
 
-
+    updateSubTotal()
     if (itemCount === 0) {
       $('#itemCount').html('').css('display', 'none');
       $('#shoppingCart').css('display', 'none');
@@ -95,7 +113,8 @@ $(document).on("input", ".my-product-quantity", function(){
     id=$(this).data('id')
     cartItems[id]['quantity'] = $(this).val()
     var price=$(this).parent().parent().data('price')
-    $(".my-product-total").text('₹'+price*$(this).val())
+    $(this).parent().parent().closest("tr").find(".my-product-total").text('₹'+price*$(this).val())
+    updateSubTotal()
 })
 
 
