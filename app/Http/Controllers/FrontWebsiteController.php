@@ -349,4 +349,26 @@ class FrontWebsiteController extends BasicController
         return view('frontView/search', compact('userData'));
     }
 
+    public function createLeadOrder(Request $request) {
+        $params = $request->all();
+        $orderParams = [
+            'first_name' => $params['first_name'],
+            'last_name' => $params['last_name'],
+            'email' => $params['email'],
+            'contactNo' => $params['contactNo'],
+        ];
+
+        if (isset($params['address']) && !empty($params['address'])) {
+            $orderParams['address'] = $orderParams['address'];
+        }
+        if (isset($params['array_product']) && !empty($params['array_product'])) {
+            $orderParams['array_product'] = $orderParams['array_product'];
+        }
+
+        QuoteOrderModel::create($orderParams);
+        // return $this->responseError('Something went wrong, please try again');
+        return $this->responseSuccess([], "Your order placed successfully.");
+
+    }
+
 }

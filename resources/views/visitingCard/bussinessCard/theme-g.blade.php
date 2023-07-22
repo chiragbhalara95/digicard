@@ -40,11 +40,15 @@
     <meta name="twitter:title" content="@if(!empty($companyInfoData->company_name)){!! $companyInfoData->company_name !!}@else{!! $userObj->name !!}@endif">
     <meta name="twitter:description" content="{{$companyInfoData->company_info}}">
 
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
     <link href="{{asset('public/visitingCard/bussinessCard/g/css/t6-style.css')}}" rel="stylesheet">
     <link href="{{asset('public/visitingCard/bussinessCard/g/css/all.css')}}" rel="stylesheet">
     <link href="{{asset('public/visitingCard/bussinessCard/g/css/custom.css')}}" rel="stylesheet">
     <link href="{{asset('public/visitingCard/bussinessCard/g/css/intlTelInput.min.css')}}" rel="stylesheet">
     <link href="{{asset('public/visitingCard/bussinessCard/a/css/jquery-confirm.css')}}" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ asset('public/admin/plugins/toastr/toastr.min.css') }}">
 
     <link rel="preconnect" href="https://fonts.googleapis.com/">
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
@@ -76,6 +80,120 @@
          document.documentElement.style.setProperty('--theme-color-25', '#F5B34370');
       </script>
 
+<style>
+  main {
+  padding: 100px 0;
+  width: 600px;
+  margin: 0 auto;
+}
+
+header {
+  height: 100px;
+  margin-bottom: 50px;
+}
+
+h1 {
+  float: left;
+  margin: 0;
+}
+
+h2 {
+  margin: 0 0 50px;
+}
+
+#cart-container {
+  float: right;
+  width: 40px;
+  position: relative;
+  margin-top: -12%
+}
+
+#itemCount {
+  position: absolute;
+  display: none;
+  top: -10px;
+  left: -10px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: red;
+  color: white;
+  text-align: center;
+}
+
+img {
+  width: 100%;
+}
+
+.item {
+  width: 31%;
+  float: left;
+  margin: 1%;
+}
+
+i:hover {
+  cursor: pointer;
+}
+
+#shoppingCart {
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  display: none;
+  position: absolute;
+  z-index: 9999;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+#cartItems {
+  position: relative;
+  width: 600px;
+  left: 50%;
+  top: 150px;
+  margin-left: -300px;
+  padding: 40px;
+  box-shadow: 0 0 10px black;
+  background: #e9e9e9;
+  overflow: auto;
+  color: #111
+}
+
+#cartItems i {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+#cartItems .itemDetails {
+  overflow: auto;
+  width: 100%;
+  margin-bottom: 40px;
+}
+
+#cartItems .itemImage {
+  float: left;
+  width: 260px;
+  padding: 0 40px;
+}
+
+#cartItems .itemText {
+  float: right;
+  width: 260px;
+  padding: 0 40px;
+}
+
+.removeItem {
+  margin-left: 40px;
+}
+
+#checkoutModal, #customerModal {
+  color: #000
+}
+.error {
+  color: #DC3545
+}
+</style>
 </head>
 
 <body>
@@ -279,16 +397,36 @@
 
 
 @if($galleryData->count() > 0)
-   <div class="section-container" id="products-services-section">
+   <div class="section-container pt-10" id="products-services-section">
       <div class="separator"></div>
+
+
       <div class="section-content-wrapper">
          <h2 class="section-header">
             Gallery
          </h2>
+
          <div class="section-header-underline"></div>
          <div>
 
         <div class="p-10"></div>
+
+        <div id="cart-container">
+          <div id="cart">
+            <i class="fa fa-shopping-cart fa-2x" aria-hidden="true"></i>
+            <!-- <button class="clear">Empty Cart</button> -->
+          </div>
+          <span id="itemCount"></span>
+        </div>
+
+
+        <div id="shoppingCart">
+          <div id="cartItems">
+            <h2>Items in your cart</h2>
+            <i class="fa fa-times-circle-o fa-3x" aria-hidden="true"></i>
+          </div>
+        </div>
+
           @if (!empty($galleryCatInfo))
           <div align="center">
               <button class="btn btn-default filter-button active all-filter-btn" data-filter="all">All</button>
@@ -299,24 +437,45 @@
           @endif
 
         @foreach($galleryData as $galleryDetail)
-        <div class="card filter {{$galleryDetail->category_name}}">
-           <div class="text-center">
-              <img onclick="openImageModal(this)" alt="{{$galleryDetail->title}}" src="{{URL::asset('public/upload/product/'.$galleryDetail->head_image)}}" style="width:100%;margin-bottom: 9px;" description="{{$galleryDetail->description}}">
-                    <h4 class="section-header">{{$galleryDetail->title}}
-                    &nbsp;<br/>
-                    @if ($galleryDetail->special_price > 0 && $galleryDetail->mrp_price > $galleryDetail->special_price)
-                  <del>₹{{$galleryDetail->mrp_price}} <i class="fa fa-rupee"></i></del>
-                  @endif
+          <div class="card filter {{$galleryDetail->category_name}}">
+            <div class="itemDetails ">
+               <div class="text-center">
+                  <img onclick="openImageModal(this)" alt="{{$galleryDetail->title}}" src="{{URL::asset('public/upload/product/'.$galleryDetail->head_image)}}" style="width:100%;margin-bottom: 9px;" description="{{$galleryDetail->description}}">
+                        <h4 class="section-header">{{$galleryDetail->title}}
+                        &nbsp;<br/>
+                        @if ($galleryDetail->special_price > 0 && $galleryDetail->mrp_price > $galleryDetail->special_price)
+                        <del>₹{{$galleryDetail->mrp_price}} <i class="fa fa-rupee"></i></del>
+                        ₹{{$galleryDetail->special_price}} <i class="fa fa-rupee"></i>
+                        @elseif($galleryDetail->mrp_price > 0)
+                         ₹{{$galleryDetail->mrp_price}} <i class="fa fa-rupee"></i>
+                      @endif
 
-                  @if ($galleryDetail->mrp_price > 0)
-                  ₹{{$galleryDetail->special_price}} <i class="fa fa-rupee"></i>          @endif
-              </h4>
-            </div>
+                  </h4>
+                </div>
 
-            <div class="product-enquiry-section text-center">
-                <a href="https://api.whatsapp.com/send?phone={{str_replace('+','',$companyInfoData->country_code)}}{{$companyInfoData->company_mobile}}&text=Enquery for product: {{urlencode($galleryDetail->title)}}" target='_blank' class="product-enquiry-btn text-center"><div class="btn_buy">Inquire Now</div></a>
+                <div class="product-enquiry-section text-center">
+                    @php
+                        $link="https://api.whatsapp.com/send?phone=".str_replace('+','',$companyInfoData->country_code).$companyInfoData->company_mobile."&text=Enquery for product:".urlencode($galleryDetail->title);
+                        $price=0;
+                        if ($galleryDetail->mrp_price > 0) {
+                            if ($galleryDetail->special_price > 0 && $galleryDetail->mrp_price > $galleryDetail->special_price){
+                                $link .= " Price=₹".$galleryDetail->special_price;
+                                $price = $galleryDetail->special_price;
+                            } else{
+                                $link .= " Price=₹".$galleryDetail->mrp_price;
+                                $price = $galleryDetail->mrp_price;
+                            }
+                        }    
+                    @endphp
+
+                </div>
             </div>
+            <a href="{{$link}}" target='_blank' class="product-enquiry-btn text-center"><div class="btn_buy">Inquire Now</div></a>
+
+            <button class="add product-enquiry-btn text-center" data-id="{{$galleryDetail->id}}" data-product="{{$galleryDetail->title}}" data-price="{{$price}}">Add to cart</button>
+
         </div>
+
         @endforeach
 
          </div>
@@ -439,6 +598,7 @@
             </a>
          </li>
          @endif
+
          @if(count($paymentMasterData) > 0)
          <li>
             <a class="footer-menu-link" href="#payment-options-section">
@@ -472,6 +632,7 @@
       <div id="caption"></div>
       <div id="description"></div>
    </div>
+
    <!-- The share Modal -->
    <div id="shareModal" class="modal share-modal">
       <div class="share-form fadeInUpBig">
@@ -520,11 +681,79 @@
          </div>
       </div>
    </div>
+
+<div class="modal" id="checkoutModal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"><span class="glyphicon glyphicon-shopping-cart"></span> My Cart</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary checkoutBtn">Checkout</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="customerModal" >
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"><span class="glyphicon glyphicon-user"></span>Customer Detail</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form id="createOrderFrm" action="{{route('createLeadOrder')}}" method="POST">
+       @csrf
+      <input type="hidden" name="array_product" id="array_product">
+      <div class="modal-body">
+          <div class="md-form mb-5">
+            <input type="text" id="customer_first_name" name="customer_first_name" class="form-control" placeholder="Enter First Name">
+          </div>
+          <div class="md-form mb-5">
+            <input type="text" id="customer_last_name" name="customer_last_name" class="form-control" placeholder="Enter Last Name">
+          </div>
+
+          <div class="md-form mb-5">
+            <input type="email" id="customer_email" name="customer_email" class="form-control" placeholder="Enter email">
+          </div>
+
+          <div class="md-form mb-5">
+            <input type="text" id="customer_contactNo" name="customer_contactNo" class="form-control" placeholder="Enter Contact Number">
+          </div>
+
+          <div class="md-form mb-5">
+            <textarea id="address" name="address" class="form-control" placeholder="Enter address"></textarea>
+          </div>
+
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Order Now</button>
+      </div>
+      </form>
+
+    </div>
+  </div>
+
+</div>
+
 </body>
 
 <input type="hidden" id="send_enquiry_url" value="{{route('sendEnquiry')}}">
 
-  <script src="{{asset('public/visitingCard/bussinessCard/common/js/jquery-3.6.4.min.js')}}"></script>
+<script src="{{asset('public/visitingCard/bussinessCard/common/js/jquery-3.6.4.min.js')}}"></script>
+
+
 <script src="{{asset('public/visitingCard/bussinessCard/a/js/intlTelInput.min.js')}}"></script>
 <script src="{{asset('public/visitingCard/bussinessCard/g/js/script.js')}}?v={{date('YmdHis')}}"></script>
 
@@ -535,6 +764,14 @@
 <script src="{{asset('public/visitingCard/bussinessCard/a/js/form-action.js')}}"></script>
 
 <script src="{{asset('public/visitingCard/bussinessCard/a/js/jquery-confirm.js')}}"></script>
+
+
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.js"></script>
+
+<script src="{{asset('public/visitingCard/bussinessCard/common/js/add2Cart.js')}}"></script>
+<script src="{{asset('public/visitingCard/bussinessCard/common/js/bootstrap.min.js')}}"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <script type="text/javascript">
 

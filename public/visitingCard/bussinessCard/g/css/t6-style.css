@@ -715,7 +715,7 @@ strong, b {
 
 /* Modal CSS Start */
 /* The Modal CSS (background) */
-.modal {
+#shareModal.modal, #imageModal.modal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
@@ -730,7 +730,7 @@ strong, b {
 }
 
 /* Modal Content (image) */
-.modal-content {
+#shareModal.modal-content, #imageModal.modal-content {
     margin: auto;
     display: block;
     width: 80%;
@@ -738,7 +738,7 @@ strong, b {
 }
 
 /* Caption of Modal Image */
-#caption {
+#shareModal #caption, #imageModal #caption {
     margin: auto;
     display: block;
     width: 80%;
@@ -749,7 +749,7 @@ strong, b {
 }
 
 /* The Close Button */
-.close {
+#shareModal .close, #imageModal .close {
     position: absolute;
     top: 15px;
     right: 35px;
@@ -759,8 +759,10 @@ strong, b {
     transition: 0.3s;
 }
 
-.close:hover,
-.close:focus {
+#shareModal .close:hover,
+#shareModal .close:focus,
+#imageModal .close:hover,
+#imageModal .close:focus {
     color: #bbb;
     text-decoration: none;
     cursor: pointer;
