@@ -737,6 +737,18 @@ i:hover {
             <textarea id="address" name="address" class="form-control" placeholder="Enter address"></textarea>
           </div>
 
+          <div class="md-form mb-5 com-sm-4">
+            <input type="text" id="customer_city" name="customer_city" class="form-control" placeholder="Enter City Name">
+          </div>
+
+          <div class="md-form mb-5 com-sm-4">
+            <input type="text" id="customer_state" name="customer_state" class="form-control" placeholder="Enter State Name">
+          </div>
+
+          <div class="md-form mb-5 com-sm-4">
+            <input type="text" id="customer_zip" name="customer_zip" class="form-control" placeholder="Enter Zip Code">
+          </div>
+
       </div>
 
       <div class="modal-footer">

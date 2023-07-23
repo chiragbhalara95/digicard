@@ -3,7 +3,7 @@ var cartItems = []
   var productIds = []
 
 $('.add').click(function (){
-  $(this).prop("disabled", true)
+  // $(this).prop("disabled", true)
   $(this).siblings('.itemDetails').clone().appendTo( "#cartItems" ).append('<button class="removeItem product-enquiry-btn text-center">Remove Item</button>');
 
   if (productIds.includes($(this).data('id')) == true) {
@@ -119,8 +119,15 @@ $(document).on("input", ".my-product-quantity", function(){
 
 
 $(document).on("click", ".checkoutBtn", function() {
-  $("#array_product").val(JSON.stringify(cartItems))
-  $("#checkoutModal").modal('hide')
+  items = []
+  $.each(cartItems, function ( index, value) {
+    if (typeof value != 'undefined') {
+      items.push(value)
+    }
+  })
+
+  $("#array_product").val(JSON.stringify(items))
+  $("#checkoutModal").modal('hide');
   $("#customerModal").modal('show')
 })
 
@@ -130,9 +137,13 @@ $('#createOrderFrm').validate({
     rules: {
         customer_first_name: {
             required: true,
+            minlength:2,
+            maxlength:50
         },
         customer_last_name : {
             required: true,
+            minlength:2,
+            maxlength:50
         },
         customer_contactNo:{
             required: true,
@@ -141,8 +152,30 @@ $('#createOrderFrm').validate({
         },
         customer_email:{
             required:true,
-            email:true
+            email:true,
+            minlength:8,
+            maxlength:200
         },
+        address:{
+          required:true,
+          minlength:10,
+          maxlength:1000
+        },
+        customer_city:{
+          required:true,
+          minlength:2,
+          maxlength:50
+        },
+        customer_state:{
+          required:true,
+          minlength:2,
+          maxlength:50
+        },
+        customer_zip:{
+          required:true,
+          minlength:2,
+          maxlength:6
+        }
 
     },
     messages: {
@@ -158,6 +191,18 @@ $('#createOrderFrm').validate({
         customer_email:{
             required:"Please enter email"
         },
+        address:{
+          required:"Please enter email"
+        },
+        customer_city:{
+          required:"Please enter city name"
+        },
+        customer_state:{
+          required:"Please enter state name"
+        },
+        customer_zip:{
+          required:"Please enter zip code"
+        }
     },
     errorPlacement: function (error, element) {
         // error.insertAfter(element.attr("name"));
@@ -181,7 +226,7 @@ $('#createOrderFrm').validate({
         success: function(data) {
             if(data.code == '0'){
                 toastr.success(data.msg)
-                $("#createOrderFrm").modal('hide')
+                $("#customerModal").modal('hide')
             }else{
                 toastr.error(data.msg)
             }

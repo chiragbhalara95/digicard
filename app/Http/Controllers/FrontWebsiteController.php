@@ -20,7 +20,7 @@ use App\Models\socialLink AS SocialLinkModel;
 use App\Models\VisitorLog;
 use App\Models\Videos;
 use Illuminate\Support\Facades\Redis;
-
+use App\Models\QuoteOrderModel;
 
 class FrontWebsiteController extends BasicController
 {
@@ -352,17 +352,22 @@ class FrontWebsiteController extends BasicController
     public function createLeadOrder(Request $request) {
         $params = $request->all();
         $orderParams = [
-            'first_name' => $params['customer_first_name'],
-            'last_name' => $params['customer_last_name'],
-            'email' => $params['customer_email'],
-            'contactNo' => $params['customer_contactNo'],
+            'first_name'     => $params['customer_first_name'],
+            'last_name'      => $params['customer_last_name'],
+            'email'          => $params['customer_email'],
+            'address'        => $params['address'],
+            'city'           => $params['customer_city'],
+            'state'          => $params['customer_state'],
+            'zipCode'        => $params['customer_zip'],
+            'contactNo'      => $params['customer_contactNo'],
+
         ];
 
         if (isset($params['address']) && !empty($params['address'])) {
-            $orderParams['address'] = $orderParams['address'];
+            $orderParams['address'] = $params['address'];
         }
         if (isset($params['array_product']) && !empty($params['array_product'])) {
-            $orderParams['array_product'] = $orderParams['array_product'];
+            $orderParams['array_product'] = $params['array_product'];
         }
 
         QuoteOrderModel::create($orderParams);

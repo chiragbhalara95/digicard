@@ -18,6 +18,9 @@ class QuoteOrderModel extends Model
         'contactNo',
         'address',
         'array_product',
+        'city',
+        'state',
+        'zipCode',
     ];
 
     protected $casts = [];
