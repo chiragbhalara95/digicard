@@ -51,7 +51,7 @@
                                 <td>{{$i}}.</td>
                                 <td>{{$data->ip}}</td>
                                 <td>{{$data->browser}}</td>
-                                <td>{{date("d/m/Y h:iA", strtotime($data->created_at))}}</td>
+                                <td>{{convertUTCToOtherTimeZone('Asia/Kolkata', $data->created_at, "d/m/Y h:i A")}}</td>
                             </tr>
                             @php $i++ @endphp
                             @endforeach

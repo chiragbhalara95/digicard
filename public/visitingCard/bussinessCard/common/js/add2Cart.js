@@ -225,6 +225,10 @@ $('#createOrderFrm').validate({
         },
         success: function(data) {
             if(data.code == '0'){
+                itemCount = 0
+                cartItems = []
+                $('#cart').trigger('click')
+                $('#itemCount').html(itemCount).css('display', 'block');
                 toastr.success(data.msg)
                 $("#customerModal").modal('hide')
             }else{

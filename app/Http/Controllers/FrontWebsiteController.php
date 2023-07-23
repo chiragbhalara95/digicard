@@ -351,7 +351,18 @@ class FrontWebsiteController extends BasicController
 
     public function createLeadOrder(Request $request) {
         $params = $request->all();
+        $slug = isset($params['slug']) ? $params['slug'] : null;
+        if(empty($slug)) {
+            return $this->responseError('Something went wrong, please try again');
+        }
+
+        $userObj = User::where('slug', $slug)->first();
+        if(empty($userObj)) {
+            return $this->responseError('Something went wrong, please try again');
+        }
+
         $orderParams = [
+            'user_id'        => $userObj->id,
             'first_name'     => $params['customer_first_name'],
             'last_name'      => $params['customer_last_name'],
             'email'          => $params['customer_email'],
@@ -360,7 +371,6 @@ class FrontWebsiteController extends BasicController
             'state'          => $params['customer_state'],
             'zipCode'        => $params['customer_zip'],
             'contactNo'      => $params['customer_contactNo'],
-
         ];
 
         if (isset($params['address']) && !empty($params['address'])) {
@@ -371,7 +381,7 @@ class FrontWebsiteController extends BasicController
         }
 
         QuoteOrderModel::create($orderParams);
-        // return $this->responseError('Something went wrong, please try again');
+
         return $this->responseSuccess([], "Your order placed successfully.");
 
     }

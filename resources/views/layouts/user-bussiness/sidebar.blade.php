@@ -114,9 +114,35 @@
               <i class="nav-icon fas fa-users"></i>
               <p>
                 Visitor Logs
+
               </p>
             </a>
           </li>
+
+          @if (Session::has('isEcommerceEnable') && Session::get('isEcommerceEnable') == 1)
+          <li class="nav-item">
+            <a href="javascript:void()" class="nav-link submenu">
+              <i class="fa fa-shopping-cart"></i>
+              <p>Orders</p>
+            </a>
+            <ul>
+              <li class="nav-item">
+              <a href="{{route('business.lead-order-list')}}" class="nav-link">
+                <i class="fa fa-shopping-cart"></i>
+                <p>Quote Order</p>
+              </a>
+              </li>
+              <li class="nav-item">
+              <a href="{{route('business.order-list')}}" class="nav-link">
+                <i class="fa fa-shopping-cart"></i>
+                <p>Order List</p>
+              </a>
+              </li>
+
+            </ul>
+          </li>
+          @endif
+
 
           @if(Auth::check())
           <li class="nav-item">

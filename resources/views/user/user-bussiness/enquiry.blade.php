@@ -55,7 +55,7 @@
                                 <td>{{$data->email}}</td>
                                 <td>{{$data->phoneNumber}}</td>
                                 <td>{{$data->message}}</td>
-                                <td>{{date("d/m/Y h:iA", strtotime($data->created_at))}}</td>
+                                <td>{{convertUTCToOtherTimeZone('Asia/Kolkata', $data->created_at, "d/m/Y h:i A")}}</td>
                             </tr>
                             @php $i++ @endphp
                             @endforeach
@@ -74,6 +74,7 @@
 <script src="{{ asset('public/admin/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
 <script src="{{ asset('public/admin/plugins/datatables-responsive/js/dataTables.responsive.min.js') }}"></script>
 <script src="{{ asset('public/admin/plugins/datatables-responsive/js/responsive.bootstrap4.min.js') }}"></script>
+
 
 <script>
   $(function () {

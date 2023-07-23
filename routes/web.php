@@ -109,6 +109,13 @@ Route::middleware(['auth', 'verified', 'check_payment_status'])->namespace('App\
         Route::get('edit/{id}', [App\Http\Controllers\BussinessCard\PaymentController::class, 'editPaymentMaster'])->name('business.payment-master-edit-view'); 
         Route::get('delete/{id}', [App\Http\Controllers\BussinessCard\PaymentController::class, 'deletePaymentMaster'])->name('business.payment-master-delete');
     });
+    Route::middleware(['auth', 'verified'])->namespace('App\Http\Controllers\BussinessCard')->prefix('order')->group(function() {
+        Route::get('lead/list', [App\Http\Controllers\BussinessCard\OrderController::class, 'index'])->name('business.lead-order-list');
+        Route::post('order/convert', [App\Http\Controllers\BussinessCard\OrderController::class, 'convertOrder'])->name('business.convert-order');
+        Route::get('list', [App\Http\Controllers\BussinessCard\OrderController::class, 'orderList'])->name('business.order-list');
+        Route::get('invoice/{id}', [App\Http\Controllers\BussinessCard\OrderController::class, 'doInvoiceSave'])->name('business.order.invoice-print');
+
+    });
 
     Route::middleware(['auth', 'verified'])->namespace('App\Http\Controllers\BussinessCard')->prefix('social-link')->group(function() {
         Route::get('list', [App\Http\Controllers\BussinessCard\SocialLinkController::class, 'index'])->name('business.social-media-master-list');

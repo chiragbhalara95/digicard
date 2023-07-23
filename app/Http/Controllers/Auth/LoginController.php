@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+use App\Models\UserConfigModel;
 
 class LoginController extends Controller
 {
@@ -53,6 +54,13 @@ class LoginController extends Controller
             if (auth()->user()->is_admin == 1) {
                 return redirect()->route('admin.home');
             }else{
+                $userConfigObj   = UserConfigModel::where('user_id', auth()->user()->id)->first();
+                $isEcommerceEnable = 0;
+                if (!empty($userConfigObj)) {
+                    $isEcommerceEnable = ($userConfigObj->isEcommerceEnable == 1) ? 1 : 0;
+                }
+                $request->session()->put('isEcommerceEnable', $isEcommerceEnable);
+
                 return redirect()->route('home');
             }
         }else{

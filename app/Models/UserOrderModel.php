@@ -5,25 +5,25 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class QuoteOrderModel extends Model
+class UserOrderModel extends Model
 {
     use HasFactory;
 
-    protected $table = 'quote_order';
+    protected $table = 'user_order';
     protected $primaryKey = 'id';
 
     protected $fillable = [
         'first_name',
         'last_name',
         'user_id',
-        'order_id',
+        'quote_id',
         'email',
         'contactNo',
         'address',
-        'array_product',
         'city',
         'state',
         'zipCode',
+        'total',
     ];
 
     protected $casts = [];

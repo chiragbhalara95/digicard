@@ -717,6 +717,8 @@ i:hover {
       <form id="createOrderFrm" action="{{route('createLeadOrder')}}" method="POST">
        @csrf
       <input type="hidden" name="array_product" id="array_product">
+      <input type="hidden" name="slug" id="slug" value="{{$userObj->slug}}">
+
       <div class="modal-body">
           <div class="md-form mb-5">
             <input type="text" id="customer_first_name" name="customer_first_name" class="form-control" placeholder="Enter First Name">
