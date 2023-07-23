@@ -13,6 +13,7 @@ class UserOrderModel extends Model
     protected $primaryKey = 'id';
 
     protected $fillable = [
+        'order_no',
         'first_name',
         'last_name',
         'user_id',

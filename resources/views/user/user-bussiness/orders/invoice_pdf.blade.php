@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>invoice#{{$orderData->id}}</title>
+    <title>invoice#{{$orderData->order_no}}</title>
 </head>
 <style type="text/css">
     body{
@@ -82,8 +82,8 @@
 </div>
 <div class="add-detail mt-10">
     <div class="w-50 float-left mt-10">
-        <p class="m-0 pt-5 text-bold w-100">Invoice Id - <span class="gray-color">#{{$orderData->id}}</span></p>
-        <p class="m-0 pt-5 text-bold w-100">Order Id - <span class="gray-color">{{$orderData->id}}</span></p>
+        <p class="m-0 pt-5 text-bold w-100">Invoice Id - <span class="gray-color">#{{$orderData->order_no}}</span></p>
+        <p class="m-0 pt-5 text-bold w-100">Order Id - <span class="gray-color">{{$orderData->order_no}}</span></p>
         <p class="m-0 pt-5 text-bold w-100">Order Date - <span class="gray-color">{{date("d F Y", strtotime($orderData->created_at))}}</span></p>
     </div>
     <div class="w-50 float-left logo mt-10">

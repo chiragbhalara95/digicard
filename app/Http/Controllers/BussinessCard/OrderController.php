@@ -11,6 +11,7 @@ use App\Models\UserOrderModel;
 use App\Models\UserOrderItemModel;
 use PDF;
 use App\Models\CompanyInfoModel;
+use App\Models\UserConfigModel;
 
 class OrderController extends BasicController
 {
@@ -31,7 +32,9 @@ class OrderController extends BasicController
             return $this->responseError('Invalid Request');
         }
 
+        $userConfigData = UserConfigModel::select('last_order_no')->where('user_id', $userId)->first();
         $orderData = [
+            'order_no'   => $userConfigData->last_order_no+1,
             'first_name' => $quoteOrderData->first_name,
             'last_name'  => $quoteOrderData->last_name,
             'user_id'    => $quoteOrderData->user_id,
@@ -45,6 +48,8 @@ class OrderController extends BasicController
             'total'      => 0
         ];
         $orderId = UserOrderModel::insertGetId($orderData);
+
+        UserConfigModel::where('user_id', $userId)->update(['last_order_no' => $userConfigData->last_order_no+1]);
 
         if(!empty($quoteOrderData->array_product))
         {
@@ -121,7 +126,7 @@ class OrderController extends BasicController
             return $pdf->stream();
         }
 
-        return $pdf->download('invoice-'.$orderData->id.'.pdf');
+        return $pdf->download('invoice-'.$orderData->order_no.'.pdf');
     }
 
 }

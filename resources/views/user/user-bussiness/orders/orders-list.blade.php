@@ -54,7 +54,7 @@
                             @foreach($orderData as $data)
                             <tr>
                                 <td>{{$i}}.</td>
-                                <td>{{$data->id}}</td>
+                                <td>{{$data->order_no}}</td>
                                 <td>{{$data->first_name}} {{$data->last_name}}</td>
                                 <td>{{$data->email}}</td>
                                 <td>{{$data->contactNo}}</td>

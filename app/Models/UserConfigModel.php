@@ -12,6 +12,7 @@ class UserConfigModel extends Model
     protected $table="user_configure";
 
     protected $fillable = [
+        'last_order_no',
         'user_id',
         'isShowNoOfVisit',
         'isShowEnquiry',
