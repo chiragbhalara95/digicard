@@ -760,7 +760,7 @@ i:hover {
 
       <div class="modal-footer">
         <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary">Order Now</button>
+        <button type="submit" class="btn btn-primary">Buy Now</button>
       </div>
       </form>
 
