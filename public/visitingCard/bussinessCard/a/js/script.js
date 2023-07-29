@@ -89,8 +89,14 @@ function handleWhatsappShare(e) {
         e.preventDefault();
         return;
     }*/
-    var country_code =$("#country_code").val().replace("+", "");
-    var phone = $("#company_mobile").val();
+    var country_code =$("#country_code").val()
+    if (typeof country_code != 'undefined') {
+        country_code = country_code.replace("+", "")
+    } else{
+        country_code=''
+    }
+
+    var phone = $("#company_mobile").val().replace("+", "");
     //e.href = `https://wa.me/${country_code}${phone}?text=${window.location.href}`;
     e.href = `https://api.whatsapp.com/send?phone=${country_code}${phone}&text=${window.location.href}`;
 }

@@ -2,6 +2,11 @@ var itemCount = 0;
 var cartItems = []
   var productIds = []
 
+$('.buyNowBtn').click(function (){
+  $(this).parent().find('.add').trigger('click');
+  $('#cart').trigger('click')
+});
+
 $('.add').click(function (){
   // $(this).prop("disabled", true)
   $(this).siblings('.itemDetails').clone().appendTo( "#cartItems" ).append('<button class="removeItem product-enquiry-btn text-center">Remove Item</button>');
@@ -23,6 +28,10 @@ $('.add').click(function (){
 
   }
 
+    $('html, body').animate({
+        scrollTop: $("#cart").offset().top-100
+    }, 100);
+
 }); 
 
 $('.clear').click(function() {
@@ -39,12 +48,13 @@ $('#cart').click(function(){
     } else{
       $(".checkoutBtn").prop("disabled", false)
 
-      html += '<table class="table table-hover table-responsive" id="my-cart-table">';
-      html += '<thead>'
-      html += '<th>Product Name</th>'
-      html += '<th>Price</th>'
-      html += '<th>Qty</th>'
-      html += '<th>Total</th>'
+      html += ' <div class="table-responsive"><table class="table table-hover table-responsive" id="my-cart-table">';
+      html += '<thead class="d-flex">'
+      html += '<th style="word-wrap: break-word" width="40%">Product Name</th>'
+      html += '<th width="20%">Price</th>'
+      html += '<th width="20%">Qty</th>'
+      html += '<th width="19%">Total</th>'
+      html += '<th width="1%"></th>'
       html += '</thead>'
       html += '<tbody>'
 
@@ -53,12 +63,12 @@ $('#cart').click(function(){
 
         if (typeof value != 'undefined') {
           subtotal+=(value.price*value.quantity)
-          html += '<tr title="'+value.name+'" data-id="'+value.id+'" data-price="'+value.price+'">'
-          html += '<td>'+value.name+'</td>'
-          html += '<td>₹'+value.price+'</td>'
-          html += '<td title="Quantity"><input type="number" min="1" style="width: 70px;" data-id="'+value.id+'" class="my-product-quantity" value="'+value.quantity+'"></td>'
-          html += '<td title="Total" class="my-product-total">₹'+(value.price*value.quantity)+'</td>'
-          html += '<td title="Remove from Cart" data-id="'+value.id+'" class="text-center" style="width: 30px;"><a href="javascript:void(0);" class="btn btn-xs btn-danger my-product-remove removeItem">X</a>'
+          html += '<tr class="d-flex" title="'+value.name+'" data-id="'+value.id+'" data-price="'+value.price+'">'
+          html += '<td style="word-wrap: break-word" width="40%">'+value.name+'</td>'
+          html += '<td width="20%">₹'+value.price+'</td>'
+          html += '<td title="Quantity" width="20%"><input type="number" min="1" style="width: 70px;" data-id="'+value.id+'" class="my-product-quantity" value="'+value.quantity+'"></td>'
+          html += '<td title="Total" width="19%" class="my-product-total">₹'+(value.price*value.quantity)+'</td>'
+          html += '<td title="Remove from Cart" width="1%" data-id="'+value.id+'" class="text-center" style="width: 30px;"><a href="javascript:void(0);" class="btn btn-xs btn-danger my-product-remove removeItem">X</a>'
           html += '</tr>'
 
         }
@@ -69,7 +79,7 @@ $('#cart').click(function(){
         html += '<td class="sub_total_amount">₹'+subtotal+'</td>'
         html += '</tr >'
 
-      html +='</tbody></table>'
+      html +='</tbody></table> </div>'
 
     }
 

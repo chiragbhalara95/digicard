@@ -281,7 +281,7 @@ i:hover {
 
           @if (!empty($companyInfoData->company_address))               
             <div class="contact-info-wrapper">
-               <a class="contact-piller-button" target="_blank" href="https://maps.app.goo.gl/zeZUirLcgUwHdJbj6">
+               <a class="contact-piller-button" target="_blank" href="https://maps.google.com?q={{$companyInfoData->latitude}},{{$companyInfoData->longitude}}&z=12&amp;um=1&amp;ie=UTF-8&amp;sa=X&amp;ved=2ahUKEwiWyNX76N3qAhWrzTgGHQuCBicQ_AUoAXoECCMQAw">
                <i class="fas fa-map-marker-alt"></i>
                </a>
                <div class="contact-info">
@@ -471,9 +471,14 @@ i:hover {
 
                 </div>
             </div>
-            <a href="{{$link}}" target='_blank' class="product-enquiry-btn text-center"><div class="btn_buy">Inquire Now</div></a>
             @if($userConfigObj->isEcommerceEnable == '1')
-            <button class="add product-enquiry-btn text-center" data-id="{{$galleryDetail->id}}" data-product="{{$galleryDetail->title}}" data-price="{{$price}}">Add to cart</button>
+            <div class="buy_ele">
+              <a href="javascript:void(0)" class="buyNowBtn product-enquiry-btn text-center" data-id="{{$galleryDetail->id}}" data-product="{{$galleryDetail->title}}" data-price="{{$price}}">Buy Now</a>
+
+              <a href="javascript:void(0)" class="add product-enquiry-btn text-center" data-id="{{$galleryDetail->id}}" data-product="{{$galleryDetail->title}}" data-price="{{$price}}">Add to cart</a>
+            </div>
+            @else
+            <a href="{{$link}}" target='_blank' class="product-enquiry-btn text-center"><div class="btn_buy">Inquire Now</div></a>
             @endif
         </div>
 
