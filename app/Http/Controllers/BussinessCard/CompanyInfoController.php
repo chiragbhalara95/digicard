@@ -60,6 +60,7 @@ class CompanyInfoController extends Controller
             $companyData = [
                 'user_id'            => $userId,
                 'company_name'       => $params['company_name'],
+                'gst_number'         => $params['gst_number'],
                 'country_code'       => $params['country_code'],
                 'company_mobile'     => $params['company_mobile'],
                 'country_landline'   => $params['country_landline'],

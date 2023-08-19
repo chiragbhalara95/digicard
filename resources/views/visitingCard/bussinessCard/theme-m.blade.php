@@ -45,23 +45,18 @@
     <meta name="twitter:title" content="@if(!empty($companyInfoData->company_name)){!! $companyInfoData->company_name !!}@else{!! $userObj->name !!}@endif">
     <meta name="twitter:description" content="{{$companyInfoData->company_info}}">
 
-    <link href="{{asset('public/visitingCard/bussinessCard/m/css/awesome.min.css')}}" rel="stylesheet">
-
     <link href="{{asset('public/visitingCard/bussinessCard/m/css/css.css')}}" rel="stylesheet">
-
     <link href="{{asset('public/visitingCard/bussinessCard/m/css/mobile_css.css')}}" rel="stylesheet">
     <link href="{{asset('public/visitingCard/bussinessCard/m/css/card_css14.css')}}" rel="stylesheet">
-
     <link href="{{asset('public/visitingCard/bussinessCard/a/css/jquery-confirm.css')}}" rel="stylesheet">
     <link href="{{asset('public/visitingCard/bussinessCard/g/css/intlTelInput.min.css')}}" rel="stylesheet">
-
-
     <link href="{{asset('public/visitingCard/bussinessCard/m/css/all.css')}}" rel="stylesheet">
-<link href="{{asset('public/visitingCard/bussinessCard/common/css/gallery-category.css')}}" rel="stylesheet">
+    <link href="{{asset('public/visitingCard/bussinessCard/common/css/gallery-category.css')}}" rel="stylesheet">
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="{{ asset('public/frontView/assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
 
-  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 
 <style type="text/css">
   .btn_buy {
@@ -83,6 +78,61 @@
     color: #fff !important;
 
   }
+
+/* The Modal CSS (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+}
+
+/* Modal Content (image) */
+.modal-content {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+}
+
+/* Caption of Modal Image */
+#caption {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    text-align: center;
+    color: #ccc;
+    padding: 10px 0;
+}
+
+/* The Close Button */
+.close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #ffffff !important;
+    font-size: 80px;
+    font-weight: bold;
+    /*transition: 0.3s;*/
+}
+
+.close:hover,
+.close:focus {
+    color: #bbb !important;
+    text-decoration: none;
+    cursor: pointer;
+}
+/* Modal CSS Completed */
+
+
 </style>
 
 </head>
@@ -117,7 +167,7 @@
           <div class="link_btn"><i class="fa fa-phone"></i> Call</div>
         </a>
         <a href=https://api.whatsapp.com/send?phone={{str_replace('+','',$companyInfoData->country_code)}}{{$companyInfoData->company_mobile}}&text={{urlencode($userConfigObj->whatsappMsg)}}" target="_blank">
-          <div class="link_btn"><i class="fa fa-whatsapp"></i> WhatsApp</div>
+          <div class="link_btn"><i class="fab fa-whatsapp"></i> WhatsApp</div>
         </a>
             @if (!empty($companyInfoData->company_address))
         <a href="https://maps.google.com?q={{$companyInfoData->latitude}},{{$companyInfoData->longitude}}&z=12&amp;um=1&amp;ie=UTF-8&amp;sa=X&amp;ved=2ahUKEwiWyNX76N3qAhWrzTgGHQuCBicQ_AUoAXoECCMQAw" target="_blank">
@@ -182,7 +232,7 @@
             <input type="hidden" name="text" id="whatsapp-input" value="{{url('vc')}}/{{$userObj->slug}}">
 
             <a class="wtsp_share_btn whatsapp-button" target="_blank" href="javascript:void(0);" onclick="handleWhatsappShare(this)">
-              <i class="fab fa-whatsapp"></i>Share on Whatsapp
+              <i class="fab fa-whatsapp"></i>&nbsp;Share on Whatsapp
             </a>
 
           </form>
@@ -387,7 +437,7 @@
     <br>
     <div id="create_card_btn">
         
-     <a href="https://api.whatsapp.com/send?phone=919537178057&amp;text=I%20am%20Interested%20For%20Digital%20Visiting%20Card.%20Please%20Share%20Me%20Demo&amp;source=&amp;data=&amp;app_absent=">  try digital visiting card like Your Friends <br> Try Free Demo Now  </a>
+     <a href="https://api.whatsapp.com/send?phone=919537178057&amp;text=I%20am%20Interested%20For%20Digital%20Visiting%20Card.%20Please%20Share%20Me%20Demo&amp;source=&amp;data=&amp;app_absent=" class="btn btn-warning">  try digital visiting card like Your Friends <br> Try Free Demo Now  </a>
           <br>
     <!--<a href="/panel/login/registration.php">mycard.zensoft.tech || Create Your Card Now || 2023</a>-->
     </div>
@@ -448,6 +498,15 @@
 
 
 </div>
+
+
+   <!-- The image Modal -->
+   <div id="imageModal" class="modal">
+      <span class="close" id="imageModalClose">×</span>
+      <img class="modal-content fadeIn" id="img01">
+      <div id="caption"></div>
+      <div id="gallery_description"></div>
+   </div>
 
 </body>
 

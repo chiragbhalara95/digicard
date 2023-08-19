@@ -21,6 +21,7 @@ class CompanyInfoModel extends Model
     protected $fillable = [
         'user_id',
         'company_name',
+        'gst_number',
         'company_logo',
         'company_profession',
         'country_code',

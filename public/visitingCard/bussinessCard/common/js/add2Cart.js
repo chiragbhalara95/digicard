@@ -5,6 +5,7 @@ var cartItems = []
 $('.buyNowBtn').click(function (){
   $(this).parent().find('.add').trigger('click');
   $('#cart').trigger('click')
+  $(".checkoutBtn").trigger('click')
 });
 
 $('.add').click(function (){
@@ -240,6 +241,7 @@ $('#createOrderFrm').validate({
                 $('#cart').trigger('click')
                 $('#itemCount').html(itemCount).css('display', 'block');
                 toastr.success(data.msg)
+                $("#checkoutModal").modal('hide');
                 $("#customerModal").modal('hide')
             }else{
                 toastr.error(data.msg)

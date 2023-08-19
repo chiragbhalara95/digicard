@@ -61,8 +61,8 @@
                                 <td>{{convertUTCToOtherTimeZone('Asia/Kolkata', $data->created_at, "d/m/Y h:i A")}}</td>
                                 <td>₹{{$data->total}}</td>
                                 <td>
-                                    <a href="{{route('business.order.invoice-print', $data->id)}}" class="btn btn-primary">Save Invoice</a>
-                                    <a href="{{route('business.order.invoice-print', $data->id)}}?print=y" target="_tabs" class="btn btn-warning">Print Invoice</a>
+                                    <a href="{{route('business.order.invoice-print', $data->id)}}" class="btn btn-primary"><i class="fa fa-arrow-down"></i>&nbsp;Download Invoice</a>
+                                    <a href="{{route('business.order.invoice-print', $data->id)}}?print=y" target="_tabs" class="btn btn-warning"><i class="fa fa-print"></i>&nbsp;Print Invoice</a>
 
                                 </td>
                             </tr>

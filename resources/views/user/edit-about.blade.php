@@ -132,6 +132,12 @@
                   </div>
 
                   <div class="form-group">
+                    <label for="exampleInputEmail1">GST Number</label>
+                    <input type="text" name="gst_number" class="form-control" id="gst_number" placeholder="Enter GST Number" 
+                    value="{{$companyData->gst_number ?? ''}}" maxlength="20">
+                  </div>
+
+                  <div class="form-group">
                     <!-- <label for="customFile">Custom File</label> -->
                     <label for="exampleInputEmail1">Company Logo</label>
 
