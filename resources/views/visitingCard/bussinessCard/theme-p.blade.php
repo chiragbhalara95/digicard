@@ -66,9 +66,20 @@
     <body>
         <div class="container main-section">
 
+
             <div class="row d-flex justify-content-center">
+
+
                 <div class="main-bg p-0 collapse show allSection">
+
                     <div class="main-banner position-relative">
+
+          @if($userConfigObj->isShowNoOfVisit == '1')
+          <div class="p-1"></div>
+          <div class="views-label text-center"><i class="fa fa-eye" aria-hidden="true"></i> Views: <b>{{$userObj->no_visit}}</b>
+          </div>
+          @endif
+
                         @if(!empty($companyInfoData->company_logo))
                         <img src="{{url('public')}}/{{$companyInfoData->company_logo}}" class="banner-img" />
                         @endif
@@ -237,6 +248,24 @@
                                     <div class="text-center mb-4">
                                         {!!$companyInfoData->company_info!!}
                                     </div>
+            @if(!empty($companyInfoData->broucher_file))
+                <div class="qr-header-title">
+                    <h4 class="mb-4 text-center">Documents</h4>
+                </div>
+
+                <div class="dis_flex text-center">
+                  <a class="download btn btn-primary" href="{{url('public')}}/{{$companyInfoData->broucher_file}}" download="">
+                    <div class="big_btns" style="width:300px">
+                        <div class="pdf-number">
+                          <i class="fa fa-file-pdf-o"></i>&nbsp;&nbsp;&nbsp;&nbsp;
+                          @if(!empty($companyInfoData->company_name)){!! $companyInfoData->company_name !!}@else{!! $userObj->name !!}@endif&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-download"></i>
+                      </div>
+                    </div>
+                  </a>  
+              </div> 
+            <div class="dis_flex"></div>
+            @endif
+
                                 </div>
                             </div>
                         </div>
@@ -277,7 +306,8 @@
                             </div>
 
 
-                            <div class="slick-carousel">
+
+                            <div class="slick-carousel" style="width:100%">
                               @foreach($galleryData as $galleryDetail)
                               <div>
                                 <div class="slide-content profile-pic">
@@ -301,6 +331,82 @@
                     </div>
 
  -->
+
+@if(count($videosData) > 0)
+
+<div class="container mb-10 mt-10">
+    <div class="contactus-section position-relative">
+
+  <div class="separator"></div>
+  <div class="section-content-wrapper">
+    <div class="header-title">
+        <h4 class="text-center mb-4">Videos</h4>
+    </div>
+
+     <div class="section-header-underline"></div>
+
+      @foreach($videosData as $videosDetail)
+    <div class="order_box slide-content profile-pic">
+      <div class="embed-responsive embed-responsive-16by9">
+        <iframe class="embed-responsive-item " src="{{$videosDetail->video_path}}" title="{{$videosDetail->title}}" allowfullscreen ng-show="showvideo" frameborder="0" ></iframe>
+     <h4 class="section-header">{{$videosDetail->title}}</h4>
+    </div>
+
+  </div>
+    @endforeach
+</div>
+</div>
+</div>
+@endif
+
+
+@if(count($paymentMasterData) > 0)
+
+<div class="container mt-4 mb-13">
+    <div class="main-Qr-section mb-5">
+
+    <div class="qr-header-title">
+        <h4 class="text-center mb-4">Payment</h4>
+    </div>
+
+    <div class="section-header-underline"></div>
+
+      @foreach($paymentMasterData as $paymentMasterDetail)
+        @if ($paymentMasterDetail->type == 'bank')
+
+        <div class="big-title">
+            <h4 class="text-center mb-4 text-left">Bank Detail</h4><hr/>
+        </div>
+
+        <div class="section-header-underline"></div>
+
+        <h3 class="section-item-title-2"><i class="fa fa-chevron-circle-right"></i>&nbsp; Bank Name: {{$paymentMasterDetail->bank_name}}</h3>
+        <h3 class="section-item-title-2"><i class="fa fa-chevron-circle-right"></i>&nbsp; Account Holder Name: {{$paymentMasterDetail->account_holder_name}}</h3>
+        <h3 class="section-item-title-2"><i class="fa fa-chevron-circle-right"></i>&nbsp; Account Number: {{$paymentMasterDetail->account_no}}</h3>
+        <h3 class="section-item-title-2"><i class="fa fa-chevron-circle-right"></i>&nbsp; Account Type: {{ucwords($paymentMasterDetail->account_type)}} Account</h3>
+        <h3 class="section-item-title-2"><i class="fa fa-chevron-circle-right"></i>&nbsp; IFSC code: {{$paymentMasterDetail->ifsc_code}}</h3>
+        <h3 class="section-item-title-2"><i class="fa fa-chevron-circle-right"></i>&nbsp; Branch Name: {{$paymentMasterDetail->branch_name}}</h3>
+
+        @else
+
+        <div class="qr-header-title">
+            <h5 class="text-center mb-4 tet-bold">UPI Detail</h5><hr/>
+        </div>
+
+        <div class="section-header-underline"></div>
+        <h3 class="section-item-title-2"><i class="fa fa-chevron-circle-right"></i>&nbsp; {{ucwords($paymentMasterDetail->type)}} Number : {{$paymentMasterDetail->account_no}}</h3>
+        @if(!empty($paymentMasterDetail->qr_img))
+            <img src="{{url('public/upload/payment/')}}/{{$paymentMasterDetail->qr_img}}" class="img-thumbnail" style="width: 100%;">
+        @endif
+
+        @endif
+      @endforeach
+
+     <div class="section-close"></div>
+</div>
+</div>
+@endif
+
                     @if($userConfigObj->isShowEnquiry == '1')
                     <div class="container mb-10 mt-10">
                         <div class="contactus-section position-relative">

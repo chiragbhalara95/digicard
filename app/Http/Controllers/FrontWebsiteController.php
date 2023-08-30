@@ -21,6 +21,8 @@ use App\Models\VisitorLog;
 use App\Models\Videos;
 use Illuminate\Support\Facades\Redis;
 use App\Models\QuoteOrderModel;
+use App\Models\RatingModel;
+use Illuminate\Support\Arr;
 
 class FrontWebsiteController extends BasicController
 {
@@ -192,8 +194,11 @@ class FrontWebsiteController extends BasicController
                 }
             }
 
+            $ratigSummaryData = RatingModel::where('user_id', $userObj->id)->limit(3)->orderBy('id', 'DESC')->get();
+            $ratigAllData = RatingModel::where('user_id', $userObj->id)->orderBy('id', 'DESC')->get();
+
             return view('visitingCard/bussinessCard/'.$bladeFile, 
-                compact('companyInfoData', 'userObj', 'galleryData', 'userConfigObj', 'paymentMasterData', 'socialMediaData', 'galleryCatInfo', 'vistingUrl', 'videosData')
+                compact('companyInfoData', 'userObj', 'galleryData', 'userConfigObj', 'paymentMasterData', 'socialMediaData', 'galleryCatInfo', 'vistingUrl', 'videosData', 'ratigSummaryData', 'ratigAllData')
             );
         }
 
@@ -384,6 +389,41 @@ class FrontWebsiteController extends BasicController
 
         return $this->responseSuccess([], "Your order placed successfully.");
 
+    }
+
+    public function sendRating(Request $request) {
+        $params = $request->all();
+        $validator = Validator::make($params, [
+            'slug' => 'required',
+            'rating_count' => 'required|integer|gt:0',
+            'name' => 'required',
+            'comment' => 'required|max:255',
+        ],
+        [
+            'rating.gt' => 'Please select rating'
+        ]
+    );
+
+        if ($validator->fails()) {
+            return $this->responseError(implode(",", $validator->errors()->all()));
+        }
+
+        if (isset($params['rating']) && $params['rating'] <1){
+            return $this->responseError("Please select rating");
+        }
+
+        $slug = $params['slug'];
+        $userObj = User::where('slug', $slug)->first();
+        if(empty($userObj)) {
+            return $this->responseError("Your url is wrong, Please contact admin.");
+        }
+
+        $params['user_id'] = $userObj->id;
+        $ratingId   = Arr::get($params, 'rating_id');
+        $ratingData = RatingModel::addUpdateRating($params, $ratingId);
+        $successRes = 'Thank you for your feedback. It will MOTIVATE us / give an change for IMPROVISATION!';
+
+        return $this->responseSuccess([], $successRes);
     }
 
 }

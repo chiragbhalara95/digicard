@@ -58,6 +58,7 @@ Route::namespace('App\Http\Controllers')->group(function() {
     Route::post('/companies/sendEnquiry', [App\Http\Controllers\FrontWebsiteController::class, 'sendEnquiry'])->name('sendEnquiry');
     Route::any('downloadQrCode/{visitor_id}',[App\Http\Controllers\FrontWebsiteController::class, 'downloadQrCode']);
     Route::post('/create-lead-order', [App\Http\Controllers\FrontWebsiteController::class, 'createLeadOrder'])->name('createLeadOrder');
+    Route::post('/companies/sendRating', [App\Http\Controllers\FrontWebsiteController::class, 'sendRating'])->name('sendRating');
 
 });
 

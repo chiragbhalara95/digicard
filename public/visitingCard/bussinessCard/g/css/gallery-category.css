@@ -94,3 +94,8 @@
     position: fixed;
     z-index: 999;
   }
+
+
+.checked {
+  color: orange;
+}

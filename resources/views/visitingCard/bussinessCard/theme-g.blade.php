@@ -403,7 +403,7 @@ i:hover {
 
       <div class="section-content-wrapper">
          <h2 class="section-header">
-            Gallery
+            {{$userConfigObj->galleryLabel}}
          </h2>
 
          <div class="section-header-underline"></div>
@@ -478,7 +478,7 @@ i:hover {
               <a href="javascript:void(0)" class="add product-enquiry-btn text-center" style="display: none;" data-id="{{$galleryDetail->id}}" data-product="{{$galleryDetail->title}}" data-price="{{$price}}">Add to cart</a>
             </div>
             @else
-            <a href="{{$link}}" target='_blank' class="product-enquiry-btn text-center"><div class="btn_buy">Inquire Now</div></a>
+            <a href="{{$link}}" target='_blank' class="product-enquiry-btn text-center"><div class="btn_buy">{{$userConfigObj->enquiryLabel}}</div></a>
             @endif
         </div>
 
@@ -545,6 +545,17 @@ i:hover {
 </div>
 @endif
 
+   <div class="section-container" id="feedback-section">
+      <div class="separator"></div>
+
+      <div class="section-content-wrapper">
+         <h2 class="section-header">FEEDBACKS</h2>
+
+        @include('visitingCard.bussinessCard.include.feedback')
+
+       </div>
+     </div>
+
     @if($userConfigObj->isShowEnquiry == '1')
    <div class="section-container" id="enquiry-section">
       <div class="separator"></div>
@@ -557,17 +568,17 @@ i:hover {
         <input type="hidden" id="companyEmail" value="admin.admin@gmail.com">
 
             <div class="form-group">
-                <input type="text" name="enquiryName" data-parsley-trigger="change" id="enquiryName" placeholder="Enter Full Name" pattern="[a-zA-Z ]*$" required="">
+                <input type="text" name="enquiryName" data-parsley-trigger="change" id="enquiryName" placeholder="Enter Full Name" pattern="[a-zA-Z ]*$" required="" class="form-control">
 
             </div>
             <div class="form-group">
                 <input type="email" name="email" id="email" data-parsley-trigger="change" placeholder="Enter Email" class="form-control">
             </div>
             <div class="form-group">
-                <input type="text" data-parsley-length-message="Contact should have (4-10) digits." data-parsley-type-message="Contact should have only digits." data-parsley-type="number" data-parsley-length="[4, 10]" name="phoneNumber" id="phoneNumber" required="" placeholder="Enter Phone Number">
+                <input type="text" data-parsley-length-message="Contact should have (4-10) digits." data-parsley-type-message="Contact should have only digits." data-parsley-type="number" data-parsley-length="[4, 10]" name="phoneNumber" id="phoneNumber" required="" placeholder="Enter Phone Number" class="form-control">
             </div>
             <div class="form-group">
-                <textarea name="message" id="message" required="" placeholder="Enter Message"></textarea>
+                <textarea name="message" id="message" required="" placeholder="Enter Message" class="form-control"></textarea>
             </div>
             <div class="form-group">
                 <input type="submit" id="inquiry-send" value="Send">
@@ -599,7 +610,7 @@ i:hover {
             <a class="footer-menu-link" href="#products-services-section">
                <i class="footer-menu-icon fas fa-box-open"></i>
                <div class="footer-menu-text">
-                GALLERY
+                {{$userConfigObj->galleryLabel}}
                </div>
             </a>
          </li>
@@ -799,25 +810,20 @@ i:hover {
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-<script type="text/javascript">
+<script src="{{asset('public/visitingCard/bussinessCard/common/js/jquery.star-rating.js')}}"></script>
 
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-CJZJHWL0WG"></script>
+<script src="{{ asset('public/frontView/assets/js/jquery.validate.min.js') }}"></script>
 
-</script>
+<script src="{{asset('public/visitingCard/bussinessCard/common/js/custom.js')}}"></script>
+
 
 <script type="text/javascript">
     intlTelInput(input, {
         initialCountry:'in',
         separateDialCode:true,
     })
-</script>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-CJZJHWL0WG"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-CJZJHWL0WG');
 </script>
 
 </html>

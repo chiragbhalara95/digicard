@@ -1449,7 +1449,7 @@ body {
 */  .slick-slide {
     .slide-content{
       margin: 0 @gutters;
-      padding: 50px 100px;
+      padding: 20px 20px;
       background: #fff;
     }
   }
@@ -1457,6 +1457,7 @@ body {
   .slick-list {
      margin: 20px 0px;
   }
+  
   
   .prev-arrow {
     margin-top:1vw;
@@ -1516,7 +1517,7 @@ body {
 
 
 .profile-pic .profile-pic-img {
-    width: 160px;
+    width: 100%;
     margin-top: 20px;
     border-radius: 8px;
     border: 1px solid var(--theme-color);

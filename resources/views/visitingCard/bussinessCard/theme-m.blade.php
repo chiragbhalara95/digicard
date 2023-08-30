@@ -286,7 +286,7 @@
 <div class="card2" id="about_us">
     <h3>{{$userConfigObj->aboutLabel}}</h3>
     <p class="text-dark">{!!$companyInfoData->company_info!!}</p>
-            @if(empty($companyInfoData->broucher_file))
+            @if(!empty($companyInfoData->broucher_file))
                 <h3>Documents</h3>
                 <div class="dis_flex">
                   <a class="download" href="{{url('public')}}/{{$companyInfoData->broucher_file}}" download="">
