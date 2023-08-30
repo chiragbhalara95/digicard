@@ -99,3 +99,16 @@ function getLocalStorage(key)
 $("#feedbackBtn").click( function(){
   $("#ratingAllModal").modal('show');
 })
+
+
+function copyUrlSecond() {
+  // Get the text field
+  var copyText = document.getElementById("visitingUrlText");
+  // Select the text field
+  copyText.select();
+  copyText.setSelectionRange(0, 99999); // For mobile devices
+  // Copy the text inside the text field
+  navigator.clipboard.writeText(copyText.value);
+  // Alert the copied text
+  toastr.success("Url copied successfully")
+}

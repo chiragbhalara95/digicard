@@ -30,10 +30,11 @@
 
 </div>
 
+@if (count($ratigSummaryData) > 0)
 <div class="feedbtndiv">
   <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#ratingAllModal">View All Feedback</button>
-
 </div>
+@endif
 
 <div id ="rating-post">
 <form action="{{route('sendRating')}}" method="post" id="feedbackFrm" class="enquiry-form">

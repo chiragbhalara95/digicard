@@ -106,3 +106,7 @@ del {
 
 
 .iti--separate-dial-code .iti__selected-dial-code { color:#555555; }
+
+a:focus, a:hover {
+    color:#FFF !important;
+}

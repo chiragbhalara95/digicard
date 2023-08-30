@@ -28,6 +28,7 @@ class socialLink extends Model
         'tw' => 'Twitter',
         'pi' => 'Pinterest',
         'yt' => 'YouTube',
+        'tg' => 'Telegram',
     ];
 
 }

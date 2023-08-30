@@ -44,7 +44,7 @@
 
     <link href="{{asset('public/visitingCard/bussinessCard/g/css/t6-style.css')}}" rel="stylesheet">
     <link href="{{asset('public/visitingCard/bussinessCard/g/css/all.css')}}" rel="stylesheet">
-    <link href="{{asset('public/visitingCard/bussinessCard/g/css/custom.css')}}" rel="stylesheet">
+    <link href="{{asset('public/visitingCard/bussinessCard/g/css/custom.css')}}?v={{date('Ymdhis')}}" rel="stylesheet">
     <link href="{{asset('public/visitingCard/bussinessCard/g/css/intlTelInput.min.css')}}" rel="stylesheet">
     <link href="{{asset('public/visitingCard/bussinessCard/a/css/jquery-confirm.css')}}" rel="stylesheet">
 
@@ -361,7 +361,9 @@ i:hover {
          <div class="section-header-underline"></div>
           <div class="text text-center" style="text-align: center;">
           {!! QrCode::size(250)->generate($vistingUrl) !!}
-            <p>{{$vistingUrl}}</p>
+          <input type="text" readonly="" class="form-control" value="{{$vistingUrl}}" id="visitingUrlText">
+            <div class="buttonCopy" onclick="copyUrlSecond()">Copy URL <i class="fa fa-copy" aria-hidden="true"></i></div>
+
             <a class="col-md-12 text-center big_btns text-white" href="{{url('downloadQrCode')}}/{{$userObj->slug}}" >Download QR Code &nbsp;<i class="fa fa-download"></i></a>  
 
       </div>
@@ -523,17 +525,17 @@ i:hover {
         <h4 class="section-header">Bank Detail</h4>
         <div class="section-header-underline"></div>
 
-        <h3 class="section-item-title-2"><i class="fa fa-chevron-circle-right"></i>&nbsp; Bank Name: {{$paymentMasterDetail->bank_name}}</h3>
-        <h3 class="section-item-title-2"><i class="fa fa-chevron-circle-right"></i>&nbsp; Account Holder Name: {{$paymentMasterDetail->account_holder_name}}</h3>
-        <h3 class="section-item-title-2"><i class="fa fa-chevron-circle-right"></i>&nbsp; Account Number: {{$paymentMasterDetail->account_no}}</h3>
-        <h3 class="section-item-title-2"><i class="fa fa-chevron-circle-right"></i>&nbsp; Account Type: {{ucwords($paymentMasterDetail->account_type)}} Account</h3>
-        <h3 class="section-item-title-2"><i class="fa fa-chevron-circle-right"></i>&nbsp; IFSC code: {{$paymentMasterDetail->ifsc_code}}</h3>
-        <h3 class="section-item-title-2"><i class="fa fa-chevron-circle-right"></i>&nbsp; Branch Name: {{$paymentMasterDetail->branch_name}}</h3>
+        <h4 class="section-item-title-2"><i class="fa fa-chevron-circle-right"></i>&nbsp; Bank Name: {{$paymentMasterDetail->bank_name}}</h4>
+        <h4 class="section-item-title-2"><i class="fa fa-chevron-circle-right"></i>&nbsp; Account Holder Name: {{$paymentMasterDetail->account_holder_name}}</h4>
+        <h4 class="section-item-title-2"><i class="fa fa-chevron-circle-right"></i>&nbsp; Account Number: {{$paymentMasterDetail->account_no}}</h4>
+        <h4 class="section-item-title-2"><i class="fa fa-chevron-circle-right"></i>&nbsp; Account Type: {{ucwords($paymentMasterDetail->account_type)}} Account</h4>
+        <h4 class="section-item-title-2"><i class="fa fa-chevron-circle-right"></i>&nbsp; IFSC code: {{$paymentMasterDetail->ifsc_code}}</h4>
+        <h4 class="section-item-title-2"><i class="fa fa-chevron-circle-right"></i>&nbsp; Branch Name: {{$paymentMasterDetail->branch_name}}</h4>
 
         @else
         <h4 class="section-header">UPI Detail</h4>
         <div class="section-header-underline"></div>
-        <h3 class="section-item-title-2"><i class="fa fa-chevron-circle-right"></i>&nbsp; {{ucwords($paymentMasterDetail->type)}} Number : {{$paymentMasterDetail->account_no}}</h3>
+        <h4 class="section-item-title-2"><i class="fa fa-chevron-circle-right"></i>&nbsp; {{ucwords($paymentMasterDetail->type)}} Number : {{$paymentMasterDetail->account_no}}</h4>
         @if(!empty($paymentMasterDetail->qr_img))
             <img src="{{url('public/upload/payment/')}}/{{$paymentMasterDetail->qr_img}}" class="img-thumbnail" style="width: 100%;">
         @endif
@@ -559,9 +561,14 @@ i:hover {
     @if($userConfigObj->isShowEnquiry == '1')
    <div class="section-container" id="enquiry-section">
       <div class="separator"></div>
+
+
       <div class="section-content-wrapper">
          <h2 class="section-header">Enquiry Form</h2>
          <div class="section-header-underline"></div>
+
+<div style="width: 100%"><iframe width="100%" height="600" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q={{$companyInfoData->latitude}},{{$companyInfoData->longitude}}&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"><a href="https://www.maps.ie/population/">Population calculator map</a></iframe></div>
+
         <form data-parsley-validate="" method="post" class="enquiry-form" id="enquiry-form" novalidate="">
         <meta name="csrf_token" content="{{ csrf_token() }}" />
         <input type="hidden" name="slug" id="slug" value="{{$userObj->slug}}">
@@ -640,6 +647,13 @@ i:hover {
             </a>
          </li>
          @endif
+         <li>
+            <a class="footer-menu-link" href="#feedback-section">
+               <i class="footer-menu-icon fas fa-star"></i>
+               <div class="footer-menu-text">FEEDBACK</div>
+            </a>
+         </li>
+
       </ul>
    </div>
    <!-- The image Modal -->
