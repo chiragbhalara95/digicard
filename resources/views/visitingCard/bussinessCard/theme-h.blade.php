@@ -40,10 +40,13 @@
     <meta name="twitter:title" content="@if(!empty($companyInfoData->company_name)){!! $companyInfoData->company_name !!}@else{!! $userObj->name !!}@endif">
     <meta name="twitter:description" content="{{$companyInfoData->company_info}}">
 
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
     <link href="{{asset('public/visitingCard/bussinessCard/h/css/t2-style.css')}}" rel="stylesheet">
     <link href="{{asset('public/visitingCard/bussinessCard/h/css/all.css')}}" rel="stylesheet">
     <link href="{{asset('public/visitingCard/bussinessCard/h/css/custom.css')}}" rel="stylesheet">
     <link href="{{asset('public/visitingCard/bussinessCard/g/css/intlTelInput.min.css')}}" rel="stylesheet">
+  
     <link href="{{asset('public/visitingCard/bussinessCard/a/css/jquery-confirm.css')}}" rel="stylesheet">
 
     <link rel="preconnect" href="https://fonts.googleapis.com/">
@@ -73,6 +76,8 @@
          document.documentElement.style.setProperty('--theme-color-light', '#F17D3A26');
           </script>
 
+    <link rel="stylesheet" href="{{ asset('public/admin/plugins/toastr/toastr.min.css') }}">
+
 </head>
 
 <body>
@@ -92,6 +97,10 @@
           @if (!empty($companyInfoData->company_name))
             <div class="firmname">{!! $companyInfoData->company_name !!}</div>
             <div class="firmname-underline"></div>
+            @if (!empty($companyInfoData->gst_number))
+            <div class="name"><span style="margin-top: 5px;display: block;font-size: 16px;">GST No: {!! $companyInfoData->gst_number !!}</div>
+            @endif
+
             <div class="name"><span style="margin-top: 5px;display: block;font-size: 16px;">{!! $userObj->name !!}</div>
           @else
             <div class="firmname">{!! $userObj->name !!}</div>
@@ -207,7 +216,7 @@
                   <div class="iti iti--allow-dropdown">
                      <div class="iti__flag-container">
                         <div class="iti__selected-flag" role="combobox" aria-owns="iti-0__country-listbox" aria-expanded="false" tabindex="0" title="India (भारत): +91" aria-activedescendant="iti-0__item-in"><div class="iti__flag iti__ind"></div></div>                     </div>
-                     <input type="tel" id="whatsapp-input" class="input" placeholder="Enter whatsapp number" maxlength="10" oninput="this.value=this.value.replace(/[^0-9]/g,&#39;&#39;);" autocomplete="off" data-intl-tel-input-id="0">
+                     <input type="tel" id="whatsapp-input" class="input whatsapp-input-phone" placeholder="Enter whatsapp number" maxlength="10" oninput="this.value=this.value.replace(/[^0-9]/g,&#39;&#39;);" autocomplete="off" data-intl-tel-input-id="0">
                   </div>
 
                </div>
@@ -248,6 +257,9 @@
                     <li class="share-button"> <a href="{{$socialMediaDetail->url}}" target="_blank"><i class="share-button-facebook fab fa-pinterest"></i></a> </li>
                     @elseif($socialMediaDetail->type == 'yt')
                     <li class="share-button"> <a href="{{$socialMediaDetail->url}}" target="_blank"><i class="share-button-facebook fab fa-youtube"></i></a> </li>
+                    @elseif($socialMediaDetail->type == 'tg')
+                    <li class="share-button"> <a href="{{$socialMediaDetail->url}}" target="_blank"><i class="share-button-facebook fab fa-telegram"></i></a> </li>
+
                   @endif
                 @endforeach
               </ul>
@@ -267,14 +279,24 @@
          <h2 class="section-header">Scan QR Code for share your digital cards</h2>
          <div class="section-header-underline"></div>
           <div class="text text-center" style="text-align: center;">
-          {!! QrCode::size(250)->generate($vistingUrl) !!}
-            <p>{{$vistingUrl}}</p>
-            <a class="col-md-12 text-center big_btns text-white" href="{{url('downloadQrCode')}}/{{$userObj->slug}}" >Download QR Code &nbsp;<i class="fa fa-download"></i></a>  
+              {!! QrCode::size(250)->generate($vistingUrl) !!}
 
+              <div class="row ">
+                <input type="text" readonly="" class="form-control col-md-6" value="{{$vistingUrl}}" id="visitingUrlText">
+              </div>
+
+              <div class="row">
+                  <div class="col float-start">
+                          <a href="javascript::void(0)" class="buttonCopy col-md-6 text-left text-items-align-left" onclick="copyUrlSecond()">Copy URL <i class="fa fa-copy" aria-hidden="true"></i></a>
+                  </div>
+                  <div class="col float-end">
+                          <a class="col-md-6 text-center big_btns text-white text-end" href="{{url('downloadQrCode')}}/{{$userObj->slug}}" >Download QR Code &nbsp;<i class="fa fa-download"></i></a>  
+                  </div>
+              </div>
+          </div>
       </div>
 
      </div>
-    </div>
 
    <div class="section-container" id="about-us-section">
       <div class="separator"></div>
@@ -359,15 +381,15 @@
      <div class="section-header-underline"></div>
 
       @foreach($videosData as $videosDetail)
-    <div class="order_box">
-      <div class="embed-responsive embed-responsive-16by9">
-        <iframe class="embed-responsive-item " src="{{$videosDetail->video_path}}" title="{{$videosDetail->title}}" allowfullscreen ng-show="showvideo" frameborder="0" ></iframe>
-     <h4 class="section-header">{{$videosDetail->title}}</h4>
-    </div>
+        <div class="order_box">
+          <div class="embed-responsive embed-responsive-16by9">
+            <iframe class="embed-responsive-item " src="{{$videosDetail->video_path}}" title="{{$videosDetail->title}}" allowfullscreen ng-show="showvideo" frameborder="0" ></iframe>
+          <h4 class="section-header">{{$videosDetail->title}}</h4>
+         </div>
+        </div>
+      @endforeach
 
   </div>
-    @endforeach
-</div>
 </div>
 @endif
 
@@ -383,17 +405,17 @@
         <h4 class="section-header">Bank Detail</h4>
         <div class="section-header-underline"></div>
 
-        <h3 class="section-item-title-2"><i class="fa fa-chevron-circle-right"></i>&nbsp; Bank Name: {{$paymentMasterDetail->bank_name}}</h3>
-        <h3 class="section-item-title-2"><i class="fa fa-chevron-circle-right"></i>&nbsp; Account Holder Name: {{$paymentMasterDetail->account_holder_name}}</h3>
-        <h3 class="section-item-title-2"><i class="fa fa-chevron-circle-right"></i>&nbsp; Account Number: {{$paymentMasterDetail->account_no}}</h3>
-        <h3 class="section-item-title-2"><i class="fa fa-chevron-circle-right"></i>&nbsp; Account Type: {{ucwords($paymentMasterDetail->account_type)}} Account</h3>
-        <h3 class="section-item-title-2"><i class="fa fa-chevron-circle-right"></i>&nbsp; IFSC code: {{$paymentMasterDetail->ifsc_code}}</h3>
-        <h3 class="section-item-title-2"><i class="fa fa-chevron-circle-right"></i>&nbsp; Branch Name: {{$paymentMasterDetail->branch_name}}</h3>
+        <h4 class="section-item-title-2"><i class="fa fa-chevron-circle-right"></i>&nbsp; Bank Name: {{$paymentMasterDetail->bank_name}}</h4>
+        <h4 class="section-item-title-2"><i class="fa fa-chevron-circle-right"></i>&nbsp; Account Holder Name: {{$paymentMasterDetail->account_holder_name}}</h4>
+        <h4 class="section-item-title-2"><i class="fa fa-chevron-circle-right"></i>&nbsp; Account Number: {{$paymentMasterDetail->account_no}}</h4>
+        <h4 class="section-item-title-2"><i class="fa fa-chevron-circle-right"></i>&nbsp; Account Type: {{ucwords($paymentMasterDetail->account_type)}} Account</h4>
+        <h4 class="section-item-title-2"><i class="fa fa-chevron-circle-right"></i>&nbsp; IFSC code: {{$paymentMasterDetail->ifsc_code}}</h4>
+        <h4 class="section-item-title-2"><i class="fa fa-chevron-circle-right"></i>&nbsp; Branch Name: {{$paymentMasterDetail->branch_name}}</h4>
 
         @else
         <h4 class="section-header">UPI Detail</h4>
         <div class="section-header-underline"></div>
-        <h3 class="section-item-title-2"><i class="fa fa-chevron-circle-right"></i>&nbsp; {{ucwords($paymentMasterDetail->type)}} Number : {{$paymentMasterDetail->account_no}}</h3>
+        <h4 class="section-item-title-2"><i class="fa fa-chevron-circle-right"></i>&nbsp; {{ucwords($paymentMasterDetail->type)}} Number : {{$paymentMasterDetail->account_no}}</h4>
         @if(!empty($paymentMasterDetail->qr_img))
             <img src="{{url('public/upload/payment/')}}/{{$paymentMasterDetail->qr_img}}" class="img-thumbnail" style="width: 100%;">
         @endif
@@ -405,12 +427,30 @@
 </div>
 @endif
 
+   <div class="section-container" id="feedback-section">
+      <div class="separator"></div>
+
+      <div class="section-content-wrapper">
+         <h2 class="section-header">FEEDBACKS</h2>
+
+        @include('visitingCard.bussinessCard.include.feedback')
+
+       </div>
+     </div>
+
+
+
     @if($userConfigObj->isShowEnquiry == '1')
    <div class="section-container" id="enquiry-section">
       <div class="separator"></div>
       <div class="section-content-wrapper">
          <h2 class="section-header">Enquiry Form</h2>
          <div class="section-header-underline"></div>
+
+          @if (!empty($companyInfoData->company_address) && !empty($companyInfoData->latitude))
+          <div style="width: 100%"><iframe width="100%" height="600" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q={{$companyInfoData->latitude}},{{$companyInfoData->longitude}}&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"><a href="https://www.maps.ie/population/">Population calculator map</a></iframe></div>
+          @endif
+
         <form data-parsley-validate="" method="post" class="enquiry-form" id="enquiry-form" novalidate="">
         <meta name="csrf_token" content="{{ csrf_token() }}" />
         <input type="hidden" name="slug" id="slug" value="{{$userObj->slug}}">
@@ -488,6 +528,13 @@
             </a>
          </li>
          @endif
+         <li>
+            <a class="footer-menu-link" href="#feedback-section">
+               <i class="footer-menu-icon fas fa-star"></i>
+               <div class="footer-menu-text">FEEDBACK</div>
+            </a>
+         </li>
+
       </ul>
    </div>
    <!-- The image Modal -->
@@ -549,22 +596,22 @@
 
 <input type="hidden" id="send_enquiry_url" value="{{route('sendEnquiry')}}">
 
-  <script src="{{asset('public/visitingCard/bussinessCard/common/js/jquery-3.6.4.min.js')}}"></script>
-<script src="{{asset('public/visitingCard/bussinessCard/a/js/intlTelInput.min.js')}}"></script>
-<script src="{{asset('public/visitingCard/bussinessCard/g/js/script.js')}}?v={{date('YmdHis')}}"></script>
 
+<script src="{{asset('public/visitingCard/bussinessCard/common/js/jquery-3.6.4.min.js')}}"></script>
+<script src="{{asset('public/visitingCard/bussinessCard/common/js/bootstrap.min.js')}}"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.js"></script>
+<script src="{{asset('public/visitingCard/bussinessCard/a/js/jquery-confirm.js')}}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script src="{{asset('public/visitingCard/bussinessCard/a/js/intlTelInput.min.js')}}"></script>
 <link href="{{asset('public/visitingCard/bussinessCard/g/css/gallery-category.css')}}" rel="stylesheet">
 <script id="skype_bootstrap" src="{{asset('public/visitingCard/bussinessCard/common/js/gallery-category.js')}}"></script>
-
 <script src="{{asset('public/visitingCard/bussinessCard/a/js/parsley.min.js')}}"></script>
 <script src="{{asset('public/visitingCard/bussinessCard/a/js/form-action.js')}}"></script>
+<script src="{{asset('public/visitingCard/bussinessCard/g/js/script.js')}}?v={{date('YmdHis')}}"></script>
+<script src="{{asset('public/visitingCard/bussinessCard/common/js/jquery.star-rating.js')}}"></script>
 
-<script src="{{asset('public/visitingCard/bussinessCard/a/js/jquery-confirm.js')}}"></script>
-
-<script type="text/javascript">
-
-
-</script>
+<script src="{{asset('public/visitingCard/bussinessCard/common/js/custom.js')}}"></script>
 
 <script type="text/javascript">
     intlTelInput(input, {
@@ -573,6 +620,7 @@
     })
 </script>
 <!-- Google tag (gtag.js) -->
+
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-CJZJHWL0WG"></script>
 <script>
   window.dataLayer = window.dataLayer || [];

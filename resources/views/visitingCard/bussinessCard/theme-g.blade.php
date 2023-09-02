@@ -213,7 +213,11 @@ i:hover {
           @if (!empty($companyInfoData->company_name))
             <div class="firmname">{!! $companyInfoData->company_name !!}</div>
             <div class="firmname-underline"></div>
+            @if (!empty($companyInfoData->gst_number))
+            <div class="name"><span style="margin-top: 5px;display: block;font-size: 16px;">GST No: {!! $companyInfoData->gst_number !!}</div>
+            @endif
             <div class="name"><span style="margin-top: 5px;display: block;font-size: 16px;">{!! $userObj->name !!}</div>
+
           @else
             <div class="firmname">{!! $userObj->name !!}</div>
             <div class="firmname-underline"></div>
@@ -302,7 +306,7 @@ i:hover {
                   <div class="iti iti--allow-dropdown">
                      <div class="iti__flag-container">
                         <div class="iti__selected-flag" role="combobox" aria-owns="iti-0__country-listbox" aria-expanded="false" tabindex="0" title="India (भारत): +91" aria-activedescendant="iti-0__item-in"><div class="iti__flag iti__ind"></div></div>                     </div>
-                     <input type="tel" id="whatsapp-input" class="input" placeholder="Enter whatsapp number" maxlength="10" oninput="this.value=this.value.replace(/[^0-9]/g,&#39;&#39;);" autocomplete="off" data-intl-tel-input-id="0">
+                     <input type="tel" id="whatsapp-input" class="input whatsapp-input-phone" placeholder="Enter whatsapp number" maxlength="10" oninput="this.value=this.value.replace(/[^0-9]/g,&#39;&#39;);" autocomplete="off" data-intl-tel-input-id="0">
                   </div>
 
                </div>
@@ -365,9 +369,15 @@ i:hover {
           <div class="text text-center" style="text-align: center;">
           {!! QrCode::size(250)->generate($vistingUrl) !!}
           <input type="text" readonly="" class="form-control" value="{{$vistingUrl}}" id="visitingUrlText">
-            <div class="buttonCopy" onclick="copyUrlSecond()">Copy URL <i class="fa fa-copy" aria-hidden="true"></i></div>
 
-            <a class="col-md-12 text-center big_btns text-white" href="{{url('downloadQrCode')}}/{{$userObj->slug}}" >Download QR Code &nbsp;<i class="fa fa-download"></i></a>  
+              <div class="row">
+                  <div class="col float-start">
+                          <a href="javascript::void(0)" class="buttonCopy col-md-6 text-left text-items-align-left" onclick="copyUrlSecond()">Copy URL <i class="fa fa-copy" aria-hidden="true"></i></a>
+                  </div>
+                  <div class="col float-end">
+                          <a class="col-md-6 text-center big_btns text-white text-end" href="{{url('downloadQrCode')}}/{{$userObj->slug}}" >Download QR Code &nbsp;<i class="fa fa-download"></i></a>  
+                  </div>
+              </div>
 
       </div>
 
@@ -570,9 +580,9 @@ i:hover {
          <h2 class="section-header">Enquiry Form</h2>
          <div class="section-header-underline"></div>
 
-@if (!empty($companyInfoData->company_address) && !empty($companyInfoData->latitude))
-<div style="width: 100%"><iframe width="100%" height="600" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q={{$companyInfoData->latitude}},{{$companyInfoData->longitude}}&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"><a href="https://www.maps.ie/population/">Population calculator map</a></iframe></div>
-@endif
+          @if (!empty($companyInfoData->company_address) && !empty($companyInfoData->latitude))
+          <div style="width: 100%"><iframe width="100%" height="600" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q={{$companyInfoData->latitude}},{{$companyInfoData->longitude}}&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"><a href="https://www.maps.ie/population/">Population calculator map</a></iframe></div>
+          @endif
 
         <form data-parsley-validate="" method="post" class="enquiry-form" id="enquiry-form" novalidate="">
         <meta name="csrf_token" content="{{ csrf_token() }}" />

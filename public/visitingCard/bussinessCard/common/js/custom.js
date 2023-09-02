@@ -56,7 +56,6 @@ $(document).ready(function() {
             $(element).parents('.form-group').addClass('has-success');
         },
         submitHandler: function(form,e) {
-            e.preventDefault();
             $.ajax({
                 type: 'POST',
                 url: form.action,
@@ -114,8 +113,9 @@ function copyUrlSecond() {
 }
 
 
- $('#whatsapp-input').on('paste',function(e){
+ $('.whatsapp-input-phone').on('paste',function(e){
     var value = e.originalEvent.clipboardData.getData('Text');
+    console.log(value)
     var mobile = '';
 
     if(value.charAt(0) == '+' || value.charAt(0)=='0'){
@@ -124,5 +124,11 @@ function copyUrlSecond() {
         mobile = value.replace(/[^a-zA-Z0-9]/g, "");
     }
 
-    $('#whatsapp-input').val(mobile)
+    $('.whatsapp-input-phone').val(mobile)
  });  
+
+
+    $('#ratingAllModal').on('shown.bs.modal', function() {
+      $('.modal-backdrop').remove();
+      $('body').removeClass( "modal-open" );
+    });
