@@ -343,6 +343,9 @@ i:hover {
                     <li class="share-button"> <a href="{{$socialMediaDetail->url}}" target="_blank"><i class="share-button-facebook fab fa-pinterest"></i></a> </li>
                     @elseif($socialMediaDetail->type == 'yt')
                     <li class="share-button"> <a href="{{$socialMediaDetail->url}}" target="_blank"><i class="share-button-facebook fab fa-youtube"></i></a> </li>
+                    @elseif($socialMediaDetail->type == 'tg')
+                    <li class="share-button"> <a href="{{$socialMediaDetail->url}}" target="_blank"><i class="share-button-facebook fab fa-telegram"></i></a> </li>
+
                   @endif
                 @endforeach
               </ul>
@@ -567,7 +570,7 @@ i:hover {
          <h2 class="section-header">Enquiry Form</h2>
          <div class="section-header-underline"></div>
 
-@if (!empty($companyInfoData->company_address))
+@if (!empty($companyInfoData->company_address) && !empty($companyInfoData->latitude))
 <div style="width: 100%"><iframe width="100%" height="600" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q={{$companyInfoData->latitude}},{{$companyInfoData->longitude}}&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"><a href="https://www.maps.ie/population/">Population calculator map</a></iframe></div>
 @endif
 

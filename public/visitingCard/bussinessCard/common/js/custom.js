@@ -112,3 +112,17 @@ function copyUrlSecond() {
   // Alert the copied text
   toastr.success("Url copied successfully")
 }
+
+
+ $('#whatsapp-input').on('paste',function(e){
+    var value = e.originalEvent.clipboardData.getData('Text');
+    var mobile = '';
+
+    if(value.charAt(0) == '+' || value.charAt(0)=='0'){
+        mobile = value.replace(/[^a-zA-Z0-9+]/g, "").substr(3);
+    } else {
+        mobile = value.replace(/[^a-zA-Z0-9]/g, "");
+    }
+
+    $('#whatsapp-input').val(mobile)
+ });  
