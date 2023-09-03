@@ -330,7 +330,7 @@
       <div class="separator"></div>
       <div class="section-content-wrapper">
          <h2 class="section-header">
-            Gallery
+            {{$userConfigObj->galleryLabel}}
          </h2>
          <div class="section-header-underline"></div>
          <div>
@@ -356,12 +356,13 @@
                   @endif
 
                   @if ($galleryDetail->mrp_price > 0)
-                  ₹{{$galleryDetail->special_price}} <i class="fa fa-rupee"></i>          @endif
+                  ₹{{$galleryDetail->special_price}} <i class="fa fa-rupee"></i>
+                  @endif
               </h4>
             </div>
 
             <div class="product-enquiry-section text-center">
-                <a href="https://api.whatsapp.com/send?phone={{str_replace('+','',$companyInfoData->country_code)}}{{$companyInfoData->company_mobile}}&text=Enquery for product: {{urlencode($galleryDetail->title)}}" target='_blank' class="product-enquiry-btn text-center"><div class="btn_buy">Inquire Now</div></a>
+                <a href="https://api.whatsapp.com/send?phone={{str_replace('+','',$companyInfoData->country_code)}}{{$companyInfoData->company_mobile}}&text=Enquery for product: {{urlencode($galleryDetail->title)}}" target='_blank' class="product-enquiry-btn text-center"><div class="btn_buy">{{$userConfigObj->enquiryLabel}}</div></a>
             </div>
         </div>
         @endforeach
@@ -499,7 +500,7 @@
             <a class="footer-menu-link" href="#products-services-section">
                <i class="footer-menu-icon fas fa-box-open"></i>
                <div class="footer-menu-text">
-                GALLERY
+                {{$userConfigObj->galleryLabel}}
                </div>
             </a>
          </li>
@@ -609,8 +610,8 @@
 <script src="{{asset('public/visitingCard/bussinessCard/a/js/parsley.min.js')}}"></script>
 <script src="{{asset('public/visitingCard/bussinessCard/a/js/form-action.js')}}"></script>
 <script src="{{asset('public/visitingCard/bussinessCard/g/js/script.js')}}?v={{date('YmdHis')}}"></script>
-<script src="{{asset('public/visitingCard/bussinessCard/common/js/jquery.star-rating.js')}}"></script>
 
+<script src="{{asset('public/visitingCard/bussinessCard/common/js/jquery.star-rating.js')}}"></script>
 <script src="{{asset('public/visitingCard/bussinessCard/common/js/custom.js')}}"></script>
 
 <script type="text/javascript">

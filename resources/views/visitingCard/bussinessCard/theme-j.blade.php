@@ -2,45 +2,49 @@
 <html lang="en" style="--theme-color:#095da0; --theme-color-light:#095da0;">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>{!! $companyInfoData->company_name !!}</title>
 
-<title>{!! $companyInfoData->company_name !!}</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0 minimal-ui">
+  <meta name="author" content="digitalcards.tech">
+  <meta name="subject" content="Website">
+  <meta name="copyright" content="Digital Card">
+  <meta name="classification" content="Digital Card">
 
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0 minimal-ui">
-    <meta name="author" content="digitalcards.tech">
-    <meta name="subject" content="Website">
-    <meta name="copyright" content="Digital Card">
-    <meta name="classification" content="Digital Card">
+  <meta property="og:title" content="{!! $companyInfoData->company_name !!}">
+  <meta content="{{$companyInfoData->seo_description}}" name="description">
+  <meta content="{{$companyInfoData->seo_keyword}}" name="keywords">
+  <meta property="og:url" content="{{url('vc')}}/{{$userObj->slug}}">
 
-<meta property="og:title" content="{!! $companyInfoData->company_name !!}">
-<meta content="{{$companyInfoData->seo_description}}" name="description">
-<meta content="{{$companyInfoData->seo_keyword}}" name="keywords">
-<meta property="og:url" content="{{url('vc')}}/{{$userObj->slug}}">
-@if(!empty($companyInfoData->company_logo))
+  @if(!empty($companyInfoData->company_logo))
     <meta property="og:image" itemprop="image" content="{{url('public')}}/{{$companyInfoData->company_logo}}">
-    @elseif(!empty($userObj->profile_pic))
+  @elseif(!empty($userObj->profile_pic))
     <meta property="og:image" itemprop="image" content="{{url('public')}}/{{$userObj->profile_pic}}">
-    @else
+      @else
     <meta property="og:image" itemprop="image" content="{{url('public')}}/upload/user_profile.jpg">
-    @endif
-<meta property="og:type" content="website">
-<meta property="og:image:width" content="800">
-<meta property="og:image:height" content="800">
+  @endif
 
-@if(!empty($companyInfoData->company_logo))
+  <meta property="og:type" content="website">
+  <meta property="og:image:width" content="800">
+  <meta property="og:image:height" content="800">
+
+  @if(!empty($companyInfoData->company_logo))
     <link rel="icon" href="{{url('public')}}/{{$companyInfoData->company_logo}}" type="image/png" sizes="16x16">
-    @elseif(!empty($userObj->profile_pic))
+  @elseif(!empty($userObj->profile_pic))
     <link rel="icon" href="{{url('public')}}/{{$userObj->profile_pic}}" type="image/png" sizes="16x16">
-    @else
+  @else
     <link rel="icon" href="{{url('public')}}/upload/user_profile.jpg" type="image/png" sizes="16x16">
-    @endif
-<link href="{{asset('public/visitingCard/bussinessCard/e/css/font-awesome.min.css')}}" rel="stylesheet">
-<link href="{{asset('public/visitingCard/bussinessCard/e/css/template2.css')}}" rel="stylesheet">
-<link href="{{asset('public/visitingCard/bussinessCard/e/css/fonts.css')}}" rel="stylesheet">
-<link href="{{asset('public/visitingCard/bussinessCard/e/css/star-rating.css')}}" rel="stylesheet">
+  @endif
 
-<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
-<link href="{{asset('public/visitingCard/bussinessCard/a/css/jquery-confirm.css')}}" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link href="{{asset('public/visitingCard/bussinessCard/e/css/font-awesome.min.css')}}" rel="stylesheet">
+  <link href="{{asset('public/visitingCard/bussinessCard/e/css/template2.css')}}" rel="stylesheet">
+  <link href="{{asset('public/visitingCard/bussinessCard/e/css/fonts.css')}}" rel="stylesheet">
+  <link href="{{asset('public/visitingCard/bussinessCard/e/css/star-rating.css')}}" rel="stylesheet">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+  <link href="{{asset('public/visitingCard/bussinessCard/a/css/jquery-confirm.css')}}" rel="stylesheet">
+
+  <link rel="stylesheet" href="{{ asset('public/admin/plugins/toastr/toastr.min.css') }}">
 
 <script>
     document.documentElement.style.setProperty('--theme-color', '#095da0');
@@ -60,6 +64,10 @@
 
     .ml-logo{
       margin-left: 10%
+    }
+
+    a:focus, a:hover {
+      color:#fff !important;
     }
 </style>
 
@@ -123,7 +131,12 @@
 
       <div class="name">{!! $userObj->name !!} <br>
 
-        <span>@if(!empty($companyInfoData->company_profession)) ({{$companyInfoData->company_profession}}) @endif</span></div>
+        <span>@if(!empty($companyInfoData->company_profession)) ({{$companyInfoData->company_profession}}) @endif</span>
+          @if (!empty($companyInfoData->gst_number))
+          <span style="margin-top: 5px;display: block;font-size: 16px;">GST No: {!! $companyInfoData->gst_number !!}</span>
+          @endif
+
+      </div>
 
     </div>
 
@@ -211,6 +224,7 @@
            @if (!empty($companyInfoData->company_name))
            <a class="big_btns" onclick="openShareModal(this, '{!! $companyInfoData->company_name !!}')"><i class="fa fa-share-alt shadow-button-icon"></i>&nbsp;Share</a>
            @else
+
            <a class="big_btns" onclick="openShareModal(this, '{!! $userObj->name !!}')"><i class="fa fa-share-alt shadow-button-icon"></i>&nbsp;Share</a>
            @endif
 
@@ -276,6 +290,9 @@
           <li> <a href="{{$socialMediaDetail->url}}" target="_blank"><i class="share-btn-facebook fa fa-pinterest"></i></a> </li>
           @elseif($socialMediaDetail->type == 'yt')
           <li> <a href="{{$socialMediaDetail->url}}" target="_blank"><i class="share-btn-facebook fa fa-youtube"></i></a> </li>
+          @elseif($socialMediaDetail->type == 'tg')
+          <li class="share-button"> <a href="{{$socialMediaDetail->url}}" target="_blank"><i class="share-button-facebook fa fa-telegram"></i></a> </li>
+
         @endif
       @endforeach
     </ul>
@@ -289,8 +306,26 @@
         <div class="full-divider"></div>
           <div class="text text-center" style="text-align: center;">
           {!! QrCode::size(250)->generate($vistingUrl) !!}
-            <p>{{$vistingUrl}}</p>
-            <a class="col-md-12 text-center whatsapp-btn text-white" href="{{url('downloadQrCode')}}/{{$userObj->slug}}" >Download QR Code &nbsp;<i class="fa fa-download"></i></a>  
+
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-xs-12">
+              <div class="input-group">
+                <input type="text" readonly="" class="form-control col-md-6" value="{{$vistingUrl}}" id="visitingUrlText">
+                  <label class="input-group-addon">
+                    <a href="javascript::void(0)" class="text-center text-white" onclick="copyUrlSecond()">Copy&nbsp;<i class="fa fa-copy" aria-hidden="true"></i></a>
+                  </label>
+                </div>
+             </div>
+          </div>
+        </div>
+
+              <div class="row mt-20" style="margin-top: 20px;">
+                  <div class="col float-end col-md-12">
+                    <a class="col-md-12 text-center whatsapp-btn text-white" href="{{url('downloadQrCode')}}/{{$userObj->slug}}" >Download QR Code &nbsp;<i class="fa fa-download"></i></a>  
+                  </div>
+              </div>
+
 
 
       </div>
@@ -465,10 +500,10 @@
 
       @foreach($paymentMasterData as $paymentMasterDetail)
         @if ($paymentMasterDetail->type == 'bank')
-<!--         <tr>
-          <td align="center" colspan="2">Account Details:</td>
+        <tr>
+          <th align="center" colspan="2" class="text-bold text-dark"><h4 class="text-bold">Account Details:</h4></th>
         </tr>
- -->        <tr>
+        <tr>
           <td colspan="2">
           <table class="about-tbl">
             <tbody>
@@ -509,6 +544,10 @@
         </tr>
         @else
         <tr>
+          <th align="center" colspan="2" class="text-bold text-dark"><h4 class="text-bold">Upi Details:</h4></th>
+        </tr>
+
+        <tr>
         <td width="50%" class="td-label"><h6>{{ucwords($paymentMasterDetail->type)}} Number:</h6></td>
             <td> {{$paymentMasterDetail->account_no}} </td>
           </tr>
@@ -539,7 +578,7 @@
 @if($galleryData->count() > 0)
 <div class="page-container" id="photogallery">
 
-  <h2 class="section-heading">GALLERY</h2>
+  <h2 class="section-heading">{{$userConfigObj->galleryLabel}}</h2>
 
   <div class="p-10"></div>
         <div class="full-divider"></div>
@@ -556,7 +595,7 @@
     <div class="images-container row">
 
   @foreach($galleryData as $galleryDetail)
-    <div class="image-wrapper gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter {{$galleryDetail->category_name}}">
+    <div class="image-wrapper gallery_product col-md-12 filter {{$galleryDetail->category_name}}">
               <h3 class="text text-center" style="text-align:center;">{{$galleryDetail->title}}</h3>
               <img onclick="openImageModal(this)" alt="{{$galleryDetail->title}}" src="{{URL::asset('public/upload/product/'.$galleryDetail->head_image)}}" style="width:100%" description="{{$galleryDetail->description}}">
 
@@ -585,7 +624,7 @@
                   <a href="{{url('public/upload/product-doc')}}/{{$galleryDetail->doc_url}}" target="_blank" class="btn btn-sm  btn-primary" download><i class="fa fa-download"></i></a> 
                 @endif
                   <a class="whatsapp-btn" href='https://api.whatsapp.com/send?phone={{str_replace('+','',$companyInfoData->country_code)}}{{$companyInfoData->company_mobile}}&text=Enquery for product: {{urlencode($galleryDetail->title)}}' target='_blank'>
-                      <div class='btn_buy'>Enquiry Now</div>
+                      <div class='btn_buy'>{{$userConfigObj->enquiryLabel}}</div>
                   </a>
 
               </div>
@@ -681,6 +720,19 @@
 
 </div>
 --}}
+
+<div class="page-container" id="feedback-section">
+
+  <h2 class="section-heading">FEEDBACKS</h2>
+
+      <div class="separator"></div>
+
+
+        @include('visitingCard.bussinessCard.include.feedback')
+
+       </div>
+     </div>
+
 
 @if($userConfigObj->isShowEnquiry == '1')
 
@@ -782,7 +834,7 @@
       @if($galleryData->count() > 0)
     <li> <a class="footer-menu-link" href="#photogallery"> <i class="footer-menu-icon fa fa-picture-o"></i>
 
-      <div class="footer-menu-text">GALLERY</div>
+      <div class="footer-menu-text">{{$userConfigObj->galleryLabel}}</div>
 
       </a> </li>
       @endif
@@ -794,25 +846,29 @@
 
       </a> </li>
     @endif
-{{--
-    <li> <a class="footer-menu-link" href="#feedback"> <i class="footer-menu-icon fa fa-star-half-o"></i>
 
-      <div class="footer-menu-text">FEEDBACK</div>
-
-      </a> </li>
-      --}}
-
+       @if($userConfigObj->isShowEnquiry == '1')
     <li> <a class="footer-menu-link" href="#enquiry"> <i class="footer-menu-icon fa fa-comments"></i>
 
       <div class="footer-menu-text">ENQUIRY</div>
 
       </a> </li>
+        @endif
+
+    <li> <a class="footer-menu-link" href="#feedback"> <i class="footer-menu-icon fa fa-star-half-o"></i>
+
+      <div class="footer-menu-text">FEEDBACK</div>
+
+      </a> </li>
+
       <li>
             <a class="footer-menu-link" href="{{url('register?packageId=3')}}">
                     <i class="footer-menu-icon fa fa-id-card" aria-hidden="true"></i>
                     <div class="footer-menu-text">MAkE My CARD</div>
                 </a>
           </li>
+
+
   </ul>
 
 </div>
@@ -874,6 +930,9 @@
 <input type="hidden" id="send_enquiry_url" value="{{route('sendEnquiry')}}">
 
 <script src="{{asset('public/visitingCard/bussinessCard/common/js/jquery-3.6.4.min.js')}}"></script>
+<script src="{{asset('public/visitingCard/bussinessCard/common/js/bootstrap.min.js')}}"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.js"></script>
+
 <script src="{{asset('public/visitingCard/bussinessCard/a/js/intlTelInput.min.js')}}"></script>
 
 <script src="{{asset('public/visitingCard/bussinessCard/a/js/jquery-confirm.js')}}"></script>
@@ -883,9 +942,14 @@
 <script src="{{asset('public/visitingCard/bussinessCard/a/js/parsley.min.js')}}"></script>
 <script src="{{asset('public/visitingCard/bussinessCard/a/js/script.js')}}?v={{date('YmdHis')}}"></script>
 <script src="{{asset('public/js/prevent.js')}}"></script>
+<script src="{{asset('public/visitingCard/bussinessCard/common/js/custom.js')}}"></script>
 
-    <link href="{{asset('public/visitingCard/bussinessCard/common/css/gallery-category.css')}}" rel="stylesheet">
-    <script id="skype_bootstrap" src="{{asset('public/visitingCard/bussinessCard/common/js/gallery-category.js')}}"></script>
+<link href="{{asset('public/visitingCard/bussinessCard/common/css/gallery-category.css')}}" rel="stylesheet">
+<script id="skype_bootstrap" src="{{asset('public/visitingCard/bussinessCard/common/js/gallery-category.js')}}"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="{{asset('public/visitingCard/bussinessCard/common/js/jquery.star-rating.js')}}"></script>
+<script src="{{asset('public/visitingCard/bussinessCard/common/js/custom.js')}}"></script>
 
 <script type="text/javascript">
 $(".close").click(function() {
