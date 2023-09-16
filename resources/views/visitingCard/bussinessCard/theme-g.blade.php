@@ -368,11 +368,13 @@ i:hover {
          <div class="section-header-underline"></div>
           <div class="text text-center" style="text-align: center;">
           {!! QrCode::size(250)->generate($vistingUrl) !!}
+
+
           <input type="text" readonly="" class="form-control" value="{{$vistingUrl}}" id="visitingUrlText">
 
               <div class="row">
                   <div class="col float-start">
-                          <a href="javascript::void(0)" class="buttonCopy col-md-6 text-left text-items-align-left" onclick="copyUrlSecond()">Copy URL <i class="fa fa-copy" aria-hidden="true"></i></a>
+                          <a href="javascript::void(0)" class="buttonCopy col-md-6 text-left text-items-align-left" onclick="copyUrlSecond()">Copy&nbsp;<i class="fa fa-copy" aria-hidden="true"></i></a>
                   </div>
                   <div class="col float-end">
                           <a class="col-md-6 text-center big_btns text-white text-end" href="{{url('downloadQrCode')}}/{{$userObj->slug}}" >Download QR Code &nbsp;<i class="fa fa-download"></i></a>  

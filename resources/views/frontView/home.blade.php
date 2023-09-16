@@ -256,7 +256,7 @@
                   <div class="form-group">
                      <div class="row">
                         <div class="col-md-4">
-                            <select class="selectpicker" required name="country_code" data-live-search="true">
+                            <select class="selectpicker form-control" required name="country_code" data-live-search="true">
                                 <option class="text-center" value="">Select Country Code</option>
                                 @if (!empty($countryData))
                                     @foreach($countryData AS $countryDetail)
@@ -271,18 +271,30 @@
                         </div>
                         
                         <div class="col-md-8">
-                           <input type="number" class="form-control" name="phone_number" id="phone_number" placeholder="Phone Number"/>
+                           <input type="number" class="form-control" name="phone_number" id="phone_number" placeholder="Enter phone number"/>
                         </div>
                      </div>
 
                   </div>
                   <div class="form-group">
-                     <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" />
+                     <input type="text" class="form-control" name="subject" id="subject" placeholder="Enter subject" />
                      <div class="validate"></div>
                   </div>
                   <div class="form-group">
                      <textarea class="form-control" name="message" rows="5" placeholder="Message"></textarea>
                   </div>
+                  <div class="form-group">
+                     <div class="row">
+                     <div class="captcha-img ml-4"></div>
+                     <a class="btn btn-warning btn-round ml-1" href="javascript:void(0)" onclick="refreshCaptcha()">Regenerate Captcha</a>
+                     </div>
+
+                  </div>
+
+                  <div class="form-group">
+                     <input type="text" class="form-control mt-2" name="captcha" id="captcha" placeholder="Enter captcha code" />
+                  </div>
+
                   <div class="mb-3">
                      <div class="loading">Loading</div>
                      <div class="error-message"></div>
@@ -302,6 +314,9 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.18/css/bootstrap-select.min.css" integrity="sha512-ARJR74swou2y0Q2V9k0GbzQ/5vJ2RBSoCWokg4zkfM29Fb3vZEQyv0iWBMW/yvKgyHSR/7D64pFMmU8nYmbRkg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.18/js/bootstrap-select.min.js" integrity="
 sha512-yDlE7vpGDP7o2eftkCiPZ+yuUyEcaBwoJoIhdXv71KZWugFqEphIS3PU60lEkFaz8RxaVsMpSvQxMBaKVwA5xg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" integrity="sha512-vKMx8UnXk60zUwyUnUPM3HbQo8QfmNx7+ltw8Pm5zLusl1XIfwcxo8DbWCqMGKaWeNxWA8yrx5v3SaVpMvR3CA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <script>
    $("#contactFrm").validate({
@@ -328,6 +343,9 @@ sha512-yDlE7vpGDP7o2eftkCiPZ+yuUyEcaBwoJoIhdXv71KZWugFqEphIS3PU60lEkFaz8RxaVsMpS
             required:true,
             minlength:4,
             maxlength:500
+         },
+         captcha:{
+            required:true,
          }
       },
       messages: {
@@ -352,12 +370,53 @@ sha512-yDlE7vpGDP7o2eftkCiPZ+yuUyEcaBwoJoIhdXv71KZWugFqEphIS3PU60lEkFaz8RxaVsMpS
             minlength:"Please enter at least 4 Char",
             maxlength:"Please enter maximum 500 Char",
 
+         },
+         captcha:{
+            required:"Please enter captcha",
          }
       },
+      errorPlacement: function (error, element) {
+          // error.insertAfter(element.attr("name"));
+          if (element.attr("name") == "captcha") {
+              error.insertAfter(element.parent());
+          }else{
+              error.insertAfter(element);
+          }
+      },
       submitHandler: function(form) {
-         form.submit();
+                $.ajax({
+                    url: form.action,
+                    type: form.method,
+                    data: $(form).serialize(),
+                beforeSend : function() {
+                },
+                success: function(data) {
+                    if(data.code == '0'){
+                        toastr.success(data.msg)
+                    }else{
+                        toastr.error(data.msg)
+                    }
+                }
+             })
       }
-    });
+    }    );
+</script>
+
+<script>
+refreshCaptcha()
+function refreshCaptcha(){
+$.ajax({
+url: "{{route('generate-captcha')}}",
+type: 'get',
+  dataType: 'html',        
+  success: function(json) {
+    $('.captcha-img').html(json);
+  },
+  error: function(data) {
+   toastr.error('Try Again.')
+  }
+});
+}
 </script>
 
 @endsection

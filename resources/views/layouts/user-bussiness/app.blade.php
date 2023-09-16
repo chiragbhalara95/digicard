@@ -17,6 +17,7 @@
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 
   <link rel="stylesheet" href="{{ asset('public/css/custom.css') }}">
+  <link rel="stylesheet" href="{{ asset('public/admin/plugins/toastr/toastr.min.css') }}">
 
   @yield('custom_style')
 
@@ -220,6 +221,9 @@
 <script src="{{ asset('public/admin/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 <!-- AdminLTE App -->
 <script src="{{ asset('public/admin/dist/js/adminlte.min.js') }}"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
 @yield('custom_script')
 
 <script type="text/javascript">

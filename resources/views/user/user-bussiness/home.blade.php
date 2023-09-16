@@ -13,9 +13,16 @@
                 <br/>
                 @if (!empty($userObj->slug))
                     <div class="row">
-                      <input type="text" readonly="" class="form-control col-md-6" value="{{url('/')}}/vc/{{$userObj->slug}}" id="visitingUrlText">
-                        <a href="javacript::void(0)" class="btn btn-primary ml-2" onclick="copyUrlSecond()">Copy URL <i class="fa fa-copy" aria-hidden="true"></i></a>
-                    </div>
+                      <div class="col-12">
+                          <div class="input-group col-md-12">
+                            <input type="text" readonly="" class="form-control" value="{{url('/')}}/vc/{{$userObj->slug}}" id="visitingUrlText">
+                              <label class="input-group-addon">
+                                <a href="javascript::void(0)" class="btn btn-primary" onclick="copyUrlSecond()">Copy&nbsp;<i class="fa fa-copy" aria-hidden="true"></i></a>
+                              </label>
+                            </div>
+                         </div>
+                      </div>
+
                 @endif
                 </div>
                 <div class="card-body">

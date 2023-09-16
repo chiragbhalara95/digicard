@@ -17,6 +17,7 @@
         "laravel/framework": "^8.12",
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.2",
+        "mews/captcha": "^3.3",
         "predis/predis": "^2.2",
         "razorpay/razorpay": "^2.7",
         "simplesoftwareio/simple-qrcode": "^4.2",

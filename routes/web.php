@@ -53,6 +53,8 @@ Route::namespace('App\Http\Controllers')->group(function() {
     Route::get('/search', [App\Http\Controllers\FrontWebsiteController::class, 'search'])->name('search');
 
     Route::post('contact-us', [App\Http\Controllers\ContactController::class, 'saveContact'])->name('saveContact');
+    Route::get('generate-captcha', [App\Http\Controllers\ContactController::class, 'generateCaptcha'])->name('generate-captcha');
+
     Route::get('/vc/{slug}', [App\Http\Controllers\FrontWebsiteController::class, 'userVisitCard'])->name('userVisitCard');
     Route::any('saveViewCard/{visitor_id}',[App\Http\Controllers\FrontWebsiteController::class, 'SavePrevCard']);
     Route::post('/companies/sendEnquiry', [App\Http\Controllers\FrontWebsiteController::class, 'sendEnquiry'])->name('sendEnquiry');

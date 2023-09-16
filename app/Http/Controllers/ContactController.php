@@ -4,19 +4,31 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\ContactModel;
+use Validator;
 
-class ContactController extends Controller
+class ContactController extends BasicController
 {
       public function saveContact(Request $request) { 
 
-        $this->validate($request, [
-            'name' => 'required',
-            'email' => 'required|email',
-            'subject' => 'required',
+      $validator = Validator::make($request->all(), [
+            'name'         => 'required',
+            'email'        => 'required|email',
+            'subject'      => 'required',
             'country_code' => 'required',
             'phone_number' => 'required',
-            'message' => 'required'
-        ]);
+            'message'      => 'required',
+            'captcha'      => 'required|captcha'
+      ],
+      [
+        'captcha.required' => 'Please enter valid captcha',
+        'captcha.captcha' => 'Invalid captch, please regenerate captcha',
+
+      ]
+    );
+
+      if ($validator->fails()) {
+            return $this->responseError(implode(",", $validator->errors()->all()));
+      }
 
         $contact = new ContactModel;
 
@@ -63,7 +75,13 @@ class ContactController extends Controller
         //   Log::info('Throwable caught.');
         // }   
 
-        return "Thank you for contact us!";
+        return $this->responseSuccess("Thank you for contact us!");
+
+    }
+
+    public function generateCaptcha(Request $request)
+    {
+      return captcha_img('flat');
     }
 
 }
