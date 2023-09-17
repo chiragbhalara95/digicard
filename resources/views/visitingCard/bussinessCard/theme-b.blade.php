@@ -380,7 +380,7 @@
 
 <div class="page-container" id="photogallery">
 
-  <h2 class="section-heading">GALLERY</h2>
+  <h2 class="section-heading">{{$userConfigObj->galleryLabel}}</h2>
 
   <div class="p-10"></div>
 
@@ -518,7 +518,7 @@
 
     <li> <a class="footer-menu-link" href="#photogallery"> <i class="footer-menu-icon fa fa-picture-o"></i>
 
-      <div class="footer-menu-text">GALLERY</div>
+      <div class="footer-menu-text">{{$userConfigObj->galleryLabel}}</div>
 
       </a> </li>
       @endif

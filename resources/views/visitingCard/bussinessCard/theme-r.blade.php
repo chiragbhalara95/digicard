@@ -326,7 +326,7 @@
 
     @if($galleryData->count() > 0)
     <div class="card2" id="product_services">
-        <h3>Products &amp; Services</h3>
+        <h3>{{$userConfigObj->galleryLabel}}</h3>
 
       <div class="p-10"></div>
 
@@ -556,9 +556,9 @@
             
         <div class="menu_container">
             <div class="menu_item" onclick="location.href='#home'"><i class="fa fa-home" aria-hidden="true"></i> Home</div>
-            <div class="menu_item" onclick="location.href='#about_us'"><i class="fa fa-briefcase" aria-hidden="true"></i>About Us</div>
+            <div class="menu_item" onclick="location.href='#about_us'"><i class="fa fa-briefcase" aria-hidden="true"></i>{{$userConfigObj->aboutLabel}}</div>
             @if($galleryData->count() > 0)
-            <div class="menu_item" onclick="location.href='#product_services'"><i class="fa fa-ticket"></i>Product & Services</div>
+            <div class="menu_item" onclick="location.href='#product_services'"><i class="fa fa-ticket"></i>{{$userConfigObj->galleryLabel}}</div>
             @endif
             <!-- <div class="menu_item" onclick="location.href='#shop_online'"><i class="fa fa-archive"></i>Shop</div> -->
 <!--             @if($galleryData->count() > 0)

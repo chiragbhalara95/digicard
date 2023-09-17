@@ -307,7 +307,7 @@
 <!----------product and services ----------------------->   
   
   <div class="card2" id="product_services">
-    <h3>Products &amp; Services</h3>
+    <h3>{{$userConfigObj->galleryLabel}}</h3>
 
         @if (!empty($galleryCatInfo))
         <div align="center">
@@ -478,7 +478,7 @@
       <div class="menu_item" onclick="location.href='#home'"><i class="fa fa-home"></i> Home</div>
       <div class="menu_item" onclick="location.href='#about_us'"><i class="fa fa-briefcase"></i>{{$userConfigObj->aboutLabel}}</div>
       @if($galleryData->count() > 0)
-      <div class="menu_item" onclick="location.href='#product_services'"><i class="fa fa-image"></i>Products &amp; Services</div>
+      <div class="menu_item" onclick="location.href='#product_services'"><i class="fa fa-image"></i>{{$userConfigObj->galleryLabel}}</div>
       @endif
 
       @if(count($videosData) > 0)

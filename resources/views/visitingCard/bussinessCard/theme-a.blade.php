@@ -1007,7 +1007,7 @@
       <div class="row">
 
         <div class="gallery col-lg-12 col-md-12 col-sm-12 col-xs-12">
-          <h2 class="section-header">GALLERY</h2>
+          <h2 class="section-header">{{$userConfigObj->galleryLabel}}</h2>
         </div>
 
         <div class="full-divider"></div>
@@ -1146,8 +1146,8 @@
         @if($galleryData->count() > 0)
         <li>
           <a class="footer-menu-link" href="#gallery-section">
-            <i class="footer-menu-icon fa fa-images" aria-hidden="true"></i>
-            <div class="footer-menu-text">GALLERY</div>
+            <i class="footer-menu-icon fa fa-picture-o" aria-hidden="true"></i>
+            <div class="footer-menu-text">{{$userConfigObj->galleryLabel}}</div>
           </a>
         </li>
         @endif
@@ -1162,7 +1162,7 @@
         @if($userConfigObj->isShowEnquiry == '1')
         <li>
             <a class="footer-menu-link" href="#enquiry-section">
-                    <i class="footer-menu-icon fa fa-comment-alt" aria-hidden="true"></i>
+                    <i class="footer-menu-icon fa fa-comment" aria-hidden="true"></i>
                     <div class="footer-menu-text">ENQUIRY</div>
                 </a>
             </li>
