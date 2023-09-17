@@ -32,7 +32,7 @@
 
 @if (count($ratigSummaryData) > 0)
 <div class="feedbtndiv">
-  <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#ratingAllModal">View All Feedback</button>
+  <button type="button" class="btn btn-primary btn-lg view_all_fieldback" data-toggle="modal" data-target="#ratingAllModal">View All Feedback</button>
 </div>
 @endif
 

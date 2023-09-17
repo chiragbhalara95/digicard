@@ -20,6 +20,11 @@ class ThemeController extends BasicController
             ->orderBy('sortOrder', 'ASC')
             ->orderBy('id', 'ASC')
             ->paginate(4);
+
+        foreach ($tmemeData as $tmemeDetail) {
+            $tmemeDetail->options = json_decode($tmemeDetail->options, true);
+        }
+
         $postReq = [
             'theme_data' => $tmemeData,
             'theme' => $userData->theme
@@ -34,6 +39,15 @@ class ThemeController extends BasicController
         $userId    = auth()->user()->id;
         $userData  = User::find($userId);
         $userData->theme = $params['theme'];
+        if (isset($params['color'][$params['theme']])) {
+            if ($params['color'][$params['theme']] != 'other') {
+                $userData->theme_color = $params['color'][$params['theme']];
+            } else {
+                if (isset($params['custom_color_code'][$params['theme']])) {
+                    $userData->theme_color = "#".$params['custom_color_code'][$params['theme']];
+                }
+            }
+        }
         $userData->save();
 
         $request->session()->flash('alert-success','Theme has been sucessfully updated.');

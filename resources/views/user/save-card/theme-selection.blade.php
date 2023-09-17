@@ -32,7 +32,7 @@
                 @endforeach
             </div>
             <div class="card-box">
-                <form action="{{route('save-user-theme')}}" method="post" enctype="multipart/form-data">
+                <form action="{{route('business.save-user-theme')}}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="row col-sm-12">
                         @foreach($theme_data as $data)
@@ -47,6 +47,21 @@
                                 <div class="col-sm-10 mt-3">
                                     <label class="control-label" for="theme_name{{$data->id}}"><b>{{$data->name}}</b></label>
                                 </div>
+                                @if(!empty($data->options))
+                                    <select class="form-control color_selection_option" name="color[{{$data->id}}]">
+                                        <option value="other" selected="">Other</option>
+
+                                        @foreach($data->options as $colorCode => $option)
+                                        <option value="{{$colorCode}}"
+                                        @if (auth()->user()->theme_color == $colorCode) selected @endif
+                                        >{{$option}}
+                                        </option>
+                                        @endforeach
+                                    </select>
+                                    <input type="text" class="form-control custom_color_other d-none mt-1" name="custom_color_code[{{$data->id}}]" maxlength="6" value="{{str_replace("#","",auth()->user()->theme_color)}}">
+                                    <div class="custom_color" style="width: 320px;margin-top:10px;height: 10px;"></div>
+                                @endif
+
                             </div>
                             <hr>
                         </div>
@@ -70,4 +85,30 @@
 
 
 
+@endsection
+
+
+@section('custom_script')
+<script type="text/javascript">
+    jQuery(document).ready(function($) {
+        $(".custom_color").each(function(index, el) {
+            code = $(el).parent().find('.color_selection_option').val()
+            $(this).css("background-color", code)
+            if (code == 'other') {
+                $(".custom_color_other").removeClass('d-none');
+            }
+        });
+    });
+
+    $(document).on("change", ".color_selection_option", function(){
+        $(".custom_color_other").addClass('d-none');
+
+        code = $(this).val()
+        if (code == 'other') {
+            $(".custom_color_other").removeClass('d-none');
+        } else {
+            $(this).parent().find('.custom_color').css("background-color", code)
+        }
+    })
+</script>
 @endsection

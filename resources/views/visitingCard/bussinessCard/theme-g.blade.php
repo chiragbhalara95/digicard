@@ -72,12 +72,12 @@
          
              return rgb;
          }
-         document.documentElement.style.setProperty('--theme-color', '#F5B343');
-         document.documentElement.style.setProperty('--theme-color-light', '#F5B34326');
-         document.documentElement.style.setProperty('--theme-color-100', '#F5B343');
-         document.documentElement.style.setProperty('--theme-color-75', '#F5B34390');
-         document.documentElement.style.setProperty('--theme-color-50', '#F5B34380');
-         document.documentElement.style.setProperty('--theme-color-25', '#F5B34370');
+         document.documentElement.style.setProperty('--theme-color', "{{$userObj->theme_color}}");
+         // document.documentElement.style.setProperty('--theme-color-light', '#F5B34326');
+         // document.documentElement.style.setProperty('--theme-color-100', '#F5B343');
+         // document.documentElement.style.setProperty('--theme-color-75', '#F5B34390');
+         // document.documentElement.style.setProperty('--theme-color-50', '#F5B34380');
+         // document.documentElement.style.setProperty('--theme-color-25', '#F5B34370');
       </script>
 
 <style>

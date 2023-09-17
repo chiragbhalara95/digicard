@@ -198,7 +198,7 @@ class FrontWebsiteController extends BasicController
             $ratigAllData = RatingModel::where('user_id', $userObj->id)->orderBy('id', 'DESC')->get();
 
             return view('visitingCard/bussinessCard/'.$bladeFile, 
-                compact('companyInfoData', 'userObj', 'galleryData', 'userConfigObj', 'paymentMasterData', 'socialMediaData', 'galleryCatInfo', 'vistingUrl', 'videosData', 'ratigSummaryData', 'ratigAllData')
+                compact('companyInfoData', 'userObj', 'galleryData', 'userConfigObj', 'paymentMasterData', 'socialMediaData', 'galleryCatInfo', 'vistingUrl', 'videosData', 'ratigSummaryData', 'ratigAllData', 'themeData')
             );
         }
 

@@ -56,8 +56,11 @@ iframe,.projects-list .project-item,.img-thumbnail {border: 2px solid #071330 !i
     font-size: 14px;
     font-family: 'Nunito', sans-serif;
 }
+.view_all_fieldback {
+    background-color: var(--theme-color);
+}
 .enquiry-form input[type=submit] {
-    background-color: #f5b343;
+    background-color: var(--theme-color);
     color: white;
     padding: 7px 20px;
     border: none;
