@@ -258,7 +258,8 @@ a:hover, a:focus {
 
 
 
- .order_box {width: 142px;
+ .order_box {
+    width: 98%;
     display: inline-block;
     margin: 6px auto;
     vertical-align: text-top;
@@ -266,10 +267,12 @@ a:hover, a:focus {
     background: white;
     overflow: hidden;
     box-shadow: 0px 0px 10px 0px #00000030;
-    border: 2px solid #FF9800;
+    border: 2px solid #2196f3;
 }
+
  .order_box img{width: 100%;
     max-height: 100px;}
+
  .order_box h2{padding: 9px 0px 3px;
     margin: 0px;
     font-size: 13px;
@@ -309,49 +312,6 @@ a:hover, a:focus {
 
 
 
- .order_box {
-    width: 142px;
-    display: inline-block;
-    margin: 6px auto;
-    vertical-align: text-top;
-    border-radius: 4px;
-    background: white;
-    overflow: hidden;
-    box-shadow: 0px 0px 10px 0px #00000030;
-    border: 2px solid #2196f3;
-}
- .order_box img{width: 100%;
-    max-height: 100px;}
- .order_box h2{padding: 9px 0px 3px;
-    margin: 0px;
-    font-size: 13px;
-    text-align: center;
-    font-weight: 500;}
- .order_box h4{padding: 0px 0px 7px;
-    margin: 0px;
-    font-size: 13px;
-    text-align: center;
-    font-weight: 500;
-    color: #4CAF50;
-}
- .order_box p{
-    padding: 2px;
-    margin: 0px;
-    font-size: 13px;
-    text-align: center;
-    font-weight: 500;
-    color: gray;}
- .btn_buy{background: #2196f3 ;
-    color: white;
-    padding: 8px 10px;
-    text-align: center;
-    font-size: 12px;
-    width: fit-content;
-    margin: 0 auto 10px;
-    border-radius: 3px;
-    font-weight: 500;
-    text-transform: uppercase;
-}
 
 
 

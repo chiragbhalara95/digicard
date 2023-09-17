@@ -595,7 +595,7 @@
     <div class="images-container row">
 
   @foreach($galleryData as $galleryDetail)
-    <div class="image-wrapper gallery_product col-md-12 filter {{$galleryDetail->category_name}}">
+    <div class="card image-wrapper gallery_product col-md-12 filter {{$galleryDetail->category_name}}">
               <h3 class="text text-center" style="text-align:center;">{{$galleryDetail->title}}</h3>
               <img onclick="openImageModal(this)" alt="{{$galleryDetail->title}}" src="{{URL::asset('public/upload/product/'.$galleryDetail->head_image)}}" style="width:100%" description="{{$galleryDetail->description}}">
 

@@ -1025,7 +1025,7 @@
 
         <div class="gallery_section">
           @foreach($galleryData as $galleryDetail)
-        <div class="order_box filter {{$galleryDetail->category_name}}">
+        <div class="card order_box filter {{$galleryDetail->category_name}}">
           <img onclick="openImageModal(this)" alt="{{$galleryDetail->title}}" src="{{URL::asset('public/upload/product/'.$galleryDetail->head_image)}}" class="profile-pic-img" description="{{$galleryDetail->description}}">
             <h5 class="text text-center" style="text-align:center;">{{$galleryDetail->title}}</h5>
 
