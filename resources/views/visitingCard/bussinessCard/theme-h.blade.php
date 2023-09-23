@@ -72,8 +72,10 @@
              return rgb;
          }
 
-         document.documentElement.style.setProperty('--theme-color', '#F17D3A');
-         document.documentElement.style.setProperty('--theme-color-light', '#F17D3A26');
+         document.documentElement.style.setProperty('--theme-color', "{{$userObj->theme_color}}");
+
+         // document.documentElement.style.setProperty('--theme-color', '#F17D3A');
+         // document.documentElement.style.setProperty('--theme-color-light', '#F17D3A26');
           </script>
 
     <link rel="stylesheet" href="{{ asset('public/admin/plugins/toastr/toastr.min.css') }}">
@@ -133,7 +135,7 @@
       <svg viewBox="0 0 400 25" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
             <defs>
                <pattern id="Wave" x="0" y="0" width="100" height="25" patternUnits="userSpaceOnUse">
-                  <path d="M0 25 0 6C20 9 38 11 55 7 72 4 87 4 100 6l0 19z" id="path4" fill="#F17D3A"></path>
+                  <path d="M0 25 0 6C20 9 38 11 55 7 72 4 87 4 100 6l0 19z" id="path4" fill="{{$userObj->theme_color}}"></path>
                </pattern>
             </defs>
             <rect width="100%" height="100%" fill="url(#Wave)"></rect>

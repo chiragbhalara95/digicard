@@ -100,6 +100,11 @@ Route::middleware(['auth', 'verified', 'check_payment_status'])->namespace('App\
 
      Route::any('enquiry/list', [App\Http\Controllers\BussinessCard\EnquiryController::class, 'enquiryList']);
 
+    Route::middleware(['auth', 'verified'])->namespace('App\Http\Controllers\BussinessCard')->prefix('feedback')->group(function() {
+        Route::get('list', [App\Http\Controllers\BussinessCard\FeedbackController::class, 'getList'])->name('business.feedback-list');
+
+    });
+
      Route::any('visitor-log/list', [App\Http\Controllers\BussinessCard\VisitorLogController::class, 'getList'])->name('business.get-visitor-log');
 
     Route::get('business/card-theme-selection', [App\Http\Controllers\BussinessCard\ThemeController::class, 'cardThemeSelectView'])->name('business.card-theme-selection');

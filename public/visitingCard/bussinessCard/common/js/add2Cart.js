@@ -5,7 +5,7 @@ var cartItems = []
 $('.buyNowBtn').click(function (){
   $(this).parent().find('.add').trigger('click');
   $('#cart').trigger('click')
-  $(".checkoutBtn").trigger('click')
+  // $(".checkoutBtn").trigger('click')
 });
 
 $('.add').click(function (){

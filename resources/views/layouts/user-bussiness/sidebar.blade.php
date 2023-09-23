@@ -119,6 +119,16 @@
             </a>
           </li>
 
+          <li class="nav-item">
+            <a href="{{route('business.feedback-list')}}" class="nav-link">
+              <i class="nav-icon fas fa-star"></i>
+              <p>
+                Feedback List
+
+              </p>
+            </a>
+          </li>
+
           @if (Session::has('isEcommerceEnable') && Session::get('isEcommerceEnable') == 1)
           <li class="nav-item">
             <a href="javascript:void()" class="nav-link submenu">

@@ -492,7 +492,7 @@ i:hover {
             <div class="buy_ele">
               <a href="javascript:void(0)" class="buyNowBtn product-enquiry-btn text-center" data-id="{{$galleryDetail->id}}" data-product="{{$galleryDetail->title}}" data-price="{{$price}}">Buy Now</a>
 
-              <a href="javascript:void(0)" class="add product-enquiry-btn text-center" style="display: none;" data-id="{{$galleryDetail->id}}" data-product="{{$galleryDetail->title}}" data-price="{{$price}}">Add to cart</a>
+              <a href="javascript:void(0)" class="add product-enquiry-btn text-center" data-id="{{$galleryDetail->id}}" data-product="{{$galleryDetail->title}}" data-price="{{$price}}">Add to cart</a>
             </div>
             @else
             <a href="{{$link}}" target='_blank' class="product-enquiry-btn text-center"><div class="btn_buy">{{$userConfigObj->enquiryLabel}}</div></a>
@@ -834,7 +834,7 @@ i:hover {
 <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.js"></script>
 
 @if($userConfigObj->isEcommerceEnable == '1')
-<script src="{{asset('public/visitingCard/bussinessCard/common/js/add2Cart.js')}}v={{date('YmdHis')}}"></script>
+<script src="{{asset('public/visitingCard/bussinessCard/common/js/add2Cart.js')}}?v={{date('YmdHis')}}"></script>
 @endif
 
 <script src="{{asset('public/visitingCard/bussinessCard/common/js/bootstrap.min.js')}}"></script>
