@@ -48,6 +48,8 @@
                                     <label class="control-label" for="theme_name{{$data->id}}"><b>{{$data->name}}</b></label>
                                 </div>
                                 @if(!empty($data->options))
+                                    <label class="control-label" ><b>Theme Color</b></label>
+
                                     <select class="form-control color_selection_option" name="color[{{$data->id}}]">
                                         <option value="other" selected="">Other</option>
 

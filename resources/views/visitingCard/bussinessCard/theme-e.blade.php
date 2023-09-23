@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" style="--theme-color:#FF9800; --theme-color-light:#d8d8d870;"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html lang="en" ><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <title>{!! $companyInfoData->company_name !!}</title>
 
@@ -53,8 +53,10 @@
 </style>
 
 <script>
-    document.documentElement.style.setProperty('--theme-color', '#FF9800');
-    document.documentElement.style.setProperty('--theme-color-light', '#d8d8d870');
+/*    document.documentElement.style.setProperty('--theme-color', '#FF9800');
+    document.documentElement.style.setProperty('--theme-color-light', '#d8d8d870');*/
+     document.documentElement.style.setProperty('--theme-color', "{{$userObj->theme_color}}");
+
 </script>
 
 </head>

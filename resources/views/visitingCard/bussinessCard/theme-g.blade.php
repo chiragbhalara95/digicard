@@ -72,6 +72,7 @@
          
              return rgb;
          }
+
          document.documentElement.style.setProperty('--theme-color', "{{$userObj->theme_color}}");
          // document.documentElement.style.setProperty('--theme-color-light', '#F5B34326');
          // document.documentElement.style.setProperty('--theme-color-100', '#F5B343');

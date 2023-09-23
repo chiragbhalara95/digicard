@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" style="--theme-color:#095da0; --theme-color-light:#095da0;">
+<html lang="en">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <title>{!! $companyInfoData->company_name !!}</title>
@@ -47,8 +47,10 @@
   <link rel="stylesheet" href="{{ asset('public/admin/plugins/toastr/toastr.min.css') }}">
 
 <script>
-    document.documentElement.style.setProperty('--theme-color', '#095da0');
-    document.documentElement.style.setProperty('--theme-color-light', '#d8d8d870');
+     document.documentElement.style.setProperty('--theme-color', "{{$userObj->theme_color}}");
+
+    //document.documentElement.style.setProperty('--theme-color', '#095da0');
+    //document.documentElement.style.setProperty('--theme-color-light', '#d8d8d870');
 </script>
 <style type="text/css">
     .purchase-form__renewal-price--strikethrough {
