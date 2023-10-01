@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!-- saved from url=(0044)https://www.virtualbusinesscard.in/template7 -->
-<html lang="en" style="--theme-color:#e91e63; --theme-color-light:#6d126f70;"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html lang="en" ><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <title>{!! $companyInfoData->company_name !!}</title>
 
@@ -53,8 +53,10 @@
     }
 </style>
 <script>
-    document.documentElement.style.setProperty('--theme-color', '#e91e63');
-    document.documentElement.style.setProperty('--theme-color-light', '#6d126f70');
+    //document.documentElement.style.setProperty('--theme-color', '#e91e63');
+    //document.documentElement.style.setProperty('--theme-color-light', '#6d126f70');
+document.documentElement.style.setProperty('--theme-color', "{{$userObj->theme_color}}");
+
 </script>
 
 </head>
@@ -187,6 +189,9 @@
                               <a class="whatsapp-btn" target="_blank" href="javascript:;" onclick="handleWhatsappShare(this)">
                                 <i class="fa fa-whatsapp" aria-hidden="true"></i>Share on Whatsapp 
                               </a>
+
+
+
                             </div>
     </div>
 

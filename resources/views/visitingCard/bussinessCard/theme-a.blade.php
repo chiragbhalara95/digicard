@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" style="--theme-color:#2196f3; --theme-color-light:#2196f326; --theme-color-medium:#2196f375; --theme-color-dark-lighter:#2196f3bf; --theme-color-dark1:#1a78c2; --theme-color-dark2:#145a92; --theme-color-dark3:#0d3c61;">
+<html lang="en" >
   <head>
 
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -1238,6 +1238,20 @@ $('#company_mobile').blur(function(e) {
 
     <link href="{{asset('public/visitingCard/bussinessCard/common/css/gallery-category.css')}}" rel="stylesheet">
     <script id="skype_bootstrap" src="{{asset('public/visitingCard/bussinessCard/common/js/gallery-category.js')}}"></script>
+
+<script>
+
+    document.documentElement.style.setProperty('--theme-color', '#2196f3');
+    document.documentElement.style.setProperty('--theme-color-light', '#2196f326');
+    document.documentElement.style.setProperty('--theme-color-medium', '#2196f375');
+    document.documentElement.style.setProperty('--theme-color-dark-lighter', '#2196f3bf');
+    document.documentElement.style.setProperty('--theme-color-dark1', '#1a78c2');
+    document.documentElement.style.setProperty('--theme-color-dark2', '#145a92');
+    document.documentElement.style.setProperty('--theme-color-dark3', '#0d3c61');
+
+    // document.documentElement.style.setProperty('--theme-color', "{{$userObj->theme_color}}");
+
+</script>
 
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-CJZJHWL0WG"></script>

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" style="--theme-color:#034054; --theme-color-light:#03405460;"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html lang="en" >
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>{!! $companyInfoData->company_name !!}</title>
 
 <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0 minimal-ui">
@@ -56,8 +57,11 @@
 </style>
 
 <script>
-  document.documentElement.style.setProperty('--theme-color', '#034054');
-  document.documentElement.style.setProperty('--theme-color-light', '#03405460');
+  //document.documentElement.style.setProperty('--theme-color', '#034054');
+  //document.documentElement.style.setProperty('--theme-color-light', '#03405460');
+
+ document.documentElement.style.setProperty('--theme-color', "{{$userObj->theme_color}}");
+
 </script>
 
 </head>
@@ -177,6 +181,9 @@
                               <a class="whatsapp-btn" target="_blank" href="javascript:;" onclick="handleWhatsappShare(this)">
                                 <i class="fa fa-whatsapp" aria-hidden="true"></i>Share on Whatsapp 
                               </a>
+
+
+
                             </div>
     </div>
 
