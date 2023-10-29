@@ -49,7 +49,7 @@
       </div>
 
       <div class="form-group">
-          <textarea name="comment" class="form-control" id="message" placeholder="Enter Message"></textarea>
+          <textarea name="comment" class="form-control" id="comment" placeholder="Enter Message"></textarea>
       </div>
 
       <div class="form-group">

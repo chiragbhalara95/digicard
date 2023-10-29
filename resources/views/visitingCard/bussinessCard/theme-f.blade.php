@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>@if(!empty($companyInfoData->company_name)){!! $companyInfoData->company_name !!}@else{!! $userObj->name !!}@endif</title>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0 minimal-ui">
+
+    <meta name="author" content="digitalcards.tech">
+    <meta name="subject" content="Website">
+    <meta name="copyright" content="Digital Card">
+    <meta name="classification" content="Digital Card">
+
+    <meta property="og:title" content="@if(!empty($companyInfoData->company_name)){!! $companyInfoData->company_name !!}@else{!! $userObj->name !!}@endif">
+    <meta content="{{$companyInfoData->seo_description}}" name="description">
+    <meta content="{{$companyInfoData->seo_keyword}}" name="keywords">
+    <meta property="og:url" content="{{url('vc')}}/{{$userObj->slug}}">
+    @if(!empty($companyInfoData->company_logo))
+    <meta property="og:image" itemprop="image" content="{{url('public')}}/{{$companyInfoData->company_logo}}">
+    @elseif(!empty($userObj->profile_pic))
+    <meta property="og:image" itemprop="image" content="{{url('public')}}/{{$userObj->profile_pic}}">
+    @else
+    <meta property="og:image" itemprop="image" content="{{url('public')}}/upload/user_profile.jpg">
+    @endif
+    <meta property="og:type" content="website">
+    <meta property="og:image:width" content="800">
+    <meta property="og:image:height" content="800">
+    @if(!empty($companyInfoData->company_logo))
+    <link rel="icon" href="{{url('public')}}/{{$companyInfoData->company_logo}}" type="image/png" sizes="16x16">
+    @elseif(!empty($userObj->profile_pic))
+    <link rel="icon" href="{{url('public')}}/{{$userObj->profile_pic}}" type="image/png" sizes="16x16">
+    @else
+    <link rel="icon" href="{{url('public')}}/upload/user_profile.jpg" type="image/png" sizes="16x16">
+    @endif
+
+    <!-- Twitter Meta Tags -->
+    <meta name="twitter:image" content="{{url('public')}}/{{$companyInfoData->company_logo}}">
+    <meta property="twitter:url" content="{{url('vc')}}/{{$userObj->slug}}">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="@if(!empty($companyInfoData->company_name)){!! $companyInfoData->company_name !!}@else{!! $userObj->name !!}@endif">
+    <meta name="twitter:description" content="{{$companyInfoData->company_info}}">
+
+
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
+        <link rel="{{asset('public/visitingCard/bussinessCard/f/css/all.css')}}?v=1">
+
+        <link href="{{asset('public/visitingCard/bussinessCard/f/css/style.css')}}?v=1" rel="stylesheet">
+        <link href="{{asset('public/visitingCard/bussinessCard/f/css/star-rating.css')}}" rel="stylesheet">
+        <link rel="stylesheet" href="{{asset('public/visitingCard/bussinessCard/f/css/intlTelInput.min.css')}}">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Jost&family=Varela+Round&display=swap" rel="stylesheet">
+
+    <link href="{{asset('public/visitingCard/bussinessCard/g/css/custom.css')}}?v={{date('Ymdhis')}}" rel="stylesheet">
+    <link href="{{asset('public/visitingCard/bussinessCard/a/css/jquery-confirm.css')}}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('public/admin/plugins/toastr/toastr.min.css') }}">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+      <script>
+         var dynamicManifest = {
+             "name": "DCARD",
+             "short_name": "DCARD",
+             "description": "DCARD",
+             "start_url": "https://www.dcard.live/",
+             "background_color": "#000000",
+             "theme_color": "#0f4a73",
+             "icons": [{
+                 "src": "https://dcard.live/upload/Dcard.png",
+                 "sizes": "256x256",
+                 "type": "image/png"
+             }],
+             "display": "DCARD"
+         }
+         const stringManifest = JSON.stringify(dynamicManifest);
+         const blob = new Blob([stringManifest], {type: 'application/json'});
+         const manifestURL = URL.createObjectURL(blob);
+         document.querySelector('#manifest-placeholder').setAttribute('href', manifestURL);
+      </script>
+      <style>
+        body {
+            background-image: url({{asset($thmeImg)}}) !important;
+        }
+        body,a,p,span,div,h1,h2,h3,h4,h5,h6,button,input,b{
+            font-family: 'Nunito', sans-serif;
+        }
+        .contact-action-container-text{
+            font-family: 'Varela Round', sans-serif !important;
+            font-size: 18px;
+            width: 100%;
+        }
+ 
+         .profile-pic .profile-pic-img {
+         width: 175px;
+         margin-top: 25px;
+         border:2px solid #fff;
+         padding:10px;
+             border-radius: 10px;
+         }
+         .name,
+         .firmname {
+         font-size: 14px;
+         font-weight: 500;
+         color: white;
+         letter-spacing: 0.6px;
+         margin: 0;
+         margin-bottom: 7px;
+         text-transform: uppercase;
+         text-align: left;
+         }
+         .firmname {
+         font-size: 18px;
+         margin-bottom: 14px;
+         margin-top: 10px;
+         }
+         .name {
+         text-transform: capitalize;
+         font-size: 16px;
+         line-height: 20px;
+         }
+         .form-control {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            margin-top: 6px;
+            margin-bottom: 6px;
+            resize: vertical;
+            outline: none;
+            font-size: 14px;
+            font-family: 'Nunito', sans-serif;
+        }
+        .enquiry-form input[type=submit] {
+            background-color: #0085C4;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 6px 0;
+            font-family: 'Nunito', sans-serif;
+        }
+        .contact-action-table{
+            text-align: left;
+            font-size: 20px;
+            font-weight: 600;
+            font-family: 'Nunito', sans-serif;
+        }
+        .contact-action-container-text{
+            font-family: 'Nunito', sans-serif;
+        }
+        .product-enquiry-btn{
+            font-weight: 600;
+        }
+        iframe,.projects-list .project-item,.img-thumbnail {border: 2px solid #071330 !important;border-radius: 10px !important;width: 100% !important;height: 200px !important;margin-bottom: 15px !important;}
+        .img-thumbnail{
+            height: auto !important;
+        }
+        .profile-pic-img {
+            width: 200px;
+        }
+        
+        .page-details{
+            background-image: url({{asset('public/visitingCard/bussinessCard/f/img/bg.jpg')}}) !important;
+        }
+        .contact-button{
+            background-color: var(--theme-color);
+        }
+        .contact-action-container-icon{
+            background-color: var(--theme-color);
+        }
+        .shadow-button{
+            background-color: var(--theme-color); 
+        }
+        .myhr{
+            width:60px;
+            background-color: var(--theme-color);
+            height:2px;
+        }
+        .section-header{
+            color: var(--theme-color);
+            margin-top: 0px
+        }
+        .card{
+            background-color: rgb(238 238 238 / 65%);
+        }
+        .product-enquiry-btn {
+            width: 100%;
+            text-align: center;
+            border-radius: 50px;
+            background: var(--theme-color);
+            font-size: 15px;
+            font-weight: 500;
+        }
+        .enquiry-form input[type=submit]{
+            width: 100%;
+            text-align: center;
+            background-color: var(--theme-color);
+        }
+        .contact-action-container-text {
+            font-size: 18px;
+            width: 100%;
+            font-weight: 500;
+            background-color: transparent;
+            color: #fff;
+            padding: 2px 10px;
+        }
+        .footer-menu .footer-menu-icon{
+            color: var(--theme-color);
+        }
+        .share-buttons.inprofile .share-button i {
+            padding: 2px;
+            height: 35px;
+            width: 35px;
+            font-size: 20px;
+            border-radius: 10%;
+            box-shadow: 0 1px 4px rgb(0 0 0 / 20%), 0 0 40px rgb(255 251 251 / 10%) inset;
+        }
+        .section-item-title-2{
+            color: #222;
+        }
+        .dbtn{
+            background-color: var(--theme-color);
+            color: #fff;
+            padding: 12px 24px;
+            border-radius: 28px;
+            border: 2px solid #fff;
+        }
+        .prpr{
+            background-color: var(--theme-color);
+            padding: 1px 10px;
+            border-radius: 4px;
+            min-width: auto;
+            text-align: center;
+        }
+        iframe, .projects-list .project-item, .img-thumbnail{
+            border: 2px solid var(--theme-color) !important;
+        }
+        #enquiry-section iframe{
+            height: 300px !important;
+        }
+        .contact-action-table{
+            width:100%;
+        }
+        .edittitle{
+            margin-top: -10px;
+        }
+      </style>
+   </head>
+   <body>
+    <div class="page-wrapper" id="home-section">
+         <div class="page-details">
+            <div>
+               <div class="p-10"></div>
+                @if($userConfigObj->isShowNoOfVisit == '1')
+                <div class="views-label"><i class="fas fa-eye"></i> Views: <b>{{$userObj->no_visit}}</b></div>
+                @endif
+
+
+                <div class="profile-pic">
+                @if(!empty($companyInfoData->company_logo))
+                  <img src="{{url('public')}}/{{$companyInfoData->company_logo}}" class="profile-pic-img" alt="Logo">
+                @elseif(!empty($userObj->profile_pic))
+                  <img src="{{url('public')}}/{{$userObj->profile_pic}}" class="profile-pic-img" alt="Logo">
+                @endif
+                </div>
+
+                @if (!empty($companyInfoData->company_name))
+                  <h1 class="firmname">{!! $companyInfoData->company_name !!}</h1>
+                  <div class="firmname-underline"></div>
+                  @if (!empty($companyInfoData->gst_number))
+                  <div class="name"><span style="margin-top: 5px;display: block;font-size: 16px;">GST No: {!! $companyInfoData->gst_number !!}</div>
+                  @endif
+                  <div class="name"><span style="margin-top: 5px;display: block;font-size: 16px;">{!! $userObj->name !!}</div>
+
+                @else
+                  <h1 class="firmname">{!! $userObj->name !!}</h1>
+                  <div class="firmname-underline"></div>
+                @endif
+
+               <div style="width:60px;background-color:#0085C4;height:2px;margin-top: 15px;"></div>
+         </div>
+          <div>
+               <!-- FRONT CONTACT ACTIONS START-->
+               <div class="p-10"></div>
+               <div class="contact-buttons">
+                 
+
+                    <a class="contact-button" href="tel:{{$companyInfoData->country_code}}{{$companyInfoData->company_mobile}}">
+                      <i class="fas fa-phone fa-flip-horizontal"></i>
+                      Call
+                    </a>
+                    @if(!empty($companyInfoData->country_landline))
+                    <a class="contact-button" href="tel:{{$companyInfoData->country_landline}}">
+                      <i class="fas fa-phone fa-flip-horizontal"></i>
+                      Call
+                    </a>
+                    @endif
+
+                    <a class="contact-button" target="_blank" href="https://api.whatsapp.com/send?phone={{$companyInfoData->country_code}}{{$companyInfoData->company_mobile}}&text={{url('vc')}}/{{$userObj->slug}}">
+                      <i class="fab fa-whatsapp"></i>
+                      Whatsapp
+                    </a>
+
+                  @if (!empty($companyInfoData->company_address))
+                  <a class="contact-button" target="_blank" href="https://maps.google.com?q={{$companyInfoData->latitude}},{{$companyInfoData->longitude}}&z=12&amp;um=1&amp;ie=UTF-8&amp;sa=X&amp;ved=2ahUKEwiWyNX76N3qAhWrzTgGHQuCBicQ_AUoAXoECCMQAw">
+                    <i class="fas fa-map-marker-alt fa-flip-horizontal"></i>
+                    Direction
+                  </a>
+                  @endif
+
+                <a class="contact-button" target="_blank" href="mailto:{{$userObj->email}}">
+                  <i class="fas fa-envelope fa-flip-horizontal"></i>
+                  Mail
+                </a>
+
+               </div>
+               <table class="contact-action-table">
+                  <tbody>
+                      
+                     <tr>
+                        @if (!empty($companyInfoData->company_address))
+                        <td>
+                           <a target="_blank" href="https://maps.google.com?q={{$companyInfoData->latitude}},{{$companyInfoData->longitude}}&z=12&amp;um=1&amp;ie=UTF-8&amp;sa=X&amp;ved=2ahUKEwiWyNX76N3qAhWrzTgGHQuCBicQ_AUoAXoECCMQAw">
+                           <i class="fas fa-map-marker-alt contact-action-container-icon" style="padding-top: 0.5vw"></i>
+                           </a>
+                        </td>
+                        <td>
+                           <a target="_blank" href="https://maps.google.com?q={{$companyInfoData->latitude}},{{$companyInfoData->longitude}}&z=12&amp;um=1&amp;ie=UTF-8&amp;sa=X&amp;ved=2ahUKEwiWyNX76N3qAhWrzTgGHQuCBicQ_AUoAXoECCMQAw" class="contact-action-container-text" style="max-width: 300px;text-align:left;font-size:14px;line-height:22px;">
+                           {!!$companyInfoData->company_address!!}</a>
+                        </td>
+                        @endif
+
+                     </tr>
+                     <tr>
+                        <td>
+                           <a href="mailto:{{$userObj->email}}">
+                           <i class="fas fa-envelope contact-action-container-icon" style="padding-top: 0.5vw"></i>
+                           </a>
+                        </td>
+                        <td style="max-width: 300px;text-align:left;font-size:14px;line-height:22px;">
+                           <a href="mailto:{{$userObj->email}}" class="contact-action-container-text">
+                           {{$userObj->email}}
+                            </a>
+                        </td>
+                     </tr>
+
+                      @if(!empty($companyInfoData->company_website))
+                      <tr>
+                        <td>
+                           <a target="_blank" href="{{$companyInfoData->company_website}}">
+                           <i class="fas fa-globe contact-action-container-icon" style="padding-top: 0.5vw"></i>
+                           </a>
+                        </td>
+                        <td style="max-width: 300px;text-align:left;font-size:14px;line-height:22px;">
+                           <a target="_blank" href="{{$companyInfoData->company_website}}" class="contact-action-container-text">
+                             {{$companyInfoData->company_website}}
+                          </a>
+                        </td>
+                     </tr>
+                     @endif
+
+                     <tr>
+                        <td>
+                           <a target="_blank" href="tel:{{$companyInfoData->country_code}}{{$companyInfoData->company_mobile}}">
+                           <i class="fas fa-phone fa-flip-horizontal contact-action-container-icon" style="padding-top: 0.5vw"></i>
+                           </a>
+                        </td>
+                        <td style="max-width: 300px;text-align:left;font-size:14px;line-height:22px;">
+                           <a target="_blank" href="tel:{{$companyInfoData->country_code}}{{$companyInfoData->company_mobile}}" class="contact-action-container-text" style="margin-bottom: 5px">
+                           {{$companyInfoData->country_code}}{{$companyInfoData->company_mobile}}
+                         </a>
+                         @if(!empty($companyInfoData->country_landline))
+                            <br /><a target="_blank" href="tel:{{$companyInfoData->country_landline}}" class="contact-action-container-text">
+                               {{$companyInfoData->country_landline}}
+                           </a>
+                         @endif
+
+                       </td>
+                     </tr>
+
+                  </tbody>
+               </table>
+         <div style="padding: 15px;">
+            <div class="p-30"></div>
+
+            <div class="whatsapp-input">
+               <div class="input-wrapper">
+                  <input type="hidden" id="whatsapp-msg" value="{{url('vc')}}/{{$userObj->slug}}">  
+                  <div class="iti iti--allow-dropdown">
+                     <div class="iti__flag-container">
+                        <div class="iti__selected-flag" role="combobox" aria-owns="iti-0__country-listbox" aria-expanded="false" tabindex="0" title="India (भारत): +91" aria-activedescendant="iti-0__item-in"><div class="iti__flag iti__ind"></div></div>                     </div>
+                     <input type="tel" id="whatsapp-input" class="input whatsapp-input-phone" placeholder="Enter whatsapp number" maxlength="10" oninput="this.value=this.value.replace(/[^0-9]/g,&#39;&#39;);" autocomplete="off" data-intl-tel-input-id="0">
+                  </div>
+
+               </div>
+                  <a class="whatsapp-button" target="_blank" href="javascript:;" onclick="handleWhatsappShare(this)">
+                  <i class="fab fa-whatsapp"></i>Share on Whatsapp
+                  </a>
+            </div>
+
+            <div class="p-20"></div>
+            <div class="shadow-buttons">
+               <a class="shadow-button " href="{{url('saveViewCard')}}/{{$userObj->slug}}" download="contact.vcf"><i class="fas fa-download shadow-button-icon"></i>Save to Contacts</a>
+
+               @if (!empty($companyInfoData->company_name))
+               <a class="shadow-button" onclick="openShareModal(this, '{!! $companyInfoData->company_name !!}')"><i class="fas fa-share-alt shadow-button-icon"></i>Share</a>
+               @else
+               <a class="shadow-button" onclick="openShareModal(this, '{!! $userObj->name !!}')"><i class="fas fa-share-alt shadow-button-icon"></i>Share</a>
+               @endif
+
+            </div>
+            <div>
+               <a class="shadow-button save-card-button" style="display: none;"><i class="fas fa-cloud-download-alt shadow-button-icon"></i>Save Card</a>
+            </div>
+            <div class="p-30"></div>
+
+            @if (count($socialMediaData) > 0)
+              <ul class="inprofile share-buttons" style="height:70px;margin-left: 3px;">
+                @foreach($socialMediaData as $socialMediaDetail)
+                  @if ($socialMediaDetail->type == 'fb')
+                  <li class="share-button">
+                      <a href="{{$socialMediaDetail->url}}" target="_blank"><i class="share-button-facebook fab fa-facebook"></i></a> </li>
+                  @elseif($socialMediaDetail->type == 'in')
+                  <li class="share-button"> <a href="{{$socialMediaDetail->url}}" target="_blank"><i class="share-button-instagram fab fa-instagram"></i></a> </li>
+                    @elseif($socialMediaDetail->type == 'li')
+                    <li class="share-button"> <a href="{{$socialMediaDetail->url}}" target="_blank"><i class="share-button-linkedin fab fa-linkedin"></i></a> </li>
+                    @elseif($socialMediaDetail->type == 'tw')
+                    <li class="share-button"> <a href="{{$socialMediaDetail->url}}" target="_blank"><i class="share-button-twitter fab fa-twitter"></i></a> </li>
+                    @elseif($socialMediaDetail->type == 'pi')
+                    <li class="share-button"> <a href="{{$socialMediaDetail->url}}" target="_blank"><i class="share-button-facebook fab fa-pinterest"></i></a> </li>
+                    @elseif($socialMediaDetail->type == 'yt')
+                    <li class="share-button"> <a href="{{$socialMediaDetail->url}}" target="_blank"><i class="share-button-facebook fab fa-youtube"></i></a> </li>
+                    @elseif($socialMediaDetail->type == 'tg')
+                    <li class="share-button"> <a href="{{$socialMediaDetail->url}}" target="_blank"><i class="share-button-facebook fab fa-telegram"></i></a> </li>
+
+                  @endif
+                @endforeach
+              </ul>
+              @endif
+
+            <div class="p-20"></div>
+         </div>
+         <div class="bottom-separator"></div>
+            </div>
+         </div>
+      </div>
+
+
+    <div class="section-container">
+      <div class="separator"></div>
+      <div class="section-content-wrapper">
+         <h2 class="section-header">Scan QR Code for share your digital cards</h2>
+         <div class="section-header-underline"></div>
+          <div class="text text-center" style="text-align: center;">
+          {!! QrCode::size(250)->generate($vistingUrl) !!}
+
+
+          <input type="text" readonly="" class="form-control" value="{{$vistingUrl}}" id="visitingUrlText">
+
+              <div class="row">
+                  <div class="col float-start">
+                          <a href="javascript::void(0)" class="buttonCopy col-md-6 text-left text-items-align-left" onclick="copyUrlSecond()">Copy&nbsp;<i class="fa fa-copy" aria-hidden="true"></i></a>
+                  </div>
+                  <div class="col float-end">
+                          <a class="col-md-6 text-center big_btns text-white text-end" href="{{url('downloadQrCode')}}/{{$userObj->slug}}" >Download QR Code &nbsp;<i class="fa fa-download"></i></a>  
+                  </div>
+              </div>
+
+      </div>
+
+     </div>
+    </div>
+
+
+   <div class="section-container" id="about-us-section">
+      <div class="separator"></div>
+      <div class="section-content-wrapper">
+         <h2 class="section-header">{{$userConfigObj->aboutLabel}}</h2>
+         <div class="section-header-underline"></div>
+            <p class="text-white">{!!$companyInfoData->company_info!!}</p>
+            @if(!empty($companyInfoData->broucher_file))
+                <h3>Documents</h3>
+                <div class="dis_flex">
+                  <a class="download" href="{{url('public')}}/{{$companyInfoData->broucher_file}}" download="">
+                  
+                    <div class="big_btns" style="width:300px">
+                        <div class="pdf-number">
+                          <i class="fa fa-file-pdf-o"></i>&nbsp;&nbsp;&nbsp;&nbsp;
+                          @if(!empty($companyInfoData->company_name)){!! $companyInfoData->company_name !!}@else{!! $userObj->name !!}@endif&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-download"></i>
+                      </div>
+                    </div>
+                  </a>  
+              </div> 
+            <div class="dis_flex"></div>
+            @endif
+
+      </div>
+      <div class="bottom-separator"></div>
+   </div>
+
+
+@if($galleryData->count() > 0)
+   <div class="section-container pt-10" id="products-services-section">
+      <div class="separator"></div>
+
+
+      <div class="section-content-wrapper">
+         <h2 class="section-header">
+            {{$userConfigObj->galleryLabel}}
+         </h2>
+
+         <div class="section-header-underline"></div>
+         <div>
+
+        <div class="p-10"></div>
+
+        @if($userConfigObj->isEcommerceEnable == '1')
+        <div id="cart-container">
+          <div id="cart">
+            <i class="fa fa-shopping-cart fa-2x" aria-hidden="true"></i>
+            <!-- <button class="clear">Empty Cart</button> -->
+          </div>
+          <span id="itemCount"></span>
+        </div>
+
+        <div id="shoppingCart">
+          <div id="cartItems">
+            <h2>Items in your cart</h2>
+            <i class="fa fa-times-circle-o fa-3x" aria-hidden="true"></i>
+          </div>
+        </div>
+        @endif
+
+          @if (!empty($galleryCatInfo))
+          <div align="center">
+              <button class="btn btn-default filter-button active all-filter-btn" data-filter="all">All</button>
+              @foreach($galleryCatInfo as $catlbl => $catName)
+              <button class="btn btn-default filter-button" data-filter="{{$catlbl}}">{{$catName}}</button>
+              @endforeach
+          </div>
+          @endif
+
+        @foreach($galleryData as $galleryDetail)
+          <div class="card filter {{$galleryDetail->category_name}}">
+            <div class="itemDetails ">
+               <div class="text-center">
+                  <img onclick="openImageModal(this)" alt="{{$galleryDetail->title}}" src="{{URL::asset('public/upload/product/'.$galleryDetail->head_image)}}" style="width:100%;margin-bottom: 9px;" description="{{$galleryDetail->description}}">
+                        <h4 class="section-header">{{$galleryDetail->title}}
+                        &nbsp;<br/>
+                        @if ($galleryDetail->special_price > 0 && $galleryDetail->mrp_price > $galleryDetail->special_price)
+                        <del>₹{{$galleryDetail->mrp_price}} <i class="fa fa-rupee"></i></del>
+                        ₹{{$galleryDetail->special_price}} <i class="fa fa-rupee"></i>
+                        @elseif($galleryDetail->mrp_price > 0)
+                         ₹{{$galleryDetail->mrp_price}} <i class="fa fa-rupee"></i>
+                      @endif
+
+                  </h4>
+                </div>
+
+                <div class="product-enquiry-section text-center">
+                    @php
+                        $link="https://api.whatsapp.com/send?phone=".str_replace('+','',$companyInfoData->country_code).$companyInfoData->company_mobile."&text=Enquery for product:".urlencode($galleryDetail->title);
+                        $price=0;
+                        if ($galleryDetail->mrp_price > 0) {
+                            if ($galleryDetail->special_price > 0 && $galleryDetail->mrp_price > $galleryDetail->special_price){
+                                $link .= " Price=₹".$galleryDetail->special_price;
+                                $price = $galleryDetail->special_price;
+                            } else{
+                                $link .= " Price=₹".$galleryDetail->mrp_price;
+                                $price = $galleryDetail->mrp_price;
+                            }
+                        }    
+                    @endphp
+
+                </div>
+            </div>
+            @if($userConfigObj->isEcommerceEnable == '1')
+            <div class="buy_ele">
+              <a href="javascript:void(0)" class="buyNowBtn product-enquiry-btn text-center" data-id="{{$galleryDetail->id}}" data-product="{{$galleryDetail->title}}" data-price="{{$price}}">Buy Now</a>
+
+              <a href="javascript:void(0)" class="add product-enquiry-btn text-center" data-id="{{$galleryDetail->id}}" data-product="{{$galleryDetail->title}}" data-price="{{$price}}">Add to cart</a>
+            </div>
+            @else
+            <a href="{{$link}}" target='_blank' class="product-enquiry-btn text-center"><div class="btn_buy">{{$userConfigObj->enquiryLabel}}</div></a>
+            @endif
+        </div>
+
+        @endforeach
+
+         </div>
+      </div>
+      <div class="bottom-separator"></div>
+   </div>
+@endif
+
+@if(count($videosData) > 0)
+
+<div class="section-container" id="video-section">
+  <div class="separator"></div>
+  <div class="section-content-wrapper">
+     <h2 class="section-header">Videos</h2>
+     <div class="section-header-underline"></div>
+
+      @foreach($videosData as $videosDetail)
+    <div class="order_box">
+      <div class="embed-responsive embed-responsive-16by9">
+        <iframe class="embed-responsive-item " src="{{$videosDetail->video_path}}" title="{{$videosDetail->title}}" allowfullscreen ng-show="showvideo" frameborder="0" ></iframe>
+     <h4 class="section-header">{{$videosDetail->title}}</h4>
+    </div>
+
+  </div>
+    @endforeach
+</div>
+</div>
+@endif
+
+@if(count($paymentMasterData) > 0)
+
+<div class="section-container" id="payment-options-section">
+    <h2 class="section-header">Payment</h2>
+    <div class="section-header-underline"></div>
+
+      @foreach($paymentMasterData as $paymentMasterDetail)
+        @if ($paymentMasterDetail->type == 'bank')
+
+        <h4 class="section-header">Bank Detail</h4>
+        <div class="section-header-underline"></div>
+
+        <h4 class="section-item-title-2"><i class="fa fa-chevron-circle-right"></i>&nbsp; Bank Name: {{$paymentMasterDetail->bank_name}}</h4>
+        <h4 class="section-item-title-2"><i class="fa fa-chevron-circle-right"></i>&nbsp; Account Holder Name: {{$paymentMasterDetail->account_holder_name}}</h4>
+        <h4 class="section-item-title-2"><i class="fa fa-chevron-circle-right"></i>&nbsp; Account Number: {{$paymentMasterDetail->account_no}}</h4>
+        <h4 class="section-item-title-2"><i class="fa fa-chevron-circle-right"></i>&nbsp; Account Type: {{ucwords($paymentMasterDetail->account_type)}} Account</h4>
+        <h4 class="section-item-title-2"><i class="fa fa-chevron-circle-right"></i>&nbsp; IFSC code: {{$paymentMasterDetail->ifsc_code}}</h4>
+        <h4 class="section-item-title-2"><i class="fa fa-chevron-circle-right"></i>&nbsp; Branch Name: {{$paymentMasterDetail->branch_name}}</h4>
+
+        @else
+        <h4 class="section-header">UPI Detail</h4>
+        <div class="section-header-underline"></div>
+        <h4 class="section-item-title-2"><i class="fa fa-chevron-circle-right"></i>&nbsp; {{ucwords($paymentMasterDetail->type)}} Number : {{$paymentMasterDetail->account_no}}</h4>
+        @if(!empty($paymentMasterDetail->qr_img))
+            <img src="{{url('public/upload/payment/')}}/{{$paymentMasterDetail->qr_img}}" class="img-thumbnail" style="width: 100%;">
+        @endif
+
+        @endif
+      @endforeach
+
+     <div class="section-close"></div>
+</div>
+@endif
+
+   <div class="section-container" id="feedback-section">
+      <div class="separator"></div>
+
+      <div class="section-content-wrapper">
+         <h2 class="section-header">FEEDBACKS</h2>
+
+        @include('visitingCard.bussinessCard.include.feedback')
+
+       </div>
+     </div>
+
+    @if($userConfigObj->isShowEnquiry == '1')
+   <div class="section-container" id="enquiry-section">
+      <div class="separator"></div>
+
+
+      <div class="section-content-wrapper">
+         <h2 class="section-header">Enquiry Form</h2>
+         <div class="section-header-underline"></div>
+
+          @if (!empty($companyInfoData->company_address) && !empty($companyInfoData->latitude))
+          <div style="width: 100%"><iframe width="100%" height="600" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q={{$companyInfoData->latitude}},{{$companyInfoData->longitude}}&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"><a href="https://www.maps.ie/population/">Population calculator map</a></iframe></div>
+          @endif
+
+        <form data-parsley-validate="" method="post" class="enquiry-form" id="enquiry-form" novalidate="">
+        <meta name="csrf_token" content="{{ csrf_token() }}" />
+        <input type="hidden" name="slug" id="slug" value="{{$userObj->slug}}">
+        <input type="hidden" id="companyEmail" value="admin.admin@gmail.com">
+
+            <div class="form-group">
+                <input type="text" name="enquiryName" data-parsley-trigger="change" id="enquiryName" placeholder="Enter Full Name" pattern="[a-zA-Z ]*$" required="" class="form-control">
+
+            </div>
+            <div class="form-group">
+                <input type="email" name="email" id="email" data-parsley-trigger="change" placeholder="Enter Email" class="form-control">
+            </div>
+            <div class="form-group">
+                <input type="text" data-parsley-length-message="Contact should have (4-10) digits." data-parsley-type-message="Contact should have only digits." data-parsley-type="number" data-parsley-length="[4, 10]" name="phoneNumber" id="phoneNumber" required="" placeholder="Enter Phone Number" class="form-control">
+            </div>
+            <div class="form-group">
+                <textarea name="message" id="message" required="" placeholder="Enter Message" class="form-control"></textarea>
+            </div>
+            <div class="form-group">
+                <input type="submit" id="inquiry-send" value="Send">
+            </div>
+         </form>
+      </div>
+      <div class="bottom-separator"></div>
+   </div>
+   @endif
+
+   <!-- Footer Menu -->
+   <div class="footer">
+      <ul class="footer-menu">
+         <li>
+            <a class="footer-menu-link"  href="#home-section">
+               <i class="footer-menu-icon fas fa-home"></i>
+               <div class="footer-menu-text">HOME</div>
+            </a>
+         </li>
+         <li>
+            <a class="footer-menu-link" href="#about-us-section">
+               <i class="footer-menu-icon fas fa-briefcase"></i>
+               <div class="footer-menu-text">{{$userConfigObj->aboutLabel}}</div>
+            </a>
+         </li>
+         @if($galleryData->count() > 0)
+
+         <li>
+            <a class="footer-menu-link" href="#products-services-section">
+               <i class="footer-menu-icon fas fa-box-open"></i>
+               <div class="footer-menu-text">
+                {{$userConfigObj->galleryLabel}}
+               </div>
+            </a>
+         </li>
+         @endif
+
+         @if(count($paymentMasterData) > 0)
+         <li>
+            <a class="footer-menu-link" href="#payment-options-section">
+               <i class="footer-menu-icon fas fa-money-bill-alt"></i>
+               <div class="footer-menu-text">PAYMENT</div>
+            </a>
+         </li>
+         @endif
+         @if(count($videosData) > 0)
+         <li>
+            <a class="footer-menu-link" href="#video-section">
+               <i class="footer-menu-icon fas fa-video"></i>
+               <div class="footer-menu-text">VIDEOS</div>
+            </a>
+         </li>
+         @endif
+         @if($userConfigObj->isShowEnquiry == '1')
+         <li>
+            <a class="footer-menu-link" href="#enquiry-section">
+               <i class="footer-menu-icon fas fa-comment-alt"></i>
+               <div class="footer-menu-text">ENQUIRY</div>
+            </a>
+         </li>
+         @endif
+         <li>
+            <a class="footer-menu-link" href="#feedback-section">
+               <i class="footer-menu-icon fas fa-star"></i>
+               <div class="footer-menu-text">FEEDBACK</div>
+            </a>
+         </li>
+
+      </ul>
+   </div>
+   <!-- The image Modal -->
+   <div id="imageModal" class="modal">
+      <span class="close" id="imageModalClose">×</span>
+      <img class="modal-content fadeIn" id="img01">
+      <div id="caption"></div>
+      <div id="description"></div>
+   </div>
+
+   <!-- The share Modal -->
+   <div id="shareModal" class="modal share-modal">
+      <div class="share-form fadeInUpBig">
+         <div class="share-form-header">
+            <h3 class="share-form-header-text">Share Profile</h3>
+            <span class="close" id="shareModalClose">×</span>
+         </div>
+         <div class="share-form-buttons-container">
+            <p>Share my Digital Card in your network.</p>
+            <div class="share-buttons-heading">
+               <img src="{{asset('public/visitingCard/bussinessCard/g/img/tild-arrow.svg')}}" class="share-buttons-arrow">
+               <div class="share-buttons-heading-text">Share my Digital Card</div>
+            </div>
+            <ul class="share-buttons">
+               <li class="share-button">
+                  <a href="https://api.whatsapp.com/send?phone={{str_replace('+','',$companyInfoData->country_code)}}{{$companyInfoData->company_mobile}}&amp;text={{url('vc')}}/{{$userObj->slug}}" target="_blank">
+                  <i class="share-button-whatsapp fab fa-whatsapp"></i>
+                  </a>
+               </li>
+               <li class="share-button">
+                  <a target="_blank" href="sms:?body={{url('vc')}}/{{$userObj->slug}}">
+                  <i class="share-button-sms fas fa-comment-dots"></i>
+                  </a>
+               </li>
+               <li class="share-button">
+                  <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{url('vc')}}/{{$userObj->slug}}" class="fb-xfbml-parse-ignore">
+                  <i class="share-button-facebook fab fa-facebook-f"></i>
+                  </a>
+               </li>
+               <li class="share-button">
+                  <a target="_blank" href="https://twitter.com/intent/tweet?text={{url('vc')}}/{{$userObj->slug}}" data-size="large">
+                  <i class="share-button-twitter fab fa-twitter"></i>
+                  </a>
+               </li>
+               <li class="share-button">
+                  <a target="_blank" href="https://pinterest.com/pin/create/link/?url={{url('vc')}}/{{$userObj->slug}}">
+                  <i class="share-button-pinterest fab fa-pinterest-p"></i>
+                  </a>
+               </li>
+               <li class="share-button">
+                  <a target="_blank" href="mailto:?subject=Digital%20Card&amp;body=Check%20out%20this%20digital%20card%20{{url('vc')}}/{{$userObj->slug}}">
+                  <i class="share-button-mail fas fa-envelope"></i>
+                  </a>
+               </li>
+            </ul>
+         </div>
+      </div>
+   </div>
+
+@if($userConfigObj->isEcommerceEnable == '1')
+<div class="modal" id="checkoutModal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"><span class="glyphicon glyphicon-shopping-cart"></span> My Cart</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary checkoutBtn">Checkout</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="customerModal" >
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"><span class="glyphicon glyphicon-user"></span>Customer Detail</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <form id="createOrderFrm" action="{{route('createLeadOrder')}}" method="POST">
+       @csrf
+      <input type="hidden" name="array_product" id="array_product">
+      <input type="hidden" name="slug" id="slug" value="{{$userObj->slug}}">
+
+      <div class="modal-body">
+          <div class="md-form mb-5">
+            <input type="text" id="customer_first_name" name="customer_first_name" class="form-control" placeholder="Enter First Name">
+          </div>
+          <div class="md-form mb-5">
+            <input type="text" id="customer_last_name" name="customer_last_name" class="form-control" placeholder="Enter Last Name">
+          </div>
+
+          <div class="md-form mb-5">
+            <input type="email" id="customer_email" name="customer_email" class="form-control" placeholder="Enter email">
+          </div>
+
+          <div class="md-form mb-5">
+            <input type="text" id="customer_contactNo" name="customer_contactNo" class="form-control" placeholder="Enter Contact Number">
+          </div>
+
+          <div class="md-form mb-5">
+            <textarea id="address" name="address" class="form-control" placeholder="Enter address"></textarea>
+          </div>
+
+          <div class="md-form mb-5 com-sm-4">
+            <input type="text" id="customer_city" name="customer_city" class="form-control" placeholder="Enter City Name">
+          </div>
+
+          <div class="md-form mb-5 com-sm-4">
+            <input type="text" id="customer_state" name="customer_state" class="form-control" placeholder="Enter State Name">
+          </div>
+
+          <div class="md-form mb-5 com-sm-4">
+            <input type="text" id="customer_zip" name="customer_zip" class="form-control" placeholder="Enter Zip Code">
+          </div>
+
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Buy Now</button>
+      </div>
+      </form>
+
+    </div>
+  </div>
+
+</div>
+@endif
+
+</body>
+
+<input type="hidden" id="send_enquiry_url" value="{{route('sendEnquiry')}}">
+
+<script src="{{asset('public/visitingCard/bussinessCard/common/js/jquery-3.6.4.min.js')}}"></script>
+
+
+<script src="{{asset('public/visitingCard/bussinessCard/a/js/intlTelInput.min.js')}}"></script>
+<script src="{{asset('public/visitingCard/bussinessCard/g/js/script.js')}}?v={{date('YmdHis')}}"></script>
+
+<link href="{{asset('public/visitingCard/bussinessCard/g/css/gallery-category.css')}}" rel="stylesheet">
+<script id="skype_bootstrap" src="{{asset('public/visitingCard/bussinessCard/common/js/gallery-category.js')}}"></script>
+
+<script src="{{asset('public/visitingCard/bussinessCard/a/js/parsley.min.js')}}"></script>
+<script src="{{asset('public/visitingCard/bussinessCard/a/js/form-action.js')}}"></script>
+
+<script src="{{asset('public/visitingCard/bussinessCard/a/js/jquery-confirm.js')}}"></script>
+
+
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.js"></script>
+
+@if($userConfigObj->isEcommerceEnable == '1')
+<script src="{{asset('public/visitingCard/bussinessCard/common/js/add2Cart.js')}}?v={{date('YmdHis')}}"></script>
+@endif
+
+<script src="{{asset('public/visitingCard/bussinessCard/common/js/bootstrap.min.js')}}"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script src="{{asset('public/visitingCard/bussinessCard/common/js/jquery.star-rating.js')}}"></script>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-CJZJHWL0WG"></script>
+<script src="{{ asset('public/frontView/assets/js/jquery.validate.min.js') }}"></script>
+
+<script src="{{asset('public/visitingCard/bussinessCard/common/js/custom.js')}}"></script>
+
+
+
+<script type="text/javascript">
+ document.documentElement.style.setProperty('--theme-color', "{{$userObj->theme_color}}");
+    intlTelInput(input, {
+        initialCountry:'in',
+        separateDialCode:true,
+    })
+</script>
+
+</html>

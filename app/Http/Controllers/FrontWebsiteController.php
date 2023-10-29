@@ -197,8 +197,13 @@ class FrontWebsiteController extends BasicController
             $ratigSummaryData = RatingModel::where('user_id', $userObj->id)->limit(3)->orderBy('id', 'DESC')->get();
             $ratigAllData = RatingModel::where('user_id', $userObj->id)->orderBy('id', 'DESC')->get();
 
+            $thmeImg = 'public/visitingCard/bussinessCard/f/img/vintage-bg.jpg';
+            if (!empty($userObj->theme_bg)) {
+                $thmeImg = 'public/upload/theme-custom-img/'.$userObj->theme_bg;
+            }
+
             return view('visitingCard/bussinessCard/'.$bladeFile, 
-                compact('companyInfoData', 'userObj', 'galleryData', 'userConfigObj', 'paymentMasterData', 'socialMediaData', 'galleryCatInfo', 'vistingUrl', 'videosData', 'ratigSummaryData', 'ratigAllData', 'themeData')
+                compact('companyInfoData', 'userObj', 'galleryData', 'userConfigObj', 'paymentMasterData', 'socialMediaData', 'galleryCatInfo', 'vistingUrl', 'videosData', 'ratigSummaryData', 'ratigAllData', 'themeData', 'thmeImg')
             );
         }
 

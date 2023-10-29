@@ -64,6 +64,13 @@
                                     <div class="custom_color" style="width: 320px;margin-top:10px;height: 10px;"></div>
                                 @endif
 
+                                @if($data->is_dynamic_img == 1) 
+                                    <div class="form-group pt-2">
+                                        <input type="file" name="theme_bg" accept="image/png,image/jpg,image/jpeg" class="form-control">
+                                        <p class="text text-danger">(Size:500px X 750px)</p>jgupp]''
+                                    </div>
+                                @endif
+
                             </div>
                             <hr>
                         </div>

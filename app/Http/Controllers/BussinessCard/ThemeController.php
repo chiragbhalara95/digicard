@@ -48,6 +48,16 @@ class ThemeController extends BasicController
                 }
             }
         }
+
+        if ($request->hasFile('theme_bg')) {
+            $file=$request->file('theme_bg');
+            $filename=$file->getClientOriginalName();
+            $imgname = $filename;
+            $userData->theme_bg= $imgname;
+            $destinationPath=public_path('upload/theme-custom-img/');
+            $request->file('theme_bg')->move($destinationPath, $imgname);
+        }
+
         $userData->save();
 
         $request->session()->flash('alert-success','Theme has been sucessfully updated.');
