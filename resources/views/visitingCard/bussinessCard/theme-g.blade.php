@@ -311,8 +311,10 @@ i:hover {
                   </div>
 
                </div>
-                  <a class="whatsapp-button" target="_blank" href="javascript:;" onclick="handleWhatsappShare(this)">
-                  <i class="fab fa-whatsapp"></i>Share on Whatsapp
+            </div>
+            <div class="shadow-buttons" style="padding-top: 1vw;">
+                  <a class="shadow-button" target="_blank" href="javascript:;" onclick="handleWhatsappShare(this)">
+                  <i class="fab fa-whatsapp"></i>&nbsp;Share on Whatsapp
                   </a>
             </div>
 

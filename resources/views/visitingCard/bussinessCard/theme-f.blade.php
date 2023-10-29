@@ -61,26 +61,6 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-      <script>
-         var dynamicManifest = {
-             "name": "DCARD",
-             "short_name": "DCARD",
-             "description": "DCARD",
-             "start_url": "https://www.dcard.live/",
-             "background_color": "#000000",
-             "theme_color": "#0f4a73",
-             "icons": [{
-                 "src": "https://dcard.live/upload/Dcard.png",
-                 "sizes": "256x256",
-                 "type": "image/png"
-             }],
-             "display": "DCARD"
-         }
-         const stringManifest = JSON.stringify(dynamicManifest);
-         const blob = new Blob([stringManifest], {type: 'application/json'});
-         const manifestURL = URL.createObjectURL(blob);
-         document.querySelector('#manifest-placeholder').setAttribute('href', manifestURL);
-      </script>
       <style>
         body {
             background-image: url({{asset($thmeImg)}}) !important;
@@ -399,8 +379,10 @@
                   </div>
 
                </div>
-                  <a class="whatsapp-button" target="_blank" href="javascript:;" onclick="handleWhatsappShare(this)">
-                  <i class="fab fa-whatsapp"></i>Share on Whatsapp
+            </div>
+            <div class="shadow-buttons" style="padding-top: 1vw;">
+                  <a class="shadow-button" target="_blank" href="javascript:;" onclick="handleWhatsappShare(this)">
+                  <i class="fab fa-whatsapp"></i>&nbsp;Share on Whatsapp
                   </a>
             </div>
 
