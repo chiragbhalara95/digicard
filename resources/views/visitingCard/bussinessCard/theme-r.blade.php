@@ -369,7 +369,7 @@
                   <a href="{{url('public/upload/product-doc')}}/{{$galleryDetail->doc_url}}" target="_blank" class="btn btn-sm  btn-primary text-dark" download><i class="fa fa-download"></i></a> 
                   @endif
                   <div class="dis_flex">
-                    <a class="addphonebook" href='https://api.whatsapp.com/send?phone={{str_replace('+','',$companyInfoData->country_code)}}{{$companyInfoData->company_mobile}}&text=Enquery for product: {{urlencode($galleryDetail->title)}}' target='_blank'>
+                    <a class="addphonebook" href='https://api.whatsapp.com/send?phone={{str_replace('+','',$companyInfoData->country_code)}}{{$companyInfoData->company_mobile}}&text=Enquery for product: {{urlencode($galleryDetail->title)}} Image:{{URL::asset('public/upload/product/'.$galleryDetail->head_image)}}' target='_blank'>
                       <div class="big_btns">Enquiry Now</i></div>
                     </a>
                   </div>

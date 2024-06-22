@@ -67,7 +67,7 @@
                                 @if($data->is_dynamic_img == 1) 
                                     <div class="form-group pt-2">
                                         <input type="file" name="theme_bg" accept="image/png,image/jpg,image/jpeg" class="form-control">
-                                        <p class="text text-danger">(Size:500px X 750px)</p>jgupp]''
+                                        <p class="text text-danger">(Size:500px X 750px)</p>
                                     </div>
                                 @endif
 

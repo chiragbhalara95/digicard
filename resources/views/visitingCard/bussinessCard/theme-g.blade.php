@@ -487,6 +487,7 @@ i:hover {
                                 $price = $galleryDetail->mrp_price;
                             }
                         }    
+                        $link .= "Image:".URL::asset('public/upload/product/'.$galleryDetail->head_image);
                     @endphp
 
                 </div>

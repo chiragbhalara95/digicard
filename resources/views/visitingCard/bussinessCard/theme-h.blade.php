@@ -369,7 +369,7 @@
             </div>
 
             <div class="product-enquiry-section text-center">
-                <a href="https://api.whatsapp.com/send?phone={{str_replace('+','',$companyInfoData->country_code)}}{{$companyInfoData->company_mobile}}&text=Enquery for product: {{urlencode($galleryDetail->title)}}" target='_blank' class="product-enquiry-btn text-center"><div class="btn_buy">{{$userConfigObj->enquiryLabel}}</div></a>
+                <a href="https://api.whatsapp.com/send?phone={{str_replace('+','',$companyInfoData->country_code)}}{{$companyInfoData->company_mobile}}&text=Enquery for product: {{urlencode($galleryDetail->title)}} Image:{{URL::asset('public/upload/product/'.$galleryDetail->head_image)}}" target='_blank' class="product-enquiry-btn text-center"><div class="btn_buy">{{$userConfigObj->enquiryLabel}}</div></a>
             </div>
         </div>
         @endforeach

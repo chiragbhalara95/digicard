@@ -138,7 +138,6 @@
                   </div>
 
                   <div class="form-group">
-                    <!-- <label for="customFile">Custom File</label> -->
                     <label for="exampleInputEmail1">Company Logo</label>
 
                     @if(isset($companyData->company_logo))
@@ -150,6 +149,21 @@
                       <label class="custom-file-label" for="customFile">Choose file</label>
                     </div>
                   </div>
+
+                  @if (isset($companyData->company_alt_logo) && !empty($companyData->company_alt_logo))
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Alternative Company Logo</label>
+
+                    @if(isset($companyData->company_alt_logo))
+                    <img src="{{url('public')}}/{{$companyData->company_alt_logo}}" width="100px" height="80px">
+                    @endif
+
+                    <div class="custom-file">
+                      <input type="file" class="custom-file-input" id="customFile" name="company_alt_logo"  accept=".jpg,.jpeg,.png">
+                      <label class="custom-file-label" for="customFile">Choose file</label>
+                    </div>
+                  </div>
+                  @endif
 
                   <div class="form-group">
                     <label for="exampleInputEmail1">Company phone Number</label>

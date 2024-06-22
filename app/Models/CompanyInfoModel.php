@@ -23,6 +23,7 @@ class CompanyInfoModel extends Model
         'company_name',
         'gst_number',
         'company_logo',
+        'company_alt_logo',
         'company_profession',
         'country_code',
         'company_mobile',
