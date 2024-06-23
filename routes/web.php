@@ -48,7 +48,7 @@ Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $requ
 */
 
 // Front Website
-Route::namespace('App\Http\Controllers')->group(function() {
+Route::middleware(['resolve.domain'])->namespace('App\Http\Controllers')->group(function() {
     // front desk
 
     Route::get('/', [App\Http\Controllers\FrontWebsiteController::class, 'index'])->name('frontpage')->middleware(['resolve.domain']);
@@ -67,7 +67,7 @@ Route::namespace('App\Http\Controllers')->group(function() {
 
 });
 
-Route::middleware(['auth', 'verified', 'check_payment_status'])->namespace('App\Http\Controllers')->group(function() {
+Route::middleware(['auth', 'verified', 'check_payment_status', 'resolve.domain'])->namespace('App\Http\Controllers')->group(function() {
     // front desk
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::get('/social-link', [App\Http\Controllers\SocialLinkController::class, 'socialLinkListView'])->name('social-list-view');
@@ -146,7 +146,7 @@ Route::middleware(['auth', 'verified', 'check_payment_status'])->namespace('App\
 
 });
 
-Route::middleware(['auth', 'verified', 'check_payment_required'])->namespace('App\Http\Controllers')->group(function() {
+Route::middleware(['auth', 'verified', 'check_payment_required', 'resolve.domain'])->namespace('App\Http\Controllers')->group(function() {
     // front desk
     Route::get('payment', [App\Http\Controllers\PaymentController::class, 'index']);
     Route::get('razorpay-payment', [App\Http\Controllers\RazorpayPaymentController::class, 'index']);
@@ -160,7 +160,7 @@ Route::middleware(['auth', 'verified', 'check_payment_required'])->namespace('Ap
 });
 
 
-Route::middleware(['auth', 'verified', 'is_admin'])->namespace('App\Http\Controllers')->group(function() {
+Route::middleware(['auth', 'verified', 'is_admin', 'resolve.domain'])->namespace('App\Http\Controllers')->group(function() {
     // Admin route
     Route::get('admin', [App\Http\Controllers\HomeController::class, 'adminHome'])->name('admin.home');
     Route::get('admin/home', [App\Http\Controllers\HomeController::class, 'adminHome'])->name('admin.home');
