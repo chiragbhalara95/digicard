@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
 // Auth::routes(['verify' => true]);
 Auth::routes();
 Route::get('reset-password/{token}', [App\Http\Controllers\Auth\ForgotPasswordController::class, 'showResetPasswordForm'])->name('reset.password.get');
@@ -49,7 +50,9 @@ Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $requ
 // Front Website
 Route::namespace('App\Http\Controllers')->group(function() {
     // front desk
-    Route::get('/', [App\Http\Controllers\FrontWebsiteController::class, 'index'])->name('frontpage');
+
+    Route::get('/', [App\Http\Controllers\FrontWebsiteController::class, 'index'])->name('frontpage')->middleware(['resolve.domain']);
+
     Route::get('/search', [App\Http\Controllers\FrontWebsiteController::class, 'search'])->name('search');
 
     Route::post('contact-us', [App\Http\Controllers\ContactController::class, 'saveContact'])->name('saveContact');

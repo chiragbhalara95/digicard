@@ -114,7 +114,6 @@ class FrontWebsiteController extends BasicController
         }
 
         $bladeFile = !empty($themeData) ? $themeData->blade_file : 'theme-a';
-
         $isVisitedCount = $request->session()->get('is_count_visitor_'.$userObj->id, 0);
         if ($isVisitedCount == 0) {
             // $userObj->no_visit = $userObj->no_visit+1

@@ -66,5 +66,6 @@ class Kernel extends HttpKernel
         'is_admin' => \App\Http\Middleware\IsAdmin::class,
         'check_payment_status' => \App\Http\Middleware\CheckPaymentStatus::class,
         'check_payment_required' => \App\Http\Middleware\checkPaymentRequired::class,
+        'resolve.domain' => \App\Http\Middleware\ResolveDomainMiddleware::class,
     ];
 }
