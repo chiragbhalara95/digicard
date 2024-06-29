@@ -14,6 +14,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 
+Route::domain('{subdomain}.'.env('APP_URL'))->group(function () {
+    Route::get('/', [App\Http\Controllers\FrontWebsiteController::class, 'index']);
+});
+
 // Auth::routes(['verify' => true]);
 Auth::routes();
 Route::get('reset-password/{token}', [App\Http\Controllers\Auth\ForgotPasswordController::class, 'showResetPasswordForm'])->name('reset.password.get');

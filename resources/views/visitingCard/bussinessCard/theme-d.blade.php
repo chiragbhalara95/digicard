@@ -459,8 +459,7 @@
                                 $link .= " Price=₹".$galleryDetail->mrp_price;
                                 $price = $galleryDetail->mrp_price;
                             }
-                        }    
-                        $link .= "Image:".URL::asset('public/upload/product/'.$galleryDetail->head_image);
+                        }
 
                     @endphp
 
