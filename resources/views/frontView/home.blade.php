@@ -6,7 +6,9 @@
 
 @section('content')
 <!-- ======= Intro Section ======= -->
+
 <section id="intro" class="clearfix">
+
    <div class="container" data-aos="fade-up">
       <div class="intro-img" data-aos="zoom-out" data-aos-delay="200">
          <img src="{{ asset('public/frontView/assets/img/intro-img.svg') }}" alt="intro" class="img-fluid" height="200vw" width="1000vw">
@@ -23,6 +25,34 @@
             <a href="#about" class="btn-get-started scrollto">Get Started</a>
             <!-- <a href="#services" class="btn-services scrollto">Our Services</a> -->
          </div>
+<!-- Promotional Banner -->
+ <!-- Tooliq.ai Announcement Banner (No Background) -->
+        <!-- Tooliq.ai promo line -->
+        <div class="d-flex align-items-center border-top pt-3 mt-3">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor"
+               class="bi bi-megaphone-fill text-primary me-2" viewBox="0 0 16 16">
+            <path d="M7 1.414 8.586 3H15a1 1 0 0 1 1 1v6a1 1 0 0 1-1 1h-1.293l-2.853 2.854A.5.5 0 0 1 10 13.5v-1.586l-2-2V13a1 1 0 0 1-2 0v-2.586L4.414 9H1a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h6V1.414z"/>
+          </svg>
+          <span class="me-2">
+            <strong class="text-primary">Tooliq.ai</strong> — Instantly generate smart announcements with AI!
+          </span>
+         </div>
+         <a href="https://tooliq.ai" target="_blank" class="btn btn-outline-primary btn-sm mt-2 text-center">Explore Now</a>
+      </div>
+
+      <!-- <div class=" py-2">
+         <a href="https://digitalcards.tech/" target="_blank" class="text-decoration-none text-dark">
+            <div class="container d-flex flex-column flex-sm-row justify-content-between align-items-start align-items-sm-center gap-2 gap-sm-0">
+                  <div class="d-flex align-items-start align-items-sm-center gap-2 flex-wrap text-start">
+                     <span class="text-secondary">Discover our Digital Business Card launch:</span>
+                     <span class="fw-semibold text-primary text-truncate">
+                        <button class="btn btn-warning">digitalcards.tech – Digital Business Card</button>
+                     </span>
+                  </div>
+            </div>
+         </a>
+      </div> -->
+
       </div>
    </div>
 </section>
