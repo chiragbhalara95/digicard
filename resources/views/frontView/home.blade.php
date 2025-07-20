@@ -40,18 +40,6 @@
          <a href="https://tooliq.ai" target="_blank" class="btn btn-outline-primary btn-sm mt-2 text-center">Explore Now</a>
       </div>
 
-      <!-- <div class=" py-2">
-         <a href="https://digitalcards.tech/" target="_blank" class="text-decoration-none text-dark">
-            <div class="container d-flex flex-column flex-sm-row justify-content-between align-items-start align-items-sm-center gap-2 gap-sm-0">
-                  <div class="d-flex align-items-start align-items-sm-center gap-2 flex-wrap text-start">
-                     <span class="text-secondary">Discover our Digital Business Card launch:</span>
-                     <span class="fw-semibold text-primary text-truncate">
-                        <button class="btn btn-warning">digitalcards.tech – Digital Business Card</button>
-                     </span>
-                  </div>
-            </div>
-         </a>
-      </div> -->
 
       </div>
    </div>

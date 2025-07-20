@@ -66,7 +66,8 @@
    </head>
    <body >
       <!-- ======= Header ======= -->
-      <header id="header" class="fixed-top">
+<!-- Promotional Banner -->
+      <header id="header" class="fixed-top" >
 
          <div class="container">
             <div class="logo float-left">
@@ -90,6 +91,7 @@
                   <li><a href="{{route('frontpage')}}#services">Our Products</a></li>
                   <li><a href="{{route('frontpage')}}#contact">Contact Us</a></li>
                   <li><a href="{{route('search')}}">Our Partners</a></li>
+                  <li><a href="{{route('blogs.index')}}">Blog</a></li>
 
                   @if(Auth::check())
                   <li><a href="{{route('home')}}">Dashboard</a></li>
@@ -107,6 +109,7 @@
             </nav>
             <!-- .main-nav -->
          </div>
+
          @if (session()->has('success'))
             @if(is_array(session('success')))
                <ul>
@@ -137,6 +140,7 @@
 
       </header>
       <!-- #header -->
+
       <main id="main">
 
          @yield('content')
@@ -159,6 +163,8 @@
                         <li><a href="{{route('frontpage')}}">Services</a></li>
                         <li><a href="{{route('frontpage')}}">Terms of service</a></li>
                         <li><a href="{{route('frontpage')}}">Privacy policy</a></li>
+                        <li><a href="{{route('blogs.index')}}">Blogs</a></li>
+
                      </ul>
                   </div>
                   <div class="col-lg-3 col-md-6 footer-contact">

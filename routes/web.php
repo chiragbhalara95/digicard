@@ -69,6 +69,9 @@ Route::middleware(['resolve.domain'])->namespace('App\Http\Controllers')->group(
     Route::post('/create-lead-order', [App\Http\Controllers\FrontWebsiteController::class, 'createLeadOrder'])->name('createLeadOrder');
     Route::post('/companies/sendRating', [App\Http\Controllers\FrontWebsiteController::class, 'sendRating'])->name('sendRating');
 
+    Route::get('/blog', [App\Http\Controllers\BlogController::class, 'index'])->name('blogs.index');
+    Route::get('/blog/{slug}', [App\Http\Controllers\BlogController::class, 'show'])->name('blogs.show');
+
 });
 
 Route::middleware(['auth', 'verified', 'check_payment_status', 'resolve.domain'])->namespace('App\Http\Controllers')->group(function() {
@@ -171,3 +174,4 @@ Route::middleware(['auth', 'verified', 'is_admin', 'resolve.domain'])->namespace
     Route::get('admin/digital-card/create', [App\Http\Controllers\Admin\DigitalcardController::class, 'createDigitalCard'])->name('admin.digital-card.create');
     Route::post('admin/digital-card/save', [App\Http\Controllers\Admin\DigitalcardController::class, 'saveDigitalCard'])->name('admin.digital-card.save');
 });
+
