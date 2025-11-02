@@ -19,35 +19,41 @@
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
 
-                        <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">Select Product</label>
-                            <select class="form-control selectpicker col-md-6" id="product-select-list" data-live-search="true" name="product_id">
-                                    @foreach($productData AS $key => $productDetail)
-                                    <option @if($productDetail['product_id'] == $selectedProduct) selected @endif value="{{$productDetail['product_id']}}">{{$productDetail['product_name']}}</option>
-                                    @endforeach
-                            </select>
-                        </div>
+<!-- Product Dropdown -->
+<div class="form-group row">
+    <label for="product-select-list" class="col-md-4 col-form-label text-md-right">Select Product</label>
+    <select class="form-control selectpicker col-md-6" id="product-select-list" data-live-search="true" name="product_id">
+        @foreach($productData as $productDetail)
+            <option value="{{ $productDetail['product_id'] }}" 
+                @if($productDetail['product_id'] == $selectedProduct) selected @endif>
+                {{ $productDetail['product_name'] }}
+            </option>
+        @endforeach
+    </select>
+</div>
 
-
-                        <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">Select Product</label>
-                            <select class="form-control selectpicker col-md-6" id="product-sku-list" data-live-search="true" name="sku_package_id">
-                              @if(!empty($skuCustomPackage))
-                                  @foreach($skuCustomPackage AS $productId => $skuCustomDetail)
-                                    @foreach($skuCustomDetail as $detail)
-                                      <option data-product-id="{{$detail['product_id']}}" value="{{$detail['sku_package_id']}}" disabled="disabled" @if($packageId == $detail['sku_package_id']) selected @endif>
-                                          {{$detail['duration']}} {{$detail['durationType']}}
-                                          @if($detail['currency'] == 'USD')
-                                          (${{$detail['price_usd']}})
-                                          @else
-                                          (₹{{$detail['price']}})
-                                          @endif
-                                    </option>
-                                    @endforeach
-                                  @endforeach
-                              @endif
-                            </select>
-                        </div>
+<!-- SKU Dropdown -->
+<div class="form-group row">
+    <label for="product-sku-list" class="col-md-4 col-form-label text-md-right">Select Package</label>
+    <select class="form-control selectpicker col-md-6" id="product-sku-list" data-live-search="true" name="sku_package_id">
+        @if(!empty($skuCustomPackage))
+            @foreach($skuCustomPackage as $productId => $skuCustomDetail)
+                @foreach($skuCustomDetail as $detail)
+                    <option data-product-id="{{ $detail['product_id'] }}" 
+                        value="{{ $detail['sku_package_id'] }}"
+                        @if($packageId == $detail['sku_package_id']) selected @endif>
+                        {{ $detail['duration'] }} {{ $detail['durationType'] }}
+                        @if($detail['currency'] == 'USD')
+                            (${{ $detail['price_usd'] }})
+                        @else
+                            (₹{{ $detail['price'] }})
+                        @endif
+                    </option>
+                @endforeach
+            @endforeach
+        @endif
+    </select>
+</div>
 
 
                         <div class="form-group row">

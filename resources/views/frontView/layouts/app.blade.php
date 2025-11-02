@@ -284,6 +284,8 @@
     <i class="fab fa-whatsapp"></i>
   </a>
   
+  </body>
+
   <!-- jQuery first -->
   <script src="{{ asset('public/admin/plugins/jquery/jquery.min.js') }}"></script>
 
@@ -323,5 +325,4 @@
   </script>
 
   @yield('custom_script')
-</body>
 </html>
