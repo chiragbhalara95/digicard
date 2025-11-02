@@ -242,7 +242,7 @@
           @else
           <li class="nav-item mx-lg-2"><a class="nav-link" href="{{ url('/login') }}">Login</a></li>
           <li class="nav-item mx-lg-2">
-            <a class="btn btn-primary" href="{{ url('/register?packageId=2') }}">Register</a>
+            <a class="btn btn-primary" href="{{ url('/register?packageId=3') }}">Register</a>
           </li>
           @endauth
         </ul>
