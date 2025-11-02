@@ -1220,7 +1220,9 @@
     <script src="{{asset('public/visitingCard/bussinessCard/a/js/jquery-confirm.js')}}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <script src="{{asset('public/visitingCard/bussinessCard/common/js/jquery.star-rating.js')}}"></script>
-    <script src="{{asset('public/visitingCard/bussinessCard/common/js/custom.js')}}"></script>
+    <script src="{{asset('public/visitingCard/bussinessCard/common/js/feedbackSub.js')}}"></script>
+    <script src="{{asset('public/js/prevent.js')}}"></script>
+    <script src="{{asset('public/visitingCard/bussinessCard/a/js/script.js')}}?v={{date('YmdHis')}}"></script>
 
     @if($userConfigObj->isEcommerceEnable == '1')
     <script src="{{asset('public/visitingCard/bussinessCard/common/js/add2Cart.js')}}"></script>
