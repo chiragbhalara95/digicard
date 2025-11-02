@@ -5,13 +5,48 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
   <meta name="csrf-token" content="{{ csrf_token() }}">
   <title>@yield('title', 'Just in 5 min Make your Digital Visiting Card - digitalcards.tech')</title>
-  <meta name="description" content="Digital Visiting Card is the standard for digital business cards that works on Smartphones, Tablets and computers with no app required.">
-  <meta name="keywords" content="digital visiting card, business card maker, online digital card, digitalcards.tech, digicards">
+  <meta name="description" content="Discover premium AI tools and digital products designed for businesses. Build smarter, faster, and more efficiently with our modern solutions.">
+  <meta name="keywords" content="AI tools, SaaS, business solutions, automation, digital tools, productivity software">
   <meta name="author" content="digitalcards.tech">
+
+  <meta property="og:title" content="Your Website Title">
+  <meta property="og:description" content="Explore AI-powered tools and digital products for smarter business growth.">
+  <meta property="og:image" content="{{ asset('images/preview.jpg') }}">
+  <meta property="og:url" content="{{ url()->current() }}">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="{{ url()->current() }}">
+
   <link rel="shortcut icon" href="{{ asset('public/frontView/assets/img/favicon.ico') }}">
+ 
   <link href="{{ asset('public/frontView/assets/img/logo.png') }}" rel="icon" type="image/png">
+  
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+    <script type="application/ld+json">
+    {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "digitalcards",
+    "operatingSystem": "Web",
+    "applicationCategory": "BusinessApplication",
+    "url": "{{ url('/') }}",
+    "logo": "{{ asset('public/frontView/assets/img/logo.png') }}",
+    "offers": {
+        "@type": "Offer",
+        "price": "999",
+        "priceCurrency": "INR"
+    },
+    "sameAs": [
+    ],
+    "contactPoint": [{
+        "@type": "ContactPoint",
+        "telephone": "+1 5589 55488 55",
+        "contactType": "Customer Support",
+        "areaServed": "IN",
+        "availableLanguage": "English"
+    }]
+    }
+    </script>
 
   <style>
     :root {
