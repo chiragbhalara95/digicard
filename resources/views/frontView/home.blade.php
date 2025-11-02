@@ -475,8 +475,8 @@
         <div class="row align-items-center g-5">
             <div class="col-lg-6">
                 <div class="hero-content">
-                    <h1>We offer Below Services:</h1>
-                    <h5>Digital Business Cards</h5>
+                    <h1>AI-Powered <strong>Digital Business Cards</strong> for Modern Brands</h1>
+                    <h5>Build, share, and grow your identity — smarter & faster.</h5>
                     <a href="#about" class="btn-get-started">Get Started</a>
                 </div>
             </div>
@@ -501,8 +501,8 @@
 <section id="about">
     <div class="container">
         <header class="section-header">
-            <h3>About Us</h3>
-            <p>A digital card is an online hosted, digital virtual representation of any plastic card. A digital card, unlike a plastic card, doesn't require any physical representation.</p>
+            <h2>About DigitalCards</h2>
+            <p>Our platform turns traditional business cards into interactive digital experiences — hosted online and shareable in seconds.</p>
         </header>
 
         <h2 class="text-center mb-3 fs-2 text-dark">Digital Business Card</h2>
@@ -511,7 +511,7 @@
         <div class="row align-items-center g-5">
             <div class="col-lg-6">
                 <div class="about-content">
-                    <p>Digital Card is the standard for digital business cards that works on Smartphones, Tablets and computers with NO APP required. Digital Card creates a digital hub where your customers can pick and choose how they connect with you. For example, you can list your standard contact information, a bio telling a little more about yourself, all of your social networks in one place and an info center, which allows you to create a digital brochure.</p>
+                    <p>With DigitalCards, your business card becomes a <strong>smart microsite</strong> — accessible on any device, no app needed. Add contact info, portfolios, links, or QR/NFC support — all under your brand identity.</p>
                     
                     <div class="icon-box">
                         <div class="icon"><i class="fas fa-shopping-bag"></i></div>

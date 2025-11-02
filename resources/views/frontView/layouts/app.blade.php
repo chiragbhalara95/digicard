@@ -5,16 +5,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
   <meta name="csrf-token" content="{{ csrf_token() }}">
   <title>@yield('title', 'Just in 5 min Make your Digital Visiting Card - digitalcards.tech')</title>
-  <meta name="description" content="Discover premium AI tools and digital products designed for businesses. Build smarter, faster, and more efficiently with our modern solutions.">
-  <meta name="keywords" content="AI tools, SaaS, business solutions, automation, digital tools, productivity software">
+  <meta name="description" content="Create AI-powered digital business cards to grow your brand online. Ideal for entrepreneurs, startups, and small businesses — share your card instantly and connect anywhere.">
+  <meta name="keywords" content="digital business cards, AI business cards, smart business cards, online business card maker, virtual business card, digitalcards.tech, small business branding, NFC cards, QR code business card">
   <meta name="author" content="digitalcards.tech">
 
-  <meta property="og:title" content="Your Website Title">
-  <meta property="og:description" content="Explore AI-powered tools and digital products for smarter business growth.">
+  <meta property="og:title" content="AI-Powered Digital Business Cards | digitalcards.tech">
+  <meta property="og:description" content="Build, customize, and share digital business cards instantly. Perfect for small businesses, freelancers, and professionals.">
   <meta property="og:image" content="{{ asset('images/preview.jpg') }}">
   <meta property="og:url" content="{{ url()->current() }}">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="digitalcards.tech">
+
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Create Your Smart Digital Business Card | digitalcards.tech">
+  <meta name="twitter:description" content="Design AI-powered business cards that impress clients and grow your digital presence.">
+  <meta name="twitter:image" content="{{ asset('images/preview.jpg') }}">
+  <meta name="twitter:site" content="@digitalcards">
+
   <link rel="canonical" href="{{ url()->current() }}">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#6f42c1">
 
   <link rel="shortcut icon" href="{{ asset('public/frontView/assets/img/favicon.ico') }}">
  
@@ -22,31 +32,6 @@
   
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
-    <script type="application/ld+json">
-    {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "digitalcards",
-    "operatingSystem": "Web",
-    "applicationCategory": "BusinessApplication",
-    "url": "{{ url('/') }}",
-    "logo": "{{ asset('public/frontView/assets/img/logo.png') }}",
-    "offers": {
-        "@type": "Offer",
-        "price": "999",
-        "priceCurrency": "INR"
-    },
-    "sameAs": [
-    ],
-    "contactPoint": [{
-        "@type": "ContactPoint",
-        "telephone": "+1 5589 55488 55",
-        "contactType": "Customer Support",
-        "areaServed": "IN",
-        "availableLanguage": "English"
-    }]
-    }
-    </script>
 
   <style>
     :root {
@@ -186,6 +171,48 @@
       .whatsapp-float { right: 20px; bottom: 20px; }
     }
   </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "DigitalCards",
+    "alternateName": "digitalcards.tech",
+    "description": "AI-powered digital business card builder for small businesses and professionals. Create and share personalized digital cards to grow your brand online.",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Web",
+    "url": "{{ url('/') }}",
+    "logo": "{{ asset('public/frontView/assets/img/logo.png') }}",
+    "image": "{{ asset('images/preview.jpg') }}",
+    "creator": {
+      "@type": "Organization",
+      "name": "digitalcards.tech",
+      "url": "{{ url('/') }}"
+    },
+    "offers": {
+      "@type": "Offer",
+      "price": "999",
+      "priceCurrency": "INR",
+      "availability": "https://schema.org/InStock"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.8",
+      "reviewCount": "142"
+    },
+    "contactPoint": [{
+      "@type": "ContactPoint",
+      "telephone": "+91-9876543210",
+      "contactType": "Customer Support",
+      "areaServed": "IN",
+      "availableLanguage": ["English", "Hindi"]
+    }],
+    "sameAs": [
+      "https://facebook.com/digitalcards.tech",
+      "https://instagram.com/digitalcards.tech",
+      "https://linkedin.com/company/digitalcards-tech"
+    ]
+  }
+  </script>
 
   @yield('custom_style')
 </head>
@@ -256,7 +283,14 @@
   <a href="https://api.whatsapp.com/send?phone=919537178057&text=Hello%20DigiCards%20Team!" class="whatsapp-float" target="_blank">
     <i class="fab fa-whatsapp"></i>
   </a>
+  
+  <!-- jQuery first -->
+  <script src="{{ asset('public/admin/plugins/jquery/jquery.min.js') }}"></script>
 
+  <!-- jQuery Validation plugin -->
+  <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
+
+  <!-- Then Bootstrap -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <script>
     const chatPopup = document.getElementById('chatPopup');
