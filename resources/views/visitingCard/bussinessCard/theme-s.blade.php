@@ -707,7 +707,49 @@
             margin-top: 15px;
             color: var(--text-secondary);
         }
-    </style>
+.feedback-item:hover {
+  background-color: rgba(255, 255, 255, 0.08) !important;
+  transform: translateY(-2px);
+  transition: all 0.25s ease-in-out;
+}
+
+.modal-content {
+  backdrop-filter: blur(12px);
+}
+
+.text-muted {
+  color: rgba(255,255,255,0.6) !important;
+}
+.section-header {
+  font-weight: 600;
+  font-size: 1.4rem;
+}
+
+@media (max-width: 576px) {
+  .input-group input {
+    font-size: 0.95rem;
+  }
+
+  .btn {
+    font-size: 0.9rem;
+    padding: 10px 14px;
+  }
+
+  .action-buttons .btn {
+    width: 100%;
+  }
+}
+  .btn-gradient {
+    background: linear-gradient(to right, #00c6ff, #7d2ae8);
+    border: none;
+  }
+  .btn-gradient:hover {
+    opacity: 0.9;
+  }
+  .margin_bottom {
+    margin-bottom:5px
+  }
+</style>
 </head>
 <body>
     <div class="container">
@@ -807,28 +849,57 @@
                 @endif
             </div>
 
-            <!-- Share Section -->
-            <div class="section">
-                <h2 class="section-header">Share My Card</h2>
-                <div class="share-section">
-                    <div style="margin-bottom: 15px; text-align: center; color: var(--text-secondary);">
-                        Enter a WhatsApp number to share
-                    </div>
-                    <input type="hidden" id="whatsapp-msg" value="{{url('vc')}}/{{$userObj->slug}}">
-                    <div class="whatsapp-input-group">
-                        <input type="tel" id="whatsapp-input" placeholder="Enter WhatsApp number" maxlength="10" oninput="this.value=this.value.replace(/[^0-9]/g,'');">
-                        <button onclick="handleWhatsappShare()"><i class="fab fa-whatsapp"></i> Send</button>
-                    </div>
-                </div>
-                <div class="action-buttons">
-                    <a href="{{url('saveViewCard')}}/{{$userObj->slug}}" download="contact.vcf" class="btn btn-primary">
-                        <i class="fas fa-download"></i> Save Contact
-                    </a>
-                    <a href="javascript:void(0)" onclick="openShareModal()" class="btn btn-secondary">
-                        <i class="fas fa-share-alt"></i> Share Card
-                    </a>
-                </div>
-            </div>
+<!-- Share My Card Section -->
+<div class="section py-4 mt-4">
+  <h2 class="section-header text-center mb-3 text-light">Share My Card</h2>
+
+  <div class="share-section bg-dark rounded-4 p-4 mx-auto" style="max-width: 480px;">
+    <p class="text-muted mb-3 text-center small">
+      Enter a WhatsApp number to share your digital card
+    </p>
+
+    <input type="hidden" id="whatsapp-msg" value="{{ url('vc') }}/{{ $userObj->slug }}">
+
+    <!-- WhatsApp Input + Button -->
+
+<div class="d-flex align-items-center gap-2 mb-4 px-1 margin_bottom">
+  <input 
+    type="tel"
+    id="whatsapp-input"
+    class="form-input margin_bottom"
+    placeholder="Enter WhatsApp number"
+    maxlength="10"
+    oninput="this.value=this.value.replace(/[^0-9]/g,'');"
+  >
+</div>
+
+<!-- Action Buttons -->
+<div class="row g-2 justify-content-center">
+        <button 
+          class="btn btn-success rounded-pill px-4 py-2 margin_bottom"
+          type="button"
+          onclick="handleWhatsappShare()"
+        >
+          <i class="fab fa-whatsapp me-1"></i> Send
+        </button>
+      <div class="col-12 col-sm-6 d-grid">
+        <a href="{{ url('saveViewCard') }}/{{ $userObj->slug }}" 
+           download="contact.vcf" 
+           class="btn btn-gradient btn-lg rounded-pill text-white">
+          <i class="fas fa-download me-2"></i> Save Contact
+        </a>
+      </div>
+
+      <div class="col-12 col-sm-6 d-grid">
+        <a href="javascript:void(0)" 
+           onclick="openShareModal()" 
+           class="btn btn-outline-light btn-lg rounded-pill">
+          <i class="fas fa-share-alt me-2"></i> Share Card
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
 
             @if (count($socialMediaData) > 0)
             <!-- Social Media -->
@@ -1214,6 +1285,9 @@
     <input type="hidden" id="send_enquiry_url" value="{{route('sendEnquiry')}}">
 
     <script src="{{asset('public/visitingCard/bussinessCard/common/js/jquery-3.6.4.min.js')}}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
     <script src="{{asset('public/visitingCard/bussinessCard/a/js/intlTelInput.min.js')}}"></script>
     <script src="{{asset('public/visitingCard/bussinessCard/a/js/parsley.min.js')}}"></script>
     <script src="{{asset('public/visitingCard/bussinessCard/a/js/form-action.js')}}"></script>
@@ -1321,6 +1395,23 @@
                 }
             });
         });
-    </script>
+$(document).ready(function() {
+    // initialize the star rating plugin
+    $('#ratingStars').starRating({
+        stars: 5,
+        starsSize: 1.8,
+        titles: ["Very Bad", "Bad", "Okay", "Good", "Excellent"],
+        showInfo: true,
+        inputName: 'rating_count'
+    });
+
+    // sync selected value to hidden field
+    $('#ratingStars').on('change', function (e, value) {
+        $('#ratingVal').val(value);
+    });
+});
+
+</script>
+
 </body>
 </html>
