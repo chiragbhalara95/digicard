@@ -749,6 +749,14 @@
   .margin_bottom {
     margin-bottom:5px
   }
+  .star-filled {
+  color: #ffc107; /* gold */
+}
+
+.star-empty {
+  color: #d6d6d6; /* light grey */
+}
+
 </style>
 </head>
 <body>
