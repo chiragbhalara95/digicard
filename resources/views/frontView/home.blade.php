@@ -3,493 +3,785 @@
 @section('custom_style')
 <link href="{{ asset('public/frontView/minify/css/custom.min.css') }}?v={{date('YmdHis')}}" rel="stylesheet">
 <style>
-    /* Hero Section */
-    .hero {
-        padding: 6rem 0 4rem;
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        position: relative;
-        overflow: hidden;
+    /* ===== Global Styles ===== */
+    :root {
+        --primary-color: #2563eb;
+        --primary-dark: #1e40af;
+        --primary-light: #3b82f6;
+        --secondary-color: #8b5cf6;
+        --accent-color: #ec4899;
+        --dark-color: #0f172a;
+        --dark-light: #1e293b;
+        --text-primary: #1e293b;
+        --text-secondary: #64748b;
+        --text-light: #94a3b8;
+        --background: #f8fafc;
+        --surface: #ffffff;
+        --border: #e2e8f0;
+        --success: #10b981;
+        --warning: #f59e0b;
+        --error: #ef4444;
+        --gradient: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        --gradient-light: linear-gradient(135deg, var(--primary-light), #f472b6);
+        --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+        --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        --radius-sm: 0.375rem;
+        --radius-md: 0.5rem;
+        --radius-lg: 0.75rem;
+        --radius-xl: 1rem;
+        --radius-full: 9999px;
     }
 
-    .hero::before {
-        content: '';
-        position: absolute;
-        width: 600px;
-        height: 600px;
-        background: rgba(255,255,255,0.1);
-        border-radius: 50%;
-        top: -300px;
-        right: -200px;
-        animation: float 20s infinite ease-in-out;
+    body {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        color: var(--text-primary);
+        line-height: 1.6;
+        overflow-x: hidden;
+        scroll-behavior: smooth;
     }
 
-    @keyframes float {
-        0%, 100% { transform: translate(0, 0) rotate(0deg); }
-        50% { transform: translate(50px, 50px) rotate(180deg); }
-    }
-
-    .hero-content h1 {
-        font-size: 3.5rem;
-        font-weight: 800;
-        color: white;
-        margin-bottom: 1.5rem;
+    h1, h2, h3, h4, h5, h6 {
+        font-family: 'Poppins', sans-serif;
+        font-weight: 600;
         line-height: 1.2;
     }
 
-    .hero-content h5 {
+    /* ===== Hero Section ===== */
+    .hero-section {
+        position: relative;
+        padding: 8rem 0 6rem;
+        background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+        color: white;
+        overflow: hidden;
+    }
+
+    .hero-section::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: 
+            radial-gradient(circle at 20% 80%, rgba(99, 102, 241, 0.15) 0%, transparent 50%),
+            radial-gradient(circle at 80% 20%, rgba(139, 92, 246, 0.1) 0%, transparent 50%);
+        animation: pulse 4s ease-in-out infinite alternate;
+    }
+
+    @keyframes pulse {
+        0% { opacity: 0.5; }
+        100% { opacity: 1; }
+    }
+
+    .hero-title {
+        font-size: 3.5rem;
+        font-weight: 800;
+        margin-bottom: 1.5rem;
+        background: linear-gradient(to right, #ffffff, #a5b4fc);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .hero-subtitle {
         font-size: 1.25rem;
-        color: rgba(255,255,255,0.9);
+        color: rgba(255, 255, 255, 0.8);
         margin-bottom: 2rem;
+        line-height: 1.6;
     }
 
-    .btn-get-started {
-        background: white;
-        color: var(--primary);
-        padding: 1rem 2rem;
-        border-radius: 50px;
-        text-decoration: none;
-        font-weight: 600;
-        transition: all 0.3s;
-        display: inline-block;
-    }
-
-    .btn-get-started:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 10px 30px rgba(255,255,255,0.3);
-        color: var(--primary);
-    }
-
-    .card-mockup {
-        background: white;
-        border-radius: 20px;
-        padding: 2.5rem;
-        box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-        animation: cardFloat 6s infinite ease-in-out;
-        text-align: center;
-    }
-
-    @keyframes cardFloat {
-        0%, 100% { transform: translateY(0); }
-        50% { transform: translateY(-20px); }
-    }
-
-    .card-profile {
-        width: 120px;
-        height: 120px;
-        background: var(--gradient);
-        border-radius: 50%;
-        margin: 0 auto 1.5rem;
+    .hero-cta {
         display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 3rem;
+        gap: 1rem;
+        margin-top: 2rem;
+    }
+
+    .btn-primary-large {
+        background: var(--gradient);
+        color: white;
+        padding: 1rem 2.5rem;
+        border-radius: var(--radius-full);
+        font-weight: 600;
+        font-size: 1.125rem;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        border: none;
+        box-shadow: var(--shadow-lg);
+    }
+
+    .btn-primary-large:hover {
+        transform: translateY(-3px);
+        box-shadow: var(--shadow-xl);
         color: white;
     }
 
-    .card-details {
-        margin-top: 1.5rem;
-        padding-top: 1.5rem;
-        border-top: 2px solid #f1f5f9;
+    .btn-outline-light {
+        background: transparent;
+        color: white;
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        padding: 1rem 2.5rem;
+        border-radius: var(--radius-full);
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.3s ease;
     }
 
-    .card-detail-item {
+    .btn-outline-light:hover {
+        background: rgba(255, 255, 255, 0.1);
+        border-color: white;
+        color: white;
+    }
+
+    .card-preview {
+        position: relative;
+        transform-style: preserve-3d;
+        perspective: 1000px;
+    }
+
+    .card-3d {
+        background: white;
+        border-radius: var(--radius-xl);
+        padding: 2.5rem;
+        box-shadow: var(--shadow-xl);
+        animation: float 6s ease-in-out infinite;
+        transform: rotateY(-15deg);
+        border: 1px solid var(--border);
+    }
+
+    @keyframes float {
+        0%, 100% { transform: rotateY(-15deg) translateY(0); }
+        50% { transform: rotateY(-15deg) translateY(-20px); }
+    }
+
+    .card-header {
         display: flex;
         align-items: center;
-        gap: 0.75rem;
-        padding: 0.75rem;
-        margin-bottom: 0.5rem;
-        background: #f8fafc;
-        border-radius: 10px;
-        font-size: 0.875rem;
-        color: var(--gray);
+        gap: 1.5rem;
+        margin-bottom: 2rem;
     }
 
-    /* About Section */
-    #about {
+    .card-avatar {
+        width: 80px;
+        height: 80px;
+        background: var(--gradient);
+        border-radius: var(--radius-full);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 2rem;
+        font-weight: 600;
+    }
+
+    .card-info h3 {
+        font-size: 1.5rem;
+        margin-bottom: 0.25rem;
+        color: var(--text-primary);
+    }
+
+    .card-info p {
+        color: var(--text-secondary);
+        margin-bottom: 0.5rem;
+    }
+
+    .qr-badge {
+        background: var(--background);
+        padding: 0.5rem 1rem;
+        border-radius: var(--radius-full);
+        font-size: 0.875rem;
+        color: var(--primary-color);
+        font-weight: 500;
+    }
+
+    .card-stats {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+        margin-top: 2rem;
+        padding-top: 2rem;
+        border-top: 1px solid var(--border);
+    }
+
+    .stat-item {
+        text-align: center;
+    }
+
+    .stat-number {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--primary-color);
+        margin-bottom: 0.25rem;
+    }
+
+    .stat-label {
+        font-size: 0.75rem;
+        color: var(--text-secondary);
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    /* ===== About Section ===== */
+    .section-padding {
         padding: 6rem 0;
-        background: var(--light);
     }
 
     .section-header {
         text-align: center;
-        margin-bottom: 3rem;
+        margin-bottom: 4rem;
     }
 
-    .section-header h3 {
+    .section-title {
         font-size: 2.5rem;
-        font-weight: 800;
+        font-weight: 700;
         margin-bottom: 1rem;
-        color: var(--dark);
+        color: var(--text-primary);
     }
 
-    .section-header p {
+    .section-subtitle {
         font-size: 1.125rem;
-        color: var(--gray);
+        color: var(--text-secondary);
         max-width: 700px;
         margin: 0 auto;
+        line-height: 1.6;
     }
 
-    .about-content p {
-        margin-bottom: 2rem;
-        line-height: 1.8;
-        color: var(--gray);
+    .features-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin-top: 3rem;
     }
 
-    .icon-box {
-        display: flex;
-        align-items: flex-start;
-        gap: 1rem;
-        margin-bottom: 1.5rem;
-        padding: 1.5rem;
-        background: white;
-        border-radius: 15px;
-        box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-        transition: all 0.3s;
+    .feature-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-xl);
+        padding: 2rem;
+        transition: all 0.3s ease;
+        text-align: left;
     }
 
-    .icon-box:hover {
-        transform: translateX(10px);
-        box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+    .feature-card:hover {
+        transform: translateY(-8px);
+        box-shadow: var(--shadow-xl);
+        border-color: var(--primary-color);
     }
 
-    .icon-box .icon {
-        width: 50px;
-        height: 50px;
+    .feature-icon {
+        width: 60px;
+        height: 60px;
         background: var(--gradient);
-        border-radius: 12px;
+        border-radius: var(--radius-lg);
         display: flex;
         align-items: center;
         justify-content: center;
+        margin-bottom: 1.5rem;
         color: white;
         font-size: 1.5rem;
-        flex-shrink: 0;
     }
 
-    .icon-box .title {
-        font-size: 1.125rem;
+    .feature-title {
+        font-size: 1.25rem;
         font-weight: 600;
-        color: var(--dark);
-        margin-bottom: 0;
+        margin-bottom: 0.75rem;
+        color: var(--text-primary);
     }
 
-    .icon-box .title a {
-        color: var(--dark);
-        text-decoration: none;
+    .feature-desc {
+        color: var(--text-secondary);
+        line-height: 1.6;
     }
 
-    .about-img img {
-        width: 100%;
-        border-radius: 20px;
-        box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+    .stats-showcase {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 2rem;
+        margin-top: 4rem;
     }
 
-    /* Services/Products Section */
-    #services {
-        padding: 6rem 0;
-        background: white;
+    .stat-card {
+        text-align: center;
+        padding: 2rem;
+        background: var(--surface);
+        border-radius: var(--radius-xl);
+        border: 1px solid var(--border);
+        transition: all 0.3s ease;
+    }
+
+    .stat-card:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-lg);
+    }
+
+    .stat-number-large {
+        font-size: 3rem;
+        font-weight: 800;
+        background: var(--gradient);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin-bottom: 0.5rem;
+    }
+
+    .stat-text {
+        font-size: 1rem;
+        color: var(--text-secondary);
+        font-weight: 500;
+    }
+
+    /* ===== Products Section ===== */
+    .products-section {
+        background: var(--background);
+    }
+
+    .pricing-cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin-top: 3rem;
     }
 
     .pricing-card {
-        background: white;
-        border: 2px solid #e2e8f0;
-        border-radius: 20px;
+        background: var(--surface);
+        border: 2px solid var(--border);
+        border-radius: var(--radius-xl);
         padding: 2.5rem;
-        transition: all 0.3s;
-        height: 100%;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
     }
 
     .pricing-card:hover {
         transform: translateY(-10px);
-        box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-        border-color: var(--primary);
+        box-shadow: var(--shadow-xl);
+        border-color: var(--primary-color);
     }
 
-    .pricing-card h4 {
-        font-size: 1.5rem;
-        margin-bottom: 1rem;
-        color: var(--dark);
+    .pricing-card.popular {
+        border-color: var(--primary-color);
+        box-shadow: var(--shadow-lg);
+    }
+
+    .popular-badge {
+        position: absolute;
+        top: 0;
+        right: 2rem;
+        background: var(--gradient);
+        color: white;
+        padding: 0.5rem 1.5rem;
+        border-radius: 0 0 var(--radius-md) var(--radius-md);
+        font-size: 0.875rem;
+        font-weight: 600;
+    }
+
+    .pricing-header {
         text-align: center;
-    }
-
-    .pricing-card select {
-        width: 100%;
-        padding: 0.75rem;
-        border: 2px solid #e2e8f0;
-        border-radius: 10px;
-        margin-bottom: 1.5rem;
-        font-size: 0.9rem;
-    }
-
-    .pricing-card .description {
-        color: var(--gray);
-        line-height: 1.8;
         margin-bottom: 2rem;
     }
 
-    .create_custom_card {
+    .pricing-title {
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        color: var(--text-primary);
+    }
+
+    .pricing-price {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: var(--primary-color);
+        margin-bottom: 0.5rem;
+    }
+
+    .pricing-period {
+        color: var(--text-secondary);
+        font-size: 0.875rem;
+    }
+
+    .pricing-features {
+        list-style: none;
+        padding: 0;
+        margin-bottom: 2rem;
+        margin-left:2rem;
+    }
+
+    .pricing-features li {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        margin-bottom: 0.75rem;
+        color: var(--text-secondary);
+    }
+
+    .pricing-features li i {
+        color: var(--success);
+        font-size: 0.875rem;
+    }
+
+    .btn-pricing {
+        display: block;
         width: 100%;
         padding: 1rem;
         background: var(--gradient);
         color: white;
         border: none;
-        border-radius: 50px;
+        border-radius: var(--radius-lg);
         font-weight: 600;
         text-align: center;
         text-decoration: none;
-        display: block;
-        transition: all 0.3s;
+        transition: all 0.3s ease;
     }
 
-    .create_custom_card:hover {
+    .btn-pricing:hover {
         transform: translateY(-2px);
-        box-shadow: 0 10px 30px rgba(102, 102, 255, 0.3);
+        box-shadow: var(--shadow-md);
         color: white;
     }
 
-    /* Why Us Section */
-    #why-us {
-        padding: 6rem 0;
-        background: var(--light);
+    .btn-pricing.outline {
+        background: transparent;
+        border: 2px solid var(--primary-color);
+        color: var(--primary-color);
     }
 
-    .feature-card {
-        background: white;
-        padding: 2.5rem;
-        border-radius: 20px;
-        box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-        transition: all 0.3s;
-        text-align: center;
-        height: 100%;
+    .btn-pricing.outline:hover {
+        background: var(--primary-color);
+        color: white;
     }
 
-    .feature-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    /* ===== Features Section ===== */
+    .features-section {
+        background: var(--surface);
     }
 
-    .feature-card i {
-        font-size: 3rem;
-        background: var(--gradient);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        margin-bottom: 1rem;
+    .feature-showcase {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+        margin-top: 3rem;
     }
 
-    .feature-card h5 {
-        font-size: 1.25rem;
-        font-weight: 600;
-        margin-bottom: 1rem;
-        color: var(--dark);
-    }
-
-    .feature-card p {
-        color: var(--gray);
-        line-height: 1.8;
-        margin-bottom: 1rem;
-    }
-
-    .readmore {
-        color: var(--primary);
-        text-decoration: none;
-        font-weight: 600;
-        transition: color 0.3s;
-    }
-
-    .readmore:hover {
-        color: var(--primary-dark);
-    }
-
-    /* Counters */
-    .counter-box {
+    .feature-item {
         text-align: center;
         padding: 2rem;
-        background: white;
-        border-radius: 15px;
-        box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        background: var(--background);
+        border-radius: var(--radius-xl);
+        transition: all 0.3s ease;
     }
 
-    .counter-box span {
+    .feature-item:hover {
+        transform: translateY(-8px);
+        box-shadow: var(--shadow-lg);
+    }
+
+    .feature-icon-large {
         font-size: 3rem;
-        font-weight: 800;
         background: var(--gradient);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
-        display: block;
-        margin-bottom: 0.5rem;
+        margin-bottom: 1rem;
     }
 
-    .counter-box p {
-        color: var(--gray);
+    .feature-item-title {
+        font-size: 1.25rem;
         font-weight: 600;
-        margin-bottom: 0;
+        margin-bottom: 0.75rem;
+        color: var(--text-primary);
     }
 
-    /* Contact Section */
-    #contact {
-        padding: 6rem 0;
-        background: var(--dark);
+    .feature-item-desc {
+        color: var(--text-secondary);
+        line-height: 1.6;
+    }
+
+    /* ===== Contact Section ===== */
+    .contact-section {
+        background: var(--dark-color);
         color: white;
     }
 
-    #contact .section-header h3 {
+    .contact-section .section-title {
         color: white;
     }
 
-    .map {
-        border-radius: 20px;
-        overflow: hidden;
-        box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-        height: 100%;
-        min-height: 450px;
+    .contact-section .section-subtitle {
+        color: rgba(255, 255, 255, 0.8);
     }
 
-    .map iframe {
-        width: 100%;
-        height: 100%;
-        min-height: 450px;
-        border: none;
+    .contact-info-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1.5rem;
+        margin-bottom: 3rem;
     }
 
-    .info-box {
-        background: var(--dark-light);
+    .contact-info-item {
+        background: rgba(255, 255, 255, 0.05);
         padding: 1.5rem;
-        border-radius: 15px;
+        border-radius: var(--radius-lg);
         text-align: center;
-        height: 100%;
+        transition: all 0.3s ease;
     }
 
-    .info-box i {
+    .contact-info-item:hover {
+        background: rgba(255, 255, 255, 0.1);
+        transform: translateY(-5px);
+    }
+
+    .contact-info-item i {
         font-size: 2rem;
-        color: var(--primary);
-        margin-bottom: 0.5rem;
+        color: var(--primary-light);
+        margin-bottom: 1rem;
     }
 
-    .info-box p {
-        color: rgba(255,255,255,0.8);
-        font-size: 0.9rem;
+    .contact-info-item p {
+        color: rgba(255, 255, 255, 0.8);
         margin-bottom: 0;
     }
 
-    .contact-form {
+    .contact-form-container {
         background: var(--dark-light);
-        padding: 2.5rem;
-        border-radius: 20px;
+        padding: 3rem;
+        border-radius: var(--radius-xl);
     }
 
-    .contact-form .form-control,
-    .contact-form .form-select {
+    .form-group {
+        margin-bottom: 1.5rem;
+    }
+
+    .form-control {
+        width: 100%;
         padding: 1rem;
-        border: 2px solid rgba(255,255,255,0.1);
-        background: rgba(255,255,255,0.05);
-        border-radius: 10px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: var(--radius-lg);
         color: white;
-        transition: all 0.3s;
+        font-family: inherit;
+        font-size: 1rem;
+        transition: all 0.3s ease;
     }
 
-    .contact-form .form-control:focus,
-    .contact-form .form-select:focus {
-        border-color: var(--primary);
-        background: rgba(255,255,255,0.1);
-        box-shadow: none;
+    .form-control:focus {
+        outline: none;
+        border-color: var(--primary-light);
+        background: rgba(255, 255, 255, 0.1);
+        box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+    }
+
+    .form-control::placeholder {
+        color: rgba(255, 255, 255, 0.5);
+    }
+
+    .captcha-container {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .captcha-image {
+        background: white;
+        padding: 0.5rem;
+        border-radius: var(--radius-md);
+        border: 1px solid var(--border);
+    }
+
+    .btn-refresh {
+        background: var(--warning);
         color: white;
-    }
-
-    .contact-form .form-control::placeholder {
-        color: rgba(255,255,255,0.5);
-    }
-
-    .contact-form textarea {
-        resize: vertical;
-        min-height: 120px;
-    }
-
-    .captcha-img {
-        display: inline-block;
-        margin-right: 1rem;
-    }
-
-    .btn-warning {
-        background: #f59e0b;
-        color: white;
-        padding: 0.75rem 1.5rem;
-        border-radius: 10px;
         border: none;
+        padding: 0.75rem 1.5rem;
+        border-radius: var(--radius-lg);
         cursor: pointer;
         font-weight: 600;
-        text-decoration: none;
-        display: inline-block;
-        transition: all 0.3s;
+        transition: all 0.3s ease;
     }
 
-    .btn-warning:hover {
+    .btn-refresh:hover {
         background: #d97706;
     }
 
-    .contact-form .btn-submit {
+    .btn-submit {
         width: 100%;
         padding: 1rem;
         background: var(--gradient);
-        border: none;
-        border-radius: 50px;
         color: white;
-        font-size: 1rem;
+        border: none;
+        border-radius: var(--radius-lg);
+        font-size: 1.125rem;
         font-weight: 600;
         cursor: pointer;
-        transition: all 0.3s;
+        transition: all 0.3s ease;
     }
 
-    .contact-form .btn-submit:hover {
+    .btn-submit:hover {
         transform: translateY(-2px);
-        box-shadow: 0 10px 30px rgba(102, 102, 241, 0.3);
+        box-shadow: var(--shadow-md);
     }
 
-    /* Mobile Responsive */
+    /* ===== Responsive Design ===== */
+    @media (max-width: 992px) {
+        .hero-title {
+            font-size: 2.75rem;
+        }
+        
+        .section-title {
+            font-size: 2rem;
+        }
+        
+        .section-padding {
+            padding: 4rem 0;
+        }
+        
+        .card-3d {
+            transform: none;
+            animation: float 6s ease-in-out infinite;
+        }
+    }
+
     @media (max-width: 768px) {
-        .hero {
-            padding: 4rem 0 3rem;
+        .hero-title {
+            font-size: 2.25rem;
         }
-
-        .hero-content h1 {
-            font-size: 2.5rem;
+        
+        .hero-cta {
+            flex-direction: column;
         }
-
-        .section-header h3 {
-            font-size: 2rem;
+        
+        .hero-cta .btn {
+            width: 100%;
+            text-align: center;
+        }
+        
+        .contact-form-container {
+            padding: 2rem;
+        }
+        
+        .card-stats {
+            grid-template-columns: repeat(2, 1fr);
         }
     }
 
-    @media (max-width: 480px) {
-        .hero-content h1 {
-            font-size: 2rem;
+    @media (max-width: 576px) {
+        .hero-title {
+            font-size: 1.875rem;
         }
+        
+        .section-title {
+            font-size: 1.75rem;
+        }
+        
+        .features-grid,
+        .pricing-cards,
+        .feature-showcase {
+            grid-template-columns: 1fr;
+        }
+        
+        .contact-info-grid {
+            grid-template-columns: 1fr;
+        }
+        
+        .captcha-container {
+            flex-direction: column;
+            align-items: stretch;
+        }
+    }
+
+    /* ===== SEO Optimized Content ===== */
+    .seo-content {
+        background: var(--background);
+        border-radius: var(--radius-xl);
+        padding: 3rem;
+        margin-top: 4rem;
+    }
+
+    .seo-title {
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-bottom: 1.5rem;
+        color: var(--text-primary);
+    }
+
+    .seo-text {
+        color: var(--text-secondary);
+        line-height: 1.8;
+        margin-bottom: 1.5rem;
+    }
+
+    .seo-keywords {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-top: 1.5rem;
+    }
+
+    .keyword-tag {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        color: var(--primary-color);
+        padding: 0.5rem 1rem;
+        border-radius: var(--radius-full);
+        font-size: 0.875rem;
+        font-weight: 500;
     }
 </style>
 @endsection
 
 @section('content')
 <!-- Hero Section -->
-<section class="hero" id="intro">
-    <div class="container position-relative" style="z-index: 1;">
-        <div class="row align-items-center g-5">
+<section class="hero-section">
+    <div class="container">
+        <div class="row align-items-center">
             <div class="col-lg-6">
-                <div class="hero-content">
-                    <h1>AI-Powered <strong>Digital Business Cards</strong> for Modern Brands</h1>
-                    <h5>Build, share, and grow your identity — smarter & faster.</h5>
-                    <a href="#about" class="btn-get-started">Get Started</a>
+                <h1 class="hero-title">AI-Powered Digital Business Cards That Drive Results</h1>
+                <p class="hero-subtitle">Transform traditional networking with smart, shareable digital cards. Create, customize, and share your professional identity in minutes.</p>
+                
+                <div class="hero-cta">
+                    <a href="#products" class="btn-primary-large">Start Free Trial</a>
+                    <a href="#features" class="btn-outline-light">View Features</a>
+                </div>
+
+                <div class="d-flex align-items-center gap-4 mt-4">
+                    <div class="d-flex align-items-center">
+                        <i class="fas fa-check-circle text-success me-2"></i>
+                        <span class="text-white-50">No credit card required</span>
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <i class="fas fa-check-circle text-success me-2"></i>
+                        <span class="text-white-50">14-day free trial</span>
+                    </div>
                 </div>
             </div>
+            
             <div class="col-lg-6">
-                <div class="card-mockup">
-                    <div class="card-profile">👤</div>
-                    <h3 class="mb-2 text-dark">Digital Business Card</h3>
-                    <p class="text-muted">Professional & Modern</p>
-                    <div class="card-details">
-                        <div class="card-detail-item">📧 Email Address</div>
-                        <div class="card-detail-item">📱 Phone Number</div>
-                        <div class="card-detail-item">🌐 Website URL</div>
-                        <div class="card-detail-item">📍 Location</div>
+                <div class="card-preview">
+                    <div class="card-3d">
+                        <div class="card-header">
+                            <div class="card-avatar">DC</div>
+                            <div class="card-info">
+                                <h3>DigitalCards Pro</h3>
+                                <p>Premium Business Card</p>
+                                <div class="qr-badge">QR Code Enabled</div>
+                            </div>
+                        </div>
+                        
+                        <div class="card-stats">
+                            <div class="stat-item">
+                                <div class="stat-number">24/7</div>
+                                <div class="stat-label">Support</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">99.9%</div>
+                                <div class="stat-label">Uptime</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">5M+</div>
+                                <div class="stat-label">Cards</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -498,98 +790,92 @@
 </section>
 
 <!-- About Section -->
-<section id="about">
+<section id="about" class="section-padding">
     <div class="container">
-        <header class="section-header">
-            <h2>About DigitalCards</h2>
-            <p>Our platform turns traditional business cards into interactive digital experiences — hosted online and shareable in seconds.</p>
-        </header>
+        <div class="section-header">
+            <h2 class="section-title">Revolutionizing Business Networking</h2>
+            <p class="section-subtitle">DigitalCards transforms traditional business cards into interactive, smart digital experiences that work harder for your business.</p>
+        </div>
 
-        <h2 class="text-center mb-3 fs-2 text-dark">Digital Business Card</h2>
-        <h3 class="text-center mb-5 text-muted fs-4">Why Digital Cards?</h3>
-
-        <div class="row align-items-center g-5">
-            <div class="col-lg-6">
-                <div class="about-content">
-                    <p>With DigitalCards, your business card becomes a <strong>smart microsite</strong> — accessible on any device, no app needed. Add contact info, portfolios, links, or QR/NFC support — all under your brand identity.</p>
-                    
-                    <div class="icon-box">
-                        <div class="icon"><i class="fas fa-shopping-bag"></i></div>
-                        <div>
-                            <h4 class="title"><a href="">Your Digital Visiting Card</a></h4>
-                        </div>
-                    </div>
-
-                    <div class="icon-box">
-                        <div class="icon"><i class="fas fa-image"></i></div>
-                        <div>
-                            <h4 class="title"><a href="">Mini Website for Start-Up</a></h4>
-                        </div>
-                    </div>
-
-                    <div class="icon-box">
-                        <div class="icon"><i class="fas fa-chart-bar"></i></div>
-                        <div>
-                            <h4 class="title"><a href="">Fast Growth of your business</a></h4>
-                        </div>
-                    </div>
-
-                    <div class="icon-box">
-                        <div class="icon"><i class="fas fa-cogs"></i></div>
-                        <div>
-                            <h4 class="title"><a href="">Business with Technology</a></h4>
-                        </div>
-                    </div>
-
-                    <div class="icon-box">
-                        <div class="icon"><i class="fas fa-share-alt"></i></div>
-                        <div>
-                            <h4 class="title"><a href="">Easy to Share</a></h4>
-                        </div>
-                    </div>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-mobile-alt"></i>
                 </div>
+                <h3 class="feature-title">Mobile-First Design</h3>
+                <p class="feature-desc">Responsive digital cards that look perfect on any device - smartphone, tablet, or desktop.</p>
             </div>
-            <div class="col-lg-6">
-                <div class="about-img">
-                    <img src="{{ asset('public/frontView/assets/img/about-img.svg') }}" class="img-fluid" alt="about img">
+
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-qrcode"></i>
                 </div>
+                <h3 class="feature-title">QR & NFC Integration</h3>
+                <p class="feature-desc">Share your contact instantly with scannable QR codes and tap-to-share NFC technology.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h3 class="feature-title">Smart Analytics</h3>
+                <p class="feature-desc">Track views, shares, and engagement to measure your networking success.</p>
+            </div>
+        </div>
+
+        <div class="stats-showcase mt-5">
+            <div class="stat-card">
+                <div class="stat-number-large">5,000+</div>
+                <div class="stat-text">Businesses Trust Us</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number-large">24/7</div>
+                <div class="stat-text">Customer Support</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number-large">99.9%</div>
+                <div class="stat-text">Uptime Guarantee</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number-large">50+</div>
+                <div class="stat-text">Countries Served</div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- Services/Products Section -->
-<section id="services">
+<!-- Products Section -->
+<section id="products" class="section-padding products-section">
     <div class="container">
-        <header class="section-header">
-            <h3>Our Products</h3>
-            <p>We Believe In Success, Your Success Is Our Success</p>
-            <div class="row justify-content-center mt-4">
-                <div class="col-md-4">
-                    <select id="product-select-list" class="form-select">
-                        @foreach($productData AS $key => $productDetail)
-                        <option @if($key == 0) selected @endif value="{{$productDetail['product_id']}}">{{$productDetail['product_name']}}</option>
-                        @endforeach
-                    </select>
-                </div>
-            </div>
-        </header>
+        <div class="section-header">
+            <h2 class="section-title">Flexible Plans for Every Business</h2>
+            <p class="section-subtitle">Choose the perfect plan for your networking needs. All plans include our core features.</p>
+        </div>
 
         @if(!empty($skuCustomPackage))
             @foreach($skuCustomPackage AS $productId => $skuCustomDetail)
             <div class="row g-4 sku-package-row" id="sku-package-row-{{$productId}}">
                 @foreach($skuCustomDetail AS $detail)
                 <div class="col-lg-4 col-md-6">
-                    <div class="pricing-card">
-                        <h4>{{$detail['package_type_name']}}</h4>
-                        <select class="form-select custom-duration">
-                            <option value="">Select Duration</option>
-                            @foreach($detail['duration'] AS $key => $duration)
-                            <option value="{{$key}}" data-price="{{$detail['special_price']}}">{{$duration}}</option>
-                            @endforeach
-                        </select>
-                        <div class="description">{!!$detail['description']!!}</div>
+                    <div class="pricing-card {{ $detail['package_type_name'] == 'Premium' ? 'popular' : '' }}">
+                        @if($detail['package_type_name'] == 'Premium')
+                        <div class="popular-badge">Most Popular</div>
+                        @endif
                         
+                        <div class="pricing-header">
+                            <h3 class="pricing-title">{{$detail['package_type_name']}}</h3>
+                            <div class="pricing-price">₹{{$detail['special_price']}}</div>
+                            <div class="pricing-period">per month</div>
+                        </div>
+
+                        <ul class="pricing-features">
+                            <li><i class="fas fa-check"></i> Unlimited Digital Cards</li>
+                            <li><i class="fas fa-check"></i> QR Code Generation</li>
+                            <li><i class="fas fa-check"></i> Basic Analytics</li>
+                            <li><i class="fas fa-check"></i> Email Support</li>
+                            <li><i class="fas fa-check"></i> Custom Domain</li>
+                        </ul>
+
                         @if ($userCurrency == 'USD')
                         <div class="razorpay-embed-btn" data-url="https://pages.razorpay.com/pl_LbNfvLjHouwTBp/view" data-text="Pay Now" data-color="#528FF0" data-size="large">
                             <script>
@@ -601,7 +887,9 @@
                             </script>
                         </div>
                         @else
-                        <a class="create_custom_card" href="{{url('/register')}}">Create Your Card</a>
+                        <a href="{{url('/register')}}" class="btn-pricing {{ $detail['package_type_name'] == 'Premium' ? '' : 'outline' }}">
+                            Get Started
+                        </a>
                         @endif
                     </div>
                 </div>
@@ -612,282 +900,292 @@
     </div>
 </section>
 
-<!-- Why Us Section -->
-<section id="why-us">
+<!-- Features Section -->
+<section id="features" class="section-padding features-section">
     <div class="container">
-        <header class="section-header">
-            <h3>Why choose us?</h3>
-            <p>Marketing Is Key of Success, Create Your Brand Worldwide</p>
-        </header>
-        
-        <div class="row g-4 mb-5">
-            <div class="col-lg-4 col-md-6">
-                <div class="feature-card">
-                    <i class="fas fa-gem"></i>
-                    <h5>Awesome Support</h5>
-                    <p>We have an outstanding support team, and we will help you free of charge. Your website will be up and running in just 10 minutes.</p>
-                    <a href="#" class="readmore">Read more →</a>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6">
-                <div class="feature-card">
-                    <i class="fas fa-language"></i>
-                    <h5>In-built Enquiry Form</h5>
-                    <p>Digicards provide enquiry form and all the Enquiry submitted by your target audience will be notified on your registered email with digicards.</p>
-                    <a href="#" class="readmore">Read more →</a>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6">
-                <div class="feature-card">
-                    <i class="fas fa-cubes"></i>
-                    <h5>Unlimited Service & Products</h5>
-                    <p>You can add unlimited products and services in your Digicards which can be viewed in a professional format by your target audience.</p>
-                    <a href="#" class="readmore">Read more →</a>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6">
-                <div class="feature-card">
-                    <i class="fas fa-paint-brush"></i>
-                    <h5>Multiple Themes</h5>
-                    <p>You can customize and change your Digital Business Card design with us. We provide amazing templates which will suit your branding needs.</p>
-                    <a href="#" class="readmore">Read more →</a>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6">
-                <div class="feature-card">
-                    <i class="fas fa-share-alt"></i>
-                    <h5>Easy to Share</h5>
-                    <p>Share your cards by using your favorite messaging apps. Send your card as a vCard and xdgc.</p>
-                    <a href="#" class="readmore">Read more →</a>
-                </div>
-            </div>
+        <div class="section-header">
+            <h2 class="section-title">Powerful Features for Modern Networking</h2>
+            <p class="section-subtitle">Everything you need to create, share, and manage professional digital business cards.</p>
         </div>
 
-        <div class="row g-4">
-            <div class="col-lg-3 col-6">
-                <div class="counter-box">
-                    <span data-toggle="counter-up">274</span>
-                    <p>Clients</p>
+        <div class="feature-showcase">
+            <div class="feature-item">
+                <div class="feature-icon-large">
+                    <i class="fas fa-share-alt"></i>
                 </div>
+                <h4 class="feature-item-title">Easy Sharing</h4>
+                <p class="feature-item-desc">Share your card via QR code, link, email, or NFC with a single click.</p>
             </div>
-            <div class="col-lg-3 col-6">
-                <div class="counter-box">
-                    <span data-toggle="counter-up">421</span>
-                    <p>Projects</p>
+
+            <div class="feature-item">
+                <div class="feature-icon-large">
+                    <i class="fas fa-palette"></i>
                 </div>
+                <h4 class="feature-item-title">Custom Design</h4>
+                <p class="feature-item-desc">Multiple themes and customization options to match your brand.</p>
             </div>
-            <div class="col-lg-3 col-6">
-                <div class="counter-box">
-                    <span data-toggle="counter-up">1,364</span>
-                    <p>Hours Of Support</p>
+
+            <div class="feature-item">
+                <div class="feature-icon-large">
+                    <i class="fas fa-chart-bar"></i>
                 </div>
+                <h4 class="feature-item-title">Analytics Dashboard</h4>
+                <p class="feature-item-desc">Track views, shares, and engagement with detailed analytics.</p>
             </div>
-            <div class="col-lg-3 col-6">
-                <div class="counter-box">
-                    <span data-toggle="counter-up">18</span>
-                    <p>Hard Workers</p>
+
+            <div class="feature-item">
+                <div class="feature-icon-large">
+                    <i class="fas fa-sync-alt"></i>
                 </div>
+                <h4 class="feature-item-title">Real-time Updates</h4>
+                <p class="feature-item-desc">Update your card anytime - changes reflect instantly.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SEO Content Section -->
+<section class="section-padding">
+    <div class="container">
+        <div class="seo-content">
+            <h3 class="seo-title">Digital Business Cards: The Future of Professional Networking</h3>
+            <p class="seo-text">
+                Digital business cards are revolutionizing how professionals connect and network. Unlike traditional paper cards that get lost or discarded, digital cards are always accessible, eco-friendly, and packed with interactive features. With DigitalCards.tech, you get a powerful platform to create AI-powered digital business cards that work 24/7 for your business.
+            </p>
+            <p class="seo-text">
+                Our platform supports QR code generation, NFC technology, analytics tracking, and unlimited updates - everything you need to make a lasting impression. Whether you're a freelancer, startup founder, or enterprise business, our flexible plans scale with your needs.
+            </p>
+            <div class="seo-keywords">
+                <span class="keyword-tag">digital business card</span>
+                <span class="keyword-tag">virtual business card</span>
+                <span class="keyword-tag">QR code business card</span>
+                <span class="keyword-tag">NFC business card</span>
+                <span class="keyword-tag">online business card</span>
+                <span class="keyword-tag">smart business card</span>
+                <span class="keyword-tag">contactless business card</span>
             </div>
         </div>
     </div>
 </section>
 
 <!-- Contact Section -->
-<section id="contact">
+<section id="contact" class="section-padding contact-section">
     <div class="container">
         <div class="section-header">
-            <h3>Contact Us</h3>
+            <h2 class="section-title">Get In Touch</h2>
+            <p class="section-subtitle">Have questions? Our team is here to help you get started with digital business cards.</p>
         </div>
-        <div class="row g-4">
-            <div class="col-lg-6">
-                <div class="map">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12097.433213460943!2d-74.0062269!3d40.7101282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621" allowfullscreen></iframe>
-                </div>
+
+        <div class="contact-info-grid">
+            <div class="contact-info-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <p>A108 Adam Street<br>New York, NY 535022</p>
             </div>
-            <div class="col-lg-6">
-                <div class="row g-3 mb-4">
-                    <div class="col-md-4">
-                        <div class="info-box">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <p>A108 Adam Street, NY 535022</p>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="info-box">
-                            <i class="fas fa-envelope"></i>
-                            <p>info@digitalcards.tech</p>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="info-box">
-                            <i class="fas fa-phone"></i>
-                            <p>+1 5589 55488 55</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="contact-form">
-                    <form action="{{route('saveContact')}}" method="post" id="contactFrm">
-                        {{csrf_field()}}
-                        <div class="row g-3">
-                            <div class="col-md-6">
-                                <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" />
-                            </div>
-                            <div class="col-md-6">
-                                <input type="email" class="form-control" name="email" id="email" placeholder="Your Email"/>
-                            </div>
-                        </div>
-                        <div class="row g-3 mt-2">
-                            <div class="col-md-4">
-                                <select class="form-select" required name="country_code">
-                                    <option value="">Country Code</option>
-                                    @if (!empty($countryData))
-                                        @foreach($countryData AS $countryDetail)
-                                        <option value="{{$countryDetail['dial_code']}}" 
-                                            @if($countryDetail['dial_code'] === $selectedCode) selected @endif>
-                                            {{$countryDetail['name']}} ({{$countryDetail['dial_code']}})
-                                        </option>
-                                        @endforeach
-                                    @endif
-                                </select>
-                            </div>
-                            <div class="col-md-8">
-                                <input type="number" class="form-control" name="phone_number" id="phone_number" placeholder="Phone number"/>
-                            </div>
-                        </div>
-                        <div class="mt-3">
-                            <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" />
-                        </div>
-                        <div class="mt-3">
-                            <textarea class="form-control" name="message" rows="5" placeholder="Message"></textarea>
-                        </div>
-                        <div class="mt-3 d-flex align-items-center flex-wrap gap-2">
-                            <div class="captcha-img"></div>
-                            <a class="btn btn-warning" href="javascript:void(0)" onclick="refreshCaptcha()">Regenerate Captcha</a>
-                        </div>
-                        <div class="mt-3">
-                            <input type="text" class="form-control" name="captcha" id="captcha" placeholder="Enter captcha code" />
-                        </div>
-                        <div class="mt-3">
-                            <button type="submit" class="btn-submit">Send Message</button>
-                        </div>
-                    </form>
-                </div>
+            <div class="contact-info-item">
+                <i class="fas fa-phone"></i>
+                <p>+1 5589 55488 55</p>
             </div>
+            <div class="contact-info-item">
+                <i class="fas fa-envelope"></i>
+                <p>info@digitalcards.tech</p>
+            </div>
+            <div class="contact-info-item">
+                <i class="fas fa-clock"></i>
+                <p>Mon-Fri: 9AM-6PM<br>Support 24/7</p>
+            </div>
+        </div>
+
+        <div class="contact-form-container">
+            <form action="{{route('saveContact')}}" method="post" id="contactFrm">
+                {{csrf_field()}}
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <input type="text" name="name" class="form-control" placeholder="Your Name" required>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <input type="email" name="email" class="form-control" placeholder="Your Email" required>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <select class="form-control" name="country_code" required>
+                                <option value="">Country Code</option>
+                                @if (!empty($countryData))
+                                    @foreach($countryData AS $countryDetail)
+                                    <option value="{{$countryDetail['dial_code']}}" 
+                                        @if($countryDetail['dial_code'] === $selectedCode) selected @endif>
+                                        {{$countryDetail['name']}} ({{$countryDetail['dial_code']}})
+                                    </option>
+                                    @endforeach
+                                @endif
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="form-group">
+                            <input type="tel" name="phone_number" class="form-control" placeholder="Phone Number" required>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <input type="text" name="subject" class="form-control" placeholder="Subject" required>
+                </div>
+
+                <div class="form-group">
+                    <textarea name="message" class="form-control" rows="5" placeholder="Your Message" required></textarea>
+                </div>
+
+                <div class="captcha-container">
+                    <div class="captcha-image"></div>
+                    <button type="button" class="btn-refresh" onclick="refreshCaptcha()">
+                        <i class="fas fa-redo me-2"></i> Refresh
+                    </button>
+                </div>
+
+                <div class="form-group">
+                    <input type="text" name="captcha" class="form-control" placeholder="Enter Captcha Code" required>
+                </div>
+
+                <button type="submit" class="btn-submit">Send Message</button>
+            </form>
         </div>
     </div>
 </section>
 @endsection
 
 @section('custom_script')
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.18/css/bootstrap-select.min.css" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.18/js/bootstrap-select.min.js"></script>
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
 <script>
-   $("#contactFrm").validate({
-      rules: {
-         name: {
-            required:true,
-            minlength:4,
-            maxlength:100
-         },
-         email:{
-            required:true,
-            email:true,
-         },
-         subject:{
-            required:true,
-            minlength:4,
-            maxlength:100
-         },
-         phone_number:{
-            required:true,
-            minlength:8
-         },
-         message:{
-            required:true,
-            minlength:4,
-            maxlength:500
-         },
-         captcha:{
-            required:true,
-         }
-      },
-      messages: {
-         name: {
-            required:"Please enter name",
-            minlength:"Please enter at least 4 Char",
-            maxlength:"Please enter maximum 100 Char",
-         },
-         email:{
-            required:"Please enter email",
-         },
-         subject:{
-            required:"Please enter subject",
-            minlength:"Please enter at least 4 Char",
-            maxlength:"Please enter maximum 100 Char",
-         },
-         phone_number:{
-            required:"Please enter phone number",
-         },
-         message:{
-            required:"Please enter message",
-            minlength:"Please enter at least 4 Char",
-            maxlength:"Please enter maximum 500 Char",
-
-         },
-         captcha:{
-            required:"Please enter captcha",
-         }
-      },
-      errorPlacement: function (error, element) {
-          // error.insertAfter(element.attr("name"));
-          if (element.attr("name") == "captcha") {
-              error.insertAfter(element.parent());
-          }else{
-              error.insertAfter(element);
-          }
-      },
-      submitHandler: function(form) {
-                $.ajax({
-                    url: form.action,
-                    type: form.method,
-                    data: $(form).serialize(),
-                beforeSend : function() {
-                },
-                success: function(data) {
-                    if(data.code == '0'){
-                        toastr.success(data.msg)
-                    }else{
-                        toastr.error(data.msg)
-                    }
+// Form Validation
+$("#contactFrm").validate({
+    rules: {
+        name: {
+            required: true,
+            minlength: 2,
+            maxlength: 100
+        },
+        email: {
+            required: true,
+            email: true
+        },
+        subject: {
+            required: true,
+            minlength: 5,
+            maxlength: 200
+        },
+        phone_number: {
+            required: true,
+            minlength: 8,
+            maxlength: 15
+        },
+        message: {
+            required: true,
+            minlength: 10,
+            maxlength: 1000
+        },
+        captcha: {
+            required: true
+        }
+    },
+    messages: {
+        name: {
+            required: "Please enter your name",
+            minlength: "Name must be at least 2 characters",
+            maxlength: "Name cannot exceed 100 characters"
+        },
+        email: {
+            required: "Please enter your email address",
+            email: "Please enter a valid email address"
+        },
+        subject: {
+            required: "Please enter a subject",
+            minlength: "Subject must be at least 5 characters",
+            maxlength: "Subject cannot exceed 200 characters"
+        },
+        phone_number: {
+            required: "Please enter your phone number",
+            minlength: "Phone number must be at least 8 digits",
+            maxlength: "Phone number cannot exceed 15 digits"
+        },
+        message: {
+            required: "Please enter your message",
+            minlength: "Message must be at least 10 characters",
+            maxlength: "Message cannot exceed 1000 characters"
+        },
+        captcha: {
+            required: "Please enter the captcha code"
+        }
+    },
+    errorPlacement: function(error, element) {
+        if (element.attr("name") == "captcha") {
+            error.insertAfter(element.parent().parent());
+        } else {
+            error.insertAfter(element);
+        }
+    },
+    submitHandler: function(form) {
+        $.ajax({
+            url: form.action,
+            type: form.method,
+            data: $(form).serialize(),
+            beforeSend: function() {
+                $('.btn-submit').prop('disabled', true).html('Sending...');
+            },
+            success: function(data) {
+                $('.btn-submit').prop('disabled', false).html('Send Message');
+                if(data.code == '0') {
+                    toastr.success(data.msg);
+                    form.reset();
+                    refreshCaptcha();
+                } else {
+                    toastr.error(data.msg);
                 }
-             })
-      }
-    }    );
-</script>
-
-<script>
-refreshCaptcha()
-function refreshCaptcha(){
-$.ajax({
-url: "{{route('generate-captcha')}}",
-type: 'get',
-  dataType: 'html',        
-  success: function(json) {
-    $('.captcha-img').html(json);
-  },
-  error: function(data) {
-   toastr.error('Try Again.')
-  }
+            },
+            error: function() {
+                $('.btn-submit').prop('disabled', false).html('Send Message');
+                toastr.error('An error occurred. Please try again.');
+            }
+        });
+    }
 });
-}
-</script>
 
+// Captcha Refresh
+function refreshCaptcha() {
+    $.ajax({
+        url: "{{route('generate-captcha')}}",
+        type: 'GET',
+        success: function(data) {
+            $('.captcha-image').html(data);
+        },
+        error: function() {
+            toastr.error('Unable to load captcha. Please refresh the page.');
+        }
+    });
+}
+
+// Initialize captcha on page load
+$(document).ready(function() {
+    refreshCaptcha();
+    
+    // Smooth scrolling for anchor links
+    $('a[href^="#"]').on('click', function(e) {
+        e.preventDefault();
+        var target = $(this.getAttribute('href'));
+        if(target.length) {
+            $('html, body').stop().animate({
+                scrollTop: target.offset().top - 80
+            }, 1000);
+        }
+    });
+});
+</script>
 @endsection
