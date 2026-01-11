@@ -35,7 +35,7 @@
   <meta name="twitter:creator" content="@digitalcardstech">
   
   <!-- Additional SEO Meta Tags -->
-  <meta name="theme-color" content="#667eea">
+  <meta name="theme-color" content="#6366f1">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="format-detection" content="telephone=no">
@@ -63,55 +63,154 @@
   <!-- Stylesheets -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
     :root {
       --primary: #6366f1;
       --primary-dark: #4f46e5;
+      --primary-light: #818cf8;
       --secondary: #ec4899;
       --dark: #0f172a;
       --dark-light: #1e293b;
       --gray: #64748b;
       --light: #f8fafc;
       --white: #ffffff;
-      --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      --gradient: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+      --gradient-light: linear-gradient(135deg, var(--primary-light) 0%, #f472b6 100%);
+      --radius-sm: 0.375rem;
+      --radius-md: 0.5rem;
+      --radius-lg: 0.75rem;
+      --radius-xl: 1rem;
+      --radius-full: 9999px;
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+      --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
 
     body {
-      font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       color: var(--dark);
       overflow-x: hidden;
       scroll-behavior: smooth;
+      line-height: 1.6;
+      background: var(--light);
     }
 
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      line-height: 1.3;
+    }
+
+    /* Modern Navigation */
     .navbar {
-      background: rgba(255,255,255,0.95);
-      box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+      background: rgba(255, 255, 255, 0.98);
+      backdrop-filter: blur(10px);
+      box-shadow: var(--shadow-sm);
       padding: 1rem 0;
+      transition: all 0.3s ease;
+    }
+
+    .navbar.scrolled {
+      padding: 0.75rem 0;
+      box-shadow: var(--shadow-md);
+    }
+
+    .navbar-brand img {
+      height: 40px;
+      transition: all 0.3s ease;
     }
 
     .navbar-nav .nav-link {
       color: var(--dark);
       font-weight: 500;
-      transition: color .3s;
+      padding: 0.5rem 1rem;
+      position: relative;
+      transition: color 0.3s ease;
     }
-    .navbar-nav .nav-link:hover { color: var(--primary); }
 
+    .navbar-nav .nav-link:hover,
+    .navbar-nav .nav-link.active {
+      color: var(--primary);
+    }
+
+    .navbar-nav .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 1rem;
+      right: 1rem;
+      height: 2px;
+      background: var(--gradient);
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+    }
+
+    .navbar-nav .nav-link:hover::after,
+    .navbar-nav .nav-link.active::after {
+      transform: scaleX(1);
+    }
+
+    /* Enhanced Buttons */
     .btn-primary {
       background: var(--gradient);
       border: none;
       color: white;
-      border-radius: 50px;
+      border-radius: var(--radius-full);
       font-weight: 600;
-      padding: 0.6rem 1.5rem;
+      padding: 0.75rem 2rem;
+      transition: all 0.3s ease;
+      box-shadow: var(--shadow-md);
+      position: relative;
+      overflow: hidden;
     }
 
-    footer {
-      background: var(--dark-light);
+    .btn-primary::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: left 0.7s ease;
+    }
+
+    .btn-primary:hover::before {
+      left: 100%;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .btn-outline-primary {
+      border: 2px solid var(--primary);
+      color: var(--primary);
+      background: transparent;
+      border-radius: var(--radius-full);
+      font-weight: 600;
+      padding: 0.75rem 2rem;
+      transition: all 0.3s ease;
+    }
+
+    .btn-outline-primary:hover {
+      background: var(--primary);
       color: white;
-      padding: 3rem 0 1rem;
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
     }
 
+    /* Floating Action Buttons */
     .whatsapp-float {
       position: fixed;
       bottom: 30px;
@@ -124,10 +223,22 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 2rem;
-      box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+      font-size: 1.75rem;
+      box-shadow: var(--shadow-xl);
       z-index: 999;
       text-decoration: none;
+      transition: all 0.3s ease;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .whatsapp-float:hover {
+      transform: scale(1.1);
+      box-shadow: 0 8px 30px rgba(37, 211, 102, 0.6);
     }
 
     .chat-icon {
@@ -137,84 +248,450 @@
       width: 60px;
       height: 60px;
       border-radius: 50%;
-      background: var(--primary);
+      background: var(--gradient);
       color: white;
-      font-size: 1.8rem;
+      font-size: 1.5rem;
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 4px 20px rgba(99,102,241,0.4);
+      box-shadow: var(--shadow-xl);
       cursor: pointer;
       z-index: 998;
+      transition: all 0.3s ease;
     }
 
-    .chat-option {
-      padding: 0.75rem;
-      margin: 0.5rem 0;
-      background: #f1f5f9;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-    
-    .chat-option:hover {
-      background: #e2e8f0;
+    .chat-icon:hover {
+      transform: scale(1.1);
+      box-shadow: 0 8px 30px rgba(99, 102, 241, 0.4);
     }
 
+    /* Enhanced Chat Popup */
     .chat-popup {
       position: fixed;
       bottom: 180px;
       right: 30px;
-      width: 350px;
+      width: 380px;
       background: white;
-      border-radius: 15px;
-      box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-xl);
       display: none;
       flex-direction: column;
       overflow: hidden;
       z-index: 997;
+      transform: translateY(20px);
+      opacity: 0;
+      transition: all 0.3s ease;
     }
-    .chat-popup.active { display: flex; }
+
+    .chat-popup.active {
+      display: flex;
+      transform: translateY(0);
+      opacity: 1;
+    }
 
     .chat-header {
       background: var(--gradient);
       color: white;
-      padding: 1rem;
+      padding: 1.25rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
 
+    .chat-header h5 {
+      margin: 0;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
     .chat-body {
-      padding: 1rem;
-      max-height: 300px;
+      padding: 1.5rem;
+      max-height: 400px;
       overflow-y: auto;
+    }
+
+    .chat-message {
+      margin-bottom: 1rem;
+      padding: 1rem;
+      border-radius: var(--radius-lg);
+      background: var(--light);
+      border: 1px solid var(--border);
+      transition: transform 0.3s ease;
+    }
+
+    .chat-message:hover {
+      transform: translateX(5px);
+    }
+
+    .chat-option {
+      padding: 0.875rem 1rem;
+      margin: 0.5rem 0;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-weight: 500;
+    }
+
+    .chat-option:hover {
+      background: var(--primary-light);
+      color: white;
+      border-color: var(--primary-light);
+      transform: translateX(5px);
     }
 
     .chat-input-area {
       display: flex;
-      border-top: 1px solid #ddd;
+      border-top: 1px solid var(--border);
     }
 
     .chat-input {
       flex: 1;
       border: none;
-      padding: 0.75rem;
+      padding: 1rem;
       outline: none;
+      font-family: inherit;
     }
 
     .chat-send {
-      background: var(--primary);
+      background: var(--gradient);
       color: white;
       border: none;
-      padding: 0 1rem;
+      padding: 0 1.5rem;
       cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .chat-send:hover {
+      background: var(--primary-dark);
+    }
+
+    /* Modern Footer */
+    .main-footer {
+      background: var(--dark);
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .footer-wave {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      overflow: hidden;
+      line-height: 0;
+    }
+
+    .footer-wave svg {
+      position: relative;
+      display: block;
+      width: calc(100% + 1.3px);
+      height: 50px;
+    }
+
+    .footer-wave .shape-fill {
+      fill: var(--light);
+    }
+
+    .footer-content {
+      padding: 5rem 0 3rem;
+      position: relative;
+    }
+
+    .footer-logo {
+      margin-bottom: 1.5rem;
+    }
+
+    .footer-logo img {
+      height: 40px;
+    }
+
+    .footer-description {
+      color: rgba(255, 255, 255, 0.7);
+      margin-bottom: 1.5rem;
+      line-height: 1.8;
+      margin-left: 10px;
+    }
+
+    .footer-title {
+      color: white;
+      font-size: 1.125rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      position: relative;
+      padding-bottom: 0.75rem;
+    }
+
+    .footer-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 40px;
+      height: 3px;
+      background: var(--gradient);
+      border-radius: var(--radius-full);
+    }
+
+    .footer-links {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .footer-links li {
+      margin-bottom: 0.75rem;
+    }
+
+    .footer-links a {
+      color: rgba(255, 255, 255, 0.7);
+      text-decoration: none;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .footer-links a:hover {
+      color: white;
+      transform: translateX(5px);
+    }
+
+    .footer-links a i {
+      font-size: 0.875rem;
+      transition: transform 0.3s ease;
+    }
+
+    .footer-links a:hover i {
+      transform: translateX(3px);
+    }
+
+    .contact-info {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .contact-info li {
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .contact-info li i {
+      color: var(--primary-light);
+      font-size: 1.125rem;
+      margin-top: 0.125rem;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .social-link {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .social-link:hover {
+      background: var(--gradient);
+      transform: translateY(-5px);
+    }
+
+    .newsletter-form {
+      margin-top: 1.5rem;
+    }
+
+    .newsletter-input {
+      width: 100%;
+      padding: 0.875rem 1rem;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: var(--radius-lg);
+      background: rgba(255, 255, 255, 0.05);
+      color: white;
+      margin-bottom: 0.75rem;
+    }
+
+    .newsletter-input:focus {
+      outline: none;
+      border-color: var(--primary-light);
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .newsletter-input::placeholder {
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    .footer-bottom {
+      padding: 2rem 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .footer-bottom-links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-bottom-links a {
+      color: rgba(255, 255, 255, 0.7);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .footer-bottom-links a:hover {
+      color: white;
+    }
+
+    .copyright {
+      text-align: center;
+      margin-top: 1rem;
+    }
+
+    .back-to-top {
+      position: fixed;
+      bottom: 110px;
+      right: 100px;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: var(--gradient);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      z-index: 996;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .back-to-top.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .back-to-top:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-xl);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 992px) {
+      .navbar-nav {
+        padding: 1rem 0;
+      }
+      
+      .navbar-nav .nav-link {
+        padding: 0.75rem 0;
+      }
+      
+      .chat-popup {
+        width: calc(100% - 40px);
+        right: 20px;
+        bottom: 160px;
+      }
+      
+      .chat-icon {
+        right: 20px;
+        bottom: 100px;
+      }
+      
+      .whatsapp-float {
+        right: 20px;
+        bottom: 20px;
+      }
+      
+      .back-to-top {
+        right: 20px;
+        bottom: 180px;
+      }
     }
 
     @media (max-width: 768px) {
-      .chat-popup { width: calc(100% - 40px); right: 20px; bottom: 160px; }
-      .chat-icon { right: 20px; bottom: 100px; }
-      .whatsapp-float { right: 20px; bottom: 20px; }
+      .footer-content {
+        padding: 4rem 0 2rem;
+      }
+      
+      .footer-col {
+        margin-bottom: 2rem;
+      }
+      
+      .footer-bottom-links {
+        gap: 1rem;
+      }
+      
+      .chat-popup {
+        bottom: 140px;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .hero-title {
+        font-size: 2rem;
+      }
+      
+      .chat-popup {
+        width: calc(100% - 30px);
+        right: 15px;
+      }
+      
+      .back-to-top {
+        bottom: 200px;
+      }
+    }
+
+    /* Utility Classes */
+    .text-gradient {
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .section-padding {
+      padding: 5rem 0;
+    }
+
+    .card-hover {
+      transition: all 0.3s ease;
+      border: none;
+      box-shadow: var(--shadow-md);
+    }
+
+    .card-hover:hover {
+      transform: translateY(-10px);
+      box-shadow: var(--shadow-xl);
+    }
+
+    .bg-gradient {
+      background: var(--gradient);
+    }
+
+    .bg-light-gradient {
+      background: var(--gradient-light);
     }
   </style>
 
@@ -282,138 +759,104 @@
         }
       },
       {
-        "@type": "WebPage",
-        "@id": "{{ url()->current() }}#webpage",
-        "url": "{{ url()->current() }}",
-        "name": "AI-Powered Digital Business Cards | DigitalCards.tech",
-        "isPartOf": {
-          "@id": "{{ url('/') }}#website"
-        },
-        "about": {
+        "@type": "Service",
+        "serviceType": "Digital Business Card Creation",
+        "provider": {
           "@id": "{{ url('/') }}#organization"
         },
-        "description": "Create professional digital business cards with AI technology. Share instantly via QR code, NFC, or link. Unlimited updates, analytics, and custom branding.",
-        "breadcrumb": {
-          "@id": "{{ url()->current() }}#breadcrumb"
+        "areaServed": {
+          "@type": "Country",
+          "name": "Global"
+        },
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Digital Card Packages",
+          "itemListElement": [
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Free Digital Card",
+                "description": "Basic digital business card with QR code"
+              },
+              "price": "0",
+              "priceCurrency": "INR"
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Premium Digital Card",
+                "description": "Advanced digital card with analytics and NFC support"
+              },
+              "price": "999",
+              "priceCurrency": "INR"
+            }
+          ]
         }
       },
       {
-        "@type": "BreadcrumbList",
-        "@id": "{{ url()->current() }}#breadcrumb",
-        "itemListElement": [{
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Home",
-          "item": "{{ url('/') }}"
-        }]
-      },
-      {
-        "@type": "SoftwareApplication",
-        "name": "DigitalCards Business Card Creator",
-        "applicationCategory": "BusinessApplication",
-        "operatingSystem": "Web, iOS, Android",
-        "offers": {
-          "@type": "AggregateOffer",
-          "lowPrice": "0",
-          "highPrice": "999",
-          "priceCurrency": "INR",
-          "offerCount": "3"
+        "@type": "LocalBusiness",
+        "@id": "{{ url('/') }}#localbusiness",
+        "name": "DigitalCards.tech Headquarters",
+        "image": "{{ asset('public/frontView/assets/img/og-image.jpg') }}",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "A108 Adam Street",
+          "addressLocality": "New York",
+          "addressRegion": "NY",
+          "postalCode": "535022",
+          "addressCountry": "US"
         },
-        "aggregateRating": {
-          "@type": "AggregateRating",
-          "ratingValue": "4.8",
-          "ratingCount": "274",
-          "bestRating": "5",
-          "worstRating": "1"
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": "40.7128",
+          "longitude": "-74.0060"
         },
-        "screenshot": "{{ asset('public/frontView/assets/img/screenshot.jpg') }}",
-        "author": {
-          "@id": "{{ url('/') }}#organization"
-        }
-      },
-      {
-        "@type": "Product",
-        "name": "Digital Business Card",
-        "description": "Professional AI-powered digital business card with QR code, NFC support, and analytics",
-        "brand": {
-          "@id": "{{ url('/') }}#organization"
-        },
-        "offers": {
-          "@type": "Offer",
-          "url": "{{ url('/register') }}",
-          "priceCurrency": "INR",
-          "price": "999",
-          "priceValidUntil": "{{ date('Y-12-31') }}",
-          "availability": "https://schema.org/InStock",
-          "itemCondition": "https://schema.org/NewCondition"
-        },
-        "aggregateRating": {
-          "@type": "AggregateRating",
-          "ratingValue": "4.8",
-          "reviewCount": "142"
-        }
-      },
-      {
-        "@type": "FAQPage",
-        "mainEntity": [{
-          "@type": "Question",
-          "name": "What is a digital business card?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "A digital business card is an electronic version of a traditional business card that can be shared via QR code, NFC, email, or link. It's accessible on any device and can include interactive elements like clickable links, videos, and social media profiles."
+        "url": "{{ url('/') }}",
+        "telephone": "+1-5589-55488-55",
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+            "opens": "09:00",
+            "closes": "18:00"
           }
-        }, {
-          "@type": "Question",
-          "name": "How do I create a digital business card?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Sign up on DigitalCards.tech, choose a template, add your contact information and branding, and your digital card is ready in minutes. You can share it via QR code, link, or NFC."
-          }
-        }, {
-          "@type": "Question",
-          "name": "Can I update my digital business card?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes! Digital business cards can be updated unlimited times. Any changes you make are instantly reflected for everyone who has your card."
-          }
-        }]
-      },
-      {
-        "@type": "ItemList",
-        "name": "Digital Business Card Features",
-        "itemListElement": [{
-          "@type": "ListItem",
-          "position": 1,
-          "name": "QR Code Generation"
-        }, {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "NFC Support"
-        }, {
-          "@type": "ListItem",
-          "position": 3,
-          "name": "Analytics Dashboard"
-        }, {
-          "@type": "ListItem",
-          "position": 4,
-          "name": "Custom Branding"
-        }, {
-          "@type": "ListItem",
-          "position": 5,
-          "name": "Unlimited Updates"
-        }]
+        ],
+        "priceRange": "₹₹"
       }
     ]
   }
   </script>
 
-  <!-- Google Analytics (Replace with your GA4 ID) -->
+  <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-XXXXXXXXXX');
+    
+    // Enhanced Click Tracking
+    document.addEventListener('DOMContentLoaded', function() {
+      // Track WhatsApp clicks
+      document.querySelector('.whatsapp-float')?.addEventListener('click', function() {
+        gtag('event', 'whatsapp_click', {
+          'event_category': 'Engagement',
+          'event_label': 'Floating WhatsApp Button'
+        });
+      });
+      
+      // Track demo requests
+      document.querySelectorAll('[href*="demo"], [onclick*="demo"]').forEach(btn => {
+        btn.addEventListener('click', function() {
+          gtag('event', 'demo_request', {
+            'event_category': 'Conversion',
+            'event_label': 'Demo Request'
+          });
+        });
+      });
+    });
   </script>
 
   @yield('custom_style')
@@ -460,36 +903,131 @@
     @yield('content')
   </main>
 
-  <!-- Footer -->
-  <footer role="contentinfo">
-    <div class="container">
-      <div class="row mb-4">
-        <div class="col-md-4 mb-3">
-          <h5>About DigitalCards.tech</h5>
-          <p>Create professional AI-powered digital business cards in minutes. Share via QR code, NFC, or link. Perfect for modern professionals.</p>
-        </div>
-        <div class="col-md-4 mb-3">
-          <h5>Quick Links</h5>
-          <ul class="list-unstyled">
-            <li><a href="{{ route('frontpage') }}" class="text-white-50">Home</a></li>
-            <li><a href="{{ route('frontpage') }}#about" class="text-white-50">About</a></li>
-            <li><a href="{{ route('frontpage') }}#services" class="text-white-50">Pricing</a></li>
-            <li><a href="{{ route('frontpage') }}#contact" class="text-white-50">Contact</a></li>
-          </ul>
-        </div>
-        <div class="col-md-4 mb-3">
-          <h5>Contact Info</h5>
-          <p class="text-white-50">
-            <i class="fas fa-map-marker-alt"></i> A108 Adam Street, NY 535022<br>
-            <i class="fas fa-envelope"></i> info@digitalcards.tech<br>
-            <i class="fas fa-phone"></i> +1 5589 55488 55
-          </p>
+  <!-- Modern Footer -->
+  <footer class="main-footer" role="contentinfo">
+    <!-- Wave Divider -->
+    <div class="footer-wave">
+      <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+      </svg>
+    </div>
+
+    <div class="footer-content">
+      <div class="container">
+        <div class="row">
+          <!-- Company Info -->
+          <div class="col-lg-4 col-md-6 footer-col mb-5 mb-lg-0">
+            <div class="footer-logo">
+              <img src="{{ asset('public/frontView/assets/img/logo-white.png') }}" alt="DigitalCards.tech Logo">
+            </div>
+            <p class="footer-description">
+              Create professional AI-powered digital business cards in minutes. Share via QR code, NFC, or link. Perfect for modern professionals and businesses looking to make lasting connections.
+            </p>
+            <div class="social-links ml-5">
+              <a href="https://facebook.com/digitalcards.tech" class="social-link" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-facebook-f"></i>
+              </a>
+              <a href="https://twitter.com/digitalcardstech" class="social-link" aria-label="Twitter" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-twitter"></i>
+              </a>
+              <a href="https://instagram.com/digitalcards.tech" class="social-link" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-instagram"></i>
+              </a>
+              <a href="https://linkedin.com/company/digitalcards-tech" class="social-link" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-linkedin-in"></i>
+              </a>
+              <a href="https://youtube.com/@digitalcards.tech" class="social-link" aria-label="YouTube" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-youtube"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Quick Links -->
+          <div class="col-lg-2 col-md-6 footer-col mb-5 mb-md-0">
+            <h5 class="footer-title">Quick Links</h5>
+            <ul class="footer-links">
+              <li><a href="{{ route('frontpage') }}"><i class="fas fa-chevron-right"></i> Home</a></li>
+              <li><a href="{{ route('frontpage') }}#about"><i class="fas fa-chevron-right"></i> About Us</a></li>
+              <li><a href="{{ route('frontpage') }}#services"><i class="fas fa-chevron-right"></i> Pricing</a></li>
+              <li><a href="{{ route('frontpage') }}#features"><i class="fas fa-chevron-right"></i> Features</a></li>
+              <li><a href="{{ route('search') }}"><i class="fas fa-chevron-right"></i> Our Partners</a></li>
+              <li><a href="{{ route('frontpage') }}#contact"><i class="fas fa-chevron-right"></i> Contact</a></li>
+            </ul>
+          </div>
+
+          <!-- Products -->
+          <div class="col-lg-2 col-md-6 footer-col mb-5 mb-md-0">
+            <h5 class="footer-title">Products</h5>
+            <ul class="footer-links">
+              <li><a href="{{ url('/register?packageId=1') }}"><i class="fas fa-chevron-right"></i> Free Digital Card</a></li>
+              <li><a href="{{ url('/register?packageId=2') }}"><i class="fas fa-chevron-right"></i> Premium Card</a></li>
+              <li><a href="{{ url('/register?packageId=3') }}"><i class="fas fa-chevron-right"></i> Business Suite</a></li>
+              <li><a href="#"><i class="fas fa-chevron-right"></i> NFC Cards</a></li>
+              <li><a href="#"><i class="fas fa-chevron-right"></i> Team Accounts</a></li>
+              <li><a href="#"><i class="fas fa-chevron-right"></i> White Label</a></li>
+            </ul>
+          </div>
+
+          <!-- Contact & Newsletter -->
+          <div class="col-lg-4 col-md-6 footer-col">
+            <h5 class="footer-title">Contact Info</h5>
+            <ul class="contact-info">
+              <li>
+                <i class="fas fa-map-marker-alt"></i>
+                <div>
+                  <strong>Headquarters</strong><br>
+                  A108 Adam Street, New York, NY 535022
+                </div>
+              </li>
+              <li>
+                <i class="fas fa-phone"></i>
+                <div>
+                  <strong>Phone</strong><br>
+                  <a href="tel:+155895548855" class="text-white">+1 5589 55488 55</a>
+                </div>
+              </li>
+              <li>
+                <i class="fas fa-envelope"></i>
+                <div>
+                  <strong>Email</strong><br>
+                  <a href="mailto:info@digitalcards.tech" class="text-white">info@digitalcards.tech</a>
+                </div>
+              </li>
+            </ul>
+
+            <h5 class="footer-title mt-4">Newsletter</h5>
+            <p class="footer-description">Subscribe to get updates on new features and offers.</p>
+            <form class="newsletter-form" id="newsletterForm">
+              <input type="email" class="newsletter-input" placeholder="Your email address" required aria-label="Email for newsletter subscription">
+              <button type="submit" class="btn btn-primary w-100">Subscribe</button>
+            </form>
+          </div>
         </div>
       </div>
-      <hr class="bg-white">
-      <p class="text-center mb-0">&copy; {{ date('Y') }} DigitalCards.tech. All Rights Reserved. | <a href="/privacy-policy" class="text-white-50">Privacy Policy</a> | <a href="/terms" class="text-white-50">Terms of Service</a></p>
+    </div>
+
+    <!-- Footer Bottom -->
+    <div class="footer-bottom">
+      <div class="container">
+        <div class="footer-bottom-links">
+          <a href="/privacy-policy">Privacy Policy</a>
+          <a href="/terms">Terms of Service</a>
+          <a href="/refund-policy">Refund Policy</a>
+          <a href="/cookie-policy">Cookie Policy</a>
+          <a href="/sitemap">Sitemap</a>
+          <a href="/security">Security</a>
+        </div>
+        <div class="copyright">
+          &copy; {{ date('Y') }} DigitalCards.tech. All rights reserved. | Made with <i class="fas fa-heart text-danger"></i> for professionals worldwide
+        </div>
+      </div>
     </div>
   </footer>
+
+  <!-- Back to Top Button -->
+  <a href="#" class="back-to-top" id="backToTop" aria-label="Back to top">
+    <i class="fas fa-chevron-up"></i>
+  </a>
 
   <!-- Floating Action Buttons -->
   <div class="chat-icon" id="chatIcon" onclick="toggleChat()" role="button" aria-label="Open chat support" tabindex="0">
@@ -498,80 +1036,180 @@
 
   <div class="chat-popup" id="chatPopup" role="dialog" aria-labelledby="chatTitle">
     <div class="chat-header">
-      <h5 id="chatTitle">💬 Chat with us</h5>
+      <h5 id="chatTitle"><i class="fas fa-robot"></i> DigiCards AI Assistant</h5>
       <button class="btn btn-sm btn-light" onclick="toggleChat()" aria-label="Close chat">&times;</button>
     </div>
     <div class="chat-body" id="chatBody">
-      <p><strong>DigiCards Support</strong><br>Hello! 👋 How can we help you today?</p>
-      <div class="chat-option" onclick="selectOption('pricing')" role="button" tabindex="0">💰 Pricing Information</div>
-      <div class="chat-option" onclick="selectOption('demo')" role="button" tabindex="0">🎯 Request a Demo</div>
-      <div class="chat-option" onclick="selectOption('support')" role="button" tabindex="0">🛠️ Technical Support</div>
+      <div class="chat-message">
+        <strong>DigiCards AI</strong><br>
+        Hello! 👋 I'm your AI assistant. How can I help you today? Choose an option below or type your question.
+      </div>
+      <div class="chat-option" onclick="selectOption('pricing')" role="button" tabindex="0">
+        <i class="fas fa-tags"></i> Pricing Information
+      </div>
+      <div class="chat-option" onclick="selectOption('demo')" role="button" tabindex="0">
+        <i class="fas fa-desktop"></i> Request a Demo
+      </div>
+      <div class="chat-option" onclick="selectOption('support')" role="button" tabindex="0">
+        <i class="fas fa-headset"></i> Technical Support
+      </div>
+      <div class="chat-option" onclick="selectOption('features')" role="button" tabindex="0">
+        <i class="fas fa-star"></i> Feature Details
+      </div>
     </div>
     <div class="chat-input-area">
       <input type="text" id="chatInput" class="chat-input" placeholder="Type your message..." aria-label="Chat message input">
-      <button class="chat-send" onclick="sendMessage()" aria-label="Send message">Send</button>
+      <button class="chat-send" onclick="sendMessage()" aria-label="Send message">
+        <i class="fas fa-paper-plane"></i>
+      </button>
     </div>
   </div>
 
-  <a href="https://api.whatsapp.com/send?phone=919537178057&text=Hello%20DigiCards%20Team!" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Chat with us on WhatsApp">
+  <a href="https://api.whatsapp.com/send?phone=919537178057&text=Hello%20DigiCards%20Team!" class="whatsapp-float" target="_blank" rel="noopener noreferrer nofollow" aria-label="Chat with us on WhatsApp">
     <i class="fab fa-whatsapp"></i>
   </a>
-</body>
 
   <!-- Scripts -->
   <script src="{{ asset('public/admin/plugins/jquery/jquery.min.js') }}"></script>
   <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const chatPopup = document.getElementById('chatPopup');
-      const chatIcon = document.getElementById('chatIcon');
-
-      // Define functions as variables to ensure they're in scope
-      window.toggleChat = function() {
-          if (chatPopup) {
-              chatPopup.classList.toggle('active');
-          }
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+  
+  <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Navbar scroll effect
+    const navbar = document.querySelector('.navbar');
+    window.addEventListener('scroll', function() {
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
       }
+    });
 
-      window.sendMessage = function() {
-          const input = document.getElementById('chatInput');
-          const message = input.value.trim();
-          if (message) {
-              const body = document.getElementById('chatBody');
-              body.innerHTML += `<p><strong>You:</strong> ${message}</p>`;
-              input.value = '';
-              body.scrollTop = body.scrollHeight;
-              
-              // Simulate response
-              setTimeout(() => {
-                  body.innerHTML += `<p><strong>DigiCards:</strong> Thank you for your message. Our team will respond shortly.</p>`;
-                  body.scrollTop = body.scrollHeight;
-              }, 1000);
-          }
+    // Back to top button
+    const backToTop = document.getElementById('backToTop');
+    window.addEventListener('scroll', function() {
+      if (window.scrollY > 300) {
+        backToTop.classList.add('visible');
+      } else {
+        backToTop.classList.remove('visible');
       }
+    });
 
-      window.selectOption = function(option) {
-          const body = document.getElementById('chatBody');
-          let reply = '';
-          if (option === 'pricing') {
-              reply = 'Our pricing plans start at ₹0/month for basic features. Premium plans start at ₹999/month with advanced analytics and unlimited cards. 🎯';
-          } else if (option === 'demo') {
-              // FIXED: Use escaped apostrophe or backticks
-              reply = 'We\'d love to give you a personalized demo! Please share your email or contact us at info@digitalcards.tech 📧';
-          } else if (option === 'support') {
-              reply = 'Please describe your issue and our technical team will assist you within 24 hours. You can also email support@digitalcards.tech 🛠️';
-          }
-          body.innerHTML += `<p><strong>You:</strong> ${option}</p><p><strong>DigiCards:</strong> ${reply}</p>`;
-          body.scrollTop = body.scrollHeight;
-      }
+    backToTop.addEventListener('click', function(e) {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
 
-      // Keyboard accessibility for chat options
-      document.addEventListener('keydown', function(e) {
-          if (e.target.classList.contains('chat-option') && e.key === 'Enter') {
-              e.target.click();
-          }
+    // Newsletter form
+    const newsletterForm = document.getElementById('newsletterForm');
+    if (newsletterForm) {
+      newsletterForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const email = this.querySelector('input[type="email"]').value;
+        // Add your newsletter submission logic here
+        alert('Thank you for subscribing to our newsletter!');
+        this.reset();
       });
+    }
+
+    // Chat functions
+    const chatPopup = document.getElementById('chatPopup');
+    const chatIcon = document.getElementById('chatIcon');
+
+    window.toggleChat = function() {
+      chatPopup.classList.toggle('active');
+    }
+
+    window.sendMessage = function() {
+      const input = document.getElementById('chatInput');
+      const message = input.value.trim();
+      if (message) {
+        const body = document.getElementById('chatBody');
+        body.innerHTML += `<div class="chat-message"><strong>You:</strong> ${message}</div>`;
+        input.value = '';
+        body.scrollTop = body.scrollHeight;
+        
+        // Simulate AI response
+        setTimeout(() => {
+          const responses = [
+            "Thanks for your message! Our team will get back to you shortly.",
+            "I've noted your query. A specialist will contact you soon.",
+            "Great question! Let me connect you with our support team.",
+            "Thank you for reaching out. We'll respond within 24 hours."
+          ];
+          const randomResponse = responses[Math.floor(Math.random() * responses.length)];
+          body.innerHTML += `<div class="chat-message"><strong>DigiCards AI:</strong> ${randomResponse}</div>`;
+          body.scrollTop = body.scrollHeight;
+        }, 1000);
+      }
+    }
+
+    window.selectOption = function(option) {
+      const body = document.getElementById('chatBody');
+      let reply = '';
+      let icon = '';
+      
+      switch(option) {
+        case 'pricing':
+          reply = 'Our pricing plans start at ₹0/month for basic features. Premium plans start at ₹999/month with advanced analytics and unlimited cards. Would you like to see detailed pricing?';
+          icon = '💰';
+          break;
+        case 'demo':
+          reply = 'We\'d love to give you a personalized demo! Please share your email or contact us at demo@digitalcards.tech to schedule a session.';
+          icon = '🎯';
+          break;
+        case 'support':
+          reply = 'Our technical support team is available 24/7. You can email support@digitalcards.tech or call +1 5589 55488 55 for immediate assistance.';
+          icon = '🛠️';
+          break;
+        case 'features':
+          reply = 'Our digital cards feature QR codes, NFC support, analytics dashboard, custom branding, unlimited updates, and team management. Which feature interests you most?';
+          icon = '✨';
+          break;
+      }
+      
+      body.innerHTML += `
+        <div class="chat-message"><strong>You:</strong> ${option}</div>
+        <div class="chat-message"><strong>DigiCards AI:</strong> ${icon} ${reply}</div>
+      `;
+      body.scrollTop = body.scrollHeight;
+    }
+
+    // Close chat when clicking outside
+    document.addEventListener('click', function(e) {
+      if (!chatPopup.contains(e.target) && !chatIcon.contains(e.target) && chatPopup.classList.contains('active')) {
+        chatPopup.classList.remove('active');
+      }
+    });
+
+    // Keyboard accessibility
+    document.addEventListener('keydown', function(e) {
+      if (e.target.classList.contains('chat-option') && e.key === 'Enter') {
+        e.target.click();
+      }
+      if (e.key === 'Escape' && chatPopup.classList.contains('active')) {
+        chatPopup.classList.remove('active');
+      }
+    });
+
+    // Lazy loading for images
+    if ('IntersectionObserver' in window) {
+      const imageObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const img = entry.target;
+            img.src = img.dataset.src;
+            img.classList.add('loaded');
+            imageObserver.unobserve(img);
+          }
+        });
+      });
+
+      document.querySelectorAll('img[data-src]').forEach(img => {
+        imageObserver.observe(img);
+      });
+    }
   });
   </script>
 
