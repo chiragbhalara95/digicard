@@ -20,6 +20,9 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="{{asset('public/visitingCard/bussinessCard/g/css/intlTelInput.min.css')}}" rel="stylesheet">
+    <link href="{{asset('public/visitingCard/bussinessCard/a/css/jquery-confirm.css')}}" rel="stylesheet">
+    <link rel="stylesheet" href="{{asset('public/admin/plugins/toastr/toastr.min.css')}}">
 
     <script>
         document.documentElement.style.setProperty('--theme-color', "{{$userObj->theme_color ?? '#2563eb'}}");
@@ -176,30 +179,18 @@
             font-weight: 500;
         }
 
-        .header-stats {
-            display: flex;
-            justify-content: space-between;
-            background: rgba(255,255,255,0.1);
+        .views-badge {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: rgba(255,255,255,0.2);
             backdrop-filter: blur(10px);
-            padding: 0.75rem 1rem;
-            border-radius: var(--radius-lg);
-            margin-top: 1rem;
-        }
-
-        .stat-item {
-            text-align: center;
-            color: white;
-        }
-
-        .stat-number {
-            font-size: 1.25rem;
-            font-weight: 700;
-            margin-bottom: 0.25rem;
-        }
-
-        .stat-label {
+            padding: 0.5rem 1rem;
+            border-radius: var(--radius-full);
             font-size: 0.75rem;
-            opacity: 0.9;
+            color: white;
+            font-weight: 500;
+            z-index: 2;
         }
 
         /* Quick Actions */
@@ -261,7 +252,6 @@
         .card-header {
             display: flex;
             align-items: center;
-            justify-content: space-between;
             margin-bottom: 1.25rem;
             padding-bottom: 0.75rem;
             border-bottom: 2px solid var(--border-color);
@@ -377,6 +367,8 @@
             text-decoration: none;
             font-weight: 500;
             transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
         }
 
         .share-btn-primary {
@@ -396,10 +388,6 @@
         }
 
         /* QR Code Section */
-        .qr-section {
-            text-align: center;
-        }
-
         .qr-wrapper {
             background: white;
             padding: 1.5rem;
@@ -452,11 +440,35 @@
         }
 
         /* Gallery */
+        .gallery-filters {
+            display: flex;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 0.5rem 1.25rem;
+            border-radius: var(--radius-full);
+            border: 2px solid var(--border-color);
+            background: transparent;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        .filter-btn.active, .filter-btn:hover {
+            background: var(--primary-color);
+            border-color: var(--primary-color);
+            color: white;
+        }
+
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 1rem;
-            margin-top: 1rem;
         }
 
         .gallery-item {
@@ -465,6 +477,10 @@
             overflow: hidden;
             transition: all 0.3s ease;
             border: 1px solid var(--border-color);
+        }
+
+        .gallery-item.hidden {
+            display: none;
         }
 
         .gallery-item:hover {
@@ -476,6 +492,7 @@
             width: 100%;
             height: 140px;
             object-fit: cover;
+            cursor: pointer;
         }
 
         .gallery-info {
@@ -493,6 +510,7 @@
             font-size: 0.875rem;
             font-weight: 700;
             color: var(--success-color);
+            margin-bottom: 0.75rem;
         }
 
         .gallery-price del {
@@ -500,25 +518,63 @@
             margin-right: 0.5rem;
         }
 
+        .product-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .product-btn {
+            flex: 1;
+            padding: 0.5rem 0.75rem;
+            border-radius: var(--radius-md);
+            border: none;
+            cursor: pointer;
+            font-size: 0.75rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            text-align: center;
+            color: white;
+        }
+
+        .buy-btn {
+            background: var(--primary-color);
+        }
+
+        .cart-btn {
+            background: var(--success-color);
+        }
+
+        .enquiry-btn {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            display: block;
+            width: 100%;
+        }
+
+        .product-btn:hover {
+            transform: scale(1.05);
+            opacity: 0.9;
+        }
+
         /* Social Media */
-        .social-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
+        .social-links {
+            display: flex;
+            justify-content: center;
             gap: 1rem;
-            margin-top: 1rem;
+            flex-wrap: wrap;
         }
 
         .social-link {
+            width: 48px;
+            height: 48px;
+            border-radius: var(--radius-lg);
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 56px;
-            height: 56px;
-            border-radius: var(--radius-lg);
-            color: white;
-            font-size: 1.25rem;
             transition: all 0.3s ease;
             text-decoration: none;
+            font-size: 1.25rem;
+            color: white;
         }
 
         .social-link:hover {
@@ -527,18 +583,154 @@
         }
 
         /* Payment Methods */
-        .payment-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
-            margin-top: 1rem;
+        .payment-item {
+            background: var(--background);
+            padding: 1.25rem;
+            border-radius: var(--radius-lg);
+            margin-bottom: 1rem;
+            border: 1px solid var(--border-color);
         }
 
-        .payment-card {
-            background: var(--background);
-            padding: 1rem;
+        .payment-header {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .payment-detail {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .payment-detail:last-child {
+            border-bottom: none;
+        }
+
+        .payment-label {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+        }
+
+        .payment-value {
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+
+        .qr-image {
+            width: 180px;
+            height: 180px;
+            margin: 1rem auto;
+            display: block;
             border-radius: var(--radius-lg);
             border: 1px solid var(--border-color);
+            padding: 0.5rem;
+            background: white;
+        }
+
+        /* Feedback Section */
+        .feedback-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .rating-stars {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            font-size: 2rem;
+            cursor: pointer;
+        }
+
+        .star {
+            color: var(--text-light);
+            transition: all 0.3s ease;
+        }
+
+        .star:hover, .star.active {
+            color: #fbbf24;
+        }
+
+        /* Video Section */
+        .video-item {
+            margin-bottom: 1.5rem;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+
+        .video-item iframe {
+            width: 100%;
+            height: 200px;
+            border: none;
+        }
+
+        .video-title {
+            padding: 1rem;
+            background: var(--background);
+            text-align: center;
+            font-weight: 600;
+            font-size: 0.875rem;
+        }
+
+        /* Enquiry Form */
+        .map-container {
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            margin-bottom: 1.5rem;
+            height: 250px;
+            border: 1px solid var(--border-color);
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .form-input, .form-textarea {
+            width: 100%;
+            padding: 0.875rem 1rem;
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.875rem;
+            transition: all 0.3s ease;
+            background: white;
+            color: var(--text-primary);
+        }
+
+        .form-input:focus, .form-textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        .form-textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.875rem 1.5rem;
+            border-radius: var(--radius-lg);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            font-size: 1rem;
+        }
+
+        .submit-btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
         }
 
         /* Footer Navigation */
@@ -586,57 +778,6 @@
 
         .content-wrapper {
             padding-bottom: 80px;
-        }
-
-        /* Form Elements */
-        .form-group {
-            margin-bottom: 1rem;
-        }
-
-        .form-input, .form-textarea {
-            width: 100%;
-            padding: 0.875rem 1rem;
-            border: 2px solid var(--border-color);
-            border-radius: var(--radius-lg);
-            font-family: 'Inter', sans-serif;
-            font-size: 0.875rem;
-            transition: all 0.3s ease;
-            background: white;
-        }
-
-        .form-input:focus, .form-textarea:focus {
-            outline: none;
-            border-color: var(--primary-color);
-            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
-        }
-
-        .form-textarea {
-            min-height: 120px;
-            resize: vertical;
-        }
-
-        /* Rating */
-        .rating-container {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .rating-stars {
-            display: flex;
-            gap: 0.25rem;
-        }
-
-        .star {
-            color: var(--text-light);
-            font-size: 1.5rem;
-            cursor: pointer;
-            transition: color 0.2s ease;
-        }
-
-        .star.active, .star:hover {
-            color: #fbbf24;
         }
 
         /* Modal */
@@ -715,6 +856,47 @@
             color: var(--text-primary);
         }
 
+        /* About Section */
+        .about-content {
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Whatsapp Input */
+        .whatsapp-input-group {
+            display: flex;
+            gap: 0.75rem;
+            margin: 1rem 0;
+        }
+
+        .whatsapp-input-group input {
+            flex: 1;
+            padding: 0.875rem 1rem;
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            font-size: 0.875rem;
+            background: white;
+            color: var(--text-primary);
+        }
+
+        .whatsapp-input-group button {
+            padding: 0.875rem 1.5rem;
+            background: var(--success-color);
+            border: none;
+            border-radius: var(--radius-lg);
+            color: white;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .whatsapp-input-group button:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+            background: #0da65c;
+        }
+
         /* Responsive Design */
         @media (max-width: 480px) {
             .container {
@@ -727,59 +909,19 @@
             
             .card, .share-section {
                 margin: 0 1rem 1rem;
+                padding: 1.25rem;
             }
             
             .gallery-grid {
                 grid-template-columns: 1fr;
             }
+            
+            .quick-actions {
+                padding: 1rem;
+            }
         }
 
-        /* Status Indicators */
-        .status-indicator {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.375rem;
-            padding: 0.25rem 0.75rem;
-            border-radius: var(--radius-full);
-            font-size: 0.75rem;
-            font-weight: 500;
-        }
-
-        .status-online {
-            background: rgba(16, 185, 129, 0.1);
-            color: var(--success-color);
-        }
-
-        .status-offline {
-            background: rgba(239, 68, 68, 0.1);
-            color: var(--error-color);
-        }
-
-        /* Badges */
-        .badge {
-            display: inline-block;
-            padding: 0.25rem 0.75rem;
-            border-radius: var(--radius-full);
-            font-size: 0.75rem;
-            font-weight: 500;
-        }
-
-        .badge-primary {
-            background: rgba(37, 99, 235, 0.1);
-            color: var(--primary-color);
-        }
-
-        .badge-success {
-            background: rgba(16, 185, 129, 0.1);
-            color: var(--success-color);
-        }
-
-        .badge-warning {
-            background: rgba(245, 158, 11, 0.1);
-            color: var(--warning-color);
-        }
-
-        /* Animations */
+        /* Animation */
         .fade-in {
             animation: fadeIn 0.5s ease;
         }
@@ -789,36 +931,30 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        .pulse {
-            animation: pulse 2s infinite;
+        /* Utility Classes */
+        .text-center {
+            text-align: center;
+        }
+        
+        .mb-3 {
+            margin-bottom: 0.75rem;
+        }
+        
+        .mt-4 {
+            margin-top: 1rem;
+        }
+        
+        .py-4 {
+            padding-top: 1rem;
+            padding-bottom: 1rem;
         }
 
-        @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.4); }
-            70% { box-shadow: 0 0 0 10px rgba(37, 99, 235, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0); }
+        .star-filled {
+            color: #ffc107;
         }
 
-        /* Loading States */
-        .loading {
-            position: relative;
-            overflow: hidden;
-        }
-
-        .loading::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
-            animation: loading 1.5s infinite;
-        }
-
-        @keyframes loading {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(100%); }
+        .star-empty {
+            color: #d6d6d6;
         }
     </style>
 </head>
@@ -827,14 +963,13 @@
         <div class="content-wrapper">
             <!-- Professional Header -->
             <div class="professional-header">
-                <div class="header-content">
-                    @if($userConfigObj->isShowNoOfVisit == '1')
-                    <div class="status-indicator status-online" style="position: absolute; top: 1rem; right: 1rem;">
-                        <i class="fas fa-eye"></i>
-                        <span>{{$userObj->no_visit}} views</span>
-                    </div>
-                    @endif
+                @if($userConfigObj->isShowNoOfVisit == '1')
+                <div class="views-badge">
+                    <i class="fas fa-eye"></i> {{$userObj->no_visit}} Views
+                </div>
+                @endif
 
+                <div class="header-content">
                     <div class="profile-container">
                         <div class="profile-pic-wrapper">
                             @if(!empty($companyInfoData->company_logo))
@@ -850,6 +985,11 @@
                         <div class="profile-info">
                             @if (!empty($companyInfoData->company_name))
                             <h1 class="company-name">{!! $companyInfoData->company_name !!}</h1>
+                            @if (!empty($companyInfoData->gst_number))
+                            <div style="font-size: 0.75rem; color: rgba(255,255,255,0.8); margin-bottom: 0.5rem;">
+                                GST No: {!! $companyInfoData->gst_number !!}
+                            </div>
+                            @endif
                             <div class="user-name">{!! $userObj->name !!}</div>
                             @else
                             <h1 class="company-name">{!! $userObj->name !!}</h1>
@@ -860,23 +1000,6 @@
                             @endif
                         </div>
                     </div>
-
-                    @if(!empty($companyInfoData->gst_number))
-                    <div class="header-stats">
-                        <div class="stat-item">
-                            <div class="stat-number">GST</div>
-                            <div class="stat-label">{!! $companyInfoData->gst_number !!}</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-number">EST.</div>
-                            <div class="stat-label">2023</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-number">4.8</div>
-                            <div class="stat-label">Rating</div>
-                        </div>
-                    </div>
-                    @endif
                 </div>
             </div>
 
@@ -961,33 +1084,40 @@
                 </div>
             </div>
 
-            <!-- Share Section -->
+            <!-- Share My Card Section -->
             <div class="share-section fade-in">
                 <div class="share-header">
-                    <h3 class="share-title">Share Digital Card</h3>
-                    <p class="share-subtitle">Share your professional card with contacts</p>
+                    <h3 class="share-title">Share My Card</h3>
+                    <p class="share-subtitle">Enter a WhatsApp number to share your digital card</p>
                 </div>
 
-                <div class="form-group">
-                    <input type="tel" 
-                           id="whatsapp-input" 
-                           class="form-input" 
-                           placeholder="Enter WhatsApp number"
-                           maxlength="10"
-                           oninput="this.value=this.value.replace(/[^0-9]/g,'');">
+                <input type="hidden" id="whatsapp-msg" value="{{ url('vc') }}/{{ $userObj->slug }}">
+
+                <div class="whatsapp-input-group">
+                    <input 
+                        type="tel"
+                        id="whatsapp-input"
+                        class="form-input"
+                        placeholder="Enter WhatsApp number"
+                        maxlength="10"
+                        oninput="this.value=this.value.replace(/[^0-9]/g,'');"
+                    >
+                    <button type="button" onclick="handleWhatsappShare()">
+                        <i class="fab fa-whatsapp"></i> Send
+                    </button>
                 </div>
 
                 <div class="share-actions">
-                    <button class="share-btn share-btn-primary" onclick="handleWhatsappShare()">
-                        <i class="fab fa-whatsapp"></i>
-                        Send via WhatsApp
-                    </button>
                     <a href="{{ url('saveViewCard') }}/{{ $userObj->slug }}" 
                        download="contact.vcf" 
-                       class="share-btn share-btn-outline">
+                       class="share-btn share-btn-primary">
                         <i class="fas fa-download"></i>
                         Save Contact
                     </a>
+                    <button onclick="openShareModal()" class="share-btn share-btn-outline">
+                        <i class="fas fa-share-alt"></i>
+                        Share Card
+                    </button>
                 </div>
             </div>
 
@@ -997,47 +1127,47 @@
                 <div class="card-header">
                     <h2 class="card-title">
                         <i class="fas fa-share-alt"></i>
-                        Connect With Us
+                        Connect With Me
                     </h2>
                 </div>
-                <div class="social-grid">
+                <div class="social-links">
                     @foreach($socialMediaData as $socialMediaDetail)
-                        @php
-                            $socialClass = '';
-                            $socialIcon = '';
-                            if ($socialMediaDetail->type == 'fb') {
-                                $socialClass = 'social-facebook';
-                                $socialIcon = 'fab fa-facebook-f';
-                            } elseif($socialMediaDetail->type == 'in') {
-                                $socialClass = 'social-instagram';
-                                $socialIcon = 'fab fa-instagram';
-                            } elseif($socialMediaDetail->type == 'li') {
-                                $socialClass = 'social-linkedin';
-                                $socialIcon = 'fab fa-linkedin-in';
-                            } elseif($socialMediaDetail->type == 'tw') {
-                                $socialClass = 'social-twitter';
-                                $socialIcon = 'fab fa-twitter';
-                            } elseif($socialMediaDetail->type == 'pi') {
-                                $socialClass = 'social-pinterest';
-                                $socialIcon = 'fab fa-pinterest-p';
-                            } elseif($socialMediaDetail->type == 'yt') {
-                                $socialClass = 'social-youtube';
-                                $socialIcon = 'fab fa-youtube';
-                            } elseif($socialMediaDetail->type == 'tg') {
-                                $socialClass = 'social-telegram';
-                                $socialIcon = 'fab fa-telegram';
-                            }
-                        @endphp
-                        <a href="{{$socialMediaDetail->url}}" target="_blank" class="social-link {{$socialClass}}">
-                            <i class="{{$socialIcon}}"></i>
+                        @if ($socialMediaDetail->type == 'fb')
+                        <a href="{{$socialMediaDetail->url}}" target="_blank" class="social-link" style="background: #1877f2;">
+                            <i class="fab fa-facebook-f"></i>
                         </a>
+                        @elseif($socialMediaDetail->type == 'in')
+                        <a href="{{$socialMediaDetail->url}}" target="_blank" class="social-link" style="background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        @elseif($socialMediaDetail->type == 'li')
+                        <a href="{{$socialMediaDetail->url}}" target="_blank" class="social-link" style="background: #0077b5;">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        @elseif($socialMediaDetail->type == 'tw')
+                        <a href="{{$socialMediaDetail->url}}" target="_blank" class="social-link" style="background: #1da1f2;">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        @elseif($socialMediaDetail->type == 'pi')
+                        <a href="{{$socialMediaDetail->url}}" target="_blank" class="social-link" style="background: #bd081c;">
+                            <i class="fab fa-pinterest-p"></i>
+                        </a>
+                        @elseif($socialMediaDetail->type == 'yt')
+                        <a href="{{$socialMediaDetail->url}}" target="_blank" class="social-link" style="background: #ff0000;">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        @elseif($socialMediaDetail->type == 'tg')
+                        <a href="{{$socialMediaDetail->url}}" target="_blank" class="social-link" style="background: #0088cc;">
+                            <i class="fab fa-telegram"></i>
+                        </a>
+                        @endif
                     @endforeach
                 </div>
             </div>
             @endif
 
             <!-- QR Code -->
-            <div class="card qr-section fade-in">
+            <div class="card fade-in">
                 <div class="card-header">
                     <h2 class="card-title">
                         <i class="fas fa-qrcode"></i>
@@ -1045,11 +1175,12 @@
                     </h2>
                 </div>
                 <p style="color: var(--text-secondary); text-align: center; margin-bottom: 1rem;">
-                    Scan to save this digital card instantly
+                    Share your digital card instantly
                 </p>
                 <div class="qr-wrapper">
                     {!! QrCode::size(180)->generate($vistingUrl) !!}
                 </div>
+                <input type="text" readonly id="visitingUrlText" value="{{$vistingUrl}}" class="form-input mb-3" style="margin-top: 1rem;">
                 <div class="qr-actions">
                     <button class="qr-btn btn-primary" onclick="copyUrlSecond()">
                         <i class="fas fa-copy"></i>
@@ -1070,13 +1201,13 @@
                         {{$userConfigObj->aboutLabel}}
                     </h2>
                 </div>
-                <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 1.5rem;">
+                <div class="about-content">
                     {!! $companyInfoData->company_info !!}
-                </p>
+                </div>
                 @if(!empty($companyInfoData->broucher_file))
-                <a href="{{url('public')}}/{{$companyInfoData->broucher_file}}" download class="share-btn share-btn-primary" style="width: 100%;">
+                <a href="{{url('public')}}/{{$companyInfoData->broucher_file}}" download class="share-btn share-btn-primary" style="width: 100%; margin-top: 1rem;">
                     <i class="fas fa-file-pdf"></i>
-                    Download Company Brochure
+                    Download Brochure - @if(!empty($companyInfoData->company_name)){!! $companyInfoData->company_name !!}@else{!! $userObj->name !!}@endif
                 </a>
                 @endif
             </div>
@@ -1091,11 +1222,22 @@
                     </h2>
                 </div>
 
+                @if (!empty($galleryCatInfo))
+                <div class="gallery-filters">
+                    <button class="filter-btn active all-filter-btn" data-filter="all">All</button>
+                    @foreach($galleryCatInfo as $catlbl => $catName)
+                    <button class="filter-btn" data-filter="{{$catlbl}}">{{$catName}}</button>
+                    @endforeach
+                </div>
+                @endif
+
                 <div class="gallery-grid">
                     @foreach($galleryData as $galleryDetail)
-                    <div class="gallery-item">
-                        <img src="{{URL::asset('public/upload/product/'.$galleryDetail->head_image)}}" 
+                    <div class="gallery-item filter {{$galleryDetail->category_name}}">
+                        <img onclick="openImageModal(this)" 
                              alt="{{$galleryDetail->title}}" 
+                             src="{{URL::asset('public/upload/product/'.$galleryDetail->head_image)}}" 
+                             description="{{$galleryDetail->description}}"
                              class="gallery-img">
                         <div class="gallery-info">
                             <div class="gallery-title">{{$galleryDetail->title}}</div>
@@ -1106,6 +1248,41 @@
                             @elseif($galleryDetail->mrp_price > 0)
                             <div class="gallery-price">₹{{$galleryDetail->mrp_price}}</div>
                             @endif
+
+                            <div class="product-actions">
+                                @php
+                                    $link="https://api.whatsapp.com/send?phone=".str_replace('+','',$companyInfoData->country_code).$companyInfoData->company_mobile."&text=Enquiry for product:".urlencode($galleryDetail->title);
+                                    $price=0;
+                                    if ($galleryDetail->mrp_price > 0) {
+                                        if ($galleryDetail->special_price > 0 && $galleryDetail->mrp_price > $galleryDetail->special_price){
+                                            $link .= " Price=₹".$galleryDetail->special_price;
+                                            $price = $galleryDetail->special_price;
+                                        } else{
+                                            $link .= " Price=₹".$galleryDetail->mrp_price;
+                                            $price = $galleryDetail->mrp_price;
+                                        }
+                                    }    
+                                @endphp
+
+                                @if($userConfigObj->isEcommerceEnable == '1')
+                                <button class="product-btn buy-btn buyNowBtn" 
+                                        data-id="{{$galleryDetail->id}}" 
+                                        data-product="{{$galleryDetail->title}}" 
+                                        data-price="{{$price}}">
+                                    Buy Now
+                                </button>
+                                <button class="product-btn cart-btn add" 
+                                        data-id="{{$galleryDetail->id}}" 
+                                        data-product="{{$galleryDetail->title}}" 
+                                        data-price="{{$price}}">
+                                    Add to Cart
+                                </button>
+                                @else
+                                <a href="{{$link}}" target="_blank" class="product-btn enquiry-btn">
+                                    {{$userConfigObj->enquiryLabel}}
+                                </a>
+                                @endif
+                            </div>
                         </div>
                     </div>
                     @endforeach
@@ -1113,8 +1290,149 @@
             </div>
             @endif
 
-            <!-- Rest of your content sections (videos, payment, feedback, enquiry) -->
-            <!-- Follow the same card pattern as above -->
+            @if(count($videosData) > 0)
+            <!-- Videos -->
+            <div class="card fade-in" id="video-section">
+                <div class="card-header">
+                    <h2 class="card-title">
+                        <i class="fas fa-video"></i>
+                        Videos
+                    </h2>
+                </div>
+                @foreach($videosData as $videosDetail)
+                <div class="video-item">
+                    <iframe src="{{$videosDetail->video_path}}" 
+                            title="{{$videosDetail->title}}" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></iframe>
+                    <div class="video-title">{{$videosDetail->title}}</div>
+                </div>
+                @endforeach
+            </div>
+            @endif
+
+            @if(count($paymentMasterData) > 0)
+            <!-- Payment Options -->
+            <div class="card fade-in" id="payment-options-section">
+                <div class="card-header">
+                    <h2 class="card-title">
+                        <i class="fas fa-credit-card"></i>
+                        Payment Options
+                    </h2>
+                </div>
+                
+                @foreach($paymentMasterData as $paymentMasterDetail)
+                    @if ($paymentMasterDetail->type == 'bank')
+                    <div class="payment-item">
+                        <h3 class="payment-header">Bank Details</h3>
+                        <div class="payment-detail">
+                            <span class="payment-label">Bank Name:</span>
+                            <span class="payment-value">{{$paymentMasterDetail->bank_name}}</span>
+                        </div>
+                        <div class="payment-detail">
+                            <span class="payment-label">Account Holder:</span>
+                            <span class="payment-value">{{$paymentMasterDetail->account_holder_name}}</span>
+                        </div>
+                        <div class="payment-detail">
+                            <span class="payment-label">Account Number:</span>
+                            <span class="payment-value">{{$paymentMasterDetail->account_no}}</span>
+                        </div>
+                        <div class="payment-detail">
+                            <span class="payment-label">Account Type:</span>
+                            <span class="payment-value">{{ucwords($paymentMasterDetail->account_type)}} Account</span>
+                        </div>
+                        <div class="payment-detail">
+                            <span class="payment-label">IFSC Code:</span>
+                            <span class="payment-value">{{$paymentMasterDetail->ifsc_code}}</span>
+                        </div>
+                        <div class="payment-detail">
+                            <span class="payment-label">Branch Name:</span>
+                            <span class="payment-value">{{$paymentMasterDetail->branch_name}}</span>
+                        </div>
+                    </div>
+                    @else
+                    <div class="payment-item">
+                        <h3 class="payment-header">UPI Details</h3>
+                        <div class="payment-detail">
+                            <span class="payment-label">{{ucwords($paymentMasterDetail->type)}} Number:</span>
+                            <span class="payment-value">{{$paymentMasterDetail->account_no}}</span>
+                        </div>
+                        @if(!empty($paymentMasterDetail->qr_img))
+                        <img src="{{url('public/upload/payment/')}}/{{$paymentMasterDetail->qr_img}}" 
+                             class="qr-image" 
+                             alt="Payment QR Code">
+                        @endif
+                    </div>
+                    @endif
+                @endforeach
+            </div>
+            @endif
+
+            <!-- Feedback -->
+            <div class="card fade-in" id="feedback-section">
+                <div class="card-header">
+                    <h2 class="card-title">
+                        <i class="fas fa-star"></i>
+                        Feedbacks
+                    </h2>
+                </div>
+                @include('visitingCard.bussinessCard.include.feedbackV2')
+            </div>
+
+            @if($userConfigObj->isShowEnquiry == '1')
+            <!-- Enquiry Form -->
+            <div class="card fade-in" id="enquiry-section">
+                <div class="card-header">
+                    <h2 class="card-title">
+                        <i class="fas fa-comment-alt"></i>
+                        Enquiry Form
+                    </h2>
+                </div>
+
+                @if (!empty($companyInfoData->company_address) && !empty($companyInfoData->latitude))
+                <div class="map-container">
+                    <iframe src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q={{$companyInfoData->latitude}},{{$companyInfoData->longitude}}&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe>
+                </div>
+                @endif
+
+                <form data-parsley-validate method="post" class="feedback-form" id="enquiry-form" novalidate>
+                    <meta name="csrf_token" content="{{ csrf_token() }}" />
+                    <input type="hidden" name="slug" id="slug" value="{{$userObj->slug}}">
+                    <input type="hidden" id="companyEmail" value="{{$userObj->email}}">
+
+                    <input type="text" 
+                           name="enquiryName" 
+                           id="enquiryName" 
+                           placeholder="Enter Full Name" 
+                           pattern="[a-zA-Z ]*$" 
+                           required 
+                           class="form-input">
+
+                    <input type="email" 
+                           name="email" 
+                           id="email" 
+                           placeholder="Enter Email" 
+                           class="form-input">
+
+                    <input type="text" 
+                           name="phoneNumber" 
+                           id="phoneNumber" 
+                           required 
+                           placeholder="Enter Phone Number" 
+                           class="form-input">
+
+                    <textarea name="message" 
+                              id="message" 
+                              required 
+                              placeholder="Enter Message" 
+                              class="form-textarea"></textarea>
+
+                    <button type="submit" id="inquiry-send" class="submit-btn">
+                        Send Enquiry
+                    </button>
+                </form>
+            </div>
+            @endif
 
         </div>
 
@@ -1122,14 +1440,14 @@
         <div class="footer-nav">
             <ul class="footer-menu">
                 <li>
-                    <a class="footer-item active" href="#home-section">
+                    <a class="footer-item" href="#home-section">
                         <i class="fas fa-home"></i>
                         <span>HOME</span>
                     </a>
                 </li>
                 <li>
                     <a class="footer-item" href="#about-us-section">
-                        <i class="fas fa-building"></i>
+                        <i class="fas fa-briefcase"></i>
                         <span>{{$userConfigObj->aboutLabel}}</span>
                     </a>
                 </li>
@@ -1138,6 +1456,22 @@
                     <a class="footer-item" href="#products-services-section">
                         <i class="fas fa-box-open"></i>
                         <span>{{$userConfigObj->galleryLabel}}</span>
+                    </a>
+                </li>
+                @endif
+                @if(count($paymentMasterData) > 0)
+                <li>
+                    <a class="footer-item" href="#payment-options-section">
+                        <i class="fas fa-money-bill-alt"></i>
+                        <span>PAYMENT</span>
+                    </a>
+                </li>
+                @endif
+                @if(count($videosData) > 0)
+                <li>
+                    <a class="footer-item" href="#video-section">
+                        <i class="fas fa-video"></i>
+                        <span>VIDEOS</span>
                     </a>
                 </li>
                 @endif
@@ -1159,12 +1493,168 @@
         </div>
     </div>
 
-    <!-- Modals and Scripts -->
-    <!-- Keep your existing modals and scripts, just update the IDs and classes to match the new theme -->
+    <!-- Image Modal -->
+    <div id="imageModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Product Image</h3>
+                <button class="modal-close" onclick="closeImageModal()">&times;</button>
+            </div>
+            <img id="img01" alt="Product Image" style="width: 100%; border-radius: var(--radius-lg);">
+            <div id="caption" style="text-align: center; margin: 1rem 0; font-weight: 600;"></div>
+            <div id="description" style="text-align: center; color: var(--text-secondary);"></div>
+        </div>
+    </div>
+
+    <!-- Share Modal -->
+    <div id="shareModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Share Profile</h3>
+                <button class="modal-close" onclick="closeShareModal()">&times;</button>
+            </div>
+            <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">Share my Digital Card in your network.</p>
+            
+            <div class="social-links" style="margin-top: 1rem;">
+                <a href="https://api.whatsapp.com/send?phone={{str_replace('+','',$companyInfoData->country_code)}}{{$companyInfoData->company_mobile}}&text={{url('vc')}}/{{$userObj->slug}}" 
+                   target="_blank" 
+                   class="social-link" 
+                   style="background: #25d366;">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+                <a href="sms:?body={{url('vc')}}/{{$userObj->slug}}" 
+                   target="_blank" 
+                   class="social-link" 
+                   style="background: #00b2ff;">
+                    <i class="fas fa-comment-dots"></i>
+                </a>
+                <a href="https://www.facebook.com/sharer/sharer.php?u={{url('vc')}}/{{$userObj->slug}}" 
+                   target="_blank" 
+                   class="social-link" 
+                   style="background: #1877f2;">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://twitter.com/intent/tweet?text={{url('vc')}}/{{$userObj->slug}}" 
+                   target="_blank" 
+                   class="social-link" 
+                   style="background: #1da1f2;">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="https://pinterest.com/pin/create/link/?url={{url('vc')}}/{{$userObj->slug}}" 
+                   target="_blank" 
+                   class="social-link" 
+                   style="background: #bd081c;">
+                    <i class="fab fa-pinterest-p"></i>
+                </a>
+                <a href="mailto:?subject=Digital Card&body=Check out this digital card {{url('vc')}}/{{$userObj->slug}}" 
+                   class="social-link" 
+                   style="background: #ea4335;">
+                    <i class="fas fa-envelope"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <input type="hidden" id="send_enquiry_url" value="{{route('sendEnquiry')}}">
 
     <script src="{{asset('public/visitingCard/bussinessCard/common/js/jquery-3.6.4.min.js')}}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
+    <script src="{{asset('public/visitingCard/bussinessCard/a/js/intlTelInput.min.js')}}"></script>
+    <script src="{{asset('public/visitingCard/bussinessCard/a/js/parsley.min.js')}}"></script>
+    <script src="{{asset('public/visitingCard/bussinessCard/a/js/form-action.js')}}"></script>
+    <script src="{{asset('public/visitingCard/bussinessCard/a/js/jquery-confirm.js')}}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="{{asset('public/visitingCard/bussinessCard/common/js/jquery.star-rating.js')}}"></script>
+    <script src="{{asset('public/visitingCard/bussinessCard/common/js/feedbackSub.js')}}"></script>
+    <script src="{{asset('public/js/prevent.js')}}"></script>
+    <script src="{{asset('public/visitingCard/bussinessCard/a/js/script.js')}}?v={{date('YmdHis')}}"></script>
+
+    @if($userConfigObj->isEcommerceEnable == '1')
+    <script src="{{asset('public/visitingCard/bussinessCard/common/js/add2Cart.js')}}"></script>
+    @endif
+
     <script>
-        // Add smooth scrolling for anchor links
+        // Gallery Filter
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                
+                const filter = this.getAttribute('data-filter');
+                document.querySelectorAll('.gallery-item').forEach(item => {
+                    if (filter === 'all' || item.classList.contains(filter)) {
+                        item.classList.remove('hidden');
+                    } else {
+                        item.classList.add('hidden');
+                    }
+                });
+            });
+        });
+
+        // Image Modal
+        function openImageModal(img) {
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('img01');
+            const caption = document.getElementById('caption');
+            const description = document.getElementById('description');
+            
+            modal.classList.add('active');
+            modalImg.src = img.src;
+            caption.innerHTML = img.alt;
+            description.innerHTML = img.getAttribute('description');
+        }
+
+        function closeImageModal() {
+            document.getElementById('imageModal').classList.remove('active');
+        }
+
+        // Share Modal
+        function openShareModal() {
+            document.getElementById('shareModal').classList.add('active');
+        }
+
+        function closeShareModal() {
+            document.getElementById('shareModal').classList.remove('active');
+        }
+
+        // Copy URL
+        function copyUrlSecond() {
+            const copyText = document.getElementById('visitingUrlText');
+            copyText.select();
+            copyText.setSelectionRange(0, 99999);
+            document.execCommand('copy');
+            
+            toastr.success('URL copied to clipboard!');
+        }
+
+        // WhatsApp Share
+        function handleWhatsappShare() {
+            const phoneNumber = document.getElementById('whatsapp-input').value;
+            const message = document.getElementById('whatsapp-msg').value;
+            
+            if (phoneNumber && phoneNumber.length === 10) {
+                const url = `https://api.whatsapp.com/send?phone=91${phoneNumber}&text=${encodeURIComponent(message)}`;
+                window.open(url, '_blank');
+            } else {
+                toastr.error('Please enter a valid 10-digit phone number');
+            }
+        }
+
+        // Close modals on outside click
+        window.onclick = function(event) {
+            const imageModal = document.getElementById('imageModal');
+            const shareModal = document.getElementById('shareModal');
+            
+            if (event.target === imageModal) {
+                closeImageModal();
+            }
+            if (event.target === shareModal) {
+                closeShareModal();
+            }
+        }
+
+        // Smooth Scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -1174,36 +1664,9 @@
                         behavior: 'smooth',
                         block: 'start'
                     });
-                    
-                    // Update active nav item
-                    document.querySelectorAll('.footer-item').forEach(item => {
-                        item.classList.remove('active');
-                    });
-                    this.classList.add('active');
                 }
             });
         });
-
-        // Handle WhatsApp share
-        function handleWhatsappShare() {
-            const phoneNumber = document.getElementById('whatsapp-input').value;
-            const message = encodeURIComponent("{{ url('vc') }}/{{ $userObj->slug }}");
-            
-            if (phoneNumber && phoneNumber.length === 10) {
-                const url = `https://api.whatsapp.com/send?phone=91${phoneNumber}&text=${message}`;
-                window.open(url, '_blank');
-            } else {
-                alert('Please enter a valid 10-digit phone number');
-            }
-        }
-
-        // Copy URL function
-        function copyUrlSecond() {
-            const textToCopy = "{{$vistingUrl}}";
-            navigator.clipboard.writeText(textToCopy).then(() => {
-                alert('URL copied to clipboard!');
-            });
-        }
 
         // Initialize animations
         document.addEventListener('DOMContentLoaded', function() {
@@ -1224,6 +1687,24 @@
                 observer.observe(card);
             });
         });
+
+        // Star Rating
+        $(document).ready(function() {
+            // initialize the star rating plugin
+            $('#ratingStars').starRating({
+                stars: 5,
+                starsSize: 1.8,
+                titles: ["Very Bad", "Bad", "Okay", "Good", "Excellent"],
+                showInfo: true,
+                inputName: 'rating_count'
+            });
+
+            // sync selected value to hidden field
+            $('#ratingStars').on('change', function (e, value) {
+                $('#ratingVal').val(value);
+            });
+        });
     </script>
+
 </body>
 </html>
