@@ -390,7 +390,8 @@ body {
     border-radius: var(--radius-full);
     font-size: 0.875rem;
     transition: all 0.3s ease;
-    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
 }
 
 .category-tag:hover,
@@ -398,6 +399,27 @@ body {
     background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
     color: white;
     border-color: var(--primary-color);
+}
+
+/* --- Sort Dropdown --- */
+.sort-dropdown .dropdown-menu {
+    min-width: 200px;
+    padding: 0.5rem 0;
+}
+
+.sort-dropdown .dropdown-item {
+    padding: 0.5rem 1rem;
+    transition: all 0.3s ease;
+}
+
+.sort-dropdown .dropdown-item:hover {
+    background: var(--background);
+    color: var(--primary-color);
+}
+
+.sort-dropdown .dropdown-item.active {
+    background: var(--primary-color);
+    color: white;
 }
 
 /* --- Responsive Design --- */
@@ -497,6 +519,34 @@ body {
     font-size: 0.75rem;
     color: var(--text-secondary);
 }
+
+/* --- Active Filters --- */
+.active-filters {
+    margin-bottom: 1.5rem;
+}
+
+.filter-badge {
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+    color: white;
+    padding: 0.375rem 0.75rem;
+    border-radius: var(--radius-full);
+    font-size: 0.875rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.filter-badge .remove-filter {
+    cursor: pointer;
+    font-size: 0.875rem;
+    opacity: 0.8;
+}
+
+.filter-badge .remove-filter:hover {
+    opacity: 1;
+}
 </style>
 @endsection
 
@@ -539,15 +589,11 @@ body {
                             Search
                         </button>
                     </div>
+                    
+                    <!-- Hidden sort field -->
+                    <input type="hidden" name="sort" value="{{ request()->get('sort', 'relevance') }}">
                 </form>
                 
-                <div class="d-flex justify-content-center flex-wrap gap-2">
-                    <span class="text-white-50">Popular:</span>
-                    <a href="{{ route('search', ['keywords' => 'Consultant']) }}" class="badge bg-light text-dark px-3 py-2">Consultants</a>
-                    <a href="{{ route('search', ['keywords' => 'IT Services']) }}" class="badge bg-light text-dark px-3 py-2">IT Services</a>
-                    <a href="{{ route('search', ['keywords' => 'Manufacturing']) }}" class="badge bg-light text-dark px-3 py-2">Manufacturing</a>
-                    <a href="{{ route('search', ['keywords' => 'Healthcare']) }}" class="badge bg-light text-dark px-3 py-2">Healthcare</a>
-                </div>
             </div>
         </div>
     </div>
@@ -577,7 +623,7 @@ body {
             </div>
             <div class="col-md-3 col-6">
                 <div class="stat-item">
-                    <div class="stat-number">{{ $totalIndustries ?? '25+' }}</div>
+                    <div class="stat-number">{{ $topIndustries ?? '25+' }}</div>
                     <div class="stat-label">Industries</div>
                 </div>
             </div>
@@ -586,25 +632,6 @@ body {
 </section>
 
 <!-- Categories Filter -->
-<section class="py-4">
-    <div class="container">
-        <div class="categories-filter">
-            <h6 class="mb-3 fw-semibold text-primary"><i class="fas fa-filter me-2"></i>Filter by Category</h6>
-            <div class="category-tags">
-                <a href="{{ route('search') }}" class="category-tag {{ !request()->get('category') ? 'active' : '' }}">All</a>
-                @php
-                    $categories = ['Technology', 'Healthcare', 'Manufacturing', 'Consulting', 'Retail', 'Education', 'Finance', 'Real Estate', 'Hospitality', 'Transportation'];
-                @endphp
-                @foreach($categories as $category)
-                <a href="{{ route('search', ['category' => strtolower($category)]) }}" 
-                   class="category-tag {{ request()->get('category') == strtolower($category) ? 'active' : '' }}">
-                    {{ $category }}
-                </a>
-                @endforeach
-            </div>
-        </div>
-    </div>
-</section>
 
 <!-- Business Listings -->
 <section class="py-5">
@@ -613,18 +640,56 @@ body {
             <div class="row mb-4">
                 <div class="col-md-6">
                     <h3 class="fw-bold text-dark">Business Directory</h3>
-                    <p class="text-muted">Showing {{ $userData->count() }} of {{ $userData->total() }} results</p>
+                    <p class="text-muted">
+                        Showing {{ $userData->firstItem() }} - {{ $userData->lastItem() }} of {{ $userData->total() }} results
+                        @if(request()->get('keywords') || request()->get('city_name'))
+                        for "{{ request()->get('keywords') }}"
+                        @if(request()->get('city_name'))
+                        in {{ request()->get('city_name') }}
+                        @endif
+                        @endif
+                    </p>
                 </div>
                 <div class="col-md-6 text-md-end">
-                    <div class="dropdown">
+                    <div class="dropdown sort-dropdown">
                         <button class="btn btn-outline-primary dropdown-toggle" type="button" data-bs-toggle="dropdown">
                             <i class="fas fa-sort me-2"></i>
-                            Sort by: {{ ucfirst(request()->get('sort', 'relevance')) }}
+                            Sort by: 
+                            @php
+                                $sortLabels = [
+                                    'relevance' => 'Relevance',
+                                    'newest' => 'Newest',
+                                    'popular' => 'Most Popular',
+                                    'name' => 'Name (A-Z)'
+                                ];
+                            @endphp
+                            {{ $sortLabels[request()->get('sort', 'relevance')] }}
                         </button>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="{{ route('search', array_merge(request()->query(), ['sort' => 'relevance'])) }}">Relevance</a></li>
-                            <li><a class="dropdown-item" href="{{ route('search', array_merge(request()->query(), ['sort' => 'newest'])) }}">Newest First</a></li>
-                            <li><a class="dropdown-item" href="{{ route('search', array_merge(request()->query(), ['sort' => 'popular'])) }}">Most Popular</a></li>
+                            <li>
+                                <a class="dropdown-item {{ request()->get('sort') == 'relevance' ? 'active' : '' }}" 
+                                   href="{{ route('search', array_merge(request()->query(), ['sort' => 'relevance'])) }}">
+                                    <i class="fas fa-star me-2"></i> Relevance
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item {{ request()->get('sort') == 'newest' ? 'active' : '' }}" 
+                                   href="{{ route('search', array_merge(request()->query(), ['sort' => 'newest'])) }}">
+                                    <i class="fas fa-calendar-plus me-2"></i> Newest First
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item {{ request()->get('sort') == 'popular' ? 'active' : '' }}" 
+                                   href="{{ route('search', array_merge(request()->query(), ['sort' => 'popular'])) }}">
+                                    <i class="fas fa-fire me-2"></i> Most Popular
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item {{ request()->get('sort') == 'name' ? 'active' : '' }}" 
+                                   href="{{ route('search', array_merge(request()->query(), ['sort' => 'name'])) }}">
+                                    <i class="fas fa-sort-alpha-down me-2"></i> Name (A-Z)
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -653,16 +718,9 @@ body {
                                 @endif
                                 
                                 <!-- Featured Badge (Optional) -->
-                                @if($index < 3)
+                                @if($index < 3 && request()->get('sort') != 'newest')
                                 <div class="featured-badge">
                                     <i class="fas fa-star me-1"></i> Featured
-                                </div>
-                                @endif
-                                
-                                <!-- Verified Badge -->
-                                @if($userDetail->is_verified ?? false)
-                                <div class="verified-badge">
-                                    <i class="fas fa-check"></i>
                                 </div>
                                 @endif
                             </div>
@@ -693,10 +751,14 @@ body {
                                     <div class="stat-number-small">{{ $userDetail->views ?? '0' }}</div>
                                     <div class="stat-label-small">Views</div>
                                 </div>
+                                @if($userDetail->package_type ?? false)
                                 <div class="stat-item-small">
-                                    <div class="stat-number-small">{{ $userDetail->connections ?? '0' }}</div>
-                                    <div class="stat-label-small">Connections</div>
+                                    <div class="stat-number-small">
+                                        <i class="fas fa-crown text-warning"></i>
+                                    </div>
+                                    <div class="stat-label-small">Premium</div>
                                 </div>
+                                @endif
                             </div>
                             
                             <hr class="my-3">
@@ -739,7 +801,7 @@ body {
                 </div>
                 <h4 class="no-results-title">No businesses found</h4>
                 <p class="no-results-text">
-                    @if(request()->get('keywords') || request()->get('city_name'))
+                    @if(request()->get('keywords') || request()->get('city_name') || request()->get('category'))
                         We couldn't find any businesses matching your search criteria.
                     @else
                         No businesses are currently listed in our directory.
@@ -793,13 +855,21 @@ document.addEventListener('DOMContentLoaded', function() {
         observer.observe(card);
     });
 
-    // Category filter click
-    document.querySelectorAll('.category-tag').forEach(tag => {
-        tag.addEventListener('click', function(e) {
-            if (!this.classList.contains('active')) {
-                document.querySelectorAll('.category-tag').forEach(t => t.classList.remove('active'));
-                this.classList.add('active');
-            }
+    // Update sort hidden field when dropdown item is clicked
+    document.querySelectorAll('.sort-dropdown .dropdown-item').forEach(item => {
+        item.addEventListener('click', function(e) {
+            e.preventDefault();
+            const sortValue = this.getAttribute('href').split('sort=')[1];
+            document.querySelector('input[name="sort"]').value = sortValue;
+            window.location.href = this.getAttribute('href');
+        });
+    });
+
+    // Remove filter functionality
+    document.querySelectorAll('.remove-filter').forEach(button => {
+        button.addEventListener('click', function(e) {
+            e.preventDefault();
+            window.location.href = this.getAttribute('href');
         });
     });
 });

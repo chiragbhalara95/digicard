@@ -334,18 +334,28 @@ class FrontWebsiteController extends BasicController
     public function search(Request $request)
     {
         $params = $request->all();
-        $keywords = isset($params['keywords']) ? $params['keywords'] : null;
-        $cityName = isset($params['city_name']) ? $params['city_name'] : null;
+        $keywords = $params['keywords'] ?? null;
+        $cityName = $params['city_name'] ?? null;
+        $sort = $params['sort'] ?? 'relevance';
+        $category = $params['category'] ?? null;
         $cutoffDate = date("Y-m-d", strtotime('+15 day'));
 
         $userData = User::leftJoin('company_info As cinfo', 'cinfo.user_id', '=', 'users.id')
             ->whereNotNull('users.slug')
-            ->where('users.package_end_date', '>', $cutoffDate);
+            ->where('users.package_end_date', '>', $cutoffDate)
+            ->select(
+                'users.*',
+                'cinfo.*',
+                'users.id as user_id',
+                'users.no_visit as views'
+            );
 
         if (!empty($keywords)) {
             $userData->where(function($query) use($keywords){
                 $query->where('cinfo.company_name', 'LIKE', '%'.$keywords.'%')
-                        ->orWhere('users.name', 'LIKE', '%'.$keywords.'%');
+                    ->orWhere('users.name', 'LIKE', '%'.$keywords.'%')
+                    ->orWhere('cinfo.company_profession', 'LIKE', '%'.$keywords.'%')
+                    ->orWhere('cinfo.company_info', 'LIKE', '%'.$keywords.'%');
             });
         }
 
@@ -353,9 +363,56 @@ class FrontWebsiteController extends BasicController
             $userData->where('cinfo.company_address', 'LIKE', '%'.$cityName.'%');
         }
 
-        $userData = $userData->orderBy('cinfo.company_name')->paginate(6);
+        if (!empty($category)) {
+            $userData->where('cinfo.company_profession', 'LIKE', '%'.$category.'%');
+        }
 
-        return view('frontView/search', compact('userData'));
+        // Apply sorting
+        switch($sort) {
+            case 'newest':
+                $userData->orderBy('users.created_at', 'DESC');
+                break;
+            case 'popular':
+                $userData->orderBy('users.no_visit', 'DESC');
+                break;
+            case 'name':
+                $userData->orderBy('cinfo.company_name', 'ASC');
+                break;
+            default: // 'relevance'
+                $userData->orderBy('cinfo.company_name', 'ASC');
+                break;
+        }
+
+        $userData = $userData->paginate(12);
+
+        // Get statistics for the directory
+        $totalBusinesses = User::whereNotNull('slug')
+            ->where('package_end_date', '>', $cutoffDate)
+            ->count();
+        
+        $totalCities = User::leftJoin('company_info As cinfo', 'cinfo.user_id', '=', 'users.id')
+            ->whereNotNull('users.slug')
+            ->where('users.package_end_date', '>', $cutoffDate)
+            ->whereNotNull('cinfo.company_address')
+            ->distinct()
+            ->count('cinfo.company_address');
+        
+        // Get top industries/professions
+        $topIndustries = User::leftJoin('company_info As cinfo', 'cinfo.user_id', '=', 'users.id')
+            ->whereNotNull('users.slug')
+            ->where('users.package_end_date', '>', $cutoffDate)
+            ->whereNotNull('cinfo.company_profession')
+            ->select('cinfo.company_profession')
+            ->distinct()
+            ->count();
+
+        return view('frontView/search', compact(
+            'userData',
+            'totalBusinesses',
+            'totalCities',
+            // 'verifiedProfiles',
+            'topIndustries'
+        ));
     }
 
     public function createLeadOrder(Request $request) {
