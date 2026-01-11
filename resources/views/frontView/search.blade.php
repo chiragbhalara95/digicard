@@ -5,22 +5,27 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
-/* --- Global Styles --- */
+/* ===== Updated Global Styles to Match Home Page ===== */
 :root {
     --primary-color: #2563eb;
     --primary-dark: #1e40af;
     --primary-light: #3b82f6;
-    --secondary-color: #64748b;
-    --accent-color: #8b5cf6;
-    --background: #f8fafc;
-    --surface: #ffffff;
+    --secondary-color: #8b5cf6;
+    --accent-color: #ec4899;
+    --dark-color: #0f172a;
+    --dark-light: #1e293b;
     --text-primary: #1e293b;
     --text-secondary: #64748b;
     --text-light: #94a3b8;
-    --border-color: #e2e8f0;
-    --success-color: #10b981;
-    --warning-color: #f59e0b;
-    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+    --background: #f8fafc;
+    --surface: #ffffff;
+    --border: #e2e8f0;
+    --success: #10b981;
+    --warning: #f59e0b;
+    --error: #ef4444;
+    --gradient: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    --gradient-light: linear-gradient(135deg, var(--primary-light), #f472b6);
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
     --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
     --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
     --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
@@ -34,12 +39,13 @@
 body {
     background: var(--background);
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--text-primary);
 }
 
-/* --- Hero Section --- */
+/* ===== Hero Section - Matched with Home Page ===== */
 .hero-section {
-    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
-    padding: 4rem 0;
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    padding: 6rem 0 4rem;
     color: white;
     position: relative;
     overflow: hidden;
@@ -52,34 +58,42 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(45deg, transparent 40%, rgba(255,255,255,0.1) 50%, transparent 60%);
-    animation: shimmer 3s infinite;
+    background: 
+        radial-gradient(circle at 20% 80%, rgba(99, 102, 241, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(139, 92, 246, 0.1) 0%, transparent 50%);
+    animation: pulse 4s ease-in-out infinite alternate;
 }
 
-@keyframes shimmer {
-    0% { transform: translateX(-100%); }
-    100% { transform: translateX(100%); }
+@keyframes pulse {
+    0% { opacity: 0.5; }
+    100% { opacity: 1; }
 }
 
 .hero-title {
-    font-size: 2.5rem;
-    font-weight: 700;
-    margin-bottom: 1rem;
+    font-size: 2.75rem;
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(to right, #ffffff, #a5b4fc);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .hero-subtitle {
     font-size: 1.125rem;
-    opacity: 0.9;
+    color: rgba(255, 255, 255, 0.8);
     margin-bottom: 2rem;
+    line-height: 1.6;
 }
 
-/* --- Search Bar Modern Design --- */
+/* ===== Search Bar - Updated Design ===== */
 .search-bar-modern {
-    background: white;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
     border-radius: var(--radius-xl);
     box-shadow: var(--shadow-xl);
-    padding: 0.75rem;
-    border: 1px solid var(--border-color);
+    padding: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .search-input-group {
@@ -89,34 +103,40 @@ body {
 
 .search-input-group i {
     position: absolute;
-    left: 1rem;
+    left: 1.25rem;
     top: 50%;
     transform: translateY(-50%);
-    color: var(--text-secondary);
+    color: var(--text-light);
     font-size: 1.125rem;
 }
 
 .search-input {
     width: 100%;
-    padding: 1rem 1rem 1rem 3rem;
-    border: 2px solid var(--border-color);
+    padding: 1.125rem 1.125rem 1.125rem 3.5rem;
+    background: rgba(255, 255, 255, 0.9);
+    border: 2px solid transparent;
     border-radius: var(--radius-lg);
     font-size: 1rem;
     transition: all 0.3s ease;
-    background: white;
+    color: var(--text-primary);
 }
 
 .search-input:focus {
     outline: none;
     border-color: var(--primary-color);
-    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+    background: white;
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+}
+
+.search-input::placeholder {
+    color: var(--text-light);
 }
 
 .search-btn {
-    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+    background: var(--gradient);
     color: white;
     border: none;
-    padding: 1rem 2rem;
+    padding: 1.125rem 2.5rem;
     border-radius: var(--radius-lg);
     font-weight: 600;
     font-size: 1rem;
@@ -124,19 +144,21 @@ body {
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    box-shadow: var(--shadow-lg);
 }
 
 .search-btn:hover {
     transform: translateY(-2px);
-    box-shadow: var(--shadow-lg);
-    background: linear-gradient(135deg, var(--primary-dark), var(--primary-color));
+    box-shadow: var(--shadow-xl);
+    background: linear-gradient(135deg, var(--primary-dark), var(--secondary-color));
 }
 
-/* --- Stats Section --- */
+/* ===== Stats Section - Updated ===== */
 .stats-section {
-    background: white;
-    padding: 2rem 0;
-    border-bottom: 1px solid var(--border-color);
+    background: var(--surface);
+    padding: 3rem 0;
+    border-bottom: 1px solid var(--border);
+    box-shadow: var(--shadow-sm);
 }
 
 .stat-item {
@@ -145,26 +167,34 @@ body {
 }
 
 .stat-number {
-    font-size: 2rem;
-    font-weight: 700;
-    color: var(--primary-color);
+    font-size: 2.5rem;
+    font-weight: 800;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
     margin-bottom: 0.5rem;
+    line-height: 1;
 }
 
 .stat-label {
     color: var(--text-secondary);
     font-size: 0.875rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
-/* --- Business Cards --- */
+/* ===== Business Cards - Redesigned ===== */
 .business-card {
     background: var(--surface);
-    border: 1px solid var(--border-color);
+    border: 1px solid var(--border);
     border-radius: var(--radius-xl);
     overflow: hidden;
     transition: all 0.3s ease;
     height: 100%;
     box-shadow: var(--shadow-md);
+    position: relative;
 }
 
 .business-card:hover {
@@ -190,11 +220,11 @@ body {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.3s ease;
+    transition: transform 0.5s ease;
 }
 
 .business-card:hover .profile-image {
-    transform: scale(1.05);
+    transform: scale(1.1);
 }
 
 .logo-overlay {
@@ -204,8 +234,8 @@ body {
     transform: translateX(-50%);
     width: 80px;
     height: 80px;
-    background: white;
-    border: 4px solid white;
+    background: var(--surface);
+    border: 4px solid var(--surface);
     border-radius: var(--radius-full);
     box-shadow: var(--shadow-lg);
     display: flex;
@@ -225,20 +255,21 @@ body {
     position: absolute;
     top: 1rem;
     right: 1rem;
-    background: var(--success-color);
+    background: var(--gradient);
     color: white;
-    width: 32px;
-    height: 32px;
+    width: 36px;
+    height: 36px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 0.75rem;
-    border: 2px solid white;
+    font-size: 0.875rem;
+    border: 2px solid var(--surface);
+    box-shadow: var(--shadow-md);
 }
 
 .card-body {
-    padding: 2rem 1.5rem 1.5rem;
+    padding: 2.5rem 1.5rem 1.5rem;
     text-align: center;
 }
 
@@ -253,31 +284,34 @@ body {
 .person-name {
     color: var(--text-secondary);
     font-size: 0.875rem;
-    margin-bottom: 0.75rem;
+    margin-bottom: 1rem;
+    font-weight: 500;
 }
 
 .profession-badge {
     display: inline-block;
-    background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+    background: var(--gradient);
     color: white;
-    padding: 0.375rem 1rem;
+    padding: 0.5rem 1.25rem;
     border-radius: var(--radius-full);
     font-size: 0.75rem;
-    font-weight: 500;
-    margin-bottom: 1rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 .contact-info {
     list-style: none;
     padding: 0;
-    margin: 1rem 0;
+    margin: 1.5rem 0;
 }
 
 .contact-info li {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-    margin-bottom: 0.5rem;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
     color: var(--text-secondary);
     font-size: 0.875rem;
 }
@@ -285,19 +319,20 @@ body {
 .contact-info li i {
     color: var(--primary-color);
     width: 16px;
+    font-size: 0.875rem;
 }
 
 .card-footer {
-    padding: 1rem 1.5rem;
-    border-top: 1px solid var(--border-color);
+    padding: 1.25rem 1.5rem;
+    border-top: 1px solid var(--border);
     background: var(--background);
 }
 
 .visit-btn {
-    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+    background: var(--gradient);
     color: white;
     border: none;
-    padding: 0.75rem 1.5rem;
+    padding: 0.875rem 1.5rem;
     border-radius: var(--radius-lg);
     font-weight: 600;
     transition: all 0.3s ease;
@@ -306,41 +341,166 @@ body {
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
+    box-shadow: var(--shadow-sm);
 }
 
 .visit-btn:hover {
-    background: linear-gradient(135deg, var(--primary-dark), var(--primary-color));
     transform: translateY(-2px);
     box-shadow: var(--shadow-md);
+    background: linear-gradient(135deg, var(--primary-dark), var(--secondary-color));
     color: white;
 }
 
-/* --- No Results --- */
-.no-results {
-    padding: 4rem 0;
+/* ===== Featured Badge - Updated ===== */
+.featured-badge {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    background: var(--gradient-light);
+    color: white;
+    padding: 0.375rem 1rem;
+    border-radius: var(--radius-full);
+    font-size: 0.75rem;
+    font-weight: 600;
+    z-index: 2;
+    box-shadow: var(--shadow-sm);
+}
+
+/* ===== Business Stats - Updated ===== */
+.business-stats {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin: 1.5rem 0;
+    padding: 1rem 0;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+}
+
+.stat-item-small {
     text-align: center;
+}
+
+.stat-number-small {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 0.25rem;
+}
+
+.stat-label-small {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+/* ===== Sort Dropdown - Updated ===== */
+.sort-dropdown .btn-outline-primary {
+    background: var(--surface);
+    border: 2px solid var(--border);
+    color: var(--text-primary);
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--radius-lg);
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.sort-dropdown .btn-outline-primary:hover {
+    background: var(--gradient);
+    border-color: transparent;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.sort-dropdown .dropdown-menu {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-xl);
+    padding: 0.5rem 0;
+    min-width: 200px;
+}
+
+.sort-dropdown .dropdown-item {
+    padding: 0.75rem 1.25rem;
+    color: var(--text-primary);
+    transition: all 0.2s ease;
+    font-weight: 500;
+}
+
+.sort-dropdown .dropdown-item:hover {
+    background: var(--gradient);
+    color: white;
+}
+
+.sort-dropdown .dropdown-item.active {
+    background: var(--gradient);
+    color: white;
+}
+
+.sort-dropdown .dropdown-item i {
+    width: 20px;
+    color: var(--text-secondary);
+}
+
+.sort-dropdown .dropdown-item.active i,
+.sort-dropdown .dropdown-item:hover i {
+    color: white;
+}
+
+/* ===== No Results - Updated ===== */
+.no-results {
+    padding: 5rem 0;
+    text-align: center;
+    background: var(--surface);
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--border);
 }
 
 .no-results-icon {
     font-size: 4rem;
-    color: var(--text-light);
-    margin-bottom: 1rem;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 1.5rem;
 }
 
 .no-results-title {
-    font-size: 1.5rem;
+    font-size: 1.75rem;
+    font-weight: 700;
     color: var(--text-primary);
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
 }
 
 .no-results-text {
     color: var(--text-secondary);
+    font-size: 1.125rem;
     margin-bottom: 2rem;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-/* --- Pagination --- */
+.no-results .btn-primary {
+    background: var(--gradient);
+    border: none;
+    padding: 1rem 2.5rem;
+    border-radius: var(--radius-lg);
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.no-results .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+/* ===== Pagination - Updated ===== */
 .pagination-container {
-    margin-top: 3rem;
+    margin-top: 4rem;
 }
 
 .pagination {
@@ -348,130 +508,74 @@ body {
 }
 
 .page-link {
-    border: 1px solid var(--border-color);
+    border: 2px solid var(--border);
     color: var(--text-secondary);
     margin: 0 0.25rem;
-    border-radius: var(--radius-md) !important;
+    border-radius: var(--radius-lg) !important;
     transition: all 0.3s ease;
+    font-weight: 600;
+    padding: 0.75rem 1rem;
+    min-width: 45px;
+    text-align: center;
 }
 
 .page-link:hover {
-    background: var(--primary-color);
+    background: var(--gradient);
     color: white;
-    border-color: var(--primary-color);
+    border-color: transparent;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
 }
 
 .page-item.active .page-link {
-    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
-    border-color: var(--primary-color);
-}
-
-/* --- Categories Filter --- */
-.categories-filter {
-    background: white;
-    padding: 1rem;
-    border-radius: var(--radius-lg);
+    background: var(--gradient);
+    border-color: transparent;
+    color: white;
     box-shadow: var(--shadow-md);
-    margin-bottom: 2rem;
-    border: 1px solid var(--border-color);
 }
 
-.category-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
+/* ===== Call to Action - Updated ===== */
+.bg-gradient-primary {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%) !important;
+    position: relative;
+    overflow: hidden;
 }
 
-.category-tag {
-    background: var(--background);
-    border: 1px solid var(--border-color);
-    color: var(--text-secondary);
-    padding: 0.5rem 1rem;
-    border-radius: var(--radius-full);
-    font-size: 0.875rem;
-    transition: all 0.3s ease;
-    text-decoration: none;
-    display: inline-block;
+.bg-gradient-primary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 30% 70%, rgba(99, 102, 241, 0.2) 0%, transparent 50%),
+        radial-gradient(circle at 70% 30%, rgba(139, 92, 246, 0.15) 0%, transparent 50%);
 }
 
-.category-tag:hover,
-.category-tag.active {
-    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
-    color: white;
-    border-color: var(--primary-color);
-}
-
-/* --- Sort Dropdown --- */
-.sort-dropdown .dropdown-menu {
-    min-width: 200px;
-    padding: 0.5rem 0;
-}
-
-.sort-dropdown .dropdown-item {
-    padding: 0.5rem 1rem;
-    transition: all 0.3s ease;
-}
-
-.sort-dropdown .dropdown-item:hover {
-    background: var(--background);
+.bg-gradient-primary .btn-light {
+    background: white;
     color: var(--primary-color);
+    border: none;
+    padding: 1rem 2.5rem;
+    border-radius: var(--radius-full);
+    font-weight: 600;
+    font-size: 1.125rem;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-lg);
 }
 
-.sort-dropdown .dropdown-item.active {
-    background: var(--primary-color);
-    color: white;
+.bg-gradient-primary .btn-light:hover {
+    background: #f1f5f9;
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-xl);
 }
 
-/* --- Responsive Design --- */
-@media (max-width: 768px) {
-    .hero-title {
-        font-size: 2rem;
-    }
-    
-    .hero-subtitle {
-        font-size: 1rem;
-    }
-    
-    .search-bar-modern {
-        flex-direction: column;
-    }
-    
-    .search-input-group {
-        margin-bottom: 1rem;
-    }
-    
-    .search-btn {
-        width: 100%;
-    }
-    
-    .profile-image-container {
-        height: 150px;
-    }
-    
-    .company-name {
-        font-size: 1.125rem;
-    }
-}
-
-@media (max-width: 576px) {
-    .hero-section {
-        padding: 2rem 0;
-    }
-    
-    .hero-title {
-        font-size: 1.75rem;
-    }
-    
-    .business-card {
-        margin-bottom: 1rem;
-    }
-}
-
-/* --- Loading Animation --- */
+/* ===== Animations ===== */
 @keyframes fadeInUp {
     from {
         opacity: 0;
-        transform: translateY(20px);
+        transform: translateY(30px);
     }
     to {
         opacity: 1;
@@ -483,75 +587,70 @@ body {
     animation: fadeInUp 0.6s ease-out;
 }
 
-/* --- Featured Badge --- */
-.featured-badge {
-    position: absolute;
-    top: 1rem;
-    left: 1rem;
-    background: linear-gradient(135deg, #f59e0b, #fbbf24);
-    color: white;
-    padding: 0.25rem 0.75rem;
-    border-radius: var(--radius-full);
-    font-size: 0.75rem;
-    font-weight: 600;
-    z-index: 2;
+/* ===== Responsive Design ===== */
+@media (max-width: 992px) {
+    .hero-title {
+        font-size: 2.25rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+    
+    .search-bar-modern {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .search-input-group {
+        width: 100%;
+    }
+    
+    .search-btn {
+        width: 100%;
+    }
 }
 
-/* --- Business Stats --- */
-.business-stats {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    margin-top: 1rem;
+@media (max-width: 768px) {
+    .hero-section {
+        padding: 4rem 0 3rem;
+    }
+    
+    .hero-title {
+        font-size: 2rem;
+    }
+    
+    .stats-section {
+        padding: 2rem 0;
+    }
+    
+    .stat-number {
+        font-size: 2rem;
+    }
+    
+    .profile-image-container {
+        height: 160px;
+    }
 }
 
-.stat-item-small {
-    text-align: center;
-}
-
-.stat-number-small {
-    font-size: 1rem;
-    font-weight: 700;
-    color: var(--primary-color);
-}
-
-.stat-label-small {
-    font-size: 0.75rem;
-    color: var(--text-secondary);
-}
-
-/* --- Active Filters --- */
-.active-filters {
-    margin-bottom: 1.5rem;
-}
-
-.filter-badge {
-    background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
-    color: white;
-    padding: 0.375rem 0.75rem;
-    border-radius: var(--radius-full);
-    font-size: 0.875rem;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    margin-right: 0.5rem;
-    margin-bottom: 0.5rem;
-}
-
-.filter-badge .remove-filter {
-    cursor: pointer;
-    font-size: 0.875rem;
-    opacity: 0.8;
-}
-
-.filter-badge .remove-filter:hover {
-    opacity: 1;
+@media (max-width: 576px) {
+    .hero-title {
+        font-size: 1.75rem;
+    }
+    
+    .search-input {
+        padding: 1rem 1rem 1rem 3rem;
+    }
+    
+    .business-stats {
+        gap: 1rem;
+    }
 }
 </style>
 @endsection
 
 @section('content')
-<!-- Hero Section -->
+<!-- Hero Section - Matching Home Page Design -->
 <section class="hero-section">
     <div class="container">
         <div class="row justify-content-center">
@@ -631,28 +730,26 @@ body {
     </div>
 </section>
 
-<!-- Categories Filter -->
-
 <!-- Business Listings -->
 <section class="py-5">
     <div class="container">
         @if($userData->count() > 0)
-            <div class="row mb-4">
+            <div class="row mb-4 align-items-center">
                 <div class="col-md-6">
-                    <h3 class="fw-bold text-dark">Business Directory</h3>
-                    <p class="text-muted">
+                    <h2 class="fw-bold mb-2" style="color: var(--text-primary);">Business Directory</h2>
+                    <p class="mb-0" style="color: var(--text-secondary);">
                         Showing {{ $userData->firstItem() }} - {{ $userData->lastItem() }} of {{ $userData->total() }} results
                         @if(request()->get('keywords') || request()->get('city_name'))
-                        for "{{ request()->get('keywords') }}"
+                        for "<strong>{{ request()->get('keywords') }}</strong>"
                         @if(request()->get('city_name'))
-                        in {{ request()->get('city_name') }}
+                        in <strong>{{ request()->get('city_name') }}</strong>
                         @endif
                         @endif
                     </p>
                 </div>
                 <div class="col-md-6 text-md-end">
                     <div class="dropdown sort-dropdown">
-                        <button class="btn btn-outline-primary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                        <button class="btn btn-outline-primary dropdown-toggle d-flex align-items-center" type="button" data-bs-toggle="dropdown">
                             <i class="fas fa-sort me-2"></i>
                             Sort by: 
                             @php
@@ -706,8 +803,8 @@ body {
                                 @elseif(!empty($userDetail->profile_pic))
                                     <img src="{{ url('public/'.$userDetail->profile_pic) }}" alt="{{ $userDetail->name }}" class="profile-image">
                                 @else
-                                    <div class="profile-image bg-gradient-primary d-flex align-items-center justify-content-center">
-                                        <span class="display-6 text-white fw-bold">
+                                    <div class="profile-image d-flex align-items-center justify-content-center" style="background: var(--gradient);">
+                                        <span class="display-5 text-white fw-bold">
                                             @if (!empty($userDetail->company_name))
                                                 {{ substr($userDetail->company_name, 0, 2) }}
                                             @else
@@ -717,7 +814,7 @@ body {
                                     </div>
                                 @endif
                                 
-                                <!-- Featured Badge (Optional) -->
+                                <!-- Featured Badge -->
                                 @if($index < 3 && request()->get('sort') != 'newest')
                                 <div class="featured-badge">
                                     <i class="fas fa-star me-1"></i> Featured
@@ -754,14 +851,12 @@ body {
                                 @if($userDetail->package_type ?? false)
                                 <div class="stat-item-small">
                                     <div class="stat-number-small">
-                                        <i class="fas fa-crown text-warning"></i>
+                                        <i class="fas fa-crown" style="color: var(--warning);"></i>
                                     </div>
                                     <div class="stat-label-small">Premium</div>
                                 </div>
                                 @endif
                             </div>
-                            
-                            <hr class="my-3">
                             
                             <ul class="contact-info">
                                 @if(!empty($userDetail->company_address))
@@ -820,9 +915,9 @@ body {
 <section class="py-5 bg-gradient-primary text-white">
     <div class="container">
         <div class="row justify-content-center text-center">
-            <div class="col-lg-8">
-                <h3 class="mb-4">Ready to Grow Your Business?</h3>
-                <p class="mb-4">List your business in our directory and connect with potential customers and partners.</p>
+            <div class="col-lg-8 position-relative">
+                <h3 class="mb-4 fw-bold">Ready to Grow Your Business?</h3>
+                <p class="mb-4" style="opacity: 0.9;">List your business in our directory and connect with potential customers and partners. Join our community of successful businesses today.</p>
                 <a href="{{ route('register') }}" class="btn btn-light btn-lg px-5">
                     <i class="fas fa-plus-circle me-2"></i>
                     Add Your Business
@@ -835,9 +930,9 @@ body {
 
 @section('scripts')
 <script>
-// Smooth scroll to search results
+// Smooth animations and interactions
 document.addEventListener('DOMContentLoaded', function() {
-    // Add fade-in animation to cards
+    // Add fade-in animation to cards on scroll
     const observerOptions = {
         threshold: 0.1,
         rootMargin: '0px 0px -50px 0px'
@@ -855,7 +950,7 @@ document.addEventListener('DOMContentLoaded', function() {
         observer.observe(card);
     });
 
-    // Update sort hidden field when dropdown item is clicked
+    // Sort dropdown functionality
     document.querySelectorAll('.sort-dropdown .dropdown-item').forEach(item => {
         item.addEventListener('click', function(e) {
             e.preventDefault();
@@ -865,11 +960,13 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Remove filter functionality
-    document.querySelectorAll('.remove-filter').forEach(button => {
-        button.addEventListener('click', function(e) {
-            e.preventDefault();
-            window.location.href = this.getAttribute('href');
+    // Add hover effects to stat cards
+    document.querySelectorAll('.stat-item').forEach(stat => {
+        stat.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-5px)';
+        });
+        stat.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0)';
         });
     });
 });
