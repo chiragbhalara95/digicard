@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -95,6 +95,11 @@
       box-sizing: border-box;
     }
 
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 96px;
+    }
+
     body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       color: var(--dark);
@@ -102,6 +107,15 @@
       scroll-behavior: smooth;
       line-height: 1.6;
       background: var(--light);
+    }
+
+    main {
+      display: block;
+      width: 100%;
+    }
+
+    section[id] {
+      scroll-margin-top: 96px;
     }
 
     h1, h2, h3, h4, h5, h6 {
@@ -117,6 +131,7 @@
       box-shadow: var(--shadow-sm);
       padding: 1rem 0;
       transition: all 0.3s ease;
+      z-index: 1030;
     }
 
     .navbar.scrolled {
@@ -127,6 +142,22 @@
     .navbar-brand img {
       height: 40px;
       transition: all 0.3s ease;
+      max-width: 100%;
+    }
+
+    .navbar-toggler {
+      border: none;
+      padding: 0.5rem 0.75rem;
+      box-shadow: none;
+    }
+
+    .navbar-toggler:focus {
+      box-shadow: none;
+    }
+
+    .navbar-collapse {
+      min-width: 0;
+      flex-basis: 100%;
     }
 
     .navbar-nav .nav-link {
@@ -157,6 +188,13 @@
     .navbar-nav .nav-link:hover::after,
     .navbar-nav .nav-link.active::after {
       transform: scaleX(1);
+    }
+
+    .navbar-nav li,
+    .footer-links li,
+    .contact-info li,
+    .footer-bottom-links li {
+      margin-left: 0 !important;
     }
 
     /* Enhanced Buttons */
@@ -404,6 +442,10 @@
       position: relative;
     }
 
+    .footer-col {
+      min-width: 0;
+    }
+
     .footer-logo {
       margin-bottom: 1.5rem;
     }
@@ -456,6 +498,8 @@
       display: flex;
       align-items: center;
       gap: 0.5rem;
+      white-space: normal;
+      overflow-wrap: anywhere;
     }
 
     .footer-links a:hover {
@@ -484,12 +528,22 @@
       align-items: flex-start;
       gap: 0.75rem;
       color: rgba(255, 255, 255, 0.7);
+      word-break: break-word;
     }
 
     .contact-info li i {
       color: var(--primary-light);
       font-size: 1.125rem;
       margin-top: 0.125rem;
+    }
+
+    .contact-info li > div,
+    .contact-info li a,
+    .footer-description,
+    .copyright,
+    .footer-bottom-links a {
+      overflow-wrap: anywhere;
+      word-break: break-word;
     }
 
     .social-links {
@@ -600,12 +654,65 @@
 
     /* Responsive Design */
     @media (max-width: 992px) {
+      .navbar {
+        padding: 0.85rem 0;
+      }
+
+      .navbar > .container {
+        align-items: center;
+        flex-wrap: wrap;
+      }
+
+      .navbar-brand {
+        max-width: calc(100% - 64px);
+      }
+
+      .navbar-collapse {
+        width: calc(100% + 2rem);
+        flex-basis: 100%;
+        margin-top: 0.75rem;
+        margin-left: -1rem;
+        margin-right: -1rem;
+        padding: 0;
+        background: #ffffff;
+        border-top: 1px solid rgba(15, 23, 42, 0.08);
+        border-radius: 0;
+        box-shadow: none;
+      }
+
       .navbar-nav {
-        padding: 1rem 0;
+        width: 100%;
+        padding: 0.75rem 1rem 1rem;
+        align-items: stretch !important;
+        gap: 0.25rem;
+        background: #ffffff;
       }
       
       .navbar-nav .nav-link {
-        padding: 0.75rem 0;
+        padding: 0.875rem 0;
+        display: block;
+        width: 100%;
+      }
+
+      .navbar-nav .nav-link::after {
+        left: 0;
+        right: auto;
+        width: 48px;
+      }
+
+      .navbar-nav .btn.btn-primary {
+        width: 100%;
+        text-align: center;
+        margin-top: 0.5rem;
+      }
+
+      .main-footer {
+        overflow: visible;
+      }
+
+      .footer-content .container,
+      .footer-bottom .container {
+        overflow: hidden;
       }
       
       .chat-popup {
@@ -631,12 +738,50 @@
     }
 
     @media (max-width: 768px) {
+      .navbar-brand img {
+        height: 34px;
+      }
+
+      .navbar-collapse {
+        padding: 0.875rem 1rem;
+      }
+
       .footer-content {
         padding: 4rem 0 2rem;
       }
       
       .footer-col {
         margin-bottom: 2rem;
+      }
+
+      .footer-logo,
+      .footer-description,
+      .footer-title,
+      .contact-info,
+      .social-links {
+        margin-left: 0;
+        text-align: center;
+      }
+
+      .footer-title::after {
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      .footer-links a,
+      .contact-info li,
+      .social-links {
+        justify-content: center;
+      }
+
+      .footer-links a {
+        text-align: center;
+      }
+
+      .contact-info li {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
       }
       
       .footer-bottom-links {
@@ -649,8 +794,43 @@
     }
 
     @media (max-width: 576px) {
+      .navbar {
+        padding: 0.75rem 0;
+      }
+
+      .navbar-brand {
+        max-width: calc(100% - 58px);
+      }
+
+      .navbar-brand img {
+        height: 30px;
+      }
+
+      .navbar-collapse {
+        margin-top: 0.75rem;
+        padding: 0.75rem 0.875rem;
+      }
+
       .hero-title {
         font-size: 2rem;
+      }
+
+      .footer-content {
+        padding-top: 3.5rem;
+      }
+
+      .footer-bottom {
+        padding: 1.5rem 0;
+      }
+
+      .footer-bottom-links {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.75rem;
+      }
+
+      .copyright {
+        padding: 0 0.75rem;
       }
       
       .chat-popup {
@@ -823,7 +1003,7 @@
             "closes": "18:00"
           }
         ],
-        "priceRange": "₹₹"
+        "priceRange": "â‚¹â‚¹"
       }
     ]
   }
@@ -924,7 +1104,7 @@
             <p class="footer-description">
               Create professional AI-powered digital business cards in minutes. Share via QR code, NFC, or link. Perfect for modern professionals and businesses looking to make lasting connections.
             </p>
-            <div class="social-links ml-5">
+            <div class="social-links">
               <a href="https://facebook.com/digitalcards.tech" class="social-link" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
                 <i class="fab fa-facebook-f"></i>
               </a>
@@ -1043,7 +1223,7 @@
     <div class="chat-body" id="chatBody">
       <div class="chat-message">
         <strong>DigiCards AI</strong><br>
-        Hello! 👋 I'm your AI assistant. How can I help you today? Choose an option below or type your question.
+        Hello! ðŸ‘‹ I'm your AI assistant. How can I help you today? Choose an option below or type your question.
       </div>
       <div class="chat-option" onclick="selectOption('pricing')" role="button" tabindex="0">
         <i class="fas fa-tags"></i> Pricing Information
@@ -1153,20 +1333,20 @@
       
       switch(option) {
         case 'pricing':
-          reply = 'Our pricing plans start at ₹0/month for basic features. Premium plans start at ₹999/month with advanced analytics and unlimited cards. Would you like to see detailed pricing?';
-          icon = '💰';
+          reply = 'Our pricing plans start at â‚¹0/month for basic features. Premium plans start at â‚¹999/month with advanced analytics and unlimited cards. Would you like to see detailed pricing?';
+          icon = 'ðŸ’°';
           break;
         case 'demo':
           reply = 'We\'d love to give you a personalized demo! Please share your email or contact us at demo@digitalcards.tech to schedule a session.';
-          icon = '🎯';
+          icon = 'ðŸŽ¯';
           break;
         case 'support':
           reply = 'Our technical support team is available 24/7. You can email support@digitalcards.tech or call +1 5589 55488 55 for immediate assistance.';
-          icon = '🛠️';
+          icon = 'ðŸ› ï¸';
           break;
         case 'features':
           reply = 'Our digital cards feature QR codes, NFC support, analytics dashboard, custom branding, unlimited updates, and team management. Which feature interests you most?';
-          icon = '✨';
+          icon = 'âœ¨';
           break;
       }
       
@@ -1216,3 +1396,8 @@
 
   @yield('custom_script')
 </html>
+
+
+
+
+
