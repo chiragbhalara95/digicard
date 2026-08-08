@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -35,7 +35,7 @@
   <meta name="twitter:creator" content="@digitalcardstech">
   
   <!-- Additional SEO Meta Tags -->
-  <meta name="theme-color" content="#6366f1">
+  <meta name="theme-color" content="#ff5a3d">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="format-detection" content="telephone=no">
@@ -63,7 +63,7 @@
   <!-- Stylesheets -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700;9..144,800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
     :root {
@@ -1003,7 +1003,7 @@
             "closes": "18:00"
           }
         ],
-        "priceRange": "â‚¹â‚¹"
+        "priceRange": "₹₹"
       }
     ]
   }
@@ -1039,7 +1039,118 @@
       });
     });
   </script>
+  <style id="besidee-theme-layout">
+    :root {
+      --primary: #ff5a3d;
+      --primary-dark: #d63d26;
+      --primary-light: #ff8c73;
+      --secondary: #c7f36b;
+      --ink: #171411;
+      --dark: #171411;
+      --dark-light: #2b261f;
+      --gray: #70685e;
+      --light: #f7f1e8;
+      --paper: #fffaf1;
+      --mint: #dff7e4;
+      --border: rgba(23, 20, 17, 0.12);
+      --gradient: linear-gradient(135deg, #ff5a3d 0%, #ffb85c 52%, #c7f36b 100%);
+      --gradient-light: linear-gradient(135deg, #fff0cf 0%, #dff7e4 100%);
+      --shadow-sm: 0 1px 2px rgba(23, 20, 17, 0.06);
+      --shadow-md: 0 12px 32px rgba(23, 20, 17, 0.09);
+      --shadow-lg: 0 18px 42px rgba(23, 20, 17, 0.12);
+      --shadow-xl: 0 28px 70px rgba(23, 20, 17, 0.16);
+    }
 
+    body {
+      font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      color: var(--ink);
+      background:
+        linear-gradient(90deg, rgba(23, 20, 17, 0.035) 1px, transparent 1px),
+        linear-gradient(rgba(23, 20, 17, 0.035) 1px, transparent 1px),
+        var(--light);
+      background-size: 42px 42px;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Fraunces', Georgia, serif;
+      letter-spacing: 0;
+    }
+
+    .navbar {
+      background: rgba(255, 250, 241, 0.92);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border);
+      box-shadow: none;
+    }
+
+    .navbar.scrolled {
+      box-shadow: 0 18px 48px rgba(23, 20, 17, 0.08);
+    }
+
+    .navbar-nav .nav-link {
+      color: var(--ink);
+      font-weight: 700;
+    }
+
+    .navbar-nav .nav-link:hover,
+    .navbar-nav .nav-link.active {
+      color: var(--primary-dark);
+    }
+
+    .navbar-nav .nav-link::after {
+      height: 3px;
+      background: var(--gradient);
+    }
+
+    .btn-primary,
+    .chat-header,
+    .chat-send,
+    .back-to-top {
+      background: var(--gradient);
+      color: var(--ink);
+    }
+
+    .btn-primary {
+      border: 1px solid rgba(23, 20, 17, 0.12);
+      box-shadow: 0 10px 24px rgba(255, 90, 61, 0.24);
+    }
+
+    .btn-outline-primary {
+      border-color: var(--ink);
+      color: var(--ink);
+      background: rgba(255, 250, 241, 0.76);
+    }
+
+    .btn-outline-primary:hover {
+      background: var(--ink);
+      color: var(--paper);
+      border-color: var(--ink);
+    }
+
+    .main-footer {
+      background: #171411;
+      color: var(--paper);
+    }
+
+    .footer-title::after {
+      background: var(--gradient);
+    }
+
+    .footer-links a:hover,
+    .contact-info li i {
+      color: var(--secondary);
+    }
+
+    .social-link:hover {
+      background: var(--gradient);
+      color: var(--ink);
+    }
+
+    .newsletter-input {
+      border-color: rgba(255, 250, 241, 0.22);
+      background: rgba(255, 250, 241, 0.08);
+    }
+  </style>
   @yield('custom_style')
 </head>
 <body>
@@ -1223,7 +1334,7 @@
     <div class="chat-body" id="chatBody">
       <div class="chat-message">
         <strong>DigiCards AI</strong><br>
-        Hello! ðŸ‘‹ I'm your AI assistant. How can I help you today? Choose an option below or type your question.
+        Hello! 👋 I'm your AI assistant. How can I help you today? Choose an option below or type your question.
       </div>
       <div class="chat-option" onclick="selectOption('pricing')" role="button" tabindex="0">
         <i class="fas fa-tags"></i> Pricing Information
@@ -1333,20 +1444,20 @@
       
       switch(option) {
         case 'pricing':
-          reply = 'Our pricing plans start at â‚¹0/month for basic features. Premium plans start at â‚¹999/month with advanced analytics and unlimited cards. Would you like to see detailed pricing?';
-          icon = 'ðŸ’°';
+          reply = 'Our pricing plans start at ₹0/month for basic features. Premium plans start at ₹999/month with advanced analytics and unlimited cards. Would you like to see detailed pricing?';
+          icon = '💰';
           break;
         case 'demo':
           reply = 'We\'d love to give you a personalized demo! Please share your email or contact us at demo@digitalcards.tech to schedule a session.';
-          icon = 'ðŸŽ¯';
+          icon = '🎯';
           break;
         case 'support':
           reply = 'Our technical support team is available 24/7. You can email support@digitalcards.tech or call +1 5589 55488 55 for immediate assistance.';
-          icon = 'ðŸ› ï¸';
+          icon = '🛠️';
           break;
         case 'features':
           reply = 'Our digital cards feature QR codes, NFC support, analytics dashboard, custom branding, unlimited updates, and team management. Which feature interests you most?';
-          icon = 'âœ¨';
+          icon = '✨';
           break;
       }
       

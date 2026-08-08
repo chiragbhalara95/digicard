@@ -727,6 +727,195 @@
         font-size: 0.875rem;
         font-weight: 500;
     }
+
+    /* ===== Besidee-Inspired Editorial Theme ===== */
+    :root {
+        --primary-color: #ff5a3d;
+        --primary-dark: #d63d26;
+        --primary-light: #ff8c73;
+        --secondary-color: #c7f36b;
+        --accent-color: #00a676;
+        --dark-color: #171411;
+        --dark-light: #2b261f;
+        --text-primary: #171411;
+        --text-secondary: #70685e;
+        --text-light: #9d9286;
+        --background: #f7f1e8;
+        --surface: #fffaf1;
+        --border: rgba(23, 20, 17, 0.12);
+        --success: #00a676;
+        --warning: #ffb85c;
+        --gradient: linear-gradient(135deg, #ff5a3d 0%, #ffb85c 52%, #c7f36b 100%);
+        --gradient-light: linear-gradient(135deg, #fff0cf 0%, #dff7e4 100%);
+    }
+
+    .hero-section {
+        min-height: calc(100vh - 96px);
+        padding: 7rem 0 5rem;
+        background:
+            linear-gradient(120deg, rgba(23, 20, 17, 0.78), rgba(23, 20, 17, 0.38)),
+            url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1800&q=80') center/cover;
+        color: var(--surface);
+        display: flex;
+        align-items: center;
+    }
+
+    .hero-section::before {
+        background:
+            linear-gradient(90deg, rgba(255, 250, 241, 0.12) 1px, transparent 1px),
+            linear-gradient(rgba(255, 250, 241, 0.12) 1px, transparent 1px);
+        background-size: 46px 46px;
+        animation: none;
+    }
+
+    .hero-title {
+        max-width: 760px;
+        color: var(--surface);
+        background: none;
+        -webkit-text-fill-color: currentColor;
+        font-size: clamp(2.75rem, 6vw, 5.75rem);
+        line-height: 0.96;
+        letter-spacing: 0;
+    }
+
+    .hero-subtitle {
+        max-width: 620px;
+        color: rgba(255, 250, 241, 0.84);
+        font-size: 1.2rem;
+    }
+
+    .btn-primary-large,
+    .btn-pricing,
+    .btn-submit {
+        background: var(--gradient);
+        color: var(--text-primary);
+        border: 1px solid rgba(23, 20, 17, 0.12);
+        box-shadow: 0 12px 28px rgba(255, 90, 61, 0.24);
+    }
+
+    .btn-outline-light {
+        background: rgba(255, 250, 241, 0.08);
+        color: var(--surface);
+        border-color: rgba(255, 250, 241, 0.58);
+    }
+
+    .card-3d,
+    .feature-card,
+    .pricing-card,
+    .stat-card,
+    .seo-content,
+    .contact-form-container {
+        background: rgba(255, 250, 241, 0.94);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        box-shadow: 0 20px 52px rgba(23, 20, 17, 0.12);
+    }
+
+    .card-3d {
+        transform: rotate(-3deg);
+        color: var(--text-primary);
+    }
+
+    @keyframes float {
+        0%, 100% { transform: rotate(-3deg) translateY(0); }
+        50% { transform: rotate(-3deg) translateY(-16px); }
+    }
+
+    .card-avatar,
+    .feature-icon,
+    .popular-badge,
+    .profession-badge {
+        background: var(--gradient);
+        color: var(--text-primary);
+    }
+
+    .section-title {
+        color: var(--text-primary);
+        font-size: clamp(2rem, 4vw, 4rem);
+    }
+
+    .section-padding {
+        background: transparent;
+    }
+
+    .products-section,
+    .features-section {
+        background: rgba(255, 250, 241, 0.58);
+    }
+
+    .feature-card:hover,
+    .pricing-card:hover,
+    .stat-card:hover {
+        border-color: rgba(255, 90, 61, 0.45);
+        transform: translateY(-8px) rotate(-1deg);
+    }
+
+    .stat-number-large,
+    .feature-icon-large,
+    .pricing-price {
+        background: var(--gradient);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .pricing-card.popular {
+        border-color: var(--primary-color);
+    }
+
+    .contact-section {
+        background: #171411;
+    }
+
+    .contact-info-item {
+        background: rgba(255, 250, 241, 0.08);
+        border: 1px solid rgba(255, 250, 241, 0.12);
+        border-radius: 8px;
+    }
+
+    .form-control {
+        background: rgba(255, 250, 241, 0.08);
+        border-color: rgba(255, 250, 241, 0.16);
+    }
+
+    .contact-form-container .form-control {
+        background: #fffaf1;
+        border: 1px solid rgba(23, 20, 17, 0.16);
+        color: var(--text-primary);
+        caret-color: var(--primary-color);
+    }
+
+    .contact-form-container .form-control:focus {
+        background: #ffffff;
+        border-color: var(--primary-color);
+        color: var(--text-primary);
+        box-shadow: 0 0 0 4px rgba(255, 90, 61, 0.14);
+    }
+
+    .contact-form-container .form-control::placeholder {
+        color: rgba(23, 20, 17, 0.48);
+        opacity: 1;
+    }
+
+    .contact-form-container select.form-control {
+        color: var(--text-primary);
+    }
+
+    .contact-form-container select.form-control option {
+        background: #fffaf1;
+        color: var(--text-primary);
+    }
+
+    @media (max-width: 768px) {
+        .hero-section {
+            min-height: auto;
+            padding: 5rem 0 4rem;
+        }
+
+        .hero-title {
+            font-size: 2.75rem;
+        }
+    }
 </style>
 @endsection
 
@@ -864,7 +1053,7 @@
                         
                         <div class="pricing-header">
                             <h3 class="pricing-title">{{$detail['package_type_name']}}</h3>
-                            <div class="pricing-price">₹{{$detail['special_price']}}</div>
+                            <div class="pricing-price">?{{$detail['special_price']}}</div>
                             <div class="pricing-period">per month</div>
                         </div>
 
