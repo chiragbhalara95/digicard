@@ -5,6 +5,47 @@
         select option:disabled  {
             display: none;
         }
+        .card {
+            background: linear-gradient(145deg, rgba(25,23,19,.98), rgba(18,17,14,.98));
+            border: 1px solid rgba(215,181,106,.18);
+            border-radius: 2rem;
+            box-shadow: 0 24px 70px rgba(0,0,0,.34);
+            overflow: hidden;
+        }
+        .card-header {
+            background: transparent;
+            border: 0;
+            color: #f5ecdd;
+            font-family: 'Fraunces', Georgia, serif;
+            font-size: 2rem;
+            font-weight: 400;
+            padding: 2.25rem 2.25rem 0;
+        }
+        .card-body { padding: 1.75rem 2.25rem 2.25rem; }
+        .col-form-label { color: #b7afa4; font-size: .78rem; letter-spacing: .1em; text-transform: uppercase; }
+        .form-control, .bootstrap-select > .dropdown-toggle {
+            min-height: 48px;
+            background: #211f1b !important;
+            border: 1px solid rgba(215,181,106,.16) !important;
+            border-radius: 1rem !important;
+            color: #f5ecdd !important;
+            caret-color: #ebcf8c;
+        }
+        .form-control:focus, .bootstrap-select > .dropdown-toggle:focus {
+            background: #211f1b !important;
+            border-color: #d7b56a !important;
+            box-shadow: 0 0 0 4px rgba(215,181,106,.11) !important;
+            color: #f5ecdd !important;
+        }
+        .form-control:-webkit-autofill, .form-control:-webkit-autofill:focus { -webkit-text-fill-color: #f5ecdd; -webkit-box-shadow: 0 0 0 1000px #211f1b inset; }
+        .bootstrap-select .dropdown-menu { background: #211f1b; border-color: rgba(215,181,106,.2); }
+        .bootstrap-select .dropdown-item { color: #f5ecdd; }
+        .bootstrap-select .dropdown-item:hover, .bootstrap-select .dropdown-item.active { background: #322b20; color: #ebcf8c; }
+        .showPasswordEle, .input-group-text { background: #211f1b !important; border-color: rgba(215,181,106,.16) !important; }
+        .showPasswordEle a { color: #d7b56a; }
+        .btn-primary { width: 100%; border: 0; border-radius: 999px; padding: .8rem 1.5rem; background: linear-gradient(100deg,#c69645,#ebcf8c); color: #15120d; font-weight: 600; }
+        .btn-primary:hover { background: #ebcf8c; color: #15120d; }
+        @media (max-width: 767px) { .card-header { padding: 1.75rem 1.25rem 0; } .card-body { padding: 1.25rem; } .col-form-label { text-align: left !important; } }
     </style>
 @endsection
 

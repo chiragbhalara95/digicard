@@ -3,56 +3,68 @@
 @section('custom_style')
 <style>
   .login-container {
-    max-width: 420px;
+    max-width: 500px;
     margin: auto;
   }
 
   .login-card {
-    background: #fff;
-    border-radius: 1rem;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    background: linear-gradient(145deg, rgba(25,23,19,.98), rgba(18,17,14,.98));
+    border: 1px solid rgba(215,181,106,.18);
+    border-radius: 2rem;
+    box-shadow: 0 24px 70px rgba(0,0,0,.34);
     overflow: hidden;
   }
 
   .login-header {
-    background: linear-gradient(90deg, #6f42c1, #4f8cff);
-    color: #fff;
-    text-align: center;
-    padding: 1.5rem;
-    font-weight: 700;
-    letter-spacing: 0.5px;
+    background: transparent;
+    color: #f5ecdd;
+    font-family: 'Fraunces', Georgia, serif;
+    text-align: left;
+    padding: 2.25rem 2.25rem 0;
+    font-size: 2rem;
+    font-weight: 400;
   }
 
   .login-body {
-    padding: 2rem 1.5rem;
+    padding: 1.5rem 2.25rem 2.25rem;
   }
+
+  .login-body label, .form-check-label { color: #b7afa4; font-size: .78rem; letter-spacing: .13em; text-transform: uppercase; }
 
   .form-control {
-    border-radius: 10px;
+    background: #211f1b;
+    border: 1px solid rgba(215,181,106,.16);
+    border-radius: 1rem;
     padding: 0.75rem 1rem;
     font-size: 1rem;
+    color: #f5ecdd;
+    caret-color: #ebcf8c;
   }
+  .form-control:focus { background: #211f1b; border-color: #d7b56a; box-shadow: 0 0 0 4px rgba(215,181,106,.11); color: #f5ecdd; }
+  .form-control:-webkit-autofill, .form-control:-webkit-autofill:focus { -webkit-text-fill-color: #f5ecdd; -webkit-box-shadow: 0 0 0 1000px #211f1b inset; }
 
   .input-group-addon a {
-    color: #6f42c1;
+    color: #d7b56a;
     text-decoration: none;
   }
 
   .btn-primary {
-    background: linear-gradient(90deg, #6f42c1, #4f8cff);
-    border: none;
+    background: linear-gradient(100deg,#c69645,#ebcf8c);
+    border: 0;
+    color: #15120d;
     font-weight: 600;
-    border-radius: 10px;
+    border-radius: 999px;
     padding: 0.75rem;
     width: 100%;
   }
 
   .btn-primary:hover {
-    background: linear-gradient(90deg, #5b35a0, #3b77e5);
+    background: #ebcf8c;
+    color: #15120d;
   }
 
   .btn-link {
-    color: #6f42c1;
+    color: #d7b56a;
     text-decoration: none;
   }
   .btn-link:hover {
@@ -61,8 +73,9 @@
 
   @media (max-width: 576px) {
     .login-body {
-      padding: 1.5rem 1rem;
+      padding: 1.25rem 1.25rem 1.75rem;
     }
+    .login-header { padding: 1.75rem 1.25rem 0; }
   }
 </style>
 @endsection

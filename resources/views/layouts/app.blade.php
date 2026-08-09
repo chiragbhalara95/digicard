@@ -11,6 +11,7 @@
   <link href="{{ asset('public/css/app.css') }}" rel="stylesheet">
   <link href="{{ asset('public/frontView/assets/css/custom.css') }}?v={{date('YmdHis')}}" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
 
   <!-- Scripts -->
   <script src="{{ asset('public/js/app.js') }}" defer></script>
@@ -18,19 +19,23 @@
 
   <style>
     body {
-      background: #f5f6fa;
-      font-family: 'Nunito', sans-serif;
+      background-color: #0e0d0b;
+      background-image: linear-gradient(rgba(215,181,106,.025) 1px, transparent 1px), linear-gradient(90deg, rgba(215,181,106,.025) 1px, transparent 1px);
+      background-size: 80px 80px;
+      color: #f5ecdd;
+      font-family: 'Space Grotesk', sans-serif;
       margin: 0;
       padding: 0;
     }
 
     /* Navbar */
     .navbar {
-      background: linear-gradient(90deg, #6f42c1, #4f8cff);
+      background: rgba(14,13,11,.96);
+      border-bottom: 1px solid rgba(215,181,106,.12);
     }
     .navbar .navbar-brand, .navbar .nav-link {
-      color: #fff !important;
-      font-weight: 600;
+      color: #f5ecdd !important;
+      font-weight: 500;
     }
     .navbar .navbar-toggler {
       border-color: rgba(255,255,255,0.3);
@@ -61,9 +66,12 @@
 
     /* Main Area */
     main {
-      padding-top: 30px;
+      min-height: calc(100vh - 62px);
+      padding-top: 56px;
       padding-bottom: 50px;
     }
+    .navbar .btn-light { background: linear-gradient(100deg,#c69645,#ebcf8c); border: 0; border-radius: 999px; color: #15120d; font-weight: 600; }
+    .navbar .btn-light:hover { background: #ebcf8c; color: #15120d; }
 
     /* Mobile tweaks */
     @media (max-width: 768px) {
