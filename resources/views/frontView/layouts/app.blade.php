@@ -1192,6 +1192,35 @@
     .main-footer { background: #0e0e10; color: #fafafa; }
     .footer-title::after, .footer-links a:hover, .contact-info li i { background: none; color: #3191ff; }
     .social-link:hover { background: #292524; color: #fff; }
+
+    /* Dark luxury palette from the supplied Besidee reference. */
+    :root {
+      --primary: #d7b56a;
+      --primary-dark: #b88b37;
+      --primary-light: #ebcf8c;
+      --secondary: #38a79b;
+      --ink: #f5ecdd;
+      --dark: #0e0d0b;
+      --dark-light: #171512;
+      --gray: #aaa198;
+      --light: #0e0d0b;
+      --paper: #171512;
+      --mint: #17312d;
+      --border: rgba(215, 181, 106, 0.18);
+      --gradient: linear-gradient(100deg, #c69645, #ebcf8c);
+      --gradient-light: linear-gradient(100deg, #172a28, #1c1915);
+    }
+    body { color: var(--ink); background-color: var(--dark); background-image: linear-gradient(rgba(215,181,106,.025) 1px,transparent 1px), linear-gradient(90deg,rgba(215,181,106,.025) 1px,transparent 1px); background-size: 80px 80px; }
+    h1,h2,h3,h4,h5,h6 { font-family: 'Fraunces', Georgia, serif; font-weight: 500; }
+    .navbar { background: rgba(14,13,11,.96); border-bottom-color: rgba(215,181,106,.12); }
+    .navbar-nav .nav-link { color: #aaa198; }
+    .navbar-nav .nav-link:hover,.navbar-nav .nav-link.active { color: var(--primary-light); background: rgba(215,181,106,.08); }
+    .btn-primary { background: var(--gradient); color: #15120d; border-color: transparent; }
+    .btn-primary:hover { background: #ebcf8c; color: #15120d; }
+    .btn-outline-primary { color: var(--primary-light); border-color: rgba(215,181,106,.42); background: transparent; }
+    .btn-outline-primary:hover { background: rgba(215,181,106,.12); color: var(--primary-light); border-color: var(--primary); }
+    .main-footer { background: #0a0908; border-top: 1px solid rgba(215,181,106,.12); }
+    .footer-wave .shape-fill { fill: var(--dark); }
   </style>
   @yield('custom_style')
 </head>

@@ -989,6 +989,29 @@
     .contact-info-item { border-radius:1rem; }
     .contact-form-container .form-control { background:#fff; border-color:#dfdcd9; }
     .contact-form-container .form-control:focus { border-color:#3191ff; box-shadow:0 0 0 4px rgba(49,145,255,.12); }
+
+    /* Dark luxury treatment matching the supplied Besidee reference. */
+    :root { --primary-color:#d7b56a; --primary-dark:#b88b37; --primary-light:#ebcf8c; --secondary-color:#38a79b; --accent-color:#38a79b; --dark-color:#0e0d0b; --dark-light:#171512; --text-primary:#f5ecdd; --text-secondary:#b7afa4; --text-light:#827a71; --background:#0e0d0b; --surface:#171512; --border:rgba(215,181,106,.18); --success:#38a79b; --warning:#d7b56a; --gradient:linear-gradient(100deg,#c69645,#ebcf8c); --gradient-light:linear-gradient(100deg,#172a28,#1c1915); }
+    .hero-section { background-color:#0e0d0b; background-image:radial-gradient(circle at 80% 32%,rgba(162,142,58,.16),transparent 28%),linear-gradient(rgba(215,181,106,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(215,181,106,.035) 1px,transparent 1px); background-size:auto,80px 80px,80px 80px; }
+    .hero-section::before { background:linear-gradient(90deg,rgba(14,13,11,.18),rgba(14,13,11,.02)); }
+    .hero-title { color:#f5ecdd; font-family:'Fraunces',Georgia,serif; font-size:clamp(3rem,5.4vw,5.4rem); font-weight:500; line-height:.98; letter-spacing:-.045em; }
+    .hero-title::first-line { color:#f5ecdd; }
+    .hero-subtitle { color:#b7afa4; }
+    .btn-primary-large,.btn-pricing,.btn-submit { background:var(--gradient); color:#15120d; border-color:transparent; }
+    .btn-primary-large:hover,.btn-pricing:hover,.btn-submit:hover { background:#ebcf8c; color:#15120d; }
+    .btn-outline-light { background:transparent; color:#f5ecdd; border-color:rgba(215,181,106,.35); }
+    .btn-outline-light:hover { background:rgba(215,181,106,.1); color:#f5ecdd; border-color:#d7b56a; }
+    .card-3d,.feature-card,.pricing-card,.stat-card,.seo-content,.contact-form-container { background:#171512; border-color:var(--border); box-shadow:0 18px 48px rgba(0,0,0,.24); }
+    .card-avatar,.feature-icon,.popular-badge,.profession-badge { background:#1d2926; color:#6fd4c8; }
+    .products-section,.features-section,.section-padding { background:#0e0d0b; }
+    .section-title,.stat-number-large,.feature-icon-large,.pricing-price { color:#f5ecdd; }
+    .stat-number-large,.feature-icon-large,.pricing-price { -webkit-text-fill-color:currentColor; }
+    .feature-card:hover,.pricing-card:hover,.stat-card:hover { border-color:rgba(215,181,106,.5); }
+    .contact-section { background:#0a0908; }
+    .contact-info-item { background:#171512; border-color:var(--border); }
+    .contact-form-container .form-control { background:#0e0d0b; border-color:rgba(215,181,106,.22); color:#f5ecdd; }
+    .contact-form-container .form-control:focus { border-color:#d7b56a; box-shadow:0 0 0 4px rgba(215,181,106,.12); }
+    .contact-form-container .form-control::placeholder { color:#827a71; }
 </style>
 @endsection
 

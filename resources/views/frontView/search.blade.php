@@ -829,6 +829,26 @@ body {
 .card-footer { background: #fafafa; }
 .bg-gradient-primary { background: #0e0e10 !important; }
 .bg-gradient-primary::before { background: none; }
+
+/* Dark luxury directory treatment matching the supplied Besidee reference. */
+:root { --primary-color:#d7b56a; --primary-dark:#b88b37; --primary-light:#ebcf8c; --secondary-color:#38a79b; --accent-color:#38a79b; --dark-color:#0e0d0b; --dark-light:#171512; --text-primary:#f5ecdd; --text-secondary:#b7afa4; --text-light:#827a71; --background:#0e0d0b; --surface:#171512; --border:rgba(215,181,106,.18); --success:#38a79b; --warning:#d7b56a; --gradient:linear-gradient(100deg,#c69645,#ebcf8c); --gradient-light:linear-gradient(100deg,#172a28,#1c1915); }
+body { background-color:#0e0d0b; color:var(--text-primary); }
+.hero-section { background-color:#0e0d0b; background-image:radial-gradient(circle at 78% 30%,rgba(162,142,58,.16),transparent 28%),linear-gradient(rgba(215,181,106,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(215,181,106,.035) 1px,transparent 1px); background-size:auto,80px 80px,80px 80px; }
+.hero-section::before { background:rgba(14,13,11,.35); }
+.hero-title { color:#f5ecdd; font-family:'Fraunces',Georgia,serif; font-size:clamp(2.75rem,5vw,4.8rem); }
+.hero-subtitle { color:#b7afa4; }
+.search-bar-modern { background:rgba(23,21,18,.92); border-color:rgba(215,181,106,.24); box-shadow:0 18px 48px rgba(0,0,0,.28); }
+.search-input,.sort-dropdown .btn-outline-primary { background:#0e0d0b; border-color:rgba(215,181,106,.22); color:#f5ecdd; }
+.search-input:focus { border-color:#d7b56a; box-shadow:0 0 0 4px rgba(215,181,106,.12); }
+.search-btn,.visit-btn,.no-results .btn-primary { background:var(--gradient); color:#15120d; border-color:transparent; }
+.search-btn:hover,.visit-btn:hover { background:#ebcf8c; color:#15120d; }
+.featured-badge,.profession-badge { background:#1d2926; color:#6fd4c8; }
+.stats-section,.business-card,.no-results { background:#171512; border-color:var(--border); }
+.business-card { box-shadow:0 14px 36px rgba(0,0,0,.22); }
+.business-card:hover { border-color:rgba(215,181,106,.5); }
+.stat-number,.stat-number-small,.no-results-icon { color:#ebcf8c; }
+.card-footer { background:#12110f; }
+.bg-gradient-primary { background:#0a0908 !important; }
 </style>
 @endsection
 
