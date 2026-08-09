@@ -42,7 +42,10 @@
         .bootstrap-select .dropdown-item { color: #f5ecdd; }
         .bootstrap-select .dropdown-item:hover, .bootstrap-select .dropdown-item.active { background: #322b20; color: #ebcf8c; }
         .showPasswordEle, .input-group-text { background: #211f1b !important; border-color: rgba(215,181,106,.16) !important; }
-        .showPasswordEle a { color: #d7b56a; }
+        .password-input-group .form-control { border-right: 0 !important; border-radius: 1rem 0 0 1rem !important; }
+        .password-input-group .password-toggle { width: 52px; background: #211f1b; border: 1px solid rgba(215,181,106,.16); border-left: 0; border-radius: 0 1rem 1rem 0; color: #d7b56a; }
+        .password-input-group:focus-within .form-control, .password-input-group:focus-within .password-toggle { border-color: #d7b56a !important; }
+        .password-input-group .password-toggle:hover { background: #29251f; color: #ebcf8c; }
         .btn-primary { width: 100%; border: 0; border-radius: 999px; padding: .8rem 1.5rem; background: linear-gradient(100deg,#c69645,#ebcf8c); color: #15120d; font-weight: 600; }
         .btn-primary:hover { background: #ebcf8c; color: #15120d; }
         @media (max-width: 767px) { .card-header { padding: 1.75rem 1.25rem 0; } .card-body { padding: 1.25rem; } .col-form-label { text-align: left !important; } }
@@ -158,12 +161,10 @@
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
                             <div class="col-md-6">
-                                <div class="input-group" id="show_hide_password">
+                                <div class="input-group password-input-group" id="show_hide_password">
                                     <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
 
-                                    <div class="input-group-addon showPasswordEle">
-                                        <a href="javascript:void(0)"><i class="fa fa-eye-slash" aria-hidden="true"></i></a>
-                                    </div>
+                                    <button type="button" class="password-toggle" aria-label="Show password" aria-pressed="false"><i class="fa-solid fa-eye-slash" aria-hidden="true"></i></button>
 
                                 </div>
 
@@ -179,12 +180,10 @@
                             <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
 
                             <div class="col-md-6">
-                                <div class="input-group" id="show_hide_password2">
+                                <div class="input-group password-input-group" id="show_hide_password2">
                                     <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
 
-                                    <div class="input-group-addon showPasswordEle">
-                                        <a href="javascript:void(0)"><i class="fa fa-eye-slash" aria-hidden="true"></i></a>
-                                    </div>
+                                    <button type="button" class="password-toggle" aria-label="Show password" aria-pressed="false"><i class="fa-solid fa-eye-slash" aria-hidden="true"></i></button>
                                 </div>
 
                             </div>
@@ -231,6 +230,20 @@
             }
         });
     }
+
+    document.querySelectorAll('.password-input-group').forEach(function (group) {
+        const input = group.querySelector('input');
+        const toggle = group.querySelector('.password-toggle');
+        const icon = toggle.querySelector('i');
+        toggle.addEventListener('click', function () {
+            const isVisible = input.type === 'text';
+            input.type = isVisible ? 'password' : 'text';
+            icon.classList.toggle('fa-eye-slash', !isVisible);
+            icon.classList.toggle('fa-eye', isVisible);
+            toggle.setAttribute('aria-label', isVisible ? 'Show password' : 'Hide password');
+            toggle.setAttribute('aria-pressed', String(!isVisible));
+        });
+    });
 </script>
 
 @endsection

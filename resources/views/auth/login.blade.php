@@ -42,6 +42,18 @@
   }
   .form-control:focus { background: #211f1b; border-color: #d7b56a; box-shadow: 0 0 0 4px rgba(215,181,106,.11); color: #f5ecdd; }
   .form-control:-webkit-autofill, .form-control:-webkit-autofill:focus { -webkit-text-fill-color: #f5ecdd; -webkit-box-shadow: 0 0 0 1000px #211f1b inset; }
+  .password-input-group .form-control { border-right: 0; border-radius: 1rem 0 0 1rem; }
+  .password-input-group .password-toggle {
+    width: 54px;
+    background: #211f1b;
+    border: 1px solid rgba(215,181,106,.16);
+    border-left: 0;
+    border-radius: 0 1rem 1rem 0;
+    color: #d7b56a;
+  }
+  .password-input-group:focus-within .form-control,
+  .password-input-group:focus-within .password-toggle { border-color: #d7b56a; }
+  .password-input-group .password-toggle:hover { color: #ebcf8c; background: #29251f; }
 
   .input-group-addon a {
     color: #d7b56a;
@@ -102,13 +114,13 @@
         <!-- Password -->
         <div class="mb-3">
           <label for="password" class="form-label fw-semibold">Password</label>
-          <div class="input-group" id="show_hide_password">
+          <div class="input-group password-input-group" id="show_hide_password">
             <input id="password" type="password"
                    class="form-control @error('password') is-invalid @enderror"
                    name="password" required>
-            <span class="input-group-text bg-white border-start-0">
-              <a href="javascript:void(0)" class="text-muted"><i class="fa fa-eye-slash"></i></a>
-            </span>
+            <button type="button" class="password-toggle" aria-label="Show password" aria-pressed="false">
+              <i class="fa-solid fa-eye-slash" aria-hidden="true"></i>
+            </button>
           </div>
           @error('password')
             <span class="invalid-feedback">{{ $message }}</span>
@@ -141,19 +153,18 @@
 </div>
 
 <script>
-  document.querySelector('#show_hide_password a').addEventListener('click', function (e) {
-    e.preventDefault();
+  document.addEventListener('DOMContentLoaded', function () {
+    const toggle = document.querySelector('#show_hide_password .password-toggle');
     const passwordInput = document.querySelector('#show_hide_password input');
-    const icon = document.querySelector('#show_hide_password i');
-    if (passwordInput.type === 'text') {
-      passwordInput.type = 'password';
-      icon.classList.add('fa-eye-slash');
-      icon.classList.remove('fa-eye');
-    } else {
-      passwordInput.type = 'text';
-      icon.classList.remove('fa-eye-slash');
-      icon.classList.add('fa-eye');
-    }
+    const icon = toggle.querySelector('i');
+    toggle.addEventListener('click', function () {
+      const isVisible = passwordInput.type === 'text';
+      passwordInput.type = isVisible ? 'password' : 'text';
+      icon.classList.toggle('fa-eye-slash', !isVisible);
+      icon.classList.toggle('fa-eye', isVisible);
+      toggle.setAttribute('aria-label', isVisible ? 'Show password' : 'Hide password');
+      toggle.setAttribute('aria-pressed', String(!isVisible));
+    });
   });
 </script>
 @endsection
