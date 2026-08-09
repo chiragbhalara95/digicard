@@ -782,6 +782,53 @@ body {
         margin-right: 0 !important;
     }
 }
+
+/* Professional Beside-style directory refinement. */
+:root {
+    --primary-color: #0e0e10;
+    --primary-dark: #000000;
+    --primary-light: #3191ff;
+    --secondary-color: #3191ff;
+    --accent-color: #3191ff;
+    --dark-color: #0e0e10;
+    --dark-light: #292524;
+    --text-primary: #0e0e10;
+    --text-secondary: #78716c;
+    --text-light: #a8a29e;
+    --background: #fafafa;
+    --surface: #ffffff;
+    --border: rgba(14, 14, 16, 0.08);
+    --success: #3191ff;
+    --warning: #3191ff;
+    --gradient: #0e0e10;
+    --gradient-light: #f5f5f4;
+}
+
+.hero-section {
+    padding: 5.5rem 0 4.5rem;
+    background: #ffffff;
+    background-image: radial-gradient(rgba(14,14,16,.12) .8px, transparent .8px);
+    background-size: 18px 18px;
+    color: var(--text-primary);
+}
+.hero-section::before { background: rgba(255,255,255,.72); animation: none; }
+.hero-section .container { position: relative; z-index: 1; }
+.hero-title { color: var(--text-primary); font-size: clamp(2.5rem, 5vw, 4.25rem); line-height: 1.08; letter-spacing: -.045em; }
+.hero-subtitle { color: var(--text-secondary); }
+.search-bar-modern { background: #fff; border: 1px solid var(--border); border-radius: 1rem; box-shadow: 0 6px 24px rgba(14,14,16,.08); }
+.search-input, .sort-dropdown .btn-outline-primary { background: #fff; border: 1px solid #dfdcd9; border-radius: .75rem; color: var(--text-primary); }
+.search-input:focus { border-color: #3191ff; box-shadow: 0 0 0 4px rgba(49,145,255,.12); }
+.search-btn, .visit-btn, .no-results .btn-primary { background: #0e0e10; color: #fafafa; border-color: #0e0e10; border-radius: var(--radius-full); }
+.search-btn:hover, .visit-btn:hover { background: #292524; color: #fff; transform: translateY(-1px); }
+.featured-badge, .profession-badge { background: #eff6ff; color: #1d4ed8; border-color: transparent; border-radius: var(--radius-full); }
+.stats-section, .business-card, .no-results { background: #fff; border-color: var(--border); }
+.business-card { border-radius: 1.25rem; box-shadow: 0 2px 12px rgba(14,14,16,.05); }
+.business-card:hover { border-color: rgba(14,14,16,.16); transform: translateY(-4px); }
+.logo-overlay, .verified-badge { border-radius: .75rem; }
+.stat-number, .stat-number-small, .no-results-icon { background: none; -webkit-text-fill-color: currentColor; color: var(--text-primary); }
+.card-footer { background: #fafafa; }
+.bg-gradient-primary { background: #0e0e10 !important; }
+.bg-gradient-primary::before { background: none; }
 </style>
 @endsection
 

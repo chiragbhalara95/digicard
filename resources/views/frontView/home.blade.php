@@ -665,6 +665,56 @@
         }
     }
 
+    /* Professional Beside-style home page refinement. */
+    :root {
+        --primary-color: #0e0e10;
+        --primary-dark: #000000;
+        --primary-light: #3191ff;
+        --secondary-color: #3191ff;
+        --accent-color: #3191ff;
+        --dark-color: #0e0e10;
+        --dark-light: #292524;
+        --text-primary: #0e0e10;
+        --text-secondary: #78716c;
+        --text-light: #a8a29e;
+        --background: #fafafa;
+        --surface: #ffffff;
+        --border: rgba(14, 14, 16, 0.08);
+        --success: #3191ff;
+        --warning: #3191ff;
+        --gradient: #0e0e10;
+        --gradient-light: #f5f5f4;
+    }
+
+    .hero-section {
+        min-height: min(720px, calc(100vh - 76px));
+        padding: 6rem 0;
+        background: #ffffff;
+        background-image: radial-gradient(rgba(14, 14, 16, 0.12) 0.8px, transparent 0.8px);
+        background-size: 18px 18px;
+        color: var(--text-primary);
+    }
+    .hero-section::before { background: linear-gradient(90deg, #fff 0%, rgba(255,255,255,.86) 55%, rgba(255,255,255,.20) 100%); animation: none; }
+    .hero-title { color: var(--text-primary); font-size: clamp(2.75rem, 5.2vw, 4.5rem); line-height: 1.08; letter-spacing: -0.045em; }
+    .hero-subtitle { color: var(--text-secondary); font-size: 1.125rem; }
+    .btn-primary-large, .btn-pricing, .btn-submit { background: #0e0e10; color: #fafafa; border-color: #0e0e10; box-shadow: none; }
+    .btn-primary-large:hover, .btn-pricing:hover, .btn-submit:hover { background: #292524; color: #fff; box-shadow: none; }
+    .btn-outline-light { background: #fff; color: var(--text-primary); border-color: #dfdcd9; }
+    .btn-outline-light:hover { background: #f5f5f4; border-color: #dfdcd9; color: var(--text-primary); }
+    .card-3d, .feature-card, .pricing-card, .stat-card, .seo-content, .contact-form-container { background: #fff; border-color: var(--border); border-radius: 1.25rem; box-shadow: 0 2px 12px rgba(14,14,16,.05); }
+    .card-3d { transform: none; }
+    @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+    .card-avatar, .feature-icon, .popular-badge, .profession-badge { background: #eff6ff; color: #1d4ed8; }
+    .section-title { font-size: clamp(2rem, 4vw, 3.25rem); letter-spacing: -0.04em; }
+    .products-section, .features-section { background: #fafafa; }
+    .feature-card:hover, .pricing-card:hover, .stat-card:hover { border-color: rgba(14,14,16,.16); transform: translateY(-4px); }
+    .stat-number-large, .feature-icon-large, .pricing-price { background: none; -webkit-text-fill-color: currentColor; color: var(--text-primary); }
+    .pricing-card.popular { border-color: #3191ff; }
+    .contact-section { background: #0e0e10; }
+    .contact-info-item { border-radius: 1rem; }
+    .contact-form-container .form-control { background: #fff; border-color: #dfdcd9; }
+    .contact-form-container .form-control:focus { border-color: #3191ff; box-shadow: 0 0 0 4px rgba(49,145,255,.12); }
+
     @media (max-width: 576px) {
         .hero-title {
             font-size: 1.875rem;
@@ -916,6 +966,29 @@
             font-size: 2.75rem;
         }
     }
+
+    /* Keep these rules last so they supersede the older editorial colour overrides above. */
+    :root { --primary-color:#0e0e10; --primary-dark:#000; --primary-light:#3191ff; --secondary-color:#3191ff; --accent-color:#3191ff; --dark-color:#0e0e10; --dark-light:#292524; --text-primary:#0e0e10; --text-secondary:#78716c; --text-light:#a8a29e; --background:#fafafa; --surface:#fff; --border:rgba(14,14,16,.08); --success:#3191ff; --warning:#3191ff; --gradient:#0e0e10; --gradient-light:#f5f5f4; }
+    .hero-section { min-height:min(720px,calc(100vh - 76px)); padding:6rem 0; background-color:#fff; background-image:radial-gradient(rgba(14,14,16,.12) .8px,transparent .8px); background-size:18px 18px; color:var(--text-primary); }
+    .hero-section::before { background:linear-gradient(90deg,#fff 0%,rgba(255,255,255,.86) 55%,rgba(255,255,255,.2) 100%); animation:none; }
+    .hero-title { color:var(--text-primary); font-size:clamp(2.75rem,5.2vw,4.5rem); line-height:1.08; letter-spacing:-.045em; }
+    .hero-subtitle { color:var(--text-secondary); font-size:1.125rem; }
+    .btn-primary-large,.btn-pricing,.btn-submit { background:#0e0e10; color:#fafafa; border-color:#0e0e10; box-shadow:none; }
+    .btn-primary-large:hover,.btn-pricing:hover,.btn-submit:hover { background:#292524; color:#fff; box-shadow:none; }
+    .btn-outline-light { background:#fff; color:var(--text-primary); border-color:#dfdcd9; }
+    .btn-outline-light:hover { background:#f5f5f4; border-color:#dfdcd9; color:var(--text-primary); }
+    .card-3d,.feature-card,.pricing-card,.stat-card,.seo-content,.contact-form-container { background:#fff; border-color:var(--border); border-radius:1.25rem; box-shadow:0 2px 12px rgba(14,14,16,.05); }
+    .card-3d { transform:none; }
+    .card-avatar,.feature-icon,.popular-badge,.profession-badge { background:#eff6ff; color:#1d4ed8; }
+    .section-title { font-size:clamp(2rem,4vw,3.25rem); letter-spacing:-.04em; }
+    .products-section,.features-section { background:#fafafa; }
+    .feature-card:hover,.pricing-card:hover,.stat-card:hover { border-color:rgba(14,14,16,.16); transform:translateY(-4px); }
+    .stat-number-large,.feature-icon-large,.pricing-price { background:none; -webkit-text-fill-color:currentColor; color:var(--text-primary); }
+    .pricing-card.popular { border-color:#3191ff; }
+    .contact-section { background:#0e0e10; }
+    .contact-info-item { border-radius:1rem; }
+    .contact-form-container .form-control { background:#fff; border-color:#dfdcd9; }
+    .contact-form-container .form-control:focus { border-color:#3191ff; box-shadow:0 0 0 4px rgba(49,145,255,.12); }
 </style>
 @endsection
 

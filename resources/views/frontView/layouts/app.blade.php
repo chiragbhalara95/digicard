@@ -1150,6 +1150,48 @@
       border-color: rgba(255, 250, 241, 0.22);
       background: rgba(255, 250, 241, 0.08);
     }
+
+    /* Beside-inspired professional foundation: quiet neutrals, soft borders and one blue accent. */
+    :root {
+      --primary: #0e0e10;
+      --primary-dark: #000000;
+      --primary-light: #3191ff;
+      --secondary: #3191ff;
+      --ink: #0e0e10;
+      --dark: #0e0e10;
+      --dark-light: #292524;
+      --gray: #78716c;
+      --light: #fafafa;
+      --paper: #ffffff;
+      --mint: #eff6ff;
+      --border: rgba(14, 14, 16, 0.08);
+      --gradient: #0e0e10;
+      --gradient-light: #f5f5f4;
+      --shadow-sm: 0 1px 3px rgba(14, 14, 16, 0.04);
+      --shadow-md: 0 4px 16px rgba(14, 14, 16, 0.06);
+      --shadow-lg: 0 12px 32px rgba(14, 14, 16, 0.08);
+      --shadow-xl: 0 20px 48px rgba(14, 14, 16, 0.10);
+    }
+
+    body {
+      font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--light);
+    }
+
+    h1, h2, h3, h4, h5, h6 { font-family: inherit; font-weight: 500; letter-spacing: -0.03em; }
+    .navbar { background: rgba(255, 255, 255, 0.96); border-bottom-color: var(--border); }
+    .navbar.scrolled { box-shadow: 0 2px 12px rgba(14, 14, 16, 0.06); }
+    .navbar-nav .nav-link { font-size: 0.875rem; font-weight: 500; }
+    .navbar-nav .nav-link:hover, .navbar-nav .nav-link.active { color: var(--ink); background: #f5f5f4; border-radius: var(--radius-full); }
+    .navbar-nav .nav-link::after { display: none; }
+    .btn-primary, .chat-header, .chat-send, .back-to-top { background: #0e0e10; color: #f5f5f4; }
+    .btn-primary { border-color: #0e0e10; box-shadow: none; }
+    .btn-primary:hover { background: #292524; color: #fff; box-shadow: none; transform: translateY(-1px); }
+    .btn-outline-primary { border-color: #dfdcd9; color: var(--ink); background: #fff; }
+    .btn-outline-primary:hover { background: #f5f5f4; color: var(--ink); border-color: #dfdcd9; }
+    .main-footer { background: #0e0e10; color: #fafafa; }
+    .footer-title::after, .footer-links a:hover, .contact-info li i { background: none; color: #3191ff; }
+    .social-link:hover { background: #292524; color: #fff; }
   </style>
   @yield('custom_style')
 </head>
