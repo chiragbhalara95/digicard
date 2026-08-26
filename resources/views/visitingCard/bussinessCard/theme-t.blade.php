@@ -285,8 +285,6 @@ button,input,textarea{font:inherit}
     .company-name{font-size:24px}.quick-actions{margin-left:12px;margin-right:12px}.card,.share-section{margin-left:11px;margin-right:11px}
     .gallery-img{height:125px}.action-btn{min-height:68px}
 }
-</style>
-<style>
 
 /* =========================================================
    PREMIUM LUXURY THEME — BLACK / CHAMPAGNE GOLD
@@ -689,12 +687,483 @@ body {
 /* Remove generic blue focus/hover remnants */
 button:focus,a:focus,input:focus,textarea:focus { outline:none; }
 ::selection { background:#c9a45c; color:#11100e; }
+:root {
+  --theme-color: {{$userObj->theme_color ?? '#D1A85A'}};
+  --gold: var(--theme-color);
+  --gold-soft: color-mix(in srgb,var(--gold) 22%,transparent);
+  --gold-border: color-mix(in srgb,var(--gold) 48%,#17212a);
+  --navy: #06111a;
+  --navy-2: #081923;
+  --navy-3: #0d202c;
+  --ink: #e9e2d5;
+  --ink-muted: #9ca6aa;
+}
 
+html, body {
+  background: #050b10 !important;
+}
+
+body {
+  font-family: 'Inter', sans-serif !important;
+  background: radial-gradient(circle at 50% -5%, color-mix(in srgb, var(--gold) 9%, transparent), transparent 32%),
+              linear-gradient(180deg, #050b10 0%, #071018 100%) !important;
+}
+
+body:before {
+  display: none !important;
+}
+
+.container {
+  max-width: 560px !important;
+  background: var(--navy) !important;
+  box-shadow: 0 0 70px rgba(0, 0, 0, 0.55) !important;
+}
+
+.content-wrapper {
+  padding-bottom: 104px !important;
+}
+
+/* ---------- HERO ---------- */
+.professional-header {
+  min-height: 455px !important;
+  padding: 30px 24px 48px !important;
+  border-radius: 0 !important;
+  border: 0 !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04) !important;
+  background: radial-gradient(circle at 50% 18%, color-mix(in srgb, var(--gold) 12%, transparent), transparent 30%),
+              radial-gradient(circle at 100% 0, color-mix(in srgb, var(--gold) 7%, transparent), transparent 25%),
+              linear-gradient(155deg, #050e16 0%, #071721 52%, #061019 100%) !important;
+}
+
+.professional-header:before {
+  width: 500px !important;
+  height: 500px !important;
+  right: -255px !important;
+  top: -315px !important;
+  border: 1px solid color-mix(in srgb, var(--gold) 28%, transparent) !important;
+  box-shadow: 0 0 0 28px color-mix(in srgb, var(--gold) 4%, transparent),
+              0 0 0 62px color-mix(in srgb, var(--gold) 3%, transparent),
+              0 0 0 96px color-mix(in srgb, var(--gold) 2%, transparent) !important;
+}
+
+.professional-header:after {
+  inset: 0 !important;
+  width: auto !important;
+  height: auto !important;
+  right: auto !important;
+  top: auto !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  opacity: 0.34 !important;
+  background-image: linear-gradient(rgba(255, 255, 255, 0.028) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(255, 255, 255, 0.028) 1px, transparent 1px) !important;
+  background-size: 48px 48px !important;
+  mask-image: linear-gradient(to bottom, black 0%, transparent 85%) !important;
+}
+
+.header-content {
+  z-index: 5 !important;
+}
+
+.views-badge {
+  top: 4px !important;
+  right: 2px !important;
+  background: rgba(255, 255, 255, 0.035) !important;
+  border: 1px solid color-mix(in srgb, var(--gold) 28%, transparent) !important;
+  color: #c7bda9 !important;
+}
+
+.profile-container {
+  padding-top: 38px !important;
+}
+
+.profile-pic-wrapper {
+  margin-bottom: 20px !important;
+}
+
+.profile-pic {
+  width: 112px !important;
+  height: 112px !important;
+  border-radius: 50% !important;
+  border: 2px solid var(--gold) !important;
+  padding: 5px !important;
+  background: #0b1821 !important;
+  box-shadow: 0 0 0 7px rgba(255, 255, 255, 0.025),
+              0 0 0 9px color-mix(in srgb, var(--gold) 18%, transparent),
+              0 18px 50px rgba(0, 0, 0, 0.55) !important;
+}
+
+.verified-badge {
+  background: #071018 !important;
+  color: #fff !important;
+  border: 2px solid var(--gold) !important;
+  width: 25px !important;
+  height: 25px !important;
+}
+
+.company-name {
+  font-family: 'Playfair Display', Georgia, serif !important;
+  font-size: clamp(2.25rem, 8vw, 3.45rem) !important;
+  line-height: 0.98 !important;
+  letter-spacing: -0.045em !important;
+  text-transform: uppercase !important;
+  color: #f0e8d9 !important;
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.35);
+}
+
+.user-name {
+  color: #b9b4ab !important;
+  font-size: 1rem !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase !important;
+}
+
+.profession {
+  color: var(--gold) !important;
+  background: transparent !important;
+  border: 0 !important;
+  border-top: 1px solid color-mix(in srgb, var(--gold) 55%, transparent) !important;
+  border-bottom: 1px solid color-mix(in srgb, var(--gold) 55%, transparent) !important;
+  border-radius: 0 !important;
+  padding: 9px 14px !important;
+  letter-spacing: 0.1em !important;
+  font-size: 0.69rem !important;
+}
+
+/* ---------- ACTION BAR ---------- */
+.quick-actions {
+  margin: -32px 14px 22px !important;
+  padding: 8px !important;
+  gap: 5px !important;
+  background: #08141d !important;
+  border: 1px solid color-mix(in srgb, var(--gold) 40%, #17212a) !important;
+  border-radius: 14px !important;
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.48) !important;
+}
+
+.action-btn {
+  min-height: 68px !important;
+  background: transparent !important;
+  border: 1px solid transparent !important;
+  border-radius: 9px !important;
+  box-shadow: none !important;
+  color: #b8b6b0 !important;
+}
+
+.action-btn i {
+  color: var(--gold) !important;
+  font-size: 15px !important;
+}
+
+.action-btn span {
+  font-size: 8px !important;
+  color: #a9aaa6 !important;
+  letter-spacing: 0.07em !important;
+}
+
+.action-btn:hover {
+  background: color-mix(in srgb, var(--gold) 8%, transparent) !important;
+  border-color: color-mix(in srgb, var(--gold) 35%, transparent) !important;
+  color: #eee5d5 !important;
+  transform: none !important;
+}
+
+/* ---------- SECTIONS ---------- */
+.card, .share-section {
+  margin: 0 13px 15px !important;
+  padding: 20px !important;
+  background: linear-gradient(145deg, #0b1a24, #07131c) !important;
+  border: 1px solid #1b303b !important;
+  border-radius: 18px !important;
+  box-shadow: 0 14px 38px rgba(0, 0, 0, 0.26) !important;
+}
+
+.card:hover {
+  border-color: color-mix(in srgb, var(--gold) 25%, #1b303b) !important;
+}
+
+.card-header {
+  margin-bottom: 15px !important;
+  padding-bottom: 12px !important;
+  border-bottom: 1px solid #1b303b !important;
+}
+
+.card-header:before {
+  width: 3px !important;
+  height: 18px !important;
+  background: var(--gold) !important;
+  box-shadow: 0 0 12px color-mix(in srgb, var(--gold) 35%, transparent) !important;
+}
+
+.card-title {
+  font-size: 13px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.09em !important;
+  color: #e8e0d2 !important;
+}
+
+.card-title i {
+  color: var(--gold) !important;
+}
+
+/* ---------- CONTACT LIST ---------- */
+.contact-list {
+  gap: 7px !important;
+}
+
+.contact-item {
+  background: rgba(255, 255, 255, 0.018) !important;
+  border: 1px solid #172b36 !important;
+  border-radius: 12px !important;
+  padding: 11px !important;
+}
+
+.contact-item:hover {
+  background: color-mix(in srgb, var(--gold) 5%, transparent) !important;
+  border-color: color-mix(in srgb, var(--gold) 35%, #172b36) !important;
+  transform: none !important;
+}
+
+.contact-icon {
+  width: 39px !important;
+  height: 39px !important;
+  flex-basis: 39px !important;
+  background: transparent !important;
+  border: 1px solid color-mix(in srgb, var(--gold) 45%, #1c303a) !important;
+  border-radius: 9px !important;
+  color: var(--gold) !important;
+}
+
+.contact-label {
+  color: #69777e !important;
+  font-size: 7px !important;
+  letter-spacing: 0.13em !important;
+}
+
+.contact-value {
+  color: #e2ddd3 !important;
+  font-size: 11px !important;
+}
+
+/* ---------- SHARE ---------- */
+.share-section {
+  background: radial-gradient(circle at 100% 0, color-mix(in srgb, var(--gold) 10%, transparent), transparent 40%),
+              linear-gradient(145deg, #0c1b24, #07131b) !important;
+}
+
+.share-title {
+  font-family: 'Playfair Display', Georgia, serif !important;
+  color: #eee5d5 !important;
+  font-size: 22px !important;
+}
+
+.share-subtitle {
+  color: #7d898e !important;
+}
+
+.whatsapp-input-group input, .form-input, .form-textarea {
+  background: #06111a !important;
+  color: #e8e1d5 !important;
+  border: 1px solid #1c313c !important;
+}
+
+.whatsapp-input-group button {
+  background: #25d366 !important;
+  color: #fff !important;
+}
+
+.share-btn-primary, .btn-primary, .submit-btn {
+  background: var(--gold) !important;
+  color: #061018 !important;
+  border-color: var(--gold) !important;
+}
+
+.share-btn-outline, .btn-secondary {
+  background: transparent !important;
+  color: var(--gold) !important;
+  border-color: color-mix(in srgb, var(--gold) 45%, #1c313c) !important;
+}
+
+/* ---------- ABOUT / TEXT ---------- */
+.about-content {
+  color: #9da7aa !important;
+  font-size: 11px !important;
+  line-height: 1.8 !important;
+}
+
+.about-content strong, .about-content b {
+  color: #ddd5c8 !important;
+}
+
+/* ---------- PRODUCTS ---------- */
+.gallery-filters {
+  margin-bottom: 12px !important;
+}
+
+.filter-btn {
+  background: transparent !important;
+  color: #8d989c !important;
+  border-color: #1b303a !important;
+}
+
+.filter-btn.active, .filter-btn:hover {
+  background: var(--gold) !important;
+  color: #061018 !important;
+  border-color: var(--gold) !important;
+}
+
+.gallery-grid {
+  gap: 10px !important;
+}
+
+.gallery-item {
+  background: #091821 !important;
+  border: 1px solid #1b303b !important;
+  border-radius: 14px !important;
+}
+
+.gallery-item:hover {
+  border-color: color-mix(in srgb, var(--gold) 32%, #1b303b) !important;
+  transform: translateY(-2px) !important;
+}
+
+.gallery-img {
+  background: #06111a !important;
+}
+
+.gallery-info {
+  background: #091821 !important;
+}
+
+.gallery-title {
+  color: #ded8ce !important;
+}
+
+.gallery-price {
+  color: var(--gold) !important;
+}
+
+.gallery-price del {
+  color: #68747a !important;
+}
+
+.buy-btn, .enquiry-btn {
+  background: var(--gold) !important;
+  color: #061018 !important;
+}
+
+.cart-btn {
+  background: #152632 !important;
+  color: #d8d0c2 !important;
+}
+
+/* ---------- QR ---------- */
+.qr-wrapper {
+  background: #f7f7f4 !important;
+  border: 2px solid var(--gold) !important;
+  border-radius: 14px !important;
+  padding: 13px !important;
+  box-shadow: 0 0 0 5px color-mix(in srgb, var(--gold) 7%, transparent), 0 18px 40px rgba(0, 0, 0, 0.35) !important;
+}
+
+.qr-code {
+  width: 180px !important;
+  height: 180px !important;
+}
+
+/* ---------- VIDEO / PAYMENT / MAP ---------- */
+.video-item, .payment-item {
+  background: #091821 !important;
+  border-color: #1b303b !important;
+}
+
+.video-title {
+  background: #0d202c !important;
+  color: #d7d0c5 !important;
+}
+
+.payment-header {
+  color: var(--gold) !important;
+}
+
+.payment-detail {
+  border-color: #1b303b !important;
+}
+
+.payment-label {
+  color: #68767d !important;
+}
+
+.payment-value {
+  color: #d8d1c6 !important;
+}
+
+.map-container {
+  border-color: #1b303b !important;
+}
+
+/* ---------- SOCIAL ---------- */
+.social-link {
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.28) !important;
+}
+
+/* ---------- FOOTER ---------- */
+.footer-nav {
+  width: min(520px, calc(100% - 18px)) !important;
+  bottom: 10px !important;
+  padding: 6px !important;
+  background: rgba(7, 18, 26, 0.94) !important;
+  border: 1px solid color-mix(in srgb, var(--gold) 28%, #18303c) !important;
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.5) !important;
+}
+
+.footer-item {
+  color: #748187 !important;
+}
+
+.footer-item:hover, .footer-item.active {
+  color: var(--gold) !important;
+  background: color-mix(in srgb, var(--gold) 8%, transparent) !important;
+}
+
+/* ---------- MODALS ---------- */
+.modal {
+  background: rgba(0, 7, 12, 0.82) !important;
+}
+
+.modal-content {
+  background: #0a1821 !important;
+  border: 1px solid #203844 !important;
+  color: #eee5d5 !important;
+}
+
+.modal-close {
+  background: #142630 !important;
+  color: #c9c1b4 !important;
+}
+
+@media (max-width: 390px) {
+  .professional-header {
+    min-height: 420px !important;
+    padding-left: 18px !important;
+    padding-right: 18px !important;
+  }
+  .company-name {
+    font-size: 2.15rem !important;
+  }
+  .card, .share-section {
+    margin-left: 9px !important;
+    margin-right: 9px !important;
+    padding: 17px !important;
+  }
+  .quick-actions {
+    margin-left: 9px !important;
+    margin-right: 9px !important;
+  }
+}
 </style>
-\n<style>\n/* =========================================================\n   SIGNATURE NAVY + GOLD — PREMIUM CARD UPGRADE\n   Inspired by the supplied navy / champagne-gold reference.\n   Accent remains dynamic from $userObj->theme_color.\n   ========================================================= */\n:root{\n  --theme-color: {{$userObj->theme_color ?? '#D1A85A'}};\n  --gold: var(--theme-color);\n  --gold-soft: color-mix(in srgb,var(--gold) 22%,transparent);\n  --gold-border: color-mix(in srgb,var(--gold) 48%,#17212a);\n  --navy:#06111a;\n  --navy-2:#081923;\n  --navy-3:#0d202c;\n  --ink:#e9e2d5;\n  --ink-muted:#9ca6aa;\n}\n\nhtml,body{background:#050b10!important}\nbody{\n  font-family:'Inter',sans-serif!important;\n  background:\n    radial-gradient(circle at 50% -5%,color-mix(in srgb,var(--gold) 9%,transparent),transparent 32%),\n    linear-gradient(180deg,#050b10 0%,#071018 100%)!important;\n}\nbody:before{display:none!important}\n.container{\n  max-width:560px!important;\n  background:var(--navy)!important;\n  box-shadow:0 0 70px rgba(0,0,0,.55)!important;\n}\n.content-wrapper{padding-bottom:104px!important}\n\n/* ---------- HERO ---------- */\n.professional-header{\n  min-height:455px!important;\n  padding:30px 24px 48px!important;\n  border-radius:0!important;\n  border:0!important;\n  border-bottom:1px solid rgba(255,255,255,.04)!important;\n  background:\n    radial-gradient(circle at 50% 18%,color-mix(in srgb,var(--gold) 12%,transparent),transparent 30%),\n    radial-gradient(circle at 100% 0,color-mix(in srgb,var(--gold) 7%,transparent),transparent 25%),\n    linear-gradient(155deg,#050e16 0%,#071721 52%,#061019 100%)!important;\n}\n.professional-header:before{\n  width:500px!important;height:500px!important;right:-255px!important;top:-315px!important;\n  border:1px solid color-mix(in srgb,var(--gold) 28%,transparent)!important;\n  box-shadow:\n    0 0 0 28px color-mix(in srgb,var(--gold) 4%,transparent),\n    0 0 0 62px color-mix(in srgb,var(--gold) 3%,transparent),\n    0 0 0 96px color-mix(in srgb,var(--gold) 2%,transparent)!important;\n}\n.professional-header:after{\n  inset:0!important;width:auto!important;height:auto!important;right:auto!important;top:auto!important;\n  border:0!important;border-radius:0!important;opacity:.34!important;\n  background-image:\n    linear-gradient(rgba(255,255,255,.028) 1px,transparent 1px),\n    linear-gradient(90deg,rgba(255,255,255,.028) 1px,transparent 1px)!important;\n  background-size:48px 48px!important;\n  mask-image:linear-gradient(to bottom,black 0%,transparent 85%)!important;\n}\n.header-content{z-index:5!important}\n.views-badge{\n  top:4px!important;right:2px!important;\n  background:rgba(255,255,255,.035)!important;\n  border:1px solid color-mix(in srgb,var(--gold) 28%,transparent)!important;\n  color:#c7bda9!important;\n}\n.profile-container{padding-top:38px!important}\n.profile-pic-wrapper{margin-bottom:20px!important}\n.profile-pic{\n  width:112px!important;height:112px!important;border-radius:50%!important;\n  border:2px solid var(--gold)!important;padding:5px!important;\n  background:#0b1821!important;\n  box-shadow:\n    0 0 0 7px rgba(255,255,255,.025),\n    0 0 0 9px color-mix(in srgb,var(--gold) 18%,transparent),\n    0 18px 50px rgba(0,0,0,.55)!important;\n}\n.verified-badge{\n  background:#071018!important;color:#fff!important;\n  border:2px solid var(--gold)!important;width:25px!important;height:25px!important;\n}\n.company-name{\n  font-family:'Playfair Display',Georgia,serif!important;\n  font-size:clamp(2.25rem,8vw,3.45rem)!important;\n  line-height:.98!important;letter-spacing:-.045em!important;\n  text-transform:uppercase!important;color:#f0e8d9!important;\n  text-shadow:0 2px 20px rgba(0,0,0,.35);\n}\n.user-name{\n  color:#b9b4ab!important;font-size:1rem!important;\n  letter-spacing:.08em!important;text-transform:uppercase!important;\n}\n.profession{\n  color:var(--gold)!important;background:transparent!important;\n  border:0!important;border-top:1px solid color-mix(in srgb,var(--gold) 55%,transparent)!important;\n  border-bottom:1px solid color-mix(in srgb,var(--gold) 55%,transparent)!important;\n  border-radius:0!important;padding:9px 14px!important;\n  letter-spacing:.1em!important;font-size:.69rem!important;\n}\n\n/* ---------- ACTION BAR ---------- */\n.quick-actions{\n  margin:-32px 14px 22px!important;padding:8px!important;gap:5px!important;\n  background:#08141d!important;border:1px solid color-mix(in srgb,var(--gold) 40%,#17212a)!important;\n  border-radius:14px!important;box-shadow:0 18px 45px rgba(0,0,0,.48)!important;\n}\n.action-btn{\n  min-height:68px!important;background:transparent!important;border:1px solid transparent!important;\n  border-radius:9px!important;box-shadow:none!important;color:#b8b6b0!important;\n}\n.action-btn i{color:var(--gold)!important;font-size:15px!important}\n.action-btn span{font-size:8px!important;color:#a9aaa6!important;letter-spacing:.07em!important}\n.action-btn:hover{\n  background:color-mix(in srgb,var(--gold) 8%,transparent)!important;\n  border-color:color-mix(in srgb,var(--gold) 35%,transparent)!important;\n  color:#eee5d5!important;transform:none!important;\n}\n\n/* ---------- SECTIONS ---------- */\n.card,.share-section{\n  margin:0 13px 15px!important;padding:20px!important;\n  background:linear-gradient(145deg,#0b1a24,#07131c)!important;\n  border:1px solid #1b303b!important;border-radius:18px!important;\n  box-shadow:0 14px 38px rgba(0,0,0,.26)!important;\n}\n.card:hover{border-color:color-mix(in srgb,var(--gold) 25%,#1b303b)!important}\n.card-header{\n  margin-bottom:15px!important;padding-bottom:12px!important;\n  border-bottom:1px solid #1b303b!important;\n}\n.card-header:before{\n  width:3px!important;height:18px!important;background:var(--gold)!important;\n  box-shadow:0 0 12px color-mix(in srgb,var(--gold) 35%,transparent)!important;\n}\n.card-title{\n  font-size:13px!important;text-transform:uppercase!important;\n  letter-spacing:.09em!important;color:#e8e0d2!important;\n}\n.card-title i{color:var(--gold)!important}\n\n/* ---------- CONTACT LIST ---------- */\n.contact-list{gap:7px!important}\n.contact-item{\n  background:rgba(255,255,255,.018)!important;border:1px solid #172b36!important;\n  border-radius:12px!important;padding:11px!important;\n}\n.contact-item:hover{\n  background:color-mix(in srgb,var(--gold) 5%,transparent)!important;\n  border-color:color-mix(in srgb,var(--gold) 35%,#172b36)!important;\n  transform:none!important;\n}\n.contact-icon{\n  width:39px!important;height:39px!important;flex-basis:39px!important;\n  background:transparent!important;border:1px solid color-mix(in srgb,var(--gold) 45%,#1c303a)!important;\n  border-radius:9px!important;color:var(--gold)!important;\n}\n.contact-label{color:#69777e!important;font-size:7px!important;letter-spacing:.13em!important}\n.contact-value{color:#e2ddd3!important;font-size:11px!important}\n\n/* ---------- SHARE ---------- */\n.share-section{\n  background:\n    radial-gradient(circle at 100% 0,color-mix(in srgb,var(--gold) 10%,transparent),transparent 40%),\n    linear-gradient(145deg,#0c1b24,#07131b)!important;\n}\n.share-title{font-family:'Playfair Display',Georgia,serif!important;color:#eee5d5!important;font-size:22px!important}\n.share-subtitle{color:#7d898e!important}\n.whatsapp-input-group input,.form-input,.form-textarea{\n  background:#06111a!important;color:#e8e1d5!important;border:1px solid #1c313c!important;\n}\n.whatsapp-input-group button{background:#25d366!important;color:#fff!important}\n.share-btn-primary,.btn-primary,.submit-btn{\n  background:var(--gold)!important;color:#061018!important;border-color:var(--gold)!important;\n}\n.share-btn-outline,.btn-secondary{\n  background:transparent!important;color:var(--gold)!important;\n  border-color:color-mix(in srgb,var(--gold) 45%,#1c313c)!important;\n}\n\n/* ---------- ABOUT / TEXT ---------- */\n.about-content{color:#9da7aa!important;font-size:11px!important;line-height:1.8!important}\n.about-content strong,.about-content b{color:#ddd5c8!important}\n\n/* ---------- PRODUCTS ---------- */\n.gallery-filters{margin-bottom:12px!important}\n.filter-btn{\n  background:transparent!important;color:#8d989c!important;border-color:#1b303a!important;\n}\n.filter-btn.active,.filter-btn:hover{background:var(--gold)!important;color:#061018!important;border-color:var(--gold)!important}\n.gallery-grid{gap:10px!important}\n.gallery-item{background:#091821!important;border:1px solid #1b303b!important;border-radius:14px!important}\n.gallery-item:hover{border-color:color-mix(in srgb,var(--gold) 32%,#1b303b)!important;transform:translateY(-2px)!important}\n.gallery-img{background:#06111a!important}\n.gallery-info{background:#091821!important}\n.gallery-title{color:#ded8ce!important}\n.gallery-price{color:var(--gold)!important}\n.gallery-price del{color:#68747a!important}\n.buy-btn,.enquiry-btn{background:var(--gold)!important;color:#061018!important}\n.cart-btn{background:#152632!important;color:#d8d0c2!important}\n\n/* ---------- QR ---------- */\n.qr-wrapper{\n  background:#f7f7f4!important;border:2px solid var(--gold)!important;\n  border-radius:14px!important;padding:13px!important;\n  box-shadow:0 0 0 5px color-mix(in srgb,var(--gold) 7%,transparent),0 18px 40px rgba(0,0,0,.35)!important;\n}\n.qr-code{width:180px!important;height:180px!important}\n\n/* ---------- VIDEO / PAYMENT / MAP ---------- */\n.video-item,.payment-item{background:#091821!important;border-color:#1b303b!important}\n.video-title{background:#0d202c!important;color:#d7d0c5!important}\n.payment-header{color:var(--gold)!important}\n.payment-detail{border-color:#1b303b!important}\n.payment-label{color:#68767d!important}.payment-value{color:#d8d1c6!important}\n.map-container{border-color:#1b303b!important}\n\n/* ---------- SOCIAL ---------- */\n.social-link{\n  border:1px solid rgba(255,255,255,.08)!important;\n  box-shadow:0 6px 18px rgba(0,0,0,.28)!important;\n}\n\n/* ---------- FOOTER ---------- */\n.footer-nav{\n  width:min(520px,calc(100% - 18px))!important;\n  bottom:10px!important;padding:6px!important;\n  background:rgba(7,18,26,.94)!important;\n  border:1px solid color-mix(in srgb,var(--gold) 28%,#18303c)!important;\n  box-shadow:0 18px 50px rgba(0,0,0,.5)!important;\n}\n.footer-item{color:#748187!important}\n.footer-item:hover,.footer-item.active{\n  color:var(--gold)!important;background:color-mix(in srgb,var(--gold) 8%,transparent)!important;\n}\n\n/* ---------- MODALS ---------- */\n.modal{background:rgba(0,7,12,.82)!important}\n.modal-content{\n  background:#0a1821!important;border:1px solid #203844!important;color:#eee5d5!important;\n}\n.modal-close{background:#142630!important;color:#c9c1b4!important}\n\n@media(max-width:390px){\n  .professional-header{min-height:420px!important;padding-left:18px!important;padding-right:18px!important}\n  .company-name{font-size:2.15rem!important}\n  .card,.share-section{margin-left:9px!important;margin-right:9px!important;padding:17px!important}\n  .quick-actions{margin-left:9px!important;margin-right:9px!important}\n}\n</style>\n
-</head>
-<body>
-    <div class="container">
+<body><div class="container">
         <div class="content-wrapper">
             <!-- Professional Header -->
             <div class="professional-header">
